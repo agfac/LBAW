@@ -117,7 +117,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
                                                     <small>12x1.5 L</small>
                                                 </td>
                                                 <td>
@@ -137,7 +137,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
                                                     <small>12x1.5 L</small>
                                                 </td>
                                                 <td>
@@ -157,7 +157,7 @@
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
                                                     <small>12x1.5 L</small>
                                                 </td>
                                                 <td>

@@ -106,7 +106,7 @@
                         <li class="divider"></li>
                         <li><a href="?page=wishlist">Lista de desejos (5)</a></li>
                         <li><a href="?page=cart">Meu carrinho</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="?page=checkout">Checkout</a></li>
                     </ul>
                 </li>
                 <li class="linkdown">
