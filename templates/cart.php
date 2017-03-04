@@ -26,13 +26,13 @@
                                     <a href="my-account.html">Minha conta</a>
                                 </li>
                                 <li class="active">
-                                    <a href="cart.html">Meu carrinho <span class="text-primary">(3)</span></a>
+                                    <a href="?page=cart">Meu carrinho <span class="text-primary">(3)</span></a>
                                 </li>
                                 <li>
                                     <a href="order-list.html">Minhas encomendas </a>
                                 </li>
                                 <li>
-                                    <a href="wishlist.html">Lista de desejos <span class="text-primary">(5)</span></a>
+                                    <a href="?page=wishlist">Lista de desejos <span class="text-primary">(5)</span></a>
                                 </li>
                                 <li>
                                     <a href="user-information.html">Definições</a>
