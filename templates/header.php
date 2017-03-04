@@ -101,8 +101,8 @@
                         </span>
                     </a>
                     <ul class="w-150">
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="register.html">Criar conta</a></li>
+                        <li><a href="?page=login">Login</a></li>
+                        <li><a href="?page=registration">Criar conta</a></li>
                         <li class="divider"></li>
                         <li><a href="wishlist.html">Wishlist (5)</a></li>
                         <li><a href="cart.html">My Cart</a></li>
