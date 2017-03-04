@@ -104,14 +104,14 @@
                         <li><a href="?page=login">Login</a></li>
                         <li><a href="?page=register">Criar conta</a></li>
                         <li class="divider"></li>
-                        <li><a href="wishlist.html">Wishlist (5)</a></li>
-                        <li><a href="cart.html">My Cart</a></li>
+                        <li><a href="?page=wishlist">Lista de desejos (5)</a></li>
+                        <li><a href="?page=cart">Meu carrinho</a></li>
                         <li><a href="checkout.html">Checkout</a></li>
                     </ul>
                 </li>
                 <li class="linkdown">
                     <a href="javascript:void(0);">
-                       	<a href="register.html">Criar conta</a>
+                       	<a href="?page=register">Criar conta</a>
                     </a>
                 </li>
                 <li class="linkdown">
@@ -188,7 +188,7 @@
         <div class="container">
             <div class="row table">
                 <div class="col-sm-3 vertical-align text-left hidden-xs col-lg-offset-2 col-lg-3">
-                    <a href="javascript:void(0);">
+                    <a href="?page=home">
                         <img width="160" src="img/logo_abs_3.png" alt="" />
                     </a>
                 </div><!-- end col -->
@@ -299,7 +299,7 @@
                                                 <h6>User account</h6>
                                             </li>
                                             <li><a href="login.html">Login</a></li>
-                                            <li><a href="register.html">Register</a></li>
+                                            <li><a href="?page=register">Register</a></li>
                                             <li><a href="login-register.html">Login or Register</a></li>
                                             <li><a href="my-account.html">My Account</a></li>
                                             <li><a href="cart.html">Cart</a></li>

@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 
-$templates = array("aboutUs", "home", "login", "register", "userProfile");
+$templates = array("aboutUs", "home", "login", "register", "userProfile", "wishlist", "cart");
 
 if(isset($_GET['page']) && in_array($_GET['page'],$templates))
 {
