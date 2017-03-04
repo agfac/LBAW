@@ -23,19 +23,19 @@
                             
                             <ul class="list list-unstyled">
                                 <li>
-                                    <a href="my-account.html">Minha conta</a>
+                                    <a href="?page=my-account">Minha conta</a>
                                 </li>
                                 <li class="active">
                                     <a href="?page=cart">Meu carrinho <span class="text-primary">(3)</span></a>
                                 </li>
                                 <li>
-                                    <a href="order-list.html">Minhas encomendas </a>
+                                    <a href="?page=order-list">Minhas encomendas </a>
                                 </li>
                                 <li>
                                     <a href="?page=wishlist">Lista de desejos <span class="text-primary">(5)</span></a>
                                 </li>
                                 <li>
-                                    <a href="user-information.html">Definições</a>
+                                    <a href="?page=user-information">Definições</a>
                                 </li>
                             </ul>
                         </div><!-- end widget -->

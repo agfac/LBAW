@@ -5,7 +5,7 @@
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Pages</a></li>
-                            <li class="active">Wishlist</li>
+                            <li class="active">Order List</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
                 </div><!-- end row -->
@@ -28,10 +28,10 @@
                                 <li>
                                     <a href="?page=cart">Meu carrinho <span class="text-primary">(3)</span></a>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href="?page=order-list">Minhas encomendas </a>
                                 </li>
-                                <li class="active">
+                                <li>
                                     <a href="?page=wishlist">Lista de desejos <span class="text-primary">(5)</span></a>
                                 </li>
                                 <li>
@@ -61,7 +61,7 @@
                                         <p class="product-name"> 
                                             <a href="shop-single-product-v1.html">Nome do produto</a> 
                                         </p>
-                                        <span class="price text-primary">€19.99</span>
+                                        <span class="Preço text-primary">€19.99</span>
                                         <div class="rate text-warning">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -79,7 +79,7 @@
                                         <p class="product-name"> 
                                             <a href="shop-single-product-v1.html">Nome do produto</a> 
                                         </p>
-                                        <span class="price text-primary">€19.99</span>
+                                        <span class="Preço text-primary">€19.99</span>
                                         <div class="rate text-warning">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -96,10 +96,11 @@
                         </div><!-- end widget -->
                     </div><!-- end col -->
                     <!-- end sidebar -->
+
                     <div class="col-sm-9">
                         <div class="row">
                             <div class="col-sm-12 text-left">
-                                <h2 class="title">A minha lista de desejos</h2>
+                                <h2 class="title">Minhas encomendas</h2>
                             </div><!-- end col -->
                         </div><!-- end row -->
                         
@@ -108,66 +109,130 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="table-responsive">    
-                                    <table class="table">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th colspan="2">Produtos</th>
+                                                <th>Preço</th>
+                                                <th>Data</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
                                         <tbody>
                                             <tr>
                                                 <td>
+                                                    #23AS17
+                                                </td>
+                                                <td>
                                                     <a href="shop-single-product-v1.html">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                                                    <small>12x1.5 L</small>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
-                                                    <span class="text-primary">€59.99</span>
+                                                    <span>€59.99</span>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
+                                                    20 Dec 2016
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="close">×</button>
+                                                    <span class="label label-primary">Pendente</span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    #2MA269
+                                                </td>
+                                                <td>
                                                     <a href="shop-single-product-v1.html">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                                                    <small>12x1.5 L</small>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
-                                                    <span class="text-primary">€39.99</span>
+                                                    <span>€39.99</span>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
+                                                    09 Nov 2016
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="close">×</button>
+                                                    <span class="label label-danger">Cancelado</span>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    #973C5J
+                                                </td>
+                                                <td>
                                                     <a href="shop-single-product-v1.html">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                                                    <small>12x1.5 L</small>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
-                                                    <span class="text-primary">€29.99</span>
+                                                    <span>€29.99</span>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
+                                                    23 Oct 2016
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="close">×</button>
+                                                    <span class="label label-success">Finalizada</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    #113V5G
+                                                </td>
+                                                <td>
+                                                    <a href="shop-single-product-v1.html">
+                                                        <img width="60px" src="img/books/books_5" alt="product">
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <p>Sed aliquam tincidunt tempus</p>
+                                                </td>
+                                                <td>
+                                                    <span>€19.99</span>
+                                                </td>
+                                                <td>
+                                                    17 Sep 2016
+                                                </td>
+                                                <td>
+                                                    <span class="label label-default">Desativada</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    #113V5G
+                                                </td>
+                                                <td>
+                                                    <a href="shop-single-product-v1.html">
+                                                        <img width="60px" src="img/books/books_5" alt="product">
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <p>Sed aliquam tincidunt tempus</p>
+                                                </td>
+                                                <td>
+                                                    <span>€19.99</span>
+                                                </td>
+                                                <td>
+                                                    13 Sep 2016
+                                                </td>
+                                                <td>
+                                                    <span class="label label-warning">Esperando</span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -176,8 +241,8 @@
                                 
                                 <hr class="spacer-10 no-border">
                                 
-                                <a href="shop-sidebar-left.html" class="btn btn-light semi-circle btn-sm">
-                                    <i class="fa fa-arrow-left mr-5"></i> Continuar comprando
+                                <a href="checkout.html" class="btn btn-light semi-circle btn-sm">
+                                    <i class="fa fa-arrow-left mr-5"></i> Shopping
                                 </a>
                             </div><!-- end col -->
                         </div><!-- end row -->

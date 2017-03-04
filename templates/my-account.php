@@ -5,7 +5,7 @@
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Pages</a></li>
-                            <li class="active">Wishlist</li>
+                            <li class="active">My Account</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
                 </div><!-- end row -->
@@ -22,16 +22,16 @@
                             <h6 class="subtitle">Menu de navegação</h6>
                             
                             <ul class="list list-unstyled">
-                                <li>
+                                <li class="active">
                                     <a href="?page=my-account">Minha conta</a>
                                 </li>
                                 <li>
                                     <a href="?page=cart">Meu carrinho <span class="text-primary">(3)</span></a>
                                 </li>
                                 <li>
-                                    <a href="?page=order-list">Minhas encomendas </a>
+                                   <a href="?page=order-list">Minhas encomendas </a>
                                 </li>
-                                <li class="active">
+                                <li>
                                     <a href="?page=wishlist">Lista de desejos <span class="text-primary">(5)</span></a>
                                 </li>
                                 <li>
@@ -61,7 +61,7 @@
                                         <p class="product-name"> 
                                             <a href="shop-single-product-v1.html">Nome do produto</a> 
                                         </p>
-                                        <span class="price text-primary">€19.99</span>
+                                        <span class="Preço text-primary">€19.99</span>
                                         <div class="rate text-warning">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -79,7 +79,7 @@
                                         <p class="product-name"> 
                                             <a href="shop-single-product-v1.html">Nome do produto</a> 
                                         </p>
-                                        <span class="price text-primary">€19.99</span>
+                                        <span class="Preço text-primary">€19.99</span>
                                         <div class="rate text-warning">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -96,10 +96,11 @@
                         </div><!-- end widget -->
                     </div><!-- end col -->
                     <!-- end sidebar -->
+
                     <div class="col-sm-9">
                         <div class="row">
                             <div class="col-sm-12 text-left">
-                                <h2 class="title">A minha lista de desejos</h2>
+                                <h2 class="title">Minha conta</h2>
                             </div><!-- end col -->
                         </div><!-- end row -->
                         
@@ -107,78 +108,75 @@
                         
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="table-responsive">    
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="shop-single-product-v1.html">
-                                                        <img width="60px" src="img/books/books_5" alt="product">
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                                                    <small>12x1.5 L</small>
-                                                </td>
-                                                <td>
-                                                    <span class="text-primary">€59.99</span>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="close">×</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="shop-single-product-v1.html">
-                                                        <img width="60px" src="img/books/books_5" alt="product">
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                                                    <small>12x1.5 L</small>
-                                                </td>
-                                                <td>
-                                                    <span class="text-primary">€39.99</span>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="close">×</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="shop-single-product-v1.html">
-                                                        <img width="60px" src="img/books/books_5" alt="product">
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum</a></h6>
-                                                    <small>12x1.5 L</small>
-                                                </td>
-                                                <td>
-                                                    <span class="text-primary">€29.99</span>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="close">×</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table><!-- end table -->
-                                </div><!-- end table-responsive -->
+                                <p>Olá <strong>username</strong>! podes mudar a tua informação <a href="?page=user-information">aqui</a></p>
                                 
-                                <hr class="spacer-10 no-border">
+                                <hr class="spacer-30 no-border">
                                 
-                                <a href="shop-sidebar-left.html" class="btn btn-light semi-circle btn-sm">
-                                    <i class="fa fa-arrow-left mr-5"></i> Continuar comprando
-                                </a>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h5 class="mb-20 thin"><a href="javascript:void(0);">Recentemente vistos</a></h5>
+                                    </div><!-- end col -->
+                                </div><!-- end row -->
+
+                                <div id="owl-demo" class="owl-carousel column-5 owl-theme">
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                    <div class="item">
+                                        <figure>
+                                            <a href="shop-single-product-v1.html">
+                                                <img src="img/books/books_5" alt="">
+                                            </a>
+                                        </figure>
+                                    </div><!-- end item -->
+                                </div><!-- end owl carousel -->
+                                
                             </div><!-- end col -->
                         </div><!-- end row -->
                     </div><!-- end col -->
