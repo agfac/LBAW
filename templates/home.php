@@ -1,6 +1,3 @@
-
-        
-        
         <!-- start section -->
         <section class="section light-backgorund">
             <div class="container">
