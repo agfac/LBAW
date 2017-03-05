@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 
 $templates = array("about-us", "home", "login", "register", "wishlist", "cart", "my-account", "order-list", "user-information", "checkout", "contact-us", "faq", "privacy-policy", "single-product");
 
