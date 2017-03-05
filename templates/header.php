@@ -224,7 +224,7 @@
 			<div id="navbar-collapse-3" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<!-- Home -->
-					<li class="dropdown active"><a href="?page=home" data-toggle="dropdown" class="dropdown-toggle">Página inicial</a>
+					<li class="dropdown active"><a href="?page=home">Página inicial</a>
 					</li><!-- end li dropdown -->    
 					<!-- Categorias -->
 					<li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Categorias<i class="fa fa-angle-down ml-5"></i></a>
