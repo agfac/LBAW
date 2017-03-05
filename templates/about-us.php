@@ -3,8 +3,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
+                            <li><a href="?page=home">Página inicial</a></li>
+                            <li><a href="#">Páginas</a></li>
                             <li class="active">Sobre nós</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
@@ -36,7 +36,7 @@
                         </div>
                     </div><!-- end col -->
                     <div class="col-sm-7 vertical-align">
-                        <h2 class="title">Our Mission</h2>
+                        <h2 class="title">Nossa Missão</h2>
                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
                         
                         <hr class="spacer-10 no-border">
@@ -74,8 +74,6 @@
                                     <li class="facebook"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li class="twitter"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li class="instagram"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li class="dribbble"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                    <li class="behance"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance"></i></a></li>
                                 </ul>
                             </figure>
                             <div class="member-content">
@@ -92,8 +90,6 @@
                                     <li class="facebook"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li class="twitter"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li class="instagram"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li class="dribbble"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                    <li class="behance"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance"></i></a></li>
                                 </ul>
                             </figure>
                             <div class="member-content">
@@ -110,8 +106,6 @@
                                     <li class="facebook"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li class="twitter"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li class="instagram"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li class="dribbble"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                    <li class="behance"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance"></i></a></li>
                                 </ul>
                             </figure>
                             <div class="member-content">
@@ -128,8 +122,6 @@
                                     <li class="facebook"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                                     <li class="twitter"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                                     <li class="instagram"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li class="dribbble"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                    <li class="behance"><a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance"></i></a></li>
                                 </ul>
                             </figure>
                             <div class="member-content">

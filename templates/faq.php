@@ -3,9 +3,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
-                            <li class="active">Faq</li>
+                            <li><a href="?page=home">Página inicial</a></li>
+                            <li><a href="#">Páginas</a></li>
+                            <li class="active">FAQ</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
                 </div><!-- end row -->
@@ -130,30 +130,30 @@
                             <h6 class="subtitle">Se tem alguma pergunta contacte-nos</h6>
                             <ul class="list list-unstyled">
                                 <li><b>Telefone:</b> 213 456 789</li>
-                                <li><b>Email:</b> contact@awesomebookshop.com</li>
+                                <li><b>Email:</b> apoio@awesomebookshop.pt</li>
                                 <li><b>Skype:</b> <a href="javascript:void(0);">@awesomebookshop</a></li>
                             </ul>
                         </div><!-- end widget -->
                         
                         <div class="widget">
-                            <h6 class="subtitle">Nova coleção</h6>
+                            <h6 class="subtitle">Novidades</h6>
                             
                             <figure>
                                 <a href="javascript:void(0);">
-                                    <img src="img/books/books_5" alt="collection">
+                                    <img src="img/books/books_5.jpg" alt="collection">
                                 </a>
                             </figure>
                         </div><!-- end widget -->
                         
                         <div class="widget">
-                            <h6 class="subtitle">Meu carrinho</h6>
+                            <h6 class="subtitle">Carrinho</h6>
                             
                             <p>Tem 1 item no seu carrinho</p>
                             <hr class="spacer-10">
                             <ul class="items">
                                 <li> 
                                     <a href="javascript:void(0);" class="product-image">
-                                        <img src="img/books/books_5" alt="Sample Product ">
+                                        <img src="img/books/books_5.jpg" alt="Sample Product ">
                                     </a>
                                     <div class="product-details">
                                         <div class="close-icon"> 

@@ -3,8 +3,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
+                            <li><a href="?page=home">Página inicial</a></li>
+                            <li><a href="#">Páginas</a></li>
                             <li class="active">Contacte-nos</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
@@ -54,7 +54,7 @@
                             </div><!-- end icon -->
                             <div class="box-content">
                                 <h6 class="thin">Pergunta rápida?</h6>
-                                <h5 class="text-info">Lige-nos - 213 456 789!</h5>
+                                <h5 class="text-info">Contacte-nos - 213 456 789!</h5>
                             </div>
                         </div><!-- icon-box -->
                     </div><!-- end col -->   
@@ -65,7 +65,7 @@
                             </div><!-- end icon -->
                             <div class="box-content">
                                 <h6 class="thin">Ou mande-nos email</h6>
-                                <h5 class="text-success">Info@awesomebookshop.net</h5>
+                                <h5 class="text-success">apoio@awesomebookshop.pt</h5>
                             </div>
                         </div><!-- icon-box -->
                     </div><!-- end col --> 
@@ -86,10 +86,10 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="message">Mensagem</label>
-                                <textarea id="message" rows="6" class="form-control input-lg" placeholder="Message"></textarea>
+                                <textarea id="message" rows="6" class="form-control input-lg" placeholder="Messagem"></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-default round btn-lg" value="Submit">
+                                <input type="submit" class="btn btn-default round btn-lg" value="Submeter">
                             </div>
                         </form>
                     </div><!-- end col -->
@@ -99,20 +99,6 @@
         </section>
         <!-- end section -->
 
-        <!-- JavaScript Files -->
-        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="js/jquery.downCount.js"></script>
-        <script type="text/javascript" src="js/nouislider.min.js"></script>
-        <script type="text/javascript" src="js/jquery.sticky.js"></script>
-        <script type="text/javascript" src="js/pace.min.js"></script>
-        <script type="text/javascript" src="js/star-rating.min.js"></script>
-        <script type="text/javascript" src="js/wow.min.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-        <script type="text/javascript" src="js/gmaps.js"></script>
-        <script type="text/javascript" src="js/swiper.min.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
         
         <script type="text/javascript">
             $(document).ready(function(){
