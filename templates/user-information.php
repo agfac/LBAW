@@ -54,12 +54,12 @@
                               
                               <ul class="items">
                                   <li> 
-                                      <a href="shop-single-product-v1.html" class="product-image">
+                                      <a href="?page=single-product" class="product-image">
                                           <img src="img/books/books_5" alt="Sample Product ">
                                       </a>
                                       <div class="product-details">
                                           <p class="product-name"> 
-                                              <a href="shop-single-product-v1.html">Nome do produto</a> 
+                                              <a href="?page=single-product">Nome do produto</a> 
                                           </p>
                                           <span class="Preço text-primary">€19.99</span>
                                           <div class="rate text-warning">
@@ -72,12 +72,12 @@
                                       </div>
                                   </li><!-- end item -->
                                   <li> 
-                                      <a href="shop-single-product-v1.html" class="product-image">
+                                      <a href="?page=single-product" class="product-image">
                                           <img src="img/books/books_5" alt="Sample Product ">
                                       </a>
                                       <div class="product-details">
                                           <p class="product-name"> 
-                                              <a href="shop-single-product-v1.html">Nome do produto</a> 
+                                              <a href="?page=single-product">Nome do produto</a> 
                                           </p>
                                           <span class="Preço text-primary">€19.99</span>
                                           <div class="rate text-warning">

@@ -54,12 +54,12 @@
                             
                             <ul class="items">
                                 <li> 
-                                    <a href="shop-single-product-v1.html" class="product-image">
+                                    <a href="?page=single-product" class="product-image">
                                         <img src="img/books/books_5" alt="Sample Product ">
                                     </a>
                                     <div class="product-details">
                                         <p class="product-name"> 
-                                            <a href="shop-single-product-v1.html">Nome do produto</a> 
+                                            <a href="?page=single-product">Nome do produto</a> 
                                         </p>
                                         <span class="Preço text-primary">€19.99</span>
                                         <div class="rate text-warning">
@@ -72,12 +72,12 @@
                                     </div>
                                 </li><!-- end item -->
                                 <li> 
-                                    <a href="shop-single-product-v1.html" class="product-image">
+                                    <a href="?page=single-product" class="product-image">
                                         <img src="img/books/books_5" alt="Sample Product ">
                                     </a>
                                     <div class="product-details">
                                         <p class="product-name"> 
-                                            <a href="shop-single-product-v1.html">Nome do produto</a> 
+                                            <a href="?page=single-product">Nome do produto</a> 
                                         </p>
                                         <span class="Preço text-primary">€19.99</span>
                                         <div class="rate text-warning">
@@ -125,12 +125,12 @@
                                                     #23AS17
                                                 </td>
                                                 <td>
-                                                    <a href="shop-single-product-v1.html">
+                                                    <a href="?page=single-product">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
                                                     <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
@@ -148,12 +148,12 @@
                                                     #2MA269
                                                 </td>
                                                 <td>
-                                                    <a href="shop-single-product-v1.html">
+                                                    <a href="?page=single-product">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
                                                     <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
@@ -171,12 +171,12 @@
                                                     #973C5J
                                                 </td>
                                                 <td>
-                                                    <a href="shop-single-product-v1.html">
+                                                    <a href="?page=single-product">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
                                                     <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
@@ -194,12 +194,12 @@
                                                     #113V5G
                                                 </td>
                                                 <td>
-                                                    <a href="shop-single-product-v1.html">
+                                                    <a href="?page=single-product">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
                                                     <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
@@ -217,12 +217,12 @@
                                                     #113V5G
                                                 </td>
                                                 <td>
-                                                    <a href="shop-single-product-v1.html">
+                                                    <a href="?page=single-product">
                                                         <img width="60px" src="img/books/books_5" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="shop-single-product-v1.html">Nome do produto</a></h6>
+                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
                                                     <p>Sed aliquam tincidunt tempus</p>
                                                 </td>
                                                 <td>
