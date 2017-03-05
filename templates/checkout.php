@@ -3,8 +3,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
+                            <li><a href="?page=home">Página inicial</a></li>
+                            <li><a href="#">Páginas</a></li>
                             <li class="active">Checkout</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
@@ -41,25 +41,24 @@
                             </div><!-- end widget -->
                         
                             <div class="widget">
-                                <h6 class="subtitle">Nova coleção</h6>
+                                <h6 class="subtitle">Novidades</h6>
                                 <figure>
                                     <a href="javascript:void(0);">
-                                        <img src="img/books/books_5" alt="collection">
+                                        <img src="img/books/books_5.jpg" alt="collection">
                                     </a>
                                 </figure>
                             </div><!-- end widget -->
                             
                             <div class="widget">
-                                <h6 class="subtitle">Novos</h6>
                                 
                                 <ul class="items">
                                     <li> 
                                         <a href="?page=single-product" class="product-image">
-                                            <img src="img/books/books_5" alt="Sample Product ">
+                                            <img src="img/books/books_5.jpg" alt="Sample Product ">
                                         </a>
                                         <div class="product-details">
                                             <p class="product-name"> 
-                                                <a href="?page=single-product">Nome do produto</a> 
+                                                <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
                                             </p>
                                             <span class="Preço text-primary">€19.99</span>
                                             <div class="rate text-warning">
@@ -73,11 +72,11 @@
                                     </li><!-- end item -->
                                     <li> 
                                         <a href="?page=single-product" class="product-image">
-                                            <img src="img/books/books_5" alt="Sample Product ">
+                                            <img src="img/books/books_6.jpg" alt="Sample Product ">
                                         </a>
                                         <div class="product-details">
                                             <p class="product-name"> 
-                                                <a href="?page=single-product">Nome do produto</a> 
+                                                <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
                                             </p>
                                             <span class="Preço text-primary">€19.99</span>
                                             <div class="rate text-warning">
@@ -119,7 +118,7 @@
                                     </li>
                                     <li>
                                         <a href="#billing-info" data-toggle="tab">
-                                            2. Morada
+                                            2. Dados pessoais
                                             <div class="icon">
                                                 <i class="fa fa-home"></i>
                                             </div>
@@ -151,11 +150,11 @@
                                                         <tr>
                                                             <td>
                                                                 <a href="?page=single-product">
-                                                                    <img width="60px" src="img/books/books_5" alt="product">
+                                                                    <img width="60px" src="img/books/books_5.jpg" alt="product">
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
+                                                                <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
                                                                 <p>Sed aliquam tincidunt tempus</p>
                                                             </td>
                                                             <td>
@@ -180,11 +179,11 @@
                                                         <tr>
                                                             <td>
                                                                 <a href="?page=single-product">
-                                                                    <img width="60px" src="img/books/books_5" alt="product">
+                                                                    <img width="60px" src="img/books/books_5.jpg" alt="product">
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
+                                                                <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
                                                                 <p>Sed aliquam tincidunt tempus</p>
                                                             </td>
                                                             <td>
@@ -209,11 +208,11 @@
                                                         <tr>
                                                             <td>
                                                                 <a href="?page=single-product">
-                                                                    <img width="60px" src="img/books/books_5" alt="product">
+                                                                    <img width="60px" src="img/books/books_6.jpg" alt="product">
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
+                                                                <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
                                                                 <p>Sed aliquam tincidunt tempus</p>
                                                             </td>
                                                             <td>
@@ -245,7 +244,7 @@
                                                 <h5 class="thin subtitle">Morada de faturação</h5>
                                                 <div class="form-group input-group-lg">
                                                     <select class="form-control">
-                                                        <option value="Kosovo">Kosovo</option>
+                                                        <option value="-">-</option>
                                                         <option value="Afghanistan">Afghanistan</option>
                                                         <option value="Aland Islands">Aland Islands</option>
                                                         <option value="Albania">Albania</option>

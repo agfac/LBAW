@@ -103,17 +103,15 @@
 						</span>
 					</a>
 					<ul class="w-150">
-						<li><a href="login.html">Login</a></li>
-						<li><a href="register.html">Criar conta</a></li>
-						<li class="divider"></li>
-						<li><a href="wishlist.html">Wishlist (5)</a></li>
-						<li><a href="cart.html">Ver Carrinho</a></li>
-						<li><a href="checkout.html">Checkout</a></li>
+						<li><a href="?page=login">Login</a></li>
+						<li><a href="?page=wishlist">Wishlist (5)</a></li>
+						<li><a href="?page=cart">Ver Carrinho</a></li>
+						<li><a href="?page=checkout">Checkout</a></li>
 					</ul>
 				</li>
 				<li class="linkdown">
 					<a href="javascript:void(0);">
-						<a href="register.html">Criar conta</a>
+						<a href="?page=register">Criar conta</a>
 					</a>
 				</li>
 				<li class="linkdown">
@@ -129,7 +127,7 @@
 							<div class="cart-items">
 								<ol class="items">
 									<li> 
-										<a href="shop-single-product-v1.html" class="product-image">
+										<a href="?page=single-product" class="product-image">
 											<img src="img/books/books_5.jpg" alt="Sample Product ">
 										</a>
 										<div class="product-details">
@@ -137,13 +135,13 @@
 												<a href="javascript:void(0);"><i class="fa fa-close"></i></a>
 											</div>
 											<p class="product-name"> 
-												<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+												<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 											</p>
 											<strong>1</strong> x <span class="price text-primary">€59.99</span>
 										</div><!-- end product-details -->
 									</li><!-- end item -->
 									<li> 
-										<a href="shop-single-product-v1.html" class="product-image">
+										<a href="?page=single-product" class="product-image">
 											<img src="img/books/books_6.jpg" alt="Sample Product ">
 										</a>
 										<div class="product-details">
@@ -151,13 +149,13 @@
 												<a href="javascript:void(0);"><i class="fa fa-close"></i></a>
 											</div>
 											<p class="product-name"> 
-												<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+												<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 											</p>
 											<strong>1</strong> x <span class="price text-primary">€39.99</span>
 										</div><!-- end product-details -->
 									</li><!-- end item -->
 									<li> 
-										<a href="shop-single-product-v1.html" class="product-image">
+										<a href="?page=single-product" class="product-image">
 											<img src="img/books/books_5.jpg" alt="Sample Product ">
 										</a>
 										<div class="product-details">
@@ -165,7 +163,7 @@
 												<a href="javascript:void(0);"><i class="fa fa-close"></i></a>
 											</div>
 											<p class="product-name"> 
-												<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+												<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 											</p>
 											<strong>1</strong> x <span class="price text-primary">€29.99</span>
 										</div><!-- end product-details -->
@@ -175,8 +173,8 @@
 						</li>
 						<li>
 							<div class="cart-footer">
-								<a href="cart.html" class="pull-right"><i class="fa fa-cart-plus mr-5"></i>Ver Carrinho Completo</a>
-								<a href="checkout.html" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
+								<a href="?page=cart" class="pull-right"><i class="fa fa-cart-plus mr-5"></i>Ver Carrinho Completo</a>
+								<a href="?page=checkout" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
 							</div>
 						</li>
 					</ul>
@@ -226,7 +224,7 @@
 			<div id="navbar-collapse-3" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<!-- Home -->
-					<li class="dropdown active"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Página inicial</a>
+					<li class="dropdown active"><a href="?page=home" data-toggle="dropdown" class="dropdown-toggle">Página inicial</a>
 					</li><!-- end li dropdown -->    
 					<!-- Categorias -->
 					<li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Categorias<i class="fa fa-angle-down ml-5"></i></a>
@@ -239,88 +237,88 @@
 											<li class="title">
 												<h6>Livros</h6>
 											</li>
-											<li><a href="shop-single-product-v1.html">Arte</a></li>
-											<li><a href="shop-single-product-v1.html">Banda Desenhada</a></li>
-											<li><a href="shop-single-product-v1.html">Ciências Exatas e Naturais</a></li>
-											<li><a href="shop-single-product-v1.html">Ciências Sociais e Humanas</a></li>
-											<li><a href="shop-single-product-v1.html">Desenvolvimento Pessoal e Espiritual</a></li>
-											<li><a href="shop-single-product-v1.html">Desporto e Lazer</a></li>
-											<li><a href="shop-single-product-v1.html">Direito</a></li>
-											<li><a href="shop-single-product-v1.html">Economia, Finanças e Contabilidade</a></li>
-											<li><a href="shop-single-product-v1.html">Engenharia</a></li>
-											<li><a href="shop-single-product-v1.html">Ensino e Educação</a></li>
-											<li><a href="shop-single-product-v1.html">Gastronomia e Vinhos <span class="label primary-background">New</span></a></li>
-											<li><a href="shop-single-product-v1.html">Gestão</a></li>
-											<li><a href="shop-single-product-v1.html">História</a></li>
-											<li><a href="shop-single-product-v1.html">Informática</a></li>
-											<li><a href="shop-single-product-v1.html">Literatura</a></li>
-											<li><a href="shop-single-product-v1.html">Medicina</a></li>
-											<li><a href="shop-single-product-v1.html">Política</a></li>
-											<li><a href="shop-single-product-v1.html">Religião e Moral</a></li>
-											<li><a href="shop-single-product-v1.html">Saúde e Bem Estar</a></li>
+											<li><a href="?page=single-product">Arte</a></li>
+											<li><a href="?page=single-product">Banda Desenhada</a></li>
+											<li><a href="?page=single-product">Ciências Exatas e Naturais</a></li>
+											<li><a href="?page=single-product">Ciências Sociais e Humanas</a></li>
+											<li><a href="?page=single-product">Desenvolvimento Pessoal e Espiritual</a></li>
+											<li><a href="?page=single-product">Desporto e Lazer</a></li>
+											<li><a href="?page=single-product">Direito</a></li>
+											<li><a href="?page=single-product">Economia, Finanças e Contabilidade</a></li>
+											<li><a href="?page=single-product">Engenharia</a></li>
+											<li><a href="?page=single-product">Ensino e Educação</a></li>
+											<li><a href="?page=single-product">Gastronomia e Vinhos <span class="label primary-background">New</span></a></li>
+											<li><a href="?page=single-product">Gestão</a></li>
+											<li><a href="?page=single-product">História</a></li>
+											<li><a href="?page=single-product">Informática</a></li>
+											<li><a href="?page=single-product">Literatura</a></li>
+											<li><a href="?page=single-product">Medicina</a></li>
+											<li><a href="?page=single-product">Política</a></li>
+											<li><a href="?page=single-product">Religião e Moral</a></li>
+											<li><a href="?page=single-product">Saúde e Bem Estar</a></li>
 										</ul><!-- end ul col -->
 										<ul class="col-sm-3">
 											<li class="title">
 												<h6>Livros Escolares</h6>
 											</li>
-											<li><a href="shop-single-product-v1.html">1.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">2.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">3.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">4.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">5.º e 6.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">7.º, 8.º e 9.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">Ensino Secundário</a></li>
+											<li><a href="?page=single-product">1.º ano</a></li>
+											<li><a href="?page=single-product">2.º ano</a></li>
+											<li><a href="?page=single-product">3.º ano</a></li>
+											<li><a href="?page=single-product">4.º ano</a></li>
+											<li><a href="?page=single-product">5.º e 6.º ano</a></li>
+											<li><a href="?page=single-product">7.º, 8.º e 9.º ano</a></li>
+											<li><a href="?page=single-product">Ensino Secundário</a></li>
 											<li class="title">
 												<h6>Apoio Escolar</h6>
 											</li>
-											<li><a href="shop-single-product-v1.html">1.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">2.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">3.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">4.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">5.º e 6.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">7.º, 8.º e 9.º ano</a></li>
-											<li><a href="shop-single-product-v1.html">Ensino Secundário</a></li>
+											<li><a href="?page=single-product">1.º ano</a></li>
+											<li><a href="?page=single-product">2.º ano</a></li>
+											<li><a href="?page=single-product">3.º ano</a></li>
+											<li><a href="?page=single-product">4.º ano</a></li>
+											<li><a href="?page=single-product">5.º e 6.º ano</a></li>
+											<li><a href="?page=single-product">7.º, 8.º e 9.º ano</a></li>
+											<li><a href="?page=single-product">Ensino Secundário</a></li>
 										</ul><!-- end ul col -->
 										<ul class="col-sm-3">
 											<li class="title">
 												<h6>Revistas</h6>
 											</li>
-											<li><a href="shop-single-product-v1.html">Agricultura</a></li>
-											<li><a href="shop-single-product-v1.html">Arquitetura</a></li>
-											<li><a href="shop-single-product-v1.html">Arte</a></li>
-											<li><a href="shop-single-product-v1.html">Automobilismo</a></li>
-											<li><a href="shop-single-product-v1.html">Aviação <span class="label primary-background">New</span></a></li>
-											<li><a href="shop-single-product-v1.html">Científicas</a></li>
-											<li><a href="shop-single-product-v1.html">Cinema</a></li>
-											<li><a href="shop-single-product-v1.html">Decoração</a></li>
-											<li><a href="shop-single-product-v1.html">Desporto</a></li>
-											<li><a href="shop-single-product-v1.html">Direito</a></li>
-											<li><a href="shop-single-product-v1.html">Economia</a></li>
-											<li><a href="shop-single-product-v1.html">Fotografia</a></li>
-											<li><a href="shop-single-product-v1.html">História</a></li>
-											<li><a href="shop-single-product-v1.html">Humor</a></li>
-											<li><a href="shop-single-product-v1.html">Infantis</a></li>
-											<li><a href="shop-single-product-v1.html">Informática</a></li>
-											<li><a href="shop-single-product-v1.html">Moda</a></li>
-											<li><a href="shop-single-product-v1.html">Música</a></li>
-											<li><a href="shop-single-product-v1.html">Quebra-cabeças</a></li>
-											<li><a href="shop-single-product-v1.html">Turismo</a></li>
+											<li><a href="?page=single-product">Agricultura</a></li>
+											<li><a href="?page=single-product">Arquitetura</a></li>
+											<li><a href="?page=single-product">Arte</a></li>
+											<li><a href="?page=single-product">Automobilismo</a></li>
+											<li><a href="?page=single-product">Aviação <span class="label primary-background">New</span></a></li>
+											<li><a href="?page=single-product">Científicas</a></li>
+											<li><a href="?page=single-product">Cinema</a></li>
+											<li><a href="?page=single-product">Decoração</a></li>
+											<li><a href="?page=single-product">Desporto</a></li>
+											<li><a href="?page=single-product">Direito</a></li>
+											<li><a href="?page=single-product">Economia</a></li>
+											<li><a href="?page=single-product">Fotografia</a></li>
+											<li><a href="?page=single-product">História</a></li>
+											<li><a href="?page=single-product">Humor</a></li>
+											<li><a href="?page=single-product">Infantis</a></li>
+											<li><a href="?page=single-product">Informática</a></li>
+											<li><a href="?page=single-product">Moda</a></li>
+											<li><a href="?page=single-product">Música</a></li>
+											<li><a href="?page=single-product">Quebra-cabeças</a></li>
+											<li><a href="?page=single-product">Turismo</a></li>
 										</ul><!-- end ul col -->
 										<ul class="col-sm-3">
 											<li class="title">
 												<h6>Dicionários e Enciclopédias</h6>
-												<li><a href="shop-single-product-v1.html">Português</a></li>
-												<li><a href="shop-single-product-v1.html">Inglês</a></li>
-												<li><a href="shop-single-product-v1.html">Francês</a></li>
-												<li><a href="shop-single-product-v1.html">Alemão</a></li>
-												<li><a href="shop-single-product-v1.html">Espanhol</a></li>
+												<li><a href="?page=single-product">Português</a></li>
+												<li><a href="?page=single-product">Inglês</a></li>
+												<li><a href="?page=single-product">Francês</a></li>
+												<li><a href="?page=single-product">Alemão</a></li>
+												<li><a href="?page=single-product">Espanhol</a></li>
 											</li>
 											 <li class="title">
 												<h6>Guias Turísticos e Mapas</h6>
-												<li><a href="shop-single-product-v1.html">África</a></li>
-												<li><a href="shop-single-product-v1.html">América</a></li>
-												<li><a href="shop-single-product-v1.html">Ásia</a></li>
-												<li><a href="shop-single-product-v1.html">Europa</a></li>
+												<li><a href="?page=single-product">África</a></li>
+												<li><a href="?page=single-product">América</a></li>
+												<li><a href="?page=single-product">Ásia</a></li>
+												<li><a href="?page=single-product">Europa</a></li>
 											</li>
 
 										</ul><!-- end ul col -->

@@ -3,8 +3,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
+                            <li><a href="?page=home">Página incial</a></li>
+                            <li><a href="#">Páginas</a></li>
                             <li class="active">Wishlist</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
@@ -41,25 +41,24 @@
                         </div><!-- end widget -->
                         
                         <div class="widget">
-                            <h6 class="subtitle">Nova coleção</h6>
+                            <h6 class="subtitle">Novidades</h6>
                             <figure>
                                 <a href="javascript:void(0);">
-                                    <img src="img/books/books_5" alt="collection">
+                                    <img src="img/books/books_5.jpg" alt="collection">
                                 </a>
                             </figure>
                         </div><!-- end widget -->
                         
                         <div class="widget">
-                            <h6 class="subtitle">Novos</h6>
                             
                             <ul class="items">
                                 <li> 
                                     <a href="?page=single-product" class="product-image">
-                                        <img src="img/books/books_5" alt="Sample Product ">
+                                        <img src="img/books/books_5.jpg" alt="Sample Product ">
                                     </a>
                                     <div class="product-details">
                                         <p class="product-name"> 
-                                            <a href="?page=single-product">Nome do produto</a> 
+                                            <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
                                         </p>
                                         <span class="price text-primary">€19.99</span>
                                         <div class="rate text-warning">
@@ -73,11 +72,11 @@
                                 </li><!-- end item -->
                                 <li> 
                                     <a href="?page=single-product" class="product-image">
-                                        <img src="img/books/books_5" alt="Sample Product ">
+                                        <img src="img/books/books_6.jpg" alt="Sample Product ">
                                     </a>
                                     <div class="product-details">
                                         <p class="product-name"> 
-                                            <a href="?page=single-product">Nome do produto</a> 
+                                            <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
                                         </p>
                                         <span class="price text-primary">€19.99</span>
                                         <div class="rate text-warning">
@@ -113,12 +112,12 @@
                                             <tr>
                                                 <td>
                                                     <a href="?page=single-product">
-                                                        <img width="60px" src="img/books/books_5" alt="product">
+                                                        <img width="60px" src="img/books/books_5.jpg" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
-                                                    <small>12x1.5 L</small>
+                                                    <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+                                                    <small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
                                                 </td>
                                                 <td>
                                                     <span class="text-primary">€59.99</span>
@@ -133,12 +132,12 @@
                                             <tr>
                                                 <td>
                                                     <a href="?page=single-product">
-                                                        <img width="60px" src="img/books/books_5" alt="product">
+                                                        <img width="60px" src="img/books/books_5.jpg" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
-                                                    <small>12x1.5 L</small>
+                                                    <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+                                                    <small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
                                                 </td>
                                                 <td>
                                                     <span class="text-primary">€39.99</span>
@@ -153,12 +152,12 @@
                                             <tr>
                                                 <td>
                                                     <a href="?page=single-product">
-                                                        <img width="60px" src="img/books/books_5" alt="product">
+                                                        <img width="60px" src="img/books/books_6.jpg" alt="product">
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <h6 class="regular"><a href="?page=single-product">Nome do produto</a></h6>
-                                                    <small>12x1.5 L</small>
+                                                    <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+                                                    <small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
                                                 </td>
                                                 <td>
                                                     <span class="text-primary">€29.99</span>
@@ -177,7 +176,7 @@
                                 <hr class="spacer-10 no-border">
                                 
                                 <a href="shop-sidebar-left.html" class="btn btn-light semi-circle btn-sm">
-                                    <i class="fa fa-arrow-left mr-5"></i> Continuar comprando
+                                    <i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
                                 </a>
                             </div><!-- end col -->
                         </div><!-- end row -->

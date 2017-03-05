@@ -4,8 +4,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
+                            <li><a href="?page=home">Página inicial</a></li>
+                            <li><a href="#">Páginas</a></li>
                             <li class="active">Login</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
@@ -19,10 +19,10 @@
                     <!-- start sidebar -->
                     <div class="col-sm-3">
                         <div class="widget">
-                            <h6 class="subtitle">Nova Coleção</h6>
+                            <h6 class="subtitle">Novidades</h6>
                             <figure>
                                 <a href="javascript:void(0);">
-                                    <img src="img/books/books_5" alt="collection">
+                                    <img src="img/books/books_5.jpg" alt="collection">
                                 </a>
                             </figure>
                         </div><!-- end widget -->
@@ -61,7 +61,7 @@
                                             </div><!-- end checkbox-input -->
                                         </div><!-- end col -->
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <label><a href="forgot-password.html">Recuperar password</a></label>
+                                            <label><a href="?page=forgot-password">Recuperar password</a></label>
                                         </div>
                                     </div><!-- end form-group -->
                                     <div class="form-group">
