@@ -173,8 +173,8 @@
                         </li>
                         <li>
                             <div class="cart-footer">
-                                <a href="cart.html" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>Carrinho</a>
-                                <a href="checkout.html" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
+                                <a href="?page=cart" class="pull-left"><i class="fa fa-cart-plus mr-5"></i>Carrinho</a>
+                                <a href="?page=checkout" class="pull-right"><i class="fa fa-shopping-basket mr-5"></i>Checkout</a>
                             </div>
                         </li>
                     </ul>
@@ -197,9 +197,9 @@
                 </div><!-- end col -->
                 <div class="col-sm-3 vertical-align header-items">
                     <div class="header-item mr-5">
-                        <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                        <a href="?page=wishlist" data-toggle="tooltip" data-placement="top" title="Wishlist">
                             <i class="fa fa-heart-o"></i>
-                            <sub>32</sub>
+                            <sub>3</sub>
                         </a>
                     </div>
                     <div class="header-item"> </div>

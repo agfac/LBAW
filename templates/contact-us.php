@@ -5,7 +5,7 @@
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Pages</a></li>
-                            <li class="active">Contact Us</li>
+                            <li class="active">Contacte-nos</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
                 </div><!-- end row -->
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="title-wrap">
-                            <h2 class="title lines">Contact Us</h2>
+                            <h2 class="title lines">Contacte-nos</h2>
                         </div>
                     </div><!-- end col -->    
                 </div><!-- end row -->
@@ -42,8 +42,8 @@
                                 <i class="fa fa-commenting-o text-warning"></i>
                             </div><!-- end icon -->
                             <div class="box-content">
-                                <h6 class="thin">Need Help?</h6>
-                                <h5 class="text-warning">Use our chat!</h5>
+                                <h6 class="thin">Precisa de ajuda?</h6>
+                                <h5 class="text-warning">Use o nosso chat!</h5>
                             </div>
                         </div><!-- icon-box -->
                     </div><!-- end col -->   
@@ -53,8 +53,8 @@
                                 <i class="fa fa-phone text-info"></i>
                             </div><!-- end icon -->
                             <div class="box-content">
-                                <h6 class="thin">Quick question?</h6>
-                                <h5 class="text-info">Call - 123 456 789!</h5>
+                                <h6 class="thin">Pergunta rápida?</h6>
+                                <h5 class="text-info">Lige-nos - 213 456 789!</h5>
                             </div>
                         </div><!-- icon-box -->
                     </div><!-- end col -->   
@@ -64,8 +64,8 @@
                                 <i class="fa fa-envelope-o text-success"></i>
                             </div><!-- end icon -->
                             <div class="box-content">
-                                <h6 class="thin">or send us e-mail</h6>
-                                <h5 class="text-success">Info@domain.net</h5>
+                                <h6 class="thin">Ou mande-nos email</h6>
+                                <h5 class="text-success">Info@awesomebookshop.net</h5>
                             </div>
                         </div><!-- icon-box -->
                     </div><!-- end col --> 
@@ -77,15 +77,15 @@
                     <div class="col-sm-10 col-sm-offset-1">
                         <form>
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Nome</label>
                                 <input type="text" id="name" class="form-control input-lg" placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <label for="email">Email Address</label>
+                                <label for="email">Email</label>
                                 <input type="text" id="email" class="form-control input-lg" placeholder="E-mail">
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="message">Message</label>
+                                <label class="control-label" for="message">Mensagem</label>
                                 <textarea id="message" rows="6" class="form-control input-lg" placeholder="Message"></textarea>
                             </div>
                             <div class="form-group">

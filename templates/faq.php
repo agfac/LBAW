@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h2>Frequently asked Questions</h2>
+                        <h2>Perguntas frequentes</h2>
                         <p>Aliquam posuere erat et orci eleifend cursus. Nullam tempus odio sem, lacinia pellentesque neque mollis a. In ut tempor ligula. Vestibulum ultricies bibendum lorem, a sollicitudin tellus euismod vel. Nam suscipit, diam ut volutpat lobortis, nibh ipsum tempor nibh, a vehicula tellus justo id nibh. Nulla pretium mollis convallis. Phasellus a nibh aliquet, ullamcorper quam aliquam, faucibus nulla. Phasellus mollis tristique vehicula. Vivamus sagittis, sem sed posuere aliquet, massa odio lobortis.</p>
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -31,7 +31,7 @@
                                 <div class="panel-heading" role="tab" id="questionOne">
                                     <h4 class="panel-title">
                                         <a class="" data-toggle="collapse" data-parent="#question" href="#collapseQuestionOne" aria-expanded="true" aria-controls="collapseOne">
-                                            I have forgotten my password, now what?
+                                            Como posso recuperar a minha password?
                                         </a>
                                     </h4>
                                 </div><!-- end panel-heading -->
@@ -46,7 +46,7 @@
                                 <div class="panel-heading" role="tab" id="questionTwo">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#question" href="#collapseQuestionTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            I have forgotten my username, now what?
+                                            Como posso recuperar o meu username?
                                         </a>
                                     </h4>
                                 </div><!-- end panel-heading -->
@@ -61,7 +61,7 @@
                                 <div class="panel-heading" role="tab" id="questionThree">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#question" href="#collapseQuestionThree" aria-expanded="false" aria-controls="collapseThree">
-                                            What methods of payment are accepted?
+                                            Como posso pagar a minha encomenda?
                                         </a>
                                     </h4>
                                 </div><!-- end panel-heading -->
@@ -76,7 +76,7 @@
                                 <div class="panel-heading" role="tab" id="questionFour">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#question" href="#collapseQuestionFour" aria-expanded="false" aria-controls="collapseThree">
-                                            Why don't you ship to my country?
+                                            Porquê que não enviam para o meu país?
                                         </a>
                                     </h4>
                                 </div><!-- end panel-heading -->
@@ -91,7 +91,7 @@
                                 <div class="panel-heading" role="tab" id="questionFive">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#question" href="#collapseQuestionFive" aria-expanded="false" aria-controls="collapseThree">
-                                            How long will it take for my items to arrive?
+                                            Quanto tempo demora a chegar a minha encomenda?
                                         </a>
                                     </h4>
                                 </div><!-- end panel-heading -->
@@ -106,7 +106,7 @@
                                 <div class="panel-heading" role="tab" id="questionSix">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#question" href="#collapseQuestionSix" aria-expanded="false" aria-controls="collapseThree">
-                                            The product I received does not match the description. What can I do?
+                                            Como posso trocar os produtos?
                                         </a>
                                     </h4>
                                 </div><!-- end panel-heading -->
@@ -120,40 +120,40 @@
                     </div><!-- end col -->
                     <div class="col-sm-3">
                         <div class="widget">
-                            <h6 class="subtitle">Search</h6>
+                            <h6 class="subtitle">Procurar</h6>
                             <form>
-                                <input type="text" id="lastname" class="form-control input-sm" placeholder="Search">
+                                <input type="text" id="lastname" class="form-control input-sm" placeholder="Procurar">
                             </form>
                         </div><!-- end widget -->
                         
                         <div class="widget">
-                            <h6 class="subtitle">If you have Questions please contact us</h6>
+                            <h6 class="subtitle">Se tem alguma pergunta contacte-nos</h6>
                             <ul class="list list-unstyled">
-                                <li><b>Phone Number:</b> +123 456 789</li>
-                                <li><b>Email Us:</b> contact@domain.com</li>
-                                <li><b>Skype ID:</b> <a href="javascript:void(0);">@skype_id</a></li>
+                                <li><b>Telefone:</b> 213 456 789</li>
+                                <li><b>Email:</b> contact@awesomebookshop.com</li>
+                                <li><b>Skype:</b> <a href="javascript:void(0);">@awesomebookshop</a></li>
                             </ul>
                         </div><!-- end widget -->
                         
                         <div class="widget">
-                            <h6 class="subtitle">New Collection</h6>
+                            <h6 class="subtitle">Nova coleção</h6>
                             
                             <figure>
                                 <a href="javascript:void(0);">
-                                    <img src="img/products/men_06.jpg" alt="collection">
+                                    <img src="img/books/books_5" alt="collection">
                                 </a>
                             </figure>
                         </div><!-- end widget -->
                         
                         <div class="widget">
-                            <h6 class="subtitle">My Cart</h6>
+                            <h6 class="subtitle">Meu carrinho</h6>
                             
-                            <p>There is 1 item in your cart.</p>
+                            <p>Tem 1 item no seu carrinho</p>
                             <hr class="spacer-10">
                             <ul class="items">
                                 <li> 
                                     <a href="javascript:void(0);" class="product-image">
-                                        <img src="img/products/men_06.jpg" alt="Sample Product ">
+                                        <img src="img/books/books_5" alt="Sample Product ">
                                     </a>
                                     <div class="product-details">
                                         <div class="close-icon"> 
@@ -162,13 +162,13 @@
                                         <p class="product-name"> 
                                             <a href="javascript:void(0);">Lorem ipsum dolor sit amet Consectetur</a> 
                                         </p>
-                                        <strong class="text-dark">1</strong> x <span class="price text-primary">$19.99</span>
+                                        <strong class="text-dark">1</strong> x <span class="price text-primary">€19.99</span>
                                     </div>
                                 </li><!-- end item -->
                             </ul>
 
                             <hr class="spacer-10">
-                            <strong class="text-dark">Cart Subtotal:<span class="pull-right text-primary">$19.99</span></strong>
+                            <strong class="text-dark">Total do carrinho:<span class="pull-right text-primary">€19.99</span></strong>
                             <hr class="spacer-10">
                             <a href="checkout.html" class="btn btn-default semi-circle btn-block btn-sm"><i class="fa fa-shopping-basket mr-10"></i>Checkout</a>
                         </div><!-- end widget -->
