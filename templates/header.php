@@ -237,88 +237,88 @@
 											<li class="title">
 												<h6>Livros</h6>
 											</li>
-											<li><a href="?page=single-product">Arte</a></li>
-											<li><a href="?page=single-product">Banda Desenhada</a></li>
-											<li><a href="?page=single-product">Ciências Exatas e Naturais</a></li>
-											<li><a href="?page=single-product">Ciências Sociais e Humanas</a></li>
-											<li><a href="?page=single-product">Desenvolvimento Pessoal e Espiritual</a></li>
-											<li><a href="?page=single-product">Desporto e Lazer</a></li>
-											<li><a href="?page=single-product">Direito</a></li>
-											<li><a href="?page=single-product">Economia, Finanças e Contabilidade</a></li>
-											<li><a href="?page=single-product">Engenharia</a></li>
-											<li><a href="?page=single-product">Ensino e Educação</a></li>
-											<li><a href="?page=single-product">Gastronomia e Vinhos <span class="label primary-background">New</span></a></li>
-											<li><a href="?page=single-product">Gestão</a></li>
-											<li><a href="?page=single-product">História</a></li>
-											<li><a href="?page=single-product">Informática</a></li>
-											<li><a href="?page=single-product">Literatura</a></li>
-											<li><a href="?page=single-product">Medicina</a></li>
-											<li><a href="?page=single-product">Política</a></li>
-											<li><a href="?page=single-product">Religião e Moral</a></li>
-											<li><a href="?page=single-product">Saúde e Bem Estar</a></li>
+											<li><a href="?page=product-list">Arte</a></li>
+											<li><a href="?page=product-list">Banda Desenhada</a></li>
+											<li><a href="?page=product-list">Ciências Exatas e Naturais</a></li>
+											<li><a href="?page=product-list">Ciências Sociais e Humanas</a></li>
+											<li><a href="?page=product-list">Desenvolvimento Pessoal e Espiritual</a></li>
+											<li><a href="?page=product-list">Desporto e Lazer</a></li>
+											<li><a href="?page=product-list">Direito</a></li>
+											<li><a href="?page=product-list">Economia, Finanças e Contabilidade</a></li>
+											<li><a href="?page=product-list">Engenharia</a></li>
+											<li><a href="?page=product-list">Ensino e Educação</a></li>
+											<li><a href="?page=product-list">Gastronomia e Vinhos <span class="label primary-background">New</span></a></li>
+											<li><a href="?page=product-list">Gestão</a></li>
+											<li><a href="?page=product-list">História</a></li>
+											<li><a href="?page=product-list">Informática</a></li>
+											<li><a href="?page=product-list">Literatura</a></li>
+											<li><a href="?page=product-list">Medicina</a></li>
+											<li><a href="?page=product-list">Política</a></li>
+											<li><a href="?page=product-list">Religião e Moral</a></li>
+											<li><a href="?page=product-list">Saúde e Bem Estar</a></li>
 										</ul><!-- end ul col -->
 										<ul class="col-sm-3">
 											<li class="title">
 												<h6>Livros Escolares</h6>
 											</li>
-											<li><a href="?page=single-product">1.º ano</a></li>
-											<li><a href="?page=single-product">2.º ano</a></li>
-											<li><a href="?page=single-product">3.º ano</a></li>
-											<li><a href="?page=single-product">4.º ano</a></li>
-											<li><a href="?page=single-product">5.º e 6.º ano</a></li>
-											<li><a href="?page=single-product">7.º, 8.º e 9.º ano</a></li>
-											<li><a href="?page=single-product">Ensino Secundário</a></li>
+											<li><a href="?page=product-list">1.º ano</a></li>
+											<li><a href="?page=product-list">2.º ano</a></li>
+											<li><a href="?page=product-list">3.º ano</a></li>
+											<li><a href="?page=product-list">4.º ano</a></li>
+											<li><a href="?page=product-list">5.º e 6.º ano</a></li>
+											<li><a href="?page=product-list">7.º, 8.º e 9.º ano</a></li>
+											<li><a href="?page=product-list">Ensino Secundário</a></li>
 											<li class="title">
 												<h6>Apoio Escolar</h6>
 											</li>
-											<li><a href="?page=single-product">1.º ano</a></li>
-											<li><a href="?page=single-product">2.º ano</a></li>
-											<li><a href="?page=single-product">3.º ano</a></li>
-											<li><a href="?page=single-product">4.º ano</a></li>
-											<li><a href="?page=single-product">5.º e 6.º ano</a></li>
-											<li><a href="?page=single-product">7.º, 8.º e 9.º ano</a></li>
-											<li><a href="?page=single-product">Ensino Secundário</a></li>
+											<li><a href="?page=product-list">1.º ano</a></li>
+											<li><a href="?page=product-list">2.º ano</a></li>
+											<li><a href="?page=product-list">3.º ano</a></li>
+											<li><a href="?page=product-list">4.º ano</a></li>
+											<li><a href="?page=product-list">5.º e 6.º ano</a></li>
+											<li><a href="?page=product-list">7.º, 8.º e 9.º ano</a></li>
+											<li><a href="?page=product-list">Ensino Secundário</a></li>
 										</ul><!-- end ul col -->
 										<ul class="col-sm-3">
 											<li class="title">
 												<h6>Revistas</h6>
 											</li>
-											<li><a href="?page=single-product">Agricultura</a></li>
-											<li><a href="?page=single-product">Arquitetura</a></li>
-											<li><a href="?page=single-product">Arte</a></li>
-											<li><a href="?page=single-product">Automobilismo</a></li>
-											<li><a href="?page=single-product">Aviação <span class="label primary-background">New</span></a></li>
-											<li><a href="?page=single-product">Científicas</a></li>
-											<li><a href="?page=single-product">Cinema</a></li>
-											<li><a href="?page=single-product">Decoração</a></li>
-											<li><a href="?page=single-product">Desporto</a></li>
-											<li><a href="?page=single-product">Direito</a></li>
-											<li><a href="?page=single-product">Economia</a></li>
-											<li><a href="?page=single-product">Fotografia</a></li>
-											<li><a href="?page=single-product">História</a></li>
-											<li><a href="?page=single-product">Humor</a></li>
-											<li><a href="?page=single-product">Infantis</a></li>
-											<li><a href="?page=single-product">Informática</a></li>
-											<li><a href="?page=single-product">Moda</a></li>
-											<li><a href="?page=single-product">Música</a></li>
-											<li><a href="?page=single-product">Quebra-cabeças</a></li>
-											<li><a href="?page=single-product">Turismo</a></li>
+											<li><a href="?page=product-list">Agricultura</a></li>
+											<li><a href="?page=product-list">Arquitetura</a></li>
+											<li><a href="?page=product-list">Arte</a></li>
+											<li><a href="?page=product-list">Automobilismo</a></li>
+											<li><a href="?page=product-list">Aviação <span class="label primary-background">New</span></a></li>
+											<li><a href="?page=product-list">Científicas</a></li>
+											<li><a href="?page=product-list">Cinema</a></li>
+											<li><a href="?page=product-list">Decoração</a></li>
+											<li><a href="?page=product-list">Desporto</a></li>
+											<li><a href="?page=product-list">Direito</a></li>
+											<li><a href="?page=product-list">Economia</a></li>
+											<li><a href="?page=product-list">Fotografia</a></li>
+											<li><a href="?page=product-list">História</a></li>
+											<li><a href="?page=product-list">Humor</a></li>
+											<li><a href="?page=product-list">Infantis</a></li>
+											<li><a href="?page=product-list">Informática</a></li>
+											<li><a href="?page=product-list">Moda</a></li>
+											<li><a href="?page=product-list">Música</a></li>
+											<li><a href="?page=product-list">Quebra-cabeças</a></li>
+											<li><a href="?page=product-list">Turismo</a></li>
 										</ul><!-- end ul col -->
 										<ul class="col-sm-3">
 											<li class="title">
 												<h6>Dicionários e Enciclopédias</h6>
-												<li><a href="?page=single-product">Português</a></li>
-												<li><a href="?page=single-product">Inglês</a></li>
-												<li><a href="?page=single-product">Francês</a></li>
-												<li><a href="?page=single-product">Alemão</a></li>
-												<li><a href="?page=single-product">Espanhol</a></li>
+												<li><a href="?page=product-list">Português</a></li>
+												<li><a href="?page=product-list">Inglês</a></li>
+												<li><a href="?page=product-list">Francês</a></li>
+												<li><a href="?page=product-list">Alemão</a></li>
+												<li><a href="?page=product-list">Espanhol</a></li>
 											</li>
 											 <li class="title">
 												<h6>Guias Turísticos e Mapas</h6>
-												<li><a href="?page=single-product">África</a></li>
-												<li><a href="?page=single-product">América</a></li>
-												<li><a href="?page=single-product">Ásia</a></li>
-												<li><a href="?page=single-product">Europa</a></li>
+												<li><a href="?page=product-list">África</a></li>
+												<li><a href="?page=product-list">América</a></li>
+												<li><a href="?page=product-list">Ásia</a></li>
+												<li><a href="?page=product-list">Europa</a></li>
 											</li>
 
 										</ul><!-- end ul col -->

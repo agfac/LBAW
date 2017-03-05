@@ -13,27 +13,27 @@
 							  Livros <i class="fa fa-angle-right pull-right"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0);">Arte</a></li>
-								<li><a href="javascript:void(0);">Banda Desenhada</a></li>
-								<li><a href="javascript:void(0);">Ciências Exatas e Naturais</a></li>
-								<li><a href="javascript:void(0);">Ciências Sociais e Humanas</a></li>
-								<li><a href="javascript:void(0);">Desenvolvimento Pessoal e Espiritual</a></li>
-								<li><a href="javascript:void(0);">Desporto e Lazer</a></li>
-								<li><a href="javascript:void(0);">Dicionários e Enciclopédias</a></li>
-								<li><a href="javascript:void(0);">Direito</a></li>
-								<li><a href="javascript:void(0);">Economia, Finanças e Contabilidade</a></li>
-								<li><a href="javascript:void(0);">Engenharia</a></li>
-								<li><a href="javascript:void(0);">Ensino e Educação</a></li>
-								<li><a href="javascript:void(0);">Gastronomia e Vinhos</a></li>
-								<li><a href="javascript:void(0);">Gestão</a></li>
-								<li><a href="javascript:void(0);">Guias Turísticos e Mapas</a></li>
-								<li><a href="javascript:void(0);">História</a></li>
-								<li><a href="javascript:void(0);">Informática</a></li>
-								<li><a href="javascript:void(0);">Literatura</a></li>
-								<li><a href="javascript:void(0);">Medicina</a></li>
-								<li><a href="javascript:void(0);">Política</a></li>
-								<li><a href="javascript:void(0);">Religião e Moral</a></li>
-								<li><a href="javascript:void(0);">Saúde e Bem Estar</a></li>
+								<li><a href="?page=product-list">Arte</a></li>
+								<li><a href="?page=product-list">Banda Desenhada</a></li>
+								<li><a href="?page=product-list">Ciências Exatas e Naturais</a></li>
+								<li><a href="?page=product-list">Ciências Sociais e Humanas</a></li>
+								<li><a href="?page=product-list">Desenvolvimento Pessoal e Espiritual</a></li>
+								<li><a href="?page=product-list">Desporto e Lazer</a></li>
+								<li><a href="?page=product-list">Dicionários e Enciclopédias</a></li>
+								<li><a href="?page=product-list">Direito</a></li>
+								<li><a href="?page=product-list">Economia, Finanças e Contabilidade</a></li>
+								<li><a href="?page=product-list">Engenharia</a></li>
+								<li><a href="?page=product-list">Ensino e Educação</a></li>
+								<li><a href="?page=product-list">Gastronomia e Vinhos</a></li>
+								<li><a href="?page=product-list">Gestão</a></li>
+								<li><a href="?page=product-list">Guias Turísticos e Mapas</a></li>
+								<li><a href="?page=product-list">História</a></li>
+								<li><a href="?page=product-list">Informática</a></li>
+								<li><a href="?page=product-list">Literatura</a></li>
+								<li><a href="?page=product-list">Medicina</a></li>
+								<li><a href="?page=product-list">Política</a></li>
+								<li><a href="?page=product-list">Religião e Moral</a></li>
+								<li><a href="?page=product-list">Saúde e Bem Estar</a></li>
 							</ul>
 						</li>
 						<li>
@@ -41,13 +41,13 @@
 							  Livros Escolares <i class="fa fa-angle-right pull-right"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0);">1.º ano</a></li>
-								<li><a href="javascript:void(0);">2.º ano</a></li>
-								<li><a href="javascript:void(0);">3.º ano</a></li>
-								<li><a href="javascript:void(0);">4.º ano</a></li>
-								<li><a href="javascript:void(0);">5.º e 6.º ano</a></li>
-								<li><a href="javascript:void(0);">7.º, 8.º e 9.º ciclo</a></li>
-								<li><a href="javascript:void(0);">Ensino Secundário</a></li>
+								<li><a href="?page=product-list">1.º ano</a></li>
+								<li><a href="?page=product-list">2.º ano</a></li>
+								<li><a href="?page=product-list">3.º ano</a></li>
+								<li><a href="?page=product-list">4.º ano</a></li>
+								<li><a href="?page=product-list">5.º e 6.º ano</a></li>
+								<li><a href="?page=product-list">7.º, 8.º e 9.º ciclo</a></li>
+								<li><a href="?page=product-list">Ensino Secundário</a></li>
 							</ul>
 						</li>
 						<li>
@@ -55,13 +55,13 @@
 							  Apoio Escolar <i class="fa fa-angle-right pull-right"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0);">1.º ano</a></li>
-								<li><a href="javascript:void(0);">2.º ano</a></li>
-								<li><a href="javascript:void(0);">3.º ano</a></li>
-								<li><a href="javascript:void(0);">4.º ano</a></li>
-								<li><a href="javascript:void(0);">5.º e 6.º ano</a></li>
-								<li><a href="javascript:void(0);">7.º, 8.º e 9.º ciclo</a></li>
-								<li><a href="javascript:void(0);">Ensino Secundário</a></li>
+								<li><a href="?page=product-list">1.º ano</a></li>
+								<li><a href="?page=product-list">2.º ano</a></li>
+								<li><a href="?page=product-list">3.º ano</a></li>
+								<li><a href="?page=product-list">4.º ano</a></li>
+								<li><a href="?page=product-list">5.º e 6.º ano</a></li>
+								<li><a href="?page=product-list">7.º, 8.º e 9.º ciclo</a></li>
+								<li><a href="?page=product-list">Ensino Secundário</a></li>
 							</ul>
 						</li>
 						<li>
@@ -69,26 +69,26 @@
 							  Revistas <i class="fa fa-angle-right pull-right"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0);">Agricultura</a></li>
-								<li><a href="javascript:void(0);">Arquitetura</a></li>
-								<li><a href="javascript:void(0);">Arte</a></li>
-								<li><a href="javascript:void(0);">Automobilismo</a></li>
-								<li><a href="javascript:void(0);">Aviação</a></li>
-								<li><a href="javascript:void(0);">Científicas</a></li>
-								<li><a href="javascript:void(0);">Cinema</a></li>
-								<li><a href="javascript:void(0);">Decoração</a></li>
-								<li><a href="javascript:void(0);">Desporto</a></li>
-								<li><a href="javascript:void(0);">Direito</a></li>
-								<li><a href="javascript:void(0);">Economia</a></li>
-								<li><a href="javascript:void(0);">Fotografia</a></li>
-								<li><a href="javascript:void(0);">História</a></li>
-								<li><a href="javascript:void(0);">Humor</a></li>
-								<li><a href="javascript:void(0);">Infantis</a></li>
-								<li><a href="javascript:void(0);">Informática</a></li>
-								<li><a href="javascript:void(0);">Moda</a></li>
-								<li><a href="javascript:void(0);">Música</a></li>
-								<li><a href="javascript:void(0);">Quebra-cabeças</a></li>
-								<li><a href="javascript:void(0);">Turismo</a></li>
+								<li><a href="?page=product-list">Agricultura</a></li>
+								<li><a href="?page=product-list">Arquitetura</a></li>
+								<li><a href="?page=product-list">Arte</a></li>
+								<li><a href="?page=product-list">Automobilismo</a></li>
+								<li><a href="?page=product-list">Aviação</a></li>
+								<li><a href="?page=product-list">Científicas</a></li>
+								<li><a href="?page=product-list">Cinema</a></li>
+								<li><a href="?page=product-list">Decoração</a></li>
+								<li><a href="?page=product-list">Desporto</a></li>
+								<li><a href="?page=product-list">Direito</a></li>
+								<li><a href="?page=product-list">Economia</a></li>
+								<li><a href="?page=product-list">Fotografia</a></li>
+								<li><a href="?page=product-list">História</a></li>
+								<li><a href="?page=product-list">Humor</a></li>
+								<li><a href="?page=product-list">Infantis</a></li>
+								<li><a href="?page=product-list">Informática</a></li>
+								<li><a href="?page=product-list">Moda</a></li>
+								<li><a href="?page=product-list">Música</a></li>
+								<li><a href="?page=product-list">Quebra-cabeças</a></li>
+								<li><a href="?page=product-list">Turismo</a></li>
 							</ul>
 						</li>
 						<li>
@@ -96,11 +96,11 @@
 							  Dicionários e Enciclopédias <i class="fa fa-angle-right pull-right"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0);">Português</a></li>
-								<li><a href="javascript:void(0);">Inglês</a></li>
-								<li><a href="javascript:void(0);">Francês</a></li>
-								<li><a href="javascript:void(0);">Alemão</a></li>
-								<li><a href="javascript:void(0);">Espanhol</a></li>
+								<li><a href="?page=product-list">Português</a></li>
+								<li><a href="?page=product-list">Inglês</a></li>
+								<li><a href="?page=product-list">Francês</a></li>
+								<li><a href="?page=product-list">Alemão</a></li>
+								<li><a href="?page=product-list">Espanhol</a></li>
 							</ul>
 						</li>
 						<li>
@@ -108,10 +108,10 @@
 							  Guias Turísticos e Mapas <i class="fa fa-angle-right pull-right"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0);">África</a></li>
-								<li><a href="javascript:void(0);">América</a></li>
-								<li><a href="javascript:void(0);">Ásia</a></li>
-								<li><a href="javascript:void(0);">Europa</a></li>
+								<li><a href="?page=product-list">África</a></li>
+								<li><a href="?page=product-list">América</a></li>
+								<li><a href="?page=product-list">Ásia</a></li>
+								<li><a href="?page=product-list">Europa</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -186,7 +186,7 @@
 						</div>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -214,7 +214,7 @@
 						</div>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -237,7 +237,7 @@
 						</figure>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -265,7 +265,7 @@
 						</div>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -290,7 +290,7 @@
 						</div>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -315,7 +315,7 @@
 						</div>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -340,7 +340,7 @@
 						</div>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -365,7 +365,7 @@
 						</div>
 					</div>
 					<div class="caption">
-						<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+						<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 						<div class="price">
 							<small class="amount off">€68.99</small>
 							<span class="amount text-primary">€59.99</span>
@@ -427,7 +427,7 @@
 								</div>
 							</div>
 							<div class="caption">
-								<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+								<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 								<div class="price">
 									<small class="amount off">€68.99</small>
 									<span class="amount text-primary">€59.99</span>
@@ -451,7 +451,7 @@
 								</div>
 							</div>
 							<div class="caption">
-								<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+								<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 								<div class="price">
 									<small class="amount off">€68.99</small>
 									<span class="amount text-primary">€59.99</span>
@@ -486,7 +486,7 @@
 								</div>
 							</div>
 							<div class="caption">
-								<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+								<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 								<div class="price">
 									<small class="amount off">€68.99</small>
 									<span class="amount text-primary">€59.99</span>
@@ -510,7 +510,7 @@
 								</div>
 							</div>
 							<div class="caption">
-								<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+								<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 								<div class="price">
 									<small class="amount off">€68.99</small>
 									<span class="amount text-primary">€59.99</span>
@@ -537,7 +537,7 @@
 								</div>
 							</div>
 							<div class="caption">
-								<h6 class="regular"><a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a></h6>
+								<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
 								<div class="price">
 									<small class="amount off">€68.99</small>
 									<span class="amount text-primary">€59.99</span>
@@ -564,13 +564,13 @@
 						<div class="row">
 							<div class="col-sm-4 vertical-align">
 								<figure>
-									<a href="shop-single-product-v1.html"> 
+									<a href="?page=single-product"> 
 										<img alt="img" src="img/books/books_5.jpg">
 									</a>
 								</figure>
 							</div><!-- end col -->
 							<div class="col-sm-8 vertical-align">
-								<h4><a href="shop-single-product-v1.html">Lorem ipsum dolor sit amet</a></h4>
+								<h4><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h4>
 								<ul class="list list-inline">
 									<li><del class="text-danger">€99.99</del></li>
 									<li><h5 class="text-primary">€49.99</h5></li>
@@ -615,13 +615,13 @@
 						<div class="row">
 							<div class="col-sm-4 vertical-align">
 								<figure>
-									<a href="shop-single-product-v1.html"> 
+									<a href="?page=single-product"> 
 										<img alt="img" src="img/books/books_6.jpg">
 									</a>
 								</figure>
 							</div><!-- end col -->
 							<div class="col-sm-8 vertical-align">
-								<h4><a href="shop-single-product-v1.html">Lorem ipsum dolor sit amet</a></h4>
+								<h4><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h4>
 								<ul class="list list-inline">
 									<li><del class="text-danger">€99.99</del></li>
 									<li><h5 class="text-primary">€49.99</h5></li>
@@ -670,7 +670,7 @@
 					<div class="cat-item">
 						<div class="cat-img">
 							<figure>
-								<a href="javascript:void(0);">
+								<a href="?page=product-list">
 									<img src="img/books/books_5.jpg" />
 								</a>
 							</figure>
@@ -682,7 +682,7 @@
 					<div class="cat-item">
 						<div class="cat-img">
 							<figure>
-								<a href="javascript:void(0);">
+								<a href="?page=product-list">
 									<img src="img/books/books_5.jpg" />
 								</a>
 							</figure>
@@ -694,7 +694,7 @@
 					<div class="cat-item">
 						<div class="cat-img">
 							<figure>
-								<a href="javascript:void(0);">
+								<a href="?page=product-list">
 									<img src="img/books/books_5.jpg" />
 								</a>
 							</figure>
@@ -706,7 +706,7 @@
 					<div class="cat-item">
 						<div class="cat-img">
 							<figure>
-								<a href="javascript:void(0);">
+								<a href="?page=product-list">
 									<img src="img/books/books_5.jpg" />
 								</a>
 							</figure>
@@ -718,7 +718,7 @@
 					<div class="cat-item">
 						<div class="cat-img">
 							<figure>
-								<a href="javascript:void(0);">
+								<a href="?page=product-list">
 									<img src="img/books/books_5.jpg" />
 								</a>
 							</figure>
@@ -730,7 +730,7 @@
 					<div class="cat-item">
 						<div class="cat-img">
 							<figure>
-								<a href="javascript:void(0);">
+								<a href="?page=product-list">
 									<img src="img/books/books_5.jpg" />
 								</a>
 							</figure>
@@ -882,12 +882,12 @@
 
 					<ul class="items">
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular"> 
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€19.99</span>
 								<div class="rate text-warning">
@@ -900,12 +900,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€29.99</span>
 								<div class="rate text-warning">
@@ -918,12 +918,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€15.99</span>
 								<div class="rate text-warning">
@@ -936,12 +936,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€45.99</span>
 								<div class="rate text-warning">
@@ -963,12 +963,12 @@
 
 					<ul class="items">
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_6.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular"> 
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€19.99</span>
 								<div class="rate text-warning">
@@ -981,12 +981,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_6.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€29.99</span>
 								<div class="rate text-warning">
@@ -999,12 +999,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_6.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€15.99</span>
 								<div class="rate text-warning">
@@ -1017,12 +1017,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_6.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€45.99</span>
 								<div class="rate text-warning">
@@ -1044,12 +1044,12 @@
 
 					<ul class="items">
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular"> 
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€19.99</span>
 								<div class="rate text-warning">
@@ -1062,12 +1062,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€29.99</span>
 								<div class="rate text-warning">
@@ -1080,12 +1080,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€15.99</span>
 								<div class="rate text-warning">
@@ -1098,12 +1098,12 @@
 							</div>
 						</li><!-- end item -->
 						<li> 
-							<a href="shop-single-product-v1.html" class="product-image">
+							<a href="?page=single-product" class="product-image">
 								<img src="img/books/books_5.jpg" alt="Sample Product ">
 							</a>
 							<div class="product-details">
 								<h6 class="regular">
-									<a href="shop-single-product-v1.html">Lorem Ipsum dolor sit</a> 
+									<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
 								</h6>
 								<span class="price text-primary">€45.99</span>
 								<div class="rate text-warning">
