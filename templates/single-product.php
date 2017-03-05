@@ -3,8 +3,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Pages</a></li>
+                            <li><a href="?page=home">Página inicial</a></li>
+                            <li><a href="#">Páginas</a></li>
                             <li class="active">Produto</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->    
@@ -22,7 +22,7 @@
                             <div class='carousel-inner'>
                                 <div class='item active'>
                                     <figure>
-                                        <img src='img/books/books_5' alt='' />
+                                        <img src='img/books/books_5.jpg' alt='' />
                                     </figure>
                                 </div><!-- end item -->
                                 <div class='item'>
@@ -32,17 +32,17 @@
                                 </div><!-- end item -->
                                 <div class='item'>
                                     <figure>
-                                        <img src='img/books/books_5' alt='' />
+                                        <img src='img/books/books_5.jpg' alt='' />
                                     </figure>
                                 </div><!-- end item -->
                                 <div class='item'>
                                     <figure>
-                                        <img src='img/books/books_5' alt='' />
+                                        <img src='img/books/books_5.jpg' alt='' />
                                     </figure>
                                 </div><!-- end item -->
                                 <div class='item'>
                                     <figure>
-                                        <img src='img/books/books_5' alt=''/>
+                                        <img src='img/books/books_5.jpg' alt=''/>
                                     </figure>
                                 </div><!-- end item -->
 
@@ -57,11 +57,11 @@
 
                             <!-- thumbs -->
                             <ol class='carousel-indicators mCustomScrollbar meartlab'>
-                                <li data-target='.product-slider' data-slide-to='0' class='active'><img src='img/books/books_5' alt='' /></li>
-                                <li data-target='.product-slider' data-slide-to='1'><img src='img/books/books_5' alt='' /></li>
-                                <li data-target='.product-slider' data-slide-to='2'><img src='img/books/books_5' alt='' /></li>
-                                <li data-target='.product-slider' data-slide-to='3'><img src='img/books/books_5' alt='' /></li>
-                                <li data-target='.product-slider' data-slide-to='4'><img src='img/books/books_5' alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='0' class='active'><img src='img/books/books_5.jpg' alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='1'><img src='img/books/books_5.jpg' alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='2'><img src='img/books/books_5.jpg' alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='3'><img src='img/books/books_5.jpg' alt='' /></li>
+                                <li data-target='.product-slider' data-slide-to='4'><img src='img/books/books_5.jpg' alt='' /></li>
                             </ol><!-- end carousel-indicators -->
                         </div><!-- end carousel -->
                     </div><!-- end col -->
@@ -69,7 +69,7 @@
                     <div class="col-sm-8">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h2 class="title">Nome do produto</h2>
+                                <h2 class="title">Lorem ipsum dolor sit amet</h2>
                                     <p class="text-gray alt-font">SKU: 1032446</p>
                                     
                                     <ul class="list list-inline">
@@ -82,7 +82,7 @@
                                             <i class="fa fa-star text-warning"></i>
                                             <i class="fa fa-star-half-o text-warning"></i>
                                         </li>
-                                        <li><a href="javascript:void(0);">(4 reviews)</a></li>
+                                        <li><a href="javascript:void(0);">(4 comentários)</a></li>
                                     </ul>
                             </div><!-- end col -->
                         </div><!-- end row -->
@@ -91,7 +91,9 @@
                         
                         <div class="row">
                             <div class="col-sm-12">
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+								consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+								et iusto odio dignissim qui blandit praesent luptatum</p>
                                 <ul class="list alt-list">
                                     <li><i class="fa fa-check"></i> Lorem Ipsum dolor sit amet</li>
                                     <li><i class="fa fa-check"></i> Cras aliquet venenatis sapien fringilla.</li>
@@ -99,24 +101,7 @@
                                 </ul>
                                 <hr class="spacer-15">
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <select class="form-control" name="select">
-                                            <option value="" selected>Cor</option>
-                                            <option value="red">Vermelho</option>
-                                            <option value="green">Verde</option>
-                                            <option value="blue">Azul</option>
-                                        </select>
-                                    </div><!-- end col -->
-                                    <div class="col-md-4 col-sm-6 col-xs-12">
-                                        <select class="form-control" name="select">
-                                            <option value="">Tamanho</option>
-                                            <option value="">S</option>
-                                            <option value="">M</option>
-                                            <option value="">L</option>
-                                            <option value="">XL</option>
-                                            <option value="">XXL</option>
-                                        </select>
-                                    </div><!-- end col -->
+                                    
                                     <div class="col-md-4 col-sm-12">
                                         <select class="form-control" name="select">
                                             <option value="" selected>Quantidade</option>
@@ -156,7 +141,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs style2 tabs-left">
                             <li class="active"><a href="#description" data-toggle="tab">Informação adicional</a></li>
-                            <li><a href="#reviews" data-toggle="tab">Reviews (4)</a></li>
+                            <li><a href="#reviews" data-toggle="tab">Comentários (4)</a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-xs-12 col-sm-9">
@@ -175,33 +160,31 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <dl class="dl-horizontal">
-                                            <dt>Dimensões</dt>
-                                            <dd>120 x 75 x 90 cm</dd>
-                                            <dt>Cores</dt>
-                                            <dd>Branco, verde, vermelho</dd>
-                                            <dt>Materiais</dt>
-                                            <dd>Algodão</dd>
+                                            <dt>Ano de publicação</dt>
+                                            <dd>2016</dd>
+                                            <dt>Autor</dt>
+                                            <dd>Lorem ipsum dolor sit amet</dd>
                                         </dl>
                                     </div><!-- end col -->
                                     <div class="col-sm-12 col-md-6">
                                         <dl class="dl-horizontal">
-                                            <dt>Peso</dt>
-                                            <dd>1.65 kg</dd>
-                                            <dt>Fabricante</dt>
-                                            <dd>Istanbul</dd>
+                                            <dt>Editora</dt>
+                                            <dd>Lorem ipsum dolor sit amet</dd>
+                                            <dt>ISBN</dt>
+                                            <dd>1207374637490</dd>
                                         </dl>
                                     </div><!-- end col -->
                                 </div><!-- end row -->
                             </div><!-- end tab-pane -->
                             <div class="tab-pane" id="reviews">
-                                <h5>4 reviews para "Lorem ipsum dolor sit amet"</h5>
+                                <h5>4 comentários para "Lorem ipsum dolor sit amet"</h5>
                                 
                                 <hr class="spacer-10 no-border">
                                 
                                 <div class="comments">
                                     <div class="comment-image">
                                         <figure>
-                                            <img src="img/slider/books_3" alt="" />
+                                            <img src="img/books/books_5.jpg" alt="" />
                                         </figure>
                                     </div><!-- end comments-image -->
                                     <div class="comment-content">
@@ -218,14 +201,14 @@
                                             </ul>
                                         </div><!-- end comment-content-head -->
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sequi ipsa fugit officia eos! Sapiente laboriosam molestiae praesentium ducimus culpa. Magnam, odit, optio. Possimus similique eligendi explicabo, dolore, beatae sequi.</p>
-                                        <cite>Joe Doe</cite>
+                                        <cite>Ana Dias</cite>
                                     </div><!-- end comment-content -->
                                 </div><!-- end comments -->
                                 
                                 <div class="comments">
                                     <div class="comment-image">
                                         <figure>
-                                            <img src="img/slider/books_3" alt="" />
+                                            <img src="img/books/books_5.jpg" alt="" />
                                         </figure>
                                     </div><!-- end comments-image -->
                                     <div class="comment-content">
@@ -242,14 +225,14 @@
                                             </ul>
                                         </div><!-- end comment-content-head -->
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sequi ipsa fugit officia eos! Sapiente laboriosam molestiae praesentium ducimus culpa. Magnam, odit, optio.</p>
-                                        <cite>Joe Doe</cite>
+                                        <cite>Ana Dias</cite>
                                     </div><!-- end comment-content -->
                                 </div><!-- end comments -->
                                 
                                 <div class="comments">
                                     <div class="comment-image">
                                         <figure>
-                                            <img src="img/slider/books_3" alt="" />
+                                            <img src="img/books/books_5.jpg" alt="" />
                                         </figure>
                                     </div><!-- end comments-image -->
                                     <div class="comment-content">
@@ -266,14 +249,14 @@
                                             </ul>
                                         </div><!-- end comment-content-head -->
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sequi ipsa fugit officia eos! Sapiente laboriosam molestiae praesentium ducimus culpa. Magnam, odit, optio.</p>
-                                        <cite>Jane Doe</cite>
+                                        <cite>Ana Dias</cite>
                                     </div><!-- end comment-content -->
                                 </div><!-- end comments -->
                                 
                                 <div class="comments">
                                     <div class="comment-image">
                                         <figure>
-                                            <img src="img/slider/books_3" alt="" />
+                                            <img src="img/books/books_5.jpg" alt="" />
                                         </figure>
                                     </div><!-- end comments-image -->
                                     <div class="comment-content">
@@ -290,13 +273,13 @@
                                             </ul>
                                         </div><!-- end comment-content-head -->
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae sequi ipsa fugit officia eos! Sapiente laboriosam molestiae praesentium ducimus culpa. Magnam, odit, optio.</p>
-                                        <cite>John Doe</cite>
+                                        <cite>Ana Dias</cite>
                                     </div><!-- end comment-content -->
                                 </div><!-- end comments -->
                                 
                                 <hr class="spacer-30">
                                 
-                                <h5>Adicionar uma review</h5>
+                                <h5>Adicionar um comentário</h5>
                                 <p>Como classifica este produto?</p>
                                         
                                 <hr class="spacer-5 no-border">
@@ -309,18 +292,18 @@
 
                                 <div class="form-group">
                                     <label for="reviewName">Nome</label>
-                                    <input type="text" id="reviewName" class="form-control input-md" placeholder="Teu Nome">
+                                    <input type="text" id="reviewName" class="form-control input-md" placeholder="Nome">
                                 </div><!-- end form-group -->
                                 <div class="form-group">
                                     <label for="reviewEmail">E-mail</label>
-                                    <input type="text" id="reviewEmail" class="form-control input-md" placeholder="Teu E-mail">
+                                    <input type="text" id="reviewEmail" class="form-control input-md" placeholder="E-mail">
                                 </div><!-- end form-group -->
                                 <div class="form-group">
                                     <label for="reviewMessage">Comentário</label>
-                                    <textarea id="reviewMessage" rows="5" class="form-control" placeholder="O teu comentário"></textarea>
+                                    <textarea id="reviewMessage" rows="5" class="form-control" placeholder="Comentário"></textarea>
                                 </div><!-- end form-group -->
                                 <div class="form-group">
-                                    <input type="submit" class="btn btn-default round btn-md" value="Submeter review">
+                                    <input type="submit" class="btn btn-default round btn-md" value="Submeter">
                                 </div><!-- end form-group -->
                             </div><!-- end tab-pane -->
                         </div><!-- end tab-content -->
@@ -331,7 +314,7 @@
                 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="mb-20">Também podes gostar</h4>
+                        <h4 class="mb-20">Recomendações</h4>
                     </div><!-- end col -->
                 </div><!-- end row -->
                 
@@ -343,12 +326,12 @@
                                     <div class="header">
                                         <figure>
                                             <a href="?page=single-product">
-                                                <img src="img/books/books_5" alt="">
+                                                <img src="img/books/books_5.jpg" alt="">
                                             </a>
                                         </figure>
                                     </div>
                                     <div class="caption">
-                                        <h6 class="regular"><a href="?page=single-product">Printed Summer Dress</a></h6>
+                                        <h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
                                         <div class="price">
                                             <small class="amount off">€68.99</small>
                                             <span class="amount text-primary">€59.99</span>
@@ -369,12 +352,12 @@
                                     <div class="header">
                                         <figure>
                                             <a href="?page=single-product">
-                                                <img src="img/books/books_5" alt="">
+                                                <img src="img/books/books_5.jpg" alt="">
                                             </a>
                                         </figure>
                                     </div>
                                     <div class="caption">
-                                        <h6 class="regular"><a href="?page=single-product">Printed Summer Dress</a></h6>
+                                        <h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
                                         <div class="price">
                                             <small class="amount off">€68.99</small>
                                             <span class="amount text-primary">€59.99</span>
@@ -395,12 +378,12 @@
                                     <div class="header">
                                         <figure>
                                             <a href="?page=single-product">
-                                                <img src="img/books/books_5" alt="">
+                                                <img src="img/books/books_5.jpg" alt="">
                                             </a>
                                         </figure>
                                     </div>
                                     <div class="caption">
-                                        <h6 class="regular"><a href="?page=single-product">Printed Summer Dress</a></h6>
+                                        <h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
                                         <div class="price">
                                             <small class="amount off">€68.99</small>
                                             <span class="amount text-primary">€59.99</span>
@@ -421,12 +404,12 @@
                                     <div class="header">
                                         <figure>
                                             <a href="?page=single-product">
-                                                <img src="img/books/books_5" alt="">
+                                                <img src="img/books/books_5.jpg" alt="">
                                             </a>
                                         </figure>
                                     </div>
                                     <div class="caption">
-                                        <h6 class="regular"><a href="?page=single-product">Printed Summer Dress</a></h6>
+                                        <h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
                                         <div class="price">
                                             <small class="amount off">€68.99</small>
                                             <span class="amount text-primary">€59.99</span>
@@ -446,12 +429,12 @@
                                     <div class="header">
                                         <figure>
                                             <a href="?page=single-product">
-                                                <img src="img/books/books_5" alt="">
+                                                <img src="img/books/books_5.jpg" alt="">
                                             </a>
                                         </figure>
                                     </div>
                                     <div class="caption">
-                                        <h6 class="regular"><a href="?page=single-product">Printed Summer Dress</a></h6>
+                                        <h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
                                         <div class="price">
                                             <small class="amount off">€68.99</small>
                                             <span class="amount text-primary">€59.99</span>
