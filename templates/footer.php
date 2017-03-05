@@ -67,19 +67,19 @@
                     <div class="col-sm-3">
                         <h5 class="title">Minha Conta</h5>
                         <ul class="list alt-list">
-                            <li><a href="my-account.html"><i class="fa fa-angle-right"></i>Conta</a></li>
-                            <li><a href="wishlist.html"><i class="fa fa-angle-right"></i>Wishlist</a></li>
-                            <li><a href="cart.html"><i class="fa fa-angle-right"></i>Carrinho</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-angle-right"></i>Checkout</a></li>
+                            <li><a href="?page=my-account"><i class="fa fa-angle-right"></i>Conta</a></li>
+                            <li><a href="?page=wishlist"><i class="fa fa-angle-right"></i>Wishlist</a></li>
+                            <li><a href="?page=cart"><i class="fa fa-angle-right"></i>Carrinho</a></li>
+                            <li><a href="?page=checkout"><i class="fa fa-angle-right"></i>Checkout</a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-sm-3">
                         <h5 class="title">Informação</h5>
                         <ul class="list alt-list">
-                            <li><a href="about-us-v1.html"><i class="fa fa-angle-right"></i>Sobre nós</a></li>
-                            <li><a href="faq.html"><i class="fa fa-angle-right"></i>FAQ</a></li>
-                            <li><a href="privacy-policy.html"><i class="fa fa-angle-right"></i>Condições gerais de venda</a></li>
-                            <li><a href="contact-v1.html"><i class="fa fa-angle-right"></i>Contactos</a></li>
+                            <li><a href="?page=about-us"><i class="fa fa-angle-right"></i>Sobre nós</a></li>
+                            <li><a href="?page=faq"><i class="fa fa-angle-right"></i>FAQ</a></li>
+                            <li><a href="?page=privacy-policy"><i class="fa fa-angle-right"></i>Condições gerais de venda</a></li>
+                            <li><a href="?page=contact-us"><i class="fa fa-angle-right"></i>Contactos</a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-sm-3">
