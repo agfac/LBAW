@@ -46,6 +46,8 @@
 </head>
 <body>
         
+<body>
+
 	<!-- start section -->
 	<section class="primary-background">
 		<div class="container-fluid">
@@ -189,7 +191,7 @@
 			<div class="row table">
 				<div class="col-sm-3 vertical-align text-left hidden-xs col-lg-offset-2 col-lg-3">
 					<a href="javascript:void(0);">
-						<img width="180" src="img/logo_abs_3.png" alt="" />
+						<img width="180" src="img/logo_abs_4.png" alt="" />
 					</a>
 				</div><!-- end col -->
 				<div class="col-sm-6 vertical-align text-center col-lg-offset-3">
@@ -218,7 +220,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="javascript:void(0);" class="navbar-brand visible-xs">
-					<img src="img/logo.png" alt="logo">
+					<img src="img/logo_abs_4_micro.png" alt="logo">
 				</a>
 			</div>
 			<div id="navbar-collapse-3" class="navbar-collapse collapse">
@@ -473,7 +475,7 @@
 						</ul><!-- end dropdown-menu -->
 					</li><!-- end dropdown -->
 				  <!-- promoções -->
-				  <li><a href="elements.html">Promoções</a></li>
+				  <li><a href="javascript:void(0);">Promoções</a></li>
 				</ul><!-- end navbar-nav -->
 			</div><!-- end navbar collapse -->
 		</div><!-- end container -->

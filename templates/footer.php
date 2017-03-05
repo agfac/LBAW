@@ -1,4 +1,4 @@
-       <!-- start footer -->
+<!-- start footer -->
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -9,7 +9,7 @@
                             </div><!-- end icon -->
                             <div class="box-content">
                                 <h6 class="alt-font text-light text-uppercase">Portes grátis</h6>
-                                <p class="text-gray">Oferta dos portes de envio para compras superiores a 50</p>
+                                <p class="text-gray">Oferta dos portes de envio para compras superiores a 50€</p>
                             </div>
                         </div><!-- icon-box -->
                     </div><!-- end col -->
@@ -69,19 +69,19 @@
                     <div class="col-sm-3">
                         <h5 class="title">Minha Conta</h5>
                         <ul class="list alt-list">
-                            <li><a href="?page=my-account"><i class="fa fa-angle-right"></i>Conta</a></li>
-                            <li><a href="?page=wishlist"><i class="fa fa-angle-right"></i>Lista de desejos</a></li>
-                            <li><a href="?page=cart"><i class="fa fa-angle-right"></i>Carrinho</a></li>
-                            <li><a href="?page=checkout"><i class="fa fa-angle-right"></i>Checkout</a></li>
+                            <li><a href="my-account.html"><i class="fa fa-angle-right"></i>Conta</a></li>
+                            <li><a href="wishlist.html"><i class="fa fa-angle-right"></i>Wishlist</a></li>
+                            <li><a href="cart.html"><i class="fa fa-angle-right"></i>Carrinho</a></li>
+                            <li><a href="checkout.html"><i class="fa fa-angle-right"></i>Checkout</a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-sm-3">
                         <h5 class="title">Informação</h5>
                         <ul class="list alt-list">
-                            <li><a href="?page=about-us"><i class="fa fa-angle-right"></i>Sobre nós</a></li>
-                            <li><a href="?page=faq"><i class="fa fa-angle-right"></i>FAQ</a></li>
-                            <li><a href="?page=privacy-policy"><i class="fa fa-angle-right"></i>Condições gerais de venda</a></li>
-                            <li><a href="?page=contact-us"><i class="fa fa-angle-right"></i>Contactos</a></li>
+                            <li><a href="about-us-v1.html"><i class="fa fa-angle-right"></i>Sobre nós</a></li>
+                            <li><a href="faq.html"><i class="fa fa-angle-right"></i>FAQ</a></li>
+                            <li><a href="privacy-policy.html"><i class="fa fa-angle-right"></i>Condições gerais de venda</a></li>
+                            <li><a href="contact-v1.html"><i class="fa fa-angle-right"></i>Contactos</a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-sm-3">
@@ -100,15 +100,11 @@
                 
                 <div class="row text-center">
                     <div class="col-sm-12">
-                        <p class="text-sm">&COPY; 2017 <i class="fa fa-heart text-danger"></i><a href="javascript:void(0);"></a></p>
+                        <p class="text-sm">&COPY; 2017 <i class="fa fa-book text-danger"></i><a href="javascript:void(0);"></a></p>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->
         </footer>
         <!-- end footer -->
-        
-        
-        
-        
     </body>
 </html>
