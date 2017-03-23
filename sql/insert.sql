@@ -270,8 +270,8 @@ INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (27,27,'Protoc
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (28,28,'Anatomia e Fisiologia de Seeley','/img/products/Livros/Medicina/28.jpeg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (29,29,'Jorge Sampaio - Uma Biografia - 2.º volume','/img/products/Livros/Politica/29.jpeg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (30,30,'Quinta-feira','/img/products/Livros/Politica/30.jpeg');
-INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (31,31,'O Amor É Contagioso','/img/products/Livros/Religião_e_Moral/31.jpeg');
-INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (32,32,'Deus ou Nada','/img/products/Livros/Religião_e_Moral/32.jpeg');
+INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (31,31,'O Amor É Contagioso','/img/products/Livros/Religiao_e_Moral/31.jpeg');
+INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (32,32,'Deus ou Nada','/img/products/Livros/Religiao_e_Moral/32.jpeg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (33,33,'Manual de Tratamento - 250 Doenças','/img/products/Livros/Saude_e_Bem_Estar/33.jpeg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (34,34,'Chegar Novo a Velho - Receitas','/img/products/Livros/Saude_e_Bem_Estar/34.jpeg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (35,35,'Gosto de Matemática 1','/img/products/Livros_Escolares/1.º_ano/35.jpeg');
@@ -304,10 +304,10 @@ INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (61,61,'Prepar
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (62,62,'Preparação para o Exame Final Nacional 2017 - Biologia e Geologia - 11.º Ano','/img/products/Apoio_Escolar/Ensino_Secundario/62.jpeg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (63,63,'Autosport','/img/products/Revistas/Automobilismo/63.jpg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (64,64,'Auto Foco','/img/products/Revistas/Automobilismo/64.jpg');
-INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (65,65,'Take Off','/img/products/Revistas/Aviação/65.jpg');
-INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (66,66,'Sirius Magazine','/img/products/Revistas/Aviação/66.jpg');
-INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (67,67,'Visao','/img/products/Revistas/Científicas/67.jpg');
-INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (68,68,'Sabado','/img/products/Revistas/Científicas/68.jpg');
+INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (65,65,'Take Off','/img/products/Revistas/Aviacao/65.jpg');
+INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (66,66,'Sirius Magazine','/img/products/Revistas/Aviacao/66.jpg');
+INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (67,67,'Visao','/img/products/Revistas/Cientificas/67.jpg');
+INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (68,68,'Sabado','/img/products/Revistas/Cientificas/68.jpg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (69,69,'Caras','/img/products/Revistas/Social/69.jpg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (70,70,'VIP','/img/products/Revistas/Social/70.jpg');
 INSERT INTO "Imagem" (imagemID,publicacaoID,nomeLivro,url) VALUES (71,71,'Expresso Economia','/img/products/Revistas/Economia/71.jpg');
