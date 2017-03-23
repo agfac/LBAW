@@ -96,14 +96,148 @@ INSERT INTO "Publicacao" (publicacaoID,editoraID,subcategoriaID,titulo,dataPubli
 INSERT INTO "Publicacao" (publicacaoID,editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (95,10,60,'CITYPACK - Londres','01/01/2017','codigoBarras','Descubra a cidade de Londres com a ajuda do guia CityPack','0,176','13,30','11,97','true',7,'primeira',NULL,'978-972-0-00039-2');
 
 /* ------------------------------------------------------ R2 Carrinho ------------------------------------------------------ */
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (1,'11/12/2016');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (2,'09/03/2018');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (3,'05/09/2017');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (4,'14/01/2017');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (5,'31/03/2017');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (6,'17/09/2017');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (7,'23/05/2016');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (8,'27/08/2016');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (9,'05/05/2016');
+INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (10,'17/08/2017');
 
 /* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (11,4,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (1,10,1);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (68,7,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (56,2,1);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (14,2,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (51,3,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (95,7,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (44,6,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (9,10,1);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (82,5,1);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (52,1,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (6,4,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (60,2,1);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (81,4,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (83,2,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (23,7,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (48,7,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (10,2,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (53,7,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (88,10,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (58,6,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (12,2,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (40,9,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (50,5,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (5,4,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (14,5,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (59,4,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (15,10,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (88,10,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (76,4,1);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (66,4,2);
 
 /* ------------------------------------------------------ R4 WishList ------------------------------------------------------ */
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (1,15,'Informatica');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (2,2,'Romance');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (3,21,'Acao');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (4,10,'Historia');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (5,3,'Informatica');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (6,6,'Informatica');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (7,9,'Acao');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (8,4,'Romance');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (9,20,'Informatica');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (10,18,'Arte');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (11,1,'Arte');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (12,7,'Acao');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (13,20,'Historia');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (14,15,'Acao');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (15,10,'Informatica');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (16,19,'Romance');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (17,7,'Historia');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (18,11,'Historia');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (19,9,'Arte');
+INSERT INTO "WishList" (wishListID,clienteID,nome) VALUES (20,19,'Informatica');
 
 /* ------------------------------------------------------ R5 PublicacaoWishList ------------------------------------------------------ */
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (2,44);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (4,67);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (9,87);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (7,54);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (11,72);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (7,5);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (10,30);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (11,58);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (19,11);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (10,20);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (12,88);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (10,78);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (9,31);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (16,81);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (3,40);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (4,95);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (3,39);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (18,54);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (5,74);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (1,14);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (9,84);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (15,43);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (9,51);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (16,16);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (3,94);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (1,32);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (15,93);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (6,15);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (3,45);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (8,3);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (4,55);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (11,13);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (20,86);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (16,63);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (9,29);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (6,88);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (4,84);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (16,50);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (17,90);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (19,85);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (13,87);
+INSERT INTO "PublicacaoWishList" (wishListID,publicacaoID) VALUES (17,29);
 
 /* ------------------------------------------------------ R6 Comentario ------------------------------------------------------ */
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (1,7,34,'12/08/2017',1,'et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (2,13,43,'21/08/2017',1,'Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (3,14,91,'12/05/2017',4,'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (4,21,66,'14/08/2016',3,'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (5,3,79,'20/09/2016',1,'Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (6,12,57,'03/09/2017',4,'ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (7,10,15,'20/05/2016',4,'sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (8,13,28,'29/04/2017',1,'id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (9,12,51,'30/07/2016',1,'nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (10,15,8,'18/06/2016',3,'Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (11,1,14,'25/08/2017',3,'turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (12,13,80,'10/05/2016',2,'elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non,');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (13,10,42,'03/06/2017',1,'a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (14,12,17,'14/12/2016',5,'Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a,');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (15,16,78,'16/10/2016',4,'Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio.');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (16,16,66,'25/03/2016',1,'consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (17,7,83,'16/01/2017',3,'a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (18,3,34,'16/08/2017',3,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (19,7,33,'10/12/2016',3,'iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (20,21,88,'12/07/2017',5,'ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (21,8,59,'31/05/2016',1,'pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (22,7,57,'28/05/2017',4,'consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu,');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (23,21,8,'07/07/2016',4,'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa.');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (24,3,51,'27/06/2016',4,'blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (25,15,63,'02/11/2017',3,'nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (26,3,66,'15/06/2017',4,'rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (27,20,27,'27/03/2017',2,'Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (28,13,63,'13/09/2017',1,'lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (29,14,46,'28/07/2017',5,'bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (30,3,22,'28/03/2016',4,'odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim.');
+INSERT INTO "Comentario" (comentarioID,clienteID,publicacaoID,data,classificacao,texto) VALUES (31,21,54,'18/10/2016',5,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis');
 
 /* ------------------------------------------------------ R7 Imagem ------------------------------------------------------ */
 
