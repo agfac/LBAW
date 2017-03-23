@@ -110,7 +110,7 @@ INSERT INTO "Carrinho" (carrinhoID,dataCriacao) VALUES (10,'17/08/2017');
 /* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (11,4,3);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (1,10,1);
-INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (68,7,3);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (68,8,3);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (56,2,1);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (14,2,3);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (51,3,3);
@@ -136,7 +136,7 @@ INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (5,
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (14,5,2);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (59,4,3);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (15,10,2);
-INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (88,10,2);
+INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (88,3,2);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (76,4,1);
 INSERT INTO "PublicacaoCarrinho" (publicacaoID,carrinhoID,quantidade) VALUES (66,4,2);
 
