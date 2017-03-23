@@ -619,7 +619,7 @@ INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascime
 INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao,idade) VALUES (24,24,24,'Rodolfo Travassos','feminino','20/05/1996','Alec','VTJ65GGP7JB','false','26/10/2010','27/08/2010','351660029801','Etiam.vestibulum@vulputate.ca','124878682','21120710 7SK0','NULL');
 INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao,idade) VALUES (25,25,25,'Vera Bernardes','feminino','03/05/1993','Uma','POW91KCI8XO','true','18/09/1999','29/05/2006','351109702416','fames.ac@sodaleseliterat.co.uk','693972369','85773432 7IQ4','NULL');
 
-/* ------------------------------------------------------ R17 Localidade ------------------------------------------------------ */
+/* ------------------------------------------------------ R17 Administrador ------------------------------------------------------ */
 INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,1,'Austin','masculino','04/03/2017','consectetuer','AIQ85AQG4TJ','true');
 INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (2,2,'Elijah','feminino','02/26/2021','ullamcorper','MAV09WFT8TE','true');
 INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (3,3,'Charde','feminino','10/21/2019','lectus','QDQ58ODE1KV','true');
