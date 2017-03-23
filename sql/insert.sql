@@ -219,6 +219,102 @@ INSERT INTO "Categoria" (categoriaID,nome) VALUES (5,'Dicionarios e Enciclopedia
 INSERT INTO "Categoria" (categoriaID,nome) VALUES (6,'Guias Turisticos e Mapas');
 
 /* ------------------------------------------------------ R11 AutorPublicacao ------------------------------------------------------ */
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (1,23);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (2,17);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (3,13);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (4,30);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (5,18);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (6,2);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (7,3);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (8,12);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (9,29);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (10,18);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (11,24);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (12,11);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (13,27);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (14,7);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (15,28);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (16,20);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (17,25);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (18,21);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (19,17);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (20,31);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (21,11);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (22,21);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (23,26);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (24,8);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (25,13);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (26,10);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (27,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (28,7);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (29,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (30,23);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (31,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (32,27);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (33,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (34,21);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (35,4);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (36,31);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (37,8);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (38,28);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (39,18);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (40,26);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (41,4);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (42,22);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (43,28);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (44,23);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (45,5);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (46,28);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (47,30);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (48,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (49,27);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (50,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (51,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (52,2);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (53,28);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (54,24);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (55,27);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (56,11);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (57,29);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (58,1);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (59,2);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (60,32);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (61,19);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (62,31);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (63,15);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (64,1);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (65,15);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (66,6);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (67,22);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (68,4);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (69,27);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (70,23);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (71,22);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (72,16);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (73,24);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (74,16);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (75,16);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (76,12);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (77,27);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (78,17);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (79,13);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (80,11);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (81,20);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (82,31);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (83,20);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (84,16);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (85,9);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (86,10);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (87,23);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (88,28);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (89,18);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (90,28);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (91,10);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (92,30);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (93,12);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (94,23);
+INSERT INTO "AutorPublicacao" (publicacaoID,autorID) VALUES (95,27);
+
 /* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
 INSERT INTO "Cliente" (id,paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif,idade) VALUES (1,1,1,'Rafaela Xerxes Arouca','Feminino','21/03/1993','tincidunt','QYU41RAX3FI','true','05/03/2013','NULL','351420448201','non.sollicitudin.a@penatibuset.net','044593724','24');
 INSERT INTO "Cliente" (id,paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif,idade) VALUES (2,1,2,'Lenia Melissa Hilario','Feminino','24/03/1995','etuard','BRD41MAM5ON','true','03/10/2015','NULL','351663405180','ac.tellus@duiCumsociis.com','283234271','25');
@@ -246,7 +342,6 @@ INSERT INTO "Cliente" (id,paisID,carrinhoID,nome,genero,dataNascimento,userName,
 /* ------------------------------------------------------ R14 MoradaEnvio ------------------------------------------------------ */
 
 /* ------------------------------------------------------ R15 CartaoCreditoCliente ------------------------------------------------------ */
-
 INSERT INTO "CartaoCreditoCliente" (cartaoCreditoClienteID,clienteID,tipo,numero,validade,cvv) VALUES (1,1,'MasterCard','4539991256127798','22/05/2015','935');
 INSERT INTO "CartaoCreditoCliente" (cartaoCreditoClienteID,clienteID,tipo,numero,validade,cvv) VALUES (2,2,'MasterCard','4024007101047','14/08/2011','983');
 INSERT INTO "CartaoCreditoCliente" (cartaoCreditoClienteID,clienteID,tipo,numero,validade,cvv) VALUES (3,3,'AmericanExpress','4485012147500889','07/06/2010','837');
@@ -269,7 +364,6 @@ INSERT INTO "CartaoCreditoCliente" (cartaoCreditoClienteID,clienteID,tipo,numero
 INSERT INTO "CartaoCreditoCliente" (cartaoCreditoClienteID,clienteID,tipo,numero,validade,cvv) VALUES (20,20,'Visa','4929736934353','14/09/2011','735');
 
 /* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
-
 INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao,idade) VALUES (1,1,1,'Floripes Vilarinho','masculino','08/12/1980','John','YPB58AJH6LE','true','02/09/2009','05/06/2009','351212122157','non@Sed.edu','998187586','51057539 8NE7','NULL');
 INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao,idade) VALUES (2,2,2,'Isadora Vides','feminino','10/05/1991','Ignacia','FOT73YNK8JP','false','15/08/2012','23/03/2013','351949891392','Etiam.laoreet@fames.edu','102798307','79782665 1XL6','NULL');
 INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao,idade) VALUES (3,3,3,'Floripes Vilarinho','masculino','02/02/2000','Michael','AXK90DBX1NI','false','19/11/2002','08/05/2013','351268798886','dolor.dapibus.gravida@Namconsequatdolor.com','637237286','44216592 7KU5','NULL');
@@ -297,7 +391,6 @@ INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascime
 INSERT INTO "Funcionario" (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao,idade) VALUES (25,25,25,'Vera Bernardes','feminino','03/05/1993','Uma','POW91KCI8XO','true','18/09/1999','29/05/2006','351109702416','fames.ac@sodaleseliterat.co.uk','693972369','85773432 7IQ4','NULL');
 
 /* ------------------------------------------------------ R17 Localidade ------------------------------------------------------ */
-
 INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,1,'Austin','masculino','04/03/2017','consectetuer','AIQ85AQG4TJ','true');
 INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (2,2,'Elijah','feminino','02/26/2021','ullamcorper','MAV09WFT8TE','true');
 INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (3,3,'Charde','feminino','10/21/2019','lectus','QDQ58ODE1KV','true');
@@ -306,9 +399,42 @@ INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,u
 INSERT INTO "Administrador" (administradorID,paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (6,6,'Cathleen','feminino','01/23/2020','elit.','BSO38NJN5MA','false');
 
 /* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (1,9,'Nathaniel Lee','feminino','10/02/1976','Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (2,2,'Dorothy Harrison','feminino','27/04/1973','et netus et malesuada fames ac turpis egestas. Fusce aliquet');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (3,5,'Risa Kim','feminino','18/11/1975','lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (4,18,'Desirae Chapman','masculino','31/12/1984','libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (5,15,'Morgan Savage','feminino','10/06/1976','magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (6,11,'Avram Goodwin','masculino','09/10/1974','sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (7,12,'Sasha Carlson','feminino','17/06/1986','fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (8,3,'Merritt Mclaughlin','masculino','29/06/1972','fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus.');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (9,6,'Kaye Murphy','masculino','18/02/1980','nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu,');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (10,4,'Oliver Deleon','feminino','05/08/1980','pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (11,7,'Macon Dalton','feminino','07/02/1977','quis diam luctus lobortis. Class aptent taciti sociosqu ad litora');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (12,11,'Fuller Aguirre','masculino','12/04/1980','Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus.');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (13,14,'Jermaine Bowman','feminino','12/01/1979','vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (14,10,'Erasmus Thornton','feminino','23/08/1981','et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim.');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (15,17,'Nathaniel Byers','feminino','22/01/1984','purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (16,14,'Hayfa Harrington','feminino','10/07/1974','et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (17,7,'Raymond Jimenez','masculino','21/04/1975','non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (18,5,'Jescie Sharpe','masculino','20/09/1978','tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (19,16,'Phyllis Navarro','masculino','07/10/1978','ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (20,3,'Desiree Strong','masculino','02/01/1972','Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (21,16,'Jenette Butler','masculino','17/07/1983','Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (22,15,'David Hall','masculino','10/03/1977','magna a neque. Nullam ut nisi a odio semper cursus.');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (23,8,'Hilel Elliott','feminino','16/03/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (24,4,'Joy Bullock','feminino','13/05/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (25,10,'Christian Lambert','masculino','03/01/1972','odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (26,4,'Petra Mckay','feminino','11/04/1981','dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (27,10,'Gay Cardenas','masculino','24/09/1983','magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (28,14,'Laith Knox','feminino','10/12/1986','lobortis tellus justo sit amet nulla. Donec non justo. Proin non');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (29,18,'Amal Parsons','feminino','16/12/1970','dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (30,5,'Hanae Briggs','masculino','27/10/1968','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (31,5,'Whitney Trevino','feminino','04/01/1986','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (32,6,'Gail Conner','feminino','18/04/1983','sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi');
+INSERT INTO "Autor" (idAutor,idPais,nome,genero,dataNascimento,biografia) VALUES (33,17,'Nolan Briggs','feminino','18/09/1978','Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus');
+
 /* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
 /* ------------------------------------------------------ R20 Pais ------------------------------------------------------ */
-
 INSERT INTO "Pais" (paisID,nome) VALUES (1,'Portugal');
 INSERT INTO "Pais" (paisID,nome) VALUES (2,'Espanha');
 INSERT INTO "Pais" (paisID,nome) VALUES (3,'Angola');
@@ -329,7 +455,6 @@ INSERT INTO "Pais" (paisID,nome) VALUES (17,'Timor-Leste');
 INSERT INTO "Pais" (paisID,nome) VALUES (18,'Jamaica');
 
 /* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
-
 INSERT INTO "Localidade" (localidadeID,paisID,nome) VALUES (1,1,'Abrantes	');
 INSERT INTO "Localidade" (localidadeID,paisID,nome) VALUES (2,1,'Albufeira');
 INSERT INTO "Localidade" (localidadeID,paisID,nome) VALUES (3,1,'Amarante');
@@ -362,7 +487,6 @@ INSERT INTO "Localidade" (localidadeID,paisID,nome) VALUES (29,1,'Penafiel');
 INSERT INTO "Localidade" (localidadeID,paisID,nome) VALUES (30,1,'Porto');
 
 /* ------------------------------------------------------ R22 CodigoPostal ------------------------------------------------------ */
-
 INSERT INTO "CodigoPostal" (codigoPostalID,localidadeID,cod1,cod2) VALUES (1,1,'2200','320');
 INSERT INTO "CodigoPostal" (codigoPostalID,localidadeID,cod1,cod2) VALUES (2,2,'8200','250');
 INSERT INTO "CodigoPostal" (codigoPostalID,localidadeID,cod1,cod2) VALUES (3,3,'4600','058');
@@ -395,7 +519,6 @@ INSERT INTO "CodigoPostal" (codigoPostalID,localidadeID,cod1,cod2) VALUES (29,29
 INSERT INTO "CodigoPostal" (codigoPostalID,localidadeID,cod1,cod2) VALUES (30,30,'4000','000');
 
 /* ------------------------------------------------------ R23 Morada ------------------------------------------------------ */
-
 INSERT INTO "Morada" (moradaID,codigoPostalID,rua) VALUES (1,1,'Esplanada 1º de Maio');
 INSERT INTO "Morada" (moradaID,codigoPostalID,rua) VALUES (2,2,'Albufeira Gare');
 INSERT INTO "Morada" (moradaID,codigoPostalID,rua) VALUES (3,3,'Rua Carlos Amarante');
