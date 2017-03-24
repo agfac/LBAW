@@ -678,7 +678,7 @@ INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBar
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (9,5,'Estética e Desporto','01/01/2017','2586530428762','Lembro-me de quando a rivalidade entre Roger Federer e Rafael Nadal estava no auge ter utilizado uma hipérbole para sublinhar as diferenças essenciais nos duelos entre ambos - o Homem do Renascimento contra o Cro-Magnon.',256,0.256,12.00,10.80,TRUE,3,'primeira',NULL,'9789723615388');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,6,'Condomínio','01/01/2017','8871263074269','A legislação relativa aos condomínios encontra-se vertida no Código Civil e em vários diplomas avulsos, razão pela qual nem sempre é simples dispor de todo o material de consulta prático e fidedigno nesta área.',192,0.192,12.90,11.61,TRUE,8,'decima',NULL,'978-972-0-02009-3');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,6,'Códigos Penal e Processo Penal','01/01/2017','3739359213965','É nosso objetivo oferecer aos profissionais do Direito uma seleção dos textos mais relevantes, devidamente consolidados e organizados, tendo em conta as últimas alterações legais.',840,0.840,22.00,19.80,TRUE,4,'oitava',NULL,'978-972-0-00048-4');
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (11,7,'Programação de CNC para Torno e Fresadora','01/01/2016','2411708370019','Expõe os principais conceitos e a maquinação de peças em várias linguagens. Exercícios propostos e resolvidos para uma autoaprendizagem. Para profissionais, formação profissional e ensino superior.',368,0368,2665,23.99,TRUE,5,'primeira',NULL,'9789727228430');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (11,7,'Programação de CNC para Torno e Fresadora','01/01/2016','2411708370019','Expõe os principais conceitos e a maquinação de peças em várias linguagens. Exercícios propostos e resolvidos para uma autoaprendizagem. Para profissionais, formação profissional e ensino superior.',368,0.368,26.65,23.99,TRUE,5,'primeira',NULL,'9789727228430');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (12,7,'Guia de Aplicações de Gestão de Energia e Eficiência Energética','01/01/2016','8478814991251','A energia é um bem que deve ser optimizado a um custo cada vez mais relevante. É importante maximizar a sua produção eficiente e racionalizar o seu consumo.',527,0.527,33.00,33.00,TRUE,11,'terceira',NULL,'9789897231544');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (13,8,'Adolescência, os Anos da Mudança','01/01/2016','6323951187888','Viver com um adolescente é um dos maiores desafios para qualquer pai. É estimulante mas também pode ser assustador! Este é o guia ideal para si e para os seus filhos.',352,0.352,16.99,15.29,TRUE,12,'primeira',NULL,'9789898843630');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (7,8,'Os Nossos Adolescentes e a Droga','01/01/2016','6740535325490','Num registo a que já nos habituou, Mário Cordeiro fala de um tema sensível, mas o qual é urgente discutir: os adolescentes e a droga.',344,0.344,19.90,17.91,TRUE,3,'primeira',NULL,'9789896267834');
@@ -735,7 +735,7 @@ INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBar
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,37,'Visao','23/03/2017','4292557109070','Visao',100,0.100,3.20,3.20,TRUE,5,NULL,'semanal',NULL);
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,37,'Sabado','23/03/2017','9918695296190','Sabado',100,0.100,3.20,3.20,TRUE,7,NULL,'semanal',NULL);
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'Caras','25/03/2017','1419098322397','Caras',100,0.100,1.50,1.50,TRUE,10,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'VIP','21/03/2017','0657670274761','VIP',100,'0,100','1,50','1,50',TRUE,7,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'VIP','21/03/2017','0657670274761','VIP',100,0.100,1.50,1.50,TRUE,7,NULL,'semanal',NULL);
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,42,'Expresso Economia','23/03/2017','2440508820339','Expresso Economia',100,0.100,1.99,1.99,TRUE,13,NULL,'semanal',NULL);
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,42,'Vida Economica','23/03/2017','5464618601219','Vida Economica',100,0.100,1.99,1.99,TRUE,13,NULL,'semanal',NULL);
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,40,'Dragoes','23/03/2017','7927920175420','Dragoes',100,0.100,1.50,1.50,TRUE,10,NULL,'semanal',NULL);
@@ -763,16 +763,16 @@ INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBar
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,60,'CITYPACK - Londres','01/01/2017','0063535683248','Descubra a cidade de Londres com a ajuda do guia CityPack',176,0.176,13.30,11.97,TRUE,7,'primeira',NULL,'978-972-0-00039-2');
 
 /* ------------------------------------------------------ R2 Carrinho ------------------------------------------------------ */
-INSERT INTO Carrinho (dataCriacao) VALUES ('11/12/2016');
-INSERT INTO Carrinho (dataCriacao) VALUES ('09/03/2018');
-INSERT INTO Carrinho (dataCriacao) VALUES ('05/09/2017');
-INSERT INTO Carrinho (dataCriacao) VALUES ('14/01/2017');
-INSERT INTO Carrinho (dataCriacao) VALUES ('31/03/2017');
-INSERT INTO Carrinho (dataCriacao) VALUES ('17/09/2017');
-INSERT INTO Carrinho (dataCriacao) VALUES ('23/05/2016');
-INSERT INTO Carrinho (dataCriacao) VALUES ('27/08/2016');
-INSERT INTO Carrinho (dataCriacao) VALUES ('05/05/2016');
-INSERT INTO Carrinho (dataCriacao) VALUES ('17/08/2017');
+INSERT INTO Carrinho (dataCriacao) VALUES ('11/12/2016 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('09/03/2018 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('05/09/2017 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('14/01/2017 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('31/03/2017 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('17/09/2017 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('23/05/2016 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('27/08/2016 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('05/05/2016 10:30:50');
+INSERT INTO Carrinho (dataCriacao) VALUES ('17/08/2017 10:30:50');
 
 /* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (11,4,3);
