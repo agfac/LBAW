@@ -93,6 +93,56 @@ DROP TABLE IF EXISTS Subcategoria CASCADE
 DROP TABLE IF EXISTS Wishlist CASCADE
 ;
 
+/* Drop Types */
+
+DROP TYPE IF EXISTS Genero CASCADE
+;
+
+DROP TYPE IF EXISTS Tipocartao CASCADE
+;
+
+DROP TYPE IF EXISTS Estadoencomenda CASCADE
+;
+
+DROP TYPE IF EXISTS Periodicidade CASCADE
+;
+
+/* Create Types */
+
+CREATE TYPE Genero AS ENUM
+(
+	'Masculino',
+	'Feminino'
+)
+;
+
+CREATE TYPE Tipocartao AS ENUM
+(
+	'AmericanExpress',
+	'MasterCard',
+	'Visa'
+)
+;
+
+CREATE TYPE Estadoencomenda AS ENUM
+(
+	'Cancelada',
+	'Enviada',
+	'Em processamento',
+	'Devolvida',
+	'Processada'
+)
+;
+
+CREATE TYPE Periodicidade AS ENUM
+(
+	'Diario',
+	'Semanal',
+	'Mensal',
+	'Anual'
+)
+;
+
 /* Create Tables */
 
 CREATE TABLE Administrador
@@ -159,7 +209,7 @@ CREATE TABLE Cartaocreditocliente
 	Numero integer NOT NULL,
 	Validade varchar(50) NOT NULL,
 	Cvv integer NOT NULL,
-	CONSTRAINT PK_Cartaocreditocliente PRIMARY KEY (CartaocreditoclienteID),
+	CONSTRAINT PK_Cartaocreditocliente PRIMARY KEY (CartaocreditoclienteID)
 )
 ;
 
@@ -612,3 +662,1124 @@ ALTER TABLE Subcategoria ADD CONSTRAINT FK_Subcategoria_Categoria
 ALTER TABLE Wishlist ADD CONSTRAINT FK_WishList_possui
 	FOREIGN KEY (ClienteID) REFERENCES Cliente (ClienteID)
 ;
+
+/* Inserts */
+
+/* ------------------------------------------------------ R1 Publicação ------------------------------------------------------ */
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (1,1,'Arte Portuguesa no Século XX','01/01/2017','codigoBarras','Bernardo Pinto de Almeida, aquele que muitos consideram o mais importante crítico de arte da actualidade, oferece-nos aqui uma larga visão panorâmica e solidamente fundamentada da recepção nacional aos movimentos artísticos do século XX e dos seus protagonistas. De agora em diante esta obra, ilustrada por centenas de imagens, muitas delas quase inéditas, será «a» História da Arte Portuguesa do Século XX, uma referência incontornável para artistas, coleccionadores, estudiosos e amantes de arte.','0,496','59,99','53,91','true',3,'primeira',NULL,'9789898851086');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (2,1,'Guia Essencial Para o Estudante de Fotografia Profissional','01/01/2017','codigoBarras','Capturar e compartilhar imagens fotográficas são práticas bastante comuns atualmente, que estão ao alcance de todos. No entanto, neste universo digital do século xxi, no qual milhões de pessoas se comunicam todos os dias por meio de fotografias, nem sempre é fácil saber quais conhecimentos um fotógrafo deve reunir para conseguir se distinguir dos demais como profissional.','0,192','21,20','19,08','true',11,'primeira',NULL,'9788584520848');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (3,2,'SAGA','01/01/2017','codigoBarras','Fantasia e ficção científica - e sexo, política, traição, morte, amor verdadeiro e reality shows - juntam-se como nunca antes neste épico subversivo e provocante do escritor Brian K. Vaughan e da artista Fiona Staples.','0,152','10,99','9,89','true',10,'primeira',NULL,'9788416510290');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (3,2,'Velvet - Vol. 2','01/01/2017','codigoBarras','Dos criadores de Capitão América: O Soldado de Inverno, uma das mais brilhantes séries de espionagem em banda desenhada.','0,128','9,99','8,99','true',13,'segunda',NULL,'9788416510269');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (4,3,'Ciência Cosmológica','01/01/2016','codigoBarras','Uma viagem até à moderna ciência do Universo. A ciência, como actividade humana socialmente relevante, é relativamente recente. Contudo, a cosmologia, como visão do Universo ligada a construções mágicas e religiosas, é bem mais antiga.','0,192','15,00','15,00','true',12,'primeira',NULL,'9789896167165');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (5,3,'O Livro da Ciência','01/01/2017','codigoBarras','MAIS UM LIVRO DA COLEÇÃO GRANDES IDEIAS Será que o Universo começou com um Big Bang? A luz é uma onda, uma partícula - ou ambas? Será que somos a causa do aquecimento global? É possível uma Teoria de Tudo?','0,352','24,50','22,05','true',4,'primeira',NULL,'9789897542664');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (6,4,'Inteligência Multifocal','01/01/2017','codigoBarras','Este livro pretende levar o leitor a caminhar para dentro de si mesmo e a expandir o mundo das ideias sobre a mente humana, a construção de pensamentos e a formação de pensadores.','0,360','16,60','14,94','true',3,'primeira',NULL,'9789896874056');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (7,4,'Amor Zero','01/01/2017','codigoBarras','Os psicopatas não têm de ser assassinos, mas estão entre nós e podem matar a nossa autoestima. Conheça os sinais de alerta para não cair no poço sem fundo do amor zero. O amor transforma-se num inferno quando o homem ou a mulher por quem nos apaixonámos deixa cair a máscara e revela-se um psicopata - com zero remorsos, zero empatia, zero compaixão, zero lealdade. ','0,256','17,90','16,11','true',8,'primeira',NULL,'9789896268060');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (8,5,'Labirintos Quase Impossíveis','01/01/2017','codigoBarras','Elaborado pelo aclamado autor bestseller Gareth Moore, este livro reúne 30 complexos e desafiantes labirintos para resolver. Tem tanto de divertido como de diabólico, mas para os apaixonados por quebra-cabeças, nada lhes trará mais satisfação do que completar os desafios propostos.','0,084','11,90','10,71','true',13,'primeira',NULL,'9789898857064');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (9,5,'Estética e Desporto','01/01/2017','codigoBarras','Lembro-me de quando a rivalidade entre Roger Federer e Rafael Nadal estava no auge ter utilizado uma hipérbole para sublinhar as diferenças essenciais nos duelos entre ambos - o Homem do Renascimento contra o Cro-Magnon.','0,256','12,00','10,80','true',3,'primeira',NULL,'9789723615388');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,6,'Condomínio','01/01/2017','codigoBarras','A legislação relativa aos condomínios encontra-se vertida no Código Civil e em vários diplomas avulsos, razão pela qual nem sempre é simples dispor de todo o material de consulta prático e fidedigno nesta área.','0,192','12,90','11,61','true',8,'decima',NULL,'978-972-0-02009-3');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,6,'Códigos Penal e Processo Penal','01/01/2017','codigoBarras','É nosso objetivo oferecer aos profissionais do Direito uma seleção dos textos mais relevantes, devidamente consolidados e organizados, tendo em conta as últimas alterações legais.','0,840','22,00','19,80','true',4,'oitava',NULL,'978-972-0-00048-4');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (11,7,'Programação de CNC para Torno e Fresadora','01/01/2016','codigoBarras','Expõe os principais conceitos e a maquinação de peças em várias linguagens. Exercícios propostos e resolvidos para uma autoaprendizagem. Para profissionais, formação profissional e ensino superior.','0,368','26,65','23,99','true',5,'primeira',NULL,'9789727228430');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (12,7,'Guia de Aplicações de Gestão de Energia e Eficiência Energética','01/01/2016','codigoBarras','A energia é um bem que deve ser optimizado a um custo cada vez mais relevante. É importante maximizar a sua produção eficiente e racionalizar o seu consumo.','0,527','33,00','33,00','true',11,'terceira',NULL,'9789897231544');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (13,8,'Adolescência, os Anos da Mudança','01/01/2016','codigoBarras','Viver com um adolescente é um dos maiores desafios para qualquer pai. É estimulante mas também pode ser assustador! Este é o guia ideal para si e para os seus filhos.','0,352','16,99','15,29','true',12,'primeira',NULL,'9789898843630');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (7,8,'Os Nossos Adolescentes e a Droga','01/01/2016','codigoBarras','Num registo a que já nos habituou, Mário Cordeiro fala de um tema sensível, mas o qual é urgente discutir: os adolescentes e a droga.','0,344','19,90','17,91','true',3,'primeira',NULL,'9789896267834');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (14,9,'As Receitas da Minha Querida Mãe','01/01/2017','codigoBarras','As Receitas da Minha Querida Mãe é uma obra onde são reveladas as preferências gastronómicas destas madeirenses muito acarinhadas pelos seguidores.','0,120','18,00','16,20','true',5,'primeira',NULL,'9789892404844');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (14,9,'Deixei de Comer Carne. E Agora?','01/01/2017','codigoBarras','Tomou a decisão de deixar comer carne e depois de olhar para os produtos, denominados vegetarianos, fica sem saber o que fazer? É mais fácil do que imagina!','0,128','16,00','14,40','true',13,'primeira',NULL,'9789892404851');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (15,10,'Tenha Um Bom Dia!','01/01/2017','codigoBarras','Caroline Webb, economista e antiga partner da consultora McKinsey, mostra aos leitores as mais recentes descobertas no campo da economia comportamental, da psicologia e da neurociência que poderão alterar a sua vida.','0,392','18,95','17,06','true',4,'primeira',NULL,'9789722358989');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (16,10,'Atitude UAUme!','01/01/2017','codigoBarras','O sucesso internacional deste top seller resulta da Atitude UAUme! ser um conceito inovador que explora que todos temos de impactar os outros positivamente através da SURPRESA!','0,304','15,99','14,39','true',14,'primeira',NULL,'9789897060526');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (17,11,'Os Últimos Dias de Estaline','01/01/2017','codigoBarras','Em 2017 celebram-se os 100 anos da Revolução Russa O colapso repentino de Estaline, que o leva à morte, em Março de 1953, foi tão dramático e misterioso como a sua vida.','0,336','24,90','22,41','true',6,'primeira',NULL,'9789896651770');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (18,11,'Grandes Discursos da História','01/01/2017','codigoBarras','Foram as palavras que Péricles gritou aos cidadãos de Atenas que fundaram a democracia? Foi o «Ich bin ein Berliner», essa emotiva frase de John Kennedy, que deu à parte livre de Berlim a força de resistir?','0,208','16,00','14,40','true',5,'primeira',NULL,'9789897022630');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (11,12,'Desenvolvimento em Swift para iOS','01/01/2017','codigoBarras','A linguagem Swift é uma linguagem open source com um elevado crescimento e que permite desenvolver aplicações em diversos contextos, nomeadamente aplicações iOS, watchOS, tvOS e OS X.','0,256','24,95','22,46','true',14,'primeira',NULL,'9789727228591');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (11,12,'Android','01/01/2017','codigoBarras','As necessidades diárias dos consumidores continuam fortemente ligadas aos dispositivos móveis, que se tornaram objetos essenciais na vida de qualquer um. Para responder a estas exigências do dia a dia, o desenvolvimento de aplicações para dispositivos Android continua a apresentar um forte crescimento.','0,192','19,95','17,96','true',12,'primeira',NULL,'9789727228621');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,13,'O feitiço de Marraquexe','01/01/2017','codigoBarras','No coração da histórica Medina de Marraquexe, entre os animados souks e bazares, encontra-se um grupo de europeus, desfrutando a tranquilidade de um riad.','0,416','17,70','15,93','true',6,'primeira',NULL,'978-972-0-04803-5');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (19,13,'Para onde vão os gatos quando morrem?','01/01/2017','codigoBarras','O regresso a Ataúro, terra da infância, «terra do nunca», é o início desta nova viagem ao revés, de Luís Cardoso, um romance veloz, poético e emotivo, que percorre a infância e a idade de formação do narrador, a diáspora, as lutas, as desilusões, as traições, as perdas, o regresso, cruzando-o com uma plêiade de personagens extraordinárias. Uma viagem que, naturalmente, corre ao lado da história de Timor Leste, com a fantasia e a ironia que marcam desde sempre a voz do autor e nos fazem suspirar por essas terras misteriosas e de aterradora beleza.','0,272','16,60','14,94','true',3,'primeira',NULL,'978-989-676-190-5');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (20,14,'Protocolos de Medicina Materno-Fetal','01/01/2014','codigoBarras','Nesta 3.ª edição dos Protocolos de Medicina Materno-Fetal foi feita uma cuidada revisão e atualização dos protocolos anteriormente publicados e incluídos 16 novos, respondendo aos desafios impostos pela evidência científica mais recente. Esta obra é fruto do trabalho de uma equipa de profissionais que incorpora o desejo de se manter viva a chama da vocação, a responsabilidade de dignificar a classe médica e de prestar serviço à comunidade.','0,296','24,95','24,95','true',15,'terceira',NULL,'9789897520358');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (21,14,'Anatomia e Fisiologia de Seeley','01/01/2016','codigoBarras','Anatomia e Fisiologia de Seeley acompanha a tendência atual do ensino integrado das ciências básicas da saúde, facilitando a aprendizagem e proporcionando uma visão multidisciplinar dos conteúdos apresentados.','1,264','104,94','104,94','true',6,'decima',NULL,'9788580555882');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,15,'Jorge Sampaio - Uma Biografia - 2.º volume','01/01/2017','codigoBarras','Este segundo volume da biografia de Jorge Sampaio ocupa-se dos seus 16 anos como Presidente: na II Câmara Municipal de Lisboa e no Palácio de Belém.','1,064','24,90','22,41','true',11,'segunda',NULL,'978-972-0-04984-1');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,15,'Quinta-feira','01/01/2017','codigoBarras','Tendo mantido até agora reservada parte importante da minha ação como Presidente da República, convicto de que essa era a melhor forma de defender o superior interesse nacional - e nunca tendo ocorrido fugas de informação para a comunicação social sobre o que se passou nos meus encontros com o Primeiro-Ministro e outros membros do Governo -, entendo que é altura de completar a prestação de contas aos Portugueses dando público testemunho de componentes relevantes da minha magistratura que são, em larga medida, desconhecidos dos cidadãos.','0,592','18,80','16,92','true',10,'primeira',NULL,'978-972-0-04942-1');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (22,16,'O Amor É Contagioso','01/01/2016','codigoBarras','O Amor É Contagioso é um convite a uma meditação profunda sobre os temas mais prementes da sociedade atual.','0,224','14,99','13,49','true',8,'primeira',NULL,'9789898849434');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (23,16,'Deus ou Nada','01/01/2016','codigoBarras','Nesta fascinante entrevista autobiográfica, Robert Sarah, um dos mais desassombrados cardeais da Igreja Católica, dá um testemunho ímpar da sua fé e comenta muitos dos acontecimentos, desafios e controvérsias das últimas décadas.','0,344','22,95','20,66','true',15,'primeira',NULL,'9789898809261');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (24,17,'Manual de Tratamento - 250 Doenças','01/01/2016','codigoBarras','Nascemos para sermos felizes, para termos conhecimento do nosso próprio corpo e estarmos saudáveis.','peso','17,95','16,16','true',7,'primeira',NULL,'9789899956926');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (25,17,'Chegar Novo a Velho - Receitas','01/01/2017','codigoBarras','Depois do enorme sucesso do livro CHEGAR NOVO A VELHO, Manuel Pinto Coelho, o maior especialista português em anti-aging, apresenta um livro de receitas que seguem os princípios básicos que defende: uma alimentação promotora de hormonas, alcalina e paleolítica','0,176','17,50','15,75','true',9,'primeira',NULL,'9789896553050');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,18,'Gosto de Matemática 1','01/01/2015','codigoBarras','Gosto de Matemática é uma coleção especialmente criada para os alunos do 1.° ciclo do ensino básico praticarem o novo Programa de Matemática, alcançando as Metas Curriculares.','peso','9,90','9,90','true',8,'primeira',NULL,'978-972-0-14139-2');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,18,'Alfa - Adição e Subtração - 6-8 anos','01/01/2016','codigoBarras','Este bloco contém exercícios para praticar a adição e a subtração que permitem: reforçar a compreensão das operações;treinar o cálculo mental;explicar e exercitar os respetivos algoritmos.','peso','5,50','5,50','true',15,'primeira',NULL,'978-972-0-10947-7');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (26,19,'Preparo-me para as Provas de Aferição - 2º Ano 2016/2017','01/01/2016','codigoBarras','NA','0,052','7,50','6,75','true',11,'primeira',NULL,'9789893201640');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,19,'Casos de Leitura - 1.º Ciclo','01/01/2017','codigoBarras','Casos de Leitura é um caderno de apoio à aprendizagem da leitura e escrita, elaborado de acordo com as orientações programáticas em vigor para o 1.° Ciclo.','0,08','7,70','6,93','true',3,'primeira',NULL,'978-972-0-17083-5');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (27,20,'Poemas da Mentira e da Verdade','01/01/2005','codigoBarras','Livro recomendado para o 3º ano de escolaridade, destinado a leitura orientada.','0,034','9,51','9,51','true',6,'primeira',NULL,'9789722410700');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,20,'A Gramática - Português - 1.º ciclo','01/01/2016','codigoBarras','Esta é a gramática de referência para o 1.° Ciclo!','0,160','11,90','10,71','true',4,'primeira',NULL,'978-972-0-11024-4');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (28,21,'O Beijo da Palavrinha','01/01/2008','codigoBarras','Livro recomendado para o 4º ano de escolaridade, destinado a leitura autónoma.','0,032','12,90','12,90','true',14,'primeira',NULL,'9789722120159');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (29,21,'Histórias do Arco da Velha','01/01/1900','codigoBarras','Livro recomendado para o 4º ano de escolaridade, destinado a leitura orientada.','0,174','6,50','6,50','true',5,'primeira',NULL,'9780009685507');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (28,22,'Chocolate à Chuva','15/07/2015','codigoBarras','Livro recomendado para o 6º ano de escolaridade, destinado a leitura orientada.','0,192','11,00','11,00','true',9,'primeira',NULL,'9789722100373');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,22,'Ulisses','01/01/2017','codigoBarras','Livro recomendado para o 6º ano de escolaridade, destinado a leitura orientada.','0,080','11,90','10,71','true',15,'primeira',NULL,'978-972-0-72657-5');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,23,'Gramática de Português - 3.º Ciclo','01/01/2017','codigoBarras','Elaborada de raiz de acordo com o Programa e Metas Curriculares de Português do 3.° Ciclo, esta gramática é um instrumento de trabalho completo e de fácil consulta.','0,288','18,80','18,80','true',13,'primeira',NULL,'978-972-0-30017-1');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,23,'Os Lusíadas','01/01/2015','codigoBarras','A ação central da obra é a viagem de Vasco da Gama para a Índia. Dela se serve o poeta para nos oferecer a visão épica de toda a História de Portugal até à sua época, ora sendo ele o narrador, ora transferindo essa tarefa para figuras da viagem. Para outras figuras - as míticas - transfere os discursos que projetam a ação no futuro em forma profética.','0,288','6,60','6,60','true',14,'primeira',NULL,'978-972-0-04956-8');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,24,'Preparação para o Exame Final Nacional 2017 - Português - 12.º Ano','01/01/2016','codigoBarras','Este livro foi especialmente desenvolvido para os alunos dos 10.°, 11.° e 12.° anos que se encontram em fase de preparação para os Exames Finais Nacionais.','0,432','29,90','26,91','true',3,'primeira',NULL,'978-972-0-00016-3');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (30,24,'Resumos - Memorial do Convento - José Saramago - Ensino Secundário','01/01/2017','codigoBarras','Este estudo de Memorial do Convento pretende ajudar os alunos na sistematização dos aspetos temáticos e formais do romance saramaguiano, ao mesmo tempo que tenta promover um conhecimento mais alargado do universo de produção e divulgação da obra de José Saramago.','0,064','7,70','6,93','true',11,'primeira',NULL,'978-972-0-40181-6');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,25,'Fichas de Ortografia - 1.º Ano','01/01/2016','codigoBarras','As Fichas de Ortografia 1 são recomendadas para o 1.º ano do ensino básico e têm como principal objetivo auxiliar o aluno no estudo das regras da ortografia de forma autónoma, quer na sala de aula quer em casa.','0,096','7,70','6,93','true',14,'primeira',NULL,'978-972-0-01810-6');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,25,'Troca-Tintas - 5-6 Anos','01/01/2017','codigoBarras','A educadora da minha filha sugeriu este livro para desenvolver competências adequadas à idade da minha filha. O surpreendente neste livro é ter textos e actividades que se enquadram no Plano Nacional de Leitura que contribui para o enriquecimento do processo de aprendizagem e desenvolvimento global dos nossos filhos. Recomendo vivamente este livro, para a Educação Pré-Escolar.','peso','9,90','8,91','true',15,'primeira',NULL,'978-972-0-10929-3');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,26,'Apoio ao Estudo - 2.º Ano','01/01/2016','codigoBarras','De acordo com o novo enquadramento legal relativo ao currículo do 1.° Ciclo do Ensino Básico, o Apoio ao Estudo é de frequência obrigatória e tem por objetivo apoiar os alunos na criação de métodos de estudo e de trabalho, visando prioritariamente o reforço do apoio nas disciplinas de Português e de Matemática.','0,064','8,80','7,92','true',10,'primeira',NULL,'978-972-0-14104-0');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,26,'Ditados 1.º e 2.º anos','01/01/2015','codigoBarras','Ditados - 1.° e 2.° anos tem como principal objetivo auxiliar o aluno a escrever corretamente e sem erros.','peso','6,60','6,60','true',9,'primeira',NULL,'978-972-0-14030-2');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,27,'A Matemática - 3.º e 4.º anos','01/01/2016','codigoBarras','Um auxiliar essencial para o 1.º Ciclo do Ensino Básico!','0,160','12,20','10,98','true',9,'primeira',NULL,'978-972-0-13710-4');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,27,'Fichas de Avaliação - 3.º Ano','01/01/2017','codigoBarras','Português, Matemática e Estudo do Meio.','0,104','7,70','6,93','true',5,'primeira',NULL,'978-972-0-14257-3');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,28,'Fichas de Avaliação - 4.º Ano','01/01/2016','codigoBarras','Português, Matemática e Estudo do Meio;','0,120','7,70','7,70','true',4,'primeira',NULL,'978-972-0-14258-0');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,28,'I Love English! - 9-10 anos - 4.º ano','01/01/2016','codigoBarras','Aprender Inglês é cada vez mais fácil e divertido! ','peso','7,70','6,93','true',13,'primeira',NULL,'978-972-0-18164-0');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (31,29,'Prova de Aferição 2017 - Matemática e Ciências Naturais - 5.º Ano','01/01/2017','codigoBarras','Em 2017, vai realizar-se, pela primeira vez, a Prova de Aferição das disciplinas de Matemática e Ciências Naturais do 5.º ano. Esta publicação reúne seis propostas de provas de aferição e respetiva solução, permitindo a verificação dos conhecimentos adquiridos, bem como a superação de eventuais dificuldades, constituindo-se assim como um utensílio de estudo indispensável. Tudo o que o aluno necessita para estar 100% preparado para a Prova de Aferição.','0,080','7,70','6,93','true',14,'primeira',NULL,'978-989-767-202-6');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (31,29,'Prova de Aferição 2017 - História e Geografia de Portugal - 5.º Ano','01/01/2016','codigoBarras','Prova de Aferição 2017 - HGP, 5.º ano é um livro desenvolvido para auxiliar os alunos na preparação para a Prova de Aferição de História e Geografia de Portugal do 5.º ano.','0,080','7,70','6,93','true',11,'primeira',NULL,'978-989-767-203-3');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,30,'Preparação para a Prova Final 2017 - Matemática - 9.º Ano','01/01/2017','codigoBarras','Uma das características da disciplina de Matemática, que por vezes cria grandes dificuldades aos alunos, é a forma estruturada como ela se desenvolve, tornando a falta de bases uma das principais causas e consequências de insucesso.','0,320','14,90','13,41','true',10,'primeira',NULL,'978-972-0-00017-0');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,30,'Preparação para a Prova Final 2017 - Português - 9.º Ano','01/01/2017','codigoBarras','Este livro foi especialmente desenvolvido para os alunos do 9.° ano que se encontram em fase de preparação para as Provas Finais.','0,256','14,90','13,41','true',8,'primeira',NULL,'978-972-0-00029-3');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,31,'Preparação para o Exame Final Nacional 2017 - Física e Química A - 11.º Ano','01/01/2017','codigoBarras','Com o intuito de preparar o aluno para o Exame Final Nacional de Física e Química A - 11.° ano, este livro constitui um excelente instrumento de apoio no reforço, sistematização e síntese das aprendizagens fundamentais da disciplina.','0,448','29,90','26,91','true',3,'primeira',NULL,'978-972-0-01995-0');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,31,'Preparação para o Exame Final Nacional 2017 - Biologia e Geologia - 11.º Ano','01/01/2017','codigoBarras','Com o intuito de preparar o aluno para o Exame Final Nacional de Biologia e Geologia do 11.° ano, este livro constitui um excelente instrumento de apoio no reforço, sistematização e síntese das aprendizagens fundamentais da disciplina.','0,304','29,90','26,91','true',9,'primeira',NULL,'978-972-0-46911-3');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,35,'Autosport','22/03/2017','codigoBarras','Autosport','0,100','2,35','2,35','true',7,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,35,'Auto Foco','23/03/2017','codigoBarras','Auto Foco','0,100','1,99','1,99','true',14,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,36,'Take Off','23/03/2017','codigoBarras','Take Off','0,100','1,99','1,99','true',12,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,36,'Sirius Magazine','01/02/2017','codigoBarras','Sirius Magazine','0,100','2,50','2,50','true',4,NULL,'mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,37,'Visao','23/03/2017','codigoBarras','Visao','0,100','3,20','3,20','true',5,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,37,'Sabado','23/03/2017','codigoBarras','Sabado','0,100','3,20','3,20','true',7,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'Caras','25/03/2017','codigoBarras','Caras','0,100','1,50','1,50','true',10,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'VIP','21/03/2017','codigoBarras','VIP','0,100','1,50','1,50','true',7,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,42,'Expresso Economia','23/03/2017','codigoBarras','Expresso Economia','0,100','1,99','1,99','true',13,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,42,'Vida Economica','23/03/2017','codigoBarras','Vida Economica','0,100','1,99','1,99','true',13,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,40,'Dragoes','23/03/2017','codigoBarras','Dragoes','0,100','1,50','1,50','true',10,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,40,'Jornal Sporting','23/03/2017','codigoBarras','Jornal Sporting','0,100','1,50','1,50','true',12,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,47,'Exame Informatica','23/03/2017','codigoBarras','Exame Informatica','0,100','2,50','2,50','true',15,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,47,'PC Guia','23/03/2017','codigoBarras','PC Guia','0,100','2,50','2,50','true',3,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,62,'Teleculinaria','23/03/2017','codigoBarras','Teleculinaria','0,100','2,50','2,50','true',14,NULL,'mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,62,'Ementa da semana','23/03/2017','codigoBarras','Ementa da semana','0,100','0,50','0,50','true',13,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,39,'Caras Decoracao','23/03/2017','codigoBarras','Caras Decoracao','0,100','3,00','3,00','true',9,NULL,'mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,39,'Casa Claudia','23/03/2017','codigoBarras','Casa Claudia','0,100','3,50','3,50','true',7,NULL,'mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,51,'Evasoes','23/03/2017','codigoBarras','Evasoes','0,100','1,60','1,60','true',15,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,51,'Viajar','01/03/2017','codigoBarras','Viajar','0,100','2,00','2,00','true',4,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,63,'Jornal das Letras','23/03/2017','codigoBarras','Jornal das Letras','0,100','3,00','3,00','true',11,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,63,'Blitz','23/03/2017','codigoBarras','Blitz','0,100','4,00','4,00','true',15,NULL,'mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,64,'Dica da semana','23/03/2017','codigoBarras','Dica da semana','0,100','1,50','1,50','true',7,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,64,'Jornal de Barcelos','23/03/2017','codigoBarras','Jornal de Barcelos','0,100','0,70','0,70','true',9,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,52,'Dicionário Básico Ilustrado da Língua Portuguesa','01/01/2016','codigoBarras','Dicionário Básico Ilustrado da Língua Portuguesa.','0,512','9,99','9,99','true',14,'primeira',NULL,'978-972-0-01993-6');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,53,'Dicionário Escolar de Inglês-Português / Português-Inglês','01/01/2016','codigoBarras','Mais de 101 000 traduções e de 54 000 entradas, exemplos e expressões idiomáticas, incluindo os termos mais usuais do inglês americano e vocábulos brasileiros. Esta edição regista vocabulário corrente e atual, para além de várias palavras e sentidos novos das mais diversas áreas: biohazard, blogosphere, metrosexual, minicam, newbie na parte Inglês-Português e bloguista, linkar, login, porta-bebés, pró-ativo, resiliência na parte Português-Inglês.','0,765','9,90','8,91','true',11,'primeira',NULL,'978-972-0-05422-7');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,54,'Dicionário Escolar de Francês-Português / Português-Francês','01/01/2016','codigoBarras','Atualizada com o Acordo Ortográfico, esta edição regista as novas grafias, mantendo também as grafias anteriores na parte Português-Francês. Inclui igualmente um Guia do Acordo Ortográfico que expõe as principais alterações decorrentes da reforma ortográfica.','0,768','9,90','9,90','true',7,'primeira',NULL,'978-972-0-01561-7');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (15,55,'Alemão em 30 Dias','01/01/2004','codigoBarras','Alemão em 30 Dias é o segundo volume da colecção «Novos Manuais de Línguas». Um curso de línguas que certamente o ajudará a dar os primeiros passos na língua alemã.','0,324','12,50','12,50','true',14,'primeira',NULL,'9789722332217');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,56,'Dicionário Moderno de Espanhol-Português / Português-Espanhol','01/01/2016','codigoBarras','Um dicionário de língua espanhola, cujo texto em português se encontra adaptado ao Acordo Ortográfico de 1990. Para facilitar a pesquisa e a transição segura para a nova ortografia, na lista de entradas da parte Português-Espanhol foram registadas as duas grafias: as grafias anteriores à reforma ortográfica e as novas grafias introduzidas por ela.','1,040','17,90','16,11','true',7,'primeira',NULL,'978-972-0-05755-6');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,57,'Guias de Viagem 10 - Top 10 Marraquexe','01/01/2016','codigoBarras','Este Guia de Viagem TOP 10 tem tudo o que não pode perder em Marraquexe, qualquer que seja o tipo de viagem que vai realizar. Aqui vai encontrar o que a cidade tem de melhor.','0,128','14,40','14,40','true',9,'primeira',NULL,'978-972-0-31835-0');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (34,58,'Lonely Planet Costa Rica','01/01/2016','codigoBarras','Lonely Planet Costa Rica is your passport to the most relevant, up-to-date advice on what to see and skip, and what hidden discoveries await you. Snorkel the teeming reefs off Manzanillo, explore some of the globes best wildlife-watching destinations, or dig into Costa Rican culture and cuisine in San Jose; all with your trusted travel companion.','0,544','20,98','20,98','true',13,'primeira',NULL,'9781786571120');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (35,59,'Oriente Distante','01/01/2012','codigoBarras','Viajante habitual, o autor percorre o trilho dos vestígios da cultura e presença portuguesa pelo Oriente. Neste livro, embaixador itinerante por Macau, Japão, Mongólia, Camboja, Xinjiang e Vietname onde Portugal permanece teimosamente presente - apesar da perda do protagonismo.','peso','13,90','13,90','true',15,'primeira',NULL,'9789895555505');
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,60,'CITYPACK - Londres','01/01/2017','codigoBarras','Descubra a cidade de Londres com a ajuda do guia CityPack','0,176','13,30','11,97','true',7,'primeira',NULL,'978-972-0-00039-2');
+
+/* ------------------------------------------------------ R2 Carrinho ------------------------------------------------------ */
+INSERT INTO Carrinho (dataCriacao) VALUES ('11/12/2016');
+INSERT INTO Carrinho (dataCriacao) VALUES ('09/03/2018');
+INSERT INTO Carrinho (dataCriacao) VALUES ('05/09/2017');
+INSERT INTO Carrinho (dataCriacao) VALUES ('14/01/2017');
+INSERT INTO Carrinho (dataCriacao) VALUES ('31/03/2017');
+INSERT INTO Carrinho (dataCriacao) VALUES ('17/09/2017');
+INSERT INTO Carrinho (dataCriacao) VALUES ('23/05/2016');
+INSERT INTO Carrinho (dataCriacao) VALUES ('27/08/2016');
+INSERT INTO Carrinho (dataCriacao) VALUES ('05/05/2016');
+INSERT INTO Carrinho (dataCriacao) VALUES ('17/08/2017');
+
+/* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (11,4,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (1,10,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (68,8,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (56,2,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (14,2,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (51,3,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (95,7,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (44,6,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (9,10,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (82,5,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (52,1,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (6,4,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (60,2,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (81,4,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (83,2,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (23,7,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (48,7,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (10,2,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (53,7,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (88,10,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (58,6,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (12,2,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (40,9,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (50,5,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (5,4,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (14,5,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (59,4,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (15,10,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (88,3,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (76,4,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (66,4,2);
+
+/* ------------------------------------------------------ R4 WishList ------------------------------------------------------ */
+INSERT INTO WishList (clienteID,nome) VALUES (15,'Informatica');
+INSERT INTO WishList (clienteID,nome) VALUES (2,'Romance');
+INSERT INTO WishList (clienteID,nome) VALUES (21,'Acao');
+INSERT INTO WishList (clienteID,nome) VALUES (10,'Historia');
+INSERT INTO WishList (clienteID,nome) VALUES (3,'Informatica');
+INSERT INTO WishList (clienteID,nome) VALUES (6,'Informatica');
+INSERT INTO WishList (clienteID,nome) VALUES (9,'Acao');
+INSERT INTO WishList (clienteID,nome) VALUES (4,'Romance');
+INSERT INTO WishList (clienteID,nome) VALUES (20,'Informatica');
+INSERT INTO WishList (clienteID,nome) VALUES (18,'Arte');
+INSERT INTO WishList (clienteID,nome) VALUES (1,'Arte');
+INSERT INTO WishList (clienteID,nome) VALUES (7,'Acao');
+INSERT INTO WishList (clienteID,nome) VALUES (20,'Historia');
+INSERT INTO WishList (clienteID,nome) VALUES (15,'Acao');
+INSERT INTO WishList (clienteID,nome) VALUES (10,'Informatica');
+INSERT INTO WishList (clienteID,nome) VALUES (19,'Romance');
+INSERT INTO WishList (clienteID,nome) VALUES (7,'Historia');
+INSERT INTO WishList (clienteID,nome) VALUES (11,'Historia');
+INSERT INTO WishList (clienteID,nome) VALUES (9,'Arte');
+INSERT INTO WishList (clienteID,nome) VALUES (19,'Informatica');
+
+/* ------------------------------------------------------ R5 PublicacaoWishList ------------------------------------------------------ */
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (2,44);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (4,67);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (9,87);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (7,54);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (11,72);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (7,5);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (10,30);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (11,58);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (19,11);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (10,20);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (12,88);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (10,78);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (9,31);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (16,81);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (3,40);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (4,95);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (3,39);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (18,54);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (5,74);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (1,14);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (9,84);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (15,43);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (9,51);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (16,16);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (3,94);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (1,32);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (15,93);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (6,15);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (3,45);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (8,3);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (4,55);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (11,13);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (20,86);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (16,63);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (9,29);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (6,88);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (4,84);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (16,50);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,90);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (19,85);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (13,87);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,29);
+
+/* ------------------------------------------------------ R6 Comentario ------------------------------------------------------ */
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,34,'12/08/2017',1,'et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,43,'21/08/2017',1,'Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (14,91,'12/05/2017',4,'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,66,'14/08/2016',3,'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,79,'20/09/2016',1,'Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,57,'03/09/2017',4,'ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (10,15,'20/05/2016',4,'sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,28,'29/04/2017',1,'id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,51,'30/07/2016',1,'nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (15,8,'18/06/2016',3,'Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (1,14,'25/08/2017',3,'turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,80,'10/05/2016',2,'elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non,');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (10,42,'03/06/2017',1,'a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,17,'14/12/2016',5,'Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a,');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (16,78,'16/10/2016',4,'Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio.');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (16,66,'25/03/2016',1,'consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,83,'16/01/2017',3,'a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,34,'16/08/2017',3,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,33,'10/12/2016',3,'iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,88,'12/07/2017',5,'ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (8,59,'31/05/2016',1,'pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,57,'28/05/2017',4,'consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu,');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,8,'07/07/2016',4,'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa.');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,51,'27/06/2016',4,'blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (15,63,'02/11/2017',3,'nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,66,'15/06/2017',4,'rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (20,27,'27/03/2017',2,'Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,63,'13/09/2017',1,'lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (14,46,'28/07/2017',5,'bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,22,'28/03/2016',4,'odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim.');
+INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,54,'18/10/2016',5,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis');
+
+/* ------------------------------------------------------ R7 Imagem ------------------------------------------------------ */
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (1,'Arte Portuguesa no Século XX','/img/products/Livros/Arte/1.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (2,'Guia Essencial Para o Estudante de Fotografia Profissional','/img/products/Livros/Arte/2.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (3,'SAGA','/img/products/Livros/Banda_Desenhada/3.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (4,'Velvet - Vol. 2','/img/products/Livros/Banda_Desenhada/4.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (5,'Ciência Cosmológica','/img/products/Livros/Ciencias_Exatas_e_Naturais/5.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (6,'O Livro da Ciência','/img/products/Livros/Ciencias_Exatas_e_Naturais/6.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (7,'Inteligência Multifocal','/img/products/Livros/Ciencias_Sociais_e_Humanas/7.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (8,'Amor Zero','/img/products/Livros/Ciencias_Sociais_e_Humanas/8.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (9,'Labirintos Quase Impossíveis','/img/products/Livros/Desporto_e_Lazer/9.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (10,'Estética e Desporto','/img/products/Livros/Desporto_e_Lazer/10.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (11,'Condomínio','/img/products/Livros/Direito/11.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (12,'Códigos Penal e Processo Penal','/img/products/Livros/Direito/12.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (13,'Programação de CNC para Torno e Fresadora','/img/products/Livros/Engenharia/13.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (14,'Guia de Aplicações de Gestão de Energia e Eficiência Energética','/img/products/Livros/Engenharia/14.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (15,'Adolescência, os Anos da Mudança','/img/products/Livros/Ensino_e_Educacao/15.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (16,'Os Nossos Adolescentes e a Droga','/img/products/Livros/Ensino_e_Educacao/16.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (17,'As Receitas da Minha Querida Mãe','/img/products/Livros/Gastronomia_e_Vinhos/17.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (18,'Deixei de Comer Carne. E Agora?','/img/products/Livros/Gastronomia_e_Vinhos/18.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (19,'Tenha Um Bom Dia!','/img/products/Livros/Gestao/19.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (20,'Atitude UAUme!','/img/products/Livros/Gestao/20.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (21,'Os Últimos Dias de Estaline','/img/products/Livros/Historia/21.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (22,'Grandes Discursos da História','/img/products/Livros/Historia/22.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (23,'Desenvolvimento em Swift para iOS','/img/products/Livros/Informatica/23.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (24,'Android','/img/products/Livros/Informatica/24.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (25,'O feitiço de Marraquex','/img/products/Livros/Literatura/25.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (26,'Para onde vão os gatos quando morrem?','/img/products/Livros/Literatura/26.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (27,'Protocolos de Medicina Materno-Fetal','/img/products/Livros/Medicina/27.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (28,'Anatomia e Fisiologia de Seeley','/img/products/Livros/Medicina/28.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (29,'Jorge Sampaio - Uma Biografia - 2.º volume','/img/products/Livros/Politica/29.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (30,'Quinta-feira','/img/products/Livros/Politica/30.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (31,'O Amor É Contagioso','/img/products/Livros/Religiao_e_Moral/31.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (32,'Deus ou Nada','/img/products/Livros/Religiao_e_Moral/32.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (33,'Manual de Tratamento - 250 Doenças','/img/products/Livros/Saude_e_Bem_Estar/33.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (34,'Chegar Novo a Velho - Receitas','/img/products/Livros/Saude_e_Bem_Estar/34.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (35,'Gosto de Matemática 1','/img/products/Livros_Escolares/1.º_ano/35.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (36,'Alfa - Adição e Subtração - 6-8 anos','/img/products/Livros_Escolares/1.º_ano/36.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (37,'Preparo-me para as Provas de Aferição - 2º Ano 2016/2017','/img/products/Livros_Escolares/2.º_ano/37.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (38,'Casos de Leitura - 1.º Ciclo','/img/products/Livros_Escolares/2.º_ano/38.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (39,'Poemas da Mentira e da Verdade','/img/products/Livros_Escolares/3.º_ano/39.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (40,'A Gramática - Português - 1.º ciclo','/img/products/Livros_Escolares/3.º_ano/40.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (41,'O Beijo da Palavrinha','/img/products/Livros_Escolares/4.º_ano/41.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (42,'Histórias do Arco da Velha','/img/products/Livros_Escolares/4.º_ano/42.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (43,'Chocolate à Chuva','/img/products/Livros_Escolares/5.º_e_6.º_ano/43.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (44,'Ulisses','/img/products/Livros_Escolares/5.º_e_6.º_ano/44.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (45,'Gramática de Português - 3.º Ciclo','/img/products/Livros_Escolares/7.º_8.º_e_9.º_ciclo/45.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (46,'Os Lusíadas','/img/products/Livros_Escolares/7.º_8.º_e_9.º_ciclo/46.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (47,'Preparação para o Exame Final Nacional 2017 - Português - 12.º Ano','/img/products/Livros_Escolares/Ensino_Secundario/47.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (48,'Resumos - Memorial do Convento - José Saramago - Ensino Secundário','/img/products/Livros_Escolares/Ensino_Secundario/48.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (49,'Fichas de Ortografia - 1.º Ano','/img/products/Apoio_Escolar/1.º_ano/49.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (50,'Troca-Tintas - 5-6 Anos','/img/products/Apoio_Escolar/1.º_ano/50.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (51,'Apoio ao Estudo - 2.º Ano','/img/products/Apoio_Escolar/2.º_ano/51.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (52,'Ditados 1.º e 2.º anos','/img/products/Apoio_Escolar/2.º_ano/52.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (53,'A Matemática - 3.º e 4.º anos','/img/products/Apoio_Escolar/3.º_ano/53.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (54,'Fichas de Avaliação - 3.º Ano','/img/products/Apoio_Escolar/3.º_ano/54.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (55,'Fichas de Avaliação - 4.º Ano','/img/products/Apoio_Escolar/4.º_ano/55.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (56,'I Love English! - 9-10 anos - 4.º ano','/img/products/Apoio_Escolar/4.º_ano/56.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (57,'Prova de Aferição 2017 - Matemática e Ciências Naturais - 5.º Ano','/img/products/Apoio_Escolar/5.º_e_6.º_ano/57.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (58,'Prova de Aferição 2017 - História e Geografia de Portugal - 5.º Ano','/img/products/Apoio_Escolar/5.º_e_6.º_ano/58.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (59,'Preparação para a Prova Final 2017 - Matemática - 9.º Ano','/img/products/Apoio_Escolar/7.º_8.º_e_9.º_ciclo/59.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (60,'Preparação para a Prova Final 2017 - Português - 9.º Ano','/img/products/Apoio_Escolar/7.º_8.º_e_9.º_ciclo/60.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (61,'Preparação para o Exame Final Nacional 2017 - Física e Química A - 11.º Ano','/img/products/Apoio_Escolar/Ensino_Secundario/61.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (62,'Preparação para o Exame Final Nacional 2017 - Biologia e Geologia - 11.º Ano','/img/products/Apoio_Escolar/Ensino_Secundario/62.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (63,'Autosport','/img/products/Revistas/Automobilismo/63.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (64,'Auto Foco','/img/products/Revistas/Automobilismo/64.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (65,'Take Off','/img/products/Revistas/Aviacao/65.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (66,'Sirius Magazine','/img/products/Revistas/Aviacao/66.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (67,'Visao','/img/products/Revistas/Cientificas/67.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (68,'Sabado','/img/products/Revistas/Cientificas/68.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (69,'Caras','/img/products/Revistas/Social/69.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (70,'VIP','/img/products/Revistas/Social/70.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (71,'Expresso Economia','/img/products/Revistas/Economia/71.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (72,'Vida Economica','/img/products/Revistas/Economia/72.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (73,'Dragoes','/img/products/Revistas/Desporto/73.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (74,'Jornal Sporting','/img/products/Revistas/Desporto/74.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (75,'Exame Informatica','/img/products/Revistas/Informatica/75.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (76,'PC Guia','/img/products/Revistas/Informatica/76.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (77,'Teleculinaria','/img/products/Revistas/Culinaria/77.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (78,'Ementa da semana','/img/products/Revistas/Culinaria/78.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (79,'Caras Decoracao','/img/products/Revistas/Decoracao/79.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (80,'Casa Claudia','/img/products/Revistas/Decoracao/80.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (81,'Evasoes','/img/products/Revistas/Turismo/81.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (82,'Viajar','/img/products/Revistas/Turismo/82.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (83,'Jornal das Letras','/img/products/Revistas/Lazer/83.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (84,'Blitz','/img/products/Revistas/Lazer/84.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (85,'Dica da semana','/img/products/Revistas/Regionais/85.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (86,'Jornal de Barcelos','/img/products/Revistas/Regionais/86.jpg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (87,'Dicionário Básico Ilustrado da Língua Portuguesa','/img/products/Dicionarios_e_Enciclopedias/Portugues/87.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (88,'Dicionário Escolar de Inglês-Português / Português-Inglês','/img/products/Dicionarios_e_Enciclopedias/Ingles/88.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (89,'Dicionário Escolar de Francês-Português / Português-Francês','/img/products/Dicionarios_e_Enciclopedias/Frances/89.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (90,'Alemão em 30 Dias','/img/products/Dicionarios_e_Enciclopedias/Alemao/90.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (91,'Dicionário Moderno de Espanhol-Português / Português-Espanhol','/img/products/Dicionarios_e_Enciclopedias/Espanhol/91.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (92,'Guias de Viagem 10 - Top 10 Marraquexe','/img/products/Guias_Turisticos_e_Mapas/Africa/92.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (93,'Lonely Planet Costa Rica','/img/products/Guias_Turisticos_e_Mapas/America/93.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (94,'Oriente Distante','/img/products/Guias_Turisticos_e_Mapas/Asia/94.jpeg');
+INSERT INTO Imagem (publicacaoID,nomeLivro,url) VALUES (95,'CITYPACK - Londres','/img/products/Guias_Turisticos_e_Mapas/Europa/95.jpeg');
+
+/* ------------------------------------------------------ R8 Editora ------------------------------------------------------ */
+INSERT INTO Editora (nome) VALUES ('Coral Books');
+INSERT INTO Editora (nome) VALUES ('Editorial Gustavo Gili');
+INSERT INTO Editora (nome) VALUES ('G. Floy Studio');
+INSERT INTO Editora (nome) VALUES ('Gradiva');
+INSERT INTO Editora (nome) VALUES ('Marcador');
+INSERT INTO Editora (nome) VALUES ('Pergaminho');
+INSERT INTO Editora (nome) VALUES ('A Esfera dos Livros');
+INSERT INTO Editora (nome) VALUES ('Jacarandá Editora');
+INSERT INTO Editora (nome) VALUES ('Edições Afrontamento');
+INSERT INTO Editora (nome) VALUES ('Porto Editora');
+INSERT INTO Editora (nome) VALUES ('FCA');
+INSERT INTO Editora (nome) VALUES ('Publindústria');
+INSERT INTO Editora (nome) VALUES ('Vogais');
+INSERT INTO Editora (nome) VALUES ('EuroImpala');
+INSERT INTO Editora (nome) VALUES ('Editorial Presença');
+INSERT INTO Editora (nome) VALUES ('Top Books');
+INSERT INTO Editora (nome) VALUES ('Objectiva');
+INSERT INTO Editora (nome) VALUES ('Editora Guerra & Paz');
+INSERT INTO Editora (nome) VALUES ('Sextante Editora (chancela)');
+INSERT INTO Editora (nome) VALUES ('Lidel');
+INSERT INTO Editora (nome) VALUES ('Mc Graw-Hill');
+INSERT INTO Editora (nome) VALUES ('Nascente');
+INSERT INTO Editora (nome) VALUES ('Lucerna');
+INSERT INTO Editora (nome) VALUES ('Centro de Cura');
+INSERT INTO Editora (nome) VALUES ('Prime Books');
+INSERT INTO Editora (nome) VALUES ('Edições Gailivro');
+INSERT INTO Editora (nome) VALUES ('Livros Horizonte');
+INSERT INTO Editora (nome) VALUES ('Editorial Caminho');
+INSERT INTO Editora (nome) VALUES ('Editorial Minerva');
+INSERT INTO Editora (nome) VALUES ('Ideias de Ler');
+INSERT INTO Editora (nome) VALUES ('Areal Editores');
+INSERT INTO Editora (nome) VALUES ('Cofina');
+INSERT INTO Editora (nome) VALUES ('Impresa');
+INSERT INTO Editora (nome) VALUES ('Lonely Planet Global Limited');
+INSERT INTO Editora (nome) VALUES ('Oficina do Livro');
+
+/* ------------------------------------------------------ R9 SubCategoria ------------------------------------------------------ */
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Arte');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Banda Desenhada');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Ciencias Exatas e Naturais');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Ciencias Sociais e Humanas');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Desporto e Lazer');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Direito');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Engenharia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Ensino e Educacao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Gastronomia e Vinhos');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Gestao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Historia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Informatica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Literatura');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Medicina');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Politica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Religião e Moral');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('1','Saude e Bem Estar');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('2','1.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('2','2.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('2','3.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('2','4.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('2','5.º e 6.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('2','7.º, 8.º e 9.º ciclo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('2','Ensino Secundario');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('3','1.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('3','2.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('3','3.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('3','4.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('3','5.º e 6.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('3','7.º, 8.º e 9.º ciclo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('3','Ensino Secundario');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Agricultura');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Arquitetura');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Arte');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Automobilismo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Aviação');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Científicas');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Cinema');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Decoracao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Desporto');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Direito');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Economia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Fotografia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Historia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Humor');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Infantis');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Informatica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Moda');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Musica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Quebra-cabecas');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Turismo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('5','Portugues');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('5','Ingles');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('5','Frances');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('5','Alemao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('5','Espanhol');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('6','Africa');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('6','America');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('6','Asia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('6','Europa');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Social');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Culinaria');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Lazer');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES ('4','Regionais');
+
+/* ------------------------------------------------------ R10 Categoria ------------------------------------------------------ */
+INSERT INTO Categoria (nome) VALUES ('Livros');
+INSERT INTO Categoria (nome) VALUES ('Livros Escolares');
+INSERT INTO Categoria (nome) VALUES ('Apoio Escolar');
+INSERT INTO Categoria (nome) VALUES ('Revistas');
+INSERT INTO Categoria (nome) VALUES ('Dicionarios e Enciclopedias');
+INSERT INTO Categoria (nome) VALUES ('Guias Turisticos e Mapas');
+
+/* ------------------------------------------------------ R11 AutorPublicacao ------------------------------------------------------ */
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (1,23);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (2,17);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (3,13);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (4,30);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (5,18);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (6,2);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (7,3);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (8,12);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (9,29);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (10,18);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (11,24);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (12,11);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (13,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (14,7);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (15,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (16,20);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (17,25);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (18,21);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (19,17);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (20,31);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (21,11);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (22,21);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (23,26);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (24,8);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (25,13);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (26,10);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (27,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (28,7);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (29,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (30,23);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (31,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (32,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (33,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (34,21);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (35,4);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (36,31);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (37,8);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (38,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (39,18);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (40,26);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (41,4);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (42,22);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (43,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (44,23);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (45,5);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (46,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (47,30);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (48,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (49,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (50,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (51,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (52,2);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (53,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (54,24);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (55,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (56,11);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (57,29);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (58,1);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (59,2);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (60,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (61,19);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (62,31);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (63,15);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (64,1);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (65,15);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (66,6);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (67,22);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (68,4);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (69,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (70,23);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (71,22);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (72,16);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (73,24);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (74,16);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (75,16);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (76,12);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (77,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (78,17);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (79,13);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (80,11);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (81,20);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (82,31);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (83,20);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (84,16);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (85,9);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (86,10);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (87,23);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (88,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (89,18);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (90,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (91,10);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (92,30);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,12);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,23);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (95,27);
+
+/* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,1,'Rafaela Xerxes Arouca','Feminino','21/03/1993','tincidunt','QYU41RAX3FI','true','05/03/2013','NULL','351420448201','non.sollicitudin.a@penatibuset.net','044593724');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,2,'Lenia Melissa Hilario','Feminino','24/03/1995','etuard','BRD41MAM5ON','true','03/10/2015','NULL','351663405180','ac.tellus@duiCumsociis.com','283234271');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,3,'Jacinto Agata Frota','Masculino','15/11/1988','Suspendisse','RQV35LJX2ML','true','12/10/2013','NULL','351570450863','tellus.sem.mollis@pedesagittis.com','239054718');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,4,'Helena Ilidio Chaves','Feminino','15/03/1979','Donec','LSL47AZW9BX','true','09/11/2013','NULL','351248634912','eleifend@erat.co.uk','405583318');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,5,'Mauro Guadalupe Ruas','Masculino','13/11/1980','Nunc','VEF30WBO4MB','false','01/08/2013','01/08/2016','351352495908','Mauris@euismodindolor.org','161643248');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,6,'Marcelo Adélio Dutra','Masculino','07/06/1996','dolor','GCV39KPT8BG','true','22/09/2014','NULL','351372157601','Phasellus.fermentum@scelerisquescelerisquedui.net','156008522');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,7,'Angelica Tristao Bras','Feminino','08/02/1971','bibendum','PGT76GUP3KT','true','07/10/2012','NULL','351574669344','ipsum.dolor@arcuimperdiet.ca','551775972');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,8,'Sabino Aarao Outeiro','Masculino','11/07/1993','nulla','UCQ67FXR1YJ','true','23/09/2017','NULL','351522673296','fames.ac@Fusce.net','156795223');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,9,'Mileide Celso Conceicao','Feminino','12/08/1988','consectetuer','FBT96EWW3LM','true','01/04/2015','NULL','351941111705','Nunc.ut@sociis.net','122897197');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,10,'Angela Amelia Castelo','Feminino','01/10/1976','nisi.','MCL83NVJ2EH','true','30/07/2014','NULL','351112320225','aptent.taciti.sociosqu@aodio.net','817189216');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,1,'Valeria Tairine Jardim','Feminino','01/09/1981','placerat,','QYZ07WLN7YC','true','21/04/2012','NULL','351693131764','non.vestibulum@vitae.co.uk','220227873');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,2,'Aluisio Godo Figueiro','Masculino','12/01/1979','exita','YBS70AHE9VH','true','22/08/2015','NULL','351843916006','euismod.urna@cursusa.net','184681792');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,3,'Bernardino Rodolfo Montenegro','Masculino','12/09/1976','veluto','ORU30BNL0JK','false','28/11/2016','10/03/2017','351940437319','massa@Donec.co.uk','995300138');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,4,'Florbela Bernardo Carvalhoso','Feminino','12/06/1976','antediria','NGJ01GJR0YA','true','18/04/2014','NULL','351621486426','ligula.Aenean.gravida@fermentumrisus.com','828257176');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,5,'Marcio Laura Pimentel','Masculino','04/10/1988','lacusisa','EEK74UJV6HC','true','09/05/2012','NULL','351150656950','molestie.orci.tincidunt@sed.edu','337520918');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,6,'Clarisse Tania Morgado','Feminino','11/12/1975','duitita','HGY55RMA9YB','true','12/12/2013','NULL','351562778088','facilisis.facilisis.magna@accumsansed.co.uk','794359407');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,7,'Gonçalo Gerardo Valim','Masculino','02/11/1990','adedado','YJP07DRL9MK','true','03/01/2013','NULL','351592986017','elit.pharetra@dictumPhasellusin.net','736225027');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,8,'Catarina Leonardo Maia','Feminino','09/07/1970','fermentum','BKF67NLO2SU','true','01/03/2014','NULL','351096527271','tempus.scelerisque@eleifendegestas.org','833984062');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,9,'Samuel Belchior Carreiro','Masculino','22/03/1986','nullazita','NWH27SAD6MP','true','02/10/2015','NULL','351261926055','ante@augue.net','866169562');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,10,'Dino Gualdim Maranhao','Masculino','29/06/1973','nullalo','NNS43YYQ8GT','true','01/03/2016','NULL','351287509459','sed.dictum@cursus.edu','898351545');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,1,'Armando Dina Mieiro','Masculino','06/09/1998','eratado','HLL49KIO9FU','true','12/11/2012','NULL','351149796559','sem@Duissit.co.uk','259873398');
+
+/* ------------------------------------------------------ R13 MoradaFaturacao ------------------------------------------------------ */
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (1,9);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (2,12);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (3,22);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (4,23);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (5,30);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (6,14);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (7,25);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (8,18);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (9,12);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (10,26);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (11,15);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (12,6);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (13,17);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (14,5);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (15,17);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (16,25);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (17,7);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (18,29);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (19,8);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (20,3);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (21,6);
+/* ------------------------------------------------------ R14 MoradaEnvio ------------------------------------------------------ */
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (1,9);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (2,12);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (3,22);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (4,23);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (5,30);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (6,14);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (7,25);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (8,18);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (9,12);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (10,26);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (11,15);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (12,6);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (13,17);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (14,5);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (15,17);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (16,25);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (17,7);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (18,29);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (19,8);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (20,3);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (21,6);
+
+/* ------------------------------------------------------ R15 CartaoCreditoCliente ------------------------------------------------------ */
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (1,'MasterCard','4539991256127798','22/05/2015','935');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (2,'MasterCard','4024007101047','14/08/2011','983');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (3,'AmericanExpress','4485012147500889','07/06/2010','837');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (4,'Visa','4485517338024358','05/06/2010','854');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (5,'AmericanExpress','4716038150097','26/04/2012','385');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (6,'Visa','4716945839428','02/05/2016','376');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (7,'MasterCard','4716953205280','01/06/2014','831');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (8,'MasterCard','4556354288945679','24/09/2011','610');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (9,'AmericanExpress','4539034808209085','06/07/2013','276');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (10,'Visa','4840928111223','10/01/2015','203');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (11,'Visa','4532027722626','15/01/2012','890');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (12,'MasterCard','4716995890950924','25/09/2012','645');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (13,'MasterCard','4401847396021','24/10/2012','719');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (14,'AmericanExpress','4916722740475409','14/08/2010','597');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (15,'AmericanExpress','4716199213119149','28/06/2015','389');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (16,'Visa','4305967903689564','11/03/2011','752');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (17,'MasterCard','4485834498720877','08/06/2011','173');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','4539959690998769','22/04/2016','970');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19,'MasterCard','4539218926600511','01/04/2012','885');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4929736934353','14/09/2011','735');
+
+/* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (1,1,1,'Floripes Vilarinho','masculino','08/12/1980','John','YPB58AJH6LE','true','02/09/2009','05/06/2009','351212122157','non@Sed.edu','998187586','51057539 8NE7');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (2,2,2,'Isadora Vides','feminino','10/05/1991','Ignacia','FOT73YNK8JP','false','15/08/2012','23/03/2013','351949891392','Etiam.laoreet@fames.edu','102798307','79782665 1XL6');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (3,3,3,'Floripes Vilarinho','masculino','02/02/2000','Michael','AXK90DBX1NI','false','19/11/2002','08/05/2013','351268798886','dolor.dapibus.gravida@Namconsequatdolor.com','637237286','44216592 7KU5');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (4,4,4,'Gina Ornelas','feminino','29/03/1978','Lillith','ODB56YJQ9SX','true','19/03/1997','16/07/2010','351851416852','vel.turpis.Aliquam@tinciduntpedeac.ca','060839699','96659782 2YM1');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,5,5,'Sabrina Vides','feminino','07/02/1996','Avram','OLP29HOE9KR','true','07/05/2014','12/12/2000','351731847534','Aenean.eget.magna@nulla.org','084626563','67542959 4IL4');
+
+/* ------------------------------------------------------ R17 Administrador ------------------------------------------------------ */
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Austin','masculino','04/03/2017','consectetuer','AIQ85AQG4TJ','true');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (2,'Elijah','feminino','02/26/2021','ullamcorper','MAV09WFT8TE','true');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (3,'Charde','feminino','10/21/2019','lectus','QDQ58ODE1KV','true');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (4,'Bo','masculino','04/02/2018','convallis','VBN58OSG2YG','true');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (5,'Beverly','masculino','08/09/2020','mauris','WPZ07DVI9PP','true');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (6,'Cathleen','feminino','01/23/2020','elit.','BSO38NJN5MA','false');
+
+/* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (9,'Nathaniel Lee','feminino','10/02/1976','Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (2,'Dorothy Harrison','feminino','27/04/1973','et netus et malesuada fames ac turpis egestas. Fusce aliquet');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Risa Kim','feminino','18/11/1975','lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (18,'Desirae Chapman','masculino','31/12/1984','libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (15,'Morgan Savage','feminino','10/06/1976','magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (11,'Avram Goodwin','masculino','09/10/1974','sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (12,'Sasha Carlson','feminino','17/06/1986','fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (3,'Merritt Mclaughlin','masculino','29/06/1972','fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus.');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (6,'Kaye Murphy','masculino','18/02/1980','nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu,');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (4,'Oliver Deleon','feminino','05/08/1980','pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (7,'Macon Dalton','feminino','07/02/1977','quis diam luctus lobortis. Class aptent taciti sociosqu ad litora');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (11,'Fuller Aguirre','masculino','12/04/1980','Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus.');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (14,'Jermaine Bowman','feminino','12/01/1979','vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (10,'Erasmus Thornton','feminino','23/08/1981','et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim.');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (17,'Nathaniel Byers','feminino','22/01/1984','purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (14,'Hayfa Harrington','feminino','10/07/1974','et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (7,'Raymond Jimenez','masculino','21/04/1975','non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Jescie Sharpe','masculino','20/09/1978','tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (16,'Phyllis Navarro','masculino','07/10/1978','ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (3,'Desiree Strong','masculino','02/01/1972','Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (16,'Jenette Butler','masculino','17/07/1983','Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (15,'David Hall','masculino','10/03/1977','magna a neque. Nullam ut nisi a odio semper cursus.');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (8,'Hilel Elliott','feminino','16/03/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (4,'Joy Bullock','feminino','13/05/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (10,'Christian Lambert','masculino','03/01/1972','odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (4,'Petra Mckay','feminino','11/04/1981','dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (10,'Gay Cardenas','masculino','24/09/1983','magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (14,'Laith Knox','feminino','10/12/1986','lobortis tellus justo sit amet nulla. Donec non justo. Proin non');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (18,'Amal Parsons','feminino','16/12/1970','dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Hanae Briggs','masculino','27/10/1968','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Whitney Trevino','feminino','04/01/1986','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (6,'Gail Conner','feminino','18/04/1983','sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi');
+INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (17,'Nolan Briggs','feminino','18/09/1978','Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus');
+
+/* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'22/09/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'09/04/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'31/12/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'22/04/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'04/04/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'06/05/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'20/01/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'22/12/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/06/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'16/03/2018');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'19/06/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'13/12/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'24/12/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'20/03/2018');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'16/05/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'26/10/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/09/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (1,NULL,NULL,'04/01/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (4,NULL,NULL,'30/10/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,7,NULL,'19/06/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'30/04/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'09/04/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,1,NULL,'22/03/2018');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,9,NULL,'19/02/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,21,NULL,'12/04/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'03/01/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,4,NULL,'11/04/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'06/06/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,5,NULL,'03/09/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'03/12/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,25,NULL,'26/07/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'13/04/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'14/12/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'04/04/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,20,NULL,'26/01/2018');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'02/07/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'01/01/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,20,'28/08/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'01/02/2018');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'18/06/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,7,'21/01/2018');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'17/02/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,3,'16/12/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,11,'15/06/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,19,'09/10/2017');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'13/07/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,6,'06/06/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,13,'29/06/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'21/05/2016');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'07/05/2017');
+
+/* ------------------------------------------------------ R20 Pais ------------------------------------------------------ */
+INSERT INTO Pais (nome) VALUES ('Portugal');
+INSERT INTO Pais (nome) VALUES ('Espanha');
+INSERT INTO Pais (nome) VALUES ('Angola');
+INSERT INTO Pais (nome) VALUES ('Argentina');
+INSERT INTO Pais (nome) VALUES ('Mexico');
+INSERT INTO Pais (nome) VALUES ('Brasil');
+INSERT INTO Pais (nome) VALUES ('Cabo Verde');
+INSERT INTO Pais (nome) VALUES ('Chile');
+INSERT INTO Pais (nome) VALUES ('Dinamarca');
+INSERT INTO Pais (nome) VALUES ('USA');
+INSERT INTO Pais (nome) VALUES ('Reino Unido');
+INSERT INTO Pais (nome) VALUES ('Irlanda');
+INSERT INTO Pais (nome) VALUES ('Venezuela');
+INSERT INTO Pais (nome) VALUES ('Peru');
+INSERT INTO Pais (nome) VALUES ('Egito');
+INSERT INTO Pais (nome) VALUES ('Hong Kong');
+INSERT INTO Pais (nome) VALUES ('Timor-Leste');
+INSERT INTO Pais (nome) VALUES ('Jamaica');
+
+/* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes	');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Albufeira');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Amarante');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Aveiro');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Barcelos');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Beja');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Braga');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Bragança');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Caldas da Rainha');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Castelo Branco');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Coimbra');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Ermesinde');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Espinho');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Évora');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Faro');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Figueira da Foz');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Funchal');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Guarda');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Guimarães');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Lamego');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Leiria');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Lisboa');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Maia');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Matosinhos');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Mealhada');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Mirandela');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Odivelas');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Paredes');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Penafiel');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Porto');
+
+/* ------------------------------------------------------ R22 CodigoPostal ------------------------------------------------------ */
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (1,'2200','320');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (2,'8200','250');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (3,'4600','058');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (4,'3800','371');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (5,'4750','264');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (6,'7800','449');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (7,'4715','586');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (8,'5300','031');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (9,'2504','909');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (10,'6001','909');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (11,'3025','016');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (12,'4445','418');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (13,'4501','902');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (14,'7005','872');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (15,'8005','998');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (16,'3080','744');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (17,'9000','083');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (18,'6300','625');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (19,'4800','178');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (20,'5101','909');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (21,'2410','253');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (22,'1750','364');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (23,'4425','087');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (24,'4450','187');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (25,'3050','894');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (26,'5371','909');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (27,'2675','639');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (28,'4580','023');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (29,'4560','495');
+INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (30,'4000','000');
+
+/* ------------------------------------------------------ R23 Morada ------------------------------------------------------ */
+INSERT INTO Morada (codigoPostalID,rua) VALUES (1,'Esplanada 1º de Maio');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (2,'Albufeira Gare');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (3,'Rua Carlos Amarante');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (4,'Praceta Cidadela de Aveiro');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (5,'Rua Duques Barcelos');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (6,'Rua Beja');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (7,'Rua Maria Ondina Braga');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (8,'Rua Dona Catarina de Bragança');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (9,'Apartado 16, Caldas da Rainha');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (10,'Apartado 4, Castelo Branco');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (11,'Rua de Coimbra');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (12,'Travessa de Ermesinde');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (13,'Apartado 1001, Espinho');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (14,'Circular de Évora');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (15,'Rua de Faro');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (16,'Rua da Figueira da Foz');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (17,'Rua do Marquês do Funchal');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (18,'In Guarda Retail-Park');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (19,'Rua Capitão Alfredo Guimarães');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (20,'Apartado 1, Lamego');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (21,'Rua Assunção Leiria');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (22,'Terminal de Carga Aeroporto de Lisboa');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (23,'Rua Fontineiros da Maia');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (24,'Rua Orfeão de Matosinhos');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (25,'Póvoa da Mealhada');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (26,'Apartado 1, Mirandela');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (27,'Praça Cidade de Odivelas');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (28,'Rua da Misericórdia de Paredes');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (29,'Largo dos Bombeiros Voluntários de Penafiel');
+INSERT INTO Morada (codigoPostalID,rua) VALUES (30,'Largo 1º de Dezembro');
+
+/* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (1,'1','1','1','22/10/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,'9','9','9','04/04/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,'13','13','13','14/04/2017','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','05/11/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,'3','3','3','04/11/2017','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,'9','9','9','10/10/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','26/12/2017','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (18,'18','18','18','15/11/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (15,'15','15','15','04/09/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,'13','13','13','25/05/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,'20','20','20','08/05/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (10,'10','10','10','14/12/2016','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,'14','14','14','28/10/2016','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,'6','6','6','02/04/2017','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (7,'7','7','7','15/01/2018','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,'3','3','3','24/10/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (5,'5','5','5','19/04/2017','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,'6','6','6','27/01/2018','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,'14','14','14','29/11/2017','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (21,'21','21','21','29/09/2017','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (12,'12','12','12','21/11/2017','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,'20','20','20','16/02/2017','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,'6','6','6','20/05/2016','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','13/03/2018','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,'19','19','19','25/08/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,'19','19','19','23/02/2018','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,'3','3','3','20/06/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (8,'8','8','8','11/08/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','30/09/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,'9','9','9','01/08/2017','Cancelada');
+
+/* ------------------------------------------------------ R25 PublicacaoEncomenda ------------------------------------------------------ */
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (43,'1');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (39,'1');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (34,'2');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (58,'2');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (81,'3');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (93,'3');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (17,'4');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,'4');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (81,'5');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (10,'5');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (51,'6');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (3,'6');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (29,'7');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (82,'7');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (94,'8');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (21,'8');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (31,'9');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (58,'9');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (66,'10');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (89,'10');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (71,'11');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (33,'11');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (24,'12');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (19,'12');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (69,'13');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (16,'13');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (16,'14');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (34,'14');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (49,'15');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (66,'15');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (7,'16');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (72,'16');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (67,'17');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (31,'17');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (57,'18');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (39,'18');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (92,'19');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (67,'19');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (8,'20');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (11,'20');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (14,'21');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (73,'21');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (8,'22');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (21,'22');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (21,'23');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (2,'23');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (72,'24');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (16,'24');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (36,'25');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,'25');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (84,'26');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (31,'26');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (29,'27');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (80,'27');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (83,'28');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (39,'28');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (26,'29');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (82,'29');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,'30');
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,'30');
+
+/* ------------------------------------------------------ R26 InformacaoFaturacao ------------------------------------------------------ */
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (4);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (3);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (4);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (2);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (3);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (2);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (3);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (7);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (4);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
+INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
+
+/* ------------------------------------------------------ R27 MetodoPagamento ------------------------------------------------------ */
+INSERT INTO MetodoPagamento (tipo) VALUES ('Multibanco');
+INSERT INTO MetodoPagamento (tipo) VALUES ('CartaoCredito');
+INSERT INTO MetodoPagamento (tipo) VALUES ('Transferência Bancaria');
+INSERT INTO MetodoPagamento (tipo) VALUES ('À Cobrança');
+INSERT INTO MetodoPagamento (tipo) VALUES ('PayPal');
+INSERT INTO MetodoPagamento (tipo) VALUES ('MBnet');
+INSERT INTO MetodoPagamento (tipo) VALUES ('PaySafeCard');
+INSERT INTO MetodoPagamento (tipo) VALUES ('MoneyBookers');
+
+/* ------------------------------------------------------ R28 CartaoCredito ------------------------------------------------------ */
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4539991256127798','22/05/2015','935');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4024007101047434','14/08/2011','983');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','4485012147500889','07/06/2010','837');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4485517338024358','05/06/2010','854');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','4716038150097342','26/04/2012','385');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4716945839428343','02/05/2016','376');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4716953205280344','01/06/2014','831');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4556354288945679','24/09/2011','610');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','4539034808209085','06/07/2013','276');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4840928111262334','10/01/2015','203');
+
+/* ------------------------------------------------------ R29 Multibanco ------------------------------------------------------ */
+INSERT INTO Multibanco (entidade,referencia) VALUES ('61624','614 976 849');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('75491','395 315 825');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('65582','182 226 819');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('72157','686 128 244');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('37188','328 165 191');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('87488','655 663 668');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('31585','232 614 235');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('91247','117 778 349');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('12416','758 365 939');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('39498','823 263 724');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('33338','459 581 165');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('87159','549 252 633');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('58894','761 858 827');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('85815','874 344 824');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('75464','765 962 113');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('71286','283 437 367');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('54848','564 915 627');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('16113','518 494 733');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('48114','641 766 252');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('19287','849 911 584');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('79216','743 932 611');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('82711','281 722 782');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('13548','155 372 814');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('96251','659 456 281');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('57635','171 997 945');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('63569','254 382 232');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('28947','212 379 526');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('15991','331 991 595');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('72657','229 647 948');
+INSERT INTO Multibanco (entidade,referencia) VALUES ('84466','417 838 858');
+
+/* ------------------------------------------------------ R30 Pesquisa ------------------------------------------------------ */
+INSERT INTO Pesquisa (data,mensagem) VALUES ('04/11/2016','Livro');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('02/11/2017','Livro');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('19/03/2018','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('15/09/2017','Spider');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('15/01/2017','Men');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('18/10/2016','Spider');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('08/02/2018','Revista');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('09/03/2017','Revista');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('06/09/2017','Jornal');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('26/04/2016','Men');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('19/11/2016','Men');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('27/05/2016','Arte');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('18/06/2016','Jornal');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('10/03/2017','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('06/05/2016','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('12/11/2017','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('06/07/2016','Jornal');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('03/01/2017','Livro');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('16/10/2016','Men');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('11/11/2016','Arte');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('11/10/2016','Revista');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('10/08/2016','Revista');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('09/06/2016','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('14/11/2017','Men');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('15/04/2017','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('27/10/2016','Spider');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('27/08/2017','Spider');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('28/03/2017','Embalar');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('01/03/2017','Livro');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('05/06/2017','Men');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('29/04/2016','Spider');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('08/03/2018','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('26/11/2017','Spider');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('11/12/2017','Historias');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('08/12/2016','Jornal');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('20/08/2016','Men');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('18/09/2017','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('03/06/2016','Arte');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('20/10/2017','Revista');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('04/11/2016','Livro');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('11/06/2017','Livro');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('25/08/2017','Spider');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('04/09/2017','Embalar');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('01/04/2017','Historias');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('09/01/2018','Historias');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('06/04/2017','Exames');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('13/07/2017','Embalar');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('08/02/2017','Historias');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('14/10/2017','Preparacao');
+INSERT INTO Pesquisa (data,mensagem) VALUES ('16/02/2018','Men');
+
+/* ------------------------------------------------------ R31 PerguntaUtilizador ------------------------------------------------------ */
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('20/01/2018','Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('20/10/2017','Cameron Rhodes','et.libero@etipsum.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('01/05/2017','Faith Grant','Sed.auctor@nullaat.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('31/01/2017','Aretha Mcdaniel','nec.euismod@nibh.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('29/05/2016','Ulla Leach','erat.eget@facilisislorem.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('09/05/2017','Angela Bartlett','ut.molestie.in@at.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('25/02/2018','Zorita Mercado','Curabitur.consequat.lectus@sedturpis.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/08/2017','Frances Norman','nec@velit.org','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('02/03/2017','Eugenia Douglas','gravida.molestie@nequevenenatislacus.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('04/04/2016','Regina Cooke','semper.rutrum.Fusce@atortorNunc.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('17/11/2017','Colin Sears','eu@aliquet.net','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('23/11/2016','Sierra Yates','vestibulum@imperdieteratnonummy.com','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('18/03/2018','Elmo Mccullough','tempor.diam@magnis.co.uk','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('16/12/2017','Hashim Dudley','lectus.Nullam.suscipit@tristique.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('07/11/2016','Grady Roberson','cursus.Integer.mollis@Namporttitorscelerisque.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/10/2016','Jakeem Burt','velit@seddolor.edu','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('11/03/2017','Berk Riggs','convallis.dolor.Quisque@Nullamenim.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('28/10/2017','Sylvia Hardy','quis.accumsan@semPellentesque.net','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('31/05/2016','Avram Hebert','mi.Duis@mauriserat.co.uk','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('23/11/2017','Jaden David','non.sollicitudin@Donec.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('24/10/2016','Kyle Huffman','Curabitur@Donec.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/08/2017','Fallon Hardy','aliquet@diamProindolor.net','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('01/10/2017','Lael Lynn','hendrerit.Donec@libero.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('07/06/2017','Octavius Merritt','auctor.velit.Aliquam@volutpatnuncsit.org','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/11/2016','Laura Frye','nec.leo.Morbi@commodotincidunt.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/08/2016','Jarrod Powell','ac.nulla.In@tincidunt.edu','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('18/11/2017','Preston Carr','accumsan.convallis.ante@gravida.org','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('24/04/2016','Quyn Mcmillan','tempus.lorem@ultrices.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('12/05/2016','Lana Crosby','et.netus@utlacusNulla.edu','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('19/12/2017','Serena Mccarty','mus.Proin@fringilla.com','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('28/12/2016','Orson Dennis','Proin.vel@Donecnonjusto.co.uk','Posso levantar em loja física?');
