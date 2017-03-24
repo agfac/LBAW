@@ -252,8 +252,8 @@ CREATE TABLE Codigopostal
 (
 	CodigopostalID SERIAL,
 	LocalidadeID integer NOT NULL,
-	Cod1 integer NOT NULL,
-	Cod2 integer NOT NULL,
+	Cod1 varchar(4) NOT NULL,
+	Cod2 varchar(3) NOT NULL,
 	CONSTRAINT PK_Codigopostal PRIMARY KEY (CodigopostalID)
 )
 ;
@@ -1520,36 +1520,36 @@ INSERT INTO Morada (codigoPostalID,rua) VALUES (29,'Largo dos Bombeiros Voluntá
 INSERT INTO Morada (codigoPostalID,rua) VALUES (30,'Largo 1º de Dezembro');
 
 /* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (1,'1','1','1','22/10/2016','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,'9','9','9','04/04/2017','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,'13','13','13','14/04/2017','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','05/11/2016','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,'3','3','3','04/11/2017','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,'9','9','9','10/10/2016','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','26/12/2017','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (18,'18','18','18','15/11/2016','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (15,'15','15','15','04/09/2017','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,'13','13','13','25/05/2017','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,'20','20','20','08/05/2016','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (10,'10','10','10','14/12/2016','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,'14','14','14','28/10/2016','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,'6','6','6','02/04/2017','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (7,'7','7','7','15/01/2018','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,'3','3','3','24/10/2016','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (5,'5','5','5','19/04/2017','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,'6','6','6','27/01/2018','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,'14','14','14','29/11/2017','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (21,'21','21','21','29/09/2017','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (12,'12','12','12','21/11/2017','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,'20','20','20','16/02/2017','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,'6','6','6','20/05/2016','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','13/03/2018','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,'19','19','19','25/08/2016','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,'19','19','19','23/02/2018','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,'3','3','3','20/06/2017','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (8,'8','8','8','11/08/2016','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,'11','11','11','30/09/2016','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,'9','9','9','01/08/2017','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (1,1,1,1,'22/10/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'04/04/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,13,13,'13','14/04/2017','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'05/11/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'04/11/2017','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'10/10/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'26/12/2017','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (18,18,18,18,'15/11/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (15,15,15,15,'04/09/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,13,13,13,'25/05/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,20,20,20,'08/05/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (10,10,10,10,'14/12/2016','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,14,14,14,'28/10/2016','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'02/04/2017','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (7,7,7,7,'15/01/2018','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'24/10/2016','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (5,5,5,5,'19/04/2017','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'27/01/2018','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,14,14,14,'29/11/2017','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (21,21,21,21,'29/09/2017','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (12,12,12,12,'21/11/2017','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,20,20,20,'16/02/2017','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'20/05/2016','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'13/03/2018','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,19,19,19,'25/08/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,19,19,19,'23/02/2018','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'20/06/2017','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (8,8,8,8,'11/08/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'30/09/2016','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'01/08/2017','Cancelada');
 
 /* ------------------------------------------------------ R25 PublicacaoEncomenda ------------------------------------------------------ */
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (43,1);
