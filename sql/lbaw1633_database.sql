@@ -565,7 +565,10 @@ BEGIN
 	UPDATE Informacaofaturacao
 	SET total=(SELECT SUM(preco)
 						FROM Publicacaoencomenda
-						WHERE encomendaID = NEW.encomendaID)
+						WHERE encomendaID = NEW.encomendaID),
+		portes=(CASE WHEN total <= 30 THEN 2.99
+						ELSE 0.00 END),
+		iva=total / 1.23
 	WHERE informacaoFaturacaoID = (SELECT InformacaofaturacaoID
 									FROM Encomenda
 									WHERE encomendaID = NEW.encomendaID);
