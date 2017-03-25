@@ -136,10 +136,10 @@ CREATE TYPE Estadoencomenda AS ENUM
 
 CREATE TYPE Periodicidade AS ENUM
 (
-	'diario',
-	'semanal',
-	'mensal',
-	'anual'
+	'Diario',
+	'Semanal',
+	'Mensal',
+	'Anual'
 )
 ;
 
@@ -203,10 +203,10 @@ CREATE TABLE Cartaocredito
 
 CREATE TABLE Cartaocreditocliente
 (
-	CartaocreditoclienteID integer NOT NULL,
+	CartaocreditoclienteID SERIAL,
 	ClienteID integer NOT NULL,
 	Tipo TipoCartao NOT NULL,
-	Numero integer NOT NULL,
+	Numero varchar(50) NOT NULL,
 	Validade varchar(50) NOT NULL,
 	Cvv integer NOT NULL,
 	CONSTRAINT PK_Cartaocreditocliente PRIMARY KEY (CartaocreditoclienteID)
@@ -323,7 +323,7 @@ CREATE TABLE Imagem
 (
 	ImagemID SERIAL NOT NULL,
 	PublicacaoID integer NOT NULL,
-	Nome varchar(50) NOT NULL,
+	Nome varchar(100) NOT NULL,
 	Url varchar(300) NOT NULL,
 	CONSTRAINT PK_Imagem PRIMARY KEY (ImagemID)
 )
@@ -524,6 +524,15 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION insert_funcionario() 
+RETURNS TRIGGER 
+AS $$
+BEGIN
+	NEW.idade := date_part('year', age(NEW.Datanascimento));
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
 /* Create Trigger */
 CREATE TRIGGER insert_publicacao_trigger
 BEFORE INSERT OR UPDATE ON Publicacao
@@ -534,6 +543,11 @@ CREATE TRIGGER insert_cliente_trigger
 BEFORE INSERT OR UPDATE ON Cliente
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_cliente();
+
+CREATE TRIGGER insert_funcionario_trigger
+BEFORE INSERT OR UPDATE ON Funcionario
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_funcionario();
 
 /* Create Foreign Key Constraints */
 
@@ -869,30 +883,30 @@ INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBar
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,30,'Preparação para a Prova Final 2017 - Português - 9.º Ano','01/01/2017','0401075184361','Este livro foi especialmente desenvolvido para os alunos do 9.° ano que se encontram em fase de preparação para as Provas Finais.',256,0.256,14.90,13.41,TRUE,8,'primeira',NULL,'978-972-0-00029-3');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,31,'Preparação para o Exame Final Nacional 2017 - Física e Química A - 11.º Ano','01/01/2017','5146013439357','Com o intuito de preparar o aluno para o Exame Final Nacional de Física e Química A - 11.° ano, este livro constitui um excelente instrumento de apoio no reforço, sistematização e síntese das aprendizagens fundamentais da disciplina.',448,0.448,29.90,26.91,TRUE,3,'primeira',NULL,'978-972-0-01995-0');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,31,'Preparação para o Exame Final Nacional 2017 - Biologia e Geologia - 11.º Ano','01/01/2017','8194233259422','Com o intuito de preparar o aluno para o Exame Final Nacional de Biologia e Geologia do 11.° ano, este livro constitui um excelente instrumento de apoio no reforço, sistematização e síntese das aprendizagens fundamentais da disciplina.',304,0.304,29.90,26.91,TRUE,9,'primeira',NULL,'978-972-0-46911-3');
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,35,'Autosport','22/03/2017','0985961643675','Autosport',100,0.100,2.35,2.35,TRUE,7,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,35,'Auto Foco','23/03/2017','0109287266508','Auto Foco',100,0.100,1.99,1.99,TRUE,14,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,36,'Take Off','23/03/2017','7049071906079','Take Off',100,0.100,1.99,1.99,TRUE,12,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,36,'Sirius Magazine','01/02/2017','7529012336482','Sirius Magazine',100,0.100,2.50,2.50,TRUE,4,NULL,'mensal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,37,'Visao','23/03/2017','4292557109070','Visao',100,0.100,3.20,3.20,TRUE,5,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,37,'Sabado','23/03/2017','9918695296190','Sabado',100,0.100,3.20,3.20,TRUE,7,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'Caras','25/03/2017','1419098322397','Caras',100,0.100,1.50,1.50,TRUE,10,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'VIP','21/03/2017','0657670274761','VIP',100,0.100,1.50,1.50,TRUE,7,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,42,'Expresso Economia','23/03/2017','2440508820339','Expresso Economia',100,0.100,1.99,1.99,TRUE,13,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,42,'Vida Economica','23/03/2017','5464618601219','Vida Economica',100,0.100,1.99,1.99,TRUE,13,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,40,'Dragoes','23/03/2017','7927920175420','Dragoes',100,0.100,1.50,1.50,TRUE,10,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,40,'Jornal Sporting','23/03/2017','3724918280352','Jornal Sporting',100,0.100,1.50,1.50,TRUE,12,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,47,'Exame Informatica','23/03/2017','1506012351385','Exame Informatica',100,0.100,2.50,2.50,TRUE,15,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,47,'PC Guia','23/03/2017','0534154813213','PC Guia',100,0.100,2.50,2.50,TRUE,3,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,62,'Teleculinaria','23/03/2017','0707129484025','Teleculinaria',100,0.100,2.50,2.50,TRUE,14,NULL,'mensal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,62,'Ementa da semana','23/03/2017','6954574725085','Ementa da semana',100,0.100,0.50,0.50,TRUE,13,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,39,'Caras Decoracao','23/03/2017','3209378132684','Caras Decoracao',100,0.100,3.00,3.00,TRUE,9,NULL,'mensal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,39,'Casa Claudia','23/03/2017','9740495212784','Casa Claudia',100,0.100,3.50,3.50,TRUE,7,NULL,'mensal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,51,'Evasoes','23/03/2017','4920701920776','Evasoes',100,0.100,1.60,1.60,TRUE,15,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,51,'Viajar','01/03/2017','6659026698925','Viajar',100,0.100,2.00,2.00,TRUE,4,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,63,'Jornal das Letras','23/03/2017','5614434196754','Jornal das Letras',100,0.100,3.00,3.00,TRUE,11,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,63,'Blitz','23/03/2017','7773017376326','Blitz',100,0.100,4.00,4.00,TRUE,15,NULL,'mensal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,64,'Dica da semana','23/03/2017','6839724965936','Dica da semana',100,0.100,1.50,1.50,TRUE,7,NULL,'semanal',NULL);
-INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,64,'Jornal de Barcelos','23/03/2017','7241848559321','Jornal de Barcelos',100,0.100,0.70,0.70,TRUE,9,NULL,'semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,35,'Autosport','22/03/2017','0985961643675','Autosport',100,0.100,2.35,2.35,TRUE,7,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,35,'Auto Foco','23/03/2017','0109287266508','Auto Foco',100,0.100,1.99,1.99,TRUE,14,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,36,'Take Off','23/03/2017','7049071906079','Take Off',100,0.100,1.99,1.99,TRUE,12,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,36,'Sirius Magazine','01/02/2017','7529012336482','Sirius Magazine',100,0.100,2.50,2.50,TRUE,4,NULL,'Mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,37,'Visao','23/03/2017','4292557109070','Visao',100,0.100,3.20,3.20,TRUE,5,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,37,'Sabado','23/03/2017','9918695296190','Sabado',100,0.100,3.20,3.20,TRUE,7,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'Caras','25/03/2017','1419098322397','Caras',100,0.100,1.50,1.50,TRUE,10,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,61,'VIP','21/03/2017','0657670274761','VIP',100,0.100,1.50,1.50,TRUE,7,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,42,'Expresso Economia','23/03/2017','2440508820339','Expresso Economia',100,0.100,1.99,1.99,TRUE,13,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,42,'Vida Economica','23/03/2017','5464618601219','Vida Economica',100,0.100,1.99,1.99,TRUE,13,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,40,'Dragoes','23/03/2017','7927920175420','Dragoes',100,0.100,1.50,1.50,TRUE,10,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,40,'Jornal Sporting','23/03/2017','3724918280352','Jornal Sporting',100,0.100,1.50,1.50,TRUE,12,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,47,'Exame Informatica','23/03/2017','1506012351385','Exame Informatica',100,0.100,2.50,2.50,TRUE,15,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,47,'PC Guia','23/03/2017','0534154813213','PC Guia',100,0.100,2.50,2.50,TRUE,3,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,62,'Teleculinaria','23/03/2017','0707129484025','Teleculinaria',100,0.100,2.50,2.50,TRUE,14,NULL,'Mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,62,'Ementa da semana','23/03/2017','6954574725085','Ementa da semana',100,0.100,0.50,0.50,TRUE,13,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,39,'Caras Decoracao','23/03/2017','3209378132684','Caras Decoracao',100,0.100,3.00,3.00,TRUE,9,NULL,'Mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,39,'Casa Claudia','23/03/2017','9740495212784','Casa Claudia',100,0.100,3.50,3.50,TRUE,7,NULL,'Mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,51,'Evasoes','23/03/2017','4920701920776','Evasoes',100,0.100,1.60,1.60,TRUE,15,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,51,'Viajar','01/03/2017','6659026698925','Viajar',100,0.100,2.00,2.00,TRUE,4,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,63,'Jornal das Letras','23/03/2017','5614434196754','Jornal das Letras',100,0.100,3.00,3.00,TRUE,11,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (33,63,'Blitz','23/03/2017','7773017376326','Blitz',100,0.100,4.00,4.00,TRUE,15,NULL,'Mensal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,64,'Dica da semana','23/03/2017','6839724965936','Dica da semana',100,0.100,1.50,1.50,TRUE,7,NULL,'Semanal',NULL);
+INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (32,64,'Jornal de Barcelos','23/03/2017','7241848559321','Jornal de Barcelos',100,0.100,0.70,0.70,TRUE,9,NULL,'Semanal',NULL);
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,52,'Dicionário Básico Ilustrado da Língua Portuguesa','01/01/2016','2313908565730','Dicionário Básico Ilustrado da Língua Portuguesa.',512,0.512,9.99,9.99,TRUE,14,'primeira',NULL,'978-972-0-01993-6');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,53,'Dicionário Escolar de Inglês-Português / Português-Inglês','01/01/2016','7417447979942','Mais de 101 000 traduções e de 54 000 entradas, exemplos e expressões idiomáticas, incluindo os termos mais usuais do inglês americano e vocábulos brasileiros. Esta edição regista vocabulário corrente e atual, para além de várias palavras e sentidos novos das mais diversas áreas: biohazard, blogosphere, metrosexual, minicam, newbie na parte Inglês-Português e bloguista, linkar, login, porta-bebés, pró-ativo, resiliência na parte Português-Inglês.',765,0.765,9.90,8.91,TRUE,11,'primeira',NULL,'978-972-0-05422-7');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,54,'Dicionário Escolar de Francês-Português / Português-Francês','01/01/2016','5377031095792','Atualizada com o Acordo Ortográfico, esta edição regista as novas grafias, mantendo também as grafias anteriores na parte Português-Francês. Inclui igualmente um Guia do Acordo Ortográfico que expõe as principais alterações decorrentes da reforma ortográfica.',768,0.768,9.90,9.90,TRUE,7,'primeira',NULL,'978-972-0-01561-7');
@@ -1187,6 +1201,41 @@ INSERT INTO Imagem (publicacaoID,nome,url) VALUES (93,'Lonely Planet Costa Rica'
 INSERT INTO Imagem (publicacaoID,nome,url) VALUES (94,'Oriente Distante','/img/products/Guias_Turisticos_e_Mapas/Asia/94.jpeg');
 INSERT INTO Imagem (publicacaoID,nome,url) VALUES (95,'CITYPACK - Londres','/img/products/Guias_Turisticos_e_Mapas/Europa/95.jpeg');
 
+/* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (9,'Nathaniel Lee','feminino','10/02/1976','Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Dorothy Harrison','feminino','27/04/1973','et netus et malesuada fames ac turpis egestas. Fusce aliquet');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Risa Kim','feminino','18/11/1975','lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (18,'Desirae Chapman','masculino','31/12/1984','libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (15,'Morgan Savage','feminino','10/06/1976','magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (11,'Avram Goodwin','masculino','09/10/1974','sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (12,'Sasha Carlson','feminino','17/06/1986','fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Merritt Mclaughlin','masculino','29/06/1972','fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (6,'Kaye Murphy','masculino','18/02/1980','nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu,');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (4,'Oliver Deleon','feminino','05/08/1980','pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (7,'Macon Dalton','feminino','07/02/1977','quis diam luctus lobortis. Class aptent taciti sociosqu ad litora');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (11,'Fuller Aguirre','masculino','12/04/1980','Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (14,'Jermaine Bowman','feminino','12/01/1979','vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (10,'Erasmus Thornton','feminino','23/08/1981','et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (17,'Nathaniel Byers','feminino','22/01/1984','purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (14,'Hayfa Harrington','feminino','10/07/1974','et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (7,'Raymond Jimenez','masculino','21/04/1975','non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Jescie Sharpe','masculino','20/09/1978','tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (16,'Phyllis Navarro','masculino','07/10/1978','ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Desiree Strong','masculino','02/01/1972','Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (16,'Jenette Butler','masculino','17/07/1983','Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (15,'David Hall','masculino','10/03/1977','magna a neque. Nullam ut nisi a odio semper cursus.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (8,'Hilel Elliott','feminino','16/03/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (4,'Joy Bullock','feminino','13/05/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (10,'Christian Lambert','masculino','03/01/1972','odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (4,'Petra Mckay','feminino','11/04/1981','dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (10,'Gay Cardenas','masculino','24/09/1983','magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (14,'Laith Knox','feminino','10/12/1986','lobortis tellus justo sit amet nulla. Donec non justo. Proin non');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (18,'Amal Parsons','feminino','16/12/1970','dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Hanae Briggs','masculino','27/10/1968','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Whitney Trevino','feminino','04/01/1986','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (6,'Gail Conner','feminino','18/04/1983','sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (17,'Nolan Briggs','feminino','18/09/1978','Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus');
+
 /* ------------------------------------------------------ R11 AutorPublicacao ------------------------------------------------------ */
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (1,23);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (2,17);
@@ -1284,175 +1333,6 @@ INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,12);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,23);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (95,27);
 
-/* ------------------------------------------------------ R13 MoradaFaturacao ------------------------------------------------------ */
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (1,9);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (2,12);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (3,22);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (4,23);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (5,30);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (6,14);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (7,25);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (8,18);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (9,12);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (10,26);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (11,15);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (12,6);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (13,17);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (14,5);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (15,17);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (16,25);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (17,7);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (18,29);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (19,8);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (20,3);
-INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (21,6);
-/* ------------------------------------------------------ R14 MoradaEnvio ------------------------------------------------------ */
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (1,9);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (2,12);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (3,22);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (4,23);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (5,30);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (6,14);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (7,25);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (8,18);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (9,12);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (10,26);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (11,15);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (12,6);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (13,17);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (14,5);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (15,17);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (16,25);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (17,7);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (18,29);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (19,8);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (20,3);
-INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (21,6);
-
-/* ------------------------------------------------------ R15 CartaoCreditoCliente ------------------------------------------------------ */
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (1,'MasterCard','4539991256127798','22/05/2015','935');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (2,'MasterCard','4024007101047','14/08/2011','983');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (3,'AmericanExpress','4485012147500889','07/06/2010','837');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (4,'Visa','4485517338024358','05/06/2010','854');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (5,'AmericanExpress','4716038150097','26/04/2012','385');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (6,'Visa','4716945839428','02/05/2016','376');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (7,'MasterCard','4716953205280','01/06/2014','831');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (8,'MasterCard','4556354288945679','24/09/2011','610');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (9,'AmericanExpress','4539034808209085','06/07/2013','276');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (10,'Visa','4840928111223','10/01/2015','203');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (11,'Visa','4532027722626','15/01/2012','890');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (12,'MasterCard','4716995890950924','25/09/2012','645');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (13,'MasterCard','4401847396021','24/10/2012','719');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (14,'AmericanExpress','4916722740475409','14/08/2010','597');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (15,'AmericanExpress','4716199213119149','28/06/2015','389');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (16,'Visa','4305967903689564','11/03/2011','752');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (17,'MasterCard','4485834498720877','08/06/2011','173');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','4539959690998769','22/04/2016','970');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19,'MasterCard','4539218926600511','01/04/2012','885');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4929736934353','14/09/2011','735');
-
-/* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,1,1,'Floripes Vilarinho','masculino','08/12/1980','John','YPB58AJH6LE',TRUE,'02/09/2009 12:12:50','351212122157','non@Sed.edu','998187586','51057539 8NE7');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (2,2,1,'Isadora Vides','feminino','10/05/1991','Ignacia','FOT73YNK8JP',TRUE,'15/08/2012 15:48:15','351949891392','Etiam.laoreet@fames.edu','102798307','79782665 1XL6');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (3,3,1,'Floripes Vilarinho','masculino','02/02/2000','Michael','AXK90DBX1NI',TRUE,'19/11/2002 11:50:50','351268798886','dolor.dapibus.gravida@Namconsequatdolor.com','637237286','44216592 7KU5');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (4,4,1,'Gina Ornelas','feminino','29/03/1978','Lillith','ODB56YJQ9SX',TRUE,'19/03/1997 10:08:10','351851416852','vel.turpis.Aliquam@tinciduntpedeac.ca','060839699','96659782 2YM1');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,5,1,'Sabrina Vides','feminino','07/02/1996','Avram','OLP29HOE9KR',FALSE,'07/05/2014 09:40:20','12/12/2000 19:15:08','351731847534','Aenean.eget.magna@nulla.org','084626563','67542959 4IL4');
-
-/* ------------------------------------------------------ R17 Administrador ------------------------------------------------------ */
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Austin','masculino','04/03/2017','consectetuer','AIQ85AQG4TJ',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Elijah','feminino','02/26/2021','ullamcorper','MAV09WFT8TE',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Charde','feminino','10/21/2019','lectus','QDQ58ODE1KV',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Bo','masculino','04/02/2018','convallis','VBN58OSG2YG',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Beverly','masculino','08/09/2020','mauris','WPZ07DVI9PP',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Cathleen','feminino','01/23/2020','elit.','BSO38NJN5MA',FALSE);
-
-/* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (9,'Nathaniel Lee','feminino','10/02/1976','Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (2,'Dorothy Harrison','feminino','27/04/1973','et netus et malesuada fames ac turpis egestas. Fusce aliquet');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Risa Kim','feminino','18/11/1975','lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (18,'Desirae Chapman','masculino','31/12/1984','libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (15,'Morgan Savage','feminino','10/06/1976','magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (11,'Avram Goodwin','masculino','09/10/1974','sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (12,'Sasha Carlson','feminino','17/06/1986','fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (3,'Merritt Mclaughlin','masculino','29/06/1972','fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus.');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (6,'Kaye Murphy','masculino','18/02/1980','nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu,');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (4,'Oliver Deleon','feminino','05/08/1980','pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (7,'Macon Dalton','feminino','07/02/1977','quis diam luctus lobortis. Class aptent taciti sociosqu ad litora');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (11,'Fuller Aguirre','masculino','12/04/1980','Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus.');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (14,'Jermaine Bowman','feminino','12/01/1979','vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (10,'Erasmus Thornton','feminino','23/08/1981','et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim.');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (17,'Nathaniel Byers','feminino','22/01/1984','purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (14,'Hayfa Harrington','feminino','10/07/1974','et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (7,'Raymond Jimenez','masculino','21/04/1975','non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Jescie Sharpe','masculino','20/09/1978','tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (16,'Phyllis Navarro','masculino','07/10/1978','ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (3,'Desiree Strong','masculino','02/01/1972','Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (16,'Jenette Butler','masculino','17/07/1983','Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (15,'David Hall','masculino','10/03/1977','magna a neque. Nullam ut nisi a odio semper cursus.');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (8,'Hilel Elliott','feminino','16/03/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (4,'Joy Bullock','feminino','13/05/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (10,'Christian Lambert','masculino','03/01/1972','odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (4,'Petra Mckay','feminino','11/04/1981','dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (10,'Gay Cardenas','masculino','24/09/1983','magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (14,'Laith Knox','feminino','10/12/1986','lobortis tellus justo sit amet nulla. Donec non justo. Proin non');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (18,'Amal Parsons','feminino','16/12/1970','dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Hanae Briggs','masculino','27/10/1968','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (5,'Whitney Trevino','feminino','04/01/1986','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (6,'Gail Conner','feminino','18/04/1983','sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi');
-INSERT INTO Autor (idPais,nome,genero,dataNascimento,biografia) VALUES (17,'Nolan Briggs','feminino','18/09/1978','Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus');
-
-/* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'22/09/2016 23:55:06');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'09/04/2017 05:15:07');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'31/12/2016 15:25:20');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'22/04/2017 19:09:15');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'04/04/2017 20:48:45');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'06/05/2017 23:45:18');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'20/01/2017 10:15:45');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'22/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'16/03/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'19/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'13/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'24/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'20/03/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'16/05/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'26/10/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/09/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (1,NULL,NULL,'04/01/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (4,NULL,NULL,'30/10/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,7,NULL,'19/06/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'30/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'09/04/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,1,NULL,'22/03/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,9,NULL,'19/02/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,21,NULL,'12/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'03/01/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,4,NULL,'11/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'06/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,5,NULL,'03/09/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'03/12/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,25,NULL,'26/07/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'13/04/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'14/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'04/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,20,NULL,'26/01/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'02/07/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'01/01/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,20,'28/08/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'01/02/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'18/06/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,7,'21/01/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'17/02/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,3,'16/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,11,'15/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,19,'09/10/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'13/07/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,6,'06/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,13,'29/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'21/05/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'07/05/2017 12:45:10');
-
 /* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes	');
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Albufeira');
@@ -1548,6 +1428,141 @@ INSERT INTO Morada (codigoPostalID,rua) VALUES (27,'Praça Cidade de Odivelas');
 INSERT INTO Morada (codigoPostalID,rua) VALUES (28,'Rua da Misericórdia de Paredes');
 INSERT INTO Morada (codigoPostalID,rua) VALUES (29,'Largo dos Bombeiros Voluntários de Penafiel');
 INSERT INTO Morada (codigoPostalID,rua) VALUES (30,'Largo 1º de Dezembro');
+
+/* ------------------------------------------------------ R13 MoradaFaturacao ------------------------------------------------------ */
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (1,9);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (2,12);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (3,22);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (4,23);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (5,30);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (6,14);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (7,25);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (8,18);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (9,12);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (10,26);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (11,15);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (12,6);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (13,17);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (14,5);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (15,17);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (16,25);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (17,7);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (18,29);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (19,8);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (20,3);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (21,6);
+
+/* ------------------------------------------------------ R14 MoradaEnvio ------------------------------------------------------ */
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (1,9);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (2,12);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (3,22);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (4,23);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (5,30);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (6,14);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (7,25);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (8,18);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (9,12);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (10,26);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (11,15);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (12,6);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (13,17);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (14,5);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (15,17);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (16,25);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (17,7);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (18,29);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (19,8);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (20,3);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (21,6);
+
+/* ------------------------------------------------------ R15 CartaoCreditoCliente ------------------------------------------------------ */
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (1,'MasterCard','4539991256127798','22/05/2015','935');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (2,'MasterCard','4024007101047','14/08/2011','983');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (3,'AmericanExpress','4485012147500889','07/06/2010','837');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (4,'Visa','4485517338024358','05/06/2010','854');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (5,'AmericanExpress','4716038150097','26/04/2012','385');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (6,'Visa','4716945839428','02/05/2016','376');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (7,'MasterCard','4716953205280','01/06/2014','831');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (8,'MasterCard','4556354288945679','24/09/2011','610');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (9,'AmericanExpress','4539034808209085','06/07/2013','276');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (10,'Visa','4840928111223','10/01/2015','203');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (11,'Visa','4532027722626','15/01/2012','890');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (12,'MasterCard','4716995890950924','25/09/2012','645');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (13,'MasterCard','4401847396021','24/10/2012','719');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (14,'AmericanExpress','4916722740475409','14/08/2010','597');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (15,'AmericanExpress','4716199213119149','28/06/2015','389');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (16,'Visa','4305967903689564','11/03/2011','752');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (17,'MasterCard','4485834498720877','08/06/2011','173');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','4539959690998769','22/04/2016','970');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19,'MasterCard','4539218926600511','01/04/2012','885');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4929736934353','14/09/2011','735');
+
+/* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,1,1,'Manuel Pereira Lopes','Masculino','08/12/1980','manuellopes','YPB58AJH6LE',TRUE,'02/09/2009 12:12:50','938321270','manuelpereiralopes@hotmail.com','998187586','51057539 8NE7');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (2,2,1,'Rui Manuel Fernandes Varela','Masculino','10/05/1991','ruivarela','FOT73YNK8JP',TRUE,'15/08/2012 15:48:15','919232515','ruivarela@gmail.com','102798307','79782665 1XL6');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (3,3,1,'Emanuel Jose Costa Frade','Masculino','02/02/2000','emanuelfrade','AXK90DBX1NI',TRUE,'19/11/2002 11:50:50','917672257','emanueljosecostafrade@hotmail.com','637237286','44216592 7KU5');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (4,4,1,'Flavio Vieira Marques','Masculino','29/03/1978','flaviomarques','ODB56YJQ9SX',TRUE,'19/03/1997 10:08:10','934216494','flaviovieiramarques@gmail.com','060839699','96659782 2YM1');
+INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,5,1,'Fernanda Goncalves Teixeira','Feminino','07/02/1996','fernandateixeira','OLP29HOE9KR',FALSE,'07/05/2014 09:40:20','12/12/2016 19:15:08','938713908','fernandagoncalvesteixeira@gmail.com','937865341','67542959 4IL4');
+
+/* ------------------------------------------------------ R17 Administrador ------------------------------------------------------ */
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Austin','masculino','04/03/2017','consectetuer','AIQ85AQG4TJ',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Elijah','feminino','02/26/2021','ullamcorper','MAV09WFT8TE',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Charde','feminino','10/21/2019','lectus','QDQ58ODE1KV',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Bo','masculino','04/02/2018','convallis','VBN58OSG2YG',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Beverly','masculino','08/09/2020','mauris','WPZ07DVI9PP',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Cathleen','feminino','01/23/2020','elit.','BSO38NJN5MA',FALSE);
+
+/* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'22/09/2016 23:55:06');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'09/04/2017 05:15:07');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'31/12/2016 15:25:20');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'22/04/2017 19:09:15');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'04/04/2017 20:48:45');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'06/05/2017 23:45:18');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'20/01/2017 10:15:45');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'22/12/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/06/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'16/03/2018 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'19/06/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'13/12/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'24/12/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'20/03/2018 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'16/05/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'26/10/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/09/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (1,NULL,NULL,'04/01/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (4,NULL,NULL,'30/10/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,7,NULL,'19/06/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'30/04/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'09/04/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,1,NULL,'22/03/2018 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,9,NULL,'19/02/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,21,NULL,'12/04/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'03/01/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,4,NULL,'11/04/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'06/06/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,5,NULL,'03/09/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'03/12/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,25,NULL,'26/07/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'13/04/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'14/12/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'04/04/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,20,NULL,'26/01/2018 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'02/07/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'01/01/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,20,'28/08/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'01/02/2018 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'18/06/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,7,'21/01/2018 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'17/02/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,3,'16/12/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,11,'15/06/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,19,'09/10/2017 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'13/07/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,6,'06/06/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,13,'29/06/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'21/05/2016 12:45:10');
+INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'07/05/2017 12:45:10');
 
 /* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (1,1,1,1,'22/10/2016 12:24:36','Enviada');
