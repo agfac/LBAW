@@ -563,7 +563,7 @@ RETURNS TRIGGER
 AS $$
 BEGIN
 	UPDATE Informacaofaturacao
-	SET total=(SELECT SUM(preco)
+	SET total=(SELECT SUM(preco*quantidade)
 						FROM Publicacaoencomenda
 						WHERE encomendaID = NEW.encomendaID),
 		portes=(CASE WHEN total <= 30 THEN 2.99
