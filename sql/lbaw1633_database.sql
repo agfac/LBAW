@@ -284,7 +284,8 @@ CREATE TABLE Encomenda
 (
 	EncomendaID SERIAL,
 	ClienteID integer NOT NULL,
-	MoradaID integer NOT NULL,
+	MoradaFaturacaoID integer NOT NULL,
+	MoradaEnvioID integer NOT NULL,
 	InformacaofaturacaoID integer NOT NULL,
 	Data timestamp NOT NULL,
 	Estado EstadoEncomenda NOT NULL,
@@ -601,11 +602,11 @@ ALTER TABLE Encomenda ADD CONSTRAINT FK_Encomenda_feita_por
 ;
 
 ALTER TABLE Encomenda ADD CONSTRAINT FK_Encomenda_morada_envio
-	FOREIGN KEY (MoradaID) REFERENCES Morada (MoradaID)
+	FOREIGN KEY (MoradaEnvioID) REFERENCES Morada (MoradaID)
 ;
 
 ALTER TABLE Encomenda ADD CONSTRAINT FK_Encomenda_morada_faturacao
-	FOREIGN KEY (MoradaID) REFERENCES Morada (MoradaID)
+	FOREIGN KEY (MoradaFaturacaoID) REFERENCES Morada (MoradaID)
 ;
 
 ALTER TABLE Encomenda ADD CONSTRAINT FK_Encomenda_referente_a
@@ -1514,88 +1515,88 @@ INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,a
 INSERT INTO Administrador (paisID,nome,genero,dataNascimento,dataCessacao,username,password,ativo) VALUES (1,'Carlos Manuel Teixeira','Masculino','8/9/1991','12/02/2017','carlosteixeira','BSO38NJN5MA',FALSE);
 
 /* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'22/09/2016 23:55:06');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'09/04/2017 05:15:07');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'31/12/2016 15:25:20');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'22/04/2017 19:09:15');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'04/04/2017 20:48:45');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'06/05/2017 23:45:18');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'20/01/2017 10:15:45');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'22/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'16/03/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (3,NULL,NULL,'19/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'13/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'24/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'20/03/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'16/05/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (2,NULL,NULL,'26/10/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (5,NULL,NULL,'01/09/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (1,NULL,NULL,'04/01/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (4,NULL,NULL,'30/10/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,7,NULL,'19/06/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'30/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'09/04/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,1,NULL,'22/03/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,9,NULL,'19/02/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,21,NULL,'12/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'03/01/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,4,NULL,'11/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'06/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,5,NULL,'03/09/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'03/12/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,25,NULL,'26/07/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,18,NULL,'13/04/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,2,NULL,'14/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,23,NULL,'04/04/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,20,NULL,'26/01/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'02/07/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,21,'01/01/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,20,'28/08/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'01/02/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'18/06/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,7,'21/01/2018 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'17/02/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,3,'16/12/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,11,'15/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,19,'09/10/2017 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,5,'13/07/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,6,'06/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,13,'29/06/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'21/05/2016 12:45:10');
-INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'07/05/2017 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (6,'22/09/2016 23:55:06');
+INSERT INTO Login (administradorID,data) VALUES (5,'09/04/2017 05:15:07');
+INSERT INTO Login (administradorID,data) VALUES (3,'31/12/2016 15:25:20');
+INSERT INTO Login (administradorID,data) VALUES (5,'22/04/2017 19:09:15');
+INSERT INTO Login (administradorID,data) VALUES (5,'04/04/2017 20:48:45');
+INSERT INTO Login (administradorID,data) VALUES (5,'06/05/2017 23:45:18');
+INSERT INTO Login (administradorID,data) VALUES (3,'20/01/2017 10:15:45');
+INSERT INTO Login (administradorID,data) VALUES (3,'22/12/2016 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (5,'01/06/2016 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (2,'16/03/2018 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (3,'19/06/2016 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (6,'13/12/2016 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (2,'24/12/2016 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (2,'20/03/2018 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (6,'16/05/2016 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (2,'26/10/2017 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (5,'01/09/2017 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (1,'04/01/2017 12:45:10');
+INSERT INTO Login (administradorID,data) VALUES (4,'30/10/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (1,'19/06/2017 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (4,'30/04/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (3,'09/04/2017 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (2,'22/03/2018 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (1,'19/02/2017 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (5,'12/04/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (2,'03/01/2017 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (1,'11/04/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (3,'06/06/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (4,'03/09/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (1,'03/12/2017 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (5,'26/07/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (3,'13/04/2017 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (2,'14/12/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (1,'04/04/2016 12:45:10');
+INSERT INTO Login (funcionarioID,data) VALUES (4,'26/01/2018 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (21,'02/07/2017 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (21,'01/01/2017 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (20,'28/08/2017 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (5,'01/02/2018 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (1,'18/06/2017 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (7,'21/01/2018 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (12,'17/02/2017 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (3,'16/12/2016 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (11,'15/06/2016 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (19,'09/10/2017 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (5,'13/07/2016 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (6,'06/06/2016 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (13,'29/06/2016 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (12,'21/05/2016 12:45:10');
+INSERT INTO Login (clienteID,data) VALUES (1,'07/05/2017 12:45:10');
 
 /* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (1,1,1,1,'22/10/2016 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'04/04/2017 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,13,13,'13','14/04/2017 12:24:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'05/11/2016 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'04/11/2017 12:24:36','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'10/10/2016 12:24:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'26/12/2017 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (18,18,18,18,'15/11/2016 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (15,15,15,15,'04/09/2017 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,13,13,13,'25/05/2017 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,20,20,20,'08/05/2016 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (10,10,10,10,'14/12/2016 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,14,14,14,'28/10/2016 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'02/04/2017 12:24:36','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (7,7,7,7,'15/01/2018 12:24:36','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'24/10/2016 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (5,5,5,5,'19/04/2017 12:24:36','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'27/01/2018 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,14,14,14,'29/11/2017 12:24:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (21,21,21,21,'29/09/2017 12:24:36','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (12,12,12,12,'21/11/2017 12:24:36','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,20,20,20,'16/02/2017 12:24:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'20/05/2016 12:24:36','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'13/03/2018 12:24:36','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,19,19,19,'25/08/2016 12:24:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,19,19,19,'23/02/2018 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'20/06/2017 12:24:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (8,8,8,8,'11/08/2016 12:24:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'30/09/2016 12:24:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'01/08/2017 12:24:36','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (1,1,1,1,'22/01/2014 12:24:36','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'04/02/2014 10:28:37','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,13,13,'13','14/02/2014 09:32:45','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'15/02/2014 12:24:36','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'04/03/2014 13:21:39','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'10/03/2014 15:32:58','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'26/04/2014 22:23:49','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (18,18,18,18,'15/05/2014 21:14:46','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (15,15,15,15,'04/06/2014 17:16:37','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,13,13,13,'25/06/2014 18:12:09','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,20,20,20,'08/07/2014 15:23:36','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (10,10,10,10,'14/01/2015 16:39:34','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,14,14,14,'28/02/2015 14:25:39','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'02/03/2015 18:11:45','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (7,7,7,7,'15/04/2015 13:22:39','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'24/04/2015 08:48:39','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (5,5,5,5,'19/05/2015 09:24:33','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'27/05/2015 11:21:45','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (14,14,14,14,'29/01/2016 10:11:36','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (21,21,21,21,'29/01/2016 09:38:39','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (12,12,12,12,'21/01/2016 18:24:48','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (20,20,20,20,'16/02/2016 14:34:38','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (6,6,6,6,'20/02/2016 21:29:37','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'13/03/2016 12:09:45','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,19,19,19,'25/03/2016 10:24:43','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (19,19,19,19,'26/03/2016 09:21:36','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (3,3,3,3,'20/04/2016 18:24:45','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (8,8,8,8,'11/05/2016 09:26:36','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (11,11,11,11,'30/01/2017 14:32:33','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'01/02/2017 13:28:37','Cancelada');
 
 /* ------------------------------------------------------ R25 PublicacaoEncomenda ------------------------------------------------------ */
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (43,1);
