@@ -286,9 +286,9 @@ CREATE TABLE Encomenda
 	ClienteID integer NOT NULL,
 	MoradaFaturacaoID integer NOT NULL,
 	MoradaEnvioID integer NOT NULL,
-	InformacaofaturacaoID integer NOT NULL,
+	InformacaofaturacaoID integer NULL,
 	Data timestamp NOT NULL,
-	Estado EstadoEncomenda NOT NULL,
+	Estado EstadoEncomenda NOT NULL DEFAULT 'Em processamento',
 	CONSTRAINT PK_Encomenda PRIMARY KEY (EncomendaID)
 )
 ;
@@ -334,10 +334,10 @@ CREATE TABLE Imagem
 CREATE TABLE Informacaofaturacao
 (
 	InformacaofaturacaoID SERIAL,
-	MetodopagamentoID integer NOT NULL,
-	Portes real NOT NULL,
-	Iva real NOT NULL,
-	Total real NOT NULL,
+	MetodopagamentoID integer NULL,
+	Portes real NULL,
+	Iva real NULL,
+	Total real NULL,
 	CONSTRAINT PK_Informacaofaturacao PRIMARY KEY (InformacaofaturacaoID)
 )
 ;
@@ -474,7 +474,7 @@ CREATE TABLE Publicacaoencomenda
 	PublicacaoID Integer NOT NULL,
 	EncomendaID Integer NOT NULL,
 	Preco real NOT NULL,
-	Quantidade integer NOT NULL,
+	Quantidade integer NOT NULL DEFAULT 1,
 	CONSTRAINT PK_Publicacaoencomenda PRIMARY KEY (PublicacaoID,EncomendaID),
 	CONSTRAINT CK_Publicacaoencomenda_preco CHECK (Preco >= 0),
 	CONSTRAINT CK_Publicacaoencomenda_quantidade CHECK (Quantidade >= 1)
@@ -535,6 +535,44 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION insert_encomenda() 
+RETURNS TRIGGER 
+AS $$
+BEGIN
+	INSERT INTO Informacaofaturacao(InformacaofaturacaoID)
+	VALUES(DEFAULT)
+	RETURNING InformacaofaturacaoID
+	INTO NEW.InformacaofaturacaoID;
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION insert_publicacaoencomenda() 
+RETURNS TRIGGER 
+AS $$
+BEGIN
+	NEW.preco = (SELECT preco
+				FROM Publicacao
+				WHERE publicacaoID = NEW.publicacaoID);
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION update_informacaoFaturacao() 
+RETURNS TRIGGER 
+AS $$
+BEGIN
+	UPDATE Informacaofaturacao
+	SET total=(SELECT SUM(preco)
+						FROM Publicacaoencomenda
+						WHERE encomendaID = NEW.encomendaID)
+	WHERE informacaoFaturacaoID = (SELECT InformacaofaturacaoID
+									FROM Encomenda
+									WHERE encomendaID = NEW.encomendaID);
+
+	RETURN NULL;
+END $$ LANGUAGE plpgsql;
+
 /* Create Trigger */
 CREATE TRIGGER insert_publicacao_trigger
 BEFORE INSERT OR UPDATE ON Publicacao
@@ -550,6 +588,21 @@ CREATE TRIGGER insert_funcionario_trigger
 BEFORE INSERT OR UPDATE ON Funcionario
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_funcionario();
+
+CREATE TRIGGER insert_encomenda_trigger
+BEFORE INSERT OR UPDATE ON Encomenda
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_encomenda();
+
+CREATE TRIGGER insert_publicacaoencomenda_trigger
+BEFORE INSERT OR UPDATE ON Publicacaoencomenda
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_publicacaoencomenda();
+
+CREATE TRIGGER update_informacaoFaturacao_trigger
+AFTER INSERT OR UPDATE ON Publicacaoencomenda
+FOR EACH ROW
+	EXECUTE PROCEDURE update_informacaoFaturacao();
 
 /* Create Foreign Key Constraints */
 
@@ -1567,6 +1620,80 @@ INSERT INTO Login (clienteID,data) VALUES (12,'21/05/2016 12:45:10');
 INSERT INTO Login (clienteID,data) VALUES (1,'07/05/2017 12:45:10');
 
 /* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (1,1,1,'22/01/2014 12:24:36','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (9,9,9,'04/02/2014 10:28:37','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (13,13,'13','14/02/2014 09:32:45','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'15/02/2014 12:24:36','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (3,3,3,'04/03/2014 13:21:39','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (9,9,9,'10/03/2014 15:32:58','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'26/04/2014 22:23:49','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (18,18,18,'15/05/2014 21:14:46','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (15,15,15,'04/06/2014 17:16:37','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (13,13,13,'25/06/2014 18:12:09','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (20,20,20,'08/07/2014 15:23:36','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (10,10,10,'14/01/2015 16:39:34','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (14,14,14,'28/02/2015 14:25:39','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (6,6,6,'02/03/2015 18:11:45','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (7,7,7,'15/04/2015 13:22:39','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (3,3,3,'24/04/2015 08:48:39','Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (5,5,5,'19/05/2015 09:24:33','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (6,6,6,'27/05/2015 11:21:45','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (14,14,14,'29/01/2016 10:11:36','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (21,21,21,'29/01/2016 09:38:39','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (12,12,12,'21/01/2016 18:24:48','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (20,20,20,'16/02/2016 14:34:38','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (6,6,6,'20/02/2016 21:29:37','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'13/03/2016 12:09:45','Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (19,19,19,'25/03/2016 10:24:43','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (19,19,19,'26/03/2016 09:21:36','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (3,3,3,'20/04/2016 18:24:45','Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (8,8,8,'11/05/2016 09:26:36','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'30/01/2017 14:32:33','Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (9,9,9,'01/02/2017 13:28:37','Cancelada');
+
+/* ------------------------------------------------------ R27 MetodoPagamento ------------------------------------------------------ */
+INSERT INTO MetodoPagamento (tipo) VALUES ('Multibanco');
+INSERT INTO MetodoPagamento (tipo) VALUES ('CartaoCredito');
+INSERT INTO MetodoPagamento (tipo) VALUES ('Transferência Bancaria');
+INSERT INTO MetodoPagamento (tipo) VALUES ('À Cobrança');
+INSERT INTO MetodoPagamento (tipo) VALUES ('PayPal');
+INSERT INTO MetodoPagamento (tipo) VALUES ('MBnet');
+INSERT INTO MetodoPagamento (tipo) VALUES ('PaySafeCard');
+INSERT INTO MetodoPagamento (tipo) VALUES ('MoneyBookers');
+
+/* ------------------------------------------------------ R26 InformacaoFaturacao ------------------------------------------------------ */
+UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=1;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=2;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=3;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=4;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=5;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=6;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=4 WHERE informacaofaturacaoID=7;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=8;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=9;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=3 WHERE informacaofaturacaoID=10;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=11;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=12;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=13;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=14;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=4 WHERE informacaofaturacaoID=15;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=16;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=17;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=18;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=19;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=3 WHERE informacaofaturacaoID=20;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=21;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=22;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=23;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=24;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=25;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=3 WHERE informacaofaturacaoID=26;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=7 WHERE informacaofaturacaoID=27;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=4 WHERE informacaofaturacaoID=28;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=29;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=30;
+
+/* ------------------------------------------ Update InformacaoFaturacaoID on Encomenda ------------------------------------------------ */
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (1,1,1,1,'22/01/2014 12:24:36','Enviada');
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (9,9,9,9,'04/02/2014 10:28:37','Processada');
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,informacaoFaturacaoID,data,estado) VALUES (13,13,13,'13','14/02/2014 09:32:45','Devolvida');
@@ -1660,48 +1787,6 @@ INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (82,29);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,30);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,30);
 
-/* ------------------------------------------------------ R26 InformacaoFaturacao ------------------------------------------------------ */
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (4);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (3);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (4);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (6);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (2);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (3);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (2);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (8);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (3);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (7);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (4);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (1);
-INSERT INTO InformacaoFaturacao (metodoPagamentoID) VALUES (5);
-
-/* ------------------------------------------------------ R27 MetodoPagamento ------------------------------------------------------ */
-INSERT INTO MetodoPagamento (tipo) VALUES ('Multibanco');
-INSERT INTO MetodoPagamento (tipo) VALUES ('CartaoCredito');
-INSERT INTO MetodoPagamento (tipo) VALUES ('Transferência Bancaria');
-INSERT INTO MetodoPagamento (tipo) VALUES ('À Cobrança');
-INSERT INTO MetodoPagamento (tipo) VALUES ('PayPal');
-INSERT INTO MetodoPagamento (tipo) VALUES ('MBnet');
-INSERT INTO MetodoPagamento (tipo) VALUES ('PaySafeCard');
-INSERT INTO MetodoPagamento (tipo) VALUES ('MoneyBookers');
-
 /* ------------------------------------------------------ R28 CartaoCredito ------------------------------------------------------ */
 INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4539991256127798','22/05/2015','935');
 INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4024007101047434','14/08/2011','983');
@@ -1747,56 +1832,56 @@ INSERT INTO Multibanco (entidade,referencia) VALUES ('72657','229 647 948');
 INSERT INTO Multibanco (entidade,referencia) VALUES ('84466','417 838 858');
 
 /* ------------------------------------------------------ R30 Pesquisa ------------------------------------------------------ */
-INSERT INTO Pesquisa (data,mensagem) VALUES ('04/11/2016 10:45:20','Livro');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('02/11/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('19/03/2018 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('15/09/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('15/01/2017 10:45:20','Men');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('18/10/2016 10:45:20','Spider');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('08/02/2018 10:45:20','Revista');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('09/03/2017 10:45:20','Revista');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('06/09/2017 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('26/04/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('19/11/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('27/05/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('18/06/2016 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('10/03/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('06/05/2016 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('12/11/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('06/07/2016 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('03/01/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('16/10/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('11/11/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('11/10/2016 10:45:20','Revista');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('10/08/2016 10:45:20','Revista');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('09/06/2016 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('14/11/2017 10:45:20','Men');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('15/04/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('27/10/2016 10:45:20','Spider');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('27/08/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('28/03/2017 10:45:20','Embalar');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('01/03/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('05/06/2017 10:45:20','Men');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('29/04/2016 10:45:20','Spider');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('08/03/2018 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('26/11/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('11/12/2017 10:45:20','Historias');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('08/12/2016 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('20/08/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('18/09/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('03/06/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('20/10/2017 10:45:20','Revista');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('04/11/2016 10:45:20','Livro');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('11/06/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('25/08/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('04/09/2017 10:45:20','Embalar');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('01/04/2017 10:45:20','Historias');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('09/01/2018 10:45:20','Historias');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('06/04/2017 10:45:20','Exames');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('13/07/2017 10:45:20','Embalar');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('08/02/2017 10:45:20','Historias');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('14/10/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,mensagem) VALUES ('16/02/2018 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('04/11/2016 10:45:20','Livro');
+INSERT INTO Pesquisa (data,expressao) VALUES ('02/11/2017 10:45:20','Livro');
+INSERT INTO Pesquisa (data,expressao) VALUES ('19/03/2018 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('15/09/2017 10:45:20','Spider');
+INSERT INTO Pesquisa (data,expressao) VALUES ('15/01/2017 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('18/10/2016 10:45:20','Spider');
+INSERT INTO Pesquisa (data,expressao) VALUES ('08/02/2018 10:45:20','Revista');
+INSERT INTO Pesquisa (data,expressao) VALUES ('09/03/2017 10:45:20','Revista');
+INSERT INTO Pesquisa (data,expressao) VALUES ('06/09/2017 10:45:20','Jornal');
+INSERT INTO Pesquisa (data,expressao) VALUES ('26/04/2016 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('19/11/2016 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('27/05/2016 10:45:20','Arte');
+INSERT INTO Pesquisa (data,expressao) VALUES ('18/06/2016 10:45:20','Jornal');
+INSERT INTO Pesquisa (data,expressao) VALUES ('10/03/2017 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('06/05/2016 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('12/11/2017 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('06/07/2016 10:45:20','Jornal');
+INSERT INTO Pesquisa (data,expressao) VALUES ('03/01/2017 10:45:20','Livro');
+INSERT INTO Pesquisa (data,expressao) VALUES ('16/10/2016 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('11/11/2016 10:45:20','Arte');
+INSERT INTO Pesquisa (data,expressao) VALUES ('11/10/2016 10:45:20','Revista');
+INSERT INTO Pesquisa (data,expressao) VALUES ('10/08/2016 10:45:20','Revista');
+INSERT INTO Pesquisa (data,expressao) VALUES ('09/06/2016 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('14/11/2017 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('15/04/2017 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('27/10/2016 10:45:20','Spider');
+INSERT INTO Pesquisa (data,expressao) VALUES ('27/08/2017 10:45:20','Spider');
+INSERT INTO Pesquisa (data,expressao) VALUES ('28/03/2017 10:45:20','Embalar');
+INSERT INTO Pesquisa (data,expressao) VALUES ('01/03/2017 10:45:20','Livro');
+INSERT INTO Pesquisa (data,expressao) VALUES ('05/06/2017 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('29/04/2016 10:45:20','Spider');
+INSERT INTO Pesquisa (data,expressao) VALUES ('08/03/2018 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('26/11/2017 10:45:20','Spider');
+INSERT INTO Pesquisa (data,expressao) VALUES ('11/12/2017 10:45:20','Historias');
+INSERT INTO Pesquisa (data,expressao) VALUES ('08/12/2016 10:45:20','Jornal');
+INSERT INTO Pesquisa (data,expressao) VALUES ('20/08/2016 10:45:20','Men');
+INSERT INTO Pesquisa (data,expressao) VALUES ('18/09/2017 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('03/06/2016 10:45:20','Arte');
+INSERT INTO Pesquisa (data,expressao) VALUES ('20/10/2017 10:45:20','Revista');
+INSERT INTO Pesquisa (data,expressao) VALUES ('04/11/2016 10:45:20','Livro');
+INSERT INTO Pesquisa (data,expressao) VALUES ('11/06/2017 10:45:20','Livro');
+INSERT INTO Pesquisa (data,expressao) VALUES ('25/08/2017 10:45:20','Spider');
+INSERT INTO Pesquisa (data,expressao) VALUES ('04/09/2017 10:45:20','Embalar');
+INSERT INTO Pesquisa (data,expressao) VALUES ('01/04/2017 10:45:20','Historias');
+INSERT INTO Pesquisa (data,expressao) VALUES ('09/01/2018 10:45:20','Historias');
+INSERT INTO Pesquisa (data,expressao) VALUES ('06/04/2017 10:45:20','Exames');
+INSERT INTO Pesquisa (data,expressao) VALUES ('13/07/2017 10:45:20','Embalar');
+INSERT INTO Pesquisa (data,expressao) VALUES ('08/02/2017 10:45:20','Historias');
+INSERT INTO Pesquisa (data,expressao) VALUES ('14/10/2017 10:45:20','Preparacao');
+INSERT INTO Pesquisa (data,expressao) VALUES ('16/02/2018 10:45:20','Men');
 
 /* ------------------------------------------------------ R31 PerguntaUtilizador ------------------------------------------------------ */
 INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('20/01/2018 15:48:12','Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?');
