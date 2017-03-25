@@ -515,11 +515,25 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION insert_cliente() 
+RETURNS TRIGGER 
+AS $$
+BEGIN
+	NEW.idade := date_part('year', age(NEW.Datanascimento));
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
 /* Create Trigger */
 CREATE TRIGGER insert_publicacao_trigger
 BEFORE INSERT OR UPDATE ON Publicacao
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_publicacao();
+
+CREATE TRIGGER insert_cliente_trigger
+BEFORE INSERT OR UPDATE ON Cliente
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_cliente();
 
 /* Create Foreign Key Constraints */
 
@@ -955,27 +969,27 @@ INSERT INTO Pais (nome) VALUES ('Timor-Leste');
 INSERT INTO Pais (nome) VALUES ('Jamaica');
 
 /* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Rafaela Xerxes Arouca','Feminino','21/03/1993','tincidunt','QYU41RAX3FI',TRUE,'05/03/2013 11:54:40','351420448201','non.sollicitudin.a@penatibuset.net','044593724');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Lenia Melissa Hilario','Feminino','24/03/1995','etuard','BRD41MAM5ON',TRUE,'03/10/2015 13:34:40','351663405180','ac.tellus@duiCumsociis.com','283234271');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Jacinto Agata Frota','Masculino','15/11/1988','Suspendisse','RQV35LJX2ML',TRUE,'12/10/2013 15:32:42','351570450863','tellus.sem.mollis@pedesagittis.com','239054718');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Helena Ilidio Chaves','Feminino','15/03/1979','Donec','LSL47AZW9BX',TRUE,'09/11/2013 17:26:35','351248634912','eleifend@erat.co.uk','405583318');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Mauro Guadalupe Ruas','Masculino','13/11/1980','Nunc','VEF30WBO4MB',FALSE,'01/08/2013 14:32:12','01/08/2016','351352495908','Mauris@euismodindolor.org','161643248');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Marcelo Adélio Dutra','Masculino','07/06/1996','dolor','GCV39KPT8BG',TRUE,'22/09/2014 15:29:18','351372157601','Phasellus.fermentum@scelerisquescelerisquedui.net','156008522');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Angelica Tristao Bras','Feminino','08/02/1971','bibendum','PGT76GUP3KT',TRUE,'07/10/2012 12:16:32','351574669344','ipsum.dolor@arcuimperdiet.ca','551775972');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Sabino Aarao Outeiro','Masculino','11/07/1993','nulla','UCQ67FXR1YJ',TRUE,'23/09/2017 09:36:35','351522673296','fames.ac@Fusce.net','156795223');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Mileide Celso Conceicao','Feminino','12/08/1988','consectetuer','FBT96EWW3LM',TRUE,'01/04/2015 11:02:34','351941111705','Nunc.ut@sociis.net','122897197');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Angela Amelia Castelo','Feminino','01/10/1976','nisi.','MCL83NVJ2EH',TRUE,'30/07/2014 11:43:22','351112320225','aptent.taciti.sociosqu@aodio.net','817189216');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Valeria Tairine Jardim','Feminino','01/09/1981','placerat,','QYZ07WLN7YC',TRUE,'21/04/2012 14:33:22','351693131764','non.vestibulum@vitae.co.uk','220227873');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Aluisio Godo Figueiro','Masculino','12/01/1979','exita','YBS70AHE9VH',TRUE,'22/08/2015 10:07:12','351843916006','euismod.urna@cursusa.net','184681792');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Bernardino Rodolfo Montenegro','Masculino','12/09/1976','veluto','ORU30BNL0JK',FALSE,'28/11/2016 11:12:40','10/03/2017','351940437319','massa@Donec.co.uk','995300138');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Florbela Bernardo Carvalhoso','Feminino','12/06/1976','antediria','NGJ01GJR0YA',TRUE,'18/04/2014 09:08:33','351621486426','ligula.Aenean.gravida@fermentumrisus.com','828257176');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Marcio Laura Pimentel','Masculino','04/10/1988','lacusisa','EEK74UJV6HC',TRUE,'09/05/2012 21:50:32','351150656950','molestie.orci.tincidunt@sed.edu','337520918');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Clarisse Tania Morgado','Feminino','11/12/1975','duitita','HGY55RMA9YB',TRUE,'12/12/2013 08:32:21','351562778088','facilisis.facilisis.magna@accumsansed.co.uk','794359407');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Gonçalo Gerardo Valim','Masculino','02/11/1990','adedado','YJP07DRL9MK',TRUE,'03/01/2013 12:43:21','351592986017','elit.pharetra@dictumPhasellusin.net','736225027');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Catarina Leonardo Maia','Feminino','09/07/1970','fermentum','BKF67NLO2SU',TRUE,'01/03/2014 15:50:32','351096527271','tempus.scelerisque@eleifendegestas.org','833984062');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Samuel Belchior Carreiro','Masculino','22/03/1986','nullazita','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','351261926055','ante@augue.net','866169562');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Dino Gualdim Maranhao','Masculino','29/06/1973','nullalo','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','351287509459','sed.dictum@cursus.edu','898351545');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Armando Dina Mieiro','Masculino','06/09/1998','eratado','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','351149796559','sem@Duissit.co.uk','259873398');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Joao Americo Pereira Ribeiro','Masculino','21/03/1993','joaoribeiro','QYU41RAX3FI',TRUE,'05/03/2013 11:54:40','934844763','joaoribeiro@gmail.com','044593724');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Antonio Joaquim dos Santos Teixeira','Masculino','24/03/1995','antonioteixeira','BRD41MAM5ON',TRUE,'03/10/2015 13:34:40','966450982','antonioteixiera@gmail.com','283234271');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Eduardo Paredes da Silva','Masculino','15/11/1988','eduardosilva','RQV35LJX2ML',TRUE,'12/10/2013 15:32:42','917716855','eduardoparedessilva@gmail.com','239054718');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Alexandre Jose Ribeiro Gaspar','Masculino','15/03/1979','alexandregaspar','LSL47AZW9BX',TRUE,'09/11/2013 17:26:35','917176613','alexandrejosegaspar@gmail.com','405583318');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Maria de Castro Meireles Guerra','Feminino','13/11/1980','mariaguerra','VEF30WBO4MB',FALSE,'01/08/2013 14:32:12','01/08/2016','968203005','mariameirelesguerra@hotmail.com','161643248');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Luis Alberto Martins Guimaraes','Masculino','07/06/1996','luisguimaraes','GCV39KPT8BG',TRUE,'22/09/2014 15:29:18','964412884','luisalbertoguimaraes@gmail.com','156008522');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Ricardo Martins Marques','Masculino','08/02/1971','ricardomarques','PGT76GUP3KT',TRUE,'07/10/2012 12:16:32','962680460','ricardomartinsmarques@gmail.com','551775972');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Belmiro Jose Guimaraes Pinto','Masculino','11/07/1993','belmiropinto','UCQ67FXR1YJ',TRUE,'23/09/2017 09:36:35','914899512','belmirojoseguimaraespinto@hotmail.com','156795223');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Ricardo Antonio Ramos Cruz','Masculino','12/08/1988','ricardocruz','FBT96EWW3LM',TRUE,'01/04/2015 11:02:34','934216494','ricardoantonioramoscruz@gmail.com','122897197');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Daniel Rodrigues de Sousa Carmo','Masculino','01/10/1976','danielcarmo','MCL83NVJ2EH',TRUE,'30/07/2014 11:43:22','933835578','danielsousacarmo@hotmail.com','817189216');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Henrique Jose Gouveia Pinto','Masculino','01/09/1981','henriquepinto,','QYZ07WLN7YC',TRUE,'21/04/2012 14:33:22','912356510','henriquegouveiapinto@gmail.com','220227873');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Augusto Manuel Alves Pardal','Masculino','12/01/1979','augustopardal','YBS70AHE9VH',TRUE,'22/08/2015 10:07:12','967193101','augustomanuelpardal@gmail.com','184681792');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Manuel da Costa Soares de Sampaio','Masculino','12/09/1976','manuelsampaio','ORU30BNL0JK',FALSE,'28/11/2016 11:12:40','10/03/2017','964749241','manuelsoaressampaio@gmail.com','995300138');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Maria Adelaide Ribeiro','Feminino','12/06/1976','mariaribeiro','NGJ01GJR0YA',TRUE,'18/04/2014 09:08:33','918367885','mariaadelaideribeiro@gmail.com','828257176');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Fernando Jose Costa Matos','Masculino','04/10/1988','fernandomatos','EEK74UJV6HC',TRUE,'09/05/2012 21:50:32','932641906','fernandojosecostamatos@gmail.com','337520918');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Teresa Maria Ribeiro Gaspar','Feminino','11/12/1975','teresagaspar','HGY55RMA9YB',TRUE,'12/12/2013 08:32:21','938501001','teresamariagaspar@gmail.com','794359407');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Teresa de Jesus Teixeira Ferreira','Feminino','02/11/1990','teresaferreira','YJP07DRL9MK',TRUE,'03/01/2013 12:43:21','926131659','teresajesusteixeira@hotmail.com','736225027');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Jose Manuel Carvalho dos Santos','Masculino','09/07/1970','josesantos','BKF67NLO2SU',TRUE,'01/03/2014 15:50:32','965650958','josemanuelcarvalhodossantos@hotmail.com','833984062');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Jorge Manuel Rodrigues Goncalves','Masculino','22/03/1986','jorgegoncalves','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','966172007','jorgemanuelrodriguesgoncalves@gmail.com','866169562');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Helena Isabel Duarte Dias Ribeiro','Feminino','29/06/1973','helenaribeiro','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','966229693','helenaisabelribeiro@hotmail.com','898351545');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Armando Dina Mieiro','Masculino','06/09/1998','armandomieiro','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','917865498','armandomieiro@gmail.com','259873398');
 
 /* ------------------------------------------------------ R4 WishList ------------------------------------------------------ */
 INSERT INTO WishList (clienteID,nome) VALUES (15,'Informatica');
