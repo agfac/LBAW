@@ -152,6 +152,7 @@ CREATE TABLE Administrador
 	Nome varchar(100) NOT NULL,
 	Genero varchar(50) NOT NULL,
 	Datanascimento date NOT NULL,
+	Datacessacao date NULL,
 	Username varchar(50) NOT NULL,
 	Password varchar(50) NOT NULL,
 	Ativo boolean NOT NULL,
@@ -1505,12 +1506,12 @@ INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNasciment
 INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,5,1,'Fernanda Goncalves Teixeira','Feminino','07/02/1996','fernandateixeira','OLP29HOE9KR',FALSE,'07/05/2014 09:40:20','12/12/2016 19:15:08','938713908','fernandagoncalvesteixeira@gmail.com','937865341','67542959 4IL4');
 
 /* ------------------------------------------------------ R17 Administrador ------------------------------------------------------ */
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Austin','masculino','04/03/2017','consectetuer','AIQ85AQG4TJ',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Elijah','feminino','02/26/2021','ullamcorper','MAV09WFT8TE',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Charde','feminino','10/21/2019','lectus','QDQ58ODE1KV',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Bo','masculino','04/02/2018','convallis','VBN58OSG2YG',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Beverly','masculino','08/09/2020','mauris','WPZ07DVI9PP',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Cathleen','feminino','01/23/2020','elit.','BSO38NJN5MA',FALSE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Renata Vieira Esteves','Feminino','17/8/1994','renataesteves','AIQ85AQG4TJ',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Carla Maria dos Santos Botelho','Feminino','27/3/1994','carlabotelho','MAV09WFT8TE',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Tiago Miguel Alves Campos','Masculino','15/3/1993','tiagocampos','QDQ58ODE1KV',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Armindo Alves Teixeira','Masculino','8/3/1992','armindoteixeira','VBN58OSG2YG',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Joaquim da Costa Torres','Masculino','19/7/1991','joaquimtorres','WPZ07DVI9PP',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,dataCessacao,username,password,ativo) VALUES (1,'Carlos Manuel Teixeira','Masculino','8/9/1991','12/02/2017','carlosteixeira','BSO38NJN5MA',FALSE);
 
 /* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
 INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (6,NULL,NULL,'22/09/2016 23:55:06');
