@@ -52,13 +52,33 @@ function listarPublicacoesPorSubCategoria($nomeSubCategoria)
 
 
 //SELECT10 - Pesquisa do funcionário por username
-
+function retornaFuncionarPorUsername($username)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM funcionario WHERE username = :username');
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
 //SELECT11 - Pesquisa do administrador por username
-
+function retornaAdministradorPorUsername($username)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM administrador WHERE username = :username');
+    $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
 //SELECT12 - Pesquisa de encomendas em processamento
-
+function listaEncomendasEmProcessamento()
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM encomenda WHERE estado = "em processamento"');
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
 //SELECT13 - Pesquisa dos últimos 10 clientes que efetuaram login
 
