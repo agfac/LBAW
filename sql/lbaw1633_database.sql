@@ -185,7 +185,7 @@ CREATE TABLE Carrinho
 (
 	CarrinhoID SERIAL,
 	Datacriacao timestamp NOT NULL,
-	Subtotal real NOT NULL,
+	Subtotal real,
 	CONSTRAINT PK_Carrinho PRIMARY KEY (CarrinhoID)
 )
 ;
@@ -453,7 +453,7 @@ CREATE TABLE Publicacao
 	Isbn varchar(100) NULL,
 	CONSTRAINT PK_Publicacao PRIMARY KEY (PublicacaoID),
 	CONSTRAINT publicacao_codigobarras_key UNIQUE (Codigobarras),
-	CONSTRAINT CK_Publicacao_precopromocional CHECK (Precopromocional < Preco)
+	CONSTRAINT CK_Publicacao_precopromocional CHECK (Precopromocional <= Preco)
 )
 ;
 
@@ -504,6 +504,22 @@ CREATE TABLE Wishlist
 	CONSTRAINT PK_Wishlist PRIMARY KEY (WishlistID)
 )
 ;
+
+/* Create Trigger Funtions */
+CREATE OR REPLACE FUNCTION insert_publicacao() 
+RETURNS TRIGGER 
+AS $$
+BEGIN
+	NEW.iva := NEW.preco / 1.23;
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
+/* Create Trigger */
+CREATE TRIGGER insert_publicacao_trigger
+BEFORE INSERT OR UPDATE ON Publicacao
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_publicacao();
 
 /* Create Foreign Key Constraints */
 
@@ -665,6 +681,117 @@ ALTER TABLE Wishlist ADD CONSTRAINT FK_WishList_possui
 
 /* Inserts */
 
+/* ------------------------------------------------------ R10 Categoria ------------------------------------------------------ */
+INSERT INTO Categoria (nome) VALUES ('Livros');
+INSERT INTO Categoria (nome) VALUES ('Livros Escolares');
+INSERT INTO Categoria (nome) VALUES ('Apoio Escolar');
+INSERT INTO Categoria (nome) VALUES ('Revistas');
+INSERT INTO Categoria (nome) VALUES ('Dicionarios e Enciclopedias');
+INSERT INTO Categoria (nome) VALUES ('Guias Turisticos e Mapas');
+
+/* ------------------------------------------------------ R9 SubCategoria ------------------------------------------------------ */
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Arte');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Banda Desenhada');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Ciencias Exatas e Naturais');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Ciencias Sociais e Humanas');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Desporto e Lazer');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Direito');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Engenharia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Ensino e Educacao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Gastronomia e Vinhos');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Gestao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Historia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Informatica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Literatura');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Medicina');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Politica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Religião e Moral');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Saude e Bem Estar');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'1.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'2.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'3.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'4.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'5.º e 6.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'7.º, 8.º e 9.º ciclo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'Ensino Secundario');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'1.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'2.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'3.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'4.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'5.º e 6.º ano');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'7.º, 8.º e 9.º ciclo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'Ensino Secundario');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Agricultura');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Arquitetura');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Arte');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Automobilismo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Aviação');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Científicas');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Cinema');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Decoracao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Desporto');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Direito');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Economia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Fotografia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Historia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Humor');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Infantis');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Informatica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Moda');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Musica');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Quebra-cabecas');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Turismo');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Portugues');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Ingles');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Frances');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Alemao');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Espanhol');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'Africa');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'America');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'Asia');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'Europa');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Social');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Culinaria');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Lazer');
+INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Regionais');
+
+/* ------------------------------------------------------ R8 Editora ------------------------------------------------------ */
+INSERT INTO Editora (nome) VALUES ('Coral Books');
+INSERT INTO Editora (nome) VALUES ('Editorial Gustavo Gili');
+INSERT INTO Editora (nome) VALUES ('G. Floy Studio');
+INSERT INTO Editora (nome) VALUES ('Gradiva');
+INSERT INTO Editora (nome) VALUES ('Marcador');
+INSERT INTO Editora (nome) VALUES ('Pergaminho');
+INSERT INTO Editora (nome) VALUES ('A Esfera dos Livros');
+INSERT INTO Editora (nome) VALUES ('Jacarandá Editora');
+INSERT INTO Editora (nome) VALUES ('Edições Afrontamento');
+INSERT INTO Editora (nome) VALUES ('Porto Editora');
+INSERT INTO Editora (nome) VALUES ('FCA');
+INSERT INTO Editora (nome) VALUES ('Publindústria');
+INSERT INTO Editora (nome) VALUES ('Vogais');
+INSERT INTO Editora (nome) VALUES ('EuroImpala');
+INSERT INTO Editora (nome) VALUES ('Editorial Presença');
+INSERT INTO Editora (nome) VALUES ('Top Books');
+INSERT INTO Editora (nome) VALUES ('Objectiva');
+INSERT INTO Editora (nome) VALUES ('Editora Guerra & Paz');
+INSERT INTO Editora (nome) VALUES ('Sextante Editora (chancela)');
+INSERT INTO Editora (nome) VALUES ('Lidel');
+INSERT INTO Editora (nome) VALUES ('Mc Graw-Hill');
+INSERT INTO Editora (nome) VALUES ('Nascente');
+INSERT INTO Editora (nome) VALUES ('Lucerna');
+INSERT INTO Editora (nome) VALUES ('Centro de Cura');
+INSERT INTO Editora (nome) VALUES ('Prime Books');
+INSERT INTO Editora (nome) VALUES ('Edições Gailivro');
+INSERT INTO Editora (nome) VALUES ('Livros Horizonte');
+INSERT INTO Editora (nome) VALUES ('Editorial Caminho');
+INSERT INTO Editora (nome) VALUES ('Editorial Minerva');
+INSERT INTO Editora (nome) VALUES ('Ideias de Ler');
+INSERT INTO Editora (nome) VALUES ('Areal Editores');
+INSERT INTO Editora (nome) VALUES ('Cofina');
+INSERT INTO Editora (nome) VALUES ('Impresa');
+INSERT INTO Editora (nome) VALUES ('Lonely Planet Global Limited');
+INSERT INTO Editora (nome) VALUES ('Oficina do Livro');
+
 /* ------------------------------------------------------ R1 Publicação ------------------------------------------------------ */
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (1,1,'Arte Portuguesa no Século XX','01/01/2017','3230014481474','Bernardo Pinto de Almeida, aquele que muitos consideram o mais importante crítico de arte da actualidade, oferece-nos aqui uma larga visão panorâmica e solidamente fundamentada da recepção nacional aos movimentos artísticos do século XX e dos seus protagonistas. De agora em diante esta obra, ilustrada por centenas de imagens, muitas delas quase inéditas, será «a» História da Arte Portuguesa do Século XX, uma referência incontornável para artistas, coleccionadores, estudiosos e amantes de arte.',496,0.496,59.99,53.91,TRUE,3,'primeira',NULL,'9789898851086');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (2,1,'Guia Essencial Para o Estudante de Fotografia Profissional','01/01/2017','2192558647840','Capturar e compartilhar imagens fotográficas são práticas bastante comuns atualmente, que estão ao alcance de todos. No entanto, neste universo digital do século xxi, no qual milhões de pessoas se comunicam todos os dias por meio de fotografias, nem sempre é fácil saber quais conhecimentos um fotógrafo deve reunir para conseguir se distinguir dos demais como profissional.',192,0.192,21.20,19.08,TRUE,11,'primeira',NULL,'9788584520848');
@@ -806,6 +933,49 @@ INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (15,1
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (88,3,2);
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (76,4,1);
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (66,4,2);
+
+/* ------------------------------------------------------ R20 Pais ------------------------------------------------------ */
+INSERT INTO Pais (nome) VALUES ('Portugal');
+INSERT INTO Pais (nome) VALUES ('Espanha');
+INSERT INTO Pais (nome) VALUES ('Angola');
+INSERT INTO Pais (nome) VALUES ('Argentina');
+INSERT INTO Pais (nome) VALUES ('Mexico');
+INSERT INTO Pais (nome) VALUES ('Brasil');
+INSERT INTO Pais (nome) VALUES ('Cabo Verde');
+INSERT INTO Pais (nome) VALUES ('Chile');
+INSERT INTO Pais (nome) VALUES ('Dinamarca');
+INSERT INTO Pais (nome) VALUES ('USA');
+INSERT INTO Pais (nome) VALUES ('Reino Unido');
+INSERT INTO Pais (nome) VALUES ('Irlanda');
+INSERT INTO Pais (nome) VALUES ('Venezuela');
+INSERT INTO Pais (nome) VALUES ('Peru');
+INSERT INTO Pais (nome) VALUES ('Egito');
+INSERT INTO Pais (nome) VALUES ('Hong Kong');
+INSERT INTO Pais (nome) VALUES ('Timor-Leste');
+INSERT INTO Pais (nome) VALUES ('Jamaica');
+
+/* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Rafaela Xerxes Arouca','Feminino','21/03/1993','tincidunt','QYU41RAX3FI',TRUE,'05/03/2013 11:54:40','351420448201','non.sollicitudin.a@penatibuset.net','044593724');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Lenia Melissa Hilario','Feminino','24/03/1995','etuard','BRD41MAM5ON',TRUE,'03/10/2015 13:34:40','351663405180','ac.tellus@duiCumsociis.com','283234271');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Jacinto Agata Frota','Masculino','15/11/1988','Suspendisse','RQV35LJX2ML',TRUE,'12/10/2013 15:32:42','351570450863','tellus.sem.mollis@pedesagittis.com','239054718');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Helena Ilidio Chaves','Feminino','15/03/1979','Donec','LSL47AZW9BX',TRUE,'09/11/2013 17:26:35','351248634912','eleifend@erat.co.uk','405583318');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Mauro Guadalupe Ruas','Masculino','13/11/1980','Nunc','VEF30WBO4MB',FALSE,'01/08/2013 14:32:12','01/08/2016','351352495908','Mauris@euismodindolor.org','161643248');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Marcelo Adélio Dutra','Masculino','07/06/1996','dolor','GCV39KPT8BG',TRUE,'22/09/2014 15:29:18','351372157601','Phasellus.fermentum@scelerisquescelerisquedui.net','156008522');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Angelica Tristao Bras','Feminino','08/02/1971','bibendum','PGT76GUP3KT',TRUE,'07/10/2012 12:16:32','351574669344','ipsum.dolor@arcuimperdiet.ca','551775972');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Sabino Aarao Outeiro','Masculino','11/07/1993','nulla','UCQ67FXR1YJ',TRUE,'23/09/2017 09:36:35','351522673296','fames.ac@Fusce.net','156795223');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Mileide Celso Conceicao','Feminino','12/08/1988','consectetuer','FBT96EWW3LM',TRUE,'01/04/2015 11:02:34','351941111705','Nunc.ut@sociis.net','122897197');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Angela Amelia Castelo','Feminino','01/10/1976','nisi.','MCL83NVJ2EH',TRUE,'30/07/2014 11:43:22','351112320225','aptent.taciti.sociosqu@aodio.net','817189216');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Valeria Tairine Jardim','Feminino','01/09/1981','placerat,','QYZ07WLN7YC',TRUE,'21/04/2012 14:33:22','351693131764','non.vestibulum@vitae.co.uk','220227873');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Aluisio Godo Figueiro','Masculino','12/01/1979','exita','YBS70AHE9VH',TRUE,'22/08/2015 10:07:12','351843916006','euismod.urna@cursusa.net','184681792');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Bernardino Rodolfo Montenegro','Masculino','12/09/1976','veluto','ORU30BNL0JK',FALSE,'28/11/2016 11:12:40','10/03/2017','351940437319','massa@Donec.co.uk','995300138');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Florbela Bernardo Carvalhoso','Feminino','12/06/1976','antediria','NGJ01GJR0YA',TRUE,'18/04/2014 09:08:33','351621486426','ligula.Aenean.gravida@fermentumrisus.com','828257176');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Marcio Laura Pimentel','Masculino','04/10/1988','lacusisa','EEK74UJV6HC',TRUE,'09/05/2012 21:50:32','351150656950','molestie.orci.tincidunt@sed.edu','337520918');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Clarisse Tania Morgado','Feminino','11/12/1975','duitita','HGY55RMA9YB',TRUE,'12/12/2013 08:32:21','351562778088','facilisis.facilisis.magna@accumsansed.co.uk','794359407');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Gonçalo Gerardo Valim','Masculino','02/11/1990','adedado','YJP07DRL9MK',TRUE,'03/01/2013 12:43:21','351592986017','elit.pharetra@dictumPhasellusin.net','736225027');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Catarina Leonardo Maia','Feminino','09/07/1970','fermentum','BKF67NLO2SU',TRUE,'01/03/2014 15:50:32','351096527271','tempus.scelerisque@eleifendegestas.org','833984062');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Samuel Belchior Carreiro','Masculino','22/03/1986','nullazita','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','351261926055','ante@augue.net','866169562');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Dino Gualdim Maranhao','Masculino','29/06/1973','nullalo','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','351287509459','sed.dictum@cursus.edu','898351545');
+INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Armando Dina Mieiro','Masculino','06/09/1998','eratado','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','351149796559','sem@Duissit.co.uk','259873398');
 
 /* ------------------------------------------------------ R4 WishList ------------------------------------------------------ */
 INSERT INTO WishList (clienteID,nome) VALUES (15,'Informatica');
@@ -1003,117 +1173,6 @@ INSERT INTO Imagem (publicacaoID,nome,url) VALUES (93,'Lonely Planet Costa Rica'
 INSERT INTO Imagem (publicacaoID,nome,url) VALUES (94,'Oriente Distante','/img/products/Guias_Turisticos_e_Mapas/Asia/94.jpeg');
 INSERT INTO Imagem (publicacaoID,nome,url) VALUES (95,'CITYPACK - Londres','/img/products/Guias_Turisticos_e_Mapas/Europa/95.jpeg');
 
-/* ------------------------------------------------------ R8 Editora ------------------------------------------------------ */
-INSERT INTO Editora (nome) VALUES ('Coral Books');
-INSERT INTO Editora (nome) VALUES ('Editorial Gustavo Gili');
-INSERT INTO Editora (nome) VALUES ('G. Floy Studio');
-INSERT INTO Editora (nome) VALUES ('Gradiva');
-INSERT INTO Editora (nome) VALUES ('Marcador');
-INSERT INTO Editora (nome) VALUES ('Pergaminho');
-INSERT INTO Editora (nome) VALUES ('A Esfera dos Livros');
-INSERT INTO Editora (nome) VALUES ('Jacarandá Editora');
-INSERT INTO Editora (nome) VALUES ('Edições Afrontamento');
-INSERT INTO Editora (nome) VALUES ('Porto Editora');
-INSERT INTO Editora (nome) VALUES ('FCA');
-INSERT INTO Editora (nome) VALUES ('Publindústria');
-INSERT INTO Editora (nome) VALUES ('Vogais');
-INSERT INTO Editora (nome) VALUES ('EuroImpala');
-INSERT INTO Editora (nome) VALUES ('Editorial Presença');
-INSERT INTO Editora (nome) VALUES ('Top Books');
-INSERT INTO Editora (nome) VALUES ('Objectiva');
-INSERT INTO Editora (nome) VALUES ('Editora Guerra & Paz');
-INSERT INTO Editora (nome) VALUES ('Sextante Editora (chancela)');
-INSERT INTO Editora (nome) VALUES ('Lidel');
-INSERT INTO Editora (nome) VALUES ('Mc Graw-Hill');
-INSERT INTO Editora (nome) VALUES ('Nascente');
-INSERT INTO Editora (nome) VALUES ('Lucerna');
-INSERT INTO Editora (nome) VALUES ('Centro de Cura');
-INSERT INTO Editora (nome) VALUES ('Prime Books');
-INSERT INTO Editora (nome) VALUES ('Edições Gailivro');
-INSERT INTO Editora (nome) VALUES ('Livros Horizonte');
-INSERT INTO Editora (nome) VALUES ('Editorial Caminho');
-INSERT INTO Editora (nome) VALUES ('Editorial Minerva');
-INSERT INTO Editora (nome) VALUES ('Ideias de Ler');
-INSERT INTO Editora (nome) VALUES ('Areal Editores');
-INSERT INTO Editora (nome) VALUES ('Cofina');
-INSERT INTO Editora (nome) VALUES ('Impresa');
-INSERT INTO Editora (nome) VALUES ('Lonely Planet Global Limited');
-INSERT INTO Editora (nome) VALUES ('Oficina do Livro');
-
-/* ------------------------------------------------------ R9 SubCategoria ------------------------------------------------------ */
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Arte');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Banda Desenhada');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Ciencias Exatas e Naturais');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Ciencias Sociais e Humanas');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Desporto e Lazer');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Direito');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Engenharia');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Ensino e Educacao');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Gastronomia e Vinhos');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Gestao');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Historia');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Informatica');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Literatura');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Medicina');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Politica');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Religião e Moral');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (1,'Saude e Bem Estar');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'1.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'2.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'3.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'4.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'5.º e 6.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'7.º, 8.º e 9.º ciclo');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (2,'Ensino Secundario');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'1.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'2.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'3.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'4.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'5.º e 6.º ano');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'7.º, 8.º e 9.º ciclo');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (3,'Ensino Secundario');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Agricultura');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Arquitetura');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Arte');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Automobilismo');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Aviação');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Científicas');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Cinema');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Decoracao');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Desporto');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Direito');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Economia');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Fotografia');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Historia');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Humor');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Infantis');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Informatica');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Moda');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Musica');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Quebra-cabecas');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Turismo');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Portugues');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Ingles');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Frances');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Alemao');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (5,'Espanhol');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'Africa');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'America');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'Asia');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (6,'Europa');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Social');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Culinaria');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Lazer');
-INSERT INTO SubCategoria (categoriaID,nome) VALUES (4,'Regionais');
-
-/* ------------------------------------------------------ R10 Categoria ------------------------------------------------------ */
-INSERT INTO Categoria (nome) VALUES ('Livros');
-INSERT INTO Categoria (nome) VALUES ('Livros Escolares');
-INSERT INTO Categoria (nome) VALUES ('Apoio Escolar');
-INSERT INTO Categoria (nome) VALUES ('Revistas');
-INSERT INTO Categoria (nome) VALUES ('Dicionarios e Enciclopedias');
-INSERT INTO Categoria (nome) VALUES ('Guias Turisticos e Mapas');
-
 /* ------------------------------------------------------ R11 AutorPublicacao ------------------------------------------------------ */
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (1,23);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (2,17);
@@ -1210,29 +1269,6 @@ INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (92,30);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,12);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,23);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (95,27);
-
-/* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Rafaela Xerxes Arouca','Feminino','21/03/1993','tincidunt','QYU41RAX3FI',TRUE,'05/03/2013 24:50:40','351420448201','non.sollicitudin.a@penatibuset.net','044593724');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Lenia Melissa Hilario','Feminino','24/03/1995','etuard','BRD41MAM5ON',TRUE,'03/10/2015 24:50:40','351663405180','ac.tellus@duiCumsociis.com','283234271');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Jacinto Agata Frota','Masculino','15/11/1988','Suspendisse','RQV35LJX2ML',TRUE,'12/10/2013 24:50:40','351570450863','tellus.sem.mollis@pedesagittis.com','239054718');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Helena Ilidio Chaves','Feminino','15/03/1979','Donec','LSL47AZW9BX',TRUE,'09/11/2013 24:50:40','351248634912','eleifend@erat.co.uk','405583318');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Mauro Guadalupe Ruas','Masculino','13/11/1980','Nunc','VEF30WBO4MB',FALSE,'01/08/2013 24:50:40','01/08/2016','351352495908','Mauris@euismodindolor.org','161643248');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Marcelo Adélio Dutra','Masculino','07/06/1996','dolor','GCV39KPT8BG',TRUE,'22/09/2014 24:50:40','351372157601','Phasellus.fermentum@scelerisquescelerisquedui.net','156008522');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Angelica Tristao Bras','Feminino','08/02/1971','bibendum','PGT76GUP3KT',TRUE,'07/10/2012 24:50:40','351574669344','ipsum.dolor@arcuimperdiet.ca','551775972');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Sabino Aarao Outeiro','Masculino','11/07/1993','nulla','UCQ67FXR1YJ',TRUE,'23/09/2017 24:50:40','351522673296','fames.ac@Fusce.net','156795223');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Mileide Celso Conceicao','Feminino','12/08/1988','consectetuer','FBT96EWW3LM',TRUE,'01/04/2015 24:50:40','351941111705','Nunc.ut@sociis.net','122897197');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Angela Amelia Castelo','Feminino','01/10/1976','nisi.','MCL83NVJ2EH',TRUE,'30/07/2014 24:50:40','351112320225','aptent.taciti.sociosqu@aodio.net','817189216');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Valeria Tairine Jardim','Feminino','01/09/1981','placerat,','QYZ07WLN7YC',TRUE,'21/04/2012 24:50:40','351693131764','non.vestibulum@vitae.co.uk','220227873');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Aluisio Godo Figueiro','Masculino','12/01/1979','exita','YBS70AHE9VH',TRUE,'22/08/2015 24:50:40','351843916006','euismod.urna@cursusa.net','184681792');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Bernardino Rodolfo Montenegro','Masculino','12/09/1976','veluto','ORU30BNL0JK',FALSE,'28/11/2016 24:50:40','10/03/2017','351940437319','massa@Donec.co.uk','995300138');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Florbela Bernardo Carvalhoso','Feminino','12/06/1976','antediria','NGJ01GJR0YA',TRUE,'18/04/2014 24:50:40','351621486426','ligula.Aenean.gravida@fermentumrisus.com','828257176');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Marcio Laura Pimentel','Masculino','04/10/1988','lacusisa','EEK74UJV6HC',TRUE,'09/05/2012 24:50:40','351150656950','molestie.orci.tincidunt@sed.edu','337520918');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Clarisse Tania Morgado','Feminino','11/12/1975','duitita','HGY55RMA9YB',TRUE,'12/12/2013 24:50:40','351562778088','facilisis.facilisis.magna@accumsansed.co.uk','794359407');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Gonçalo Gerardo Valim','Masculino','02/11/1990','adedado','YJP07DRL9MK',TRUE,'03/01/2013 24:50:40','351592986017','elit.pharetra@dictumPhasellusin.net','736225027');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Catarina Leonardo Maia','Feminino','09/07/1970','fermentum','BKF67NLO2SU',TRUE,'01/03/2014 24:50:40','351096527271','tempus.scelerisque@eleifendegestas.org','833984062');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Samuel Belchior Carreiro','Masculino','22/03/1986','nullazita','NWH27SAD6MP',TRUE,'02/10/2015 24:50:40','351261926055','ante@augue.net','866169562');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Dino Gualdim Maranhao','Masculino','29/06/1973','nullalo','NNS43YYQ8GT',TRUE,'01/03/2016 24:50:40','351287509459','sed.dictum@cursus.edu','898351545');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Armando Dina Mieiro','Masculino','06/09/1998','eratado','HLL49KIO9FU',TRUE,'12/11/2012 24:50:40','351149796559','sem@Duissit.co.uk','259873398');
 
 /* ------------------------------------------------------ R13 MoradaFaturacao ------------------------------------------------------ */
 INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (1,9);
@@ -1402,26 +1438,6 @@ INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NU
 INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,13,'29/06/2016 12:45:10');
 INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,12,'21/05/2016 12:45:10');
 INSERT INTO Login (administradorID,funcionarioID,clienteID,data) VALUES (NULL,NULL,1,'07/05/2017 12:45:10');
-
-/* ------------------------------------------------------ R20 Pais ------------------------------------------------------ */
-INSERT INTO Pais (nome) VALUES ('Portugal');
-INSERT INTO Pais (nome) VALUES ('Espanha');
-INSERT INTO Pais (nome) VALUES ('Angola');
-INSERT INTO Pais (nome) VALUES ('Argentina');
-INSERT INTO Pais (nome) VALUES ('Mexico');
-INSERT INTO Pais (nome) VALUES ('Brasil');
-INSERT INTO Pais (nome) VALUES ('Cabo Verde');
-INSERT INTO Pais (nome) VALUES ('Chile');
-INSERT INTO Pais (nome) VALUES ('Dinamarca');
-INSERT INTO Pais (nome) VALUES ('USA');
-INSERT INTO Pais (nome) VALUES ('Reino Unido');
-INSERT INTO Pais (nome) VALUES ('Irlanda');
-INSERT INTO Pais (nome) VALUES ('Venezuela');
-INSERT INTO Pais (nome) VALUES ('Peru');
-INSERT INTO Pais (nome) VALUES ('Egito');
-INSERT INTO Pais (nome) VALUES ('Hong Kong');
-INSERT INTO Pais (nome) VALUES ('Timor-Leste');
-INSERT INTO Pais (nome) VALUES ('Jamaica');
 
 /* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes	');
