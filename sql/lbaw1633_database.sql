@@ -107,6 +107,35 @@ DROP TYPE IF EXISTS Estadoencomenda CASCADE
 DROP TYPE IF EXISTS Periodicidade CASCADE
 ;
 
+/* Drop Indexes */
+
+DROP INDEX IF EXISTS idx_publicacao_titulo CASCADE
+;
+
+DROP INDEX IF EXISTS idx_publicacao_subcategoria CASCADE
+;
+
+DROP INDEX IF EXISTS idx_publicacao_descricao CASCADE
+;
+
+DROP INDEX IF EXISTS idx_publicacao_stock CASCADE
+;
+
+DROP INDEX IF EXISTS idx_encomenda_cliente CASCADE
+;
+
+DROP INDEX IF EXISTS idx_encomenda_estado CASCADE
+;
+
+DROP INDEX IF EXISTS idx_login_cliente CASCADE
+;
+
+DROP INDEX IF EXISTS idx_cliente_carrinho CASCADE
+;
+
+DROP INDEX IF EXISTS idx_cliente_nome CASCADE
+;
+
 /* Drop Triggers */
 
 DROP TRIGGER IF EXISTS insert_publicacao_trigger ON Publicacao CASCADE
@@ -532,6 +561,34 @@ CREATE TABLE Wishlist
 	Nome varchar(50) NOT NULL,
 	CONSTRAINT PK_Wishlist PRIMARY KEY (WishlistID)
 )
+;
+
+/* Create Indexes */
+CREATE INDEX idx_publicacao_titulo ON Publicacao (Titulo)
+;
+
+CREATE INDEX idx_publicacao_subcategoria ON Publicacao (SubcategoriaID)
+;
+
+CREATE INDEX idx_publicacao_descricao ON Publicacao (Descricao)
+;
+
+CREATE INDEX idx_publicacao_stock ON Publicacao (Stock)
+;
+
+CREATE INDEX idx_encomenda_cliente ON Encomenda (ClienteID)
+;
+
+CREATE INDEX idx_encomenda_estado ON Encomenda (Estado)
+;
+
+CREATE INDEX idx_login_cliente ON Login (ClienteID)
+;
+
+CREATE INDEX idx_cliente_carrinho ON Cliente (CarrinhoID)
+;
+
+CREATE INDEX idx_cliente_nome ON Cliente (Nome)
 ;
 
 /* Create Trigger Funtions */
