@@ -534,7 +534,7 @@ CREATE OR REPLACE FUNCTION insert_publicacao()
 RETURNS TRIGGER
 AS $$
 BEGIN
-	NEW.iva := NEW.preco / 1.23;
+	NEW.iva := NEW.preco-(NEW.preco/1.23);
 
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
@@ -543,6 +543,13 @@ CREATE OR REPLACE FUNCTION insert_cliente()
 RETURNS TRIGGER
 AS $$
 BEGIN
+	INSERT INTO Carrinho(Datacriacao)
+	VALUES(CURRENT_TIMESTAMP)
+	RETURNING CarrinhoID
+	INTO NEW.CarrinhoID;
+
+	NEW.Dataregisto := CURRENT_TIMESTAMP;
+
 	NEW.idade := date_part('year', age(NEW.Datanascimento));
 
 	RETURN NEW;
@@ -565,6 +572,8 @@ BEGIN
 	VALUES(DEFAULT)
 	RETURNING InformacaofaturacaoID
 	INTO NEW.InformacaofaturacaoID;
+
+	NEW.Data := CURRENT_TIMESTAMP;
 
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
@@ -590,7 +599,7 @@ BEGIN
 						WHERE encomendaID = NEW.encomendaID),
 		portes=(CASE WHEN total <= 30 THEN 2.99
 						ELSE 0.00 END),
-		iva=total / 1.23
+		iva=total-(total/1.23)
 	WHERE informacaoFaturacaoID = (SELECT InformacaofaturacaoID
 									FROM Encomenda
 									WHERE encomendaID = NEW.encomendaID);
@@ -624,6 +633,16 @@ CREATE TRIGGER insert_publicacaoencomenda_trigger
 BEFORE INSERT OR UPDATE ON Publicacaoencomenda
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_publicacaoencomenda();
+
+CREATE TRIGGER insert_comentario_trigger
+BEFORE INSERT OR UPDATE ON Comentario
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_comentario();
+
+CREATE TRIGGER insert_imagem_trigger
+BEFORE INSERT OR UPDATE ON Imagem
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_imagem();
 
 CREATE TRIGGER update_informacaoFaturacao_trigger
 AFTER INSERT OR UPDATE ON Publicacaoencomenda
@@ -998,17 +1017,48 @@ INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBar
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (35,59,'Oriente Distante','01/01/2012','7961913135419','Viajante habitual, o autor percorre o trilho dos vestígios da cultura e presença portuguesa pelo Oriente. Neste livro, embaixador itinerante por Macau, Japão, Mongólia, Camboja, Xinjiang e Vietname onde Portugal permanece teimosamente presente - apesar da perda do protagonismo.',453,0.453,13.90,13.90,TRUE,15,'primeira',NULL,'9789895555505');
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,60,'CITYPACK - Londres','01/01/2017','0063535683248','Descubra a cidade de Londres com a ajuda do guia CityPack',176,0.176,13.30,11.97,TRUE,7,'primeira',NULL,'978-972-0-00039-2');
 
-/* ------------------------------------------------------ R2 Carrinho ------------------------------------------------------ */
-INSERT INTO Carrinho (dataCriacao) VALUES ('11/12/2016 10:50:50');
-INSERT INTO Carrinho (dataCriacao) VALUES ('09/03/2018 11:20:40');
-INSERT INTO Carrinho (dataCriacao) VALUES ('05/09/2017 12:10:30');
-INSERT INTO Carrinho (dataCriacao) VALUES ('14/01/2017 13:10:20');
-INSERT INTO Carrinho (dataCriacao) VALUES ('31/03/2017 14:20:10');
-INSERT INTO Carrinho (dataCriacao) VALUES ('17/09/2017 15:40:20');
-INSERT INTO Carrinho (dataCriacao) VALUES ('23/05/2016 15:30:30');
-INSERT INTO Carrinho (dataCriacao) VALUES ('27/08/2016 10:20:40');
-INSERT INTO Carrinho (dataCriacao) VALUES ('05/05/2016 11:10:50');
-INSERT INTO Carrinho (dataCriacao) VALUES ('17/08/2017 09:10:30');
+/* ------------------------------------------------------ R20 Pais ------------------------------------------------------ */
+INSERT INTO Pais (nome) VALUES ('Portugal');
+INSERT INTO Pais (nome) VALUES ('Espanha');
+INSERT INTO Pais (nome) VALUES ('Angola');
+INSERT INTO Pais (nome) VALUES ('Argentina');
+INSERT INTO Pais (nome) VALUES ('Mexico');
+INSERT INTO Pais (nome) VALUES ('Brasil');
+INSERT INTO Pais (nome) VALUES ('Cabo Verde');
+INSERT INTO Pais (nome) VALUES ('Chile');
+INSERT INTO Pais (nome) VALUES ('Dinamarca');
+INSERT INTO Pais (nome) VALUES ('USA');
+INSERT INTO Pais (nome) VALUES ('Reino Unido');
+INSERT INTO Pais (nome) VALUES ('Irlanda');
+INSERT INTO Pais (nome) VALUES ('Venezuela');
+INSERT INTO Pais (nome) VALUES ('Peru');
+INSERT INTO Pais (nome) VALUES ('Egito');
+INSERT INTO Pais (nome) VALUES ('Hong Kong');
+INSERT INTO Pais (nome) VALUES ('Timor-Leste');
+INSERT INTO Pais (nome) VALUES ('Jamaica');
+
+/* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Joao Americo Pereira Ribeiro','Masculino','21/03/1993','joaoribeiro','QYU41RAX3FI',TRUE,'05/03/2013 11:54:40','934844763','joaoribeiro@gmail.com','044593724');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Antonio Joaquim dos Santos Teixeira','Masculino','24/03/1995','antonioteixeira','BRD41MAM5ON',TRUE,'03/10/2015 13:34:40','966450982','antonioteixiera@gmail.com','283234271');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Eduardo Paredes da Silva','Masculino','15/11/1988','eduardosilva','RQV35LJX2ML',TRUE,'12/10/2013 15:32:42','917716855','eduardoparedessilva@gmail.com','239054718');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Alexandre Jose Ribeiro Gaspar','Masculino','15/03/1979','alexandregaspar','LSL47AZW9BX',TRUE,'09/11/2013 17:26:35','917176613','alexandrejosegaspar@gmail.com','405583318');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Maria de Castro Meireles Guerra','Feminino','13/11/1980','mariaguerra','VEF30WBO4MB',TRUE,'01/08/2013 14:32:12','968203005','mariameirelesguerra@hotmail.com','161643248');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Luis Alberto Martins Guimaraes','Masculino','07/06/1996','luisguimaraes','GCV39KPT8BG',TRUE,'22/09/2014 15:29:18','964412884','luisalbertoguimaraes@gmail.com','156008522');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Ricardo Martins Marques','Masculino','08/02/1971','ricardomarques','PGT76GUP3KT',TRUE,'07/10/2012 12:16:32','962680460','ricardomartinsmarques@gmail.com','551775972');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Belmiro Jose Guimaraes Pinto','Masculino','11/07/1993','belmiropinto','UCQ67FXR1YJ',TRUE,'23/09/2017 09:36:35','914899512','belmirojoseguimaraespinto@hotmail.com','156795223');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Ricardo Antonio Ramos Cruz','Masculino','12/08/1988','ricardocruz','FBT96EWW3LM',TRUE,'01/04/2015 11:02:34','934216494','ricardoantonioramoscruz@gmail.com','122897197');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Daniel Rodrigues de Sousa Carmo','Masculino','01/10/1976','danielcarmo','MCL83NVJ2EH',TRUE,'30/07/2014 11:43:22','933835578','danielsousacarmo@hotmail.com','817189216');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Henrique Jose Gouveia Pinto','Masculino','01/09/1981','henriquepinto,','QYZ07WLN7YC',TRUE,'21/04/2012 14:33:22','912356510','henriquegouveiapinto@gmail.com','220227873');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Augusto Manuel Alves Pardal','Masculino','12/01/1979','augustopardal','YBS70AHE9VH',TRUE,'22/08/2015 10:07:12','967193101','augustomanuelpardal@gmail.com','184681792');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Manuel da Costa Soares de Sampaio','Masculino','12/09/1976','manuelsampaio','ORU30BNL0JK',TRUE,'28/11/2016 11:12:40','964749241','manuelsoaressampaio@gmail.com','995300138');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Maria Adelaide Ribeiro','Feminino','12/06/1976','mariaribeiro','NGJ01GJR0YA',TRUE,'18/04/2014 09:08:33','918367885','mariaadelaideribeiro@gmail.com','828257176');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Fernando Jose Costa Matos','Masculino','04/10/1988','fernandomatos','EEK74UJV6HC',TRUE,'09/05/2012 21:50:32','932641906','fernandojosecostamatos@gmail.com','337520918');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Teresa Maria Ribeiro Gaspar','Feminino','11/12/1975','teresagaspar','HGY55RMA9YB',TRUE,'12/12/2013 08:32:21','938501001','teresamariagaspar@gmail.com','794359407');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Teresa de Jesus Teixeira Ferreira','Feminino','02/11/1990','teresaferreira','YJP07DRL9MK',TRUE,'03/01/2013 12:43:21','926131659','teresajesusteixeira@hotmail.com','736225027');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Jose Manuel Carvalho dos Santos','Masculino','09/07/1970','josesantos','BKF67NLO2SU',TRUE,'01/03/2014 15:50:32','965650958','josemanuelcarvalhodossantos@hotmail.com','833984062');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Jorge Manuel Rodrigues Goncalves','Masculino','22/03/1986','jorgegoncalves','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','966172007','jorgemanuelrodriguesgoncalves@gmail.com','866169562');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Helena Isabel Duarte Dias Ribeiro','Feminino','29/06/1973','helenaribeiro','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','966229693','helenaisabelribeiro@hotmail.com','898351545');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Armando Dina Mieiro','Masculino','06/09/1998','armandomieiro','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','917865498','armandomieiro@gmail.com','259873398');
 
 /* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (11,4,3);
@@ -1042,49 +1092,6 @@ INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (15,1
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (88,3,2);
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (76,4,1);
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (66,4,2);
-
-/* ------------------------------------------------------ R20 Pais ------------------------------------------------------ */
-INSERT INTO Pais (nome) VALUES ('Portugal');
-INSERT INTO Pais (nome) VALUES ('Espanha');
-INSERT INTO Pais (nome) VALUES ('Angola');
-INSERT INTO Pais (nome) VALUES ('Argentina');
-INSERT INTO Pais (nome) VALUES ('Mexico');
-INSERT INTO Pais (nome) VALUES ('Brasil');
-INSERT INTO Pais (nome) VALUES ('Cabo Verde');
-INSERT INTO Pais (nome) VALUES ('Chile');
-INSERT INTO Pais (nome) VALUES ('Dinamarca');
-INSERT INTO Pais (nome) VALUES ('USA');
-INSERT INTO Pais (nome) VALUES ('Reino Unido');
-INSERT INTO Pais (nome) VALUES ('Irlanda');
-INSERT INTO Pais (nome) VALUES ('Venezuela');
-INSERT INTO Pais (nome) VALUES ('Peru');
-INSERT INTO Pais (nome) VALUES ('Egito');
-INSERT INTO Pais (nome) VALUES ('Hong Kong');
-INSERT INTO Pais (nome) VALUES ('Timor-Leste');
-INSERT INTO Pais (nome) VALUES ('Jamaica');
-
-/* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Joao Americo Pereira Ribeiro','Masculino','21/03/1993','joaoribeiro','QYU41RAX3FI',TRUE,'05/03/2013 11:54:40','934844763','joaoribeiro@gmail.com','044593724');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Antonio Joaquim dos Santos Teixeira','Masculino','24/03/1995','antonioteixeira','BRD41MAM5ON',TRUE,'03/10/2015 13:34:40','966450982','antonioteixiera@gmail.com','283234271');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,3,'Eduardo Paredes da Silva','Masculino','15/11/1988','eduardosilva','RQV35LJX2ML',TRUE,'12/10/2013 15:32:42','917716855','eduardoparedessilva@gmail.com','239054718');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Alexandre Jose Ribeiro Gaspar','Masculino','15/03/1979','alexandregaspar','LSL47AZW9BX',TRUE,'09/11/2013 17:26:35','917176613','alexandrejosegaspar@gmail.com','405583318');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,5,'Maria de Castro Meireles Guerra','Feminino','13/11/1980','mariaguerra','VEF30WBO4MB',FALSE,'01/08/2013 14:32:12','01/08/2016 22:12:43','968203005','mariameirelesguerra@hotmail.com','161643248');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Luis Alberto Martins Guimaraes','Masculino','07/06/1996','luisguimaraes','GCV39KPT8BG',TRUE,'22/09/2014 15:29:18','964412884','luisalbertoguimaraes@gmail.com','156008522');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Ricardo Martins Marques','Masculino','08/02/1971','ricardomarques','PGT76GUP3KT',TRUE,'07/10/2012 12:16:32','962680460','ricardomartinsmarques@gmail.com','551775972');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Belmiro Jose Guimaraes Pinto','Masculino','11/07/1993','belmiropinto','UCQ67FXR1YJ',TRUE,'23/09/2017 09:36:35','914899512','belmirojoseguimaraespinto@hotmail.com','156795223');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Ricardo Antonio Ramos Cruz','Masculino','12/08/1988','ricardocruz','FBT96EWW3LM',TRUE,'01/04/2015 11:02:34','934216494','ricardoantonioramoscruz@gmail.com','122897197');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Daniel Rodrigues de Sousa Carmo','Masculino','01/10/1976','danielcarmo','MCL83NVJ2EH',TRUE,'30/07/2014 11:43:22','933835578','danielsousacarmo@hotmail.com','817189216');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Henrique Jose Gouveia Pinto','Masculino','01/09/1981','henriquepinto,','QYZ07WLN7YC',TRUE,'21/04/2012 14:33:22','912356510','henriquegouveiapinto@gmail.com','220227873');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,2,'Augusto Manuel Alves Pardal','Masculino','12/01/1979','augustopardal','YBS70AHE9VH',TRUE,'22/08/2015 10:07:12','967193101','augustomanuelpardal@gmail.com','184681792');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,dataCancelamento,telefone,email,nif) VALUES (1,3,'Manuel da Costa Soares de Sampaio','Masculino','12/09/1976','manuelsampaio','ORU30BNL0JK',FALSE,'28/11/2016 11:12:40','10/03/2017 19:45:32','964749241','manuelsoaressampaio@gmail.com','995300138');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,4,'Maria Adelaide Ribeiro','Feminino','12/06/1976','mariaribeiro','NGJ01GJR0YA',TRUE,'18/04/2014 09:08:33','918367885','mariaadelaideribeiro@gmail.com','828257176');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,5,'Fernando Jose Costa Matos','Masculino','04/10/1988','fernandomatos','EEK74UJV6HC',TRUE,'09/05/2012 21:50:32','932641906','fernandojosecostamatos@gmail.com','337520918');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,6,'Teresa Maria Ribeiro Gaspar','Feminino','11/12/1975','teresagaspar','HGY55RMA9YB',TRUE,'12/12/2013 08:32:21','938501001','teresamariagaspar@gmail.com','794359407');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,7,'Teresa de Jesus Teixeira Ferreira','Feminino','02/11/1990','teresaferreira','YJP07DRL9MK',TRUE,'03/01/2013 12:43:21','926131659','teresajesusteixeira@hotmail.com','736225027');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,8,'Jose Manuel Carvalho dos Santos','Masculino','09/07/1970','josesantos','BKF67NLO2SU',TRUE,'01/03/2014 15:50:32','965650958','josemanuelcarvalhodossantos@hotmail.com','833984062');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,9,'Jorge Manuel Rodrigues Goncalves','Masculino','22/03/1986','jorgegoncalves','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','966172007','jorgemanuelrodriguesgoncalves@gmail.com','866169562');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,10,'Helena Isabel Duarte Dias Ribeiro','Feminino','29/06/1973','helenaribeiro','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','966229693','helenaisabelribeiro@hotmail.com','898351545');
-INSERT INTO Cliente (paisID,carrinhoID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,1,'Armando Dina Mieiro','Masculino','06/09/1998','armandomieiro','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','917865498','armandomieiro@gmail.com','259873398');
 
 /* ------------------------------------------------------ R4 WishList ------------------------------------------------------ */
 INSERT INTO WishList (clienteID,nome) VALUES (15,'Informatica');
@@ -1153,134 +1160,134 @@ INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (13,87);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,29);
 
 /* ------------------------------------------------------ R6 Comentario ------------------------------------------------------ */
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,34,'12/08/2017 21:30:16',1,'et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,43,'21/08/2017 21:30:16',1,'Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (14,91,'12/05/2017 21:30:16',4,'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,66,'14/08/2016 21:30:16',3,'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,79,'20/09/2016 21:30:16',1,'Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,57,'03/09/2017 21:30:16',4,'ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (10,15,'20/05/2016 21:30:16',4,'sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,28,'29/04/2017 21:30:16',1,'id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,51,'30/07/2016 21:30:16',1,'nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (15,8,'18/06/2016 21:30:16',3,'Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (1,14,'25/08/2017 21:30:16',3,'turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,80,'10/05/2016 21:30:16',2,'elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non,');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (10,42,'03/06/2017 21:30:16',1,'a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,17,'14/12/2016 21:30:16',5,'Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a,');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (16,78,'16/10/2016 21:30:16',4,'Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio.');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (16,66,'25/03/2016 21:30:16',1,'consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,83,'16/01/2017 21:30:16',3,'a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,34,'16/08/2017 21:30:16',3,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,33,'10/12/2016 21:30:16',3,'iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,88,'12/07/2017 21:30:16',5,'ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (8,59,'31/05/2016 21:30:16',1,'pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,57,'28/05/2017 21:30:16',4,'consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu,');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,8,'07/07/2016 21:30:16',4,'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa.');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,51,'27/06/2016 21:30:16',4,'blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (15,63,'02/11/2017 21:30:16',3,'nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,66,'15/06/2017 21:30:16',4,'rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (20,27,'27/03/2017 21:30:16',2,'Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,63,'13/09/2017 21:30:16',1,'lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (14,46,'28/07/2017 21:30:16',5,'bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,22,'28/03/2016 21:30:16',4,'odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim.');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,54,'18/10/2016 21:30:16',5,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,34,1,'et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,43,1,'Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,91,4,'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,66,3,'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,79,1,'Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (12,57,4,'ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (10,15,4,'sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,28,1,'id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (12,51,1,'nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (15,8,3,'Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (1,14,3,'turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,80,2,'elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non,');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (10,42,1,'a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (12,17,5,'Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a,');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (16,78,4,'Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (16,66,1,'consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,83,3,'a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,34,3,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,33,3,'iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,88,5,'ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (8,59,1,'pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,57,4,'consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu,');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,8,4,'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,51,4,'blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (15,63,3,'nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,66,4,'rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (20,27,2,'Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,63,1,'lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,46,5,'bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,22,4,'odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,54,5,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis');
 
 /* ------------------------------------------------------ R7 Imagem ------------------------------------------------------ */
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (1,'Arte Portuguesa no Século XX','/img/products/Livros/Arte/1.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (2,'Guia Essencial Para o Estudante de Fotografia Profissional','/img/products/Livros/Arte/2.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (3,'SAGA','/img/products/Livros/Banda_Desenhada/3.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (4,'Velvet - Vol. 2','/img/products/Livros/Banda_Desenhada/4.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (5,'Ciência Cosmológica','/img/products/Livros/Ciencias_Exatas_e_Naturais/5.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (6,'O Livro da Ciência','/img/products/Livros/Ciencias_Exatas_e_Naturais/6.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (7,'Inteligência Multifocal','/img/products/Livros/Ciencias_Sociais_e_Humanas/7.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (8,'Amor Zero','/img/products/Livros/Ciencias_Sociais_e_Humanas/8.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (9,'Labirintos Quase Impossíveis','/img/products/Livros/Desporto_e_Lazer/9.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (10,'Estética e Desporto','/img/products/Livros/Desporto_e_Lazer/10.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (11,'Condomínio','/img/products/Livros/Direito/11.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (12,'Códigos Penal e Processo Penal','/img/products/Livros/Direito/12.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (13,'Programação de CNC para Torno e Fresadora','/img/products/Livros/Engenharia/13.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (14,'Guia de Aplicações de Gestão de Energia e Eficiência Energética','/img/products/Livros/Engenharia/14.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (15,'Adolescência, os Anos da Mudança','/img/products/Livros/Ensino_e_Educacao/15.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (16,'Os Nossos Adolescentes e a Droga','/img/products/Livros/Ensino_e_Educacao/16.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (17,'As Receitas da Minha Querida Mãe','/img/products/Livros/Gastronomia_e_Vinhos/17.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (18,'Deixei de Comer Carne. E Agora?','/img/products/Livros/Gastronomia_e_Vinhos/18.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (19,'Tenha Um Bom Dia!','/img/products/Livros/Gestao/19.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (20,'Atitude UAUme!','/img/products/Livros/Gestao/20.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (21,'Os Últimos Dias de Estaline','/img/products/Livros/Historia/21.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (22,'Grandes Discursos da História','/img/products/Livros/Historia/22.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (23,'Desenvolvimento em Swift para iOS','/img/products/Livros/Informatica/23.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (24,'Android','/img/products/Livros/Informatica/24.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (25,'O feitiço de Marraquex','/img/products/Livros/Literatura/25.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (26,'Para onde vão os gatos quando morrem?','/img/products/Livros/Literatura/26.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (27,'Protocolos de Medicina Materno-Fetal','/img/products/Livros/Medicina/27.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (28,'Anatomia e Fisiologia de Seeley','/img/products/Livros/Medicina/28.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (29,'Jorge Sampaio - Uma Biografia - 2.º volume','/img/products/Livros/Politica/29.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (30,'Quinta-feira','/img/products/Livros/Politica/30.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (31,'O Amor É Contagioso','/img/products/Livros/Religiao_e_Moral/31.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (32,'Deus ou Nada','/img/products/Livros/Religiao_e_Moral/32.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (33,'Manual de Tratamento - 250 Doenças','/img/products/Livros/Saude_e_Bem_Estar/33.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (34,'Chegar Novo a Velho - Receitas','/img/products/Livros/Saude_e_Bem_Estar/34.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (35,'Gosto de Matemática 1','/img/products/Livros_Escolares/1.º_ano/35.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (36,'Alfa - Adição e Subtração - 6-8 anos','/img/products/Livros_Escolares/1.º_ano/36.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (37,'Preparo-me para as Provas de Aferição - 2º Ano 2016/2017','/img/products/Livros_Escolares/2.º_ano/37.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (38,'Casos de Leitura - 1.º Ciclo','/img/products/Livros_Escolares/2.º_ano/38.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (39,'Poemas da Mentira e da Verdade','/img/products/Livros_Escolares/3.º_ano/39.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (40,'A Gramática - Português - 1.º ciclo','/img/products/Livros_Escolares/3.º_ano/40.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (41,'O Beijo da Palavrinha','/img/products/Livros_Escolares/4.º_ano/41.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (42,'Histórias do Arco da Velha','/img/products/Livros_Escolares/4.º_ano/42.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (43,'Chocolate à Chuva','/img/products/Livros_Escolares/5.º_e_6.º_ano/43.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (44,'Ulisses','/img/products/Livros_Escolares/5.º_e_6.º_ano/44.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (45,'Gramática de Português - 3.º Ciclo','/img/products/Livros_Escolares/7.º_8.º_e_9.º_ciclo/45.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (46,'Os Lusíadas','/img/products/Livros_Escolares/7.º_8.º_e_9.º_ciclo/46.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (47,'Preparação para o Exame Final Nacional 2017 - Português - 12.º Ano','/img/products/Livros_Escolares/Ensino_Secundario/47.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (48,'Resumos - Memorial do Convento - José Saramago - Ensino Secundário','/img/products/Livros_Escolares/Ensino_Secundario/48.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (49,'Fichas de Ortografia - 1.º Ano','/img/products/Apoio_Escolar/1.º_ano/49.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (50,'Troca-Tintas - 5-6 Anos','/img/products/Apoio_Escolar/1.º_ano/50.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (51,'Apoio ao Estudo - 2.º Ano','/img/products/Apoio_Escolar/2.º_ano/51.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (52,'Ditados 1.º e 2.º anos','/img/products/Apoio_Escolar/2.º_ano/52.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (53,'A Matemática - 3.º e 4.º anos','/img/products/Apoio_Escolar/3.º_ano/53.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (54,'Fichas de Avaliação - 3.º Ano','/img/products/Apoio_Escolar/3.º_ano/54.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (55,'Fichas de Avaliação - 4.º Ano','/img/products/Apoio_Escolar/4.º_ano/55.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (56,'I Love English! - 9-10 anos - 4.º ano','/img/products/Apoio_Escolar/4.º_ano/56.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (57,'Prova de Aferição 2017 - Matemática e Ciências Naturais - 5.º Ano','/img/products/Apoio_Escolar/5.º_e_6.º_ano/57.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (58,'Prova de Aferição 2017 - História e Geografia de Portugal - 5.º Ano','/img/products/Apoio_Escolar/5.º_e_6.º_ano/58.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (59,'Preparação para a Prova Final 2017 - Matemática - 9.º Ano','/img/products/Apoio_Escolar/7.º_8.º_e_9.º_ciclo/59.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (60,'Preparação para a Prova Final 2017 - Português - 9.º Ano','/img/products/Apoio_Escolar/7.º_8.º_e_9.º_ciclo/60.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (61,'Preparação para o Exame Final Nacional 2017 - Física e Química A - 11.º Ano','/img/products/Apoio_Escolar/Ensino_Secundario/61.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (62,'Preparação para o Exame Final Nacional 2017 - Biologia e Geologia - 11.º Ano','/img/products/Apoio_Escolar/Ensino_Secundario/62.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (63,'Autosport','/img/products/Revistas/Automobilismo/63.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (64,'Auto Foco','/img/products/Revistas/Automobilismo/64.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (65,'Take Off','/img/products/Revistas/Aviacao/65.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (66,'Sirius Magazine','/img/products/Revistas/Aviacao/66.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (67,'Visao','/img/products/Revistas/Cientificas/67.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (68,'Sabado','/img/products/Revistas/Cientificas/68.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (69,'Caras','/img/products/Revistas/Social/69.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (70,'VIP','/img/products/Revistas/Social/70.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (71,'Expresso Economia','/img/products/Revistas/Economia/71.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (72,'Vida Economica','/img/products/Revistas/Economia/72.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (73,'Dragoes','/img/products/Revistas/Desporto/73.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (74,'Jornal Sporting','/img/products/Revistas/Desporto/74.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (75,'Exame Informatica','/img/products/Revistas/Informatica/75.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (76,'PC Guia','/img/products/Revistas/Informatica/76.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (77,'Teleculinaria','/img/products/Revistas/Culinaria/77.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (78,'Ementa da semana','/img/products/Revistas/Culinaria/78.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (79,'Caras Decoracao','/img/products/Revistas/Decoracao/79.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (80,'Casa Claudia','/img/products/Revistas/Decoracao/80.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (81,'Evasoes','/img/products/Revistas/Turismo/81.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (82,'Viajar','/img/products/Revistas/Turismo/82.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (83,'Jornal das Letras','/img/products/Revistas/Lazer/83.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (84,'Blitz','/img/products/Revistas/Lazer/84.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (85,'Dica da semana','/img/products/Revistas/Regionais/85.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (86,'Jornal de Barcelos','/img/products/Revistas/Regionais/86.jpg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (87,'Dicionário Básico Ilustrado da Língua Portuguesa','/img/products/Dicionarios_e_Enciclopedias/Portugues/87.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (88,'Dicionário Escolar de Inglês-Português / Português-Inglês','/img/products/Dicionarios_e_Enciclopedias/Ingles/88.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (89,'Dicionário Escolar de Francês-Português / Português-Francês','/img/products/Dicionarios_e_Enciclopedias/Frances/89.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (90,'Alemão em 30 Dias','/img/products/Dicionarios_e_Enciclopedias/Alemao/90.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (91,'Dicionário Moderno de Espanhol-Português / Português-Espanhol','/img/products/Dicionarios_e_Enciclopedias/Espanhol/91.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (92,'Guias de Viagem 10 - Top 10 Marraquexe','/img/products/Guias_Turisticos_e_Mapas/Africa/92.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (93,'Lonely Planet Costa Rica','/img/products/Guias_Turisticos_e_Mapas/America/93.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (94,'Oriente Distante','/img/products/Guias_Turisticos_e_Mapas/Asia/94.jpeg');
-INSERT INTO Imagem (publicacaoID,nome,url) VALUES (95,'CITYPACK - Londres','/img/products/Guias_Turisticos_e_Mapas/Europa/95.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (1,'/img/products/Livros/Arte/1.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (2,'/img/products/Livros/Arte/2.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (3,'/img/products/Livros/Banda_Desenhada/3.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (4,'/img/products/Livros/Banda_Desenhada/4.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (5,'/img/products/Livros/Ciencias_Exatas_e_Naturais/5.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (6,'/img/products/Livros/Ciencias_Exatas_e_Naturais/6.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (7,'/img/products/Livros/Ciencias_Sociais_e_Humanas/7.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (8,'/img/products/Livros/Ciencias_Sociais_e_Humanas/8.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (9,'/img/products/Livros/Desporto_e_Lazer/9.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (10,'/img/products/Livros/Desporto_e_Lazer/10.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (11,'/img/products/Livros/Direito/11.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (12,'/img/products/Livros/Direito/12.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (13,'/img/products/Livros/Engenharia/13.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (14,'/img/products/Livros/Engenharia/14.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (15,'/img/products/Livros/Ensino_e_Educacao/15.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (16,'/img/products/Livros/Ensino_e_Educacao/16.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (17,'/img/products/Livros/Gastronomia_e_Vinhos/17.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (18,'/img/products/Livros/Gastronomia_e_Vinhos/18.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (19,'/img/products/Livros/Gestao/19.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (20,'/img/products/Livros/Gestao/20.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (21,'/img/products/Livros/Historia/21.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (22,'/img/products/Livros/Historia/22.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (23,'/img/products/Livros/Informatica/23.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (24,'/img/products/Livros/Informatica/24.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (25,'/img/products/Livros/Literatura/25.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (26,'/img/products/Livros/Literatura/26.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (27,'/img/products/Livros/Medicina/27.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (28,'/img/products/Livros/Medicina/28.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (29,'/img/products/Livros/Politica/29.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (30,'/img/products/Livros/Politica/30.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (31,'/img/products/Livros/Religiao_e_Moral/31.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (32,'/img/products/Livros/Religiao_e_Moral/32.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (33,'/img/products/Livros/Saude_e_Bem_Estar/33.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (34,'/img/products/Livros/Saude_e_Bem_Estar/34.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (35,'/img/products/Livros_Escolares/1.º_ano/35.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (36,'/img/products/Livros_Escolares/1.º_ano/36.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (37,'/img/products/Livros_Escolares/2.º_ano/37.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (38,'/img/products/Livros_Escolares/2.º_ano/38.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (39,'/img/products/Livros_Escolares/3.º_ano/39.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (40,'/img/products/Livros_Escolares/3.º_ano/40.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (41,'/img/products/Livros_Escolares/4.º_ano/41.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (42,'/img/products/Livros_Escolares/4.º_ano/42.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (43,'/img/products/Livros_Escolares/5.º_e_6.º_ano/43.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (44,'/img/products/Livros_Escolares/5.º_e_6.º_ano/44.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (45,'/img/products/Livros_Escolares/7.º_8.º_e_9.º_ciclo/45.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (46,'/img/products/Livros_Escolares/7.º_8.º_e_9.º_ciclo/46.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (47,'/img/products/Livros_Escolares/Ensino_Secundario/47.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (48,'/img/products/Livros_Escolares/Ensino_Secundario/48.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (49,'/img/products/Apoio_Escolar/1.º_ano/49.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (50,'/img/products/Apoio_Escolar/1.º_ano/50.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (51,'/img/products/Apoio_Escolar/2.º_ano/51.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (52,'/img/products/Apoio_Escolar/2.º_ano/52.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (53,'/img/products/Apoio_Escolar/3.º_ano/53.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (54,'/img/products/Apoio_Escolar/3.º_ano/54.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (55,'/img/products/Apoio_Escolar/4.º_ano/55.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (56,'/img/products/Apoio_Escolar/4.º_ano/56.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (57,'/img/products/Apoio_Escolar/5.º_e_6.º_ano/57.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (58,'/img/products/Apoio_Escolar/5.º_e_6.º_ano/58.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (59,'/img/products/Apoio_Escolar/7.º_8.º_e_9.º_ciclo/59.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (60,'/img/products/Apoio_Escolar/7.º_8.º_e_9.º_ciclo/60.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (61,'/img/products/Apoio_Escolar/Ensino_Secundario/61.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (62,'/img/products/Apoio_Escolar/Ensino_Secundario/62.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (63,'/img/products/Revistas/Automobilismo/63.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (64,'/img/products/Revistas/Automobilismo/64.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (65,'/img/products/Revistas/Aviacao/65.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (66,'/img/products/Revistas/Aviacao/66.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (67,'/img/products/Revistas/Cientificas/67.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (68,'/img/products/Revistas/Cientificas/68.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (69,'/img/products/Revistas/Social/69.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (70,'/img/products/Revistas/Social/70.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (71,'/img/products/Revistas/Economia/71.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (72,'/img/products/Revistas/Economia/72.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (73,'/img/products/Revistas/Desporto/73.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (74,'/img/products/Revistas/Desporto/74.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (75,'/img/products/Revistas/Informatica/75.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (76,'/img/products/Revistas/Informatica/76.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (77,'/img/products/Revistas/Culinaria/77.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (78,'/img/products/Revistas/Culinaria/78.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (79,'/img/products/Revistas/Decoracao/79.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (80,'/img/products/Revistas/Decoracao/80.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (81,'/img/products/Revistas/Turismo/81.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (82,'/img/products/Revistas/Turismo/82.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (83,'/img/products/Revistas/Lazer/83.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (84,'/img/products/Revistas/Lazer/84.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (85,'/img/products/Revistas/Regionais/85.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (86,'/img/products/Revistas/Regionais/86.jpg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (87,'/img/products/Dicionarios_e_Enciclopedias/Portugues/87.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (88,'/img/products/Dicionarios_e_Enciclopedias/Ingles/88.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (89,'/img/products/Dicionarios_e_Enciclopedias/Frances/89.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (90,'/img/products/Dicionarios_e_Enciclopedias/Alemao/90.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (91,'/img/products/Dicionarios_e_Enciclopedias/Espanhol/91.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (92,'/img/products/Guias_Turisticos_e_Mapas/Africa/92.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (93,'/img/products/Guias_Turisticos_e_Mapas/America/93.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (94,'/img/products/Guias_Turisticos_e_Mapas/Asia/94.jpeg');
+INSERT INTO Imagem (publicacaoID,url) VALUES (95,'/img/products/Guias_Turisticos_e_Mapas/Europa/95.jpeg');
 
 /* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
 INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Bernardo Pinto de Almeida','masculino','10/02/1954','Bernardo Pinto de Almeida nasceu em 1954.Vive e trabalha no Porto. Professor Catedrático na Faculdade de Belas Artes da Universidade do Porto.');
@@ -1600,36 +1607,36 @@ INSERT INTO Login (clienteID,data) VALUES (12,'21/05/2016 12:45:10');
 INSERT INTO Login (clienteID,data) VALUES (1,'07/05/2017 12:45:10');
 
 /* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (1,1,1,'22/01/2014 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (9,9,9,'04/02/2014 10:28:37','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (13,13,'13','14/02/2014 09:32:45','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'15/02/2014 12:24:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (3,3,3,'04/03/2014 13:21:39','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (9,9,9,'10/03/2014 15:32:58','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'26/04/2014 22:23:49','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (18,18,18,'15/05/2014 21:14:46','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (15,15,15,'04/06/2014 17:16:37','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (13,13,13,'25/06/2014 18:12:09','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (20,20,20,'08/07/2014 15:23:36','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (10,10,10,'14/01/2015 16:39:34','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (14,14,14,'28/02/2015 14:25:39','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (6,6,6,'02/03/2015 18:11:45','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (7,7,7,'15/04/2015 13:22:39','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (3,3,3,'24/04/2015 08:48:39','Enviada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (5,5,5,'19/05/2015 09:24:33','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (6,6,6,'27/05/2015 11:21:45','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (14,14,14,'29/01/2016 10:11:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (21,21,21,'29/01/2016 09:38:39','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (12,12,12,'21/01/2016 18:24:48','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (20,20,20,'16/02/2016 14:34:38','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (6,6,6,'20/02/2016 21:29:37','Cancelada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'13/03/2016 12:09:45','Em processamento');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (19,19,19,'25/03/2016 10:24:43','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (19,19,19,'26/03/2016 09:21:36','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (3,3,3,'20/04/2016 18:24:45','Processada');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (8,8,8,'11/05/2016 09:26:36','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (11,11,11,'30/01/2017 14:32:33','Devolvida');
-INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,data,estado) VALUES (9,9,9,'01/02/2017 13:28:37','Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (1,1,1,'Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (9,9,9,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (13,13,13,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (11,11,11,'Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (3,3,3,'Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (9,9,9,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (11,11,11,'Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (18,18,18,'Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (15,15,15,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (13,13,13,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (20,20,20,'Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (10,10,10,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (14,14,14,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (6,6,6,'Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (7,7,7,'Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (3,3,3,'Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (5,5,5,'Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (6,6,6,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (14,14,14,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (21,21,21,'Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (12,12,12,'Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (20,20,20,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (6,6,6,'Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (11,11,11,'Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (19,19,19,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (19,19,19,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (3,3,3,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (8,8,8,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (11,11,11,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (9,9,9,'Cancelada');
 
 /* ------------------------------------------------------ R27 MetodoPagamento ------------------------------------------------------ */
 INSERT INTO MetodoPagamento (tipo) VALUES ('Multibanco');
