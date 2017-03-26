@@ -1769,16 +1769,16 @@ INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,30);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,30);
 
 /* ------------------------------------------------------ R28 CartaoCredito ------------------------------------------------------ */
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5202765077828229','22/05/2015','935');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5430691565133761','14/08/2011','983');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370260745421182','07/06/2010','837');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('Visa','4916986359778797','05/06/2010','854');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('AmericanExpress','377474126024732','26/04/2012','385');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('Visa','4556648286082744','02/05/2016','376');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5409854996751109','01/06/2014','831');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5526905920137779','24/09/2011','610');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370211408726086','06/07/2013','276');
-INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('Visa','4532856394501211','10/01/2015','203');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5202765077828229','22/05/2015','935');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5430691565133761','14/08/2011','983');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370260745421182','07/06/2010','837');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4916986359778797','05/06/2010','854');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','377474126024732','26/04/2012','385');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4556648286082744','02/05/2016','376');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5409854996751109','01/06/2014','831');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5526905920137779','24/09/2011','610');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370211408726086','06/07/2013','276');
+INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4532856394501211','10/01/2015','203');
 
 /* ------------------------------------------------------ R29 Multibanco ------------------------------------------------------ */
 INSERT INTO Multibanco (entidade,referencia) VALUES ('61624','614 976 849');
