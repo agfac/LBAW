@@ -284,7 +284,7 @@ CREATE TABLE Comentario
 	ComentarioID SERIAL,
 	ClienteID integer NOT NULL,
 	PublicacaoID integer NOT NULL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Classificacao integer NOT NULL,
 	Texto text NOT NULL,
 	CONSTRAINT PK_Comentario PRIMARY KEY (ComentarioID),
@@ -308,7 +308,7 @@ CREATE TABLE Encomenda
 	MoradaFaturacaoID integer NOT NULL,
 	MoradaEnvioID integer NOT NULL,
 	InformacaofaturacaoID integer NULL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Estado EstadoEncomenda NOT NULL DEFAULT 'Em processamento',
 	CONSTRAINT PK_Encomenda PRIMARY KEY (EncomendaID)
 )
@@ -378,7 +378,7 @@ CREATE TABLE Login
 	AdministradorID integer NULL,
 	FuncionarioID integer NULL,
 	ClienteID integer NULL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT PK_Login PRIMARY KEY (LoginID)
 )
 ;
@@ -438,7 +438,7 @@ CREATE TABLE Pais
 CREATE TABLE Perguntautilizador
 (
 	PerguntautilizadorID SERIAL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Nome varchar(100) NOT NULL,
 	Email varchar(50) NOT NULL,
 	Mensagem text NOT NULL,
@@ -449,7 +449,7 @@ CREATE TABLE Perguntautilizador
 CREATE TABLE Pesquisa
 (
 	PesquisaID SERIAL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Expressao varchar(100) NOT NULL,
 	CONSTRAINT PK_Pesquisa PRIMARY KEY (PesquisaID)
 )
@@ -548,8 +548,6 @@ BEGIN
 	RETURNING CarrinhoID
 	INTO NEW.CarrinhoID;
 
-	NEW.Dataregisto := CURRENT_TIMESTAMP;
-
 	NEW.idade := date_part('year', age(NEW.Datanascimento));
 
 	RETURN NEW;
@@ -573,8 +571,6 @@ BEGIN
 	RETURNING InformacaofaturacaoID
 	INTO NEW.InformacaofaturacaoID;
 
-	NEW.Data := CURRENT_TIMESTAMP;
-
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
@@ -585,6 +581,17 @@ BEGIN
 	NEW.preco = (SELECT preco
 				FROM Publicacao
 				WHERE publicacaoID = NEW.publicacaoID);
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION insert_imagem()
+RETURNS TRIGGER
+AS $$
+BEGIN
+	NEW.nome := (SELECT titulo
+					FROM Publicacao
+					WHERE publicacaoID=NEW.publicacaoID);
 
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
@@ -633,11 +640,6 @@ CREATE TRIGGER insert_publicacaoencomenda_trigger
 BEFORE INSERT OR UPDATE ON Publicacaoencomenda
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_publicacaoencomenda();
-
-CREATE TRIGGER insert_comentario_trigger
-BEFORE INSERT OR UPDATE ON Comentario
-FOR EACH ROW
-	EXECUTE PROCEDURE insert_comentario();
 
 CREATE TRIGGER insert_imagem_trigger
 BEFORE INSERT OR UPDATE ON Imagem
@@ -1555,56 +1557,56 @@ INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,a
 INSERT INTO Administrador (paisID,nome,genero,dataNascimento,dataCessacao,username,password,ativo) VALUES (1,'Carlos Manuel Teixeira','Masculino','8/9/1991','12/02/2017','carlosteixeira','BSO38NJN5MA',FALSE);
 
 /* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
-INSERT INTO Login (administradorID,data) VALUES (6,'29/04/2016 03:17:54');
-INSERT INTO Login (administradorID,data) VALUES (5,'17/01/2016 19:26:49');
-INSERT INTO Login (administradorID,data) VALUES (3,'10/01/2017 17:50:46');
-INSERT INTO Login (administradorID,data) VALUES (5,'19/06/2016 18:10:30');
-INSERT INTO Login (administradorID,data) VALUES (5,'04/02/2017 20:48:45');
-INSERT INTO Login (administradorID,data) VALUES (5,'06/01/2017 23:45:18');
-INSERT INTO Login (administradorID,data) VALUES (3,'20/01/2017 10:15:45');
-INSERT INTO Login (administradorID,data) VALUES (3,'22/12/2016 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (5,'11/09/2016 11:14:01');
-INSERT INTO Login (administradorID,data) VALUES (2,'17/01/2016 12:08:11');
-INSERT INTO Login (administradorID,data) VALUES (3,'25/11/2016 04:33:10');
-INSERT INTO Login (administradorID,data) VALUES (6,'06/04/2016 19:40:11');
-INSERT INTO Login (administradorID,data) VALUES (2,'15/07/2016 08:47:57');
-INSERT INTO Login (administradorID,data) VALUES (2,'12/08/2016 02:13:06');
-INSERT INTO Login (administradorID,data) VALUES (6,'26/04/2016 16:42:45');
-INSERT INTO Login (administradorID,data) VALUES (2,'30/09/2016 16:16:15');
-INSERT INTO Login (administradorID,data) VALUES (5,'24/08/2016 00:23:20');
-INSERT INTO Login (administradorID,data) VALUES (1,'27/02/2016 00:58:35');
-INSERT INTO Login (administradorID,data) VALUES (4,'03/11/2016 20:21:05');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'19/02/2017 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (4,'14/07/2016 17:34:45');
-INSERT INTO Login (funcionarioID,data) VALUES (3,'09/08/2016 03:42:25');
-INSERT INTO Login (funcionarioID,data) VALUES (2,'21/03/2017 03:58:59');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'26/12/2016 08:14:54');
-INSERT INTO Login (funcionarioID,data) VALUES (5,'12/02/2016 15:19:07');
-INSERT INTO Login (funcionarioID,data) VALUES (2,'25/10/2016 02:31:52');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'07/07/2016 06:04:36');
-INSERT INTO Login (funcionarioID,data) VALUES (3,'22/02/2016 01:17:15');
-INSERT INTO Login (funcionarioID,data) VALUES (4,'21/01/2017 13:11:38');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'02/03/2016 23:54:20');
-INSERT INTO Login (funcionarioID,data) VALUES (5,'10/03/2016 09:33:42');
-INSERT INTO Login (funcionarioID,data) VALUES (3,'05/02/2017 14:18:46');
-INSERT INTO Login (funcionarioID,data) VALUES (2,'06/05/2016 03:33:49');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'06/04/2016 18:11:03');
-INSERT INTO Login (funcionarioID,data) VALUES (4,'30/01/2017 14:13:02');
-INSERT INTO Login (clienteID,data) VALUES (21,'16/02/2016 01:19:44');
-INSERT INTO Login (clienteID,data) VALUES (21,'10/03/2017 02:26:43');
-INSERT INTO Login (clienteID,data) VALUES (20,'13/09/2016 03:19:44');
-INSERT INTO Login (clienteID,data) VALUES (5,'20/10/2016 20:05:59');
-INSERT INTO Login (clienteID,data) VALUES (1,'13/02/2016 15:07:56');
-INSERT INTO Login (clienteID,data) VALUES (7,'11/02/2016 20:32:52');
-INSERT INTO Login (clienteID,data) VALUES (12,'01/07/2016 13:29:42');
-INSERT INTO Login (clienteID,data) VALUES (3,'30/01/2016 22:46:44');
-INSERT INTO Login (clienteID,data) VALUES (11,'04/03/2017 23:01:49');
-INSERT INTO Login (clienteID,data) VALUES (19,'08/03/2016 14:54:31');
-INSERT INTO Login (clienteID,data) VALUES (5,'14/02/2017 05:32:45');
-INSERT INTO Login (clienteID,data) VALUES (6,'10/03/2016 20:39:57');
-INSERT INTO Login (clienteID,data) VALUES (13,'20/05/2016 10:11:55');
-INSERT INTO Login (clienteID,data) VALUES (12,'04/04/2016 17:59:23');
-INSERT INTO Login (clienteID,data) VALUES (1,'23/08/2016 23:26:04');
+INSERT INTO Login (administradorID) VALUES (6);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (6);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (6);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (1);
+INSERT INTO Login (administradorID) VALUES (4);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (4);
+INSERT INTO Login (funcionarioID) VALUES (3);
+INSERT INTO Login (funcionarioID) VALUES (2);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (5);
+INSERT INTO Login (funcionarioID) VALUES (2);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (3);
+INSERT INTO Login (funcionarioID) VALUES (4);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (5);
+INSERT INTO Login (funcionarioID) VALUES (3);
+INSERT INTO Login (funcionarioID) VALUES (2);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (4);
+INSERT INTO Login (clienteID) VALUES (21);
+INSERT INTO Login (clienteID) VALUES (21);
+INSERT INTO Login (clienteID) VALUES (20);
+INSERT INTO Login (clienteID) VALUES (5);
+INSERT INTO Login (clienteID) VALUES (1);
+INSERT INTO Login (clienteID) VALUES (7);
+INSERT INTO Login (clienteID) VALUES (12);
+INSERT INTO Login (clienteID) VALUES (3);
+INSERT INTO Login (clienteID) VALUES (11);
+INSERT INTO Login (clienteID) VALUES (19);
+INSERT INTO Login (clienteID) VALUES (5);
+INSERT INTO Login (clienteID) VALUES (6);
+INSERT INTO Login (clienteID) VALUES (13);
+INSERT INTO Login (clienteID) VALUES (12);
+INSERT INTO Login (clienteID) VALUES (1);
 
 /* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (1,1,1,'Enviada');
@@ -1787,86 +1789,86 @@ INSERT INTO Multibanco (entidade,referencia) VALUES ('72657','229 647 948');
 INSERT INTO Multibanco (entidade,referencia) VALUES ('84466','417 838 858');
 
 /* ------------------------------------------------------ R30 Pesquisa ------------------------------------------------------ */
-INSERT INTO Pesquisa (data,expressao) VALUES ('10/03/2016 02:28:01','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('12/02/2017 07:39:51','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('22/03/2017 18:51:11','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('01/03/2017 23:39:34','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('24/07/2016 02:55:43','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('05/12/2016 09:28:44','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('29/08/2016 15:06:08','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('21/05/2016 05:26:54','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('02/01/2017 17:25:01','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('09/11/2016 20:23:17','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('19/11/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('02/05/2016 19:33:27','Arte');
-INSERT INTO Pesquisa (data,expressao) VALUES ('27/09/2016 16:24:18','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('10/03/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('03/10/2016 05:15:23','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('10/04/2016 19:04:17','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('17/01/2016 10:11:45','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('03/01/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/11/2016 20:53:22','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('11/11/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,expressao) VALUES ('09/02/2017 23:23:30','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('28/04/2016 18:58:29','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('27/12/2016 02:38:55','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('28/11/2016 13:10:38','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/05/2016 05:16:58','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('17/01/2017 09:16:23','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('01/03/2017 05:59:50','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('25/06/2016 10:17:37','Embalar');
-INSERT INTO Pesquisa (data,expressao) VALUES ('01/03/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('25/02/2017 06:11:00','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('07/12/2016 13:17:04','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('05/06/2016 20:51:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/07/2016 01:29:32','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('19/12/2016 10:02:14','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('08/12/2016 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('20/08/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('05/02/2016 13:47:25','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('03/06/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,expressao) VALUES ('06/02/2017 03:46:45','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/11/2016 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('22/05/2016 06:12:59','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('03/02/2017 02:21:48','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('18/08/2016 23:40:19','Embalar');
-INSERT INTO Pesquisa (data,expressao) VALUES ('30/04/2016 14:42:01','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('18/04/2016 09:10:22','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('10/11/2016 05:13:15','Exames');
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/12/2016 02:48:02','Embalar');
-INSERT INTO Pesquisa (data,expressao) VALUES ('08/02/2017 10:45:20','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('22/10/2016 11:41:01','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('30/11/2016 05:47:59','Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Arte');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Arte');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Embalar');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Arte');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Embalar');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Exames');
+INSERT INTO Pesquisa (expressao) VALUES ('Embalar');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
 
 /* ------------------------------------------------------ R31 PerguntaUtilizador ------------------------------------------------------ */
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('19/07/2016 21:59:17','Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('13/08/2016 08:49:04','Cameron Rhodes','et.libero@etipsum.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/07/2016 15:53:06','Faith Grant','Sed.auctor@nullaat.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('31/01/2017 15:48:12','Aretha Mcdaniel','nec.euismod@nibh.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('29/05/2016 15:48:12','Ulla Leach','erat.eget@facilisislorem.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/03/2016 19:25:56','Angela Bartlett','ut.molestie.in@at.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('06/08/2016 16:48:09','Zorita Mercado','Curabitur.consequat.lectus@sedturpis.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/02/2017 04:55:09','Frances Norman','nec@velit.org','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('15/03/2017 03:54:24','Eugenia Douglas','gravida.molestie@nequevenenatislacus.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('04/04/2016 15:48:12','Regina Cooke','semper.rutrum.Fusce@atortorNunc.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('20/11/2016 13:48:33','Colin Sears','eu@aliquet.net','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('08/03/2016 20:34:52','Sierra Yates','vestibulum@imperdieteratnonummy.com','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('18/01/2017 05:50:14','Elmo Mccullough','tempor.diam@magnis.co.uk','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('15/05/2016 01:50:31','Hashim Dudley','lectus.Nullam.suscipit@tristique.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('07/11/2016 15:48:12','Grady Roberson','cursus.Integer.mollis@Namporttitorscelerisque.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('07/03/2016 17:59:32','Jakeem Burt','velit@seddolor.edu','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('11/03/2017 15:48:12','Berk Riggs','convallis.dolor.Quisque@Nullamenim.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('10/06/2016 19:51:04','Sylvia Hardy','quis.accumsan@semPellentesque.net','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('31/05/2016 15:48:12','Avram Hebert','mi.Duis@mauriserat.co.uk','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('29/02/2016 07:30:47','Jaden David','non.sollicitudin@Donec.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('24/10/2016 15:48:12','Kyle Huffman','Curabitur@Donec.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('29/03/2016 12:59:40','Fallon Hardy','aliquet@diamProindolor.net','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('12/11/2016 19:10:47','Lael Lynn','hendrerit.Donec@libero.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/05/2016 19:19:12','Octavius Merritt','auctor.velit.Aliquam@volutpatnuncsit.org','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/11/2016 15:48:12','Laura Frye','nec.leo.Morbi@commodotincidunt.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/08/2016 15:48:12','Jarrod Powell','ac.nulla.In@tincidunt.edu','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('23/05/2016 15:31:45','Preston Carr','accumsan.convallis.ante@gravida.org','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('25/03/2017 02:51:44','Quyn Mcmillan','tempus.lorem@ultrices.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('12/05/2016 15:48:12','Lana Crosby','et.netus@utlacusNulla.edu','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('12/02/2016 19:36:25','Serena Mccarty','mus.Proin@fringilla.com','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('08/09/2016 13:31:26','Orson Dennis','Proin.vel@Donecnonjusto.co.uk','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Cameron Rhodes','et.libero@etipsum.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Faith Grant','Sed.auctor@nullaat.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Aretha Mcdaniel','nec.euismod@nibh.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Ulla Leach','erat.eget@facilisislorem.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Angela Bartlett','ut.molestie.in@at.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Zorita Mercado','Curabitur.consequat.lectus@sedturpis.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Frances Norman','nec@velit.org','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Eugenia Douglas','gravida.molestie@nequevenenatislacus.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Regina Cooke','semper.rutrum.Fusce@atortorNunc.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Colin Sears','eu@aliquet.net','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Sierra Yates','vestibulum@imperdieteratnonummy.com','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Elmo Mccullough','tempor.diam@magnis.co.uk','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Hashim Dudley','lectus.Nullam.suscipit@tristique.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Grady Roberson','cursus.Integer.mollis@Namporttitorscelerisque.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jakeem Burt','velit@seddolor.edu','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Berk Riggs','convallis.dolor.Quisque@Nullamenim.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Sylvia Hardy','quis.accumsan@semPellentesque.net','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Avram Hebert','mi.Duis@mauriserat.co.uk','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jaden David','non.sollicitudin@Donec.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Kyle Huffman','Curabitur@Donec.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Fallon Hardy','aliquet@diamProindolor.net','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lael Lynn','hendrerit.Donec@libero.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Octavius Merritt','auctor.velit.Aliquam@volutpatnuncsit.org','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Laura Frye','nec.leo.Morbi@commodotincidunt.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jarrod Powell','ac.nulla.In@tincidunt.edu','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Preston Carr','accumsan.convallis.ante@gravida.org','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Quyn Mcmillan','tempus.lorem@ultrices.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lana Crosby','et.netus@utlacusNulla.edu','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Serena Mccarty','mus.Proin@fringilla.com','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Orson Dennis','Proin.vel@Donecnonjusto.co.uk','Posso levantar em loja física?');
