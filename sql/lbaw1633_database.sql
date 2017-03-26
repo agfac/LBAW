@@ -124,7 +124,13 @@ DROP TRIGGER IF EXISTS insert_encomenda_trigger ON Encomenda CASCADE
 DROP TRIGGER IF EXISTS insert_publicacaoencomenda_trigger ON Publicacaoencomenda CASCADE
 ;
 
+DROP TRIGGER IF EXISTS insert_imagem_trigger ON Imagem CASCADE
+;
+
 DROP TRIGGER IF EXISTS update_informacaoFaturacao_trigger ON Publicacaoencomenda CASCADE
+;
+
+DROP TRIGGER IF EXISTS update_subtotalcarrinho_trigger ON Publicacaocarrinho CASCADE
 ;
 
 /* Create Types */
@@ -614,6 +620,19 @@ BEGIN
 	RETURN NULL;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION update_subtotalcarrinho()
+RETURNS TRIGGER
+AS $$
+BEGIN
+	UPDATE Carrinho
+	SET Subtotal=(SELECT SUM(Publicacao.preco*Publicacaocarrinho.quantidade)
+						FROM Publicacaocarrinho, Publicacao
+						WHERE Publicacaocarrinho.CarrinhoID = NEW.CarrinhoID AND Publicacao.PublicacaoID=Publicacaocarrinho.PublicacaoID)
+	WHERE CarrinhoID = NEW.CarrinhoID;
+
+	RETURN NULL;
+END $$ LANGUAGE plpgsql;
+
 /* Create Trigger */
 
 CREATE TRIGGER insert_publicacao_trigger
@@ -650,6 +669,11 @@ CREATE TRIGGER update_informacaoFaturacao_trigger
 AFTER INSERT OR UPDATE ON Publicacaoencomenda
 FOR EACH ROW
 	EXECUTE PROCEDURE update_informacaoFaturacao();
+
+CREATE TRIGGER update_subtotalcarrinho_trigger
+AFTER INSERT OR UPDATE ON Publicacaocarrinho
+FOR EACH ROW
+	EXECUTE PROCEDURE update_subtotalcarrinho();
 
 /* Create Foreign Key Constraints */
 
