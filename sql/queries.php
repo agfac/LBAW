@@ -126,20 +126,3 @@ function listaEncomendasEmProcessamento()
 
 //SELECT13 - Pesquisa dos últimos 10 clientes que efetuaram login
 
-
-//UPDATE01 - Modifica a quantidade de publicações no carrinho do cliente
-
-
-//UPDATE02 - Modifica o stock da publicação
-
-
-//UPDATE03 - Modifica o preço da publicação
-
-
-//UPDATE04 - Modifica dados do cliente
-
-
-//UPDATE05 - Remove uma publicação na whislist
-
-
-//UPDATE06 - Modifica estado da encomenda de em processamento para enviado
