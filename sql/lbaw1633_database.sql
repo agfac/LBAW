@@ -156,6 +156,9 @@ DROP TRIGGER IF EXISTS insert_publicacaoencomenda_trigger ON Publicacaoencomenda
 DROP TRIGGER IF EXISTS insert_imagem_trigger ON Imagem CASCADE
 ;
 
+DROP TRIGGER IF EXISTS insert_comentario_trigger ON Comentario CASCADE
+;
+
 DROP TRIGGER IF EXISTS update_informacaoFaturacao_trigger ON Publicacaoencomenda CASCADE
 ;
 
@@ -659,6 +662,20 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION insert_comentario()
+RETURNS TRIGGER
+AS $$
+BEGIN
+	IF NEW.PublicacaoID NOT IN (SELECT Publicacaoencomenda.Publicacaoid
+									FROM encomenda JOIN Cliente ON Encomenda.clienteid = Cliente.clienteid JOIN Publicacaoencomenda ON Publicacaoencomenda.encomendaid = Encomenda.encomendaid
+									WHERE NEW.ClienteID = Cliente.ClienteID)
+	THEN
+		RAISE EXCEPTION 'Cliente nao comprou publicacao que pretende comentar';
+	END IF;
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION update_informacaoFaturacao()
 RETURNS TRIGGER
 AS $$
@@ -721,6 +738,11 @@ CREATE TRIGGER insert_imagem_trigger
 BEFORE INSERT OR UPDATE ON Imagem
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_imagem();
+
+CREATE TRIGGER insert_comentario_trigger
+BEFORE INSERT ON Comentario
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_comentario();
 
 CREATE TRIGGER update_informacaoFaturacao_trigger
 AFTER INSERT OR UPDATE ON Publicacaoencomenda
