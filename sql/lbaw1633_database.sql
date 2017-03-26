@@ -438,7 +438,7 @@ CREATE TABLE Pais
 CREATE TABLE Perguntautilizador
 (
 	PerguntautilizadorID SERIAL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Nome varchar(100) NOT NULL,
 	Email varchar(50) NOT NULL,
 	Mensagem text NOT NULL,
@@ -449,7 +449,7 @@ CREATE TABLE Perguntautilizador
 CREATE TABLE Pesquisa
 (
 	PesquisaID SERIAL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Expressao varchar(100) NOT NULL,
 	CONSTRAINT PK_Pesquisa PRIMARY KEY (PesquisaID)
 )
@@ -1789,86 +1789,86 @@ INSERT INTO Multibanco (entidade,referencia) VALUES ('72657','229 647 948');
 INSERT INTO Multibanco (entidade,referencia) VALUES ('84466','417 838 858');
 
 /* ------------------------------------------------------ R30 Pesquisa ------------------------------------------------------ */
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/11/2016 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('02/11/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('19/03/2018 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('15/09/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('15/01/2017 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('18/10/2016 10:45:20','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('08/02/2018 10:45:20','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('09/03/2017 10:45:20','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('06/09/2017 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('26/04/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('19/11/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('27/05/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,expressao) VALUES ('18/06/2016 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('10/03/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('06/05/2016 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('12/11/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('06/07/2016 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('03/01/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('16/10/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('11/11/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,expressao) VALUES ('11/10/2016 10:45:20','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('10/08/2016 10:45:20','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('09/06/2016 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('14/11/2017 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('15/04/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('27/10/2016 10:45:20','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('27/08/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('28/03/2017 10:45:20','Embalar');
-INSERT INTO Pesquisa (data,expressao) VALUES ('01/03/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('05/06/2017 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('29/04/2016 10:45:20','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('08/03/2018 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('26/11/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('11/12/2017 10:45:20','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('08/12/2016 10:45:20','Jornal');
-INSERT INTO Pesquisa (data,expressao) VALUES ('20/08/2016 10:45:20','Men');
-INSERT INTO Pesquisa (data,expressao) VALUES ('18/09/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('03/06/2016 10:45:20','Arte');
-INSERT INTO Pesquisa (data,expressao) VALUES ('20/10/2017 10:45:20','Revista');
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/11/2016 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('11/06/2017 10:45:20','Livro');
-INSERT INTO Pesquisa (data,expressao) VALUES ('25/08/2017 10:45:20','Spider');
-INSERT INTO Pesquisa (data,expressao) VALUES ('04/09/2017 10:45:20','Embalar');
-INSERT INTO Pesquisa (data,expressao) VALUES ('01/04/2017 10:45:20','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('09/01/2018 10:45:20','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('06/04/2017 10:45:20','Exames');
-INSERT INTO Pesquisa (data,expressao) VALUES ('13/07/2017 10:45:20','Embalar');
-INSERT INTO Pesquisa (data,expressao) VALUES ('08/02/2017 10:45:20','Historias');
-INSERT INTO Pesquisa (data,expressao) VALUES ('14/10/2017 10:45:20','Preparacao');
-INSERT INTO Pesquisa (data,expressao) VALUES ('16/02/2018 10:45:20','Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Arte');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Arte');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Embalar');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Jornal');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Arte');
+INSERT INTO Pesquisa (expressao) VALUES ('Revista');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Livro');
+INSERT INTO Pesquisa (expressao) VALUES ('Spider');
+INSERT INTO Pesquisa (expressao) VALUES ('Embalar');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Exames');
+INSERT INTO Pesquisa (expressao) VALUES ('Embalar');
+INSERT INTO Pesquisa (expressao) VALUES ('Historias');
+INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
+INSERT INTO Pesquisa (expressao) VALUES ('Men');
 
 /* ------------------------------------------------------ R31 PerguntaUtilizador ------------------------------------------------------ */
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('20/01/2018 15:48:12','Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('20/10/2017 15:48:12','Cameron Rhodes','et.libero@etipsum.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('01/05/2017 15:48:12','Faith Grant','Sed.auctor@nullaat.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('31/01/2017 15:48:12','Aretha Mcdaniel','nec.euismod@nibh.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('29/05/2016 15:48:12','Ulla Leach','erat.eget@facilisislorem.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('09/05/2017 15:48:12','Angela Bartlett','ut.molestie.in@at.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('25/02/2018 15:48:12','Zorita Mercado','Curabitur.consequat.lectus@sedturpis.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/08/2017 15:48:12','Frances Norman','nec@velit.org','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('02/03/2017 15:48:12','Eugenia Douglas','gravida.molestie@nequevenenatislacus.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('04/04/2016 15:48:12','Regina Cooke','semper.rutrum.Fusce@atortorNunc.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('17/11/2017 15:48:12','Colin Sears','eu@aliquet.net','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('23/11/2016 15:48:12','Sierra Yates','vestibulum@imperdieteratnonummy.com','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('18/03/2018 15:48:12','Elmo Mccullough','tempor.diam@magnis.co.uk','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('16/12/2017 15:48:12','Hashim Dudley','lectus.Nullam.suscipit@tristique.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('07/11/2016 15:48:12','Grady Roberson','cursus.Integer.mollis@Namporttitorscelerisque.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/10/2016 15:48:12','Jakeem Burt','velit@seddolor.edu','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('11/03/2017 15:48:12','Berk Riggs','convallis.dolor.Quisque@Nullamenim.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('28/10/2017 15:48:12','Sylvia Hardy','quis.accumsan@semPellentesque.net','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('31/05/2016 15:48:12','Avram Hebert','mi.Duis@mauriserat.co.uk','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('23/11/2017 15:48:12','Jaden David','non.sollicitudin@Donec.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('24/10/2016 15:48:12','Kyle Huffman','Curabitur@Donec.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/08/2017 15:48:12','Fallon Hardy','aliquet@diamProindolor.net','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('01/10/2017 15:48:12','Lael Lynn','hendrerit.Donec@libero.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('07/06/2017 15:48:12','Octavius Merritt','auctor.velit.Aliquam@volutpatnuncsit.org','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('05/11/2016 15:48:12','Laura Frye','nec.leo.Morbi@commodotincidunt.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('14/08/2016 15:48:12','Jarrod Powell','ac.nulla.In@tincidunt.edu','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('18/11/2017 15:48:12','Preston Carr','accumsan.convallis.ante@gravida.org','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('24/04/2016 15:48:12','Quyn Mcmillan','tempus.lorem@ultrices.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('12/05/2016 15:48:12','Lana Crosby','et.netus@utlacusNulla.edu','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('19/12/2017 15:48:12','Serena Mccarty','mus.Proin@fringilla.com','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (data,nome,email,mensagem) VALUES ('28/12/2016 15:48:12','Orson Dennis','Proin.vel@Donecnonjusto.co.uk','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Cameron Rhodes','et.libero@etipsum.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Faith Grant','Sed.auctor@nullaat.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Aretha Mcdaniel','nec.euismod@nibh.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Ulla Leach','erat.eget@facilisislorem.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Angela Bartlett','ut.molestie.in@at.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Zorita Mercado','Curabitur.consequat.lectus@sedturpis.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Frances Norman','nec@velit.org','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Eugenia Douglas','gravida.molestie@nequevenenatislacus.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Regina Cooke','semper.rutrum.Fusce@atortorNunc.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Colin Sears','eu@aliquet.net','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Sierra Yates','vestibulum@imperdieteratnonummy.com','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Elmo Mccullough','tempor.diam@magnis.co.uk','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Hashim Dudley','lectus.Nullam.suscipit@tristique.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Grady Roberson','cursus.Integer.mollis@Namporttitorscelerisque.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jakeem Burt','velit@seddolor.edu','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Berk Riggs','convallis.dolor.Quisque@Nullamenim.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Sylvia Hardy','quis.accumsan@semPellentesque.net','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Avram Hebert','mi.Duis@mauriserat.co.uk','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jaden David','non.sollicitudin@Donec.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Kyle Huffman','Curabitur@Donec.ca','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Fallon Hardy','aliquet@diamProindolor.net','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lael Lynn','hendrerit.Donec@libero.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Octavius Merritt','auctor.velit.Aliquam@volutpatnuncsit.org','Olá, quanto tempo demora a chegar a minha encomenda?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Laura Frye','nec.leo.Morbi@commodotincidunt.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jarrod Powell','ac.nulla.In@tincidunt.edu','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Preston Carr','accumsan.convallis.ante@gravida.org','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Quyn Mcmillan','tempus.lorem@ultrices.org','Não consigo esperar mais pela minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lana Crosby','et.netus@utlacusNulla.edu','Olá, pode indicar quais os métodos de pagamento disponíveis?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Serena Mccarty','mus.Proin@fringilla.com','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Orson Dennis','Proin.vel@Donecnonjusto.co.uk','Posso levantar em loja física?');
