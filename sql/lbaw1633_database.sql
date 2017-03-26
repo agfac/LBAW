@@ -1264,38 +1264,6 @@ INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (19,85);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (13,87);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,29);
 
-/* ------------------------------------------------------ R6 Comentario ------------------------------------------------------ */
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (1,34,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (9,43,1,'Deveria ter gasto o dinheiro em outro livro.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,91,4,'Achei bastante interessante, faltava no final uma conclusao para valer as 5 estrelas');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,66,3,'Não está mau, mas tambem não está bom, poderia ser melhor');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,79,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (9,57,4,'Bastante bom, bem parametrizado e muito informativo');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,15,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (18,28,1,'Deveria ter gasto o dinheiro em outro livro.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (15,51,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,8,3,'Poderia ter gasto dinheiro noutro livro melhor.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (20,14,3,'Poderia ter gasto dinheiro noutro livro melhor.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (10,80,2,'Não achei o livro nada de especial, penso que poderiam ter explicitado melhor a informação');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,42,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (6,17,5,'5 estrelas, tudo perfeito, sem nenhum defeito, bastante bom, excelente');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,78,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,66,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (5,83,3,'Poderia ter gasto dinheiro noutro livro melhor.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (6,34,3,'Não está mau, mas tambem não está bom, poderia ser melhor');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,33,3,'Poderia ter gasto dinheiro noutro livro melhor.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,88,5,'5 estrelas, tudo perfeito, sem nenhum defeito, bastante bom, excelente');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (12,59,1,'Deveria ter gasto o dinheiro em outro livro.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (20,57,4,'Bastante bom, bem parametrizado e muito informativo');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (6,8,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,51,4,'Bastante bom, bem parametrizado e muito informativo');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (19,63,3,'Não está mau, mas tambem não está bom, poderia ser melhor');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (19,66,4,'Bastante bom, bem parametrizado e muito informativo');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,27,2,'Não achei o livro nada de especial, penso que poderiam ter explicitado melhor a informação');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (8,63,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,46,5,'5 estrelas, tudo perfeito, sem nenhum defeito, bastante bom, excelente');
-INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (9,22,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
-
 /* ------------------------------------------------------ R7 Imagem ------------------------------------------------------ */
 INSERT INTO Imagem (publicacaoID,url) VALUES (1,'/img/products/Livros/Arte/1.jpeg');
 INSERT INTO Imagem (publicacaoID,url) VALUES (2,'/img/products/Livros/Arte/2.jpeg');
@@ -1845,6 +1813,38 @@ INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (26,29);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (82,29);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,30);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,30);
+
+/* ------------------------------------------------------ R6 Comentario ------------------------------------------------------ */
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (1,43,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (1,39,1,'Deveria ter gasto o dinheiro em outro livro.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (9,34,4,'Achei bastante interessante, faltava no final uma conclusao para valer as 5 estrelas');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (9,58,3,'Não está mau, mas tambem não está bom, poderia ser melhor');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,81,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,93,4,'Bastante bom, bem parametrizado e muito informativo');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,17,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,30,1,'Deveria ter gasto o dinheiro em outro livro.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,81,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,10,3,'Poderia ter gasto dinheiro noutro livro melhor.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (9,51,3,'Poderia ter gasto dinheiro noutro livro melhor.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (9,3,2,'Não achei o livro nada de especial, penso que poderiam ter explicitado melhor a informação');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,29,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (11,82,5,'5 estrelas, tudo perfeito, sem nenhum defeito, bastante bom, excelente');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (18,94,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (18,21,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (15,31,3,'Poderia ter gasto dinheiro noutro livro melhor.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (15,58,3,'Não está mau, mas tambem não está bom, poderia ser melhor');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,66,3,'Poderia ter gasto dinheiro noutro livro melhor.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,89,5,'5 estrelas, tudo perfeito, sem nenhum defeito, bastante bom, excelente');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (20,71,1,'Deveria ter gasto o dinheiro em outro livro.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (20,33,4,'Bastante bom, bem parametrizado e muito informativo');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (10,24,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (10,19,4,'Bastante bom, bem parametrizado e muito informativo');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,69,3,'Não está mau, mas tambem não está bom, poderia ser melhor');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,16,4,'Bastante bom, bem parametrizado e muito informativo');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (6,16,2,'Não achei o livro nada de especial, penso que poderiam ter explicitado melhor a informação');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (6,34,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,49,5,'5 estrelas, tudo perfeito, sem nenhum defeito, bastante bom, excelente');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,66,4,'Achei bastante interessante, faltava algo no final para valer as 5 estrel');
 
 /* ------------------------------------------------------ R28 CartaoCredito ------------------------------------------------------ */
 INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5202765077828229','22/05/2015','935');
