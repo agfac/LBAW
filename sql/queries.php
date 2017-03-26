@@ -21,10 +21,19 @@ function retornaClientePorUsername($username)
 }
 
 //SELECT03 - Pesquisa das publicações por categoria
-
+function listarPublicacoesPorCategoria($nomeCategoria)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM publicacao
+      LEFT JOIN subcategoria ON publicacao.subcategoriaid = subcategoria.subcategoriaid
+      LEFT JOIN categoria ON subcategoria.categoriaid = categoria.categoriaid
+      WHERE categoria.nome = :nomeCategoria');
+    $stmt->bindParam(':nomeCategoria', $nomeCategoria, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
 
 //SELECT04 - Pesquisa das publicações por sub-categoria
-//Pode nao estar certo xD
 function listarPublicacoesPorSubCategoria($nomeSubCategoria)
 {
     global $db;
@@ -37,16 +46,51 @@ function listarPublicacoesPorSubCategoria($nomeSubCategoria)
 }
 
 //SELECT05 - Pesquisa das publicações por autor
-
+function listarPublicacoesPorAutor($nomeAutor)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM publicacao
+      LEFT JOIN autorpublicacao ON autorpublicacao.publicacaoid = publicacao.publicacaoid
+      LEFT JOIN autor ON autorpublicacao.autorid = autor.autorid
+      WHERE autor.nome = :nomeAutor');
+    $stmt->bindParam(':nomeAutor', $nomeAutor, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
 
 //SELECT06 - Pesquisa da publicação por palavra chave na descrição
-
+function retornaPublicacaoPorDescricao($key)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM publicacao WHERE descricao LIKE :key');
+    $stmt->bindParam(':key', $key, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetch();
+}
 
 //SELECT07 - Pesquisa das publicações por stock
-
+function listarPublicacoesPorStock($nrStock)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM publicacao WHERE stock = :nrStock');
+    $stmt->bindParam(':nrStock', $nrStock, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
 
 //SELECT08 - Pesquisa das publicações compradas por cliente
-
+function listarPublicacoesPorCliente($nomeCliente)
+{
+    global $db;
+    $stmt = $db->prepare('SELECT * FROM publicacao
+      LEFT JOIN publicacaoencomenda ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
+      LEFT JOIN encomenda ON publicacaoencomenda.encomendaid = encomenda.encomendaid
+      LEFT JOIN cliente ON encomenda.clienteid = cliente.clienteid
+      WHERE cliente.nome = :nomeCliente');
+    $stmt->bindParam(':nomeCliente', $nomeCliente, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
 
 //SELECT09 - Pesquisa das publicações mais compradas
 
