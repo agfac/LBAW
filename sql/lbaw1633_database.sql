@@ -534,7 +534,7 @@ CREATE OR REPLACE FUNCTION insert_publicacao()
 RETURNS TRIGGER 
 AS $$
 BEGIN
-	NEW.iva := NEW.preco / 1.23;
+	NEW.iva := NEW.preco-(NEW.preco/1.23);
 
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
@@ -619,7 +619,7 @@ BEGIN
 						WHERE encomendaID = NEW.encomendaID),
 		portes=(CASE WHEN total <= 30 THEN 2.99
 						ELSE 0.00 END),
-		iva=total / 1.23
+		iva=total-(total/1.23)
 	WHERE informacaoFaturacaoID = (SELECT InformacaofaturacaoID
 									FROM Encomenda
 									WHERE encomendaID = NEW.encomendaID);
