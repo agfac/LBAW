@@ -288,6 +288,7 @@ CREATE TABLE Comentario
 	Classificacao integer NOT NULL,
 	Texto text NOT NULL,
 	CONSTRAINT PK_Comentario PRIMARY KEY (ComentarioID),
+	CONSTRAINT CK_Comentario_classificacao CHECK (Classificacao BETWEEN 1 AND 5),
 	CONSTRAINT CK_Comentario_texto_comprimento CHECK (char_length(Texto) <= 300)
 )
 ;
