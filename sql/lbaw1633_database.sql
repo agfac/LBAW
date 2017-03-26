@@ -530,8 +530,8 @@ CREATE TABLE Wishlist
 
 /* Create Trigger Funtions */
 
-CREATE OR REPLACE FUNCTION insert_publicacao() 
-RETURNS TRIGGER 
+CREATE OR REPLACE FUNCTION insert_publicacao()
+RETURNS TRIGGER
 AS $$
 BEGIN
 	NEW.iva := NEW.preco / 1.23;
@@ -539,8 +539,8 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION insert_cliente() 
-RETURNS TRIGGER 
+CREATE OR REPLACE FUNCTION insert_cliente()
+RETURNS TRIGGER
 AS $$
 BEGIN
 	NEW.idade := date_part('year', age(NEW.Datanascimento));
@@ -548,8 +548,8 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION insert_funcionario() 
-RETURNS TRIGGER 
+CREATE OR REPLACE FUNCTION insert_funcionario()
+RETURNS TRIGGER
 AS $$
 BEGIN
 	NEW.idade := date_part('year', age(NEW.Datanascimento));
@@ -557,8 +557,8 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION insert_encomenda() 
-RETURNS TRIGGER 
+CREATE OR REPLACE FUNCTION insert_encomenda()
+RETURNS TRIGGER
 AS $$
 BEGIN
 	INSERT INTO Informacaofaturacao(InformacaofaturacaoID)
@@ -569,8 +569,8 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION insert_publicacaoencomenda() 
-RETURNS TRIGGER 
+CREATE OR REPLACE FUNCTION insert_publicacaoencomenda()
+RETURNS TRIGGER
 AS $$
 BEGIN
 	NEW.preco = (SELECT preco
@@ -580,8 +580,8 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION update_informacaoFaturacao() 
-RETURNS TRIGGER 
+CREATE OR REPLACE FUNCTION update_informacaoFaturacao()
+RETURNS TRIGGER
 AS $$
 BEGIN
 	UPDATE Informacaofaturacao
@@ -1283,136 +1283,90 @@ INSERT INTO Imagem (publicacaoID,nome,url) VALUES (94,'Oriente Distante','/img/p
 INSERT INTO Imagem (publicacaoID,nome,url) VALUES (95,'CITYPACK - Londres','/img/products/Guias_Turisticos_e_Mapas/Europa/95.jpeg');
 
 /* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (9,'Nathaniel Lee','feminino','10/02/1976','Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Dorothy Harrison','feminino','27/04/1973','et netus et malesuada fames ac turpis egestas. Fusce aliquet');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Risa Kim','feminino','18/11/1975','lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (18,'Desirae Chapman','masculino','31/12/1984','libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (15,'Morgan Savage','feminino','10/06/1976','magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (11,'Avram Goodwin','masculino','09/10/1974','sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (12,'Sasha Carlson','feminino','17/06/1986','fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Merritt Mclaughlin','masculino','29/06/1972','fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (6,'Kaye Murphy','masculino','18/02/1980','nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu,');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (4,'Oliver Deleon','feminino','05/08/1980','pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (7,'Macon Dalton','feminino','07/02/1977','quis diam luctus lobortis. Class aptent taciti sociosqu ad litora');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (11,'Fuller Aguirre','masculino','12/04/1980','Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (14,'Jermaine Bowman','feminino','12/01/1979','vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (10,'Erasmus Thornton','feminino','23/08/1981','et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (17,'Nathaniel Byers','feminino','22/01/1984','purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (14,'Hayfa Harrington','feminino','10/07/1974','et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (7,'Raymond Jimenez','masculino','21/04/1975','non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Jescie Sharpe','masculino','20/09/1978','tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (16,'Phyllis Navarro','masculino','07/10/1978','ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Desiree Strong','masculino','02/01/1972','Ut tincidunt orci quis lectus. Nullam suscipit, est ac facilisis facilisis, magna tellus faucibus');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (16,'Jenette Butler','masculino','17/07/1983','Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (15,'David Hall','masculino','10/03/1977','magna a neque. Nullam ut nisi a odio semper cursus.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (8,'Hilel Elliott','feminino','16/03/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (4,'Joy Bullock','feminino','13/05/1970','Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (10,'Christian Lambert','masculino','03/01/1972','odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (4,'Petra Mckay','feminino','11/04/1981','dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu erat');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (10,'Gay Cardenas','masculino','24/09/1983','magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (14,'Laith Knox','feminino','10/12/1986','lobortis tellus justo sit amet nulla. Donec non justo. Proin non');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (18,'Amal Parsons','feminino','16/12/1970','dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Hanae Briggs','masculino','27/10/1968','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'Whitney Trevino','feminino','04/01/1986','Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit amet metus.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (6,'Gail Conner','feminino','18/04/1983','sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (17,'Nolan Briggs','feminino','18/09/1978','Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Bernardo Pinto de Almeida','masculino','10/02/1954','Bernardo Pinto de Almeida nasceu em 1954.Vive e trabalha no Porto. Professor Catedrático na Faculdade de Belas Artes da Universidade do Porto.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Grant Scott','masculino','27/04/1973','Grant Scott é fotógrafo profissional. Depois de atuar durante quinze anos como diretor de fotografia de livros e revistas como Elle e Tatler, no ano 2000 ele decidiu abrir seu próprio estúdio como fotógrafo freelancer, trabalho que executa até os dias de hoje, paralelamente às aulas que ministra no curso de graduação em Fotografia Editorial e Publicitária da Universidade de Gloucestershire, na Inglaterra.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'BRIAN K. VAUGHAN','masculino','18/11/1975','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ED BRUBAKER','masculino','31/12/1984','Ed Brubaker é um dos mais aclamados argumentistas da actualidade, com histórias em todas as grandes editoras americanas.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Jorge Dias de Deus','masculino','10/06/1976','Jorge Dias de Deus é professor catedrático jubilado no Instituto Superior Técnico, da Universidade de Lisboa, com notável obra científica em física de altas energias, astrofísica e cosmologia, e sistemas dinâmicos.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Sem Autor','masculino','09/10/1974','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Augusto Cury','masculino','17/06/1986','O Dr. Augusto Cury é psiquiatra, psicoterapeuta, cientista e escritor. Desenvolveu o conceito de inteligência multifocal, uma perspetiva inovadora do funcionamento da mente e da construção do pensamento.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'IÑAKI PIÑUEL','masculino','29/06/1972','Iñaki Piñuel é doutorado em Psicologia, psicoterapeuta, investigador e divulgador especializado na avaliação e no tratamento das vítimas de abuso psicológico e de psicopatas integrados.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Gareth Moore','masculino','18/02/1980','Dr. Gareth Moore é autor de mais de 35 best-sellers internacionais de puzzles e outros exercícios para o cérebro.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'JOÃO TIAGO LIMA','masculino','05/08/1980','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'JOAQUIM ROCHA','masculino','07/02/1977','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'André Fernando Ribeiro de Sá','masculino','12/04/1980','Engenheiro Eletrotécnico e de Computadores, ramo de sistemas de energia, pela FEUP – Licenciatura (2000) e Mestrado (2003). Pós-graduado em gestão de energia – eficiência energética, pelo ISQ (2008). Título de Especialista em Engenharia Eletrotécnica pela Universidade de Aveiro (2012).');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Rita Castanheira Alves','feminino','12/01/1979','Rita Castanheira Alves é licenciada em Psicologia Clínica desde 2007. A sua prática profissional tem-se dividido entre a prática clínica com crianças, adolescentes e pais, passando pela gestão, implementação e coordenação de projetos de prevenção e intervenção em saúde mental na área infanto-juvenil');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Mário Cordeiro','masculino','23/08/1981','Mário Cordeiro, pediatra, professor aposentado de pediatria e de saúde pública da Faculdade de Ciências Médicas de Lisboa.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'DOLORES AVEIRO','feminino','22/01/1984','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Caroline Webb','feminino','10/07/1974','Caroline Webb foi partner da McKinsey & Co., onde trabalhou mais de uma década. Ocupa o cargo de CEO na empresa de consultadoria Sevenshift, que criou. Dedica-se a ajudar os seus clientes a serem mais produtivos e mais eficazes no trabalho.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ANA TERESA PENIM','feminino','21/04/1975','É especialista em Coaching Apreciativo, Liderança, Psicologia Positiva, Comunicação, Consumer Behavior e Desenvolvimento de Performance. Possui uma carreira marcada pela liderança e desenvolvimento de projectos formativos inovadores na área do comércio e da aprendizagem ao longo da vida.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'JOSHUA RUBENSTEIN','masculino','20/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'HENRIQUE MONTEIRO','masculino','07/10/1978','Henrique Monteiro é jornalista profissional há quase 40. Foi repórter em mais de 30 países, incluindo cenários de guerra em Moçambique, Angola e Irão. Foi ainda repórter político e parlamentar. É cronista, assinando desde 1990, na revista do Expresso, a coluna Cartas do Comendador; faz, desde 1995, comentário político no caderno principal do mesmo jornal e, desde 2011, comentários diários na sua versão digital. É ainda comentador na SIC Notícias e na Rádio Renascença. Foi subdiretor do Expresso de 1995 a 2005 e depois disso diretor até 2011.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'LUIS MARCELINO','masculino','02/01/1972','Licenciado em Eng.ª Eletrotécnica e de Computadores (IST/UTL) com doutoramento em Sistemas de Informação (University of Salford, Reino Unido). Foi docente na Universidade do Algarve e na Universidade Nova de Lisboa. Dedica-se à interação pessoa-máquina e aos dispositivos móveis.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'RICARDO QUEIRÓS','masculino','17/07/1983','Licenciado em Informática pelo Instituto Superior de Engenharia do Porto (ISEP) e Mestrado em Informática pela Faculdade de Ciências da Universidade do Porto (FCUP). Exerce a sua actividade como docente na Escola Superior de Estudos Industriais e Gestão (ESEIG), em Vila do Conde, onde é responsável por disciplinas na área das Linguagens e Técnicas de Programação e Bases de Dados.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ROSANNA LEY','feminino','10/03/1977','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luís Cardoso','masculino','16/03/1970','Luís Cardoso nasceu em Kailako, uma vila no interior de Timor que aparece por diversas vezes referenciada nos seus romances.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'TERESA RODRIGUES','feminino','13/05/1970','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'CINNAMON VANPUTTE','masculino','03/01/1972','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'José Pedro Castanheira','masculino','11/04/1981','Ganhou alguns dos mais prestigiados galardões de jornalismo atribuídos em Portugal: Prémio Macau de Jornalismo (1990) e Prémio Nacional de Reportagem de Imprensa (1993), ambos do Clube de Jornalistas; Primeiro Prémio de Reportagem (1993 e 1997), do Clube Português de Imprensa;');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ANÍBAL CAVACO SILVA','masculino','15/07/1939','Aníbal Cavaco Silva, nascido a 15 de julho de 1939, em Boliqueime, Loulé. É casado com Maria Alves da Silva Cavaco Silva. O casal tem dois filhos e cinco netos. Foi o 19º Presidente da República Portuguesa entre 2006 e 2016.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'PAPA FRANCISCO','masculino','10/12/1986','Francisco (em latim: Franciscus), nascido Jorge Mario Bergoglio SJ (Buenos Aires, 17 de dezembro de 1936) é o 266.º Papa da Igreja Católica e atual chefe de estado do Vaticano,4 sucedendo o Papa Bento XVI, que abdicou ao papado em 28 de fevereiro de 2013.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ROBERT SARAH','masculino','16/12/1970','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ISABEL OLIVEIRA','feminino','27/10/1968','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MANUEL PINTO COELHO','masculino','04/01/1986','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Alcides Azevedo Canelas','feminino','18/04/1983','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luísa Ducla Soares','feminino','20/09/1939','uísa Ducla Soares nasceu em Lisboa a 20 de julho de 1939. É licenciada em Filologia Germânica pela Universidade Clássica de Lisboa. Iniciou a sua atividade profissional como tradutora, consultora literária e jornalista, tendo sido diretora da revista de divulgação cultural Vida (1971-2)');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MARIA HELENA MARQUES','feminino','18/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (18,'Mia Couto','masculino','16/12/1955','Nasceu na Beira, Moçambique, em 1955. Foi jornalista e professor, e é, atualmente, biólogo e escritor. Está traduzido em diversas línguas.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'ANTÓNIO BOTTO','feminino','27/10/1968','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ALICE VIEIRA','feminino','18/09/1943','Escritora portuguesa de livros infantis e juvenis, nascida em 1943. Neste domínio da literatura, ganhou em 1979 o Prémio do Ano Internacional da Criança, com Rosa, Minha Irmã Rosa. Tem publicado regularmente obras em volume - entre elas, Chocolate à Chuva (1982) e Graças e Desgraças da Corte de El-Rei Tadinho (1984)');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MARIA ALBERTA MENÉRES','feminino','04/01/1930','Maria Alberta Menéres nasceu em 1930, em Vila Nova de Gaia. Tem uma vasta obra poética, estando representada em várias antologias literárias nacionais e estrangeiras. Foi professora dos Ensinos Básico e Secundário nas disciplinas de Língua Portuguesa e História. É autora de inúmeros programas televisivos para crianças, tendo sido Diretora do Departamento de Programas Infantis e Juvenis da RTP de 1974 a 1986.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Angelina G.Beck','feminino','18/04/1983','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'LONELY PLANET','masculino','18/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'JOAQUIM MAGALHÃES DE CASTRO','masculino','18/09/1978','Nasceu nas Caldas de São Jorge, em Santa Maria da Feira. Escritor, jornalista independente, fotógrafo e investigador da História da Expansão Portuguesa');
 
 /* ------------------------------------------------------ R11 AutorPublicacao ------------------------------------------------------ */
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (1,23);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (2,17);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (3,13);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (4,30);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (5,18);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (6,2);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (7,3);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (8,12);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (9,29);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (10,18);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (11,24);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (12,11);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (13,27);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (14,7);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (15,28);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (16,20);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (17,25);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (18,21);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (1,1);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (2,2);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (3,3);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (4,4);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (5,5);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (7,7);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (8,8);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (9,9);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (10,10);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (11,6);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (12,6);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (13,11);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (14,12);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (15,13);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (16,14);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (17,15);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (19,17);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (20,31);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (21,11);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (22,21);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (23,26);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (24,8);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (25,13);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (26,10);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (27,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (28,7);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (29,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (30,23);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (31,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (32,27);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (33,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (34,21);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (35,4);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (36,31);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (37,8);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (38,28);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (39,18);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (40,26);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (41,4);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (42,22);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (43,28);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (44,23);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (45,5);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (46,28);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (47,30);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (48,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (49,27);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (50,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (51,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (52,2);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (53,28);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (54,24);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (55,27);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (56,11);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (57,29);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (58,1);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (59,2);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (60,32);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (61,19);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (62,31);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (63,15);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (64,1);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (65,15);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (66,6);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (67,22);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (68,4);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (69,27);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (70,23);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (71,22);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (72,16);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (73,24);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (74,16);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (75,16);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (76,12);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (77,27);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (78,17);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (79,13);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (80,11);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (81,20);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (82,31);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (83,20);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (84,16);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (85,9);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (86,10);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (87,23);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (88,28);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (89,18);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (90,28);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (91,10);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (92,30);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,12);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,23);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (95,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (20,18);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (21,19);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (22,20);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (23,21);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (24,22);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (25,23);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (26,24);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (27,25);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (28,26);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (29,27);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (30,28);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (31,29);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (32,30);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (33,31);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (34,32);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (35,33);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (40,34);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (41,35);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (42,36);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (43,37);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (44,38);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (89,39);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,40);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,41);
 
 /* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes	');
