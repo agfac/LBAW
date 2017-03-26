@@ -587,6 +587,15 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION insert_comentario() 
+RETURNS TRIGGER 
+AS $$
+BEGIN
+	NEW.Data := CURRENT_TIMESTAMP;
+
+	RETURN NEW;
+END $$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION update_informacaoFaturacao() 
 RETURNS TRIGGER 
 AS $$
@@ -631,6 +640,11 @@ CREATE TRIGGER insert_publicacaoencomenda_trigger
 BEFORE INSERT OR UPDATE ON Publicacaoencomenda
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_publicacaoencomenda();
+
+CREATE TRIGGER insert_comentario_trigger
+BEFORE INSERT OR UPDATE ON Comentario
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_comentario();
 
 CREATE TRIGGER update_informacaoFaturacao_trigger
 AFTER INSERT OR UPDATE ON Publicacaoencomenda
@@ -1148,37 +1162,37 @@ INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (13,87);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,29);
 
 /* ------------------------------------------------------ R6 Comentario ------------------------------------------------------ */
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,34,'12/08/2017 21:30:16',1,'et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,43,'21/08/2017 21:30:16',1,'Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (14,91,'12/05/2017 21:30:16',4,'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,66,'14/08/2016 21:30:16',3,'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,79,'20/09/2016 21:30:16',1,'Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,57,'03/09/2017 21:30:16',4,'ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (10,15,'20/05/2016 21:30:16',4,'sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,28,'29/04/2017 21:30:16',1,'id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,51,'30/07/2016 21:30:16',1,'nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (15,8,'18/06/2016 21:30:16',3,'Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (1,14,'25/08/2017 21:30:16',3,'turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,80,'10/05/2016 21:30:16',2,'elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non,');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (10,42,'03/06/2017 21:30:16',1,'a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (12,17,'14/12/2016 21:30:16',5,'Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a,');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (16,78,'16/10/2016 21:30:16',4,'Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio.');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (16,66,'25/03/2016 21:30:16',1,'consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,83,'16/01/2017 21:30:16',3,'a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,34,'16/08/2017 21:30:16',3,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,33,'10/12/2016 21:30:16',3,'iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,88,'12/07/2017 21:30:16',5,'ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (8,59,'31/05/2016 21:30:16',1,'pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (7,57,'28/05/2017 21:30:16',4,'consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu,');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,8,'07/07/2016 21:30:16',4,'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa.');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,51,'27/06/2016 21:30:16',4,'blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (15,63,'02/11/2017 21:30:16',3,'nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,66,'15/06/2017 21:30:16',4,'rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (20,27,'27/03/2017 21:30:16',2,'Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (13,63,'13/09/2017 21:30:16',1,'lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (14,46,'28/07/2017 21:30:16',5,'bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (3,22,'28/03/2016 21:30:16',4,'odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim.');
-INSERT INTO Comentario (clienteID,publicacaoID,data,classificacao,texto) VALUES (21,54,'18/10/2016 21:30:16',5,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,34,1,'et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,43,1,'Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,91,4,'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,66,3,'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,79,1,'Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (12,57,4,'ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (10,15,4,'sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,28,1,'id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (12,51,1,'nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (15,8,3,'Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (1,14,3,'turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,80,2,'elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non,');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (10,42,1,'a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (12,17,5,'Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a,');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (16,78,4,'Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus fermentum convallis ligula. Donec luctus aliquet odio.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (16,66,1,'consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,83,3,'a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,34,3,'dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,33,3,'iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit mattis. Cras eget');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,88,5,'ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (8,59,1,'pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,57,4,'consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu,');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,8,4,'ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,51,4,'blandit congue. In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (15,63,3,'nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,66,4,'rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (20,27,2,'Nulla eget metus eu erat semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (13,63,1,'lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (14,46,5,'bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (3,22,4,'odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim.');
+INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (21,54,5,'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis');
 
 /* ------------------------------------------------------ R7 Imagem ------------------------------------------------------ */
 INSERT INTO Imagem (publicacaoID,nome,url) VALUES (1,'Arte Portuguesa no Século XX','/img/products/Livros/Arte/1.jpeg');
