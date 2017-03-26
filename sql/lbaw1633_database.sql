@@ -284,7 +284,7 @@ CREATE TABLE Comentario
 	ComentarioID SERIAL,
 	ClienteID integer NOT NULL,
 	PublicacaoID integer NOT NULL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Classificacao integer NOT NULL,
 	Texto text NOT NULL,
 	CONSTRAINT PK_Comentario PRIMARY KEY (ComentarioID),
@@ -308,7 +308,7 @@ CREATE TABLE Encomenda
 	MoradaFaturacaoID integer NOT NULL,
 	MoradaEnvioID integer NOT NULL,
 	InformacaofaturacaoID integer NULL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Estado EstadoEncomenda NOT NULL DEFAULT 'Em processamento',
 	CONSTRAINT PK_Encomenda PRIMARY KEY (EncomendaID)
 )
@@ -378,7 +378,7 @@ CREATE TABLE Login
 	AdministradorID integer NULL,
 	FuncionarioID integer NULL,
 	ClienteID integer NULL,
-	Data timestamp NOT NULL,
+	Data timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT PK_Login PRIMARY KEY (LoginID)
 )
 ;
@@ -548,8 +548,6 @@ BEGIN
 	RETURNING CarrinhoID
 	INTO NEW.CarrinhoID;
 
-	NEW.Dataregisto := CURRENT_TIMESTAMP;
-
 	NEW.idade := date_part('year', age(NEW.Datanascimento));
 
 	RETURN NEW;
@@ -573,8 +571,6 @@ BEGIN
 	RETURNING InformacaofaturacaoID
 	INTO NEW.InformacaofaturacaoID;
 
-	NEW.Data := CURRENT_TIMESTAMP;
-
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
@@ -585,15 +581,6 @@ BEGIN
 	NEW.preco = (SELECT preco
 				FROM Publicacao
 				WHERE publicacaoID = NEW.publicacaoID);
-
-	RETURN NEW;
-END $$ LANGUAGE plpgsql;
-
-CREATE OR REPLACE FUNCTION insert_comentario() 
-RETURNS TRIGGER 
-AS $$
-BEGIN
-	NEW.Data := CURRENT_TIMESTAMP;
 
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
@@ -653,11 +640,6 @@ CREATE TRIGGER insert_publicacaoencomenda_trigger
 BEFORE INSERT OR UPDATE ON Publicacaoencomenda
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_publicacaoencomenda();
-
-CREATE TRIGGER insert_comentario_trigger
-BEFORE INSERT OR UPDATE ON Comentario
-FOR EACH ROW
-	EXECUTE PROCEDURE insert_comentario();
 
 CREATE TRIGGER insert_imagem_trigger
 BEFORE INSERT OR UPDATE ON Imagem
@@ -1621,56 +1603,56 @@ INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,a
 INSERT INTO Administrador (paisID,nome,genero,dataNascimento,dataCessacao,username,password,ativo) VALUES (1,'Carlos Manuel Teixeira','Masculino','8/9/1991','12/02/2017','carlosteixeira','BSO38NJN5MA',FALSE);
 
 /* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
-INSERT INTO Login (administradorID,data) VALUES (6,'22/09/2016 23:55:06');
-INSERT INTO Login (administradorID,data) VALUES (5,'09/04/2017 05:15:07');
-INSERT INTO Login (administradorID,data) VALUES (3,'31/12/2016 15:25:20');
-INSERT INTO Login (administradorID,data) VALUES (5,'22/04/2017 19:09:15');
-INSERT INTO Login (administradorID,data) VALUES (5,'04/04/2017 20:48:45');
-INSERT INTO Login (administradorID,data) VALUES (5,'06/05/2017 23:45:18');
-INSERT INTO Login (administradorID,data) VALUES (3,'20/01/2017 10:15:45');
-INSERT INTO Login (administradorID,data) VALUES (3,'22/12/2016 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (5,'01/06/2016 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (2,'16/03/2018 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (3,'19/06/2016 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (6,'13/12/2016 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (2,'24/12/2016 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (2,'20/03/2018 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (6,'16/05/2016 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (2,'26/10/2017 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (5,'01/09/2017 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (1,'04/01/2017 12:45:10');
-INSERT INTO Login (administradorID,data) VALUES (4,'30/10/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'19/06/2017 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (4,'30/04/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (3,'09/04/2017 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (2,'22/03/2018 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'19/02/2017 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (5,'12/04/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (2,'03/01/2017 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'11/04/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (3,'06/06/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (4,'03/09/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'03/12/2017 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (5,'26/07/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (3,'13/04/2017 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (2,'14/12/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (1,'04/04/2016 12:45:10');
-INSERT INTO Login (funcionarioID,data) VALUES (4,'26/01/2018 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (21,'02/07/2017 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (21,'01/01/2017 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (20,'28/08/2017 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (5,'01/02/2018 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (1,'18/06/2017 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (7,'21/01/2018 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (12,'17/02/2017 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (3,'16/12/2016 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (11,'15/06/2016 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (19,'09/10/2017 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (5,'13/07/2016 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (6,'06/06/2016 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (13,'29/06/2016 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (12,'21/05/2016 12:45:10');
-INSERT INTO Login (clienteID,data) VALUES (1,'07/05/2017 12:45:10');
+INSERT INTO Login (administradorID) VALUES (6);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (3);
+INSERT INTO Login (administradorID) VALUES (6);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (6);
+INSERT INTO Login (administradorID) VALUES (2);
+INSERT INTO Login (administradorID) VALUES (5);
+INSERT INTO Login (administradorID) VALUES (1);
+INSERT INTO Login (administradorID) VALUES (4);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (4);
+INSERT INTO Login (funcionarioID) VALUES (3);
+INSERT INTO Login (funcionarioID) VALUES (2);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (5);
+INSERT INTO Login (funcionarioID) VALUES (2);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (3);
+INSERT INTO Login (funcionarioID) VALUES (4);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (5);
+INSERT INTO Login (funcionarioID) VALUES (3);
+INSERT INTO Login (funcionarioID) VALUES (2);
+INSERT INTO Login (funcionarioID) VALUES (1);
+INSERT INTO Login (funcionarioID) VALUES (4);
+INSERT INTO Login (clienteID) VALUES (21);
+INSERT INTO Login (clienteID) VALUES (21);
+INSERT INTO Login (clienteID) VALUES (20);
+INSERT INTO Login (clienteID) VALUES (5);
+INSERT INTO Login (clienteID) VALUES (1);
+INSERT INTO Login (clienteID) VALUES (7);
+INSERT INTO Login (clienteID) VALUES (12);
+INSERT INTO Login (clienteID) VALUES (3);
+INSERT INTO Login (clienteID) VALUES (11);
+INSERT INTO Login (clienteID) VALUES (19);
+INSERT INTO Login (clienteID) VALUES (5);
+INSERT INTO Login (clienteID) VALUES (6);
+INSERT INTO Login (clienteID) VALUES (13);
+INSERT INTO Login (clienteID) VALUES (12);
+INSERT INTO Login (clienteID) VALUES (1);
 
 /* ------------------------------------------------------ R24 Encomenda ------------------------------------------------------ */
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (1,1,1,'Enviada');
