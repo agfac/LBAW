@@ -591,8 +591,8 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION insert_imagem() 
-RETURNS TRIGGER 
+CREATE OR REPLACE FUNCTION insert_imagem()
+RETURNS TRIGGER
 AS $$
 BEGIN
 	NEW.nome := (SELECT titulo
@@ -1316,47 +1316,47 @@ INSERT INTO Imagem (publicacaoID,url) VALUES (94,'/img/products/Guias_Turisticos
 INSERT INTO Imagem (publicacaoID,url) VALUES (95,'/img/products/Guias_Turisticos_e_Mapas/Europa/95.jpeg');
 
 /* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Bernardo Pinto de Almeida','masculino','10/02/1954','Bernardo Pinto de Almeida nasceu em 1954.Vive e trabalha no Porto. Professor Catedrático na Faculdade de Belas Artes da Universidade do Porto.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Grant Scott','masculino','27/04/1973','Grant Scott é fotógrafo profissional. Depois de atuar durante quinze anos como diretor de fotografia de livros e revistas como Elle e Tatler, no ano 2000 ele decidiu abrir seu próprio estúdio como fotógrafo freelancer, trabalho que executa até os dias de hoje, paralelamente às aulas que ministra no curso de graduação em Fotografia Editorial e Publicitária da Universidade de Gloucestershire, na Inglaterra.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'BRIAN K. VAUGHAN','masculino','18/11/1975','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ED BRUBAKER','masculino','31/12/1984','Ed Brubaker é um dos mais aclamados argumentistas da actualidade, com histórias em todas as grandes editoras americanas.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Jorge Dias de Deus','masculino','10/06/1976','Jorge Dias de Deus é professor catedrático jubilado no Instituto Superior Técnico, da Universidade de Lisboa, com notável obra científica em física de altas energias, astrofísica e cosmologia, e sistemas dinâmicos.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Sem Autor','masculino','09/10/1974','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Augusto Cury','masculino','17/06/1986','O Dr. Augusto Cury é psiquiatra, psicoterapeuta, cientista e escritor. Desenvolveu o conceito de inteligência multifocal, uma perspetiva inovadora do funcionamento da mente e da construção do pensamento.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'IÑAKI PIÑUEL','masculino','29/06/1972','Iñaki Piñuel é doutorado em Psicologia, psicoterapeuta, investigador e divulgador especializado na avaliação e no tratamento das vítimas de abuso psicológico e de psicopatas integrados.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Gareth Moore','masculino','18/02/1980','Dr. Gareth Moore é autor de mais de 35 best-sellers internacionais de puzzles e outros exercícios para o cérebro.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'JOÃO TIAGO LIMA','masculino','05/08/1980','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'JOAQUIM ROCHA','masculino','07/02/1977','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'André Fernando Ribeiro de Sá','masculino','12/04/1980','Engenheiro Eletrotécnico e de Computadores, ramo de sistemas de energia, pela FEUP – Licenciatura (2000) e Mestrado (2003). Pós-graduado em gestão de energia – eficiência energética, pelo ISQ (2008). Título de Especialista em Engenharia Eletrotécnica pela Universidade de Aveiro (2012).');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Rita Castanheira Alves','feminino','12/01/1979','Rita Castanheira Alves é licenciada em Psicologia Clínica desde 2007. A sua prática profissional tem-se dividido entre a prática clínica com crianças, adolescentes e pais, passando pela gestão, implementação e coordenação de projetos de prevenção e intervenção em saúde mental na área infanto-juvenil');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Mário Cordeiro','masculino','23/08/1981','Mário Cordeiro, pediatra, professor aposentado de pediatria e de saúde pública da Faculdade de Ciências Médicas de Lisboa.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'DOLORES AVEIRO','feminino','22/01/1984','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Caroline Webb','feminino','10/07/1974','Caroline Webb foi partner da McKinsey & Co., onde trabalhou mais de uma década. Ocupa o cargo de CEO na empresa de consultadoria Sevenshift, que criou. Dedica-se a ajudar os seus clientes a serem mais produtivos e mais eficazes no trabalho.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ANA TERESA PENIM','feminino','21/04/1975','É especialista em Coaching Apreciativo, Liderança, Psicologia Positiva, Comunicação, Consumer Behavior e Desenvolvimento de Performance. Possui uma carreira marcada pela liderança e desenvolvimento de projectos formativos inovadores na área do comércio e da aprendizagem ao longo da vida.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'JOSHUA RUBENSTEIN','masculino','20/09/1978','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'HENRIQUE MONTEIRO','masculino','07/10/1978','Henrique Monteiro é jornalista profissional há quase 40. Foi repórter em mais de 30 países, incluindo cenários de guerra em Moçambique, Angola e Irão. Foi ainda repórter político e parlamentar. É cronista, assinando desde 1990, na revista do Expresso, a coluna Cartas do Comendador; faz, desde 1995, comentário político no caderno principal do mesmo jornal e, desde 2011, comentários diários na sua versão digital. É ainda comentador na SIC Notícias e na Rádio Renascença. Foi subdiretor do Expresso de 1995 a 2005 e depois disso diretor até 2011.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'LUIS MARCELINO','masculino','02/01/1972','Licenciado em Eng.ª Eletrotécnica e de Computadores (IST/UTL) com doutoramento em Sistemas de Informação (University of Salford, Reino Unido). Foi docente na Universidade do Algarve e na Universidade Nova de Lisboa. Dedica-se à interação pessoa-máquina e aos dispositivos móveis.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'RICARDO QUEIRÓS','masculino','17/07/1983','Licenciado em Informática pelo Instituto Superior de Engenharia do Porto (ISEP) e Mestrado em Informática pela Faculdade de Ciências da Universidade do Porto (FCUP). Exerce a sua actividade como docente na Escola Superior de Estudos Industriais e Gestão (ESEIG), em Vila do Conde, onde é responsável por disciplinas na área das Linguagens e Técnicas de Programação e Bases de Dados.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ROSANNA LEY','feminino','10/03/1977','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luís Cardoso','masculino','16/03/1970','Luís Cardoso nasceu em Kailako, uma vila no interior de Timor que aparece por diversas vezes referenciada nos seus romances.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'TERESA RODRIGUES','feminino','13/05/1970','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'CINNAMON VANPUTTE','masculino','03/01/1972','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'José Pedro Castanheira','masculino','11/04/1981','Ganhou alguns dos mais prestigiados galardões de jornalismo atribuídos em Portugal: Prémio Macau de Jornalismo (1990) e Prémio Nacional de Reportagem de Imprensa (1993), ambos do Clube de Jornalistas; Primeiro Prémio de Reportagem (1993 e 1997), do Clube Português de Imprensa;');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ANÍBAL CAVACO SILVA','masculino','15/07/1939','Aníbal Cavaco Silva, nascido a 15 de julho de 1939, em Boliqueime, Loulé. É casado com Maria Alves da Silva Cavaco Silva. O casal tem dois filhos e cinco netos. Foi o 19º Presidente da República Portuguesa entre 2006 e 2016.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'PAPA FRANCISCO','masculino','10/12/1986','Francisco (em latim: Franciscus), nascido Jorge Mario Bergoglio SJ (Buenos Aires, 17 de dezembro de 1936) é o 266.º Papa da Igreja Católica e atual chefe de estado do Vaticano,4 sucedendo o Papa Bento XVI, que abdicou ao papado em 28 de fevereiro de 2013.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ROBERT SARAH','masculino','16/12/1970','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ISABEL OLIVEIRA','feminino','27/10/1968','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MANUEL PINTO COELHO','masculino','04/01/1986','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Alcides Azevedo Canelas','feminino','18/04/1983','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luísa Ducla Soares','feminino','20/09/1939','uísa Ducla Soares nasceu em Lisboa a 20 de julho de 1939. É licenciada em Filologia Germânica pela Universidade Clássica de Lisboa. Iniciou a sua atividade profissional como tradutora, consultora literária e jornalista, tendo sido diretora da revista de divulgação cultural Vida (1971-2)');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MARIA HELENA MARQUES','feminino','18/09/1978','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (18,'Mia Couto','masculino','16/12/1955','Nasceu na Beira, Moçambique, em 1955. Foi jornalista e professor, e é, atualmente, biólogo e escritor. Está traduzido em diversas línguas.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (5,'ANTÓNIO BOTTO','feminino','27/10/1968','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'ALICE VIEIRA','feminino','18/09/1943','Escritora portuguesa de livros infantis e juvenis, nascida em 1943. Neste domínio da literatura, ganhou em 1979 o Prémio do Ano Internacional da Criança, com Rosa, Minha Irmã Rosa. Tem publicado regularmente obras em volume - entre elas, Chocolate à Chuva (1982) e Graças e Desgraças da Corte de El-Rei Tadinho (1984)');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MARIA ALBERTA MENÉRES','feminino','04/01/1930','Maria Alberta Menéres nasceu em 1930, em Vila Nova de Gaia. Tem uma vasta obra poética, estando representada em várias antologias literárias nacionais e estrangeiras. Foi professora dos Ensinos Básico e Secundário nas disciplinas de Língua Portuguesa e História. É autora de inúmeros programas televisivos para crianças, tendo sido Diretora do Departamento de Programas Infantis e Juvenis da RTP de 1974 a 1986.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Angelina G.Beck','feminino','18/04/1983','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'LONELY PLANET','masculino','18/09/1978','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'JOAQUIM MAGALHÃES DE CASTRO','masculino','18/09/1978','Nasceu nas Caldas de São Jorge, em Santa Maria da Feira. Escritor, jornalista independente, fotógrafo e investigador da História da Expansão Portuguesa');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Bernardo Pinto de Almeida','Masculino','10/02/1954','Bernardo Pinto de Almeida nasceu em 1954.Vive e trabalha no Porto. Professor Catedrático na Faculdade de Belas Artes da Universidade do Porto.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Grant Scott','Masculino','27/04/1973','Grant Scott é fotógrafo profissional. Depois de atuar durante quinze anos como diretor de fotografia de livros e revistas como Elle e Tatler, no ano 2000 ele decidiu abrir seu próprio estúdio como fotógrafo freelancer, trabalho que executa até os dias de hoje, paralelamente às aulas que ministra no curso de graduação em Fotografia Editorial e Publicitária da Universidade de Gloucestershire, na Inglaterra.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Brian K. Vaughan','Masculino','18/11/1975','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ED Brubaker','Masculino','31/12/1984','Ed Brubaker é um dos mais aclamados argumentistas da actualidade, com histórias em todas as grandes editoras americanas.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Jorge Dias de Deus','Masculino','10/06/1976','Jorge Dias de Deus é professor catedrático jubilado no Instituto Superior Técnico, da Universidade de Lisboa, com notável obra científica em física de altas energias, astrofísica e cosmologia, e sistemas dinâmicos.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Sem Autor','Masculino','09/10/1974','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Augusto Cury','Masculino','17/06/1986','O Dr. Augusto Cury é psiquiatra, psicoterapeuta, cientista e escritor. Desenvolveu o conceito de inteligência multifocal, uma perspetiva inovadora do funcionamento da mente e da construção do pensamento.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Iñaki Piñuel','Masculino','29/06/1972','Iñaki Piñuel é doutorado em Psicologia, psicoterapeuta, investigador e divulgador especializado na avaliação e no tratamento das vítimas de abuso psicológico e de psicopatas integrados.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Gareth Moore','Masculino','18/02/1980','Dr. Gareth Moore é autor de mais de 35 best-sellers internacionais de puzzles e outros exercícios para o cérebro.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'João Tiago Lima','Masculino','05/08/1980','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Joaquim Rocha','Masculino','07/02/1977','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'André Fernando Ribeiro de Sá','Masculino','12/04/1980','Engenheiro Eletrotécnico e de Computadores, ramo de sistemas de energia, pela FEUP – Licenciatura (2000) e Mestrado (2003). Pós-graduado em gestão de energia – eficiência energética, pelo ISQ (2008). Título de Especialista em Engenharia Eletrotécnica pela Universidade de Aveiro (2012).');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Rita Castanheira Alves','Feminino','12/01/1979','Rita Castanheira Alves é licenciada em Psicologia Clínica desde 2007. A sua prática profissional tem-se dividido entre a prática clínica com crianças, adolescentes e pais, passando pela gestão, implementação e coordenação de projetos de prevenção e intervenção em saúde mental na área infanto-juvenil');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Mário Cordeiro','Masculino','23/08/1981','Mário Cordeiro, pediatra, professor aposentado de pediatria e de saúde pública da Faculdade de Ciências Médicas de Lisboa.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Dolores Aveiro','Feminino','22/01/1984','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Caroline Webb','Feminino','10/07/1974','Caroline Webb foi partner da McKinsey & Co., onde trabalhou mais de uma década. Ocupa o cargo de CEO na empresa de consultadoria Sevenshift, que criou. Dedica-se a ajudar os seus clientes a serem mais produtivos e mais eficazes no trabalho.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Ana Teresa Penim','Feminino','21/04/1975','É especialista em Coaching Apreciativo, Liderança, Psicologia Positiva, Comunicação, Consumer Behavior e Desenvolvimento de Performance. Possui uma carreira marcada pela liderança e desenvolvimento de projectos formativos inovadores na área do comércio e da aprendizagem ao longo da vida.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Joshua Rubenstein','Masculino','20/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Henrique Monteiro','Masculino','07/10/1978','Henrique Monteiro é jornalista profissional há quase 40. Foi repórter em mais de 30 países, incluindo cenários de guerra em Moçambique, Angola e Irão. Foi ainda repórter político e parlamentar. É cronista, assinando desde 1990, na revista do Expresso, a coluna Cartas do Comendador; faz, desde 1995, comentário político no caderno principal do mesmo jornal e, desde 2011, comentários diários na sua versão digital. É ainda comentador na SIC Notícias e na Rádio Renascença. Foi subdiretor do Expresso de 1995 a 2005 e depois disso diretor até 2011.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luis Marcelino','Masculino','02/01/1972','Licenciado em Eng.ª Eletrotécnica e de Computadores (IST/UTL) com doutoramento em Sistemas de Informação (University of Salford, Reino Unido). Foi docente na Universidade do Algarve e na Universidade Nova de Lisboa. Dedica-se à interação pessoa-máquina e aos dispositivos móveis.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Ricardo Queirós','Masculino','17/07/1983','Licenciado em Informática pelo Instituto Superior de Engenharia do Porto (ISEP) e Mestrado em Informática pela Faculdade de Ciências da Universidade do Porto (FCUP). Exerce a sua actividade como docente na Escola Superior de Estudos Industriais e Gestão (ESEIG), em Vila do Conde, onde é responsável por disciplinas na área das Linguagens e Técnicas de Programação e Bases de Dados.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Rosanna Ley','Feminino','10/03/1977','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luís Cardoso','Masculino','16/03/1970','Luís Cardoso nasceu em Kailako, uma vila no interior de Timor que aparece por diversas vezes referenciada nos seus romances.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Teresa Rodrigues','Feminino','13/05/1970','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Cinnamon Vanputte','Masculino','03/01/1972','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'José Pedro Castanheira','Masculino','11/04/1981','Ganhou alguns dos mais prestigiados galardões de jornalismo atribuídos em Portugal: Prémio Macau de Jornalismo (1990) e Prémio Nacional de Reportagem de Imprensa (1993), ambos do Clube de Jornalistas; Primeiro Prémio de Reportagem (1993 e 1997), do Clube Português de Imprensa;');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Aníbal Cavaco Silva','Masculino','15/07/1939','Aníbal Cavaco Silva, nascido a 15 de julho de 1939, em Boliqueime, Loulé. É casado com Maria Alves da Silva Cavaco Silva. O casal tem dois filhos e cinco netos. Foi o 19º Presidente da República Portuguesa entre 2006 e 2016.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Papa Francisco','Masculino','10/12/1986','Francisco (em latim: Franciscus), nascido Jorge Mario Bergoglio SJ (Buenos Aires, 17 de dezembro de 1936) é o 266.º Papa da Igreja Católica e atual chefe de estado do Vaticano,4 sucedendo o Papa Bento XVI, que abdicou ao papado em 28 de fevereiro de 2013.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Robert Sarah','Masculino','16/12/1970','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Isabel Oliveira','Feminino','27/10/1968','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Manuel Pinto Coelho','Masculino','04/01/1986','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Alcides Azevedo Canelas','Feminino','18/04/1983','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luísa Ducla Soares','Feminino','20/09/1939','uísa Ducla Soares nasceu em Lisboa a 20 de julho de 1939. É licenciada em Filologia Germânica pela Universidade Clássica de Lisboa. Iniciou a sua atividade profissional como tradutora, consultora literária e jornalista, tendo sido diretora da revista de divulgação cultural Vida (1971-2)');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Maria Helena Marques','Feminino','18/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Mia Couto','Masculino','16/12/1955','Nasceu na Beira, Moçambique, em 1955. Foi jornalista e professor, e é, atualmente, biólogo e escritor. Está traduzido em diversas línguas.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'António Botto','Feminino','27/10/1968','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Alice Vieira','Feminino','18/09/1943','Escritora portuguesa de livros infantis e juvenis, nascida em 1943. Neste domínio da literatura, ganhou em 1979 o Prémio do Ano Internacional da Criança, com Rosa, Minha Irmã Rosa. Tem publicado regularmente obras em volume - entre elas, Chocolate à Chuva (1982) e Graças e Desgraças da Corte de El-Rei Tadinho (1984)');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MARIA ALBERTA MENÉRES','Feminino','04/01/1930','Maria Alberta Menéres nasceu em 1930, em Vila Nova de Gaia. Tem uma vasta obra poética, estando representada em várias antologias literárias nacionais e estrangeiras. Foi professora dos Ensinos Básico e Secundário nas disciplinas de Língua Portuguesa e História. É autora de inúmeros programas televisivos para crianças, tendo sido Diretora do Departamento de Programas Infantis e Juvenis da RTP de 1974 a 1986.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Angelina G.Beck','Feminino','18/04/1983','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Lonely Planet','Masculino','18/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Joaquim Magalhães De Castro','Masculino','18/09/1978','Nasceu nas Caldas de São Jorge, em Santa Maria da Feira. Escritor, jornalista independente, fotógrafo e investigador da História da Expansão Portuguesa');
 
 /* ------------------------------------------------------ R11 AutorPublicacao ------------------------------------------------------ */
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (1,1);
@@ -1402,7 +1402,7 @@ INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,40);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,41);
 
 /* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes	');
+INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes');
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Albufeira');
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Amarante');
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Aveiro');
@@ -1544,26 +1544,26 @@ INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (20,3);
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (21,6);
 
 /* ------------------------------------------------------ R15 CartaoCreditoCliente ------------------------------------------------------ */
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (1,'MasterCard','4539991256127798','22/05/2015','935');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (2,'MasterCard','4024007101047','14/08/2011','983');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (3,'AmericanExpress','4485012147500889','07/06/2010','837');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (4,'Visa','4485517338024358','05/06/2010','854');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (5,'AmericanExpress','4716038150097','26/04/2012','385');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (6,'Visa','4716945839428','02/05/2016','376');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (7,'MasterCard','4716953205280','01/06/2014','831');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (8,'MasterCard','4556354288945679','24/09/2011','610');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (9,'AmericanExpress','4539034808209085','06/07/2013','276');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (10,'Visa','4840928111223','10/01/2015','203');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (11,'Visa','4532027722626','15/01/2012','890');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (12,'MasterCard','4716995890950924','25/09/2012','645');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (13,'MasterCard','4401847396021','24/10/2012','719');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (14,'AmericanExpress','4916722740475409','14/08/2010','597');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (15,'AmericanExpress','4716199213119149','28/06/2015','389');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (16,'Visa','4305967903689564','11/03/2011','752');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (17,'MasterCard','4485834498720877','08/06/2011','173');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','4539959690998769','22/04/2016','970');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19,'MasterCard','4539218926600511','01/04/2012','885');
-INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4929736934353','14/09/2011','735');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (1,'MasterCard','5202765077828229','22/05/2015','935');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (2,'MasterCard','5430691565133761','14/08/2011','983');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (3,'AmericanExpress','370260745421182','07/06/2010','837');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (4,'Visa','4916986359778797','05/06/2010','854');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (5,'AmericanExpress','377474126024732','26/04/2012','385');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (6,'Visa','4556648286082744','02/05/2016','376');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (7,'MasterCard','5409854996751109','01/06/2014','831');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (8,'MasterCard','5526905920137779','24/09/2011','610');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (9,'AmericanExpress','370211408726086','06/07/2013','276');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (10,'Visa','4532856394501211','10/01/2015','203');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (11,'Visa','4716421781519918','15/01/2012','890');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (12,'MasterCard','5458126513696426','25/09/2012','645');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (13,'MasterCard','5201465857878229','24/10/2012','719');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (14,'AmericanExpress','371592925533140','14/08/2010','597');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (15,'AmericanExpress','377943126021332','28/06/2015','389');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (16,'Visa','4916550504410670','11/03/2011','752');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (17,'MasterCard','5430657564853761','08/06/2011','173');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','376016372768384','22/04/2016','970');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19,'MasterCard','5401454996774109','01/04/2012','885');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4532854254501211','14/09/2011','735');
 
 /* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
 INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,1,1,'Manuel Pereira Lopes','Masculino','08/12/1980','manuellopes','YPB58AJH6LE',TRUE,'02/09/2009 12:12:50','938321270','manuelpereiralopes@hotmail.com','998187586','51057539 8NE7');
@@ -1769,16 +1769,16 @@ INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,30);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,30);
 
 /* ------------------------------------------------------ R28 CartaoCredito ------------------------------------------------------ */
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4539991256127798','22/05/2015','935');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4024007101047434','14/08/2011','983');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','4485012147500889','07/06/2010','837');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4485517338024358','05/06/2010','854');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','4716038150097342','26/04/2012','385');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4716945839428343','02/05/2016','376');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4716953205280344','01/06/2014','831');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','4556354288945679','24/09/2011','610');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','4539034808209085','06/07/2013','276');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4840928111262334','10/01/2015','203');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5202765077828229','22/05/2015','935');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5430691565133761','14/08/2011','983');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370260745421182','07/06/2010','837');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('Visa','4916986359778797','05/06/2010','854');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('AmericanExpress','377474126024732','26/04/2012','385');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('Visa','4556648286082744','02/05/2016','376');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5409854996751109','01/06/2014','831');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('MasterCard','5526905920137779','24/09/2011','610');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370211408726086','06/07/2013','276');
+INSERT INTO CartaoCreditoCliente (tipo,numero,validade,cvv) VALUES ('Visa','4532856394501211','10/01/2015','203');
 
 /* ------------------------------------------------------ R29 Multibanco ------------------------------------------------------ */
 INSERT INTO Multibanco (entidade,referencia) VALUES ('61624','614 976 849');
