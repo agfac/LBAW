@@ -1753,19 +1753,19 @@ INSERT INTO MetodoPagamento (tipo) VALUES ('PaySafeCard');
 INSERT INTO MetodoPagamento (tipo) VALUES ('MoneyBookers');
 
 /* ------------------------------------------------------ R26 InformacaoFaturacao ------------------------------------------------------ */
-UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=1;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=1;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=2;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=3;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=3;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=4;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=5;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=5;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=6;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=4 WHERE informacaofaturacaoID=7;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=8;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=9;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=8;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=9;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=3 WHERE informacaofaturacaoID=10;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=11;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=11;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=12;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=13;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=13;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=14;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=4 WHERE informacaofaturacaoID=15;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=16;
@@ -1773,16 +1773,16 @@ UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=1
 UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=18;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=19;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=3 WHERE informacaofaturacaoID=20;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=21;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=21;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=22;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=23;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=24;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=8 WHERE informacaofaturacaoID=25;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=25;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=3 WHERE informacaofaturacaoID=26;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=7 WHERE informacaofaturacaoID=27;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=4 WHERE informacaofaturacaoID=28;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=27;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=28;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=29;
-UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=30;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=30;
 
 /* ------------------------------------------------------ R25 PublicacaoEncomenda ------------------------------------------------------ */
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (43,1);
@@ -1847,48 +1847,28 @@ INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,30);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,30);
 
 /* ------------------------------------------------------ R28 CartaoCredito ------------------------------------------------------ */
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5202765077828229','22/05/2015','935');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5430691565133761','14/08/2011','983');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370260745421182','07/06/2010','837');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4916986359778797','05/06/2010','854');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','377474126024732','26/04/2012','385');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4556648286082744','02/05/2016','376');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5409854996751109','01/06/2014','831');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('MasterCard','5526905920137779','24/09/2011','610');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('AmericanExpress','370211408726086','06/07/2013','276');
-INSERT INTO CartaoCredito (tipo,numero,validade,cvv) VALUES ('Visa','4532856394501211','10/01/2015','203');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (1,'MasterCard','5202765077828229','22/05/2015','935');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (2,'MasterCard','5430691565133761','14/08/2011','983');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (8,'AmericanExpress','370260745421182','07/06/2010','837');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (13,'Visa','4916986359778797','05/06/2010','854');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','377474126024732','26/04/2012','385');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (22,'Visa','4556648286082744','02/05/2016','376');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (25,'MasterCard','5409854996751109','01/06/2014','831');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (27,'MasterCard','5526905920137779','24/09/2011','610');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (30,'AmericanExpress','370211408726086','06/07/2013','276');
 
 /* ------------------------------------------------------ R29 Multibanco ------------------------------------------------------ */
-INSERT INTO Multibanco (entidade,referencia) VALUES ('61624','614 976 849');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('75491','395 315 825');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('65582','182 226 819');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('72157','686 128 244');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('37188','328 165 191');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('87488','655 663 668');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('31585','232 614 235');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('91247','117 778 349');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('12416','758 365 939');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('39498','823 263 724');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('33338','459 581 165');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('87159','549 252 633');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('58894','761 858 827');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('85815','874 344 824');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('75464','765 962 113');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('71286','283 437 367');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('54848','564 915 627');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('16113','518 494 733');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('48114','641 766 252');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('19287','849 911 584');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('79216','743 932 611');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('82711','281 722 782');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('13548','155 372 814');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('96251','659 456 281');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('57635','171 997 945');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('63569','254 382 232');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('28947','212 379 526');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('15991','331 991 595');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('72657','229 647 948');
-INSERT INTO Multibanco (entidade,referencia) VALUES ('84466','417 838 858');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (2,'61624','614 976 849');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (5,'75491','395 315 825');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (9,'65582','182 226 819');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (11,'72157','686 128 244');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (14,'37188','328 165 191');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (16,'87488','655 663 668');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (19,'31585','232 614 235');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (21,'91247','117 778 349');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (24,'12416','758 365 939');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (28,'39498','823 263 724');
+INSERT INTO Multibanco (multibancoid,entidade,referencia) VALUES (29,'33338','459 581 165');
 
 /* ------------------------------------------------------ R30 Pesquisa ------------------------------------------------------ */
 INSERT INTO Pesquisa (expressao) VALUES ('Livro');
