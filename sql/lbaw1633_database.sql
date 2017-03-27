@@ -159,6 +159,12 @@ DROP TRIGGER IF EXISTS insert_imagem_trigger ON Imagem CASCADE
 DROP TRIGGER IF EXISTS insert_comentario_trigger ON Comentario CASCADE
 ;
 
+DROP TRIGGER IF EXISTS insert_multibanco_trigger ON Multibanco CASCADE
+;
+
+DROP TRIGGER IF EXISTS insert_cartaocredito_trigger ON Cartaocredito CASCADE
+;
+
 DROP TRIGGER IF EXISTS update_informacaoFaturacao_trigger ON Publicacaoencomenda CASCADE
 ;
 
@@ -251,7 +257,7 @@ CREATE TABLE Carrinho
 
 CREATE TABLE Cartaocredito
 (
-	CartaocreditoID SERIAL,
+	CartaocreditoID integer NOT NULL,
 	Tipo TipoCartao NOT NULL,
 	Numero varchar(50) NOT NULL,
 	Validade varchar(50) NOT NULL,
@@ -457,7 +463,7 @@ CREATE TABLE MoradaFaturacao
 
 CREATE TABLE Multibanco
 (
-	MultibancoID SERIAL,
+	MultibancoID integer NOT NULL,
 	Entidade varchar(50) NOT NULL,
 	Referencia varchar(50) NOT NULL,
 	CONSTRAINT PK_Multibanco PRIMARY KEY (MultibancoID)
@@ -676,6 +682,34 @@ BEGIN
 	RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION insert_multibanco()
+RETURNS TRIGGER
+AS $$
+BEGIN
+	IF NEW.MultibancoID IN (SELECT Cartaocredito.CartaocreditoID
+							FROM Cartaocredito)
+	THEN
+		RAISE EXCEPTION 'MultibancoID já se encontra atribuido a CartaocreditoID';
+	ELSE
+		RETURN NEW;
+	END IF;
+	
+END $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION insert_cartaocredito()
+RETURNS TRIGGER
+AS $$
+BEGIN
+	IF NEW.CartaocreditoID IN (SELECT MultibancoID
+								FROM Multibanco)
+	THEN
+		RAISE EXCEPTION 'CartaocreditoID já se encontra atribuido a MultibancoID';
+	ELSE
+		RETURN NEW;
+	END IF;
+
+END $$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION update_informacaoFaturacao()
 RETURNS TRIGGER
 AS $$
@@ -743,6 +777,16 @@ CREATE TRIGGER insert_comentario_trigger
 BEFORE INSERT ON Comentario
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_comentario();
+
+CREATE TRIGGER insert_multibanco_trigger
+BEFORE INSERT ON Multibanco
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_multibanco();
+
+CREATE TRIGGER insert_cartaocredito_trigger
+BEFORE INSERT ON Cartaocredito
+FOR EACH ROW
+	EXECUTE PROCEDURE insert_cartaocredito();
 
 CREATE TRIGGER update_informacaoFaturacao_trigger
 AFTER INSERT OR UPDATE ON Publicacaoencomenda
