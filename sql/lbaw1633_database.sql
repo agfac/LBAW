@@ -1892,7 +1892,7 @@ INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (7,66
 
 /* ------------------------------------------------------ R28 CartaoCredito ------------------------------------------------------ */
 INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (1,'MasterCard','5202765077828229','22/05/2015','935');
-INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (2,'MasterCard','5430691565133761','14/08/2011','983');
+INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (3,'MasterCard','5430691565133761','14/08/2011','983');
 INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (8,'AmericanExpress','370260745421182','07/06/2010','837');
 INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (13,'Visa','4916986359778797','05/06/2010','854');
 INSERT INTO CartaoCredito (cartaocreditoid,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','377474126024732','26/04/2012','385');
