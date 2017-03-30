@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	
+
     <!--Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    
+
     <!-- css files -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
@@ -19,10 +19,10 @@
     <link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css" />
     <link rel="stylesheet" type="text/css" href="css/animate.css" />
     <link rel="stylesheet" type="text/css" href="css/swiper.css" />
-    
+
     <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
     <link id="pagestyle" rel="stylesheet" type="text/css" href="css/default.css" />
-    
+
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
@@ -42,10 +42,10 @@
     <script type="text/javascript" src="js/gmaps.js"></script>
     <script type="text/javascript" src="js/swiper.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    
+
 </head>
 <body>
-        
+
 <body>
 
 	<!-- start section -->
@@ -85,9 +85,9 @@
 					<a href="javascript:void(0);">
 						<img src="img/flags/flag-pt.jpg" class="mr-5" alt="">
 						<span class="hidden-xs">
-							Português 
+							Português
 							<i class="fa fa-angle-down ml-5"></i>
-						</span>    
+						</span>
 					</a>
 					<ul class="w-110">
 						<li><a href="javascript:void(0);"><img src="img/flags/flag-english.jpg" class="mr-5" alt="">English</a></li>
@@ -98,7 +98,7 @@
 					<a href="javascript:void(0);">
 						<i class="fa fa-user mr-5"></i>
 						<span class="hidden-xs">
-							Minha conta 
+							Minha conta
 							<i class="fa fa-angle-down ml-5"></i>
 						</span>
 					</a>
@@ -120,50 +120,50 @@
 						<span class="hidden-xs">
 							Carrinho<sup class="text-primary">(3)</sup>
 							<i class="fa fa-angle-down ml-5"></i>
-						</span>    
+						</span>
 					</a>
 					<ul class="cart w-250">
 						<li>
 							<div class="cart-items">
 								<ol class="items">
-									<li> 
+									<li>
 										<a href="?page=single-product" class="product-image">
 											<img src="img/books/books_5.jpg" alt="Sample Product ">
 										</a>
 										<div class="product-details">
-											<div class="close-icon"> 
+											<div class="close-icon">
 												<a href="javascript:void(0);"><i class="fa fa-close"></i></a>
 											</div>
-											<p class="product-name"> 
-												<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+											<p class="product-name">
+												<a href="?page=single-product">Lorem Ipsum dolor sit</a>
 											</p>
 											<strong>1</strong> x <span class="price text-primary">€59.99</span>
 										</div><!-- end product-details -->
 									</li><!-- end item -->
-									<li> 
+									<li>
 										<a href="?page=single-product" class="product-image">
 											<img src="img/books/books_6.jpg" alt="Sample Product ">
 										</a>
 										<div class="product-details">
-											<div class="close-icon"> 
+											<div class="close-icon">
 												<a href="javascript:void(0);"><i class="fa fa-close"></i></a>
 											</div>
-											<p class="product-name"> 
-												<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+											<p class="product-name">
+												<a href="?page=single-product">Lorem Ipsum dolor sit</a>
 											</p>
 											<strong>1</strong> x <span class="price text-primary">€39.99</span>
 										</div><!-- end product-details -->
 									</li><!-- end item -->
-									<li> 
+									<li>
 										<a href="?page=single-product" class="product-image">
 											<img src="img/books/books_5.jpg" alt="Sample Product ">
 										</a>
 										<div class="product-details">
-											<div class="close-icon"> 
+											<div class="close-icon">
 												<a href="javascript:void(0);"><i class="fa fa-close"></i></a>
 											</div>
-											<p class="product-name"> 
-												<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+											<p class="product-name">
+												<a href="?page=single-product">Lorem Ipsum dolor sit</a>
 											</p>
 											<strong>1</strong> x <span class="price text-primary">€29.99</span>
 										</div><!-- end product-details -->
@@ -225,7 +225,7 @@
 				<ul class="nav navbar-nav">
 					<!-- Home -->
 					<li class="dropdown active"><a href="?page=home">Página inicial</a>
-					</li><!-- end li dropdown -->    
+					</li><!-- end li dropdown -->
 					<!-- Categorias -->
 					<li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Categorias<i class="fa fa-angle-down ml-5"></i></a>
 						<ul class="dropdown-menu">
