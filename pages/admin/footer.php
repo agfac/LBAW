@@ -2,7 +2,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            2017 <a href="https://www.google.pt">2017</a>
+            2017 <a href="">2017</a>
           </div>
           <div class="clearfix"></div>
         </footer>

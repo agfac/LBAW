@@ -3,28 +3,28 @@
           <div class="">
             <div class="row top_tiles" style="margin: 10px 0;">
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
-                <span>Total Books</span>
+                <span>Total de Publicações</span>
                 <h2>95</h2>
                 <span class="sparkline_one" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
-                <span>Total Revenue</span>
-                <h2>$ 2,135</h2>
+                <span>Total de Vendas</span>
+                <h2>2,135€</h2>
                 <span class="sparkline_one" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
-                <span>Total Clients</span>
+                <span>Total de Clientes</span>
                 <h2>25</h2>
                 <span class="sparkline_three" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                   </span>
               </div>
               <div class="col-md-3 col-sm-3 col-xs-6 tile">
-                <span>Total Orders</span>
+                <span>Total de Encomendas</span>
                 <h2>10</h2>
                 <span class="sparkline_one" style="height: 160px;">
                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
@@ -39,7 +39,7 @@
             <div class="col-md-12">
               <div class="x_panel">
                 <div class="x_title">
-                  <h2>Transaction Summary <small>Weekly progress</small></h2>
+                  <h2>Número de vendas <small>Progresso Semanal</small></h2>
                   <div class="filter">
                     <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                       <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
@@ -55,21 +55,21 @@
                     </div>
                     <div class="tiles">
                       <div class="col-md-4 tile">
-                        <span>Total Books</span>
+                        <span>Total de Publicações</span>
                         <h2>95</h2>
                         <span class="sparkline11 graph" style="height: 160px;">
                              <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                         </span>
                       </div>
                       <div class="col-md-4 tile">
-                        <span>Total Revenue</span>
-                        <h2>$ 2,135</h2>
+                        <span>Total de Vendas</span>
+                        <h2>2,135€</h2>
                         <span class="sparkline22 graph" style="height: 160px;">
                               <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
                         </span>
                       </div>
                       <div class="col-md-4 tile">
-                        <span>Total Orders</span>
+                        <span>Total de Encomendas</span>
                         <h2>10</h2>
                         <span class="sparkline11 graph" style="height: 160px;">
                                <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
@@ -82,16 +82,16 @@
                   <div class="col-md-3 col-sm-12 col-xs-12">
                     <div>
                       <div class="x_title">
-                        <h2>Top Clients</h2>
+                        <h2>Top Clientes</h2>
                         <ul class="nav navbar-right panel_toolbox">
                           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                           </li>
                           <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                             <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
+                              <li><a href="#">Definição 1</a>
                               </li>
-                              <li><a href="#">Settings 2</a>
+                              <li><a href="#">Definição 2</a>
                               </li>
                             </ul>
                           </li>
@@ -106,9 +106,9 @@
                             <i class="fa fa-user aero"></i>
                           </a>
                           <div class="media-body">
-                            <a class="title" href="#">Ms. Mary Jane</a>
-                            <p><strong>$230. </strong> Agent Avarage Sales </p>
-                            <p> <small>2 Purchases Today</small>
+                            <a class="title" href="#">Joao Americo Pereira Ribeiro</a>
+                            <p><strong>230€. </strong> Gastos nos últimos 7 dias </p>
+                            <p> <small>2 Encomenda(s) hoje</small>
                             </p>
                           </div>
                         </li>
@@ -117,9 +117,9 @@
                             <i class="fa fa-user green"></i>
                           </a>
                           <div class="media-body">
-                            <a class="title" href="#">Ms. Mary Jane</a>
-                            <p><strong>$23. </strong> Agent Avarage Sales </p>
-                            <p> <small>1 Purchases Today</small>
+                            <a class="title" href="#">Antonio Joaquim dos Santos Teixeira</a>
+                            <p><strong>189€. </strong> Gastos nos últimos 7 dias </p>
+                            <p> <small>1 Encomenda(s) hoje</small>
                             </p>
                           </div>
                         </li>
@@ -128,9 +128,9 @@
                             <i class="fa fa-user blue"></i>
                           </a>
                           <div class="media-body">
-                            <a class="title" href="#">Ms. Mary Jane</a>
-                            <p><strong>$23. </strong> Agent Avarage Sales </p>
-                            <p> <small>1 Purchases Today</small>
+                            <a class="title" href="#">Eduardo Paredes da Silva</a>
+                            <p><strong>164€. </strong> Gastos nos últimos 7 dias </p>
+                            <p> <small>1 Encomenda(s) hoje</small>
                             </p>
                           </div>
                         </li>
@@ -139,9 +139,9 @@
                             <i class="fa fa-user aero"></i>
                           </a>
                           <div class="media-body">
-                            <a class="title" href="#">Ms. Mary Jane</a>
-                            <p><strong>$23. </strong> Agent Avarage Sales </p>
-                            <p> <small>1 Purchases Today</small>
+                            <a class="title" href="#">Alexandre Jose Ribeiro Gaspar</a>
+                            <p><strong>132€. </strong> Gastos nos últimos 7 dias </p>
+                            <p> <small>1 Encomenda(s) hoje</small>
                             </p>
                           </div>
                         </li>
@@ -150,9 +150,9 @@
                             <i class="fa fa-user green"></i>
                           </a>
                           <div class="media-body">
-                            <a class="title" href="#">Ms. Mary Jane</a>
-                            <p><strong>$23. </strong> Agent Avarage Sales </p>
-                            <p> <small>1 Purchases Today</small>
+                            <a class="title" href="#">Daniel Rodrigues de Sousa Carmo</a>
+                            <p><strong>93€. </strong> Gastos nos últimos 7 dias </p>
+                            <p> <small>1 Encomenda(s) hoje</small>
                             </p>
                           </div>
                         </li>
@@ -176,16 +176,16 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>To Do List <small>Sample tasks</small></h2>
+                      <h2>Lista To-Do <small>Tarefas simples</small></h2>
                       <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Settings 1</a>
+                            <li><a href="#">Definição 1</a>
                             </li>
-                            <li><a href="#">Settings 2</a>
+                            <li><a href="#">Definição 2</a>
                             </li>
                           </ul>
                         </li>
@@ -200,39 +200,23 @@
                         <ul class="to_do">
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Schedule meeting with new client </p>
+                              <input type="checkbox" class="flat"> Encontro com o cliente #24 </p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
+                              <input type="checkbox" class="flat"> Criar um novo email</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
+                              <input type="checkbox" class="flat"> Modificar a publicação #34</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                              <input type="checkbox" class="flat"> Falar com o administrador #2</p>
                           </li>
                           <li>
                             <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
+                              <input type="checkbox" class="flat"> Entregar a encomenda #21 em mão</p>
                           </li>
                         </ul>
                       </div>

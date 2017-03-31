@@ -47,8 +47,8 @@
                 <img src="img/admin/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <span>Bem vindo,</span>
+                <h2>Tiago Miguel Alves Campos</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -58,14 +58,14 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>Geral</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Páginas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="?page=home">Dashboard</a></li>
-                      <li><a href="?page=home2">Clients</a></li>
-                      <li><a href="?page=home3">Comments</a></li>
-                      <li><a href="?page=home3">Logs</a></li>
+                      <li><a href="?page=home">Página inicial</a></li>
+                      <li><a href="?page=home2">Clientes</a></li>
+                      <li><a href="?page=home3">Comentários</a></li>
+                      <li><a href="?page=home3">Históricos</a></li>
                     </ul>
                   </li>
                   <!--
@@ -195,19 +195,19 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="img/admin/img.jpg" alt="">John Doe
+                    <img src="img/admin/img.jpg" alt="">Tiago Miguel Alves Campos
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="javascript:;"> Perfil</a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
+                        <span>Definições</span>
                       </a>
                     </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="pages/admin/login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="javascript:;">Ajuda</a></li>
+                    <li><a href="pages/admin/login.html"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
                   </ul>
                 </li>
 
@@ -221,11 +221,11 @@
                       <a>
                         <span class="image"><img src="img/admin/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
+                          <span>Manuel Pereira Lopes</span>
+                          <span class="time"> 3 minutos a trás</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Adicionou um novo produto na loja
                         </span>
                       </a>
                     </li>
@@ -233,11 +233,11 @@
                       <a>
                         <span class="image"><img src="img/admin/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
+                          <span>Manuel Pereira Lopes</span>
+                          <span class="time"> 4 minutos a trás</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Adicionou um novo produto na loja
                         </span>
                       </a>
                     </li>
@@ -245,11 +245,11 @@
                       <a>
                         <span class="image"><img src="img/admin/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
+                          <span>Manuel Pereira Lopes</span>
+                          <span class="time"> 5 minutos a trás</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Adicionou um novo produto na loja
                         </span>
                       </a>
                     </li>
@@ -257,18 +257,18 @@
                       <a>
                         <span class="image"><img src="img/admin/img.jpg" alt="Profile Image" /></span>
                         <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
+                          <span>Manuel Pereira Lopes</span>
+                          <span class="time"> 6 minutos a trás</span>
                         </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          Adicionou um novo produto na loja
                         </span>
                       </a>
                     </li>
                     <li>
                       <div class="text-center">
                         <a>
-                          <strong>See All Alerts</strong>
+                          <strong>Ver todos alertas</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>
