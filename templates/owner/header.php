@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin Dashboard | AwesomeBookShop</title>
+    <title>Owner Dashboard | AwesomeBookShop</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
     <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="css/admin/custom.min.css" rel="stylesheet">
+    <link href="css/owner/custom.min.css" rel="stylesheet">
 
   </head>
 
@@ -36,7 +36,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="?page=home" class="site_title"><i class="fa fa-paw"></i> <span>Admin</span></a>
+              <a href="?page=home" class="site_title"><i class="fa fa-paw"></i> <span>Funcionário</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -44,11 +44,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="img/admin/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="img/owner/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bem vindo,</span>
-                <h2>Tiago Miguel Alves Campos</h2>
+                <h2>Manuel Pereira Lopes</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -62,10 +62,9 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Páginas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="?page=home">Página inicial</a></li>
-                      <li><a href="?page=home2">Clientes</a></li>
-                      <li><a href="?page=home3">Comentários</a></li>
-                      <li><a href="?page=home3">Históricos</a></li>
+                      <li><a href="?page=home">Página Inicial</a></li>
+                      <li><a href="?page=orders">Encomendas</a></li>
+                      <li><a href="?page=publications">Publicações</a></li>
                     </ul>
                   </li>
                   <!--
@@ -113,7 +112,7 @@
                       <li><a href="?page=fixed_footer">Fixed Footer</a></li>
                     </ul>
                   </li>
-              -->
+                -->
                 </ul>
               </div>
               <!--
@@ -131,11 +130,11 @@
                   </li>
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="pages/admin/page_403.html">403 Error</a></li>
-                      <li><a href="pages/admin/page_404.html">404 Error</a></li>
-                      <li><a href="pages/admin/page_500.html">500 Error</a></li>
+                      <li><a href="pages/owner/page_403.html">403 Error</a></li>
+                      <li><a href="pages/owner/page_404.html">404 Error</a></li>
+                      <li><a href="pages/owner/page_500.html">500 Error</a></li>
                       <li><a href="?page=plain_page">Plain Page</a></li>
-                      <li><a href="pages/admin/login.html">Login Page</a></li>
+                      <li><a href="pages/owner/login.html">Login Page</a></li>
                       <li><a href="?page=pricing_tables">Pricing Tables</a></li>
                     </ul>
                   </li>
@@ -159,10 +158,8 @@
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
                 </ul>
               </div>
-              -->
+            -->
             </div>
-
-
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -176,7 +173,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="pages/admin/login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="pages/owner/login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -195,7 +192,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="img/admin/img.jpg" alt="">Tiago Miguel Alves Campos
+                    <img src="img/owner/img.jpg" alt="">Manuel Pereira Lopes
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -207,7 +204,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Ajuda</a></li>
-                    <li><a href="pages/admin/login.html"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
+                    <li><a href="pages/owner/login.html"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
                   </ul>
                 </li>
 
@@ -219,7 +216,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="img/admin/img.jpg" alt="Profile Image" /></span>
+                        <span class="image"><img src="img/owner/img.jpg" alt="Profile Image" /></span>
                         <span>
                           <span>Manuel Pereira Lopes</span>
                           <span class="time"> 3 minutos a trás</span>
@@ -262,7 +259,6 @@
                         </span>
                         <span class="message">
                           Adicionou um novo produto na loja
-                        </span>
                       </a>
                     </li>
                     <li>

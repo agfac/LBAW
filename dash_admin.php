@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-$pages = array("home", "calendar", "chartjs", "contacts", "e_commerce", "echarts", "fixed_footer", "fixed_sidebar", "form_advanced", "form_buttons", "form_upload", "form_validation", "form_wizards", "form", "general_elements", "glyphicons", "home2", "home3", "icons", "inbox", "invoice", "leve2", "media_gallery", "morisjs", "other_charts", "plain_page", "pricing_tables", "profile", "project_details", "projects", "tables_dynamic", "tables", "typography", "widgets");
+$pages = array("home", "clients", "client_edit", "workers", "worker_edit", "worker_add", "admins", "admin_edit", "admin_add", "comments", "logs_clients");
 
 if(isset($_GET['page']) && in_array($_GET['page'],$pages))
 {
-$page='pages/admin/'.$_GET['page'].'.php';
+$page='templates/admin/'.$_GET['page'].'.php';
 }
 else {
 	header("LOCATION: ?page=home");
-	$page='pages/admin/home.php';
+	$page='templates/admin/home.php';
 }
 
-include_once('pages/admin/header.php');
+include_once('templates/admin/header.php');
 include_once($page);
-include_once('pages/admin/footer.php');
+include_once('templates/admin/footer.php');
 ?>
