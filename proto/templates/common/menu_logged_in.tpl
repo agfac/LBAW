@@ -7,7 +7,7 @@
             </span>
           </a>
           <ul class="w-150">
-            <li><a href="?page=login">Minha Conta</a></li>
+            <li><a href="{$BASE_URL}pages/users/my-account.php">Minha Conta</a></li>
             <li><a href="?page=wishlist">Wishlist (5)</a></li>
             <li><a href="?page=cart">Ver Carrinho</a></li>
             <li><a href="?page=checkout">Checkout</a></li>
