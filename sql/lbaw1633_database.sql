@@ -573,13 +573,12 @@ CREATE TABLE Wishlist
 ;
 
 /* Create Indexes */
-CREATE INDEX idx_publicacao_titulo ON Publicacao (Titulo)
+CREATE INDEX idx_publicacao_titulo_descricao ON Publicacao 
+USING gin((setweight(to_tsvector('portuguese', titulo),'A') || 
+	setweight(to_tsvector('portuguese', descricao),'B')))
 ;
 
 CREATE INDEX idx_publicacao_subcategoria ON Publicacao (SubcategoriaID)
-;
-
-CREATE INDEX idx_publicacao_descricao ON Publicacao (Descricao)
 ;
 
 CREATE INDEX idx_publicacao_stock ON Publicacao (Stock)
