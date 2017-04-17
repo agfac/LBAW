@@ -42,26 +42,26 @@
 
         <div class="row">
           <div class="col-sm-12 col-md-10 col-lg-12">
-            <form class="form-horizontal">
+            <form action="{$BASE_URL}actions/users/register.php" method="post" class="form-horizontal">
               <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Nome<span class="text-danger">*</span></label>
+                <label for="nome" class="col-sm-2 control-label">Nome<span class="text-danger">*</span></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control input-md" id="name" placeholder="Name">
+                  <input type="text" class="form-control input-md" name="nome" value="{$FORM_VALUES.nome}">
                 </div>
               </div><!-- end form-group -->
               <div class="form-group">
-                <label for="gender" class="col-sm-2 control-label">Género<span class="text-danger">*</span></label>
+                <label for="genero" class="col-sm-2 control-label">Género<span class="text-danger">*</span></label>
                 <div class="checkbox-input mb-10">
-                <input type="radio" class="row-gender" name="gender" value="Masculino">Masculino
-                  <input type="radio" class="row-gender" name="gender" value="Feminino">Feminino
+                  <input type="radio" class="row-gender" name="genero" value="Masculino">Masculino
+                  <input type="radio" class="row-gender" name="genero" value="Feminino">Feminino
                 </div>
               </div><!-- end form-group -->
               <div class="form-group">
-               <label for="gender" class="col-sm-2 control-label">Data de Nascimento<span class="text-danger">*</span></label>
+               <label for="dataNascimento" class="col-sm-2 control-label">Data de Nascimento<span class="text-danger">*</span></label>
                <div class="row-date">
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <select class="form-control" name="select">
+                    <select class="form-control" name="diaNasc">
                       <option value="1">01</option>
                       <option value="2">02</option>
                       <option value="3">03</option>
@@ -98,7 +98,7 @@
                 </div><!-- end col -->
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <select class="form-control" name="select">
+                    <select class="form-control" name="mesNasc">
                       <option value="january">Janeiro</option>
                       <option value="february">Fevereiro</option>
                       <option value="march">Março</option>
@@ -116,7 +116,7 @@
                 </div><!-- end col -->
                 <div class="col-sm-4">
                   <div class="form-group">
-                    <select class="form-control" name="select">
+                    <select class="form-control" name="anoNasc">
                       <option value="2006">2006</option>
                       <option value="2005">2005</option>
                       <option value="2004">2004</option>
@@ -154,62 +154,63 @@
               </div><!-- end row -->
             </div>
             <div class="form-group">
-              <label for="name" class="col-sm-2 control-label">Morada<span class="text-danger">*</span></label>
+              <label for="morada" class="col-sm-2 control-label">Morada<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" id="morada" placeholder="Morada">
+                <input type="text" class="form-control input-md" name="morada" value="{$FORM_VALUES.morada}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
-              <label for="name" class="col-sm-2 control-label">Localidade<span class="text-danger">*</span></label>
+              <label for="localidade" class="col-sm-2 control-label">Localidade<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" id="localidade" placeholder="Localidade">
+                <input type="text" class="form-control input-md" name="localidade" value="{$FORM_VALUES.localidade}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
-              <label for="name" class="col-sm-2 control-label">Código-Postal<span class="text-danger">*</span></label>
+              <label for="codigoPostal" class="col-sm-2 control-label">Código-Postal<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" id="codigoPostal" placeholder="Código-Postal">
+                <input type="text" class="form-control input-md" name="cod1" value="{$FORM_VALUES.cod1}">
+                <input type="text" class="form-control input-md" name="cod2" value="{$FORM_VALUES.cod2}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
-              <label for="name" class="col-sm-2 control-label">País<span class="text-danger">*</span></label>
+              <label for="pais" class="col-sm-2 control-label">País<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" id="pais" placeholder="País">
+                <input type="text" class="form-control input-md" name="pais" value="{$FORM_VALUES.pais}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
-              <label for="name" class="col-sm-2 control-label">Telefone</label>
+              <label for="telefone" class="col-sm-2 control-label">Telefone</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" id="telefone" placeholder="Telefone">
+                <input type="text" class="form-control input-md" name="telefone" value="{$FORM_VALUES.telefone}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="email" class="col-sm-2 control-label">E-mail <span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="email" class="form-control input-md" id="email" placeholder="E-mail">
+                <input type="email" class="form-control input-md" name="email" value="{$FORM_VALUES.email}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
-              <label for="email" class="col-sm-2 control-label">NIF </label>
+              <label for="nif" class="col-sm-2 control-label">NIF </label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" id="nif" placeholder="NIF">
+                <input type="text" class="form-control input-md" name="nif" value="{$FORM_VALUES.nif}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
-              <label for="email" class="col-sm-2 control-label">Username <span class="text-danger">*</span></label>
+              <label for="username" class="col-sm-2 control-label">Username <span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" id="username" placeholder="Username">
+                <input type="text" class="form-control input-md" name="username" value="{$FORM_VALUES.username}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="password" class="col-sm-2 control-label">Password <span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="password" class="form-control input-md" id="password" placeholder="Password">
+                <input type="password" class="form-control input-md" name="password" placeholder="Password">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <a href="javascript:void(0);" class="btn btn-default round btn-md"><i class="fa fa-user mr-5"></i> Registar</a>
+              <input type="submit" value="Registrar" class="btn btn-default round btn-md">
               </div>
             </div><!-- end form-group -->
           </form>

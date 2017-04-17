@@ -10,7 +10,8 @@
   $conn = new PDO('pgsql:host=dbm;dbname=lbaw1633', 'lbaw1633', 'ex23tp55'); //FIXME
   $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+  $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+  
   $conn->exec('SET SCHEMA \'proto\''); //FIXME?
 
   include_once($BASE_DIR . 'lib/smarty/Smarty.class.php');
@@ -30,4 +31,10 @@
   unset($_SESSION['error_messages']);  
   unset($_SESSION['field_errors']);
   unset($_SESSION['form_values']);
+
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
+  ini_set("log_errors", 1);
+  ini_set("error_log", "/opt/lbaw/lbaw1633/public_html/proto/errors/php-error.log");
 ?>

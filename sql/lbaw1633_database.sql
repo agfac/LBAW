@@ -296,9 +296,9 @@ CREATE TABLE Cliente
 	Genero varchar(50) NOT NULL,
 	Datanascimento date NOT NULL,
 	Username varchar(50) NOT NULL,
-	Password varchar(50) NOT NULL,
-	Ativo boolean NOT NULL,
-	Dataregisto timestamp NOT NULL,
+	Password varchar(200) NOT NULL,
+	Ativo boolean NOT NULL DEFAULT TRUE,
+	Dataregisto timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	Datacancelamento timestamp NULL,
 	Telefone varchar(50) NULL,
 	Email varchar(50) NOT NULL,
@@ -455,8 +455,8 @@ CREATE TABLE MoradaEnvio
 
 CREATE TABLE MoradaFaturacao
 (
-	ClienteID integer NOT NULL,
 	MoradaID integer NOT NULL,
+	ClienteID integer NOT NULL,
 	CONSTRAINT PK_Morada_Faturacao PRIMARY KEY (MoradaID,ClienteID)
 )
 ;
@@ -1207,6 +1207,9 @@ INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,d
 INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Jorge Manuel Rodrigues Goncalves','Masculino','22/03/1986','jorgegoncalves','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','966172007','jorgemanuelrodriguesgoncalves@gmail.com','866169562');
 INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Helena Isabel Duarte Dias Ribeiro','Feminino','29/06/1973','helenaribeiro','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','966229693','helenaisabelribeiro@hotmail.com','898351545');
 INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Armando Dina Mieiro','Masculino','06/09/1998','armandomieiro','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','917865498','armandomieiro@gmail.com','259873398');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'ClienteProto','Masculino','06/09/1998','cli_proto','219d87a2f4b50249b71bdea4184b662b7cea3c95',TRUE,'12/11/2012 18:21:34','917865498','cliproto@gmail.com','259873376');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'FuncionarioProtoProto','Masculino','06/09/1998','func_proto','8950a1913eae349b3a8f40b115efec916af587e8',TRUE,'12/11/2012 18:21:34','917865498','funcproto@gmail.com','259878798');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'AdministradorProto','Masculino','06/09/1998','admin_proto','13bfea3892ba2b5683c6a8f2ebf2b8b182ec1044',TRUE,'12/11/2012 18:21:34','917865498','adminproto@gmail.com','259873458');
 
 /* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (11,4,3);
