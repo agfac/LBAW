@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/owl.theme.default.min.css" />
     <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/animate.css" />
     <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/swiper.css" />
+    <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/register.css" />
     
     <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
     <link id="pagestyle" rel="stylesheet" type="text/css" href="{$BASE_URL}css/default.css" />
