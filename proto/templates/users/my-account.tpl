@@ -28,16 +28,16 @@
                                     <a href="{$BASE_URL}pages/users/my-account.php">Minha conta</a>
                                 </li>
                                 <li>
-                                    <a href="?page=cart">Meu carrinho <span class="text-primary">(3)</span></a>
+                                    <a href="{$BASE_URL}pages/users/cart.php">Meu carrinho <span class="text-primary">(3)</span></a>
                                 </li>
                                 <li>
-                                   <a href="?page=order-list">Minhas encomendas </a>
+                                   <a href="{$BASE_URL}pages/users/order-list.php">Minhas encomendas </a>
                                 </li>
                                 <li>
-                                    <a href="?page=wishlist">Lista de desejos <span class="text-primary">(5)</span></a>
+                                    <a href="{$BASE_URL}pages/users/wishlist.php">Lista de desejos <span class="text-primary">(5)</span></a>
                                 </li>
                                 <li>
-                                    <a href="?page=user-information">Definições</a>
+                                    <a href="{$BASE_URL}pages/users/user-information.php">Definições</a>
                                 </li>
                             </ul>
                         </div><!-- end widget -->
@@ -109,7 +109,7 @@
                         
                         <div class="row">
                             <div class="col-sm-12">
-                                <p>Olá <strong>{$USERNAME}</strong>! podes mudar a tua informação <a href="?page=user-information">aqui</a></p>
+                                <p>Olá <strong>{$USERNAME}</strong>! podes mudar a tua informação <a href="{$BASE_URL}pages/users/user-information.php">aqui</a></p>
                                 
                                 <hr class="spacer-30 no-border">
                                 

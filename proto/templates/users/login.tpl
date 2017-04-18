@@ -63,7 +63,7 @@
                                             </div><!-- end checkbox-input -->
                                         </div><!-- end col -->
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <label><a href="?page=forgot-password">Recuperar password</a></label>
+                                            <label><a href="{$BASE_URL}pages/users/forgot-password.php">Recuperar password</a></label>
                                         </div>
                                     </div><!-- end form-group -->
                                     <div class="form-group">

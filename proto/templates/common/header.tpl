@@ -20,7 +20,8 @@
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/animate.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/swiper.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/register.css" />
-  
+  <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/login.css" />
+
   <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
   <link id="pagestyle" rel="stylesheet" type="text/css" href="{$BASE_URL}css/default.css" />
   
@@ -105,7 +106,7 @@
             <div class="container">
               <div class="row table">
                 <div class="col-sm-3 vertical-align text-left hidden-xs col-lg-offset-2 col-lg-3">
-                  <a href="javascript:void(0);">
+                  <a href="{$BASE_URL}">
                     <img width="180" src="{$BASE_URL}images/logos/logo_abs_4.png" alt="" />
                   </a>
                 </div><!-- end col -->

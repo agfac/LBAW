@@ -66,36 +66,20 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
     $stmt->execute(array($username, $email, $nif));
     $result = $stmt->fetch();
 
-    error_log('antes do if cliente');
     if($result){
-      error_log('Cliente já existe!');
-      // die('Cliente já existe!');
+      die('Cliente já existe!');
     }
     else{
       //INSERT INTO CLIENTE
       $stmt = $conn->prepare("INSERT INTO cliente (paisid, nome, genero, datanascimento, username, password, telefone, email, nif) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-      error_log('Antes da data!');
-      // $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);
-      $datanasc = '1/2/1999';
-      error_log('Depois da data!');
-      error_log(print_r($conn->errorInfo()));
-      error_log($paisID);
-      error_log($nome);
-      error_log($genero);
-      error_log($datanasc);
-      error_log($username);
-      error_log(sha1($password));
-      error_log($telefone);
-      error_log($email);
-      error_log($nif);
+
+      $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);
+      
       $stmt->execute(array($paisID, $nome, $genero, $datanasc, $username, sha1($password), $telefone, $email, $nif));
-            error_log('Depois do execute!');
-            error_log(print_r($conn->errorInfo()));
+      
       $clienteID = $conn->lastInsertId('cliente_clienteid_seq');
     }
 
-    error_log('cliente_sucess');
-    error_log($clienteID);
     //INSERT INTO MORADA
     $stmt = $conn->prepare("INSERT INTO morada (codigopostalid, rua) VALUES (?, ?)");
     $stmt->execute(array($codPostalID, $morada));
@@ -109,13 +93,11 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
     $stmt = $conn->prepare("INSERT INTO moradaenvio (moradaid, clienteid) VALUES (?, ?)");
     $stmt->execute(array($moradaID, $clienteID));
 
-    error_log('sucess');
-
     $conn->commit();
   }catch(Exception $e){
+    
     error_log($e->getMessage());
-    error_log(print_r($conn->errorInfo()));
-    error_log('exception');
+
     $conn->rollBack();
   }
 }
@@ -127,5 +109,33 @@ function isLoginCorrect($username, $password) {
     WHERE username = ? AND password = ?");
   $stmt->execute(array($username, sha1($password)));
   return $stmt->fetch() == true;
+}
+
+function getUserData($username) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * 
+                            FROM cliente
+                            WHERE username = ?");
+    $stmt->execute(array($username));
+    return $stmt->fetchAll();
+}
+
+function getUserOrderList($clienteid) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT encomenda.encomendaid, publicacao.titulo, publicacao.preco, informacaofaturacao.total, encomenda.data, encomenda.estado, imagem.url 
+                            FROM informacaofaturacao
+                            JOIN encomenda
+                            ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid 
+                            JOIN cliente
+                            ON cliente.clienteid = encomenda.clienteid 
+                            JOIN publicacaoencomenda
+                            ON publicacaoencomenda.encomendaid = encomenda.encomendaid 
+                            JOIN publicacao
+                            ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
+                            JOIN proto.imagem
+                            ON imagem.publicacaoid = publicacao.publicacaoid
+                            WHERE encomenda.clienteid = ?");
+    $stmt->execute(array($clienteid));
+    return $stmt->fetchAll();
 }
 ?>

@@ -1,7 +1,14 @@
 /*===================
 ====Register=======
 ===================*/
-.row-date{
+#row-date{
 	margin-left: 115px;
 	margin-right: 15px;
+}
+#row-gender{
+	margin-left: 15px;
+	margin-right: 10px;
+}
+#row-codpost{
+	margin-bottom: 10px;
 }

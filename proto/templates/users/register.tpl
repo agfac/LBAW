@@ -52,13 +52,13 @@
               <div class="form-group">
                 <label for="genero" class="col-sm-2 control-label">Género<span class="text-danger">*</span></label>
                 <div class="checkbox-input mb-10">
-                  <input type="radio" class="row-gender" name="genero" value="Masculino">Masculino
-                  <input type="radio" class="row-gender" name="genero" value="Feminino">Feminino
+                  <input type="radio" id="row-gender" name="genero" value="Masculino">Masculino
+                  <input type="radio" id="row-gender" name="genero" value="Feminino">Feminino
                 </div>
               </div><!-- end form-group -->
               <div class="form-group">
                <label for="dataNascimento" class="col-sm-2 control-label">Data de Nascimento<span class="text-danger">*</span></label>
-               <div class="row-date">
+               <div id="row-date" class="row">
                 <div class="col-sm-4">
                   <div class="form-group">
                     <select class="form-control" name="diaNasc">
@@ -168,8 +168,8 @@
             <div class="form-group">
               <label for="codigoPostal" class="col-sm-2 control-label">Código-Postal<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="cod1" value="{$FORM_VALUES.cod1}">
-                <input type="text" class="form-control input-md" name="cod2" value="{$FORM_VALUES.cod2}">
+                <input type="text" id="row-codpost" class="form-control input-md" name="cod1" value="{$FORM_VALUES.cod1}">
+                <input type="text" id="row-codpost" class="form-control input-md" name="cod2" value="{$FORM_VALUES.cod2}">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
@@ -205,7 +205,7 @@
             <div class="form-group">
               <label for="password" class="col-sm-2 control-label">Password <span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="password" class="form-control input-md" name="password" placeholder="Password">
+                <input type="password" class="form-control input-md" name="password">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
