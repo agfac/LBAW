@@ -221,7 +221,7 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <a href="{$BASE_URL}pages/owner/admins.php" type="button" class="btn btn-primary">Cancelar</a>
+                  <a href="{$BASE_URL}pages/owner/publications.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
                   <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
