@@ -573,8 +573,8 @@ CREATE TABLE Wishlist
 ;
 
 /* Create Indexes */
-CREATE INDEX idx_publicacao_titulo_descricao ON Publicacao 
-USING gin((setweight(to_tsvector('portuguese', titulo),'A') || 
+CREATE INDEX idx_publicacao_titulo_descricao ON Publicacao
+USING gin((setweight(to_tsvector('portuguese', titulo),'A') ||
 	setweight(to_tsvector('portuguese', descricao),'B')))
 ;
 
@@ -692,7 +692,7 @@ BEGIN
 	ELSE
 		RETURN NEW;
 	END IF;
-	
+
 END $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION insert_cartaocredito()
@@ -1457,6 +1457,7 @@ INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (2,2);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (3,3);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (4,4);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (5,5);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (6,24);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (7,7);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (8,8);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (9,9);
@@ -1468,6 +1469,7 @@ INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (14,12);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (15,13);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (16,14);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (17,15);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (18,21);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (19,17);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (20,18);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (21,19);
@@ -1491,8 +1493,10 @@ INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (42,36);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (43,37);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (44,38);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (89,39);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (92,41);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,40);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,41);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (95,40);
 
 /* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
 INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes');
