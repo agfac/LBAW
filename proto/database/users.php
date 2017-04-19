@@ -138,4 +138,25 @@ function getUserOrderList($clienteid) {
     $stmt->execute(array($clienteid));
     return $stmt->fetchAll();
 }
+
+function getUserPublicationsCart($clienteid) {
+  global $conn;
+  $stmt = $conn->prepare("SELECT publicacao.publicacaoid, publicacao.titulo, publicacaocarrinho.quantidade, publicacao.preco, imagem.url, subcategoria.nome AS nome_subcategoria, categoria.nome AS nome_categoria
+                          FROM cliente
+                          JOIN carrinho
+                          ON cliente.carrinhoid = carrinho.carrinhoid 
+                          JOIN publicacaocarrinho
+                          ON publicacaocarrinho.carrinhoid = carrinho.carrinhoid 
+                          JOIN publicacao
+                          ON publicacao.publicacaoid = publicacaocarrinho.publicacaoid 
+                          JOIN imagem
+                          ON imagem.publicacaoid = publicacaocarrinho.publicacaoid
+                          JOIN proto.subcategoria
+                          ON publicacao.subcategoriaid = subcategoria.subcategoriaid 
+                          JOIN proto.categoria
+                          ON categoria.categoriaid = subcategoria.categoriaid
+                          WHERE cliente.clienteid = ?");
+  $stmt->execute(array($clienteid));
+  return $stmt->fetchAll();
+}
 ?>

@@ -109,7 +109,8 @@
 				
 				<div class="row">
 					<div class="col-sm-12">
-						<div class="table-responsive">    
+						<div class="table-responsive">  
+							{if $publicationscart}  
 							<table class="table table-striped">
 								<thead>
 									<tr>
@@ -120,104 +121,50 @@
 									</tr>
 								</thead>
 								<tbody>
+									{foreach $publicationscart as $publication}
+
 									<tr>
 										<td>
-											<a href="?page=single-product">
-												<img width="60px" src="{$BASE_URL}images/publications/books/books_5.jpg" alt="product">
+											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
+												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
 											</a>
 										</td>
 										<td>
-											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-											<p>Sed aliquam tincidunt tempus</p>
+											<h6 class="regular"><a href="?page=single-product">{$publication.titulo}</a></h6>
+											<p>{$publication.nome_categoria} | {$publication.nome_subcategoria}</p>
 										</td>
 										<td>
-											<span>€59.99</span>
+											<span>€{$publication.preco}</span>
 										</td>
 										<td>
 											<select class="form-control" name="select">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
+												{html_options options=$qtOptions selected=$publication.quantidade}
 											</select>
 										</td>
 										<td>
-											<span class="text-primary">€59.99</span>
+											<span class="text-primary">€{$publication.preco * $publication.quantidade}</span>
 										</td>
 										<td>
 											<button type="button" class="close">×</button>
 										</td>
 									</tr>
+									{/foreach}
+									{else}
 									<tr>
-										<td>
-											<a href="?page=single-product">
-												<img width="60px" src="{$BASE_URL}images/publications/books/books_5.jpg" alt="product">
-											</a>
-										</td>
-										<td>
-											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-											<p>Sed aliquam tincidunt tempus</p>
-										</td>
-										<td>
-											<span>€39.99</span>
-										</td>
-										<td>
-											<select class="form-control" name="select">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</td>
-										<td>
-											<span class="text-primary">€39.99</span>
-										</td>
-										<td>
-											<button type="button" class="close">×</button>
-										</td>
+										<span>Não existem produtos no carrinho</span>
 									</tr>
-									<tr>
-										<td>
-											<a href="?page=single-product">
-												<img width="60px" src="{$BASE_URL}images/publications/books/books_6.jpg" alt="product">
-											</a>
-										</td>
-										<td>
-											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-											<p>Sed aliquam tincidunt tempus</p>
-										</td>
-										<td>
-											<span>€29.99</span>
-										</td>
-										<td>
-											<select class="form-control" name="select">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</td>
-										<td>
-											<span class="text-primary">€29.99</span>
-										</td>
-										<td>
-											<button type="button" class="close">×</button>
-										</td>
-									</tr>
+									{/if}
 								</tbody>
 							</table><!-- end table -->
 						</div><!-- end table-responsive -->
 						
 						<hr class="spacer-10 no-border">
 						
-						<a href="shop-sidebar-left.html" class="btn btn-light semi-circle btn-sm pull-left">
+						<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm pull-left">
 							<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
 						</a>
 						
-						<a href="checkout.html" class="btn btn-default semi-circle btn-sm pull-right">
+						<a href="{$BASE_URL}pages/users/checkout.php" class="btn btn-default semi-circle btn-sm pull-right">
 							Checkout <i class="fa fa-arrow-right ml-5"></i>
 						</a>
 					</div><!-- end col -->

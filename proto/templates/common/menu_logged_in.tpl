@@ -8,9 +8,9 @@
           </a>
           <ul class="w-150">
             <li><a href="{$BASE_URL}pages/users/my-account.php">Minha Conta</a></li>
-            <li><a href="?page=wishlist">Wishlist (5)</a></li>
-            <li><a href="?page=cart">Ver Carrinho</a></li>
-            <li><a href="?page=checkout">Checkout</a></li>
+            <li><a href="{$BASE_URL}pages/users/wishlist.php">Wishlist (5)</a></li>
+            <li><a href="{$BASE_URL}pages/users/cart.php">Ver Carrinho</a></li>
+            <li><a href="{$BASE_URL}pages/users/checkout.php">Checkout</a></li>
           </ul>
         </li>
         <li class="linkdown">

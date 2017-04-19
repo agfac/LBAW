@@ -46,7 +46,7 @@
               <div class="form-group">
                 <label for="nome" class="col-sm-2 control-label">Nome<span class="text-danger">*</span></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control input-md" name="nome" value="{$FORM_VALUES.nome}">
+                  <input type="text" class="form-control input-md" name="nome" value="{$FORM_VALUES.nome}" placeholder="Nome">
                 </div>
               </div><!-- end form-group -->
               <div class="form-group">
@@ -58,9 +58,7 @@
               </div><!-- end form-group -->
               <div class="form-group">
                <label for="dataNascimento" class="col-sm-2 control-label">Data de Nascimento<span class="text-danger">*</span></label>
-               <div id="row-date" class="row">
-                <div class="col-sm-4">
-                  <div class="form-group">
+                <div class="col-sm-2">
                     <select class="form-control" name="diaNasc">
                       <option value="1">01</option>
                       <option value="2">02</option>
@@ -94,10 +92,8 @@
                       <option value="30">30</option>
                       <option value="31">31</option>
                     </select>
-                  </div><!-- end form-group -->
                 </div><!-- end col -->
-                <div class="col-sm-4">
-                  <div class="form-group">
+                <div class="col-sm-2">
                     <select class="form-control" name="mesNasc">
                       <option value="january">Janeiro</option>
                       <option value="february">Fevereiro</option>
@@ -112,10 +108,8 @@
                       <option value="november">Novembro</option>
                       <option value="december">Dezembro</option>
                     </select>
-                  </div><!-- end form-group -->
                 </div><!-- end col -->
-                <div class="col-sm-4">
-                  <div class="form-group">
+                <div class="col-sm-2">
                     <select class="form-control" name="anoNasc">
                       <option value="2006">2006</option>
                       <option value="2005">2005</option>
@@ -149,63 +143,61 @@
                       <option value="1977">1977</option>
                       <option value="1976">1976</option>
                     </select>
-                  </div><!-- end form-group -->
                 </div><!-- end col -->
-              </div><!-- end row -->
             </div>
             <div class="form-group">
               <label for="morada" class="col-sm-2 control-label">Morada<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="morada" value="{$FORM_VALUES.morada}">
+                <input type="text" class="form-control input-md" name="morada" value="{$FORM_VALUES.morada}" placeholder="Morada">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="localidade" class="col-sm-2 control-label">Localidade<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="localidade" value="{$FORM_VALUES.localidade}">
+                <input type="text" class="form-control input-md" name="localidade" value="{$FORM_VALUES.localidade}" placeholder="Localidade">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="codigoPostal" class="col-sm-2 control-label">Código-Postal<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" id="row-codpost" class="form-control input-md" name="cod1" value="{$FORM_VALUES.cod1}">
-                <input type="text" id="row-codpost" class="form-control input-md" name="cod2" value="{$FORM_VALUES.cod2}">
+                <input type="text" id="row-codpost" class="form-control input-md" name="cod1" value="{$FORM_VALUES.cod1}" placeholder="Cod1">
+                <input type="text" id="row-codpost" class="form-control input-md" name="cod2" value="{$FORM_VALUES.cod2}" placeholder="Cod2">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="pais" class="col-sm-2 control-label">País<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="pais" value="{$FORM_VALUES.pais}">
+                <input type="text" class="form-control input-md" name="pais" value="{$FORM_VALUES.pais}" placeholder="País">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="telefone" class="col-sm-2 control-label">Telefone</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="telefone" value="{$FORM_VALUES.telefone}">
+                <input type="text" class="form-control input-md" name="telefone" value="{$FORM_VALUES.telefone}" placeholder="Telefone">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="email" class="col-sm-2 control-label">E-mail <span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="email" class="form-control input-md" name="email" value="{$FORM_VALUES.email}">
+                <input type="email" class="form-control input-md" name="email" value="{$FORM_VALUES.email}" placeholder="E-mail">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="nif" class="col-sm-2 control-label">NIF </label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="nif" value="{$FORM_VALUES.nif}">
+                <input type="text" class="form-control input-md" name="nif" value="{$FORM_VALUES.nif}" placeholder="NIF">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="username" class="col-sm-2 control-label">Username <span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="username" value="{$FORM_VALUES.username}">
+                <input type="text" class="form-control input-md" name="username" value="{$FORM_VALUES.username}" placeholder="Username">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
               <label for="password" class="col-sm-2 control-label">Password <span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="password" class="form-control input-md" name="password">
+                <input type="password" class="form-control input-md" name="password" placeholder="Password">
               </div>
             </div><!-- end form-group -->
             <div class="form-group">

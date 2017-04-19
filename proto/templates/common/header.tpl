@@ -31,19 +31,19 @@
   <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&amp;subset=latin-ext" rel="stylesheet">
 
   <!-- JavaScript Files -->
-  <script type="text/javascript" src="{$BASE_URL}javascript/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/bootstrap.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/owl.carousel.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/jquery.downCount.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/nouislider.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/jquery.sticky.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/pace.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/star-rating.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/wow.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.downCount.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/nouislider.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.sticky.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/pace.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/star-rating.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/wow.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/gmaps.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/swiper.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/main.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/gmaps.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/swiper.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/main.js"></script>
   
 </head>
 <body>
