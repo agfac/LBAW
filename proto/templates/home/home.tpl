@@ -604,549 +604,549 @@
                 </ul><!-- end countdown -->
 
                 <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-                et iusto odio dignissim qui blandit praesent luptatum </p>
+                  consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                  et iusto odio dignissim qui blandit praesent luptatum </p>
 
-                <a title="Adcionar ao carrinho" class="btn btn-default btn-sm semi-circle"> 
-                  <i class="fa fa-shopping-cart mr-5"></i> Adcionar ao carrinho
-                </a>
-              </div><!-- end col -->
-            </div><!-- end row -->
-          </div><!-- end product -->
-          <div class="product">
-            <div class="row">
-              <div class="col-sm-4 vertical-align">
-                <figure>
-                  <a href="?page=single-product"> 
-                    <img alt="img" src="{$BASE_URL}images/publications/books/books_6.jpg">
+                  <a title="Adcionar ao carrinho" class="btn btn-default btn-sm semi-circle"> 
+                    <i class="fa fa-shopping-cart mr-5"></i> Adcionar ao carrinho
                   </a>
-                </figure>
-              </div><!-- end col -->
-              <div class="col-sm-8 vertical-align">
-                <h4><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h4>
-                <ul class="list list-inline">
-                  <li><del class="text-danger">€99.99</del></li>
-                  <li><h5 class="text-primary">€49.99</h5></li>
-                  <li>
-                    <i class="fa fa-star text-warning"></i>
-                    <i class="fa fa-star text-warning"></i>
-                    <i class="fa fa-star text-warning"></i>
-                    <i class="fa fa-star text-warning"></i>
-                    <i class="fa fa-star-half-o text-warning"></i>
-                  </li>
-                </ul>
+                </div><!-- end col -->
+              </div><!-- end row -->
+            </div><!-- end product -->
+            <div class="product">
+              <div class="row">
+                <div class="col-sm-4 vertical-align">
+                  <figure>
+                    <a href="?page=single-product"> 
+                      <img alt="img" src="{$BASE_URL}images/publications/books/books_6.jpg">
+                    </a>
+                  </figure>
+                </div><!-- end col -->
+                <div class="col-sm-8 vertical-align">
+                  <h4><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h4>
+                  <ul class="list list-inline">
+                    <li><del class="text-danger">€99.99</del></li>
+                    <li><h5 class="text-primary">€49.99</h5></li>
+                    <li>
+                      <i class="fa fa-star text-warning"></i>
+                      <i class="fa fa-star text-warning"></i>
+                      <i class="fa fa-star text-warning"></i>
+                      <i class="fa fa-star text-warning"></i>
+                      <i class="fa fa-star-half-o text-warning"></i>
+                    </li>
+                  </ul>
 
-                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
-                consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-                et iusto odio dignissim qui blandit praesent luptatum </p>
+                  <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                    consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                    et iusto odio dignissim qui blandit praesent luptatum </p>
 
-                <a title="Adcionar ao carrinho" class="btn btn-default btn-sm semi-circle"> 
-                  <i class="fa fa-shopping-cart mr-5"></i> Adcionar ao carrinho
-                </a>
-              </div><!-- end col -->
-            </div><!-- end row -->
-          </div><!-- end product -->
-        </div><!-- end owl carousel -->
-      </div><!-- end col -->
-    </div><!-- end row -->
-  </div><!-- end container -->
-</section>
-<!-- end section -->
-
-
-<!-- start section -->
-<section class="section image-background layer-dark" style="background-image: url({$BASE_URL}images/slider/slider_03.jpg);">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="title-wrap">
-          <h2 class="title text-white">Categorias</h2>
-          <p class="text-white">Encontre aqui os livros relacionados com os temas do seu interesse</p>
-        </div>
-      </div><!-- end col -->
-    </div><!-- end row -->
-
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="owl-carousel column-5 owl-theme">
-          <div class="cat-item">
-            <div class="cat-img">
-              <figure>
-                <a href="?page=product-list">
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
-                </a>
-              </figure>
-            </div><!-- end cat-img -->
-            <div class="cat-title">
-              <h6><a href="javascript:void(0)">Arte</a></h6>
-            </div><!-- end cat-title -->
-          </div><!-- end cat-item -->
-          <div class="cat-item">
-            <div class="cat-img">
-              <figure>
-                <a href="?page=product-list">
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
-                </a>
-              </figure>
-            </div><!-- end cat-img -->
-            <div class="cat-title">
-              <h6><a href="javascript:void(0)">Desporto e lazer</a></h6>
-            </div><!-- end cat-title -->
-          </div><!-- end cat-item -->
-          <div class="cat-item">
-            <div class="cat-img">
-              <figure>
-                <a href="?page=product-list">
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
-                </a>
-              </figure>
-            </div><!-- end cat-img -->
-            <div class="cat-title">
-              <h6><a href="javascript:void(0)">Direito</a></h6>
-            </div><!-- end cat-title -->
-          </div><!-- end cat-item -->
-          <div class="cat-item">
-            <div class="cat-img">
-              <figure>
-                <a href="?page=product-list">
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
-                </a>
-              </figure>
-            </div><!-- end cat-img -->
-            <div class="cat-title">
-              <h6><a href="javascript:void(0)">Engenharia</a></h6>
-            </div><!-- end cat-title -->
-          </div><!-- end cat-item -->
-          <div class="cat-item">
-            <div class="cat-img">
-              <figure>
-                <a href="?page=product-list">
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
-                </a>
-              </figure>
-            </div><!-- end cat-img -->
-            <div class="cat-title">
-              <h6><a href="javascript:void(0)">Gestão</a></h6>
-            </div><!-- end cat-title -->
-          </div><!-- end cat-item -->
-          <div class="cat-item">
-            <div class="cat-img">
-              <figure>
-                <a href="?page=product-list">
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
-                </a>
-              </figure>
-            </div><!-- end cat-img -->
-            <div class="cat-title">
-              <h6><a href="javascript:void(0)">História</a></h6>
-            </div><!-- end cat-title -->
-          </div><!-- end cat-item -->
-        </div><!-- end owl carousel -->
-      </div><!-- end col -->
-    </div><!-- end row -->
-  </div><!-- end container -->
-</section>
-<!-- end section -->
+                    <a title="Adcionar ao carrinho" class="btn btn-default btn-sm semi-circle"> 
+                      <i class="fa fa-shopping-cart mr-5"></i> Adcionar ao carrinho
+                    </a>
+                  </div><!-- end col -->
+                </div><!-- end row -->
+              </div><!-- end product -->
+            </div><!-- end owl carousel -->
+          </div><!-- end col -->
+        </div><!-- end row -->
+      </div><!-- end container -->
+    </section>
+    <!-- end section -->
 
 
-<!-- start section -->
-<section class="section white-backgorund">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="title-wrap">
-          <h2 class="title"><span class="text-primary">Comentários</span> & <span class="text-primary">Sugestões</span></h2>
-        </div>
-      </div><!-- end col -->
-    </div><!-- end row -->
+    <!-- start section -->
+    <section class="section image-background layer-dark" style="background-image: url({$BASE_URL}images/slider/slider_03.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-wrap">
+              <h2 class="title text-white">Categorias</h2>
+              <p class="text-white">Encontre aqui os livros relacionados com os temas do seu interesse</p>
+            </div>
+          </div><!-- end col -->
+        </div><!-- end row -->
 
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="owl-demo" class="owl-carousel column-3 owl-theme">
-          <div class="item">
-            <div class="thumbnail blog">
-              <div class="header">
-                <figure>
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-                </figure>
-                <div class="meta">
-                  <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                  <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                  <span><i class="fa fa-heart mr-5"></i>(35)</span>
-                </div>
-              </div>
-              <div class="caption">
-                <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
-                <div class="author-category">
-                  <span class="author mr-20">
-                    <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
-                  </span>
-                  <span class="category">
-                    <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                  </span>
-                </div>
-                <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-              </div><!-- end caption -->
-            </div><!-- end thumbnail -->
-          </div><!-- end item -->
-          <div class="item">
-            <div class="thumbnail blog">
-              <div class="header">
-                <figure>
-                  <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
-                </figure>
-                <div class="meta">
-                  <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                  <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                  <span><i class="fa fa-heart mr-5"></i>(35)</span>
-                </div>
-              </div>
-              <div class="caption">
-                <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
-                <div class="author-category">
-                  <span class="author mr-20">
-                    <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
-                  </span>
-                  <span class="category">
-                    <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                  </span>
-                </div>
-                <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-              </div><!-- end caption -->
-            </div><!-- end thumbnail -->
-          </div><!-- end item -->
-          <div class="item">
-            <div class="thumbnail blog">
-              <div class="header">
-                <figure>
-                  <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-                </figure>
-                <div class="meta">
-                  <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                  <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                  <span><i class="fa fa-heart mr-5"></i>(35)</span>
-                </div>
-              </div>
-              <div class="caption">
-                <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
-                <div class="author-category">
-                  <span class="author mr-20">
-                    <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
-                  </span>
-                  <span class="category">
-                    <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                  </span>
-                </div>
-                <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-              </div><!-- end caption -->
-            </div><!-- end thumbnail -->
-          </div><!-- end item -->
-          <div class="item">
-            <div class="thumbnail blog">
-              <div class="header">
-                <figure>
-                  <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
-                </figure>
-                <div class="meta">
-                  <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                  <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                  <span><i class="fa fa-heart mr-5"></i>(35)</span>
-                </div>
-              </div>
-              <div class="caption">
-                <h6><a href="javascript:void(0);">Adorei este livro! Recomendo!</a></h6>
-                <div class="author-category">
-                  <span class="author mr-20">
-                    <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
-                  </span>
-                  <span class="category">
-                    <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                  </span>
-                </div>
-                <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-              </div><!-- end caption -->
-            </div><!-- end thumbnail -->
-          </div><!-- end item -->
-        </div><!-- end owl carousel -->
-      </div><!-- end col -->
-    </div><!-- end row -->
-
-    <hr class="spacer-30 no-border"/>
-
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="widget">
-          <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Novas</span></h5>
-
-          <ul class="items">
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular"> 
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€19.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€29.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€15.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€45.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-          </ul>
-        </div><!-- end widget -->
-      </div><!-- end col -->
-
-      <div class="col-sm-4">
-        <div class="widget">
-          <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Mais vendidas</span></h5>
-
-          <ul class="items">
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular"> 
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€19.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€29.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€15.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€45.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-          </ul>
-        </div><!-- end widget -->
-      </div><!-- end col -->
-
-      <div class="col-sm-4">
-        <div class="widget">
-          <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Mais vistas</span></h5>
-
-          <ul class="items">
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular"> 
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€19.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€29.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€15.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-            <li> 
-              <a href="?page=single-product" class="product-image">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular">
-                  <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                </h6>
-                <span class="price text-primary">€45.99</span>
-                <div class="rate text-warning">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li><!-- end item -->
-          </ul>
-        </div><!-- end widget -->
-      </div><!-- end col -->
-    </div><!-- end row -->
-  </div><!-- end container -->
-</section>
-<!-- end section -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="owl-carousel column-5 owl-theme">
+              <div class="cat-item">
+                <div class="cat-img">
+                  <figure>
+                    <a href="?page=product-list">
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    </a>
+                  </figure>
+                </div><!-- end cat-img -->
+                <div class="cat-title">
+                  <h6><a href="javascript:void(0)">Arte</a></h6>
+                </div><!-- end cat-title -->
+              </div><!-- end cat-item -->
+              <div class="cat-item">
+                <div class="cat-img">
+                  <figure>
+                    <a href="?page=product-list">
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    </a>
+                  </figure>
+                </div><!-- end cat-img -->
+                <div class="cat-title">
+                  <h6><a href="javascript:void(0)">Desporto e lazer</a></h6>
+                </div><!-- end cat-title -->
+              </div><!-- end cat-item -->
+              <div class="cat-item">
+                <div class="cat-img">
+                  <figure>
+                    <a href="?page=product-list">
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    </a>
+                  </figure>
+                </div><!-- end cat-img -->
+                <div class="cat-title">
+                  <h6><a href="javascript:void(0)">Direito</a></h6>
+                </div><!-- end cat-title -->
+              </div><!-- end cat-item -->
+              <div class="cat-item">
+                <div class="cat-img">
+                  <figure>
+                    <a href="?page=product-list">
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    </a>
+                  </figure>
+                </div><!-- end cat-img -->
+                <div class="cat-title">
+                  <h6><a href="javascript:void(0)">Engenharia</a></h6>
+                </div><!-- end cat-title -->
+              </div><!-- end cat-item -->
+              <div class="cat-item">
+                <div class="cat-img">
+                  <figure>
+                    <a href="?page=product-list">
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    </a>
+                  </figure>
+                </div><!-- end cat-img -->
+                <div class="cat-title">
+                  <h6><a href="javascript:void(0)">Gestão</a></h6>
+                </div><!-- end cat-title -->
+              </div><!-- end cat-item -->
+              <div class="cat-item">
+                <div class="cat-img">
+                  <figure>
+                    <a href="?page=product-list">
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    </a>
+                  </figure>
+                </div><!-- end cat-img -->
+                <div class="cat-title">
+                  <h6><a href="javascript:void(0)">História</a></h6>
+                </div><!-- end cat-title -->
+              </div><!-- end cat-item -->
+            </div><!-- end owl carousel -->
+          </div><!-- end col -->
+        </div><!-- end row -->
+      </div><!-- end container -->
+    </section>
+    <!-- end section -->
 
 
-<!-- start section -->
-<section class="primary-background">
-  <div class="container">
-    <div class="box-banner-wide primary-background">
-      <div class="row">
-        <div class="col-sm-4 vertical-align">
-          <h2 class="alt-font text-uppercase text-white">
-            <span class="regular">Portes </span>
-            <br>grátis!
-          </h2>
-        </div><!-- end col -->
-        <div class="col-sm-4 vertical-align">
-          <p class="mt-20">Typi non habent claritatem insitam, est usus legentis in iis qui facit eorum claritatem.</p>
-        </div><!-- end col -->
-        <div class="col-sm-4 vertical-align text-right">
-          <a target="_blank" href="javascript:void(0);" class="btn btn-light semi-circle btn-md">Aproveite já!</a>
-        </div><!-- end col -->   
-      </div><!-- end row -->
-    </div><!-- end box-banner-wide -->
-  </div><!-- end container -->
-</section>
-<!-- end section -->
+    <!-- start section -->
+    <section class="section white-backgorund">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-wrap">
+              <h2 class="title"><span class="text-primary">Comentários</span> & <span class="text-primary">Sugestões</span></h2>
+            </div>
+          </div><!-- end col -->
+        </div><!-- end row -->
 
-{include file='common/footer.tpl'}
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="owl-demo" class="owl-carousel column-3 owl-theme">
+              <div class="item">
+                <div class="thumbnail blog">
+                  <div class="header">
+                    <figure>
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                    </figure>
+                    <div class="meta">
+                      <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
+                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
+                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
+                    <div class="author-category">
+                      <span class="author mr-20">
+                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
+                      </span>
+                      <span class="category">
+                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
+                      </span>
+                    </div>
+                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
+                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
+                  </div><!-- end caption -->
+                </div><!-- end thumbnail -->
+              </div><!-- end item -->
+              <div class="item">
+                <div class="thumbnail blog">
+                  <div class="header">
+                    <figure>
+                      <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
+                    </figure>
+                    <div class="meta">
+                      <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
+                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
+                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
+                    <div class="author-category">
+                      <span class="author mr-20">
+                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
+                      </span>
+                      <span class="category">
+                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
+                      </span>
+                    </div>
+                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
+                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
+                  </div><!-- end caption -->
+                </div><!-- end thumbnail -->
+              </div><!-- end item -->
+              <div class="item">
+                <div class="thumbnail blog">
+                  <div class="header">
+                    <figure>
+                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                    </figure>
+                    <div class="meta">
+                      <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
+                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
+                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
+                    <div class="author-category">
+                      <span class="author mr-20">
+                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
+                      </span>
+                      <span class="category">
+                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
+                      </span>
+                    </div>
+                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
+                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
+                  </div><!-- end caption -->
+                </div><!-- end thumbnail -->
+              </div><!-- end item -->
+              <div class="item">
+                <div class="thumbnail blog">
+                  <div class="header">
+                    <figure>
+                      <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
+                    </figure>
+                    <div class="meta">
+                      <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
+                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
+                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <h6><a href="javascript:void(0);">Adorei este livro! Recomendo!</a></h6>
+                    <div class="author-category">
+                      <span class="author mr-20">
+                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
+                      </span>
+                      <span class="category">
+                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
+                      </span>
+                    </div>
+                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
+                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
+                  </div><!-- end caption -->
+                </div><!-- end thumbnail -->
+              </div><!-- end item -->
+            </div><!-- end owl carousel -->
+          </div><!-- end col -->
+        </div><!-- end row -->
+
+        <hr class="spacer-30 no-border"/>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="widget">
+              <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Novas</span></h5>
+
+              <ul class="items">
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular"> 
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€19.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€29.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€15.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€45.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+              </ul>
+            </div><!-- end widget -->
+          </div><!-- end col -->
+
+          <div class="col-sm-4">
+            <div class="widget">
+              <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Mais vendidas</span></h5>
+
+              <ul class="items">
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular"> 
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€19.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€29.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€15.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€45.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+              </ul>
+            </div><!-- end widget -->
+          </div><!-- end col -->
+
+          <div class="col-sm-4">
+            <div class="widget">
+              <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Mais vistas</span></h5>
+
+              <ul class="items">
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular"> 
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€19.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€29.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€15.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+                <li> 
+                  <a href="?page=single-product" class="product-image">
+                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  </a>
+                  <div class="product-details">
+                    <h6 class="regular">
+                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                    </h6>
+                    <span class="price text-primary">€45.99</span>
+                    <div class="rate text-warning">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                  </div>
+                </li><!-- end item -->
+              </ul>
+            </div><!-- end widget -->
+          </div><!-- end col -->
+        </div><!-- end row -->
+      </div><!-- end container -->
+    </section>
+    <!-- end section -->
+
+
+    <!-- start section -->
+    <section class="primary-background">
+      <div class="container">
+        <div class="box-banner-wide primary-background">
+          <div class="row">
+            <div class="col-sm-4 vertical-align">
+              <h2 class="alt-font text-uppercase text-white">
+                <span class="regular">Portes </span>
+                <br>grátis!
+              </h2>
+            </div><!-- end col -->
+            <div class="col-sm-4 vertical-align">
+              <p class="mt-20">Typi non habent claritatem insitam, est usus legentis in iis qui facit eorum claritatem.</p>
+            </div><!-- end col -->
+            <div class="col-sm-4 vertical-align text-right">
+              <a target="_blank" href="javascript:void(0);" class="btn btn-light semi-circle btn-md">Aproveite já!</a>
+            </div><!-- end col -->   
+          </div><!-- end row -->
+        </div><!-- end box-banner-wide -->
+      </div><!-- end container -->
+    </section>
+    <!-- end section -->
+
+    {include file='common/footer.tpl'}
