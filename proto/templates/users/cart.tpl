@@ -125,7 +125,7 @@
 
 									<tr>
 										<td>
-											<a href="?page=single-product">
+											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
 												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
 											</a>
 										</td>

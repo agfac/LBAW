@@ -141,7 +141,7 @@ function getUserOrderList($clienteid) {
 
 function getUserPublicationsCart($clienteid) {
   global $conn;
-  $stmt = $conn->prepare("SELECT publicacao.titulo, publicacaocarrinho.quantidade, publicacao.preco, imagem.url, subcategoria.nome AS nome_subcategoria, categoria.nome AS nome_categoria
+  $stmt = $conn->prepare("SELECT publicacao.publicacaoid, publicacao.titulo, publicacaocarrinho.quantidade, publicacao.preco, imagem.url, subcategoria.nome AS nome_subcategoria, categoria.nome AS nome_categoria
                           FROM cliente
                           JOIN carrinho
                           ON cliente.carrinhoid = carrinho.carrinhoid 
