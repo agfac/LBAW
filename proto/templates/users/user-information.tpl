@@ -31,20 +31,25 @@
 				<hr class="spacer-5"><hr class="spacer-20 no-border">
 				
 				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="firstname">Nome <span class="text-danger">*</span></label>
-							<input id="firstname" type="text" placeholder="Primeiro nome" name="firstname" class="form-control input-sm required" value="{$userdata.nome}">
-						</div><!-- end form-group -->
-						<div class="form-group">
-							<label for="email">Email <span class="text-danger">*</span></label>
-							<input id="email" type="email" placeholder="Email" name="email" class="form-control input-sm required email" value="{$userdata.email}">
-						</div><!-- end form-group -->
-						<label>Data de nascimento</label>
-						<div class="row">
-							<div class="col-sm-4">
-								<div class="form-group">
-									<select class="form-control" name="select">
+					<div class="col-sm-12 col-md-10 col-lg-12">
+						<form action="{$BASE_URL}actions/users/register.php" method="post" class="form-horizontal">
+							<div class="form-group">
+								<label for="nome" class="col-sm-2 control-label">Nome<span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control input-md" name="nome" value="{$USER_DATA.nome}" placeholder="Nome">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="genero" class="col-sm-2 control-label">Género<span class="text-danger">*</span></label>
+								<div class="checkbox-input mb-10">
+									<input type="radio" id="row-gender" name="genero" value="Masculino">Masculino
+									<input type="radio" id="row-gender" name="genero" value="Feminino">Feminino
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="dataNascimento" class="col-sm-2 control-label">Data de Nascimento<span class="text-danger">*</span></label>
+								<div class="col-sm-2">
+									<select class="form-control" name="diaNasc">
 										<option value="1">01</option>
 										<option value="2">02</option>
 										<option value="3">03</option>
@@ -77,11 +82,9 @@
 										<option value="30">30</option>
 										<option value="31">31</option>
 									</select>
-								</div><!-- end form-group -->
-							</div><!-- end col -->
-							<div class="col-sm-4">
-								<div class="form-group">
-									<select class="form-control" name="select">
+								</div><!-- end col -->
+								<div class="col-sm-2">
+									<select class="form-control" name="mesNasc">
 										<option value="january">Janeiro</option>
 										<option value="february">Fevereiro</option>
 										<option value="march">Março</option>
@@ -95,11 +98,9 @@
 										<option value="november">Novembro</option>
 										<option value="december">Dezembro</option>
 									</select>
-								</div><!-- end form-group -->
-							</div><!-- end col -->
-							<div class="col-sm-4">
-								<div class="form-group">
-									<select class="form-control" name="select">
+								</div><!-- end col -->
+								<div class="col-sm-2">
+									<select class="form-control" name="anoNasc">
 										<option value="2006">2006</option>
 										<option value="2005">2005</option>
 										<option value="2004">2004</option>
@@ -132,40 +133,93 @@
 										<option value="1977">1977</option>
 										<option value="1976">1976</option>
 									</select>
-								</div><!-- end form-group -->
-							</div><!-- end col -->
-						</div><!-- end row -->
-						<div class="form-group">
-							<div class="checkbox-input checkbox-primary">
-								<input id="newsletter" class="styled" type="checkbox" checked>
-								<label for="newsletter">
-									Desejo receber as últimas novidades
-								</label>
+								</div><!-- end col -->
 							</div>
-						</div><!-- end form-group -->
-						<div class="form-group">
-							<a href="javascript:void(0);" class="btn btn-default round btn-sm"><i class="fa fa-save mr-5"></i> Guardar</a>
-						</div><!-- end form-group -->
-					</div><!-- end col -->
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="oldPassword">Password <span class="text-danger">*</span></label>
-							<input id="oldPassword" type="password" placeholder="Password" name="oldPassword" class="form-control input-sm required">
-						</div><!-- end form-group -->
-						<div class="form-group">
-							<label for="newPassword">Nova password</label>
-							<input id="newPassword" type="password" placeholder="Nova password" name="newPassword" class="form-control input-sm required">
-						</div><!-- end form-group -->
-						<div class="form-group">
-							<label for="confirmPassword">Confirmar password</label>
-							<input id="confirmPassword" type="password" placeholder="Confirmar password" name="confirmPassword" class="form-control input-sm required">
-						</div><!-- end form-group -->
-					</div><!-- end col -->
-				</div><!-- end row -->
-			</div><!-- end col -->
-		</div><!-- end row -->                
-	</div><!-- end container -->
-</section>
-<!-- end section -->
+							<div class="form-group">
+								<label for="morada" class="col-sm-2 control-label">Morada<span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control input-md" name="morada" value="{$USER_DATA.morada}" placeholder="Morada">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="localidade" class="col-sm-2 control-label">Localidade<span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control input-md" name="localidade" value="{$USER_DATA.localidade}" placeholder="Localidade">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="codigoPostal" class="col-sm-2 control-label">Código-Postal<span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="text" id="row-codpost" class="form-control input-md" name="cod1" value="{$USER_DATA.cod1}" placeholder="Cod1">
+									<input type="text" id="row-codpost" class="form-control input-md" name="cod2" value="{$USER_DATA.cod2}" placeholder="Cod2">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="pais" class="col-sm-2 control-label">País<span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control input-md" name="pais" value="{$USER_DATA.pais}" placeholder="País">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="telefone" class="col-sm-2 control-label">Telefone</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control input-md" name="telefone" value="{$USER_DATA.telefone}" placeholder="Telefone">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="email" class="col-sm-2 control-label">E-mail <span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="email" class="form-control input-md" name="email" value="{$USER_DATA.email}" placeholder="E-mail">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="nif" class="col-sm-2 control-label">NIF </label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control input-md" name="nif" value="{$USER_DATA.nif}" placeholder="NIF">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="username" class="col-sm-2 control-label">Username <span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control input-md" name="username" value="{$USER_DATA.username}" placeholder="Username">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">Password <span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control input-md" name="password" placeholder="Password">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">Nova Password <span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control input-md" name="password" placeholder="Nova Password">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<label for="password" class="col-sm-2 control-label">Confirmar Password <span class="text-danger">*</span></label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control input-md" name="password" placeholder="Confirmar Password">
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<div class="checkbox-input checkbox-primary">
+									<input id="newsletter" class="styled" type="checkbox" checked>
+									<label for="newsletter">
+										Desejo receber as últimas novidades
+									</label>
+								</div>
+							</div><!-- end form-group -->
+							<div class="form-group">
+								<a href="javascript:void(0);" class="btn btn-default round btn-sm"><i class="fa fa-save mr-5"></i> Guardar</a>
+							</div><!-- end form-group -->
+						</div><!-- end col -->
 
-{include file='common/footer.tpl'}
+					</div><!-- end row -->
+				</div><!-- end col -->
+			</div><!-- end row -->                
+		</div><!-- end container -->
+	</section>
+	<!-- end section -->
+
+	{include file='common/footer.tpl'}

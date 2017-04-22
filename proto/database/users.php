@@ -120,6 +120,25 @@ function getUserData($username) {
     return $stmt->fetchAll();
 }
 
+function getUserCompleteData($username) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT cliente.nome, cliente.genero, cliente.datanascimento, cliente.username, cliente.telefone, cliente.email, cliente.nif, codigopostal.cod1, codigopostal.cod2, pais.nome AS nome_pais, localidade.nome AS nome_localidade, morada.rua
+                            FROM pais
+                            RIGHT JOIN localidade
+                            ON pais.paisid = localidade.paisid 
+                            RIGHT JOIN codigopostal
+                            ON codigopostal.localidadeid = localidade.localidadeid 
+                            RIGHT JOIN morada
+                            ON morada.codigopostalid = codigopostal.codigopostalid 
+                            RIGHT JOIN moradafaturacao
+                            ON morada.moradaid = moradafaturacao.moradaid 
+                            RIGHT JOIN cliente
+                            ON moradafaturacao.clienteid = cliente.clienteid
+                            WHERE username = ?");
+    $stmt->execute(array($username));
+    return $stmt->fetchAll();
+}
+
 function getUserOrderList($clienteid) {
     global $conn;
     $stmt = $conn->prepare("SELECT encomenda.encomendaid, publicacao.titulo, publicacao.preco, informacaofaturacao.total, encomenda.data, encomenda.estado, imagem.url 
@@ -132,7 +151,7 @@ function getUserOrderList($clienteid) {
                             ON publicacaoencomenda.encomendaid = encomenda.encomendaid 
                             JOIN publicacao
                             ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
-                            JOIN proto.imagem
+                            JOIN imagem
                             ON imagem.publicacaoid = publicacao.publicacaoid
                             WHERE encomenda.clienteid = ?");
     $stmt->execute(array($clienteid));
@@ -151,9 +170,9 @@ function getUserPublicationsCart($clienteid) {
                           ON publicacao.publicacaoid = publicacaocarrinho.publicacaoid 
                           JOIN imagem
                           ON imagem.publicacaoid = publicacaocarrinho.publicacaoid
-                          JOIN proto.subcategoria
+                          JOIN subcategoria
                           ON publicacao.subcategoriaid = subcategoria.subcategoriaid 
-                          JOIN proto.categoria
+                          JOIN categoria
                           ON categoria.categoriaid = subcategoria.categoriaid
                           WHERE cliente.clienteid = ?");
   $stmt->execute(array($clienteid));
