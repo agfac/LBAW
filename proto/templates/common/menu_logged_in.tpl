@@ -1,21 +1,48 @@
 <li class="linkdown">
-          <a href="javascript:void(0);">
-            <i class="fa fa-user mr-5"></i>
+  <a href="javascript:void(0);">
+    <i class="fa fa-user mr-5"></i>
+    <span class="hidden-xs">
+      {$USERNAME} 
+      <i class="fa fa-angle-down ml-5"></i>
+    </span>
+  </a>
+  <ul class="w-150">
+    <li>
+      <a href="{$BASE_URL}pages/users/my-account.php">
+        <i class="fa fa-edit mr-5"></i>
+        <span class="hidden-xs">
+          Minha Conta
+        </span></a>
+      </li>
+      <li>
+        <a href="{$BASE_URL}pages/users/wishlist.php">
+          <i class="fa fa-heart mr-5"></i>
+          <span class="hidden-xs">
+            Wishlist (5)
+          </span></a>
+        </li>
+        <li>
+          <a href="{$BASE_URL}pages/users/cart.php">
+            <i class="fa fa-shopping-cart mr-5"></i>
             <span class="hidden-xs">
-              {$USERNAME} 
-              <i class="fa fa-angle-down ml-5"></i>
-            </span>
-          </a>
-          <ul class="w-150">
-            <li><a href="{$BASE_URL}pages/users/my-account.php">Minha Conta</a></li>
-            <li><a href="{$BASE_URL}pages/users/wishlist.php">Wishlist (5)</a></li>
-            <li><a href="{$BASE_URL}pages/users/cart.php">Ver Carrinho</a></li>
-            <li><a href="{$BASE_URL}pages/users/checkout.php">Checkout</a></li>
+              Ver Carrinho
+            </span></a>
+          </li>
+          <li>
+            <a href="{$BASE_URL}pages/users/checkout.php">
+              <i class="fa fa-credit-card mr-5"></i>
+              <span class="hidden-xs">
+                Checkout
+              </span></a>
+            </li>
           </ul>
         </li>
         <li class="linkdown">
-          <a href="javascript:void(0);">
-            <a href="{$BASE_URL}actions/users/logout.php">Logout</a>
+          <a href="{$BASE_URL}actions/users/logout.php">
+            <i class="fa fa-user-times mr-5"></i>
+            <span class="hidden-xs">
+              Logout
+            </span>
           </a>
         </li>
         <li class="linkdown">
