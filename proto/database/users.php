@@ -178,4 +178,31 @@ function getUserPublicationsCart($clienteid) {
   $stmt->execute(array($clienteid));
   return $stmt->fetchAll();
 }
+
+function getAllUsers(){
+  global $conn;
+  $stmt = $conn->prepare("SELECT * 
+                          FROM cliente");
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
+function getUserAllData($username) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.nome AS nomePais, localidade.nome AS nomeLocalidade
+                            FROM cliente
+                            JOIN moradafaturacao
+                            ON moradafaturacao.clienteid = cliente.clienteid
+                            JOIN morada
+                            ON moradafaturacao.moradaid = morada.moradaid
+                            JOIN codigopostal
+                            ON  codigopostal.codigopostalid = morada.codigopostalid
+                            JOIN localidade
+                            ON localidade.localidadeid = codigopostal.localidadeid
+                            JOIN pais
+                            ON pais.paisid = localidade.paisid
+                            WHERE cliente.username = ?");
+    $stmt->execute(array($username));
+    return $stmt->fetchAll();
+}
 ?>

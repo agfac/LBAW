@@ -62,12 +62,12 @@
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Páginas <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="{$BASE_URL}/pages/admin/home.php">Página inicial</a></li>
-                    <li><a href="{$BASE_URL}/pages/admin/clients.php">Clientes</a></li>
-                    <li><a href="{$BASE_URL}/pages/admin/workers.php">Funcionários</a></li>
-                    <li><a href="{$BASE_URL}/pages/admin/admins.php">Administradores</a></li>
-                    <li><a href="{$BASE_URL}/pages/admin/comments.php">Comentários</a></li>
-                    <li><a href="{$BASE_URL}/pages/admin/logs_clients.php">Logs Clientes</a></li>
+                    <li><a href="{$BASE_URL}pages/admin/home.php">Página inicial</a></li>
+                    <li><a href="{$BASE_URL}pages/admin/clients.php">Clientes</a></li>
+                    <li><a href="{$BASE_URL}pages/admin/workers.php">Funcionários</a></li>
+                    <li><a href="{$BASE_URL}pages/admin/admins.php">Administradores</a></li>
+                    <li><a href="{$BASE_URL}pages/admin/comments.php">Comentários</a></li>
+                    <li><a href="{$BASE_URL}pages/admin/logs_clients.php">Logs Clientes</a></li>
                   </ul>
                 </li>
                   <!--
