@@ -9,9 +9,9 @@
   }
 
   $username = $_SESSION['username'];
-
-  $userdata = getUserData($username);
   
-  $smarty->assign('userdata', $userdata[0]);
+  $userdata = getUserCompleteData($username);
+
+  $smarty->assign('USER_DATA', $userdata[0]);
   $smarty->display('users/user-information.tpl');
 ?>
