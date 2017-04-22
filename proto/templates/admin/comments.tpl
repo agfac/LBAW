@@ -88,11 +88,12 @@
           <div class="x_content">
             <p>Comentários das publicações na loja</p>
             <!-- start of list -->
+            {if $allcomments}
             <table class="table table-striped projects">
               <thead>
                 <tr>
                   <th style="width: 2%">ID</th>
-                  <th style="width: 15%">Nome do livro</th>
+                  <th style="width: 15%">Nome da Publicação</th>
                   <th style="width: 15%">Nome do Cliente</th>
                   <th style="width: 10%">Classificação</th>
                   <th style="width: 20%">Comentário</th>
@@ -100,84 +101,30 @@
                 </tr>
               </thead>
               <tbody>
+                {foreach $allcomments as $comment}
                 <tr>
-                  <td>1</td>
+                  <td>{$comment.comentarioid}</td>
                   <td>
-                    <a>Maria Adelaide Ribeiro</a>
+                    <a>{$comment.nome}</a>
                   </td>
                   <td>
-                    <a>Arte Portuguesa no Século XX</a>
+                    <a>{$comment.titulo}</a>
                   </td>
                   <td>
-                    <a class="fa fa-star"> 1</a>
+                    <a class="fa fa-star"> {$comment.classificacao}</a>
                   </td>
                   <td>
-                    <a>Não gostei nada do livro, penso que foi dinheiro mal gasto.</a>
+                    <a>{$comment.texto}</a>
                   </td>
                   <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$comment.publicacaoid}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>
-                    <a>Teresa de Jesus Teixeira Ferreira</a>
-                  </td>
-                  <td>
-                    <a>O Amor É Contagioso</a>
-                  </td>
-                  <td>
-                    <a class="fa fa-star"> 1</a>
-                  </td>
-                  <td>
-                    <a>Deveria ter gasto o dinheiro em outro livro.</a>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>
-                    <a>Maria Adelaide Ribeiro</a>
-                  </td>
-                  <td>
-                    <a>O feitiço de Marraquexe</a>
-                  </td>
-                  <td>
-                    <a class="fa fa-star"> 4</a>
-                  </td>
-                  <td>
-                    <a>Achei bastante interessante, faltava no final uma conclusao para valer as 5 estrelas</a>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>
-                    <a>Fernando Jose Costa Matosl</a>
-                  </td>
-                  <td>
-                    <a>Arte Portuguesa no Século XX</a>
-                  </td>
-                  <td>
-                    <a class="fa fa-star"> 3</a>
-                  </td>
-                  <td>
-                    <a>Não está mau, mas tambem não está bom, poderia ser melhor</a>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
-                  </td>
-                </tr>
+                {/foreach}
               </tbody>
             </table>
+            {/if}
             <!-- end list -->
           </div>
         </div>

@@ -99,6 +99,7 @@
         <div class="x_content">
           <p>Funcionários da loja</p>
           <!-- start of list -->
+          {if $allWorkers}
           <table class="table table-striped projects">
             <thead>
               <tr>
@@ -110,72 +111,33 @@
               </tr>
             </thead>
             <tbody>
+              {foreach $allWorkers as $worker}
               <tr>
-                <td>1</td>
+                <td>{$worker.funcionarioid}</td>
                 <td>
-                  <a>Manuel Pereira Lopes</a>
+                  <a>{$worker.nome}</a>
                 </td>
                 <td>
-                  <a>02/09/2009 12:12:50</a>
+                  <a>{$worker.dataadmissao}</a>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-success btn-xs">Ativo</button>
+                  {if $worker.ativo}
+                    <button type="button" class="btn btn-success btn-xs">Ativo</button>
+                  {else}
+                    <button type="button" class="btn btn-warning btn-xs">Inativo</button>
+                  {/if}
                 </td>
                 <td>
-                  <a href="{$BASE_URL}pages/admin/worker_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
+                  <a href="{$BASE_URL}pages/admin/worker_edit.php?username={$worker.username}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
                   <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
                 </td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>
-                  <a>Rui Manuel Fernandes Varela</a>
-                </td>
-                <td>
-                  <a>15/08/2012 15:48:15</a>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-success btn-xs">Ativo</button>
-                </td>
-                <td>
-                  <a href="{$BASE_URL}pages/admin/worker_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>
-                  <a>Emanuel Jose Costa Frade</a>
-                </td>
-                <td>
-                  <a>19/11/2002 11:50:50</a>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-success btn-xs">Ativo</button>
-                </td>
-                <td>
-                  <a href="{$BASE_URL}pages/admin/worker_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>
-                  <a>Fernanda Goncalves Teixeira</a>
-                </td>
-                <td>
-                  <a>07/05/2014 09:40:20</a>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-warning btn-xs">Inativo</button>
-                </td>
-                <td>
-                  <a href="{$BASE_URL}pages/admin/worker_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              {/foreach}
+              </tbody>
+            </table>
+            {else}
+              <span>Não existem Funcionários</span>
+            {/if}
           <!-- end of list -->
         </div>
 

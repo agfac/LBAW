@@ -98,6 +98,7 @@
         <div class="x_content">
           <p>Administradores da loja</p>
           <!-- start of list -->
+          {if $allAdmins}
           <table class="table table-striped projects">
             <thead>
               <tr>
@@ -109,72 +110,37 @@
               </tr>
             </thead>
             <tbody>
+              {foreach $allAdmins as $admin}
               <tr>
-                <td>1</td>
+                <td>{$admin.administradorid}</td>
                 <td>
-                  <a>Renata Vieira Esteves</a>
+                  <a>{$admin.nome}</a>
                 </td>
                 <td>
-                  <a>N/A</a>
+                  {if $admin.datacessacao}
+                    <a>{$admin.datacessacao}</a>
+                  {else}
+                    <a>N/A</a>
+                  {/if}
                 </td>
                 <td>
-                  <button type="button" class="btn btn-success btn-xs">Ativo</button>
+                  {if $admin.ativo}
+                    <button type="button" class="btn btn-success btn-xs">Ativo</button>
+                  {else}
+                    <button type="button" class="btn btn-warning btn-xs">Inativo</button>
+                  {/if}
                 </td>
                 <td>
-                  <a href="{$BASE_URL}pages/admin/admin_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
+                  <a href="{$BASE_URL}pages/admin/admin_edit.php?username={$admin.username}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
                   <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
                 </td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>
-                  <a>Carla Maria dos Santos Botelho/a>
-                  </td>
-                  <td>
-                    <a>N/A</a>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-success btn-xs">Ativo</button>
-                  </td>
-                  <td>
-                    <a href="{$BASE_URL}pages/admin/admin_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>
-                    <a>Tiago Miguel Alves Campos</a>
-                  </td>
-                  <td>
-                    <a>N/A</a>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-success btn-xs">Ativo</button>
-                  </td>
-                  <td>
-                    <a href="{$BASE_URL}pages/admin/admin_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>
-                    <a>Carlos Manuel Teixeira</a>
-                  </td>
-                  <td>
-                    <a>12/02/2017</a>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-warning btn-xs">Inativo</button>
-                  </td>
-                  <td>
-                    <a href="{$BASE_URL}pages/admin/admin_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  </td>
-                </tr>
+              {/foreach}
               </tbody>
             </table>
+            {else}
+              <span>Não existem Administradores</span>
+            {/if}
             <!-- end of list -->
           </div>
 

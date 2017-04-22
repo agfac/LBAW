@@ -6,17 +6,6 @@
       <div class="title_left">
         <h3>Gestão de Logins</h3>
       </div>
-
-      <div class="title_right">
-        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Procurar por...">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="clearfix"></div>
@@ -30,17 +19,6 @@
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Definições 1</a>
-                  </li>
-                  <li><a href="#">Definições 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -49,14 +27,14 @@
             <form class="form-horizontal form-label-left input_mask">
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome do Cliente:</label>
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome do Utilizador:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <input type="text" class="form-control" placeholder="Nome do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Email do Cliente:</label>
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Email do Utilizador:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <input type="text" class="form-control" placeholder="Email do Cliente">
                 </div>
@@ -106,69 +84,35 @@
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Definiçoes 1</a>
-                  </li>
-                  <li><a href="#">Definiçoes 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
             </ul>
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
             <!-- start of books list -->
+            {if $allLogs}
             <table class="table table-striped projects">
               <thead>
                 <tr>
                   <th style="width: 2%">ID</th>
-                  <th style="width: 50%">Nome do Cliente</th>
+                  <th style="width: 50%">Nome do Utilizador</th>
                   <th style="width: 48%">Data</th>
                 </tr>
               </thead>
               <tbody>
+                {foreach $allLogs as $log}
                 <tr>
-                  <td>1</td>
+                  <td>{$log.loginid}</td>
                   <td>
-                    <a>Joao Americo Pereira Ribeiro</a>
+                    <a>{$log.nome}</a>
                   </td>
                   <td>
-                    <a>01/03/2017 17:21:32</a>
+                    <a>{$log.data}</a>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>
-                    <a>Ricardo Martins Marques</a>
-                  </td>
-                  <td>
-                    <a>07/03/2017 15:50:32</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>
-                    <a>Augusto Manuel Alves Pardal</a>
-                  </td>
-                  <td>
-                    <a>21/03/2017 14:33:22</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>
-                    <a>Teresa Maria Ribeiro Gaspar</a>
-                  </td>
-                  <td>
-                    <a>23/03/2017 09:36:35</a>
-                  </td>
-                </tr>
+                {/foreach}
               </tbody>
             </table>
+            {/if}
             <!-- end of books list -->
           </div>
         </div>
