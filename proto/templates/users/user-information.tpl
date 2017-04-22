@@ -144,7 +144,7 @@
 							<div class="form-group">
 								<label for="localidade" class="col-sm-2 control-label">Localidade<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control input-md" name="localidade" value="{$USER_DATA.localidade}" placeholder="Localidade">
+									<input type="text" class="form-control input-md" name="localidade" value="{$USER_DATA.nomeLocalidade}" placeholder="Localidade">
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
@@ -157,7 +157,7 @@
 							<div class="form-group">
 								<label for="pais" class="col-sm-2 control-label">País<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="text" class="form-control input-md" name="pais" value="{$USER_DATA.pais}" placeholder="País">
+									<input type="text" class="form-control input-md" name="pais" value="{$USER_DATA.nomePais}" placeholder="País">
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
