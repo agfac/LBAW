@@ -85,6 +85,7 @@
           <div class="x_content">
             <p>Clientes da loja</p>
             <!-- start of list -->
+            {if $allUseres}
             <table class="table table-striped projects">
               <thead>
                 <tr>
@@ -95,60 +96,30 @@
                 </tr>
               </thead>
               <tbody>
+                {foreach $allUseres as $user}
                 <tr>
-                  <td>1</td>
+                  <td>{$user.clienteid}</td>
                   <td>
-                    <a>Maria Adelaide Ribeiro</a>
+                    <a>{$user.nome}</a>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-success btn-xs">Ativo</button>
+                    {if $user.ativo}
+                      <button type="button" class="btn btn-success btn-xs">Ativo</button>
+                    {else}
+                      <button type="button" class="btn btn-warning btn-xs">Inativo</button>
+                    {/if}
                   </td>
                   <td>
-                    <a href="{$BASE_URL}pages/admin/client_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
+                    <a href="{$BASE_URL}pages/admin/client_edit.php?username={$user.username}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>
-                    <a>Fernando Jose Costa Matosl</a>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-success btn-xs">Ativo</button>
-                  </td>
-                  <td>
-                    <a href="{$BASE_URL}pages/admin/client_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>
-                    <a>Teresa de Jesus Teixeira Ferreira</a>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-success btn-xs">Ativo</button>
-                  </td>
-                  <td>
-                    <a href="{$BASE_URL}pages/admin/client_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>
-                    <a>Jorge Manuel Rodrigues Goncalves</a>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-warning btn-xs">Inativo</button>
-                  </td>
-                  <td>
-                    <a href="{$BASE_URL}pages/admin/client_edit.php" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  </td>
-                </tr>
+                {/foreach}
               </tbody>
             </table>
+            {else}
+              <span>Não existem clientes</span>
+            {/if}
             <!-- end of list -->
           </div>
 
