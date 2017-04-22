@@ -131,15 +131,12 @@
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
-								<div class="checkbox-input checkbox-primary">
-									<input id="newsletter" class="styled" type="checkbox" checked>
-									<label for="newsletter">
-										Desejo receber as últimas novidades
-									</label>
+								<div class="col-sm-offset-2 col-sm-10"> 
+									<button type="submit" class="btn btn-default round btn-sm">
+										<i class="fa fa-save mr-5"></i>
+										Guardar
+									</button>
 								</div>
-							</div><!-- end form-group -->
-							<div class="form-group">
-								<a href="javascript:void(0);" class="btn btn-default round btn-sm"><i class="fa fa-save mr-5"></i> Guardar</a>
 							</div><!-- end form-group -->
 						</div><!-- end col -->
 
