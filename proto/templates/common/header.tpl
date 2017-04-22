@@ -21,6 +21,7 @@
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/swiper.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/register.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/login.css" />
+  <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/edit-form.css" />
 
   <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
   <link id="pagestyle" rel="stylesheet" type="text/css" href="{$BASE_URL}css/default.css" />
