@@ -47,7 +47,7 @@
   
 </head>
 <body>
-  
+
   <body>
 
     <!-- start section -->
@@ -142,10 +142,19 @@
               <div id="navbar-collapse-3" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                   <!-- Home -->
-                  <li class="dropdown active"><a href="{$BASE_URL}">Página inicial</a>
+                  <li class="dropdown active">
+                    <a href="{$BASE_URL}">
+                      <i class="fa fa-home mr-5"></i>
+                      Página inicial
+                    </a>
                   </li><!-- end li dropdown -->    
                   <!-- Categorias -->
-                  <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Categorias<i class="fa fa-angle-down ml-5"></i></a>
+                  <li class="dropdown yamm-fw">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                      <i class="fa fa-navicon mr-5"></i>
+                      Categorias
+                      <i class="fa fa-angle-down ml-5"></i>
+                    </a>
                     <ul class="dropdown-menu">
                       <li>
                         <!-- Content container to add padding -->
@@ -246,7 +255,12 @@
                     </ul><!-- end ul dropdown-menu -->
                   </li><!-- end li dropdown -->
                   <!-- Novidades -->
-                  <li class="dropdown yamm-fw"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Novidades<i class="fa fa-angle-down ml-5"></i></a>
+                  <li class="dropdown yamm-fw">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                      <i class="fa fa-star mr-5"></i>
+                      Novidades
+                      <i class="fa fa-angle-down ml-5"></i>
+                    </a>
                     <ul class="dropdown-menu">
                       <li>
                         <div class="yamm-content">
@@ -391,7 +405,12 @@
                     </ul><!-- end dropdown-menu -->
                   </li><!-- end dropdown -->
                   <!-- promoções -->
-                  <li><a href="javascript:void(0);">Promoções</a></li>
+                  <li>
+                    <a href="javascript:void(0);">
+                      <i class="glyphicon glyphicon-piggy-bank mr-5"></i>
+                      Promoções
+                    </a>
+                  </li>
                 </ul><!-- end navbar-nav -->
               </div><!-- end navbar collapse -->
             </div><!-- end container -->
