@@ -219,7 +219,7 @@ CREATE TABLE Administrador
 	Datacessacao date NULL,
 	Username varchar(50) NOT NULL,
 	Password varchar(50) NOT NULL,
-	Ativo boolean NOT NULL,
+	Ativo boolean NOT NULL DEFAULT TRUE,
 	CONSTRAINT PK_Administrador PRIMARY KEY (AdministradorID),
 	CONSTRAINT administrador_username_key UNIQUE (Username),
 	CONSTRAINT administrador_password_length CHECK (length(Password) > 6)
@@ -368,7 +368,7 @@ CREATE TABLE Funcionario
 	Datanascimento date NOT NULL,
 	Username varchar(50) NOT NULL,
 	Password varchar(50) NOT NULL,
-	Ativo boolean NOT NULL,
+	Ativo boolean NOT NULL DEFAULT TRUE,
 	Dataadmissao timestamp NOT NULL,
 	Datacessacao timestamp NULL,
 	Telefone varchar(50) NOT NULL,
@@ -1208,8 +1208,6 @@ INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,d
 INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Helena Isabel Duarte Dias Ribeiro','Feminino','29/06/1973','helenaribeiro','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','966229693','helenaisabelribeiro@hotmail.com','898351545');
 INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Armando Dina Mieiro','Masculino','06/09/1998','armandomieiro','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','917865498','armandomieiro@gmail.com','259873398');
 INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'ClienteProto','Masculino','06/09/1998','cli_proto','219d87a2f4b50249b71bdea4184b662b7cea3c95',TRUE,'12/11/2012 18:21:34','917865498','cliproto@gmail.com','259873376');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'FuncionarioProtoProto','Masculino','06/09/1998','func_proto','8950a1913eae349b3a8f40b115efec916af587e8',TRUE,'12/11/2012 18:21:34','917865498','funcproto@gmail.com','259878798');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'AdministradorProto','Masculino','06/09/1998','admin_proto','13bfea3892ba2b5683c6a8f2ebf2b8b182ec1044',TRUE,'12/11/2012 18:21:34','917865498','adminproto@gmail.com','259873458');
 INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,telefone,email,nif) VALUES (1,'Andre Correia','Masculino','15/03/1989','agfac','883768b6dd2c42aea0031b24be8a2da40fef4b64',TRUE,'916735524','andrecorreia@gmail.com','258684542');
 
 /* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
@@ -1616,6 +1614,8 @@ INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (18,29);
 INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (19,8);
 INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (20,3);
 INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (21,6);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (22,8);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (23,10);
 
 /* ------------------------------------------------------ R14 MoradaEnvio ------------------------------------------------------ */
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (1,9);
@@ -1639,6 +1639,8 @@ INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (18,29);
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (19,8);
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (20,3);
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (21,6);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (22,8);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (23,10);
 
 /* ------------------------------------------------------ R15 CartaoCreditoCliente ------------------------------------------------------ */
 INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (1,'MasterCard','5202765077828229','22/05/2015','935');
@@ -1663,19 +1665,21 @@ INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19
 INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4532854254501211','14/09/2011','735');
 
 /* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,1,1,'Manuel Pereira Lopes','Masculino','08/12/1980','manuellopes','YPB58AJH6LE',TRUE,'02/09/2009 12:12:50','938321270','manuelpereiralopes@hotmail.com','998187586','51057539 8NE7');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (2,2,1,'Rui Manuel Fernandes Varela','Masculino','10/05/1991','ruivarela','FOT73YNK8JP',TRUE,'15/08/2012 15:48:15','919232515','ruivarela@gmail.com','102798307','79782665 1XL6');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (3,3,1,'Emanuel Jose Costa Frade','Masculino','02/02/2000','emanuelfrade','AXK90DBX1NI',TRUE,'19/11/2002 11:50:50','917672257','emanueljosecostafrade@hotmail.com','637237286','44216592 7KU5');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (4,4,1,'Flavio Vieira Marques','Masculino','29/03/1978','flaviomarques','ODB56YJQ9SX',TRUE,'19/03/1997 10:08:10','934216494','flaviovieiramarques@gmail.com','060839699','96659782 2YM1');
-INSERT INTO Funcionario (funcionarioID,moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,5,1,'Fernanda Goncalves Teixeira','Feminino','07/02/1996','fernandateixeira','OLP29HOE9KR',FALSE,'07/05/2014 09:40:20','12/12/2016 19:15:08','938713908','fernandagoncalvesteixeira@gmail.com','937865341','67542959 4IL4');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,1,'Manuel Pereira Lopes','Masculino','08/12/1980','manuellopes','YPB58AJH6LE','02/09/2009 12:12:50','938321270','manuelpereiralopes@hotmail.com','998187586','51057539 8NE7');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (2,1,'Rui Manuel Fernandes Varela','Masculino','10/05/1991','ruivarela','FOT73YNK8JP','15/08/2012 15:48:15','919232515','ruivarela@gmail.com','102798307','79782665 1XL6');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (3,1,'Emanuel Jose Costa Frade','Masculino','02/02/2000','emanuelfrade','AXK90DBX1NI','19/11/2002 11:50:50','917672257','emanueljosecostafrade@hotmail.com','637237286','44216592 7KU5');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (4,1,'Flavio Vieira Marques','Masculino','29/03/1978','flaviomarques','ODB56YJQ9SX','19/03/1997 10:08:10','934216494','flaviovieiramarques@gmail.com','060839699','96659782 2YM1');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,1,'Fernanda Goncalves Teixeira','Feminino','07/02/1996','fernandateixeira','OLP29HOE9KR',FALSE,'07/05/2014 09:40:20','12/12/2016 19:15:08','938713908','fernandagoncalvesteixeira@gmail.com','937865341','67542959 4IL4');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (6,1,'FuncionarioProto','Masculino','06/09/1998','func_proto','8950a1913eae349b3a8f40b115efec916af587e8','12/11/2012 18:21:34','917865498','funcproto@gmail.com','259878798', '11342959 4IB4');
 
 /* ------------------------------------------------------ R17 Administrador ------------------------------------------------------ */
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Renata Vieira Esteves','Feminino','17/8/1994','renataesteves','AIQ85AQG4TJ',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Carla Maria dos Santos Botelho','Feminino','27/3/1994','carlabotelho','MAV09WFT8TE',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Tiago Miguel Alves Campos','Masculino','15/3/1993','tiagocampos','QDQ58ODE1KV',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Armindo Alves Teixeira','Masculino','8/3/1992','armindoteixeira','VBN58OSG2YG',TRUE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password,ativo) VALUES (1,'Joaquim da Costa Torres','Masculino','19/7/1991','joaquimtorres','WPZ07DVI9PP',TRUE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Renata Vieira Esteves','Feminino','17/8/1994','renataesteves','AIQ85AQG4TJ');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Carla Maria dos Santos Botelho','Feminino','27/3/1994','carlabotelho','MAV09WFT8TE');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Tiago Miguel Alves Campos','Masculino','15/3/1993','tiagocampos','QDQ58ODE1KV');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Armindo Alves Teixeira','Masculino','8/3/1992','armindoteixeira','VBN58OSG2YG');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Joaquim da Costa Torres','Masculino','19/7/1991','joaquimtorres','WPZ07DVI9PP');
 INSERT INTO Administrador (paisID,nome,genero,dataNascimento,dataCessacao,username,password,ativo) VALUES (1,'Carlos Manuel Teixeira','Masculino','8/9/1991','12/02/2017','carlosteixeira','BSO38NJN5MA',FALSE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'AdministradorProto','Masculino','06/09/1998','admin_proto','13bfea3892ba2b5683c6a8f2ebf2b8b182ec1044');
 
 /* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
 INSERT INTO Login (administradorID) VALUES (6);
