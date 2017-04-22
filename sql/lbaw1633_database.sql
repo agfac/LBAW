@@ -1615,6 +1615,7 @@ INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (19,8);
 INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (20,3);
 INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (21,6);
 INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (22,8);
+INSERT INTO MoradaFaturacao (clienteID,moradaID) VALUES (23,10);
 
 /* ------------------------------------------------------ R14 MoradaEnvio ------------------------------------------------------ */
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (1,9);
@@ -1639,6 +1640,7 @@ INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (19,8);
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (20,3);
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (21,6);
 INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (22,8);
+INSERT INTO MoradaEnvio (clienteID,moradaID) VALUES (23,10);
 
 /* ------------------------------------------------------ R15 CartaoCreditoCliente ------------------------------------------------------ */
 INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (1,'MasterCard','5202765077828229','22/05/2015','935');
