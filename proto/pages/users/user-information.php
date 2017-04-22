@@ -12,6 +12,8 @@
   
   $userdata = getUserAllData($username);
 
+  print_r($userdata);
+  
   $smarty->assign('USER_DATA', $userdata[0]);
   $smarty->display('users/user-information.tpl');
 ?>
