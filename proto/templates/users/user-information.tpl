@@ -42,7 +42,7 @@
 							<div class="form-group">
 								<label for="genero" class="col-sm-2 control-label">Género<span class="text-danger">*</span></label>
 								<div class="checkbox-input mb-10">
-									{html_radios name='id' options=$GENDER_ARRAY selected=$USER_DATA.genero class="row-gender-edit"}
+									{html_radios name='genero' options=$GENDER_ARRAY selected=$USER_DATA.genero class="row-gender-edit"}
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">

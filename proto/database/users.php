@@ -187,20 +187,18 @@ function getUserAllData($username) {
     return $stmt->fetchAll();
 }
 
-function updateUserInformation($username, $newuserinformation) {
+function updateUserInformation($username, $userdata, $newuserinformation) {
 
   global $conn;
-
-  $userdata = getUserAllData($username);
 
   $conn->beginTransaction();
 
   try{
     
-    $paisID = $userdata['paisid'];
+    $paisID = $userdata[0]['paisid'];
     $pais = $newuserinformation['pais'];
 
-    if (!($userdata['pais'] === $pais)) {
+    if (!($userdata[0]['nomepais'] === $pais)) {
       //CHECK PAIS ALREADY EXISTS
       $stmt = $conn->prepare("SELECT *
                               FROM pais 
@@ -229,7 +227,7 @@ function updateUserInformation($username, $newuserinformation) {
     
     $localidade = $newuserinformation['localidade'];
 
-    if (!($userdata['localidade'] === $localidade)) {
+    if (!($userdata[0]['nomelocalidade'] === $localidade)) {
       //CHECK LOCALIDADE ALREADY EXISTS
       $stmt = $conn->prepare("SELECT *
                               FROM localidade 
@@ -273,7 +271,7 @@ function updateUserInformation($username, $newuserinformation) {
     $cod1 = $newuserinformation['cod1'];
     $cod2 = $newuserinformation['cod2'];
 
-    if (!($userdata['cod1'] === $cod1) || !($userdata['cod2'] === $cod2)){
+    if (!($userdata[0]['cod1'] === $cod1) || !($userdata[0]['cod2'] === $cod2)){
 
     //CHECK CODIGO_POSTAL ALREADY EXISTS
       $stmt = $conn->prepare("SELECT *
@@ -326,10 +324,10 @@ function updateUserInformation($username, $newuserinformation) {
     $nif = $newuserinformation['nif'];
     $username = $newuserinformation['username'];
 
-    if (!($userdata['nome'] === $nome) || !($userdata['genero'] === $genero) || !($userdata['diaNasc'] === $diaNasc) || !($userdata['mesNasc'] === $mesNasc) || !($userdata['anoNasc'] === $anoNasc) || !($userdata['morada'] === $morada) || !($userdata['telefone'] === $telefone) || !($userdata['email'] === $email) || !($userdata['nif'] === $nif) || !($userdata['username'] === $username)){
-      
+    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($userdata[0]['diaNasc'] === $diaNasc) || !($userdata[0]['mesNasc'] === $mesNasc) || !($userdata[0]['anoNasc'] === $anoNasc) || !($userdata[0]['morada'] === $morada) || !($userdata[0]['telefone'] === $telefone) || !($userdata[0]['email'] === $email) || !($userdata[0]['nif'] === $nif) || !($userdata[0]['username'] === $username)){
+
       $stmt = $conn->prepare("UPDATE cliente 
-                              SET nome = ?, genero = ?, datanascimento = ?, username = ?, telefone = ?, email = ?, nif = ?) 
+                              SET nome = ?, genero = ?, datanascimento = ?, username = ?, telefone = ?, email = ?, nif = ? 
                               WHERE cliente.username = ?");
 
       $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);

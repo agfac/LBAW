@@ -27,7 +27,12 @@ $confpassword = $_POST['confpassword'];
 
 try {
 
-    updateUserInformation($username, $newuserinformation);
+    $userdata = getUserAllData($username);
+    error_log($username);
+    error_log(print_r($userdata, 1));
+    error_log(print_r($_POST, 1));
+    
+    updateUserInformation($username, $userdata, $newuserinformation);
 
     if ($password) {
         if ($password === getUserPassword()) {
