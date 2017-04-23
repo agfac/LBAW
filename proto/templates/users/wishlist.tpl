@@ -32,21 +32,23 @@
 				
 				<div class="row">
 					<div class="col-sm-12">
-						<div class="table-responsive">    
+						<div class="table-responsive">
+						{if $publicationswishlist}    
 							<table class="table">
 								<tbody>
+									{foreach $publicationswishlist as $publication}
 									<tr>
 										<td>
-											<a href="?page=single-product">
-												<img width="60px" src="{$BASE_URL}images/publications/books/books_5.jpg" alt="product">
+											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
+												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
 											</a>
 										</td>
 										<td>
-											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+											<h6 class="regular"><a href="?page=single-product">{$publication.titulo}</a></h6>
 											<small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
 										</td>
 										<td>
-											<span class="text-primary">€59.99</span>
+											<span class="text-primary">€{$publication.preco}</span>
 										</td>
 										<td>
 											<a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
@@ -55,53 +57,19 @@
 											<button type="button" class="close">×</button>
 										</td>
 									</tr>
+									{/foreach}
+									{else}
 									<tr>
-										<td>
-											<a href="?page=single-product">
-												<img width="60px" src="{$BASE_URL}images/publications/books/books_5.jpg" alt="product">
-											</a>
-										</td>
-										<td>
-											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-											<small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
-										</td>
-										<td>
-											<span class="text-primary">€39.99</span>
-										</td>
-										<td>
-											<a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
-										</td>
-										<td>
-											<button type="button" class="close">×</button>
-										</td>
+										<span>Não existem produtos na sua lista de desejos</span>
 									</tr>
-									<tr>
-										<td>
-											<a href="?page=single-product">
-												<img width="60px" src="{$BASE_URL}images/publications/books/books_6.jpg" alt="product">
-											</a>
-										</td>
-										<td>
-											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-											<small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
-										</td>
-										<td>
-											<span class="text-primary">€29.99</span>
-										</td>
-										<td>
-											<a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
-										</td>
-										<td>
-											<button type="button" class="close">×</button>
-										</td>
-									</tr>
+									{/if}
 								</tbody>
 							</table><!-- end table -->
 						</div><!-- end table-responsive -->
 						
 						<hr class="spacer-10 no-border">
 						
-						<a href="shop-sidebar-left.html" class="btn btn-light semi-circle btn-sm">
+						<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm">
 							<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
 						</a>
 					</div><!-- end col -->
