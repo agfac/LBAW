@@ -748,7 +748,7 @@ FOR EACH ROW
 	EXECUTE PROCEDURE insert_publicacao();
 
 CREATE TRIGGER insert_cliente_trigger
-BEFORE INSERT OR UPDATE ON Cliente
+BEFORE INSERT ON Cliente
 FOR EACH ROW
 	EXECUTE PROCEDURE insert_cliente();
 
