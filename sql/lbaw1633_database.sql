@@ -1264,6 +1264,8 @@ INSERT INTO WishList (clienteID,nome) VALUES (7,'Historia');
 INSERT INTO WishList (clienteID,nome) VALUES (11,'Historia');
 INSERT INTO WishList (clienteID,nome) VALUES (9,'Arte');
 INSERT INTO WishList (clienteID,nome) VALUES (19,'Informatica');
+INSERT INTO WishList (clienteID,nome) VALUES (22,'Arte');
+INSERT INTO WishList (clienteID,nome) VALUES (23,'Romance');
 
 /* ------------------------------------------------------ R5 PublicacaoWishList ------------------------------------------------------ */
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (2,44);
@@ -1308,6 +1310,25 @@ INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,90);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (19,85);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (13,87);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,29);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,86);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,63);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,29);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,88);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,84);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,50);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,90);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,85);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,87);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,84);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,43);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,51);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,16);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,94);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,32);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,93);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,15);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,45);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,3);
 
 /* ------------------------------------------------------ R7 Imagem ------------------------------------------------------ */
 INSERT INTO Imagem (publicacaoID,url) VALUES (1,'images/publications/books/Arte/1.jpeg');
