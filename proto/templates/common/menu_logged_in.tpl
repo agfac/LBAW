@@ -47,11 +47,7 @@
         </li>
         <li class="linkdown">
           <a href="javascript:void(0);">
-            <i class="fa fa-shopping-basket mr-5"></i>
-            <span class="hidden-xs">
-              Carrinho<sup class="text-primary">(3)</sup>
-              <i class="fa fa-angle-down ml-5"></i>
-            </span>    
+            <i class="fa fa-shopping-basket mr-5"></i>  
           </a>
           <ul class="cart w-250">
             <li>
