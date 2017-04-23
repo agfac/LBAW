@@ -18,7 +18,7 @@
         <a href="{$BASE_URL}pages/users/wishlist.php">
           <i class="fa fa-heart mr-5"></i>
           <span class="hidden-xs">
-            Wishlist (5)
+            Wishlist
           </span></a>
         </li>
         <li>
@@ -114,3 +114,5 @@
     </div><!-- end container -->
   </div>
   <!-- end topBar -->
+
+<script src="{$BASE_URL}javascript/users/menu_logged_in.js"></script>
