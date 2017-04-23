@@ -170,7 +170,7 @@ function getAllUsers(){
 
 function getUserAllData($username) {
     global $conn;
-    $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.nome AS nomePais, localidade.nome AS nomeLocalidade
+    $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.paisid, pais.nome AS nomePais, localidade.nome AS nomeLocalidade
                             FROM cliente
                             LEFT JOIN moradafaturacao
                             ON moradafaturacao.clienteid = cliente.clienteid
@@ -185,5 +185,162 @@ function getUserAllData($username) {
                             WHERE cliente.username = ?");
     $stmt->execute(array($username));
     return $stmt->fetchAll();
+}
+
+function updateUserInformation($username, $userdata, $newuserinformation) {
+
+  global $conn;
+
+  $conn->beginTransaction();
+
+  try{
+    
+    $paisID = $userdata[0]['paisid'];
+    $pais = $newuserinformation['pais'];
+
+    if (!($userdata[0]['nomepais'] === $pais)) {
+      //CHECK PAIS ALREADY EXISTS
+      $stmt = $conn->prepare("SELECT *
+                              FROM pais 
+                              WHERE nome = ?");
+      $stmt->execute(array($pais));
+      $result = $stmt->fetch();
+
+      if($result){
+        $paisID = $result['paisid'];
+      }
+      else{
+      //INSERT INTO PAIS
+        $stmt = $conn->prepare("INSERT INTO pais (nome) 
+                                VALUES (?)");
+        $stmt->execute(array($pais));
+        $paisID = $conn->lastInsertId('pais_paisid_seq');
+      }
+
+      //UPDATE INTO PAIS
+      $stmt = $conn->prepare("UPDATE cliente
+                              SET paisid = ? 
+                              WHERE username = ?");
+      $stmt->execute(array($paisID, $username));
+
+    }
+    
+    $localidade = $newuserinformation['localidade'];
+
+    if (!($userdata[0]['nomelocalidade'] === $localidade)) {
+      //CHECK LOCALIDADE ALREADY EXISTS
+      $stmt = $conn->prepare("SELECT *
+                              FROM localidade 
+                              WHERE nome = ?");
+      $stmt->execute(array($localidade));
+      $result = $stmt->fetch();
+
+      if($result){
+        $localidadeID = $result['localidadeid'];
+      }
+      else{
+      //INSERT INTO LOCALIDADE
+        $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
+                                VALUES (?, ?)");
+        $stmt->execute(array($paisID, $localidade));
+        $localidadeID = $conn->lastInsertId('localidade_localidadeid_seq');
+      }
+
+      //GET CODPOSTAL ID
+      $stmt = $conn->prepare("SELECT codigopostal.codigopostalid, cliente.clienteid
+                              FROM moradaenvio
+                              JOIN morada
+                              ON moradaenvio.moradaid = morada.moradaid 
+                              JOIN cliente
+                              ON moradaenvio.clienteid = cliente.clienteid 
+                              JOIN codigopostal
+                              ON morada.codigopostalid = codigopostal.codigopostalid
+                              WHERE cliente.username = ?");
+      $stmt->execute(array($username));
+      $result = $stmt->fetch();
+
+      $codPostalID = $result;
+
+      //UPDATE INTO CODPOSTAL
+      $stmt = $conn->prepare("UPDATE codigopostal
+                              SET localidadeid = ? 
+                              WHERE codigopostalid = ?");
+      $stmt->execute(array($localidadeID, $codPostalID));
+    }
+
+    $cod1 = $newuserinformation['cod1'];
+    $cod2 = $newuserinformation['cod2'];
+
+    if (!($userdata[0]['cod1'] === $cod1) || !($userdata[0]['cod2'] === $cod2)){
+
+    //CHECK CODIGO_POSTAL ALREADY EXISTS
+      $stmt = $conn->prepare("SELECT *
+                              FROM codigopostal 
+                              WHERE cod1 = ? AND cod2 = ?");
+      $stmt->execute(array($cod1, $cod2));
+      $result = $stmt->fetch();
+
+      if($result){
+        $codPostalID = $result['codigopostalid'];
+      }
+      else{
+      //INSERT INTO CODIGO_POSTAL
+        $stmt = $conn->prepare("INSERT INTO codigopostal (localidadeid, cod1, cod2) 
+                                VALUES (?, ?, ?)");
+        $stmt->execute(array($localidadeID, $cod1, $cod2));
+        $codPostalID = $conn->lastInsertId('codigopostal_codigopostalid_seq');
+      }
+
+      //GET MORADA ID
+      $stmt = $conn->prepare("SELECT morada.moradaid
+                              FROM morada
+                              JOIN codigopostal
+                              ON morada.codigopostalid = codigopostal.codigopostalid 
+                              JOIN moradaenvio
+                              ON morada.moradaid = moradaenvio.moradaid 
+                              JOIN cliente
+                              ON cliente.clienteid = moradaenvio.clienteid
+                              WHERE cliente.username = ?");
+      $stmt->execute(array($username));
+      $result = $stmt->fetch();
+
+      $moradaID = $result;
+
+      //UPDATE INTO MORADA
+      $stmt = $conn->prepare("UPDATE morada
+                              SET codigopostalid = ? 
+                              WHERE moradaid = ?");
+      $stmt->execute(array($codPostalID, $moradaID));
+    }
+
+    $nome = $newuserinformation['nome'];
+    $genero = $newuserinformation['genero'];
+    $diaNasc = $newuserinformation['diaNasc'];
+    $mesNasc = $newuserinformation['mesNasc'];
+    $anoNasc = $newuserinformation['anoNasc'];
+    $morada = $newuserinformation['morada'];
+    $telefone = $newuserinformation['telefone'];
+    $email = $newuserinformation['email'];
+    $nif = $newuserinformation['nif'];
+    $username = $newuserinformation['username'];
+
+    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($userdata[0]['diaNasc'] === $diaNasc) || !($userdata[0]['mesNasc'] === $mesNasc) || !($userdata[0]['anoNasc'] === $anoNasc) || !($userdata[0]['morada'] === $morada) || !($userdata[0]['telefone'] === $telefone) || !($userdata[0]['email'] === $email) || !($userdata[0]['nif'] === $nif) || !($userdata[0]['username'] === $username)){
+
+      $stmt = $conn->prepare("UPDATE cliente 
+                              SET nome = ?, genero = ?, datanascimento = ?, username = ?, telefone = ?, email = ?, nif = ? 
+                              WHERE cliente.username = ?");
+
+      $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);
+
+      $stmt->execute(array($nome, $genero, $datanasc, $username, $telefone, $email, $nif, $username));
+    }
+
+    $conn->commit();
+  }catch(Exception $e){
+    
+    error_log($e->getMessage());
+
+    $conn->rollBack();
+  }
 }
 ?>

@@ -32,7 +32,7 @@
 				
 				<div class="row">
 					<div class="col-sm-12 col-md-10 col-lg-12">
-						<form action="{$BASE_URL}actions/users/register.php" method="post" class="form-horizontal">
+						<form action="{$BASE_URL}actions/users/edit.php" method="post" class="form-horizontal">
 							<div class="form-group">
 								<label for="nome" class="col-sm-2 control-label">Nome<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
@@ -42,7 +42,7 @@
 							<div class="form-group">
 								<label for="genero" class="col-sm-2 control-label">Género<span class="text-danger">*</span></label>
 								<div class="checkbox-input mb-10">
-									{html_radios name='id' options=$GENDER_ARRAY selected=$USER_DATA.genero id="row-gender"}
+									{html_radios name='genero' options=$GENDER_ARRAY selected=$USER_DATA.genero class="row-gender-edit"}
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
@@ -121,25 +121,22 @@
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">Nova Password <span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control input-md" name="password" placeholder="Nova Password">
+									<input type="password" class="form-control input-md" name="novapassword" placeholder="Nova Password">
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">Confirmar Password <span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control input-md" name="password" placeholder="Confirmar Password">
+									<input type="password" class="form-control input-md" name="confpassword" placeholder="Confirmar Password">
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
-								<div class="checkbox-input checkbox-primary">
-									<input id="newsletter" class="styled" type="checkbox" checked>
-									<label for="newsletter">
-										Desejo receber as últimas novidades
-									</label>
+								<div class="col-sm-offset-2 col-sm-10"> 
+									<button type="submit" class="btn btn-default round btn-sm">
+										<i class="fa fa-save mr-5"></i>
+										Guardar
+									</button>
 								</div>
-							</div><!-- end form-group -->
-							<div class="form-group">
-								<a href="javascript:void(0);" class="btn btn-default round btn-sm"><i class="fa fa-save mr-5"></i> Guardar</a>
 							</div><!-- end form-group -->
 						</div><!-- end col -->
 
