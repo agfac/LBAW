@@ -32,7 +32,7 @@
 				
 				<div class="row">
 					<div class="col-sm-12 col-md-10 col-lg-12">
-						<form action="{$BASE_URL}actions/users/register.php" method="post" class="form-horizontal">
+						<form action="{$BASE_URL}actions/users/edit.php" method="post" class="form-horizontal">
 							<div class="form-group">
 								<label for="nome" class="col-sm-2 control-label">Nome<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
@@ -121,13 +121,13 @@
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">Nova Password <span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control input-md" name="password" placeholder="Nova Password">
+									<input type="password" class="form-control input-md" name="novapassword" placeholder="Nova Password">
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">Confirmar Password <span class="text-danger">*</span></label>
 								<div class="col-sm-10">
-									<input type="password" class="form-control input-md" name="password" placeholder="Confirmar Password">
+									<input type="password" class="form-control input-md" name="confpassword" placeholder="Confirmar Password">
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
