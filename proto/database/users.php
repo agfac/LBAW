@@ -176,6 +176,27 @@ function getUserPublicationsCart($clienteid) {
   return $stmt->fetchAll();
 }
 
+function getUserPublicationsWishList($clienteid) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.titulo, publicacao.preco, imagem.url
+                          FROM wishlist
+                          JOIN cliente
+                          ON wishlist.clienteid = cliente.clienteid 
+                          JOIN publicacaowishlist
+                          ON publicacaowishlist.wishlistid = wishlist.wishlistid 
+                          JOIN publicacao
+                          ON publicacao.publicacaoid = publicacaowishlist.publicacaoid 
+                          JOIN imagem
+                          ON imagem.publicacaoid = publicacao.publicacaoid
+                          WHERE cliente.clienteid = ?");
+  
+  $stmt->execute(array($clienteid));
+  
+  return $stmt->fetchAll();
+}
+
 function getAllUsers(){
   global $conn;
   
