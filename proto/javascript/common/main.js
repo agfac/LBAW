@@ -1,3 +1,5 @@
+BASE_URL = '';
+
 $(document).ready(function(){
     
     //sticky nav

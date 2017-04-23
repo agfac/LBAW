@@ -20,7 +20,7 @@
 				<a href="{$BASE_URL}pages/users/cart.php">
 					<i class="fa fa-shopping-cart mr-5"></i>
 					Meu carrinho 
-					<span class="text-primary">(3)</span>
+					<!-- <span class="text-primary">(3)</span> -->
 				</a>
 			</li>
 			<li>

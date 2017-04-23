@@ -4,7 +4,7 @@
 
   $clientid = $_SESSION['userid'];
 
-  $publicationscart = getUserPublicationsCart(4);
+  $publicationscart = getUserPublicationsCart($clientid);
 
   $smarty->assign('publicationscart', $publicationscart);
   $smarty->assign('qtOptions', array_combine(range(1,10),range(1,10)));
