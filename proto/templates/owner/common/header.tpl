@@ -36,7 +36,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{$BASE_URL}page/owner/home.php" class="site_title"><i class="fa fa-paw"></i> <span>Funcionário</span></a>
+              <a href="{$BASE_URL}pages/owner/home.php" class="site_title"><i class="fa fa-paw"></i> <span>Funcionário</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -49,7 +49,7 @@
               <div class="profile_info">
                 <span>Bem vindo,</span>
                 <h2>Manuel Pereira Lopes</h2>
-              </div>
+          </div>
             </div>
             <!-- /menu profile quick info -->
 

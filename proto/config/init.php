@@ -20,6 +20,10 @@
   $smarty->template_dir = $BASE_DIR . 'templates/';
   $smarty->compile_dir = $BASE_DIR . 'templates_c/';
   $smarty->assign('BASE_URL', $BASE_URL);
+
+  $parsedata['fulldata'] = '%d-%m-%Y %H:%M:%S';
+  $parsedata['data'] = '%d-%m-%Y';
+  $smarty->assign('parsedata', $parsedata);
   
   $smarty->assign('ERROR_MESSAGES', $_SESSION['error_messages']);  
   $smarty->assign('FIELD_ERRORS', $_SESSION['field_errors']);
