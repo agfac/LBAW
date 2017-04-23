@@ -4,7 +4,7 @@
 		<h6 class="subtitle">Menu de navegação</h6>
 
 		<ul class="list list-unstyled">
-			<li class="active">
+			<li>
 				<a href="{$BASE_URL}pages/users/my-account.php">
 					<i class="fa fa-user mr-5"></i>
 					Minha conta
@@ -94,3 +94,5 @@
 	</div><!-- end widget -->
 </div><!-- end col -->
 <!-- end sidebar -->
+
+<script src="{$BASE_URL}javascript/users/sidebar.js"></script>
