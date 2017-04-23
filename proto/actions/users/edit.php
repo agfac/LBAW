@@ -28,16 +28,13 @@ $confpassword = $_POST['confpassword'];
 try {
 
     $userdata = getUserAllData($username);
-    error_log($username);
-    error_log(print_r($userdata, 1));
-    error_log(print_r($_POST, 1));
     
     updateUserInformation($username, $userdata, $newuserinformation);
 
     if ($password) {
-        if ($password === getUserPassword()) {
+        if (sha1($password) === $userdata[0]['password']) {
             if ($newpassword === $confpassword) {
-                updateUserPassword($newpassword);
+                updateUserPassword($username, $newpassword);
             } else {
                 $_SESSION['error_messages'][]         = 'Wrong new password';
                 $_SESSION['field_errors']['password'] = 'New and confirmation password are different';

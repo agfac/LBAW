@@ -103,25 +103,35 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
 }
 
 function isLoginCorrect($username, $password) {
+  
   global $conn;
+  
   $stmt = $conn->prepare("SELECT * 
-    FROM cliente 
-    WHERE username = ? AND password = ?");
+                          FROM cliente 
+                          WHERE username = ? AND password = ?");
+  
   $stmt->execute(array($username, sha1($password)));
+  
   return $stmt->fetch() == true;
 }
 
 function getUserData($username) {
+    
     global $conn;
+    
     $stmt = $conn->prepare("SELECT * 
                             FROM cliente
                             WHERE username = ?");
+    
     $stmt->execute(array($username));
+    
     return $stmt->fetchAll();
 }
 
 function getUserOrderList($clienteid) {
+    
     global $conn;
+    
     $stmt = $conn->prepare("SELECT encomenda.encomendaid, publicacao.titulo, publicacao.preco, informacaofaturacao.total, encomenda.data, encomenda.estado, imagem.url 
                             FROM informacaofaturacao
                             JOIN encomenda
@@ -135,12 +145,16 @@ function getUserOrderList($clienteid) {
                             JOIN imagem
                             ON imagem.publicacaoid = publicacao.publicacaoid
                             WHERE encomenda.clienteid = ?");
+    
     $stmt->execute(array($clienteid));
+    
     return $stmt->fetchAll();
 }
 
 function getUserPublicationsCart($clienteid) {
+  
   global $conn;
+  
   $stmt = $conn->prepare("SELECT publicacao.publicacaoid, publicacao.titulo, publicacaocarrinho.quantidade, publicacao.preco, imagem.url, subcategoria.nome AS nome_subcategoria, categoria.nome AS nome_categoria
                           FROM cliente
                           JOIN carrinho
@@ -156,20 +170,25 @@ function getUserPublicationsCart($clienteid) {
                           JOIN categoria
                           ON categoria.categoriaid = subcategoria.categoriaid
                           WHERE cliente.clienteid = ?");
+  
   $stmt->execute(array($clienteid));
+  
   return $stmt->fetchAll();
 }
 
 function getAllUsers(){
   global $conn;
+  
   $stmt = $conn->prepare("SELECT * 
                           FROM cliente");
   $stmt->execute();
+  
   return $stmt->fetchAll();
 }
 
 function getUserAllData($username) {
     global $conn;
+    
     $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.paisid, pais.nome AS nomePais, localidade.localidadeid, localidade.nome AS nomeLocalidade
                             FROM cliente
                             LEFT JOIN moradafaturacao
@@ -184,6 +203,7 @@ function getUserAllData($username) {
                             ON pais.paisid = localidade.paisid
                             WHERE cliente.username = ?");
     $stmt->execute(array($username));
+    
     return $stmt->fetchAll();
 }
 
@@ -349,7 +369,6 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
     $telefone = $newuserinformation['telefone'];
     $email = $newuserinformation['email'];
     $nif = $newuserinformation['nif'];
-    $username = $newuserinformation['username'];
 
     $birthdate = explode('-', $userdata[0]['datanascimento']);
 
@@ -358,23 +377,36 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
     $birthmonth = ltrim($str, '0');
     $birthday = $birthdate[2];
 
-    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc) || !($userdata[0]['telefone'] === $telefone) || !($userdata[0]['email'] === $email) || !($userdata[0]['nif'] === $nif) || !($userdata[0]['username'] === $username)){
+    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc) || !($userdata[0]['telefone'] === $telefone) || !($userdata[0]['email'] === $email) || !($userdata[0]['nif'] === $nif)){
 
       $stmt = $conn->prepare("UPDATE cliente 
-                              SET nome = ?, genero = ?, datanascimento = ?, username = ?, telefone = ?, email = ?, nif = ? 
+                              SET nome = ?, genero = ?, datanascimento = ?, telefone = ?, email = ?, nif = ? 
                               WHERE cliente.username = ?");
 
       $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc,$anoNasc);
 
-      $stmt->execute(array($nome, $genero, $datanasc, $username, $telefone, $email, $nif, $username));
+      $stmt->execute(array($nome, $genero, $datanasc, $telefone, $email, $nif, $username));
     }
 
     $conn->commit();
+
   }catch(Exception $e){
     
     error_log($e->getMessage());
 
     $conn->rollBack();
   }
+}
+
+function updateUserPassword($username, $newpassword){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("UPDATE cliente 
+                          SET password = ?
+                          WHERE username = ?");
+  $stmt->execute(array(sha1($newpassword),$username));
+  
+  return $stmt->fetchAll();
 }
 ?>

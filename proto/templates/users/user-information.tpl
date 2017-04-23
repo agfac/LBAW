@@ -107,12 +107,6 @@
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">
-								<label for="username" class="col-sm-2 control-label">Username <span class="text-danger">*</span></label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control input-md" name="username" value="{$USER_DATA.username}" placeholder="Username">
-								</div>
-							</div><!-- end form-group -->
-							<div class="form-group">
 								<label for="password" class="col-sm-2 control-label">Password <span class="text-danger">*</span></label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control input-md" name="password" placeholder="Password">
