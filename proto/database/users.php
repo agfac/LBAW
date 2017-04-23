@@ -324,7 +324,14 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
     $nif = $newuserinformation['nif'];
     $username = $newuserinformation['username'];
 
-    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($userdata[0]['diaNasc'] === $diaNasc) || !($userdata[0]['mesNasc'] === $mesNasc) || !($userdata[0]['anoNasc'] === $anoNasc) || !($userdata[0]['morada'] === $morada) || !($userdata[0]['telefone'] === $telefone) || !($userdata[0]['email'] === $email) || !($userdata[0]['nif'] === $nif) || !($userdata[0]['username'] === $username)){
+    $birthdate = explode('-', $userdata[0]['datanascimento']);
+
+    $birthyear = $birthdate[0];
+    $str = $birthdate[1];
+    $birthmonth = ltrim($str, '0');
+    $birthday = $birthdate[2];
+
+    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc) || !($userdata[0]['morada'] === $morada) || !($userdata[0]['telefone'] === $telefone) || !($userdata[0]['email'] === $email) || !($userdata[0]['nif'] === $nif) || !($userdata[0]['username'] === $username)){
 
       $stmt = $conn->prepare("UPDATE cliente 
                               SET nome = ?, genero = ?, datanascimento = ?, username = ?, telefone = ?, email = ?, nif = ? 
