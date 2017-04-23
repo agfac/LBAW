@@ -16,7 +16,7 @@
         <div class="x_panel">
 
           <div class="x_title">
-            <h2>Editar Publicação <small>Nome_Da_Publicação</small></h2>
+            <h2>Editar Publicação: <span>{$publicationData.titulo}</span></h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -30,7 +30,7 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Nome </label>
                 <div class="col-md-10 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess1" placeholder="Nome da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess1" placeholder="{$publicationData.titulo}">
                 </div>
               </div>
 
@@ -38,19 +38,19 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Descrição </span>
                 </label>
                 <div class="col-md-10 col-sm-9 col-xs-12">
-                  <textarea class="form-control" rows="3" id="inputSuccess2" placeholder="Descrição da Publicação"></textarea>
+                  <textarea class="form-control" rows="3" id="inputSuccess2" placeholder="{$publicationData.descricao}"></textarea>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Editora </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess3" placeholder="Nome da Editora da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess3" placeholder="{$publicationData.nome_editora}">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Sub-Categoria </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess4" placeholder="Nome da Sub-Categoria da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess4" placeholder="{$publicationData.nome_subcategoria}">
                 </div>
               </div>
 
@@ -59,67 +59,83 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Data da Publicação
                 </label>
                 <div class="col-md-4 col-sm-6 col-xs-12 has-feedback">
-                  <input type="text" class="form-control has-feedback-left" id="single_cal1"  placeholder="Data da Publicação" aria-describedby="inputSuccess2Status4">
+                  <input type="text" class="form-control has-feedback-left" id="single_cal1"  placeholder="{$publicationData.datapublicacao}" aria-describedby="inputSuccess2Status4">
                   <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Stock </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess5" placeholder="Stock da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess5" placeholder="{$publicationData.stock}">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Peso </label>
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Peso (gr)</label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess6" placeholder="Peso da Publicação (gr)">
+                  <input type="text" class="form-control" id="inputSuccess6" placeholder="{$publicationData.peso}">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Páginas </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess7" placeholder="Número de páginas da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess7" placeholder="{$publicationData.paginas}">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess8" placeholder="Preço da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess8" placeholder="{$publicationData.preco}">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Promocional </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess9" placeholder="Preço Promocional da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess9" placeholder="{$publicationData.precopromocional}">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Código de Barras </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess10" placeholder="Código de Barras da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess10" placeholder="{$publicationData.codigobarras}">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">ISBN </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess11" placeholder="ISBN da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess11" placeholder="{$publicationData.isbn}">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Edição </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess12" placeholder="Edição da Publicação">
+                  <input type="text" class="form-control" id="inputSuccess12" placeholder="{$publicationData.edicao}">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Periodicidade </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
                   <select class="form-control">
                     <option>Escolha uma opção</option>
-                    <option>Diário</option>
-                    <option>Semanal</option>
-                    <option>Mensal</option>
-                    <option>Anual</option>
+                    {if $publicationData.periodicidade == "Diário"}
+                    <option value="diario" selected>Diário</option>
+                    {else}
+                    <option value="diario">Diário</option>
+                    {/if}
+                    {if $publicationData.periodicidade == "Semanal"}
+                    <option value="semanal" selected>Semanal</option>
+                    {else}
+                    <option value="semanal">Semanal</option>
+                    {/if}
+                    {if $publicationData.periodicidade == "Mensal"}
+                    <option value="mensal" selected>Mensal</option>
+                    {else}
+                    <option value="mensal">Mensal</option>
+                    {/if}
+                    {if $publicationData.periodicidade == "Anual"}
+                    <option value="mensal" selected>Anual</option>
+                    {else}
+                    <option value="mensal">Anual</option>
+                    {/if}
                   </select>
                 </div>
               </div>

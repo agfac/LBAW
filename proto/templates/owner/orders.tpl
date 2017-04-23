@@ -19,17 +19,6 @@
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Definições 1</a>
-                  </li>
-                  <li><a href="#">Definições 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
             </ul>
             <div class="clearfix"></div>
           </div>
@@ -94,23 +83,13 @@
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Definiçoes 1</a>
-                  </li>
-                  <li><a href="#">Definiçoes 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li><a class="close-link"><i class="fa fa-close"></i></a>
-              </li>
             </ul>
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
             <p>Encomendas listadas da loja</p>
             <!-- start of orders list -->
+            {if $allOrders}
             <table class="table table-striped projects">
               <thead>
                 <tr>
@@ -118,76 +97,45 @@
                   <th style="width: 30%">Nome cliente</th>
                   <th>Preço Total</th>
                   <th>Estado</th>
-                  <th style="width: 20%">#Editar</th>
+                  <th>Data</th>
+                  <th style="width: 15%">#Editar</th>
                 </tr>
               </thead>
               <tbody>
+                {foreach $allOrders as $order}
                 <tr>
-                  <td>1</td>
+                  <td>{$order.encomendaid}</td>
                   <td>
-                    <a>Maria Adelaide Ribeiro</a>
+                    <a>{$order.nomecliente}</a>
                   </td>
                   <td>
-                    <a>53.91€</a>
+                    <a>{$order.total|string_format:"%.2f"} €</a>
                   </td>
                   <td>
+                    {if $order.estado == "Em processamento"}
                     <button type="button" class="btn btn-info btn-xs">Em processamento</button>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>
-                    <a>Fernando Jose Costa Matos</a>
-                  </td>
-                  <td>
-                    <a>19.08€</a>
-                  </td>
-                  <td>
+                    {else if $order.estado == "Processada"}
                     <button type="button" class="btn btn-primary btn-xs">Processada</button>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>
-                    <a>Teresa de Jesus Teixeira Ferreira</a>
-                  </td>
-                  <td>
-                    <a>12.99€</a>
-                  </td>
-                  <td>
+                    {else if $order.estado == "Enviada"}
                     <button type="button" class="btn btn-success btn-xs">Enviada</button>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>
-                    <a>Jorge Manuel Rodrigues Goncalves</a>
-                  </td>
-                  <td>
-                    <a>8.99€</a>
-                  </td>
-                  <td>
+                    {else}
                     <button type="button" class="btn btn-warning btn-xs">Cancelada</button>
+                    {/if}
+                  </td>
+                  <td>
+                    <a>{$order.data|date_format:$parsedata.fulldata}</a>
                   </td>
                   <td>
                     <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
                     <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
                   </td>
                 </tr>
+                {/foreach}
               </tbody>
             </table>
+            {else}
+              <span>Não existem Encomendas</span>
+            {/if}
             <!-- end of orders list -->
           </div>
         </div>

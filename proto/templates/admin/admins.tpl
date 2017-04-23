@@ -118,7 +118,7 @@
                 </td>
                 <td>
                   {if $admin.datacessacao}
-                    <a>{$admin.datacessacao}</a>
+                    <a>{$admin.datacessacao|date_format:$parsedata.data}</a>
                   {else}
                     <a>N/A</a>
                   {/if}

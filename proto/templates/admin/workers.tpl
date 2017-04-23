@@ -118,7 +118,7 @@
                   <a>{$worker.nome}</a>
                 </td>
                 <td>
-                  <a>{$worker.dataadmissao}</a>
+                  <a>{$worker.dataadmissao|date_format:$parsedata.fulldata}</a>
                 </td>
                 <td>
                   {if $worker.ativo}

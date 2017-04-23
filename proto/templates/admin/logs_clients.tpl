@@ -106,7 +106,7 @@
                     <a>{$log.nome}</a>
                   </td>
                   <td>
-                    <a>{$log.data}</a>
+                    <a>{$log.data|date_format:$parsedata.fulldata}</a>
                   </td>
                 </tr>
                 {/foreach}
