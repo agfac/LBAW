@@ -32,7 +32,7 @@
 				
 				<div class="row">
 					<div class="col-sm-12 col-md-10 col-lg-12">
-						<form action="{$BASE_URL}actions/users/edit.php" method="post" class="form-horizontal">
+						<form action="{$BASE_URL}actions/users/user-information.php" method="post" class="form-horizontal">
 							<div class="form-group">
 								<label for="nome" class="col-sm-2 control-label">Nome<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
@@ -104,12 +104,6 @@
 								<label for="nif" class="col-sm-2 control-label">NIF </label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control input-md" name="nif" value="{$USER_DATA.nif}" placeholder="NIF">
-								</div>
-							</div><!-- end form-group -->
-							<div class="form-group">
-								<label for="username" class="col-sm-2 control-label">Username <span class="text-danger">*</span></label>
-								<div class="col-sm-10">
-									<input type="text" class="form-control input-md" name="username" value="{$USER_DATA.username}" placeholder="Username">
 								</div>
 							</div><!-- end form-group -->
 							<div class="form-group">

@@ -28,16 +28,13 @@ $confpassword = $_POST['confpassword'];
 try {
 
     $userdata = getUserAllData($username);
-    error_log($username);
-    error_log(print_r($userdata, 1));
-    error_log(print_r($_POST, 1));
     
     updateUserInformation($username, $userdata, $newuserinformation);
 
     if ($password) {
-        if ($password === getUserPassword()) {
+        if (sha1($password) === $userdata[0]['password']) {
             if ($newpassword === $confpassword) {
-                updateUserPassword($newpassword);
+                updateUserPassword($username, $newpassword);
             } else {
                 $_SESSION['error_messages'][]         = 'Wrong new password';
                 $_SESSION['field_errors']['password'] = 'New and confirmation password are different';
@@ -54,12 +51,12 @@ try {
         $_SESSION['error_messages'][]         = 'Duplicate username';
         $_SESSION['field_errors']['username'] = 'Username already exists';
     } else {
-        $_SESSION['error_messages'][] = 'Error creating user';
+        $_SESSION['error_messages'][] = 'Error user information edition';
     }
 
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/users/register.php');
     exit;
 }
-$_SESSION['success_messages'][] = 'User registered successfully';
+$_SESSION['success_messages'][] = 'User data edited successfully';
 header("Location: $BASE_URL");

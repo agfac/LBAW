@@ -50,6 +50,23 @@
 <body>
 
   <body>
+    {foreach $ERROR_MESSAGES as $error}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{$error}</strong>
+    </div><!-- end alert -->
+    {/foreach}
+
+    {foreach $SUCCESS_MESSAGES as $success}
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{$success}</strong>
+    </div><!-- end alert -->
+    {/foreach}
 
     <!-- start section -->
     <section class="primary-background">
@@ -102,7 +119,7 @@
           {else}
           {include file='common/menu_logged_out.tpl'}
           {/if}
-
+        
           <div class="middleBar">
             <div class="container">
               <div class="row table">

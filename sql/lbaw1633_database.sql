@@ -1242,6 +1242,27 @@ INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (15,1
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (88,3,2);
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (76,4,1);
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (66,4,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (58,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (12,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (40,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (50,22,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (5,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (14,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (59,22,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (15,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (88,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (76,22,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (66,22,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (82,23,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (52,23,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (6,23,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (60,23,1);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (81,23,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (83,23,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (23,23,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (48,23,2);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (10,23,3);
+INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (53,23,3);
 
 /* ------------------------------------------------------ R4 WishList ------------------------------------------------------ */
 INSERT INTO WishList (clienteID,nome) VALUES (15,'Informatica');
@@ -1264,6 +1285,8 @@ INSERT INTO WishList (clienteID,nome) VALUES (7,'Historia');
 INSERT INTO WishList (clienteID,nome) VALUES (11,'Historia');
 INSERT INTO WishList (clienteID,nome) VALUES (9,'Arte');
 INSERT INTO WishList (clienteID,nome) VALUES (19,'Informatica');
+INSERT INTO WishList (clienteID,nome) VALUES (22,'Arte');
+INSERT INTO WishList (clienteID,nome) VALUES (23,'Romance');
 
 /* ------------------------------------------------------ R5 PublicacaoWishList ------------------------------------------------------ */
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (2,44);
@@ -1308,6 +1331,25 @@ INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,90);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (19,85);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (13,87);
 INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (17,29);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,86);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,63);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,29);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,88);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,84);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,50);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,90);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,85);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (21,87);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,84);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,43);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,51);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,16);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,94);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,32);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,93);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,15);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,45);
+INSERT INTO PublicacaoWishList (wishListID,publicacaoID) VALUES (22,3);
 
 /* ------------------------------------------------------ R7 Imagem ------------------------------------------------------ */
 INSERT INTO Imagem (publicacaoID,url) VALUES (1,'images/publications/books/Arte/1.jpeg');

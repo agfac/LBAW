@@ -8,6 +8,11 @@
 
   $orders = getUserOrderList($userdata[0]['clienteid']);
 
+  $clientid = $_SESSION['userid'];
+  
+  $publicationsusercart = getUserPublicationsCart($clientid);
+
+  $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
   $smarty->assign('orders', $orders);
   $smarty->display('users/order-list.tpl');
 ?>

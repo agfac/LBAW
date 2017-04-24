@@ -3,7 +3,7 @@ include_once('../../config/init.php');
 include_once($BASE_DIR .'database/users.php');  
 
 if (!$_POST['username'] || !$_POST['password']) {
-  $_SESSION['error_messages'][] = 'Invalid login';
+  $_SESSION['error_messages'][] = 'Deverá preencher o username e a password para efetuar o login';
   $_SESSION['form_values'] = $_POST;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   exit;
@@ -20,11 +20,11 @@ if (isLoginCorrect($username, $password)) {
 
   $_SESSION['userid'] = $userid;
   
-  $_SESSION['success_messages'][] = 'Login successful';
-    
+  $_SESSION['success_messages'][] = 'Login efetuado com sucesso';
+
   header("Location: $BASE_URL");
 } else {
-  $_SESSION['error_messages'][] = 'Login failed';  
+  $_SESSION['error_messages'][] = 'Username ou password incorretos';  
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 ?>

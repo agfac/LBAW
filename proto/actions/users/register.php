@@ -4,7 +4,7 @@
 
   if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['diaNasc'] || !$_POST['mesNasc'] || !$_POST['anoNasc'] || !$_POST['morada'] || !$_POST['localidade'] || !$_POST['cod1'] || !$_POST['cod2'] || !$_POST['pais'] || !$_POST['email'] || !$_POST['username'] || !$_POST['password']) {
     error_log('if');
-    $_SESSION['error_messages'][] = 'All fields are mandatory';
+    $_SESSION['error_messages'][] = 'Todos os campos são de preenchimento obrigatório';
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/users/register.php');
     exit;
@@ -33,15 +33,15 @@
   } catch (PDOException $e) {
   
     if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
-      $_SESSION['error_messages'][] = 'Duplicate username';
-      $_SESSION['field_errors']['username'] = 'Username already exists';
+      $_SESSION['error_messages'][] = 'Username duplicado';
+      $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
     }
-    else $_SESSION['error_messages'][] = 'Error creating user';
+    else $_SESSION['error_messages'][] = 'Erro ao criar utilizador';
 
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/users/register.php');
     exit;
   }
-  $_SESSION['success_messages'][] = 'User registered successfully';  
+  $_SESSION['success_messages'][] = 'Utilizador registado com sucesso';  
   header("Location: $BASE_URL");
 ?>
