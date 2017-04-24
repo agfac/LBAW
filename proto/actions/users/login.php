@@ -21,7 +21,7 @@ if (isLoginCorrect($username, $password)) {
   $_SESSION['userid'] = $userid;
   
   $_SESSION['success_messages'][] = 'Login successful';
-    
+
   header("Location: $BASE_URL");
 } else {
   $_SESSION['error_messages'][] = 'Login failed';  
