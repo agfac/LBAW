@@ -52,10 +52,10 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select class="form-control">
                     <option>Escolha uma opção</option>
-                    <option>Em processamento</option>
-                    <option>Processada</option>
-                    <option>Enviada</option>
-                    <option>Devolvida</option>
+                    <option value="Em_processamento">Em processamento</option>
+                    <option value="Processada">Processada</option>
+                    <option value="Enviada">Enviada</option>
+                    <option value="Devolvida">Devolvida</option>
                   </select>
                 </div>
               </div>
@@ -126,15 +126,38 @@
                     <a>{$order.data|date_format:$parsedata.fulldata}</a>
                   </td>
                   <td>
-                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                    <a href="{$BASE_URL}pages/owner/order.php?id={$order.encomendaid}" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a>
+                    <!--<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>-->
+                    <!--<select>
+                      {if $order.estado == "Em processamento"}
+                      <option value="Em processamento" selected>Em processamento</option>
+                      <option value="Processada">Processada</option>
+                      <option value="Enviada">Enviada</option>
+                      <option value="Devolvida">Devolvida</option>
+                      {else if $order.estado == "Processada"}
+                      <option value="Em processamento">Em processamento</option>
+                      <option value="Processada" selected>Processada</option>
+                      <option value="Enviada">Enviada</option>
+                      <option value="Devolvida">Devolvida</option>
+                      {else if $order.estado == "Enviada"}
+                      <option value="Em processamento" selected>Em processamento</option>
+                      <option value="Processada">Processada</option>
+                      <option value="Enviada" selected>Enviada</option>
+                      <option value="Devolvida">Devolvida</option>
+                      {else}
+                      <option value="Em processamento" selected>Em processamento</option>
+                      <option value="Processada">Processada</option>
+                      <option value="Enviada">Enviada</option>
+                      <option value="Devolvida" selected>Devolvida</option>
+                      {/if}
+                    </select>-->
                   </td>
                 </tr>
                 {/foreach}
               </tbody>
             </table>
             {else}
-              <span>Não existem Encomendas</span>
+            <span>Não existem Encomendas</span>
             {/if}
             <!-- end of orders list -->
           </div>

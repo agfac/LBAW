@@ -30,7 +30,7 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Nome </label>
                 <div class="col-md-10 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess1" placeholder="{$publicationData.titulo}">
+                  <input type="text" class="form-control" name="titulo" required="required" value="{$publicationData.titulo}" placeholder="Nome da Publicação">
                 </div>
               </div>
 
@@ -38,19 +38,19 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Descrição </span>
                 </label>
                 <div class="col-md-10 col-sm-9 col-xs-12">
-                  <textarea class="form-control" rows="3" id="inputSuccess2" placeholder="{$publicationData.descricao}"></textarea>
+                  <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição da Publicação">{$publicationData.descricao}</textarea>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Editora </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess3" placeholder="{$publicationData.nome_editora}">
+                  <input type="text" class="form-control" name="editora" required="required" value="{$publicationData.nome_editora}" placeholder="Nome da Editora da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Sub-Categoria </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess4" placeholder="{$publicationData.nome_subcategoria}">
+                  <input type="text" class="form-control" name="subcategoria" required="required" value="{$publicationData.nome_subcategoria}" placeholder="Nome da Sub-Categoria da Publicação">
                 </div>
               </div>
 
@@ -59,57 +59,57 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Data da Publicação
                 </label>
                 <div class="col-md-4 col-sm-6 col-xs-12 has-feedback">
-                  <input type="text" class="form-control has-feedback-left" id="single_cal1"  placeholder="{$publicationData.datapublicacao}" aria-describedby="inputSuccess2Status4">
+                  <input type="text" class="form-control has-feedback-left" name="datapublicacao" value="{$publicationData.datapublicacao}" aria-describedby="inputSuccess2Status4">
                   <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Stock </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess5" placeholder="{$publicationData.stock}">
+                  <input type="number" class="form-control" name="stock" required="required" value="{$publicationData.stock}" placeholder="Stock da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Peso (gr)</label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess6" placeholder="{$publicationData.peso}">
+                  <input type="number" class="form-control" name="peso" required="required" value="{$publicationData.peso}" placeholder="Peso da Publicação (gr)">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Páginas </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess7" placeholder="{$publicationData.paginas}">
+                  <input type="number" class="form-control" name="nrpaginas" value="{$publicationData.paginas}" placeholder="Número de páginas da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess8" placeholder="{$publicationData.preco}">
+                  <input type="number" step="0.01" class="form-control" name="preco" required="required" value="{$publicationData.preco}" placeholder="Preço da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Promocional </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess9" placeholder="{$publicationData.precopromocional}">
+                  <input type="number" step="0.01" class="form-control" name="precopromocional" value="{$publicationData.precopromocional}" placeholder="Preço Promocional da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Código de Barras </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess10" placeholder="{$publicationData.codigobarras}">
+                  <input type="number" class="form-control" name="codigobarras" required="required" value="{$publicationData.codigobarras}" placeholder="Código de Barras da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">ISBN </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess11" placeholder="{$publicationData.isbn}">
+                  <input type="text" class="form-control" name="isbn" value="{$publicationData.isbn}" placeholder="ISBN da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Edição </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess12" placeholder="{$publicationData.edicao}">
+                  <input type="text" class="form-control" name="edicao" value="{$publicationData.edicao}" placeholder="Edição da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Periodicidade </label>

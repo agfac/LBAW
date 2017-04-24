@@ -30,7 +30,7 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Nome <span class="required">*</span></label>
                 <div class="col-md-10 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" id="inputSuccess1" placeholder="Nome da Publicação">
+                  <input type="text" class="form-control" required="required" name="titulo" placeholder="Nome da Publicação">
                 </div>
               </div>
 
@@ -38,19 +38,19 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Descrição </span>
                 </label>
                 <div class="col-md-10 col-sm-9 col-xs-12">
-                  <textarea class="form-control" rows="3" id="inputSuccess2" placeholder="Descrição da Publicação"></textarea>
+                  <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição da Publicação"></textarea>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Editora <span class="required">*</span></label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" id="inputSuccess3" placeholder="Nome da Editora da Publicação">
+                  <input type="text" class="form-control" required="required" name="editora" placeholder="Nome da Editora da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Sub-Categoria <span class="required">*</span></label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" id="inputSuccess4" placeholder="Nome da Sub-Categoria da Publicação">
+                  <input type="text" class="form-control" required="required" name="subcateboria" placeholder="Nome da Sub-Categoria da Publicação">
                 </div>
               </div>
 
@@ -59,57 +59,57 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Data da Publicação <span class="required">*</span>
                 </label>
                 <div class="col-md-4 col-sm-6 col-xs-12 has-feedback">
-                  <input type="text" class="form-control has-feedback-left" id="single_cal1" required="required" placeholder="Data da Publicação" aria-describedby="inputSuccess2Status4">
+                  <input type="text" class="form-control has-feedback-left" id="single_cal1" name="datapublicacao" required="required" placeholder="Data da Publicação" aria-describedby="inputSuccess2Status4">
                   <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Stock <span class="required">*</span></label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" id="inputSuccess5" placeholder="Stock da Publicação">
+                  <input type="number" class="form-control" required="required" name="stock" placeholder="Stock da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Peso <span class="required">*</span></label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" id="inputSuccess6" placeholder="Peso da Publicação (gr)">
+                  <input type="number" class="form-control" required="required" name="peso" placeholder="Peso da Publicação (gr)">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Páginas </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess7" placeholder="Número de páginas da Publicação">
+                  <input type="number" class="form-control" name="nrpaginas" placeholder="Número de páginas da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço <span class="required">*</span></label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" id="inputSuccess8" placeholder="Preço da Publicação">
+                  <input type="number" step="0.01" class="form-control" required="required" name="preco" placeholder="Preço da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Promocional </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess9" placeholder="Preço Promocional da Publicação">
+                  <input type="number" step="0.01" class="form-control" name="precopromocional" placeholder="Preço Promocional da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Código de Barras <span class="required">*</span></label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" id="inputSuccess10" placeholder="Código de Barras da Publicação">
+                  <input type="number" class="form-control" required="required" name="codigobarras" placeholder="Código de Barras da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">ISBN </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess11" placeholder="ISBN da Publicação">
+                  <input type="text" class="form-control" name="isbn" placeholder="ISBN da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Edição </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" id="inputSuccess12" placeholder="Edição da Publicação">
+                  <input type="text" class="form-control" name="edicao" placeholder="Edição da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Periodicidade </label>

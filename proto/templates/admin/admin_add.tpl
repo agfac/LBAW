@@ -28,28 +28,13 @@
             <form class="form-horizontal form-label-left input_mask">
 
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess1" required="required" placeholder="Nome Completo *">
+                <input type="text" class="form-control has-feedback-left" name="nome" required="required" placeholder="Nome Completo *">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess2" required="required" placeholder="Email *">
-                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-              </div>
-
-              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess11" required="required" placeholder="País *">
+                <input type="text" class="form-control has-feedback-left" name="pais" required="required" placeholder="País *">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-              </div>
-
-              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess4" required="required" placeholder="Username *">
-                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-              </div>
-
-              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control" id="inputSuccess5" required="required" placeholder="Password *">
-                <span class="fa fa-key form-control-feedback right" aria-hidden="true"></span>
               </div>
 
               <!-- DATA NASCIMENTO -->
@@ -63,6 +48,16 @@
                 </div>
               </div>
 
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-left" name="username" required="required" placeholder="Username *">
+                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="password" class="form-control has-feedback-left" name="password" required="required" placeholder="Password *">
+                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+              </div>
+
               <div class="form-group">
                 <!-- Sexo -->
                 <label class="col-md-1 col-sm-9 col-xs-12 control-label">Sexo</span>
@@ -70,10 +65,10 @@
                 <div class="col-md-4 col-sm-9 col-xs-12">
                   <div class="radio">
                     <label>
-                      <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios"> Masculino
+                      <input type="radio" checked="" value="option1" id="sexo_masc" name="optionsRadios"> Masculino
                     </label>
                     <label>
-                      <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios"> Feminino
+                      <input type="radio" value="option2" id="sexo_fem" name="optionsRadios"> Feminino
                     </label>
                   </div>
                 </div>
@@ -86,10 +81,10 @@
                 <div class="col-md-4 col-sm-9 col-xs-12">
                   <div class="radio">
                     <label>
-                      <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios_activity"> Ativo
+                      <input type="radio" checked="" value="option1" id="atividade_sim" name="optionsRadios_activity"> Ativo
                     </label>
                     <label>
-                      <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios_activity"> Inativo
+                      <input type="radio" value="option2" id="atividade_nao" name="optionsRadios_activity"> Inativo
                     </label>
                   </div>
                 </div>

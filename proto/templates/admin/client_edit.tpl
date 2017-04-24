@@ -28,60 +28,60 @@
             <form class="form-horizontal form-label-left input_mask">
 
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess1" placeholder="{$clientdata.nome}">
+                <input type="text" class="form-control has-feedback-left" name="nome" required="required" value="{$clientdata.nome}" placeholder="Nome Completo *">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="{$clientdata.email}">
+                <input type="email" class="form-control has-feedback-left" name="email" required="required" value="{$clientdata.email}" placeholder="Email *">
                 <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control" id="inputSuccess3" placeholder="{$clientdata.telefone}">
-                <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                <input type="tel" class="form-control has-feedback-left" name="telefone" required="required" value="{$clientdata.telefone}" placeholder="Telefone">
+                <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="{$clientdata.username}">
+                <input type="text" class="form-control has-feedback-left" name="username" required="required" value="{$clientdata.username}" placeholder="Username">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control" id="inputSuccess5" required="required" placeholder="Password *">
-                <span class="fa fa-key form-control-feedback right" aria-hidden="true"></span>
+                <input type="password" class="form-control has-feedback-left" name="password" required="required" placeholder="Password *">
+                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess6" placeholder="{$clientdata.nif}">
+                <input type="text" class="form-control has-feedback-left" name="nif" required="required" value="{$clientdata.nif}" placeholder="NIF">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <label class="control-label col-md-2 col-sm-3 col-xs-12 ">Data de Nascimento</span>
               </label>
               <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="{$clientdata.datanascimento}" aria-describedby="inputSuccess2Status4">
+                <input type="text" class="form-control has-feedback-left" name="datanascimento" required="required" value="{$clientdata.datanascimento}" aria-describedby="inputSuccess2Status4">
                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                 <span id="inputSuccess2Status4" class="sr-only">(success)</span>
               </div>
 
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess8" placeholder="{$clientdata.rua}">
+                <input type="text" class="form-control has-feedback-left" name="rua" required="required" value="{$clientdata.rua}" placeholder="Rua">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess9" placeholder="{$clientdata.cod1}-{$clientdata.cod2}">
+                <input type="text" class="form-control has-feedback-left" name="codigopostal" required="required" value="{$clientdata.cod1}-{$clientdata.cod2}" placeholder="Código Postal">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess10" placeholder="{$clientdata.nomelocalidade}">
+                <input type="text" class="form-control has-feedback-left" name="localidade" required="required" value="{$clientdata.nomelocalidade}" placeholder="Localidade">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" id="inputSuccess11" placeholder="{$clientdata.nomepais}">
+                <input type="text" class="form-control has-feedback-left" name="pais" required="required" value="{$clientdata.nomepais}" placeholder="País">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
