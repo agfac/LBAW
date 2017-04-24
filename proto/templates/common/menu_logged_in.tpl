@@ -53,7 +53,7 @@
             <li>
               <div class="cart-items">
                 <ol class="items">
-                  {foreach $publicationsusercart as $publicationusercart}
+                  {foreach $PUBLICATIONSUSERCART as $publicationusercart}
                   <li> 
                     <a href="{$BASE_URL}pages/publications/publication.php?id={$publicationusercart.publicacaoid}" class="product-image">
                       <img src="{$BASE_URL}{$publicationusercart.url}" alt="Sample Product ">

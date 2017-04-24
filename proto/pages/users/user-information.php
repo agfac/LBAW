@@ -45,5 +45,11 @@
                                        'Feminino' => 'Feminino'));
 
   $smarty->assign('USER_DATA', $userdata[0]);
+
+  $clientid = $_SESSION['userid'];
+  
+  $publicationsusercart = getUserPublicationsCart($clientid);
+
+  $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
   $smarty->display('users/user-information.tpl');
 ?>

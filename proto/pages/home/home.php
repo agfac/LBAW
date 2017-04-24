@@ -3,10 +3,12 @@
   include_once($BASE_DIR .'database/users.php');  
 
   if (isset($_SESSION['userid'])) {
-  	$publicationscart = getUserPublicationsCart($_SESSION['userid']);
+  	$clientid = $_SESSION['userid'];
   
-  	$smarty->assign('publicationsusercart', $publicationscart);
-  }
+  	$publicationsusercart = getUserPublicationsCart($clientid);
 
+  	$smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
+  }
+  
   $smarty->display('home/home.tpl');
 ?>
