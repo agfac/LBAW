@@ -51,12 +51,12 @@ try {
         $_SESSION['error_messages'][]         = 'Duplicate username';
         $_SESSION['field_errors']['username'] = 'Username already exists';
     } else {
-        $_SESSION['error_messages'][] = 'Error creating user';
+        $_SESSION['error_messages'][] = 'Error user information edition';
     }
 
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/users/register.php');
     exit;
 }
-$_SESSION['success_messages'][] = 'User registered successfully';
+$_SESSION['success_messages'][] = 'User data edited successfully';
 header("Location: $BASE_URL");
