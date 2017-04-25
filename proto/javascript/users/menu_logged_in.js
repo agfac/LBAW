@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	updateCartNumItems();
 	updateWishListNumItems();
-  updateBasketNumItems();
+	updateBasketNumItems();
 });
 
 function updateCartNumItems() {

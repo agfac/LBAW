@@ -4,7 +4,7 @@
 
   if (isset($_SESSION['userid'])) {
   	$clientid = $_SESSION['userid'];
-  
+ 
   	$publicationsusercart = getUserPublicationsCart($clientid);
 
   	$smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
