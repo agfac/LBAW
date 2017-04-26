@@ -41,7 +41,7 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Data de Nascimento</span>
                 </label>
                 <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
-                  <input type="text" class="form-control has-feedback-left" id="single_cal1" required="required" placeholder="Data Nascimento" aria-describedby="inputSuccess2Status4">
+                  <input type="text" class="form-control has-feedback-left" id="single_cal1" name="datanascimento" required="required" placeholder="Data Nascimento" aria-describedby="inputSuccess2Status4">
                   <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>

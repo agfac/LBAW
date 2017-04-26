@@ -1,10 +1,10 @@
 <?php
   include_once('../../config/init.php');
-  include_once($BASE_DIR .'database/admins.php');  
+  include_once($BASE_DIR .'database/admins.php');
 
-  print_r("ASDASDSADASDSAD");
+  print_r($_POST);
 
-  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['diaNasc'] || !$_POST['mesNasc'] || !$_POST['anoNasc'] || !$_POST['pais'] || !$_POST['username'] || !$_POST['password'] || $_POST['atividade']) {
+  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['pais'] || !$_POST['username'] || !$_POST['password'] || !$_POST['atividade']) {
     error_log('if');
     $_SESSION['error_messages'][] = 'Todos os campos são de preenchimento obrigatório';
     $_SESSION['form_values'] = $_POST;
@@ -14,9 +14,7 @@
 
   $nome = strip_tags($_POST['nome']);
   $genero = strip_tags($_POST['genero']);
-  $diaNasc = strip_tags($_POST['diaNasc']);
-  $mesNasc = strip_tags($_POST['mesNasc']);
-  $anoNasc = strip_tags($_POST['anoNasc']);
+  $datanascimento = strip_tags($_POST['datanascimento']);
   $pais = strip_tags($_POST['pais']);
   $username = strip_tags($_POST['username']);
   $password = $_POST['password'];
@@ -27,11 +25,19 @@
   else
     $atividade = FALSE;
 
+  $pieces = explode('/', $datanascimento);
+  $diaNasc = $pieces[1];
+  $mesNasc = $pieces[0];
+  $anoNasc = $pieces[2];
+
+print_r($diaNasc);
+print_r($mesNasc);
+print_r($anoNasc);
 
   try {
+
     createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $username, $password, $atividade);
 
-    
   } catch (PDOException $e) {
   
     if (strpos($e->getMessage(), 'cliente_username_key') !== false) {

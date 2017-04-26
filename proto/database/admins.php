@@ -39,7 +39,7 @@ function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $usern
       //INSERT INTO ADMINISTRADOR
       $stmt = $conn->prepare("INSERT INTO administrador (paisid, nome, genero, datanascimento, username, password, ativo) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-      $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);
+      $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc,$anoNasc);
       
       $stmt->execute(array($paisID, $nome, $genero, $datanasc, $username, sha1($password), $atividade));
     }
