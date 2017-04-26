@@ -3,7 +3,7 @@ include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/users.php';
 
 $username = $_POST['client_username'];
-print_r($datanascimento);
+
 $datanascimento = strip_tags($_POST['datanascimento']);
 $pieces = explode('-', $datanascimento);
 $diaNasc = $pieces[2];

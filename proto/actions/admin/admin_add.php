@@ -19,9 +19,9 @@
   $atividade = strip_tags($_POST['atividade']);
 
   if($atividade == "Ativo")
-    $atividade = TRUE;
+    $atividade = "TRUE";
   else
-    $atividade = FALSE;
+    $atividade = "FALSE";
 
   $pieces = explode('/', $datanascimento);
   $diaNasc = $pieces[1];
