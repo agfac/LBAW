@@ -2,8 +2,6 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR .'database/admins.php');
 
-  print_r($_POST);
-
   if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['pais'] || !$_POST['username'] || !$_POST['password'] || !$_POST['atividade']) {
     error_log('if');
     $_SESSION['error_messages'][] = 'Todos os campos são de preenchimento obrigatório';
@@ -29,10 +27,6 @@
   $diaNasc = $pieces[1];
   $mesNasc = $pieces[0];
   $anoNasc = $pieces[2];
-
-print_r($diaNasc);
-print_r($mesNasc);
-print_r($anoNasc);
 
   try {
 
