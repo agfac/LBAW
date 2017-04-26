@@ -1,5 +1,59 @@
 <?php 
 
+function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $username, $password, $atividade) {
+
+  global $conn;
+
+  $conn->beginTransaction();
+
+  try{
+    
+  //CHECK PAIS ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM pais 
+                            WHERE nome = ?");
+    $stmt->execute(array($pais));
+    $result = $stmt->fetch();
+
+    if($result){
+      $paisID = $result['paisid'];
+    }
+    else{
+      //INSERT INTO PAIS
+      $stmt = $conn->prepare("INSERT INTO pais (nome) VALUES (?)");
+      $stmt->execute(array($pais));
+      $paisID = $conn->lastInsertId('pais_paisid_seq');
+    }
+    
+    //CHECK ADMINISTRADOR ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM administrador 
+                            WHERE username = ?");
+    $stmt->execute(array($username));
+    $result = $stmt->fetch();
+
+    if($result){
+      die('Administrador já existe!');
+    }
+    else{
+      //INSERT INTO ADMINISTRADOR
+      $stmt = $conn->prepare("INSERT INTO administrador (paisid, nome, genero, datanascimento, username, password, ativo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+      $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);
+      
+      $stmt->execute(array($paisID, $nome, $genero, $datanasc, $username, sha1($password), $atividade));
+    }
+
+
+    $conn->commit();
+  }catch(Exception $e){
+    
+    error_log($e->getMessage());
+
+    $conn->rollBack();
+  }
+}
+
 function getAllAdmins(){
   global $conn;
   $stmt = $conn->prepare("SELECT *

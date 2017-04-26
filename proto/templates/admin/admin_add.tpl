@@ -25,20 +25,19 @@
           </div>
 
           <div class="x_content">
-            <form class="form-horizontal form-label-left input_mask">
+          <form action="{$BASE_URL}actions/admin/admin_add.php" method="post" class="form-horizontal form-label-left input_mask">
 
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" name="nome" required="required" placeholder="Nome Completo *">
+                <input type="text" class="form-control has-feedback-left" name="nome" value="{$FORM_VALUES.nome}"required="required" placeholder="Nome Completo *">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" name="pais" required="required" placeholder="País *">
+                <input type="text" class="form-control has-feedback-left" name="pais" value="{$FORM_VALUES.pais}" required="required" placeholder="País *">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
               <!-- DATA NASCIMENTO -->
-              <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Data de Nascimento</span>
                 </label>
                 <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
@@ -46,10 +45,9 @@
                   <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>
-              </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" name="username" required="required" placeholder="Username *">
+                <input type="text" class="form-control has-feedback-left" name="username" value="{$FORM_VALUES.username}" required="required" placeholder="Username *">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
@@ -58,47 +56,43 @@
                 <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
               </div>
 
-              <div class="form-group">
                 <!-- Sexo -->
                 <label class="col-md-1 col-sm-9 col-xs-12 control-label">Sexo</span>
                 </label>
                 <div class="col-md-4 col-sm-9 col-xs-12">
                   <div class="radio">
                     <label>
-                      <input type="radio" checked="" value="option1" id="sexo_masc" name="optionsRadios"> Masculino
+                      <input type="radio" checked="" value="Masculino" name="genero"> Masculino
                     </label>
                     <label>
-                      <input type="radio" value="option2" id="sexo_fem" name="optionsRadios"> Feminino
+                      <input type="radio" value="Feminino" name="genero"> Feminino
                     </label>
                   </div>
                 </div>
-              </div>
 
-              <div class="form-group">
                 <!-- Activity -->
                 <label class="col-md-1 col-sm-9 col-xs-12  control-label">Atividade</span>
                 </label>
                 <div class="col-md-4 col-sm-9 col-xs-12">
                   <div class="radio">
                     <label>
-                      <input type="radio" checked="" value="option1" id="atividade_sim" name="optionsRadios_activity"> Ativo
+                      <input type="radio" checked="" value="Ativo" name="atividade"> Ativo
                     </label>
                     <label>
-                      <input type="radio" value="option2" id="atividade_nao" name="optionsRadios_activity"> Inativo
+                      <input type="radio" value="Inativo" name="atividade"> Inativo
                     </label>
                   </div>
                 </div>
-              </div>
 
               <div class="clearfix"></div>
               <div class="ln_solid"></div>
-              <div class="form-group">
+              
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
                   <a href="{$BASE_URL}pages/admin/admins.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
                   <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
-              </div>
+
             </form>
           </div>
         </div>
