@@ -25,7 +25,7 @@
           </div>
 
           <div class="x_content">
-            <form class="form-horizontal form-label-left input_mask">
+            <form action="{$BASE_URL}actions/admin/client_edit.php" method="post" class="form-horizontal form-label-left input_mask">
 
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
                 <input type="text" class="form-control has-feedback-left" name="nome" required="required" value="{$clientdata.nome}" placeholder="Nome Completo *">
@@ -47,10 +47,10 @@
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
-              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="password" class="form-control has-feedback-left" name="password" required="required" placeholder="Password *">
+<!--               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="password" class="form-control has-feedback-left" name="password" placeholder="Password *">
                 <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-              </div>
+              </div> -->
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                 <input type="text" class="form-control has-feedback-left" name="nif" required="required" value="{$clientdata.nif}" placeholder="NIF">
@@ -65,8 +65,24 @@
                 <span id="inputSuccess2Status4" class="sr-only">(success)</span>
               </div>
 
+                            <div class="form-group">
+                <!-- Sexo -->
+                <label class="col-md-1 col-sm-9 col-xs-12 control-label">Sexo</span>
+                </label>
+                <div class="col-md-4 col-sm-9 col-xs-12">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" {if $clientdata.genero == 'Masculino'} checked="" {/if} value="Masculino" name="genero"> Masculino
+                    </label>
+                    <label>
+                      <input type="radio" {if $clientdata.genero == 'Feminino'} checked="" {/if} value="Feminino" name="genero"> Feminino
+                    </label>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" name="rua" required="required" value="{$clientdata.rua}" placeholder="Rua">
+                <input type="text" class="form-control has-feedback-left" name="morada" required="required" value="{$clientdata.rua}" placeholder="Rua">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
@@ -85,11 +101,13 @@
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
+
               <div class="clearfix"></div>
 
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
+                  <input type="hidden" name="client_username" value="{$clientdata.username}">
                   <a href="{$BASE_URL}pages/admin/clients.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
                   <button type="submit" class="btn btn-success">Submeter</button>

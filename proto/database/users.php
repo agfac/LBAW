@@ -201,7 +201,8 @@ function getAllUsers(){
   global $conn;
   
   $stmt = $conn->prepare("SELECT * 
-                          FROM cliente");
+                          FROM cliente
+                          ORDER BY cliente.clienteid");
   $stmt->execute();
   
   return $stmt->fetchAll();
