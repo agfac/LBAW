@@ -25,7 +25,7 @@
           </div>
 
           <div class="x_content">
-            <form class="form-horizontal form-label-left input_mask">
+            <form action="{$BASE_URL}actions/owner/orders_status.php" method="post" class="form-horizontal form-label-left input_mask">
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">ID da encomenda:</label>
@@ -64,7 +64,7 @@
                       {else}
                       <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
                         {/if}
-                        <input type="radio" name="estadoencomenda" value="Em_rocessamento"> &nbsp; Em processamento &nbsp;
+                        <input type="radio" name="estadoencomenda" value="Em processamento"> &nbsp; Em processamento &nbsp;
                       </label>
 
                       {if $orderData[0].estado == "Processada"}
@@ -135,6 +135,7 @@
 
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
+                          <input type="hidden" name="order_id" value="{$orderData[0].encomendaid}">
                           <a href="{$BASE_URL}pages/owner/orders.php" type="button" class="btn btn-primary">Cancelar</a>
                           <button type="submit" class="btn btn-success">Submeter</button>
                         </div>

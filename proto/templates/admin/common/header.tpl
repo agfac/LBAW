@@ -31,6 +31,24 @@
 </head>
 
 <body class="nav-md">
+    {foreach $ERROR_MESSAGES as $error}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{$error}</strong>
+    </div><!-- end alert -->
+    {/foreach}
+
+    {foreach $SUCCESS_MESSAGES as $success}
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>{$success}</strong>
+    </div><!-- end alert -->
+    {/foreach}
+    
   <div class="container body">
     <div class="main_container">
       <div class="col-md-3 left_col">

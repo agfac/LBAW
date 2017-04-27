@@ -25,7 +25,7 @@
           </div>
 
           <div class="x_content">
-            <form class="form-horizontal form-label-left input_mask">
+            <form action="{$BASE_URL}actions/owner/publication_edit.php" method="post" class="form-horizontal form-label-left input_mask">
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Nome </label>
@@ -145,9 +145,9 @@
                 <div class="col-md-55">
                   <div class="thumbnail">
                     <div class="image view view-first">
-                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                      <img style="width: 100%; display: block;" src="{$BASE_URL}{$publicationData.url}" alt="image" />
                       <div class="mask">
-                        <p>Your Text</p>
+                        <p>{$publicationData.titulo}</p>
                         <div class="tools tools-bottom">
                           <a href="#"><i class="fa fa-link"></i></a>
                           <a href="#"><i class="fa fa-pencil"></i></a>
@@ -160,83 +160,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-55">
-                  <div class="thumbnail">
-                    <div class="image view view-first">
-                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                      <div class="mask">
-                        <p>Your Text</p>
-                        <div class="tools tools-bottom">
-                          <a href="#"><i class="fa fa-link"></i></a>
-                          <a href="#"><i class="fa fa-pencil"></i></a>
-                          <a href="#"><i class="fa fa-times"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="caption">
-                      <p>Imagem 2</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-55">
-                  <div class="thumbnail">
-                    <div class="image view view-first">
-                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                      <div class="mask">
-                        <p>Your Text</p>
-                        <div class="tools tools-bottom">
-                          <a href="#"><i class="fa fa-link"></i></a>
-                          <a href="#"><i class="fa fa-pencil"></i></a>
-                          <a href="#"><i class="fa fa-times"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="caption">
-                      <p>Imagem 3</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-55">
-                  <div class="thumbnail">
-                    <div class="image view view-first">
-                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                      <div class="mask">
-                        <p>Your Text</p>
-                        <div class="tools tools-bottom">
-                          <a href="#"><i class="fa fa-link"></i></a>
-                          <a href="#"><i class="fa fa-pencil"></i></a>
-                          <a href="#"><i class="fa fa-times"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="caption">
-                      <p>Imagem 4</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-55">
-                  <div class="thumbnail">
-                    <div class="image view view-first">
-                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                      <div class="mask">
-                        <p>Your Text</p>
-                        <div class="tools tools-bottom">
-                          <a href="#"><i class="fa fa-link"></i></a>
-                          <a href="#"><i class="fa fa-pencil"></i></a>
-                          <a href="#"><i class="fa fa-times"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="caption">
-                      <p>Imagem 5</p>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
+                  <input type="hidden" name="publication_id" value="{$publicationData.publicacaoid}">
                   <a href="{$BASE_URL}pages/owner/publications.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
                   <button type="submit" class="btn btn-success">Submeter</button>

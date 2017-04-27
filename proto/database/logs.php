@@ -9,7 +9,8 @@ function getAllLogs(){
                           LEFT JOIN cliente
                           ON cliente.clienteid = login.clienteid
                           LEFT JOIN funcionario
-                          ON funcionario.funcionarioid = login.funcionarioid");
+                          ON funcionario.funcionarioid = login.funcionarioid
+                          ORDER BY login.loginid");
   $stmt->execute();
   return $stmt->fetchAll();
 }

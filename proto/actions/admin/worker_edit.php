@@ -49,17 +49,17 @@ try {
 
 } catch (PDOException $e) {
 
-    if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
-        $_SESSION['error_messages'][]         = 'Duplicate username';
+    if (strpos($e->getMessage(), 'funcionario_email_key') !== false || strpos($e->getMessage(), 'funcionario_nif_key') !== false || strpos($e->getMessage(), 'funcionario_username_key') !== false) {
+        $_SESSION['error_messages'][]         = 'Funcionario duplicado';
         $_SESSION['field_errors']['username'] = 'Username already exists';
     } else {
-        $_SESSION['error_messages'][] = 'Error user information edition';
+        $_SESSION['error_messages'][] = 'Erro na edição do funcionario';
     }
 
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/admin/worker_edit.php?username=' . $username);
     exit;
 }
-$_SESSION['success_messages'][] = 'User data edited successfully';
+$_SESSION['success_messages'][] = 'Funcionario editado com sucesso';
 header("Location: $BASE_URL" . 'pages/admin/workers.php');
 ?>

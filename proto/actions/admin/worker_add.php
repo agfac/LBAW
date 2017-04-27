@@ -42,7 +42,7 @@
   } catch (PDOException $e) {
   
     if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
-      $_SESSION['error_messages'][] = 'Username duplicado';
+      $_SESSION['error_messages'][] = 'Funcionario duplicado';
       $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
     }
     else $_SESSION['error_messages'][] = 'Erro ao criar utilizador';
@@ -51,6 +51,6 @@
     header("Location: $BASE_URL" . 'pages/admin/worker_add.php');
     exit;
   }
-  $_SESSION['success_messages'][] = 'Utilizador registado com sucesso';  
+  $_SESSION['success_messages'][] = 'Funcionario registado com sucesso';  
   header("Location: $BASE_URL" . 'pages/admin/workers.php');
 ?>

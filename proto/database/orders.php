@@ -61,4 +61,34 @@ function getOrderFactAddData($id)
     return $stmt->fetchAll();
 }
 
+function getOrderStatus($id){
+	global $conn;
+    $stmt = $conn->prepare("SELECT estado
+							FROM encomenda
+							WHERE encomendaid = ?");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+}
+
+function updateOrderStatus($id, $estado){
+	global $conn;
+
+	//check if id exists
+	$stmt = $conn->prepare("SELECT *
+							FROM encomenda
+							WHERE encomendaid = ?");
+    $stmt->execute(array($id));
+    $result = $stmt->fetch();
+
+    if(!$result){
+      	die('Encomenda não existe');
+    }
+    else{
+		$stmt = $conn->prepare("UPDATE encomenda
+			                    SET estado = ? 
+			                    WHERE encomendaid = ?");
+		$stmt->execute(array($estado, $id));
+	}
+}
+
 ?>

@@ -41,7 +41,7 @@ try {
 } catch (PDOException $e) {
 
     if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
-        $_SESSION['error_messages'][]         = 'Duplicate username';
+        $_SESSION['error_messages'][]         = 'Cliente já existe';
         $_SESSION['field_errors']['username'] = 'Username already exists';
     } else {
         $_SESSION['error_messages'][] = 'Error user information edition';
@@ -51,6 +51,6 @@ try {
     header("Location: $BASE_URL" . 'pages/admin/client_edit.php?username=' . $username);
     exit;
 }
-$_SESSION['success_messages'][] = 'User data edited successfully';
+$_SESSION['success_messages'][] = 'Cliente editado com sucesso';
 header("Location: $BASE_URL" . 'pages/admin/clients.php');
 ?>
