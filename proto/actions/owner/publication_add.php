@@ -49,9 +49,6 @@
   if($periodicidade === "Escolha uma opção")
     $periodicidade = NULL;
 
-  print_r($novidade);
-  exit;
-
   $pieces = explode('/', $datapublicacao);
   $diaPub = $pieces[1];
   $mesPub = $pieces[0];
