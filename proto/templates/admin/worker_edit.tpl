@@ -47,9 +47,20 @@
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
-              <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="password" class="form-control has-feedback-left" name="password" placeholder="Password *">
-                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+              <div class="form-group">
+                <!-- Activity -->
+                <label class="col-md-1 col-sm-9 col-xs-12 control-label">Estado</span>
+                </label>
+                <div class="col-md-4 col-sm-9 col-xs-12">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" {if $workerdata.ativo} checked="" {/if} value="Ativo" name="atividade"> Ativo
+                    </label>
+                    <label>
+                      <input type="radio" {if !$workerdata.ativo} checked="" {/if} value="Inativo" name="atividade"> Inativo
+                    </label>
+                  </div>
+                </div>
               </div>
 
               <div class="form-group">
@@ -107,23 +118,10 @@
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 
-              <div class="form-group">
-                <!-- Activity -->
-                <label class="col-md-6 col-sm-9 col-xs-12 control-label">Estado de Atividade</span>
-                </label>
-                <div class="col-md-6 col-sm-9 col-xs-12">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" {if $workerdata.ativo} checked="" {/if} value="Ativo" name="atividade"> Ativo
-                    </label>
-                    <label>
-                      <input type="radio" {if !$workerdata.ativo} checked="" {/if} value="Inativo" name="atividade"> Inativo
-                    </label>
-                  </div>
-                </div>
-              </div>
 
+              <div class="clearfix"></div>
               <div class="ln_solid"></div>
+
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
                   <input type="hidden" name="worker_username" value="{$workerdata.username}">

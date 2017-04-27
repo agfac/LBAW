@@ -54,10 +54,98 @@ function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $usern
   }
 }
 
+function updateAdminInformation($username, $userdata, $newuserinformation) {
+
+  global $conn;
+
+  $conn->beginTransaction();
+
+  try{
+
+    $paisID = $userdata[0]['paisid'];
+    $pais = $newuserinformation['pais']; 
+
+    if (!($userdata[0]['nomepais'] === $pais)) {
+      //CHECK PAIS ALREADY EXISTS
+      $stmt = $conn->prepare("SELECT *
+                              FROM pais 
+                              WHERE nome = ?");
+      $stmt->execute(array($pais));
+      $result = $stmt->fetch();
+
+      if($result){
+        $paisID = $result['paisid'];
+      }
+      else{
+      //INSERT INTO PAIS
+        $stmt = $conn->prepare("INSERT INTO pais (nome) 
+                                VALUES (?)");
+        $stmt->execute(array($pais));
+        $paisID = $conn->lastInsertId('pais_paisid_seq');
+      }
+
+      //UPDATE INTO PAIS
+      $stmt = $conn->prepare("UPDATE administrador
+                              SET paisid = ? 
+                              WHERE username = ?");
+      $stmt->execute(array($paisID, $username));
+    }
+   
+    $atividade = $newuserinformation['atividade'];
+    //Check atividade
+    if (!($userdata[0]['ativo'] == $atividade) && $atividade == FALSE) {
+      $currentDate = date('Y-m-d H:i:s');
+      $stmt = $conn->prepare("UPDATE administrador
+                              SET datacessacao = ?, ativo = ?
+                              WHERE username = ?");
+      $stmt->execute(array($currentDate, $atividade, $username));
+    } else if(!($userdata[0]['ativo'] == $atividade) && $atividade == TRUE) {
+      $datacessacao = NULL;
+      $stmt = $conn->prepare("UPDATE administrador
+                              SET datacessacao = ?, ativo = ?
+                              WHERE username = ?");
+      $stmt->execute(array($datacessacao, $atividade, $username));
+    }
+
+    $nome = $newuserinformation['nome'];
+    $genero = $newuserinformation['genero'];
+    $diaNasc = $newuserinformation['diaNasc'];
+    $mesNasc = $newuserinformation['mesNasc'];
+    $anoNasc = $newuserinformation['anoNasc'];
+
+    $birthdate = explode('-', $userdata[0]['datanascimento']);
+
+    $birthyear = $birthdate[0];
+    $str = $birthdate[1];
+    $birthmonth = ltrim($str, '0');
+    $birthday = $birthdate[2];
+
+    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc)){
+
+      $stmt = $conn->prepare("UPDATE administrador 
+                              SET nome = ?, genero = ?, datanascimento = ?
+                              WHERE administrador.username = ?");
+
+      $datanasc = sprintf("%04d-%02d-%02d",$anoNasc,$mesNasc,$diaNasc);
+
+      $stmt->execute(array($nome, $genero, $datanasc, $username));
+    }
+
+    $conn->commit();
+
+  }catch(Exception $e){
+
+    error_log($e->getMessage());
+
+    $conn->rollBack();
+  }
+}
+
 function getAllAdmins(){
   global $conn;
   $stmt = $conn->prepare("SELECT *
-                          FROM administrador");
+                          FROM administrador
+                          ORDER BY administradorid;");
   $stmt->execute();
   return $stmt->fetchAll();
 }
