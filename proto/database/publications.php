@@ -33,7 +33,7 @@ function getPublicationData($id)
     return $stmt->fetchAll();
 }
 
-function getPublicationDataBySubcategory($subcategory)
+function getPublicationsBySubcategory($subcategory)
 {
 	global $conn;
     $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, editora.nome AS nome_editora, autor.nome AS nome_autor, subcategoria.nome as nome_subcategoria

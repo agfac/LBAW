@@ -14,7 +14,6 @@ $password = $_POST['password'];
 
 if (isLoginCorrect($username, $password)) {
   $_SESSION['username'] = $username;
-
   $userdata = getUserData($username);
   $userid = $userdata[0]['clienteid'];
 
