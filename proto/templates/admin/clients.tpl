@@ -111,7 +111,7 @@
                   </td>
                   <td>
                     <a href="{$BASE_URL}pages/admin/client_edit.php?username={$user.username}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
+                    <a href="{$BASE_URL}actions/admin/client_status.php?username={$user.username}" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> {if $user.ativo}Banir{else}Ativar{/if} </a>
                   </td>
                 </tr>
                 {/foreach}

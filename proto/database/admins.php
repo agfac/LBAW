@@ -161,4 +161,36 @@ function getAdminAllData($username){
   return $stmt->fetchAll();
 }
 
+function getAdminStatus($username){
+  global $conn;
+    $stmt = $conn->prepare("SELECT ativo
+              FROM administrador
+              WHERE username = ?");
+    $stmt->execute(array($username));
+    return $stmt->fetch();
+}
+
+function updateAdminStatus($username, $estado){
+  global $conn;
+
+  if ($estado == "FALSE") {
+    $currentDate = date('Y-m-d H:i:s');
+    $stmt = $conn->prepare("UPDATE administrador
+                            SET datacessacao = ?, ativo = ?
+                            WHERE username = ?");
+    $stmt->execute(array($currentDate, $estado, $username));
+  } else {
+    $datacessacao = NULL;
+    $stmt = $conn->prepare("UPDATE administrador
+                            SET datacessacao = ?, ativo = ?
+                            WHERE username = ?");
+    $stmt->execute(array($datacessacao, $estado, $username));
+  }
+
+  $stmt = $conn->prepare("UPDATE administrador
+                        SET ativo = ? 
+                        WHERE username = ?");
+  $stmt->execute(array($estado, $username));
+}
+
 ?>

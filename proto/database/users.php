@@ -229,6 +229,38 @@ function getUserAllData($username) {
     return $stmt->fetchAll();
 }
 
+function getClientStatus($username){
+  global $conn;
+    $stmt = $conn->prepare("SELECT ativo
+              FROM cliente
+              WHERE username = ?");
+    $stmt->execute(array($username));
+    return $stmt->fetch();
+}
+
+function updateClientStatus($username, $estado){
+  global $conn;
+
+  if ($estado == "FALSE") {
+    $currentDate = date('Y-m-d H:i:s');
+    $stmt = $conn->prepare("UPDATE cliente
+                            SET datacancelamento = ?, ativo = ?
+                            WHERE username = ?");
+    $stmt->execute(array($currentDate, $estado, $username));
+  } else {
+    $datacancelamento = NULL;
+    $stmt = $conn->prepare("UPDATE cliente
+                            SET datacancelamento = ?, ativo = ?
+                            WHERE username = ?");
+    $stmt->execute(array($datacancelamento, $estado, $username));
+  }
+
+  $stmt = $conn->prepare("UPDATE cliente
+                        SET ativo = ? 
+                        WHERE username = ?");
+  $stmt->execute(array($estado, $username));
+}
+
 function updateUserInformation($username, $userdata, $newuserinformation) {
 
   global $conn;

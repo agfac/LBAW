@@ -328,4 +328,38 @@ function getWorkersAllData($username) {
   return $stmt->fetchAll();
 }
 
+function getWorkerStatus($username){
+  global $conn;
+    $stmt = $conn->prepare("SELECT ativo
+                            FROM funcionario
+                            WHERE username = ?");
+    $stmt->execute(array($username));
+    return $stmt->fetch();
+}
+
+function updateWorkerStatus($username, $estado){
+  global $conn;
+
+
+  if ($estado == "FALSE") {
+    $currentDate = date('Y-m-d H:i:s');
+    $stmt = $conn->prepare("UPDATE funcionario
+                            SET datacessacao = ?, ativo = ?
+                            WHERE username = ?");
+    $stmt->execute(array($currentDate, $estado, $username));
+  } else {
+    $datacessacao = NULL;
+    $dataadmissao = date('Y-m-d H:i:s');
+    $stmt = $conn->prepare("UPDATE funcionario
+                            SET datacessacao = ?, dataadmissao = ?, ativo = ?
+                            WHERE username = ?");
+    $stmt->execute(array($datacessacao, $dataadmissao, $estado, $username));
+  }
+
+  $stmt = $conn->prepare("UPDATE funcionario
+                        SET ativo = ? 
+                        WHERE username = ?");
+  $stmt->execute(array($estado, $username));
+}
+
 ?>
