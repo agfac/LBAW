@@ -28,7 +28,7 @@
           <form action="{$BASE_URL}actions/admin/admin_add.php" method="post" class="form-horizontal form-label-left input_mask">
 
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" name="nome" value="{$FORM_VALUES.nome}"required="required" placeholder="Nome Completo *">
+                <input type="text" class="form-control has-feedback-left" name="nome" value="{$FORM_VALUES.nome}" required="required" placeholder="Nome Completo *">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
               </div>
 

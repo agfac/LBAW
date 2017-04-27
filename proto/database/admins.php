@@ -164,8 +164,8 @@ function getAdminAllData($username){
 function getAdminStatus($username){
   global $conn;
     $stmt = $conn->prepare("SELECT ativo
-              FROM administrador
-              WHERE username = ?");
+                            FROM administrador
+                            WHERE username = ?");
     $stmt->execute(array($username));
     return $stmt->fetch();
 }
