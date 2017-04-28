@@ -77,18 +77,9 @@ else
 $subcategoria = getSubcategoryNameById($categoriaId, $subCategoriaId);
 
 $block4 = preg_replace('/\s+/', '_', $subcategoria);
-$block4 = preg_replace("/,+/", ',', $block4);
+$block4 = preg_replace("/,+/", '', $block4);
 $block4 = preg_replace("/ç+/", 'c', $block4);
 $block4 = preg_replace("/ã+/", 'a', $block4);
-
-print_r($categoria);
-print_r("\n");
-print_r($subcategoria);
-print_r("\n");
-
-exit;
-
-
 
 if($autorId == "novoAutor"){
   if (!$_POST['nomeAutor'] || !$_POST['datanascimento'] || !$_POST['paisAutor']){
