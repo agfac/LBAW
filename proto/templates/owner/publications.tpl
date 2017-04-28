@@ -140,10 +140,10 @@
                   {/if}
                 </td>
                 <td>
-                  <a>{$publication.preco}€</a>
+                  <a>{$publication.preco|string_format:"%.2f"}€</a>
                 </td>
                 <td>
-                  <a>{$publication.precopromocional}€</a>
+                  <a>{$publication.precopromocional|string_format:"%.2f"}€</a>
                 </td>
                 <td>
                   <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>

@@ -25,7 +25,8 @@ $titulo           = strip_tags($_POST['titulo']);
 $descricao        = strip_tags($_POST['descricao']);
 $autorId          = strip_tags($_POST['autor']);
 $editora          = strip_tags($_POST['editora']);
-$subcategoria     = strip_tags($_POST['subcategoria']);
+$categoriaId      = strip_tags($_POST['categoria']);
+$subCategoriaId   = strip_tags($_POST['subcategoria']);
 $datapublicacao   = strip_tags($_POST['datapublicacao']);
 $stock            = strip_tags($_POST['stock']);
 $peso             = strip_tags($_POST['peso']);
@@ -56,9 +57,7 @@ $mesPub = $pieces[0];
 $anoPub = $pieces[2];
 $datapublicacao = sprintf("%04d-%02d-%02d",$anoPub,$mesPub,$diaPub);
 
-$pieces = explode(' => ', $subcategoria);
-$categoria = $pieces[0];
-$subcategoria = $pieces[1];
+$categoria = getCategoryNameById($categoriaId);
 
 if($categoria === "Livros")
   $block3 = "books";
@@ -75,10 +74,21 @@ else if($categoria === "Guias Turisticos e Mapas")
 else
   $block3 ="outros";
 
+$subcategoria = getSubcategoryNameById($categoriaId, $subCategoriaId);
+
 $block4 = preg_replace('/\s+/', '_', $subcategoria);
 $block4 = preg_replace("/,+/", ',', $block4);
 $block4 = preg_replace("/ç+/", 'c', $block4);
 $block4 = preg_replace("/ã+/", 'a', $block4);
+
+print_r($categoria);
+print_r("\n");
+print_r($subcategoria);
+print_r("\n");
+
+exit;
+
+
 
 if($autorId == "novoAutor"){
   if (!$_POST['nomeAutor'] || !$_POST['datanascimento'] || !$_POST['paisAutor']){
@@ -135,8 +145,6 @@ if($autorId == "novoAutor"){
   //Verify Editora and return id, if not exists add it
 $editoraId = verifyEditoraIfExists($editora);
 
-  //Get SubCategoryId
-$subCategoriaId = getSubCategoryId($categoria,$subcategoria);
 
 try {
 

@@ -599,6 +599,11 @@ CREATE INDEX idx_cliente_carrinho ON Cliente (CarrinhoID)
 CREATE INDEX idx_cliente_nome ON Cliente (Nome)
 ;
 
+CREATE INDEX idx_subcategoria ON Subcategoria (SubcategoriaID)
+;
+
+CREATE INDEX idx_categoria ON Categoria (CategoriaID)
+;
 /* Create Trigger Funtions */
 
 CREATE OR REPLACE FUNCTION insert_publicacao()

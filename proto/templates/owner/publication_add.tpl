@@ -44,20 +44,26 @@
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Editora <span class="required">*</span></label>
-                <div class="col-md-4 col-sm-3 col-xs-12">
+                <div class="col-md-10 col-sm-3 col-xs-12">
                   <input type="text" class="form-control" required="required" name="editora" value="{$FORM_VALUES.editora}" placeholder="Nome da Editora da Publicação">
                 </div>
+              </div>
 
-<!--                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Sub-Categoria <span class="required">*</span></label>
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Categoria <span class="required">*</span> </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" name="subcategoria" value="{$FORM_VALUES.subcategoria}" placeholder="Nome da Sub-Categoria da Publicação">
-                </div> -->
+                  <select class="form-control" required="required" name="categoria" id="categoria" placeholder="Nome da Categoria da Publicação">
+                    {foreach $allCategorys as $category}
+                    <option value="{$category.categoriaid}">{$category.nome}</option>
+                    {/foreach}
+                  </select>
+                </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Sub-Categoria <span class="required">*</span> </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <select class="form-control" required="required" name="subcategoria" placeholder="Nome da Sub-Categoria da Publicação">
-                    {foreach $allSubCategories as $singlesubcategory}
-                    <option value="{$singlesubcategory.nome_categoria} => {$singlesubcategory.nome_subcategoria}">{$singlesubcategory.nome_categoria} => {$singlesubcategory.nome_subcategoria}</option>
+                  <select class="form-control" required="required" name="subcategoria" id="subcategoria" placeholder="Nome da Sub-Categoria da Publicação">
+                    {foreach $allSubCategories as $subcategory}
+                    <option value="{$subcategory.subcategoriaid}">{$subcategory.nome}</option>
                     {/foreach}
                   </select>
                 </div>

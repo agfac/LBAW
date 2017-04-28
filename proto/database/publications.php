@@ -93,7 +93,8 @@ function verifyEditoraIfExists($nomeEditora){
     return $editoraID;
 }
 
-function getSubCategoryId($categoria,$subcategoria){
+//NEED TO UPDATE
+function getSubcategoryNameById($categoriaID,$subcategoriaID){
 	global $conn;
 
 	$stmt = $conn->prepare("SELECT subcategoria.subcategoriaid
@@ -103,7 +104,36 @@ function getSubCategoryId($categoria,$subcategoria){
                             WHERE subcategoria.nome = ? AND categoria.nome = ?");
     $stmt->execute(array($subcategoria, $categoria));
     $result = $stmt->fetch();
-    return $result['subcategoriaid'];
+    return $result['nome'];
+}
+
+function getAllCategorys(){
+	global $conn;
+    $stmt = $conn->prepare("SELECT *
+							FROM categoria
+							ORDER BY categoriaid");
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
+function getAllSubCategorysByCategory($categoriaId){
+	global $conn;
+    $stmt = $conn->prepare("SELECT subcategoria.*
+							FROM subcategoria
+							JOIN categoria
+							ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE categoria.categoriaid = ?");
+    $stmt->execute(array($categoriaId));
+    return $stmt->fetchAll();
+}
+
+function getCategoryNameById($id){
+	global $conn;
+    $stmt = $conn->prepare("SELECT nome
+							FROM categoria
+                            WHERE categoriaid = ?");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
 }
 
 function createPublication($titulo, $descricao, $autorId, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $block3, $block4){
