@@ -57,7 +57,7 @@
               </div>
 
                 <!-- Sexo -->
-                <label class="col-md-1 col-sm-9 col-xs-12 control-label">Sexo</span>
+                <label class="col-md-1 col-sm-9 col-xs-12 control-label">Genero</span>
                 </label>
                 <div class="col-md-4 col-sm-9 col-xs-12">
                   <div class="radio">

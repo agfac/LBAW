@@ -43,18 +43,6 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Autor </label>
-                <div class="col-md-10 col-sm-3 col-xs-12">
-                  <select class="form-control" name="autor" placeholder="Nome do Autor">
-                    <option value="6">Sem Autor</option>
-                    {foreach $allAutors as $autor}
-                    <option value="{$autor.autorid}">{$autor.nome}</option>
-                    {/foreach}
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Editora <span class="required">*</span></label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
                   <input type="text" class="form-control" required="required" name="editora" value="{$FORM_VALUES.editora}" placeholder="Nome da Editora da Publicação">
@@ -160,6 +148,26 @@
                 </div>
               </div>
 
+              <div class="clearfix"></div>
+              <div class="ln_solid"></div>
+
+
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Autor </label>
+                <div class="col-md-10 col-sm-3 col-xs-12">
+                  <select class="form-control" name="autor" id="autor" placeholder="Nome do Autor">
+                    <option value="6">Sem Autor</option>
+                    <option value="novoAutor">Novo Autor</option>
+                    {foreach $allAutors as $autor}
+                    <option value="{$autor.autorid}">{$autor.nome}</option>
+                    {/foreach}
+                  </select>
+                </div>
+              </div>
+
+              <div class="clearfix"></div>
+              <div class="ln_solid"></div>
+
               <div class="form-group">
                 <p>Imagens do Produto</p>
                 <div class="col-md-55">
@@ -202,3 +210,5 @@
 </div>
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
+
+<script src="{$BASE_URL}javascript/owner/publication.js"></script>

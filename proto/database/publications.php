@@ -111,24 +111,35 @@ function createPublication($titulo, $descricao, $autorId, $editoraId, $subCatego
 	$conn->beginTransaction();
 
 	try {
-		$stmt = $conn->prepare("INSERT INTO publicacao (editoraid, subcategoriaid, titulo, datapublicacao, codigobarras, descricao, paginas, peso, preco, precopromocional, novidade, stock, edicao, periodicidade, isbn) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		//CHECK PUBLICACAO ALREADY EXISTS
+		$stmt = $conn->prepare("SELECT *
+								FROM publicacao 
+								WHERE codigobarras = ? OR isbn = ?");
+		$stmt->execute(array($codigobarras, $isbn));
+		$result = $stmt->fetch();
+
+		if($result){
+			die('Publicação já existe!');
+		}
+		else{
+			$stmt = $conn->prepare("INSERT INTO publicacao (editoraid, subcategoriaid, titulo, datapublicacao, codigobarras, descricao, paginas, peso, preco, precopromocional, novidade, stock, edicao, periodicidade, isbn) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
 
-    	$stmt->execute(array($editoraId, $subCategoriaId, $titulo, $datapublicacao, $codigobarras, $descricao, $paginas, $peso, $preco, $precopromocional, $novidade, $stock, $edicao, $periodicidade, $isbn));
-      
-    	$publicacaoID = $conn->lastInsertId('publicacao_publicacaoid_seq');
+			$stmt->execute(array($editoraId, $subCategoriaId, $titulo, $datapublicacao, $codigobarras, $descricao, $paginas, $peso, $preco, $precopromocional, $novidade, $stock, $edicao, $periodicidade, $isbn));
+
+			$publicacaoID = $conn->lastInsertId('publicacao_publicacaoid_seq');
 
 
-		//need to create a new autorpublicacao values after insert a new publication
-		$stmt = $conn->prepare("INSERT INTO autorpublicacao (publicacaoid, autorid) VALUES (?,?)");
-      	$stmt->execute(array($publicacaoID, $autorId));
+			//need to create a new autorpublicacao values after insert a new publication
+			$stmt = $conn->prepare("INSERT INTO autorpublicacao (publicacaoid, autorid) VALUES (?,?)");
+			$stmt->execute(array($publicacaoID, $autorId));
 
-    	//need to create a new imagem values after insert a new publication
-    	$urlImagem = "images/publications/" . $block3 . "/" . $block4 . "/" . $publicacaoID .".jpg";
+    		//need to create a new imagem values after insert a new publication
+			$urlImagem = "images/publications/" . $block3 . "/" . $block4 . "/" . $publicacaoID .".jpg";
 
-    	$stmt = $conn->prepare("INSERT INTO imagem (publicacaoid, nome, url) VALUES (?,?,?)");
-      	$stmt->execute(array($publicacaoID, $titulo, $urlImagem));
-
+			$stmt = $conn->prepare("INSERT INTO imagem (publicacaoid, nome, url) VALUES (?,?,?)");
+			$stmt->execute(array($publicacaoID, $titulo, $urlImagem));
+		}
 		$conn->commit();
 
 	}catch(Exception $e){

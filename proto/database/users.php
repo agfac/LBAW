@@ -102,6 +102,43 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
   }
 }
 
+function createAutor($paisId, $nomeAutor, $genero, $datanascimento, $biografia){
+  global $conn;
+
+  $conn->beginTransaction();
+
+  try{
+ 
+    //CHECK AUTOR ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM autor 
+                            WHERE nome = ? AND datanascimento = ?");
+    $stmt->execute(array($nomeAutor, $datanascimento));
+    $result = $stmt->fetch();
+
+    if($result){
+      die('Autor já existe!');
+    }
+    else{
+      //INSERT INTO AUTOR
+      $stmt = $conn->prepare("INSERT INTO autor (paisid, nome, genero, datanascimento, biografia) VALUES (?, ?, ?, ?, ?)");
+
+      $stmt->execute(array($paisId, $nomeAutor, $genero, $datanascimento, $biografia));
+
+      $autorID = $conn->lastInsertId('autor_autorid_seq');
+    }
+
+    $conn->commit();
+
+    return $autorID;
+  }catch(Exception $e){
+    
+    error_log($e->getMessage());
+
+    $conn->rollBack();
+  }
+}
+
 function isLoginCorrect($username, $password) {
   
   global $conn;
@@ -259,6 +296,27 @@ function updateClientStatus($username, $estado){
                         SET ativo = ? 
                         WHERE username = ?");
   $stmt->execute(array($estado, $username));
+}
+
+function verifyPaisIfExists($nomePais){
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT *
+                          FROM pais 
+                          WHERE nome = ?");
+  $stmt->execute(array($nomePais));
+  $result = $stmt->fetch();
+
+  if($result){
+    $paisID = $result['paisid'];
+  }
+  else{
+    $stmt = $conn->prepare("INSERT INTO pais (nome) 
+                            VALUES (?)");
+    $stmt->execute(array($nomePais));
+    $paisID = $conn->lastInsertId('pais_paisid_seq');
+  }
+  return $paisID;
 }
 
 function updateUserInformation($username, $userdata, $newuserinformation) {
