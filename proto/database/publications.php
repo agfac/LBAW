@@ -16,7 +16,7 @@ function getAllPublications(){
 function getPublicationData($id)
 {
 	global $conn;
-    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, editora.nome AS nome_editora, autor.nome AS nome_autor, subcategoria.nome as nome_subcategoria
+    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
                             FROM autor
 							RIGHT JOIN autorpublicacao
 							ON autor.autorid = autorpublicacao.autorid 
@@ -28,6 +28,8 @@ function getPublicationData($id)
 							ON imagem.publicacaoid = publicacao.publicacaoid
                             RIGHT JOIN subcategoria
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
                             WHERE publicacao.publicacaoid = ?");
     $stmt->execute(array($id));
     return $stmt->fetchAll();
@@ -177,6 +179,53 @@ function createPublication($titulo, $descricao, $autorId, $editoraId, $subCatego
 		$conn->rollBack();
 	}
 
+}
+
+function updateCategoryIdOnSubCategory($categoriaId, $subCategoriaId){
+	global $conn;
+
+	$stmt = $conn->prepare("UPDATE subcategoria
+	                     	SET categoriaid = ? 
+	                    	WHERE subcategoriaid = ?");
+	$stmt->execute(array($categoriaId, $subCategoriaId));
+}
+
+function updateURL($publication_id, $titulo, $urlImagem){
+	global $conn;
+
+	$stmt = $conn->prepare("UPDATE imagem
+	                     	SET url = ?, nome = ?
+	                    	WHERE publicacaoid = ?");
+	$stmt->execute(array($urlImagem, $titulo, $publication_id));
+}
+
+function updateAutorPublicacao($autorId, $publication_id){
+	global $conn;
+
+	$stmt = $conn->prepare("UPDATE autorpublicacao
+	                     	SET autorid = ?
+	                    	WHERE publicacaoid = ?");
+	$stmt->execute(array($autorId, $publication_id));
+}
+
+function updatePublication($titulo, $descricao, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $publication_id){
+	global $conn;
+	$conn->beginTransaction();
+
+	try {
+		$stmt = $conn->prepare("UPDATE publicacao
+								SET editoraid = ?, subcategoriaid = ?, titulo = ?, datapublicacao = ?, codigobarras = ?, descricao = ?, paginas = ?, peso = ?, preco = ?, precopromocional = ?, novidade = ?, stock = ?, edicao = ?, periodicidade = ?, isbn = ?
+								WHERE publicacaoid = ?");
+
+
+		$stmt->execute(array($editoraId, $subCategoriaId, $titulo, $datapublicacao, $codigobarras, $descricao, $paginas, $peso, $preco, $precopromocional, $novidade, $stock, $edicao, $periodicidade, $isbn, $publication_id));
+
+		$conn->commit();
+
+	}catch(Exception $e){
+		error_log($e->getMessage());
+		$conn->rollBack();
+	}
 }
 
 ?>

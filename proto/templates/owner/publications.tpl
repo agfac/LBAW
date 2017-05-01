@@ -122,7 +122,7 @@
                 <th>Autor</th>
                 <th>Preço</th>
                 <th>Preço Promocional</th>
-                <th style="width: 20%">#Editar</th>
+                <th style="width: 24%">#Editar</th>
               </tr>
             </thead>
             <tbody>

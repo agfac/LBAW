@@ -30,7 +30,7 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Titulo <span class="required">*</span></label>
                 <div class="col-md-10 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" name="titulo" value="{$FORM_VALUES.titulo}" placeholder="Nome da Publicação">
+                  <input type="text" class="form-control" required="required" name="titulo" value="{$FORM_VALUES.titulo}" placeholder="Titulo da Publicação">
                 </div>
               </div>
 

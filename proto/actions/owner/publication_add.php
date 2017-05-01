@@ -90,11 +90,11 @@ if($autorId == "novoAutor"){
     exit;
   }
 
-  $nomeAutor = strip_tags($_POST['nomeAutor']);
-  $biografia = strip_tags($_POST['biografia']);
-  $genero = strip_tags($_POST['genero']);
+  $nomeAutor      = strip_tags($_POST['nomeAutor']);
+  $biografia      = strip_tags($_POST['biografia']);
+  $genero         = strip_tags($_POST['genero']);
   $datanascimento = strip_tags($_POST['datanascimento']);
-  $paisAutor = strip_tags($_POST['paisAutor']);
+  $paisAutor      = strip_tags($_POST['paisAutor']);
 
   if(!isset($biografia))
     $biografia = "N/A";
