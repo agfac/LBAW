@@ -26,147 +26,30 @@
                                 <input type="text" id="lastname" class="form-control input-sm" placeholder="Pesquisa">
                             </form>
                         </div><!-- end widget -->
+                        
                         <div class="widget">
-                            <h6 class="subtitle">Categorias</h6>
-                            
-                            <ul class="list list-unstyled">
-                                <li>
-                                    <div class="checkbox-input checkbox-default">
-                                        <input id="mens-category" class="styled" type="checkbox" checked>
-                                        <label for="mens-category">
-                                            Arte  <span class="text-dark">(11)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default">
-                                        <input id="womens-category" class="styled" type="checkbox" checked>
-                                        <label for="womens-category">
-                                            Banda Desenhada <span class="text-dark">(21)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="kids-category" class="styled" type="checkbox" checked>
-                                        <label for="kids-category">
-                                            Ciências Exatas e Naturais <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="fashion-category" class="styled" type="checkbox" checked>
-                                        <label for="fashion-category">
-                                            Ciências Sociais e Humanas <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-								</li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="bags-category" class="styled" type="checkbox" checked>
-                                        <label for="bags-category">
-                                            Desporto e Lazer <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="shoes-category" class="styled" type="checkbox" checked>
-                                        <label for="shoes-category">
-                                            Direito <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Engenharia <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Ensino e Educação <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Gastronomia e Vinhos <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Gestão <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            História <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Informática <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Literatura <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Medicina <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Política <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Religião e Moral <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox-input checkbox-default0">
-                                        <input id="technology-category" class="styled" type="checkbox" checked>
-                                        <label for="technology-category">
-                                            Saúde e Bem Estar <span class="text-dark">(12)</span>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
+                        	<h6 class="subtitle">Categorias</h6>
+                        		<form method="post">
+								<?php 
+									foreach{
+										echo'
+										<input id="$subcategory.id" class="category_checkbox" value="$subcategory.name"  name="subcategory[]" type="checkbox" onclick="check(this)"/>
+										';
+									}
+								?>
+								</form>
+								<script>
+									$(checkbox-update() {
+										$(".category_checkbox").click(function() {
+											$.ajax( { 
+												url: "{$BASE_URL}api/publications/get_by_category.php"
+											})
+											.done(function(data) {
+												
+											});
+										});
+									});
+								</script>
                         </div><!-- end widget -->
                         <div class="widget">
                             <h6 class="subtitle">Preços</h6>

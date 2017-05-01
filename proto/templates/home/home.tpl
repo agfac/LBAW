@@ -15,27 +15,27 @@
                 Livros <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="{$BASE_URL}pages/publications/publication-list.phps">Arte</a></li>
-                <li><a href="?page=product-list">Banda Desenhada</a></li>
-                <li><a href="?page=product-list">CiÃªncias Exatas e Naturais</a></li>
-                <li><a href="?page=product-list">CiÃªncias Sociais e Humanas</a></li>
-                <li><a href="?page=product-list">Desenvolvimento Pessoal e Espiritual</a></li>
-                <li><a href="?page=product-list">Desporto e Lazer</a></li>
-                <li><a href="?page=product-list">DicionÃ¡rios e EnciclopÃ©dias</a></li>
-                <li><a href="?page=product-list">Direito</a></li>
-                <li><a href="?page=product-list">Economia, FinanÃ§as e Contabilidade</a></li>
-                <li><a href="?page=product-list">Engenharia</a></li>
-                <li><a href="?page=product-list">Ensino e EducaÃ§Ã£o</a></li>
-                <li><a href="?page=product-list">Gastronomia e Vinhos</a></li>
-                <li><a href="?page=product-list">GestÃ£o</a></li>
-                <li><a href="?page=product-list">Guias TurÃ­sticos e Mapas</a></li>
-                <li><a href="?page=product-list">HistÃ³ria</a></li>
-                <li><a href="?page=product-list">InformÃ¡tica</a></li>
-                <li><a href="?page=product-list">Literatura</a></li>
-                <li><a href="?page=product-list">Medicina</a></li>
-                <li><a href="?page=product-list">PolÃ­tica</a></li>
-                <li><a href="?page=product-list">ReligiÃ£o e Moral</a></li>
-                <li><a href="?page=product-list">SaÃºde e Bem Estar</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Arte</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Banda Desenhada</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">CiÃªncias Exatas e Naturais</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">CiÃªncias Sociais e Humanas</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Desenvolvimento Pessoal e Espiritual</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Desporto e Lazer</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">DicionÃ¡rios e EnciclopÃ©dias</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Direito</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Economia, FinanÃ§as e Contabilidade</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Engenharia</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ensino e EducaÃ§Ã£o</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Gastronomia e Vinhos</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">GestÃ£o</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Guias TurÃ­sticos e Mapas</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">HistÃ³ria</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">InformÃ¡tica</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Literatura</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Medicina</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">PolÃ­tica</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">ReligiÃ£o e Moral</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">SaÃºde e Bem Estar</a></li>
               </ul>
             </li>
             <li>
@@ -43,13 +43,13 @@
                 Livros Escolares <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="?page=product-list">1.Âº ano</a></li>
-                <li><a href="?page=product-list">2.Âº ano</a></li>
-                <li><a href="?page=product-list">3.Âº ano</a></li>
-                <li><a href="?page=product-list">4.Âº ano</a></li>
-                <li><a href="?page=product-list">5.Âº e 6.Âº ano</a></li>
-                <li><a href="?page=product-list">7.Âº, 8.Âº e 9.Âº ciclo</a></li>
-                <li><a href="?page=product-list">Ensino SecundÃ¡rio</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">1.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">2.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">3.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">4.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">5.Âº e 6.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">7.Âº, 8.Âº e 9.Âº ciclo</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ensino SecundÃ¡rio</a></li>
               </ul>
             </li>
             <li>
@@ -57,13 +57,13 @@
                 Apoio Escolar <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="?page=product-list">1.Âº ano</a></li>
-                <li><a href="?page=product-list">2.Âº ano</a></li>
-                <li><a href="?page=product-list">3.Âº ano</a></li>
-                <li><a href="?page=product-list">4.Âº ano</a></li>
-                <li><a href="?page=product-list">5.Âº e 6.Âº ano</a></li>
-                <li><a href="?page=product-list">7.Âº, 8.Âº e 9.Âº ciclo</a></li>
-                <li><a href="?page=product-list">Ensino SecundÃ¡rio</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">1.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">2.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">3.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">4.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">5.Âº e 6.Âº ano</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">7.Âº, 8.Âº e 9.Âº ciclo</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ensino SecundÃ¡rio</a></li>
               </ul>
             </li>
             <li>
@@ -71,26 +71,26 @@
                 Revistas <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="?page=product-list">Agricultura</a></li>
-                <li><a href="?page=product-list">Arquitetura</a></li>
-                <li><a href="?page=product-list">Arte</a></li>
-                <li><a href="?page=product-list">Automobilismo</a></li>
-                <li><a href="?page=product-list">AviaÃ§Ã£o</a></li>
-                <li><a href="?page=product-list">CientÃ­ficas</a></li>
-                <li><a href="?page=product-list">Cinema</a></li>
-                <li><a href="?page=product-list">DecoraÃ§Ã£o</a></li>
-                <li><a href="?page=product-list">Desporto</a></li>
-                <li><a href="?page=product-list">Direito</a></li>
-                <li><a href="?page=product-list">Economia</a></li>
-                <li><a href="?page=product-list">Fotografia</a></li>
-                <li><a href="?page=product-list">HistÃ³ria</a></li>
-                <li><a href="?page=product-list">Humor</a></li>
-                <li><a href="?page=product-list">Infantis</a></li>
-                <li><a href="?page=product-list">InformÃ¡tica</a></li>
-                <li><a href="?page=product-list">Moda</a></li>
-                <li><a href="?page=product-list">MÃºsica</a></li>
-                <li><a href="?page=product-list">Quebra-cabeÃ§as</a></li>
-                <li><a href="?page=product-list">Turismo</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Agricultura</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Arquitetura</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Arte</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Automobilismo</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">AviaÃ§Ã£o</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">CientÃ­ficas</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Cinema</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">DecoraÃ§Ã£o</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Desporto</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Direito</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Economia</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Fotografia</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">HistÃ³ria</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Humor</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Infantis</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">InformÃ¡tica</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Moda</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">MÃºsica</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Quebra-cabeÃ§as</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Turismo</a></li>
               </ul>
             </li>
             <li>
@@ -98,11 +98,11 @@
                 DicionÃ¡rios e EnciclopÃ©dias <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="?page=product-list">PortuguÃªs</a></li>
-                <li><a href="?page=product-list">InglÃªs</a></li>
-                <li><a href="?page=product-list">FrancÃªs</a></li>
-                <li><a href="?page=product-list">AlemÃ£o</a></li>
-                <li><a href="?page=product-list">Espanhol</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">PortuguÃªs</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">InglÃªs</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">FrancÃªs</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">AlemÃ£o</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Espanhol</a></li>
               </ul>
             </li>
             <li>
@@ -110,10 +110,10 @@
                 Guias TurÃ­sticos e Mapas <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="?page=product-list">Ã�frica</a></li>
-                <li><a href="?page=product-list">AmÃ©rica</a></li>
-                <li><a href="?page=product-list">Ã�sia</a></li>
-                <li><a href="?page=product-list">Europa</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ã�frica</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">AmÃ©rica</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ã�sia</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Europa</a></li>
               </ul>
             </li>
           </ul>
@@ -672,7 +672,7 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
+                    <a href="{$BASE_URL}pages/publications/publication-list.php">
                       <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
                     </a>
                   </figure>
@@ -684,7 +684,7 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
+                    <a href="{$BASE_URL}pages/publications/publication-list.php">
                       <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
                     </a>
                   </figure>
@@ -696,7 +696,7 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
+                    <a href="{$BASE_URL}pages/publications/publication-list.php">
                       <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
                     </a>
                   </figure>
@@ -708,7 +708,7 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
+                    <a href="{$BASE_URL}pages/publications/publication-list.php">
                       <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
                     </a>
                   </figure>
@@ -720,7 +720,7 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
+                    <a href="{$BASE_URL}pages/publications/publication-list.php">
                       <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
                     </a>
                   </figure>
@@ -732,7 +732,7 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
+                    <a href="{$BASE_URL}pages/publications/publication-list.php">
                       <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
                     </a>
                   </figure>

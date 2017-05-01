@@ -17,9 +17,12 @@
   
   $pubs;
   
-  foreach($_POST['...'] as $subcat) {
+  foreach($_POST['.category_checkbox'] as $subcat) {
   	array_push($pubs, getPublicationsBySubcategory($subcat));
   }
+  
+  echo json_encode($pubs);
+  
   
   // make table with publications
   
