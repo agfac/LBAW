@@ -50,8 +50,7 @@ $anoPub = $pieces[0];
 $datapublicacao = sprintf("%04d-%02d-%02d",$anoPub,$mesPub,$diaPub);
 
 
-if($publicationData[0]['id_categoria'] != $categoriaId || $publicationData[0]['id_subcategoria'] != $subCategoriaId){
-	updateCategoryIdOnSubCategory($categoriaId, $subCategoriaId);
+if($publicationData[0]['id_subcategoria'] != $subCategoriaId){
 
 	$categoria = getCategoryNameById($categoriaId);
 

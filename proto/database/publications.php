@@ -181,15 +181,6 @@ function createPublication($titulo, $descricao, $autorId, $editoraId, $subCatego
 
 }
 
-function updateCategoryIdOnSubCategory($categoriaId, $subCategoriaId){
-	global $conn;
-
-	$stmt = $conn->prepare("UPDATE subcategoria
-	                     	SET categoriaid = ? 
-	                    	WHERE subcategoriaid = ?");
-	$stmt->execute(array($categoriaId, $subCategoriaId));
-}
-
 function updateURL($publication_id, $titulo, $urlImagem){
 	global $conn;
 
