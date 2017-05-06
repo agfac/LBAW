@@ -29,30 +29,30 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome do Cliente">
+                  <input type="text" class="form-control" id="nome_cliente" placeholder="Nome do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Email Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome do Cliente">
+                  <input type="text" class="form-control" id="email_cliente" placeholder="Email do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">ID:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="ID da encomenda">
+                  <input type="text" class="form-control" id="id_encomenda" placeholder="ID da encomenda">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Estado:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control">
+                  <select id="estadoencomenda" class="form-control">
                     <option>Escolha uma opção</option>
-                    <option value="Em_processamento">Em processamento</option>
+                    <option value="Em processamento">Em processamento</option>
                     <option value="Processada">Processada</option>
                     <option value="Enviada">Enviada</option>
                     <option value="Devolvida">Devolvida</option>
@@ -60,11 +60,13 @@
                 </div>
               </div>
 
+              <div class="clearfix"></div>
               <div class="ln_solid"></div>
+
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button type="submit" class="btn btn-success">Submeter</button>
+                  <button type="button" class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="button" id="search" type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -86,7 +88,7 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="x_content">
+          <div class="order_content">
             <p>Encomendas listadas da loja</p>
             <!-- start of orders list -->
             {if $allOrders}
@@ -113,13 +115,13 @@
                   </td>
                   <td>
                     {if $order.estado == "Em processamento"}
-                    <button type="button" class="btn btn-info btn-xs">Em processamento</button>
+                    <button class="btn btn-info btn-xs">Em processamento</button>
                     {else if $order.estado == "Processada"}
-                    <button type="button" class="btn btn-primary btn-xs">Processada</button>
+                    <button class="btn btn-primary btn-xs">Processada</button>
                     {else if $order.estado == "Enviada"}
-                    <button type="button" class="btn btn-success btn-xs">Enviada</button>
+                    <button class="btn btn-success btn-xs">Enviada</button>
                     {else}
-                    <button type="button" class="btn btn-warning btn-xs">Cancelada</button>
+                    <button class="btn btn-warning btn-xs">Cancelada</button>
                     {/if}
                   </td>
                   <td>
@@ -127,30 +129,6 @@
                   </td>
                   <td>
                     <a href="{$BASE_URL}pages/owner/order.php?id={$order.encomendaid}" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a>
-                    <!--<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>-->
-                    <!--<select>
-                      {if $order.estado == "Em processamento"}
-                      <option value="Em processamento" selected>Em processamento</option>
-                      <option value="Processada">Processada</option>
-                      <option value="Enviada">Enviada</option>
-                      <option value="Devolvida">Devolvida</option>
-                      {else if $order.estado == "Processada"}
-                      <option value="Em processamento">Em processamento</option>
-                      <option value="Processada" selected>Processada</option>
-                      <option value="Enviada">Enviada</option>
-                      <option value="Devolvida">Devolvida</option>
-                      {else if $order.estado == "Enviada"}
-                      <option value="Em processamento" selected>Em processamento</option>
-                      <option value="Processada">Processada</option>
-                      <option value="Enviada" selected>Enviada</option>
-                      <option value="Devolvida">Devolvida</option>
-                      {else}
-                      <option value="Em processamento" selected>Em processamento</option>
-                      <option value="Processada">Processada</option>
-                      <option value="Enviada">Enviada</option>
-                      <option value="Devolvida" selected>Devolvida</option>
-                      {/if}
-                    </select>-->
                   </td>
                 </tr>
                 {/foreach}
@@ -169,3 +147,4 @@
 </div>
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
+<script src="{$BASE_URL}javascript/owner/orders_search.js"></script>

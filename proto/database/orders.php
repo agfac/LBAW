@@ -91,4 +91,32 @@ function updateOrderStatus($id, $estado){
 	}
 }
 
+function getOrdersSearch($nome_cliente, $email_cliente, $id_encomenda){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nome_cliente, cliente.email as email_cliente, informacaofaturacao.*
+                        	FROM encomenda
+                        	JOIN cliente
+                        	ON cliente.clienteid = encomenda.clienteid
+                        	JOIN informacaofaturacao
+                        	ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							WHERE cliente.nome = ? OR cliente.email = ? OR encomenda.encomendaid = ?
+							ORDER BY encomenda.encomendaid");
+    $stmt->execute(array($nome_cliente, $email_cliente, $id_encomenda));
+    return $stmt->fetchAll();
+}
+
+function getOrdersByStatus($estadoencomenda){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nome_cliente, cliente.email as email_cliente, informacaofaturacao.*
+                        	FROM encomenda
+                        	JOIN cliente
+                        	ON cliente.clienteid = encomenda.clienteid
+                        	JOIN informacaofaturacao
+                        	ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							WHERE encomenda.estado = ?
+							ORDER BY encomenda.encomendaid");
+    $stmt->execute(array($estadoencomenda));
+    return $stmt->fetchAll();
+}
+
 ?>
