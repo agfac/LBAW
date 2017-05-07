@@ -29,21 +29,21 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome do livro">
+                  <input type="text" class="form-control" id="nome_livro" placeholder="Nome do livro">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Autor:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome do Autor">
+                  <input type="text" class="form-control" id="nome_autor" placeholder="Nome do Autor">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Editora:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome da Editora">
+                  <input type="text" class="form-control" id="nome_editora" placeholder="Nome da Editora">
                 </div>
               </div>
 
@@ -83,8 +83,8 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button type="submit" class="btn btn-success">Submeter</button>
+                  <button type="button" class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="button" id="search" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -110,7 +110,7 @@
           </ul>
           <div class="clearfix"></div>
         </div>
-        <div class="x_content">
+        <div class="publications_content">
           <p>Todos as publicações presentes na loja</p>
           <!-- start of books list -->
           {if $allPublications}
@@ -167,3 +167,4 @@
 </div>
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
+<script src="{$BASE_URL}javascript/owner/publications_search.js"></script>

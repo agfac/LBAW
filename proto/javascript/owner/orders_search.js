@@ -16,8 +16,8 @@ $(document).ready(function() {
                 }else{
                     $('.order_content').append('<p>Encomendas listadas da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 1%">ID</th><th style="width: 30%">Nome cliente</th><th>Preço Total</th><th>Estado</th><th>Data</th><th style="width: 15%">#Editar</th></tr></thead><tbody>');
                     for (var i in data){
-                        
                         var estado_encomenda;
+
                         if (data[i].estado == "Em processamento")
                             estado_encomenda = '<button class="btn btn-info btn-xs">Em processamento</button>';
                         else if (data[i].estado == "Processada")
@@ -31,7 +31,8 @@ $(document).ready(function() {
                         var arr = dataRes.split(' ');
                         var arr1 = arr[1].split('.');
                         dataRes = arr[0] + " " + arr1[0];
-                        $('.order_content').find('tbody').append('<tr><td>'+data[i].encomendaid+'</td><td><a>'+data[i].nome_cliente+'</a></td><td><a>'+data[i].total+' €</a></td><td>'+estado_encomenda+'</td><td><a>'+dataRes+'</a></td><td><a href="order.php?id='+data[i].encomendaid+'" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a></td></tr>');
+
+                        $('.order_content').find('tbody').append('<tr><td>'+parseFloat(data[i].encomendaid)+'</td><td><a>'+data[i].nome_cliente+'</a></td><td><a>'+parseFloat(data[i].total).toFixed(2)+' €</a></td><td>'+estado_encomenda+'</td><td><a>'+dataRes+'</a></td><td><a href="order.php?id='+data[i].encomendaid+'" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a></td></tr>');
                     }
                     $('.order_content').append('</tbody></table>');
                 }
