@@ -35,7 +35,7 @@ function getPublicationData($id)
     return $stmt->fetchAll();
 }
 
-function getPublicationDataSearch($nome_livro, $nome_autor, $nome_editora)
+function getPublicationDataSearch($nome_livro, $nome_autor, $nome_editora, $categoriaid, $subcategoriaid)
 {
 	global $conn;
     $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
@@ -50,8 +50,28 @@ function getPublicationDataSearch($nome_livro, $nome_autor, $nome_editora)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE publicacao.titulo = ? OR autor.nome = ? OR editora.nome = ?");
-    $stmt->execute(array($nome_livro,$nome_autor,$nome_editora));
+                            WHERE publicacao.titulo = ? OR autor.nome = ? OR editora.nome = ? OR categoria.categoriaid = ? OR subcategoria.subcategoriaid = ?");
+    $stmt->execute(array($nome_livro,$nome_autor,$nome_editora,$categoriaid,$subcategoriaid));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedBy($ordernar)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            ORDER BY CASE @ordenar WHEN 'ASC' THEN publicacao.preco ASC ELSE publicacao.preco DESC END");
+    $stmt->execute(array());
     return $stmt->fetchAll();
 }
 
@@ -237,6 +257,40 @@ function updatePublication($titulo, $descricao, $editoraId, $subCategoriaId, $da
 		error_log($e->getMessage());
 		$conn->rollBack();
 	}
+}
+
+function removePublication($publication_id){
+	global $conn;
+
+	$stmt = $conn->prepare("DELETE FROM autorpublicacao
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($publication_id));
+
+	$stmt = $conn->prepare("DELETE FROM imagem
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($publication_id));
+
+	$stmt = $conn->prepare("DELETE FROM publicacaocarrinho
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($publication_id));
+
+	$stmt = $conn->prepare("DELETE FROM publicacaoencomenda
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($publication_id));
+
+	$stmt = $conn->prepare("DELETE FROM publicacaowishlist
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($publication_id));
+
+	$stmt = $conn->prepare("DELETE FROM comentario
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($publication_id));
+	
+	$stmt = $conn->prepare("DELETE FROM publicacao
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($publication_id));
+
+	return $stmt->fetchAll();
 }
 
 ?>

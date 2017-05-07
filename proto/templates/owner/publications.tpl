@@ -50,10 +50,11 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Categoria:</label>
                 <div class="col-md-9 col-sm-9 col-xs-15">
-                  <select class="form-control">
+                  <select class="form-control" required="required" name="categoria" id="categoria">
                     <option>Escolha uma opção</option>
-                    <option>Revistas</option>
-                    <option>Livros</option>
+                    {foreach $allCategorys as $category}
+                    <option value="{$category.categoriaid}">{$category.nome}</option>
+                    {/foreach}
                   </select>
                 </div>
               </div>
@@ -61,10 +62,8 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Sub-Categoria:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control">
+                  <select class="form-control" name="subcategoria" id="subcategoria">
                     <option>Escolha uma opção</option>
-                    <option>Sub1</option>
-                    <option>Sub2</option>
                   </select>
                 </div>
               </div>
@@ -72,10 +71,10 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Ordenar:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control">
+                  <select class="form-control" name="ordernar" id="ordernar">
                     <option>Escolha uma opção</option>
-                    <option>Preço mais alto</option>
-                    <option>Preço mais baixo</option>
+                    <option value="ASC">Preço mais alto</option>
+                    <option value="DESC">Preço mais baixo</option>
                   </select>
                 </div>
               </div>
@@ -148,7 +147,7 @@
                 <td>
                   <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
                   <a href="{$BASE_URL}pages/owner/publication_edit.php?id={$publication.publicacaoid}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
-                  <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
+                  <button type="button" value="{$publication.publicacaoid}" id="butao_eliminar" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eleminar</button>
                 </td>
               </tr>
               {/foreach}
