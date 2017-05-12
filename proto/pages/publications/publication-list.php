@@ -8,5 +8,7 @@ $subcategory = getAllSubCategorys();
 
 $smarty->assign('publication', $all_publications[0]);
 
+$smarty->assign('subcategory', $subcategory);
+
 $smarty->display('publications/publication-list.tpl');
 ?>
