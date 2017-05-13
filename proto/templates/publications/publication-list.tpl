@@ -32,9 +32,14 @@
                    <h6 class="subtitle">Categorias</h6>
                    <select class="form-control" required="required" name="categoria" id="categoria">
                    {foreach $subcategory as $s}
-                       <option value="{$s.nome}"/> {$s.nome} </br>
-                       {/foreach}
+                        {if $s.nome == $def_cat}
+                            <option value="{$s.nome}" selected="selected" /> {$s.nome} </br>
+                        {else}
+                            <option value="{$s.nome}" /> {$s.nome} </br>
+                        {/if}
+                    {/foreach}
                    </select>
+
                </div><!-- end widget -->
                <div class="widget">
                 <h6 class="subtitle">Preços</h6>
