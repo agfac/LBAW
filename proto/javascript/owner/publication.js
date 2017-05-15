@@ -17,7 +17,7 @@ $(document).ready(function() {
         $('#subcategoria').empty();
         
         $.getJSON("../../api/owner/updateSubCategories.php", {categoria: category}, function(data){
-
+            
             for (var i in data){
                 $('#subcategoria').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
                 // console.log(data[i].subcategoriaid + " " + data[i].nome);
