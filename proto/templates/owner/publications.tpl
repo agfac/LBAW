@@ -82,7 +82,7 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button type="button" class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="button" id="clean" class="btn btn-primary" type="reset">Limpar</button>
                   <button type="button" id="search" class="btn btn-success">Submeter</button>
                 </div>
               </div>
@@ -121,7 +121,7 @@
                 <th>Autor</th>
                 <th>Preço</th>
                 <th>Preço Promocional</th>
-                <th style="width: 24%">#Editar</th>
+                <th style="width: 20%">#Editar</th>
               </tr>
             </thead>
             <tbody>
@@ -147,7 +147,6 @@
                 <td>
                   <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
                   <a href="{$BASE_URL}pages/owner/publication_edit.php?id={$publication.publicacaoid}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>
-                  <button type="button" value="{$publication.publicacaoid}" id="butao_eliminar" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eleminar</button>
                 </td>
               </tr>
               {/foreach}

@@ -10,16 +10,12 @@ $(document).ready(function() {
             var subcategoria = $('#subcategoria').find('option:selected').val();
             var ordernar = $('#ordernar').find('option:selected').val();
             
-            //TODO QUERY DO ORDERNAR NAO ESTA A FUNCIONAR POR CAUSA DA CONDICAO
-
             if(typeof subcategoria === 'undefined')
                 subcategoria = "Escolha uma opção";
 
-            console.log(ordernar);
             $('.publications_content').empty(); 
 
             $.getJSON("../../api/owner/publications_search.php", {nome_livro: nome_livro, nome_autor: nome_autor, nome_editora: nome_editora, categoria: categoria, subcategoria: subcategoria, ordernar: ordernar}, function(data){
-                console.log(data);
                 if(data.length === 0 || data == "NULL"){
                     $('.publications_content').append('<p>Sem Publicações com os dados de entrada</p>');
                 }else{
@@ -58,15 +54,13 @@ $(document).ready(function() {
             $('#subcategoria').append('<option value="Escolha uma opção">Escolha uma opção</option>');
     });
 
-    $('#butao_eliminar').on('click', function(){
-        var publicacaoid = $('#butao_eliminar').val();
-        var confirmation = confirm("Deseja apagar a Publicação com id: " + publicacaoid + " ?");
-        if(confirmation){
-            $.getJSON("../../api/owner/publication_remove.php", {publicacaoid: publicacaoid}, function(data){
-                if(data.length === 1)
-                    alert("Publicação eliminada com sucesso");
-                //TODO ELIMINAR a linha da tabela correspondente
-            });
-        }
+    $('#clean').on('click', function(){
+        $('#nome_livro').val("");
+        $('#nome_autor').val("");
+        $('#nome_editora').val("");
+        $('#categoria').val("Escolha uma opção");
+        $('#subcategoria').val("Escolha uma opção");
+        $('#ordernar').val("Escolha uma opção");
     });
+
 });

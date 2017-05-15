@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function getAllOrders(){
   global $conn;
@@ -85,7 +85,7 @@ function updateOrderStatus($id, $estado){
     }
     else{
 		$stmt = $conn->prepare("UPDATE encomenda
-			                    SET estado = ? 
+			                    SET estado = ?
 			                    WHERE encomendaid = ?");
 		$stmt->execute(array($estado, $id));
 	}
@@ -93,15 +93,15 @@ function updateOrderStatus($id, $estado){
 
 function getOrdersSearch($nome_cliente, $email_cliente, $id_encomenda){
 	global $conn;
-	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nome_cliente, cliente.email as email_cliente, informacaofaturacao.*
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome AS nome_cliente, cliente.email AS email_cliente, informacaofaturacao.*
                         	FROM encomenda
-                        	JOIN cliente
+                        	INNER JOIN cliente
                         	ON cliente.clienteid = encomenda.clienteid
-                        	JOIN informacaofaturacao
-                        	ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
-							WHERE cliente.nome = ? OR cliente.email = ? OR encomenda.encomendaid = ?
-							ORDER BY encomenda.encomendaid");
-    $stmt->execute(array($nome_cliente, $email_cliente, $id_encomenda));
+							INNER JOIN informacaofaturacao
+							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+            				WHERE encomenda.encomendaid = ? OR cliente.nome like '%'||?||'%' OR cliente.email = ?
+            				ORDER BY encomenda.encomendaid");
+    $stmt->execute(array($id_encomenda, $nome_cliente, $email_cliente));
     return $stmt->fetchAll();
 }
 

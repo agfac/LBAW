@@ -7,13 +7,17 @@ $(document).ready(function() {
             var email_cliente = $('#email_cliente').val();
             var id_encomenda = $('#id_encomenda').val();
             var estadoencomenda = $('#estadoencomenda').find('option:selected').val();
+            
+            console.log(nome_cliente);
 
-            $('.order_content').empty(); 
+            $('.order_content').empty();
 
             $.getJSON("../../api/owner/orders_search.php", {nome_cliente: nome_cliente, email_cliente: email_cliente, id_encomenda: id_encomenda, estadoencomenda: estadoencomenda}, function(data){
+
                 if(data.length === 0 || data == "NULL"){
                     $('.order_content').append('<p>Sem encomendas com os dados de entrada</p>');
                 }else{
+                  console.log(data);
                     $('.order_content').append('<p>Encomendas listadas da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 1%">ID</th><th style="width: 30%">Nome cliente</th><th>Preço Total</th><th>Estado</th><th>Data</th><th style="width: 15%">#Editar</th></tr></thead><tbody>');
                     for (var i in data){
                         var estado_encomenda;
@@ -39,5 +43,13 @@ $(document).ready(function() {
                 flag = true;
             });
         }
+    });
+
+
+    $('#clean').on('click', function(){
+        $('#nome_cliente').val("");
+        $('#email_cliente').val("");
+        $('#id_encomenda').val("");
+        $('#estadoencomenda').val("Escolha uma opção");
     });
 });

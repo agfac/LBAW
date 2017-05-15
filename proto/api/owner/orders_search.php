@@ -7,8 +7,10 @@
 	$id_encomenda = $_GET['id_encomenda'];
 	$estadoencomenda = $_GET['estadoencomenda'];
 
-	if($nome_cliente != null || $email_cliente != null || $id_encomenda != null)
-		$reply = getOrdersSearch($nome_cliente, $email_cliente, $id_encomenda);
+	if($nome_cliente != null || $email_cliente != null)
+		$reply = getOrdersSearch($nome_cliente, $email_cliente, null);
+	else if($id_encomenda != null)
+		$reply = getOrdersSearch(null, null, $id_encomenda);
 	else if($estadoencomenda != "Escolha uma opção")
 		$reply = getOrdersByStatus($estadoencomenda);
 	else
