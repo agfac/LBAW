@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>AwesomeBookShop - A sua livraria mÃ³vel</title>
+  <title>AwesomeBookShop - A sua livraria móvel</title>
   <meta charset="utf-8">
   <meta name="description" content="Livraria online">
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
@@ -83,7 +83,7 @@
     <div class="topBar">
       <div class="container">
         <ul class="list-inline pull-left hidden-sm hidden-xs">
-          <li><span class="text-primary">Tem alguma dÃºvida?</span></li>
+          <li><span class="text-primary">Tem alguma dúvida?</span></li>
           <li><i class="fa fa-phone mr-5"></i>+224 567 891</li>
           <li><i class="fa fa-envelope mr-5"></i>apoio@awesomebookshop.pt</li>
         </ul>
@@ -105,13 +105,13 @@
             <a href="javascript:void(0);">
               <img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="">
               <span class="hidden-xs">
-                PortuguÃªs 
+                Português 
                 <i class="fa fa-angle-down ml-5"></i>
               </span>    
             </a>
             <ul class="w-110">
               <li><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-english.jpg" class="mr-5" alt="">English</a></li>
-              <li class="active"><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="">PortuguÃªs</a></li>
+              <li class="active"><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="">Português</a></li>
             </ul>
           </li>
           {if $USERNAME}
@@ -163,7 +163,7 @@
                   <li class="dropdown active">
                     <a href="{$BASE_URL}">
                       <i class="fa fa-home mr-5"></i>
-                      PÃ¡gina inicial
+                      Página inicial
                     </a>
                   </li><!-- end li dropdown -->    
                   <!-- Categorias -->
@@ -182,88 +182,88 @@
                               <li class="title">
                                 <h6>Livros</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Arte</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Banda Desenhada</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">CiÃªncias Exatas e Naturais</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">CiÃªncias Sociais e Humanas</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Desenvolvimento Pessoal e Espiritual</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Desporto e Lazer</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Direito</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Economia, FinanÃ§as e Contabilidade</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Engenharia</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ensino e EducaÃ§Ã£o</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Gastronomia e Vinhos <span class="label primary-background">New</span></a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">GestÃ£o</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">HistÃ³ria</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">InformÃ¡tica</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Literatura</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Medicina</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">PolÃ­tica</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">ReligiÃ£o e Moral</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">SaÃºde e Bem Estar</a></li>
+                              <li><a href="?page=product-list">Arte</a></li>
+                              <li><a href="?page=product-list">Banda Desenhada</a></li>
+                              <li><a href="?page=product-list">Ciências Exatas e Naturais</a></li>
+                              <li><a href="?page=product-list">Ciências Sociais e Humanas</a></li>
+                              <li><a href="?page=product-list">Desenvolvimento Pessoal e Espiritual</a></li>
+                              <li><a href="?page=product-list">Desporto e Lazer</a></li>
+                              <li><a href="?page=product-list">Direito</a></li>
+                              <li><a href="?page=product-list">Economia, Finanças e Contabilidade</a></li>
+                              <li><a href="?page=product-list">Engenharia</a></li>
+                              <li><a href="?page=product-list">Ensino e Educação</a></li>
+                              <li><a href="?page=product-list">Gastronomia e Vinhos <span class="label primary-background">New</span></a></li>
+                              <li><a href="?page=product-list">Gestão</a></li>
+                              <li><a href="?page=product-list">História</a></li>
+                              <li><a href="?page=product-list">Informática</a></li>
+                              <li><a href="?page=product-list">Literatura</a></li>
+                              <li><a href="?page=product-list">Medicina</a></li>
+                              <li><a href="?page=product-list">Política</a></li>
+                              <li><a href="?page=product-list">Religião e Moral</a></li>
+                              <li><a href="?page=product-list">Saúde e Bem Estar</a></li>
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
                                 <h6>Livros Escolares</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">1.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">2.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">3.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">4.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">5.Âº e 6.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">7.Âº, 8.Âº e 9.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ensino SecundÃ¡rio</a></li>
+                              <li><a href="?page=product-list">1.º ano</a></li>
+                              <li><a href="?page=product-list">2.º ano</a></li>
+                              <li><a href="?page=product-list">3.º ano</a></li>
+                              <li><a href="?page=product-list">4.º ano</a></li>
+                              <li><a href="?page=product-list">5.º e 6.º ano</a></li>
+                              <li><a href="?page=product-list">7.º, 8.º e 9.º ano</a></li>
+                              <li><a href="?page=product-list">Ensino Secundário</a></li>
                               <li class="title">
                                 <h6>Apoio Escolar</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">1.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">2.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">3.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">4.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">5.Âº e 6.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">7.Âº, 8.Âº e 9.Âº ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ensino SecundÃ¡rio</a></li>
+                              <li><a href="?page=product-list">1.º ano</a></li>
+                              <li><a href="?page=product-list">2.º ano</a></li>
+                              <li><a href="?page=product-list">3.º ano</a></li>
+                              <li><a href="?page=product-list">4.º ano</a></li>
+                              <li><a href="?page=product-list">5.º e 6.º ano</a></li>
+                              <li><a href="?page=product-list">7.º, 8.º e 9.º ano</a></li>
+                              <li><a href="?page=product-list">Ensino Secundário</a></li>
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
                                 <h6>Revistas</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Agricultura</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Arquitetura</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Arte</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Automobilismo</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">AviaÃ§Ã£o <span class="label primary-background">New</span></a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">CientÃ­ficas</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Cinema</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">DecoraÃ§Ã£o</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Desporto</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Direito</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Economia</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Fotografia</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">HistÃ³ria</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Humor</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Infantis</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">InformÃ¡tica</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Moda</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">MÃºsica</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Quebra-cabeÃ§as</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php">Turismo</a></li>
+                              <li><a href="?page=product-list">Agricultura</a></li>
+                              <li><a href="?page=product-list">Arquitetura</a></li>
+                              <li><a href="?page=product-list">Arte</a></li>
+                              <li><a href="?page=product-list">Automobilismo</a></li>
+                              <li><a href="?page=product-list">Aviação <span class="label primary-background">New</span></a></li>
+                              <li><a href="?page=product-list">Científicas</a></li>
+                              <li><a href="?page=product-list">Cinema</a></li>
+                              <li><a href="?page=product-list">Decoração</a></li>
+                              <li><a href="?page=product-list">Desporto</a></li>
+                              <li><a href="?page=product-list">Direito</a></li>
+                              <li><a href="?page=product-list">Economia</a></li>
+                              <li><a href="?page=product-list">Fotografia</a></li>
+                              <li><a href="?page=product-list">História</a></li>
+                              <li><a href="?page=product-list">Humor</a></li>
+                              <li><a href="?page=product-list">Infantis</a></li>
+                              <li><a href="?page=product-list">Informática</a></li>
+                              <li><a href="?page=product-list">Moda</a></li>
+                              <li><a href="?page=product-list">Música</a></li>
+                              <li><a href="?page=product-list">Quebra-cabeças</a></li>
+                              <li><a href="?page=product-list">Turismo</a></li>
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6>DicionÃ¡rios e EnciclopÃ©dias</h6>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">PortuguÃªs</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">InglÃªs</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">FrancÃªs</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">AlemÃ£o</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Espanhol</a></li>
+                                <h6>Dicionários e Enciclopédias</h6>
+                                <li><a href="?page=product-list">Português</a></li>
+                                <li><a href="?page=product-list">Inglês</a></li>
+                                <li><a href="?page=product-list">Francês</a></li>
+                                <li><a href="?page=product-list">Alemão</a></li>
+                                <li><a href="?page=product-list">Espanhol</a></li>
                               </li>
                               <li class="title">
-                                <h6>Guias TurÃ­sticos e Mapas</h6>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ã�frica</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">AmÃ©rica</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Ã�sia</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Europa</a></li>
+                                <h6>Guias Turísticos e Mapas</h6>
+                                <li><a href="?page=product-list">África</a></li>
+                                <li><a href="?page=product-list">América</a></li>
+                                <li><a href="?page=product-list">Ásia</a></li>
+                                <li><a href="?page=product-list">Europa</a></li>
                               </li>
 
                             </ul><!-- end ul col -->
@@ -325,7 +325,7 @@
                               <div class="thumbnail store style1">
                                 <div class="header">
                                   <div class="badges">
-                                    <span class="product-badge top left white-backgorund text-primary semi-circle">PromoÃ§Ã£o</span>
+                                    <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
                                     <span class="product-badge top right text-primary">
                                       <i class="fa fa-star"></i>
                                       <i class="fa fa-star"></i>
@@ -346,8 +346,8 @@
                                 <div class="caption">
                                   <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
                                   <div class="price">
-                                    <small class="amount off">â‚¬68.99</small>
-                                    <span class="amount text-primary">â‚¬59.99</span>
+                                    <small class="amount off">€68.99</small>
+                                    <span class="amount text-primary">€59.99</span>
                                   </div>
                                   <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
                                 </div><!-- end caption -->
@@ -357,7 +357,7 @@
                               <div class="thumbnail store style1">
                                 <div class="header">
                                   <div class="badges">
-                                    <span class="product-badge top left white-backgorund text-primary semi-circle">PromoÃ§Ã£o</span>
+                                    <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
                                     <span class="product-badge top right text-primary">
                                       <i class="fa fa-star"></i>
                                       <i class="fa fa-star"></i>
@@ -378,8 +378,8 @@
                                 <div class="caption">
                                   <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
                                   <div class="price">
-                                    <small class="amount off">â‚¬68.99</small>
-                                    <span class="amount text-primary">â‚¬59.99</span>
+                                    <small class="amount off">€68.99</small>
+                                    <span class="amount text-primary">€59.99</span>
                                   </div>
                                   <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
                                 </div><!-- end caption -->
@@ -389,7 +389,7 @@
                               <div class="thumbnail store style1">
                                 <div class="header">
                                   <div class="badges">
-                                    <span class="product-badge top left white-backgorund text-primary semi-circle">PromoÃ§Ã£o</span>
+                                    <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
                                     <span class="product-badge top right text-primary">
                                       <i class="fa fa-star"></i>
                                       <i class="fa fa-star"></i>
@@ -410,8 +410,8 @@
                                 <div class="caption">
                                   <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
                                   <div class="price">
-                                    <small class="amount off">â‚¬68.99</small>
-                                    <span class="amount text-primary">â‚¬59.99</span>
+                                    <small class="amount off">€68.99</small>
+                                    <span class="amount text-primary">€59.99</span>
                                   </div>
                                   <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
                                 </div><!-- end caption -->
@@ -422,11 +422,11 @@
                       </li><!-- end li -->
                     </ul><!-- end dropdown-menu -->
                   </li><!-- end dropdown -->
-                  <!-- promoÃ§Ãµes -->
+                  <!-- promoções -->
                   <li>
                     <a href="javascript:void(0);">
                       <i class="glyphicon glyphicon-piggy-bank mr-5"></i>
-                      PromoÃ§Ãµes
+                      Promoções
                     </a>
                   </li>
                 </ul><!-- end navbar-nav -->
