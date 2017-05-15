@@ -1,6 +1,7 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/orders.php');
+include_once('userInfo.php');
 
 $orderid = $_GET['id'];
 

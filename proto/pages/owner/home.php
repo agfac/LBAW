@@ -1,5 +1,6 @@
 <?php
-  include_once('../../config/init.php');
+include_once('../../config/init.php');
+include_once('userInfo.php');
 
-  $smarty->display('owner/home.tpl');
+$smarty->display('owner/home.tpl');
 ?>

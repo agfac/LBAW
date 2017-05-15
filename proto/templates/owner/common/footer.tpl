@@ -50,6 +50,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{$BASE_URL}javascript/owner/custom.min.js"></script>
-
+    
   </body>
 </html>
