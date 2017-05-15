@@ -30,21 +30,21 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome do cliente">
+                  <input type="text" class="form-control" id="nome_cliente" placeholder="Nome do cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Email:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Email do cliente">
+                  <input type="text" class="form-control" id="email_cliente" placeholder="Email do cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Estado:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control">
+                  <select class="form-control" id="estado_cliente">
                     <option>Escolha uma opção</option>
                     <option>Ativo</option>
                     <option>Inativo</option>
@@ -55,8 +55,8 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button type="submit" class="btn btn-success">Submeter</button>
+                  <button id="clean" class="btn btn-primary" type="reset">Limpar</button>
+                  <button id="search" type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
 
@@ -82,7 +82,7 @@
             <div class="clearfix"></div>
           </div>
 
-          <div class="x_content">
+          <div class="clients_content">
             <p>Clientes da loja</p>
             <!-- start of list -->
             {if $allUseres}
@@ -132,3 +132,4 @@
 <!-- /page content -->
 
 {include file='admin/common/footer.tpl'}
+<script src="{$BASE_URL}javascript/admin/clients_search.js"></script>
