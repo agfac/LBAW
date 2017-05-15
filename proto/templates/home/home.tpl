@@ -15,7 +15,7 @@
                 Livros <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="?page=product-list">Arte</a></li>
+                <li><a href="{$BASE_URL}pages/publications/publication-list.php">Arte</a></li>
                 <li><a href="?page=product-list">Banda Desenhada</a></li>
                 <li><a href="?page=product-list">Ciências Exatas e Naturais</a></li>
                 <li><a href="?page=product-list">Ciências Sociais e Humanas</a></li>

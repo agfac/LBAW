@@ -29,22 +29,38 @@
                 </div><!-- end widget -->
 
                 <div class="widget">
+                 <h6 class="subtitle">Categorias</h6>
+                 <select class="form-control" required="required" name="categoria" id="categoria">
+                    {foreach $category as $c}
+                    <option value="{$c.categoriaid}">{$c.nome}</option>
+                    {/foreach}
+                </select>
+            </div><!-- end widget -->
+
+            <div class="widget">
+             <h6 class="subtitle">Subcategorias</h6>
+             <select class="form-control" required="required" name="subcategoria" id="subcategoria">
+                <option> </option>
+            </select>
+        </div><!-- end widget -->
+
+                <!--
+                <div class="widget">
                    <h6 class="subtitle">Categorias</h6>
                    <select class="form-control" required="required" name="categoria" id="categoria">
-                   {foreach $subcategory as $s}
-                        {if $s.nome == $def_cat}
-                            <option value="{$s.nome}" selected="selected" /> {$s.nome} </br>
-                        {else}
-                            <option value="{$s.nome}" /> {$s.nome} </br>
-                        {/if}
-                    {/foreach}
+                       {foreach $subcategory as $s}
+                       {if $s.nome == $def_cat}
+                       <option value="{$s.nome}" selected="selected" /> {$s.nome} </br>
+                       {else}
+                       <option value="{$s.nome}" /> {$s.nome} </br>
+                       {/if}
+                       {/foreach}
                    </select>
+               </div><! end widget -->
 
-               </div><!-- end widget -->
                <div class="widget">
                 <h6 class="subtitle">Preços</h6>
-
-                <form method="post" class="price-range" data-start-min="10" data-start-max="200" data-min="0" data-max="1000" data-step="1">
+                <form method="post" id="price-filter" class="price-range" data-start-min="10" data-start-max="200" data-min="0" data-max="400" data-step="1">
                     <div class="ui-range-values">
                         <div class="ui-range-value-min">
                             €<span></span>
@@ -55,9 +71,10 @@
                             <input type="hidden">
                         </div>
                     </div>
-                    <div class="ui-range-slider"></div>
-                    <button type="submit" class="btn btn-default btn-block btn-sm">Filtros</button>
+                    <div class="ui-range-slider">
+                    </div>
                 </form>
+                <button id="price-submit" class="btn btn-default btn-block btn-sm">Filtros</button>
             </div><!-- end widget -->
 
 
@@ -104,8 +121,10 @@
                 </div>
             </div><!-- end row -->
         </div><!-- end col -->   
-    </section>
-    <!-- end section -->
+    </div>
+    
+</section>
+<!-- end section -->
 
-    {include file='common/footer.tpl'}
-    <script src="{$BASE_URL}javascript/publications/filtering.js"></script>
+{include file='common/footer.tpl'}
+<script src="{$BASE_URL}javascript/publications/filtering.js"></script>
