@@ -4,29 +4,29 @@
   <div class="">
     <div class="row top_tiles" style="margin: 10px 0;">
       <div class="col-md-3 col-sm-3 col-xs-6 tile">
-        <span>Total de Publicações</span>
-        <h2>95</h2>
+        <span>Número de Publicações</span>
+        <h2>{$infoHome.publicationsNumber}</h2>
         <span class="sparkline_one" style="height: 160px;">
               <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
           </span>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-6 tile">
         <span>Total de Vendas</span>
-        <h2>2,135€</h2>
+        <h2>{$infoHome.totalValueOfOrders}€</h2>
         <span class="sparkline_one" style="height: 160px;">
               <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
           </span>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-6 tile">
-        <span>Total de Clientes</span>
-        <h2>25</h2>
+        <span>Número de Clientes</span>
+        <h2>{$infoHome.totalNumberOfClients}</h2>
         <span class="sparkline_three" style="height: 160px;">
               <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
           </span>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-6 tile">
-        <span>Total de Encomendas</span>
-        <h2>10</h2>
+        <span>Número de Encomendas</span>
+        <h2>{$infoHome.totalNumberOfOrders}</h2>
         <span class="sparkline_one" style="height: 160px;">
               <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
           </span>
