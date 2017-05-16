@@ -521,4 +521,18 @@ function updateUserPassword($username, $newpassword){
   
   return $stmt->fetchAll();
 }
+
+function getClientDataSearch($nomeCliente, $emailCliente, $estadoCliente){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT clienteid, nome, ativo
+                          From cliente
+                          WHERE cliente.nome = ?
+                          OR cliente.email = ?
+                          OR cliente.ativo = ?");
+  $stmt->execute(array($nomeCliente, $emailCliente, $estadoCliente));
+  
+  return $stmt->fetchAll();
+}
 ?>
