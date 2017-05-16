@@ -19,11 +19,32 @@ $totalNumberOfClients = count(getAllUsers());
 
 $totalNumberOfOrders = count($allOrders);
 
+
+$lastDate = date('Y-m-d');
+$firstDate = strtotime($lastDate . '-7 day');
+$firstDate = date('Y-m-d',$firstDate);
+
+$best5Orders = getBest5OrdersByDate($firstDate,$lastDate);
+$todayOrders = getTodayOrders($lastDate);
+
+
+foreach ($best5Orders as &$key) {
+	$nrEncomendasHoje = 0;
+	foreach ($todayOrders as $key2) {
+		if($key['nomecliente']===$key2['nomecliente'])
+			$nrEncomendasHoje++;
+	}
+	$key['nrEncomendasHoje'] = $nrEncomendasHoje;
+}
+
+
 $infoHome = array(
 	'publicationsNumber' 	=> $publicationsNumber,
 	'totalValueOfOrders' 	=> $totalValueOfOrders,
 	'totalNumberOfClients' 	=> $totalNumberOfClients,
-	'totalNumberOfOrders'	=> $totalNumberOfOrders
+	'totalNumberOfOrders'	=> $totalNumberOfOrders,
+	'best5Orders'			=> $best5Orders,
+	'todayOrders'			=> $todayOrders
 	);
 
 $smarty->assign('infoHome',$infoHome);

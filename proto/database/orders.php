@@ -13,6 +13,35 @@ function getAllOrders(){
   return $stmt->fetchAll();
 }
 
+function getBest5OrdersByDate($firstDate,$lastDate){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, informacaofaturacao.*
+		                    FROM encomenda
+		                    JOIN cliente
+		                    ON cliente.clienteid = encomenda.clienteid
+		                    JOIN informacaofaturacao
+		                    ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							WHERE encomenda.data BETWEEN ? AND ?
+		                    ORDER BY informacaofaturacao.total DESC
+							LIMIT 5");
+	$stmt->execute(array($firstDate,$lastDate));
+	return $stmt->fetchAll();
+}
+
+function getTodayOrders($lastDate){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, informacaofaturacao.*
+		                    FROM encomenda
+		                    JOIN cliente
+		                    ON cliente.clienteid = encomenda.clienteid
+		                    JOIN informacaofaturacao
+		                    ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							WHERE encomenda.data::date >= ? AND encomenda.data::date <= ?
+		                    ORDER BY encomenda.encomendaid");
+	$stmt->execute(array($lastDate,$lastDate));
+	return $stmt->fetchAll();
+}
+
 function getOrderData($id)
 {
 	global $conn;
