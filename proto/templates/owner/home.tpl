@@ -50,34 +50,18 @@
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
-          <!--<div class="col-md-9 col-sm-12 col-xs-12">
+          <!-- <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_title">
+              <h2>Encomendas nos últimos 7 dias</h2>
+              <div class="clearfix"></div>
+            </div>
             <div class="demo-container" style="height:280px">
               <div id="chart_plot_02" class="demo-placeholder"></div>
             </div>
             <div class="tiles">
-              <div class="col-md-4 tile">
-                <span>Total de Publicações</span>
-                <h2>95</h2>
-                <span class="sparkline11 graph" style="height: 160px;">
-                     <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                </span>
-              </div>
-              <div class="col-md-4 tile">
-                <span>Total de Vendas</span>
-                <h2>2,135€</h2>
-                <span class="sparkline22 graph" style="height: 160px;">
-                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                </span>
-              </div>
-              <div class="col-md-4 tile">
-                <span>Total de Encomendas</span>
-                <h2>10</h2>
-                <span class="sparkline11 graph" style="height: 160px;">
-                       <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                </span>
-              </div>
+              <div class="clearfix"></div>
             </div>
-          </div>-->
+          </div> -->
 
           <div class="col-md-6 col-sm-12 col-xs-12">
             <div>
@@ -130,26 +114,26 @@
                     <div class="media-body">
                       <a class="title"><h5>{$lastOrder.titulopublicacao}</h5></a>
                       <p>Preço publicação <strong>{$lastOrder.total} €</strong> </p>
-                      <!-- <p> <small>{$bestOrder.nrEncomendasHoje} Vendidas(s) hoje</small> -->
-                      </p>
-                    </div>
-                  </li>
-                  {/foreach}
-                  {else}
-                  <li class="media event">
-                    <div class="media-body">
-                      <a class="title">Sem publicações vendidas</a>
-                    </div>
-                  </li>
-                  {/if}
-                </div>
-              </ul>
-            </div>
+                    </p>
+                  </div>
+                </li>
+                {/foreach}
+                {else}
+                <li class="media event">
+                  <div class="media-body">
+                    <a class="title">Sem publicações vendidas</a>
+                  </div>
+                </li>
+                {/if}
+              </div>
+            </ul>
           </div>
         </div>
+
       </div>
     </div>
   </div>
+</div>
 </div>
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
