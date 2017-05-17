@@ -8,7 +8,9 @@
 	$estado_cliente = $_GET['estado_cliente'];
 
 	if($nome_cliente != null || $email_cliente != null || $estado_cliente != null )
-		$reply = getClientDataSearch($nome_cliente, $email_cliente, $estado_cliente);
+		//TODO
+		//$reply = getClientDataSearch($nome_cliente, $email_cliente, $estado_cliente);
+		$reply = getUserAllData("joaoribeiro");
 	else
 		$reply = "NULL";
 
