@@ -49,7 +49,7 @@
     <script src="{$BASE_URL}vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="{$BASE_URL}javascript/admin/custom.min.js"></script>
+    <script src="{$BASE_URL}javascript/admin/custom.js"></script>
 
   </body>
 </html>

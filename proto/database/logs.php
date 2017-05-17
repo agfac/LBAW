@@ -15,4 +15,13 @@ function getAllLogs(){
   return $stmt->fetchAll();
 }
 
+function getlogsByDate($firstDate,$todayDate){
+  global $conn;
+  $stmt = $conn->prepare("SELECT *
+                          FROM login
+                          WHERE data BETWEEN ? AND ?");
+  $stmt->execute(array($firstDate,$todayDate));
+  return $stmt->fetchAll();
+}
+
 ?>
