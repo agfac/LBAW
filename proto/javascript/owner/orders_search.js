@@ -41,7 +41,7 @@ $(document).ready(function() {
                         var arr1 = arr[1].split('.');
                         dataRes = arr[0] + " " + arr1[0];
 
-                        $('.order_content').find('tbody').append('<tr><td>'+parseFloat(data[i].encomendaid)+'</td><td><a>'+data[i].nome_cliente+'</a></td><td><a>'+parseFloat(data[i].total).toFixed(2)+' €</a></td><td>'+estado_encomenda+'</td><td><a>'+dataRes+'</a></td><td><a href="order.php?id='+data[i].encomendaid+'" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a></td></tr>');
+                        $('.order_content').find('tbody').append('<tr><td>'+parseFloat(data[i].encomendaid)+'</td><td><a>'+data[i].nome_cliente+'</a></td><td><a>'+parseFloat(data[i].total).toFixed(2)+' €</a></td><td>'+estado_encomenda+'</td><td><a>'+dataRes+'</a></td><td><a href="order.php?id='+data[i].encomendaid+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a></td></tr>');
                     }
 
                 $('.order_content').append('</tbody></table>');

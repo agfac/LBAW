@@ -128,7 +128,7 @@
                     <a>{$order.data|date_format:$parsedata.fulldata}</a>
                   </td>
                   <td>
-                    <a href="{$BASE_URL}pages/owner/order.php?id={$order.encomendaid}" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a>
+                    <a href="{$BASE_URL}pages/owner/order.php?id={$order.encomendaid}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
                   </td>
                 </tr>
                 {/foreach}
