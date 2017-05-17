@@ -129,7 +129,11 @@
                 </td>
                 <td>
                   <a href="{$BASE_URL}pages/admin/worker_edit.php?username={$worker.username}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                  <a href="{$BASE_URL}actions/admin/worker_status.php?username={$worker.username}" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> {if $worker.ativo}Banir{else}Ativar{/if} </a>
+                 {if $worker.ativo}
+                    <a href="{$BASE_URL}actions/admin/worker_status.php?username={$worker.username}" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
+                  {else}
+                    <a href="{$BASE_URL}actions/admin/worker_status.php?username={$worker.username}" class="btn btn-success btn-xs"><i class="fa fa-warning"></i> Ativar </a>
+                  {/if}
                 </td>
               </tr>
               {/foreach}
