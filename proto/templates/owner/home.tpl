@@ -82,7 +82,7 @@
           <div class="col-md-6 col-sm-12 col-xs-12">
             <div>
               <div class="x_title">
-                <h2>Top Clientes</h2>
+                <h2>Top 5 Encomendas</h2>
                 <div class="clearfix"></div>
               </div>
               <ul class="list-unstyled top_profiles scroll-view">
@@ -95,7 +95,7 @@
                     </a>
                     <div class="media-body">
                       <a class="title">{$bestOrder.nomecliente}</a>
-                      <p><strong>{$bestOrder.total}€. </strong> Gastos nos últimos 7 dias </p>
+                      <p><strong>{$bestOrder.total}€. </strong> Pagos na encomenda </p>
                       <p> <small>{$bestOrder.nrEncomendasHoje} Encomenda(s) hoje</small>
                       </p>
                     </div>
@@ -116,21 +116,21 @@
           <div class="col-md-6 col-sm-12 col-xs-12">
             <div>
               <div class="x_title">
-                <h2>Top Publicações</h2>
+                <h2>Últimas 5 Publicações vendidas</h2>
                 <div class="clearfix"></div>
               </div>
               <ul class="list-unstyled top_profiles scroll-view">
-                <div class="top5orders">
-                  {if $infoHome.best5Orders}
-                  {foreach $infoHome.best5Orders as $bestOrder}
+                <div class="last5orders">
+                  {if $infoHome.getLast5Orders}
+                  {foreach $infoHome.getLast5Orders as $lastOrder}
                   <li class="media event">
                     <a class="pull-left border-aero profile_thumb">
                       <i class="fa fa-book aero"></i>
                     </a>
                     <div class="media-body">
-                      <a class="title">{$bestOrder.nomecliente}</a>
-                      <p><strong>{$bestOrder.total}€. </strong> Gastos nos últimos 7 dias </p>
-                      <p> <small>{$bestOrder.nrEncomendasHoje} Encomenda(s) hoje</small>
+                      <a class="title"><h5>{$lastOrder.titulopublicacao}</h5></a>
+                      <p>Preço publicação <strong>{$lastOrder.total} €</strong> </p>
+                      <!-- <p> <small>{$bestOrder.nrEncomendasHoje} Vendidas(s) hoje</small> -->
                       </p>
                     </div>
                   </li>
@@ -138,7 +138,7 @@
                   {else}
                   <li class="media event">
                     <div class="media-body">
-                      <a class="title">Sem encomendas entre as datas selecionadas</a>
+                      <a class="title">Sem publicações vendidas</a>
                     </div>
                   </li>
                   {/if}

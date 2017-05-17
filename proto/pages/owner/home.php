@@ -38,13 +38,17 @@ foreach ($best5Orders as &$key) {
 }
 
 
+$getLast5Orders = getLast5Orders();
+
+
 $infoHome = array(
 	'publicationsNumber' 	=> $publicationsNumber,
 	'totalValueOfOrders' 	=> $totalValueOfOrders,
 	'totalNumberOfClients' 	=> $totalNumberOfClients,
 	'totalNumberOfOrders'	=> $totalNumberOfOrders,
 	'best5Orders'			=> $best5Orders,
-	'todayOrders'			=> $todayOrders
+	'todayOrders'			=> $todayOrders,
+	'getLast5Orders'		=> $getLast5Orders
 	);
 
 $smarty->assign('infoHome',$infoHome);

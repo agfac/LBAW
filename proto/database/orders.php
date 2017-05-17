@@ -42,6 +42,24 @@ function getTodayOrders($lastDate){
 	return $stmt->fetchAll();
 }
 
+function getLast5Orders(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, informacaofaturacao.*, publicacao.titulo AS tituloPublicacao
+							FROM encomenda
+							JOIN cliente
+							ON cliente.clienteid = encomenda.clienteid
+							JOIN informacaofaturacao
+							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							JOIN publicacaoencomenda
+							ON publicacaoencomenda.encomendaid = encomenda.encomendaid
+							JOIN publicacao
+							ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
+							ORDER BY encomenda.data DESC
+							LIMIT 5");
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
 function getOrderData($id)
 {
 	global $conn;
