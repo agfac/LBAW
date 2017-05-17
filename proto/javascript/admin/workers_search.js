@@ -16,7 +16,7 @@ $(document).ready(function() {
 		            $('.workers_content').append('<p>Sem funcionários com os dados de entrada</p>');
 		        }else{		           
 		            console.log(data);
-		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 55%">Nome do cliente</th><th style="width: 13%">Estado</th><th style="width: 20%">#Editar</th></tr></thead><tbody>');
+		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 40%">Nome do Funcionário</th><th style="width: 18%">Data de Admissão</th><th style="width: 10%">Estado</th><th style="width: 20%">#Editar</th></tr></thead><tbody>');
 		            for (var i in data){
 
 		            	var estado_funcionario;

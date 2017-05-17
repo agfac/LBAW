@@ -8,7 +8,6 @@
 	$estado_funcionario = $_GET['estado_funcionario'];
 
 	if($nome_funcionario != null || $email_funcionario != null || $data_admissao != null || $estado_funcionario != null)
-		
 		$reply = getWorkersAllData("manuellopes"); //TODO, isto é só para testes
 	else
 		$reply = "NULL";
