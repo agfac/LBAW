@@ -1,6 +1,7 @@
 flag = true;
 $(document).ready(function() {
     $('#search').on('click', function(){
+
     	if (flag){
             flag = false;
 	    	var nome_funcionario = $('#nome_funcionario').val();
@@ -14,9 +15,12 @@ $(document).ready(function() {
 
 		        if(data.length === 0 || data == "NULL"){
 		            $('.workers_content').append('<p>Sem funcionários com os dados de entrada</p>');
+		        
 		        }else{		           
 		            console.log(data);
+		            
 		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 40%">Nome do Funcionário</th><th style="width: 18%">Data de Admissão</th><th style="width: 10%">Estado</th><th style="width: 20%">#Editar</th></tr></thead><tbody>');
+		            
 		            for (var i in data){
 
 		            	var estado_funcionario;
@@ -34,8 +38,9 @@ $(document).ready(function() {
 		                $('.workers_content').find('tbody').append('<tr><td>'+data[i].funcionarioid+'</td><td><a>'+data[i].nome+'</a></td><td><a>'+data[i].dataadmissao+'</a></td><td>'+estado_funcionario+'</td><td><a href="worker_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="worker_status.php?username='+data[i].username+'" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i>'+estado+'</a></td></tr>');
 					
 					}
-		                $('.workers_content').append('</tbody></table>');
+		            $('.workers_content').append('</tbody></table>');
 		        }
+
 		        flag = true;
 	        });
         }

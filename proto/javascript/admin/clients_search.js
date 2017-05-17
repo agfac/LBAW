@@ -1,6 +1,7 @@
 flag = true;
 $(document).ready(function() {
     $('#search').on('click', function(){
+    	
     	if (flag){
             flag = false;
 	    	var nome_cliente = $('#nome_cliente').val();
@@ -13,13 +14,17 @@ $(document).ready(function() {
 
 		        if(data.length === 0 || data == "NULL"){
 		            $('.clients_content').append('<p>Sem clientes com os dados de entrada</p>');
+		        
 		        }else{		            
 		            console.log(data);
+		            
 		            $('.clients_content').append('<p>Clientes da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 55%">Nome do cliente</th><th style="width: 13%">Estado</th><th style="width: 20%">#Editar</th></tr></thead><tbody>');
+		            
 		            for (var i in data){
 
 		            	var estado_cliente;
 		            	var estado;
+		            	
 		            	if(data[i].ativo){
 		            		estado_cliente = '<button type="button" class="btn btn-success btn-xs">Ativo</button>';
 		            		estado = 'Banir';
@@ -31,12 +36,15 @@ $(document).ready(function() {
 
 		                $('.clients_content').find('tbody').append('<tr><td>'+data[i].clienteid+'</td><td><a>'+data[i].nome+'</a></td><td>'+estado_cliente+'</td><td><a href="client_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a><a href="client_status.php?username='+data[i].username+'" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i>'+estado+'</a></td></tr>');
 					}
-		                $('.clients_content').append('</tbody></table>');
+		            
+		            $('.clients_content').append('</tbody></table>');
 		        }
+
 		        flag = true;
 	        });
         }
 	});
+
 
 	$('#clean').on('click', function(){
     	$('#nome_cliente').val("");

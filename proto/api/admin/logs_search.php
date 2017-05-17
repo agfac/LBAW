@@ -9,6 +9,7 @@
 
 	if($nome_utilizador != null || $email_utilizador != null || $data_login != null || $ordenar != null)
 		$reply = getAllLogs(); //TODO, isto é só para testes
+	
 	else
 		$reply = "NULL";
 
