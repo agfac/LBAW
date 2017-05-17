@@ -16,18 +16,23 @@ $(document).ready(function() {
 
                 if(data.length === 0 || data == "NULL"){
                     $('.order_content').append('<p>Sem encomendas com os dados de entrada</p>');
+
                 }else{
-                  console.log(data);
+                    console.log(data);
                     $('.order_content').append('<p>Encomendas listadas da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 1%">ID</th><th style="width: 30%">Nome cliente</th><th>Preço Total</th><th>Estado</th><th>Data</th><th style="width: 15%">#Editar</th></tr></thead><tbody>');
+                    
                     for (var i in data){
                         var estado_encomenda;
 
                         if (data[i].estado == "Em processamento")
                             estado_encomenda = '<button class="btn btn-info btn-xs">Em processamento</button>';
+
                         else if (data[i].estado == "Processada")
                             estado_encomenda = '<button class="btn btn-primary btn-xs">Processada</button>';
+
                         else if (data[i].estado == "Enviada")
                             estado_encomenda = '<button class="btn btn-success btn-xs">Enviada</button>';
+
                         else
                             estado_encomenda = '<button class="btn btn-warning btn-xs">Cancelada</button>';
 
@@ -38,8 +43,10 @@ $(document).ready(function() {
 
                         $('.order_content').find('tbody').append('<tr><td>'+parseFloat(data[i].encomendaid)+'</td><td><a>'+data[i].nome_cliente+'</a></td><td><a>'+parseFloat(data[i].total).toFixed(2)+' €</a></td><td>'+estado_encomenda+'</td><td><a>'+dataRes+'</a></td><td><a href="order.php?id='+data[i].encomendaid+'" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a></td></tr>');
                     }
-                    $('.order_content').append('</tbody></table>');
+
+                $('.order_content').append('</tbody></table>');
                 }
+
                 flag = true;
             });
         }

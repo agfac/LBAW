@@ -527,7 +527,7 @@ function getClientDataSearch($nomeCliente, $emailCliente, $estadoCliente){
   global $conn;
 
   $stmt = $conn->prepare("SELECT clienteid, nome, ativo
-                          From cliente
+                          FROM cliente
                           WHERE cliente.nome = ?
                           OR cliente.email = ?
                           OR cliente.ativo = ?");

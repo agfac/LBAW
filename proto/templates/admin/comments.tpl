@@ -30,28 +30,28 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome do Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome do Cliente">
+                  <input type="text" class="form-control" id="nome_cliente" placeholder="Nome do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Email do Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Email do Cliente">
+                  <input type="text" class="form-control" id="email_cliente" placeholder="Email do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome da Publicação:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="Nome da Publicação">
+                  <input type="text" class="form-control" id="nome_publicacao" placeholder="Nome da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Ordenar:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control">
+                  <select class="form-control" id="ordenar">
                     <option>Escolha uma opção</option>
                     <option>Melhor classificado</option>
                     <option>Menor classificado</option>
@@ -62,8 +62,8 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button type="submit" class="btn btn-success">Submeter</button>
+                  <button class="btn btn-primary" id="clean" type="button">Limpar</button>
+                  <button id="search" type="button" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -85,7 +85,7 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="x_content">
+          <div class="comment_content">
             <p>Comentários das publicações na loja</p>
             <!-- start of list -->
             {if $allcomments}
@@ -136,3 +136,4 @@
 <!-- /page content -->
 
 {include file='admin/common/footer.tpl'}
+<script src="{$BASE_URL}javascript/admin/comment_search.js"></script>
