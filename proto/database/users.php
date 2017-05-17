@@ -535,4 +535,13 @@ function getClientDataSearch($nomeCliente, $emailCliente, $estadoCliente){
   
   return $stmt->fetchAll();
 }
+
+function getUsersByDate($firstDate,$todayDate){
+  global $conn;
+  $stmt = $conn->prepare("SELECT *
+                          FROM cliente
+                          WHERE dataregisto BETWEEN ? AND ?");
+  $stmt->execute(array($firstDate,$todayDate));
+  return $stmt->fetchAll();
+}
 ?>

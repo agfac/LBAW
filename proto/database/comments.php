@@ -12,4 +12,13 @@ function getAllComments(){
 	return $stmt->fetchAll();
 }
 
+function getCommentsByDate($firstDate,$todayDate){
+  global $conn;
+  $stmt = $conn->prepare("SELECT *
+                          FROM comentario
+                          WHERE data BETWEEN ? AND ?");
+  $stmt->execute(array($firstDate,$todayDate));
+  return $stmt->fetchAll();
+}
+
 ?>

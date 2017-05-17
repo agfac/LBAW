@@ -1,7 +1,8 @@
 flag = true;
 $(document).ready(function() {
+
     $('#search').on('click', function(){
-    	
+    	alert("TESTEEEE");
     	if (flag){
             flag = false;
 	    	var nome_cliente = $('#nome_cliente').val();
