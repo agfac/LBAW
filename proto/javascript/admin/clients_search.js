@@ -28,14 +28,14 @@ $(document).ready(function() {
 		            	
 		            	if(data[i].ativo){
 		            		estado_cliente = '<button type="button" class="btn btn-success btn-xs">Ativo</button>';
-		            		estado = '<a href="client_status.php?username='+data[i].username+'" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>';
+		            		estado = ' btn-danger btn-xs"><i class="fa fa-warning"></i> Banir ';
 		            	}
 		            	else{
 		            		estado_cliente = ' <button type="button" class="btn btn-warning btn-xs">Inativo</button>';
-		            		estado = '<a href="client_status.php?username='+data[i].username+'" class="btn btn-success btn-xs"><i class="fa fa-warning"></i> Ativar </a>';
+		            		estado = ' btn-success btn-xs"><i class="fa fa-warning"></i> Ativar ';
 		            	}
 
-		                $('.clients_content').find('tbody').append('<tr><td>'+data[i].clienteid+'</td><td><a>'+data[i].nome+'</a></td><td>'+estado_cliente+'</td><td><a href="client_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>'+estado+'</td></tr>');
+		                $('.clients_content').find('tbody').append('<tr><td>'+data[i].clienteid+'</td><td><a>'+data[i].nome+'</a></td><td>'+estado_cliente+'</td><td><a href="client_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a><a href="../../actions/admin/client_status.php?username='+data[i].username+'" class="btn'+estado+'</a></td></tr>');
 
 					}
 		 

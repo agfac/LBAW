@@ -25,16 +25,17 @@ $(document).ready(function() {
 
 		            	var estado_funcionario;
 		            	var estado;
+
 		            	if(data[i].ativo){
 		            		estado_funcionario = '<button type="button" class="btn btn-success btn-xs">Ativo</button>';
-		            		estado = 'btn-danger btn-xs"><i class="fa fa-warning"></i> Banir';
+		            		estado = ' btn-danger btn-xs"><i class="fa fa-warning"></i> Banir ';
 		            	}
 		            	else{
 		            		estado_funcionario = ' <button type="button" class="btn btn-warning btn-xs">Inativo</button>';
-		            		estado = 'btn-success btn-xs"><i class="fa fa-warning"></i> Ativar </a>';
+		            		estado = ' btn-success btn-xs"><i class="fa fa-warning"></i> Ativar ';
 		            	}
 
-		                $('.workers_content').find('tbody').append('<tr><td>'+data[i].funcionarioid+'</td><td><a>'+data[i].nome+'</a></td><td><a>'+data[i].dataadmissao+'</a></td><td>'+estado_funcionario+'</td><td><a href="worker_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="worker_status.php?username='+data[i].username+'" class="btn '+estado+' </a></td></tr>');
+		                $('.workers_content').find('tbody').append('<tr><td>'+data[i].funcionarioid+'</td><td><a>'+data[i].nome+'</a></td><td><a>'+data[i].dataadmissao+'</a></td><td>'+estado_funcionario+'</td><td><a href="worker_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="../../actions/admin/worker_status.php?username='+data[i].username+'" class="btn'+estado+'</a></td></tr>');
 					}
 		            $('.workers_content').append('</tbody></table>');
 		        }

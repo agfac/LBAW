@@ -29,11 +29,11 @@ $(document).ready(function() {
 
 		            	if(data[i].ativo){
 		            		estado_administrador = '<button type="button" class="btn btn-success btn-xs">Ativo</button>';
-		            		estado = 'Banir';
+		            		estado = ' btn-danger btn-xs"><i class="fa fa-warning"></i> Banir ';
 		            	}
 		            	else{
 		            		estado_administrador = ' <button type="button" class="btn btn-warning btn-xs">Inativo</button>';
-		            		estado = 'Ativar';
+		            		estado = ' btn-success btn-xs"><i class="fa fa-warning"></i> Ativar ';
 		            	}
 
 		            	if (data[i].datacessacao)
@@ -41,7 +41,8 @@ $(document).ready(function() {
 		            	else 
 		            		data_cessacao = "N/A";
 
-		                $('.admins_content').find('tbody').append('<tr><td>'+data[i].administradorid+'</td><td><a>'+data[i].nome+'</a></td><td>'+data_cessacao+'</td><td>'+estado_administrador+'</td><td><a href="admin_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="admin_status.php?username='+data[i].username+'" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i>'+estado+'</a></td></tr>');
+		                $('.admins_content').find('tbody').append('<tr><td>'+data[i].administradorid+'</td><td><a>'+data[i].nome+'</a></td><td>'+data_cessacao+'</td><td>'+estado_administrador+'</td><td><a href="admin_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="../../actions/admin/admin_status.php?username='+data[i].username+'" class="btn'+estado+'</a></td></tr>');
+					
 					}
 
 		            $('.admins_content').append('</tbody></table>');
