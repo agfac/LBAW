@@ -21,4 +21,12 @@ function getCommentsByDate($firstDate,$todayDate){
   return $stmt->fetchAll();
 }
 
+function deleteComment($idcomment){
+	global $conn;
+	$stmt = $conn->prepare("DELETE FROM comentario
+							WHERE comentarioid = ?");
+	$stmt->execute(array($idcomment));
+	return $stmt->fetchAll();
+}
+
 ?>

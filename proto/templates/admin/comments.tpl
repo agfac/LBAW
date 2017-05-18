@@ -118,7 +118,7 @@
                   </td>
                   <td>
                     <a href="{$BASE_URL}pages/publications/publication.php?id={$comment.publicacaoid}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
+                    <a href="{$BASE_URL}actions/admin/comment_remove.php?id={$comment.comentarioid}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
                   </td>
                 </tr>
                 {/foreach}
