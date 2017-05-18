@@ -9,6 +9,8 @@ $(document).ready(function() {
 	        var data_admissao = $('#single_cal4').val(); //TODO, se alterar o id o calendario não funciona 
 	        var estado_funcionario = $('#estado_funcionario').val();
 
+	        console.log(data_admissao);
+	        
 	        $('.workers_content').empty();
 
 	        $.getJSON("../../api/admin/workers_search.php", {nome_funcionario: nome_funcionario, email_funcionario: email_funcionario, data_admissao: data_admissao, estado_funcionario: estado_funcionario}, function(data){
