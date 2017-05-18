@@ -40,4 +40,5 @@ $(document).ready(function() {
         $('#nome_publicacao').val("");
         $('#ordenar').val("Escolha uma opção");
     });
+
 });
