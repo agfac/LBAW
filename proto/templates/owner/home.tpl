@@ -66,7 +66,7 @@
           <div class="col-md-6 col-sm-12 col-xs-12">
             <div>
               <div class="x_title">
-                <h2>Top 5 Encomendas</h2>
+                <h2 >Top 5 Encomendas <small class="top5ordersTitle">Últimos 7 dias</small></h2>
                 <div class="clearfix"></div>
               </div>
               <ul class="list-unstyled top_profiles scroll-view">
@@ -100,7 +100,7 @@
           <div class="col-md-6 col-sm-12 col-xs-12">
             <div>
               <div class="x_title">
-                <h2>Últimas 5 Publicações vendidas</h2>
+                <h2 >Últimas 5 Publicações vendidas <small class="last5ordersTitle">Últimos 7 dias</small></h2>
                 <div class="clearfix"></div>
               </div>
               <ul class="list-unstyled top_profiles scroll-view">
@@ -121,7 +121,7 @@
                 {else}
                 <li class="media event">
                   <div class="media-body">
-                    <a class="title">Sem publicações vendidas</a>
+                    <a class="title">Sem publicações vendidas entre as datas selecionadas</a>
                   </div>
                 </li>
                 {/if}

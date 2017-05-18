@@ -21,7 +21,7 @@ function getCommentsByDate($firstDate,$todayDate){
   return $stmt->fetchAll();
 }
 
-function getCommentsByDateORDER($firstDate,$todayDate){
+function getLast5CommentsByDate($firstDate,$todayDate){
   global $conn;
   $stmt = $conn->prepare("SELECT comentario.data, comentario.texto, cliente.nome
 						  FROM comentario

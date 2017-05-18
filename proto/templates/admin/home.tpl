@@ -27,6 +27,14 @@
 				<p>Número de novos visitantes nos últimos 7 dias.</p>
 			</div>
 		</div>
+		<div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			<div class="tile-stats">
+				<div class="icon"><i class="fa fa-cart-plus"></i></div>
+				<div class="count">{$infoHome.nrOfLastCarts}</div>
+				<h3>Novos carrinhos</h3>
+				<p>Número de novos carrinhos nos últimos 7 dias.</p>
+			</div>
+		</div>
 	</div>
 	<!-- /top tiles -->
 
@@ -49,10 +57,11 @@
 			</div> -->
 			<div class="clearfix"></div>
 		</div>
+
 		<div class="col-md-4">
-			<div class="x_panel">
+			<div class="x_panel top_comentarios">
 				<div class="x_title">
-					<h2>Top Usuários <small>Encomendas</small></h2>
+					<h2>Últimos 5 Comentários </h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -60,50 +69,33 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
+					{if $infoHome.getLast5CommentsByDate}
+					{foreach $infoHome.getLast5CommentsByDate as $comment}
 					<article class="media event">
 						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
+							<i class="fa fa-comments-o aero"></i>
 						</a>
 						<div class="media-body">
-							<a class="title" href="#">Joao Americo Pereira Ribeiro</a>
-							<p>Efetuou <strong>453€</strong> em encomendas nos últimos 7 dias.</p>
+							<a class="title">{$comment.nome}</a>
+							<p>{$comment.texto}</p>
 						</div>
 					</article>
+					{/foreach}
+					{else}
 					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
 						<div class="media-body">
-							<a class="title" href="#">Antonio Joaquim dos Santos Teixeira</a>
-							<p>Efetuou <strong>392€</strong> em encomendas nos últimos 7 dias.</p>
-						</div>
+                    		<a class="title">Sem comentários na data selecionada</a>
+                  		</div>
 					</article>
-					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
-						<div class="media-body">
-							<a class="title" href="#">Eduardo Paredes da Silva</a>
-							<p>Efetuou <strong>281€</strong> em encomendas nos últimos 7 dias.</p>
-						</div>
-					</article>
-					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
-						<div class="media-body">
-							<a class="title" href="#">Alexandre Jose Ribeiro Gaspar</a>
-							<p>Efetuou <strong>190€</strong> em encomendas nos últimos 7 dias.</p>
-						</div>
-					</article>
+					{/if}
 				</div>
 			</div>
 		</div>
 
 		<div class="col-md-4">
-			<div class="x_panel">
+			<div class="x_panel top_usuarios">
 				<div class="x_title">
-					<h2>Últimos Comentários</h2>
+					<h2>Top Usuários <small>Últimos 7 dias</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -111,50 +103,33 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
+					{if $infoHome.getBest5UsersOrdersByDate}
+					{foreach $infoHome.getBest5UsersOrdersByDate as $order}
 					<article class="media event">
 						<a class="pull-left border-aero profile_thumb">
 							<i class="fa fa-user aero"></i>
 						</a>
 						<div class="media-body">
-							<a class="title" href="#">Joao Americo Pereira Ribeiro</a>
-							<p>Não gostei nada do livro, penso que foi dinheiro mal gasto.</p>
+							<a class="title">{$order.nomecliente}</a>
+							<p>Valor total gasto <strong>{$order.total}€</strong> em publicações.</p>
 						</div>
 					</article>
+					{/foreach}
+					{else}
 					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
 						<div class="media-body">
-							<a class="title" href="#">Eduardo Paredes da Silva</a>
-							<p>Deveria ter gasto o dinheiro em outro livro.</p>
-						</div>
+                    		<a class="title">Sem encomendas na data selecionada</a>
+                  		</div>
 					</article>
-					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
-						<div class="media-body">
-							<a class="title" href="#">Antonio Joaquim dos Santos Teixeira</a>
-							<p>Poderia ter gasto dinheiro noutro livro melhor.</p>
-						</div>
-					</article>
-					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
-						<div class="media-body">
-							<a class="title" href="#">Antonio Joaquim dos Santos Teixeira</a>
-							<p>Não está mau, mas tambem não está bom, poderia ser melhor.</p>
-						</div>
-					</article>
+					{/if}
 				</div>
 			</div>
 		</div>
 
 		<div class="col-md-4">
-			<div class="x_panel">
+			<div class="x_panel top_livros">
 				<div class="x_title">
-					<h2>Top Livros <small>mais comprados</small></h2>
+					<h2>Top Publicações <small>Últimos 7 dias</small></h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 						</li>
@@ -162,42 +137,25 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
+					{if $infoHome.getBest5PublicationsOrdersByDate}
+					{foreach $infoHome.getBest5PublicationsOrdersByDate as $publication}
 					<article class="media event">
 						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
+							<i class="fa fa-book aero"></i>
 						</a>
 						<div class="media-body">
-							<a class="title" href="#">Tenha Um Bom Dia!</a>
-							<p>Foram vendidos <strong>3</strong> exemplares nos últimos 7 dias.</p>
+							<a class="title">{$publication.titulo}</a>
+							<p>Foram vendidos <strong>{$publication.quantidade}</strong> exemplares.</p>
 						</div>
 					</article>
+					{/foreach}
+					{else}
 					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
 						<div class="media-body">
-							<a class="title" href="#">Os Últimos Dias de Estaline</a>
-							<p>Foram vendidos <strong>2</strong> exemplares nos últimos 7 dias.</p>
-						</div>
+                    		<a class="title">Sem Publicações entre as datas selecionadas</a>
+                  		</div>
 					</article>
-					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
-						<div class="media-body">
-							<a class="title" href="#">Jorge Sampaio - Uma Biografia - 2.º volume</a>
-							<p>Foram vendidos <strong>1</strong> exemplares nos últimos 7 dias.</p>
-						</div>
-					</article>
-					<article class="media event">
-						<a class="pull-left border-aero profile_thumb">
-							<i class="fa fa-user aero"></i>
-						</a>
-						<div class="media-body">
-							<a class="title" href="#">O Beijo da Palavrinha</a>
-							<p>Foram vendidos <strong>1</strong> exemplares nos últimos 7 dias.</p>
-						</div>
-					</article>
+					{/if}
 				</div>
 			</div>
 		</div>

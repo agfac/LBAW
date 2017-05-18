@@ -4,6 +4,7 @@
 	
 	$lastDate = $_GET['lastDate'];
 	$firstDate = $_GET['firstDate'];
+	$flag = $_GET['flag'];
 
 	$best5Orders = getBest5OrdersByDate($firstDate,$lastDate);
 	$todayOrders = getTodayOrders($lastDate);
@@ -12,11 +13,16 @@
 	foreach ($best5Orders as &$key) {
 		$nrEncomendasHoje = 0;
 		foreach ($todayOrders as $key2) {
-			if($key['nomecliente']===$key2['nomecliente'])
+			if($key['nomecliente'] === $key2['nomecliente'])
 				$nrEncomendasHoje++;
 		}
 		$key['nrEncomendasHoje'] = $nrEncomendasHoje;
 	}
 
-	echo json_encode($best5Orders);
+	if($flag === "top5orders")
+		$reply = $best5Orders;
+	else
+		$reply = getLast5Orders($firstDate,$lastDate);
+
+	echo json_encode($reply);
 ?>

@@ -5,10 +5,14 @@ $(document).ready(function() {
 
     	var firstDate = b.startDate.format("YYYY-MM-DD");
     	var lastDate = b.endDate.format("YYYY-MM-DD");
-    	$('.top5orders').empty();
 
-    	$.getJSON("../../api/owner/home.php", {firstDate: firstDate, lastDate: lastDate}, function(data){
+        $('.top5orders').empty();
+        $('.last5orders').empty();
+
+        var flag = "top5orders";
+    	$.getJSON("../../api/owner/home.php", {firstDate: firstDate, lastDate: lastDate, flag: flag}, function(data){
     		console.log(data);
+            $('.top5ordersTitle').text(firstDate+' e '+lastDate);
             if(data.length === 0 || data == "NULL"){
                 $('.top5orders').append('<li class="media event"><div class="media-body"><a class="title">Sem encomendas entre as datas selecionadas</a></div></li>');
             }else{
@@ -17,6 +21,20 @@ $(document).ready(function() {
                 }
             }
         });
+
+        flag = "last5orders";
+        $.getJSON("../../api/owner/home.php", {firstDate: firstDate, lastDate: lastDate, flag: flag}, function(data){
+            console.log(data);
+            $('.last5ordersTitle').text(firstDate+' e '+lastDate);
+            if(data.length === 0 || data == "NULL"){
+                $('.last5orders').append('<li class="media event"><div class="media-body"><a class="title">Sem publicações vendidas entre as datas selecionadas</a></div></li>');
+            }else{
+                for (var i in data){
+                    $('.last5orders').append('<li class="media event"><a class="pull-left border-aero profile_thumb"><i class="fa fa-user aero"></i></a><div class="media-body"><a class="title"><h5>'+data[i].titulopublicacao+'</h5></a><p>Preço publicação <strong>'+data[i].total+'€</strong></p></div></li>');
+                }
+            }
+        });
+
     })
 
     function init_flot_chart(){

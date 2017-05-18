@@ -38,7 +38,7 @@ foreach ($best5Orders as &$key) {
 }
 
 
-$getLast5Orders = getLast5Orders();
+$getLast5Orders = getLast5Orders($firstDate,$lastDate);
 
 
 $infoHome = array(

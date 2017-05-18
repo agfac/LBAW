@@ -28,6 +28,43 @@ function getBest5OrdersByDate($firstDate,$lastDate){
 	return $stmt->fetchAll();
 }
 
+function getBest5UsersOrdersByDate($firstDate,$lastDate){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.clienteid, SUM(informacaofaturacao.total) AS total, cliente.nome AS nomeCliente
+							FROM encomenda
+							JOIN informacaofaturacao ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							JOIN cliente ON encomenda.clienteid = cliente.clienteid
+							WHERE encomenda.data BETWEEN ? AND ?
+							GROUP BY encomenda.clienteid, cliente.nome
+							ORDER BY total desc
+							LIMIT 5");
+	$stmt->execute(array($firstDate,$lastDate));
+	return $stmt->fetchAll();
+}
+
+function getBest5PublicationsOrdersByDate($firstDate,$lastDate){
+	global $conn;
+	$stmt = $conn->prepare("SELECT SUM(publicacaoencomenda.quantidade) AS quantidade, publicacao.titulo
+							FROM publicacaoencomenda
+							JOIN publicacao on publicacao.publicacaoid = publicacaoencomenda.publicacaoid
+							JOIN encomenda on encomenda.encomendaid = publicacaoencomenda.encomendaid
+							WHERE encomenda.data BETWEEN ? AND ?
+							GROUP BY publicacao.titulo
+							ORDER BY quantidade DESC, publicacao.titulo ASC
+							LIMIT 5");
+	$stmt->execute(array($firstDate,$lastDate));
+	return $stmt->fetchAll();
+}
+
+function getCartsByDate($firstDate,$lastDate){
+	global $conn;
+	$stmt = $conn->prepare("SELECT *
+							FROM carrinho
+							WHERE datacriacao BETWEEN ? AND ?");
+	$stmt->execute(array($firstDate,$lastDate));
+	return $stmt->fetchAll();
+}
+
 function getTodayOrders($lastDate){
 	global $conn;
 	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, informacaofaturacao.*
@@ -42,7 +79,7 @@ function getTodayOrders($lastDate){
 	return $stmt->fetchAll();
 }
 
-function getLast5Orders(){
+function getLast5Orders($firstDate,$lastDate){
 	global $conn;
 	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, informacaofaturacao.*, publicacao.titulo AS tituloPublicacao
 							FROM encomenda
@@ -54,9 +91,10 @@ function getLast5Orders(){
 							ON publicacaoencomenda.encomendaid = encomenda.encomendaid
 							JOIN publicacao
 							ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
+							WHERE encomenda.data BETWEEN ? AND ?
 							ORDER BY encomenda.data DESC
 							LIMIT 5");
-	$stmt->execute();
+	$stmt->execute(array($firstDate,$lastDate));
 	return $stmt->fetchAll();
 }
 

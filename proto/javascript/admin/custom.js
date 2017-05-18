@@ -1589,7 +1589,7 @@ if (typeof NProgress != 'undefined') {
 				  buttonClasses: ['btn btn-default'],
 				  applyClass: 'btn-small btn-primary',
 				  cancelClass: 'btn-small',
-				  format: 'MM/DD/YYYY',
+				  format: 'DD/MM/YYYY',
 				  separator: ' to ',
 				  locale: {
 					applyLabel: 'Submit',
@@ -1664,7 +1664,7 @@ if (typeof NProgress != 'undefined') {
 			  console.log(start.toISOString(), end.toISOString(), label);
 			});
   
-  
+  			$('#single_cal4').val("");
 		}
 		
 		 
