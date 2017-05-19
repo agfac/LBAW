@@ -198,9 +198,9 @@ function getOrdersByClientEmail($email_cliente){
                         	ON cliente.clienteid = encomenda.clienteid
 							JOIN informacaofaturacao
 							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
-            				WHERE cliente.email = ?
+            				WHERE LOWER(cliente.email) = ?
             				ORDER BY encomenda.encomendaid");
-    $stmt->execute(array($email_cliente));
+    $stmt->execute(array(strtolower($email_cliente)));
     return $stmt->fetchAll();
 }
 
@@ -254,9 +254,9 @@ function getOrdersByClientEmailAndStatus($email_cliente, $estadoencomenda){
                         	ON cliente.clienteid = encomenda.clienteid
                         	JOIN informacaofaturacao
                         	ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
-							WHERE cliente.email = ? AND encomenda.estado = ?
+							WHERE LOWER(cliente.email) = ? AND encomenda.estado = ?
 							ORDER BY encomenda.encomendaid");
-    $stmt->execute(array($email_cliente, $estadoencomenda));
+    $stmt->execute(array(strtolower($email_cliente), $estadoencomenda));
     return $stmt->fetchAll();
 }
 
