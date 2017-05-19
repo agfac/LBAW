@@ -119,7 +119,7 @@ function getPublicationDataSearchCat($categoriaid, $subcategoriaid)
     return $stmt->fetchAll();
 }
 
-function getPublicationsBySubcategory($subcategory_name)
+function getPublicationsBySubcategory($subcategory_name, $category_name)
 {
 	global $conn;
     $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
@@ -136,8 +136,8 @@ function getPublicationsBySubcategory($subcategory_name)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE subcategoria.nome = ?");
-    $stmt->execute(array($subcategory_name));
+                            WHERE subcategoria.nome = ? AND categoria.nome = ?");
+    $stmt->execute(array($subcategory_name, $category_name));
     return $stmt->fetchAll();
 }
 
@@ -198,6 +198,17 @@ function getAllSubCategorysByCategory($categoriaId){
 							ON subcategoria.categoriaid = categoria.categoriaid
                             WHERE categoria.categoriaid = ?");
     $stmt->execute(array($categoriaId));
+    return $stmt->fetchAll();
+}
+
+function getAllSubCategorysByCategoryName($categoria_nome){
+	global $conn;
+    $stmt = $conn->prepare("SELECT subcategoria.*
+							FROM subcategoria
+							JOIN categoria
+							ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE categoria.nome = ?");
+    $stmt->execute(array($categoria_nome));
     return $stmt->fetchAll();
 }
 

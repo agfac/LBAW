@@ -2,25 +2,17 @@ $(document).ready(function() {
 
 	var products; //lista de produtos que foram filtrados
 
+	options();
+
+	ready();
+
 	//category_filter();
 
 	//price_filter();
 
 	//search_filter();
 
-	$('#categoria').on('change', function(){
-		var category = $(this).find('option:selected').val();
 
-		$('#subcategoria').empty();
-		
-		$.getJSON("../../api/owner/updateSubCategories.php", {categoria: category}, function(data){
-			
-			for (var i in data){
-				$('#subcategoria').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
-                // console.log(data[i].subcategoriaid + " " + data[i].nome);
-            }
-        });
-	});
 
 /*
 	var subcat = 'Direito';
@@ -43,6 +35,22 @@ function search() {
 	
 }
 */
+
+function options() {
+	$('#categoria').on('change', function(){
+		var category = $(this).find('option:selected').val();
+
+		$('#subcategoria').empty();
+		
+		$.getJSON("../../api/owner/updateSubCategories.php", {categoria: category}, function(data){
+			
+			for (var i in data){
+				$('#subcategoria').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
+                // console.log(data[i].subcategoriaid + " " + data[i].nome);
+            }
+        });
+	});
+}
 
 function category_filter() {
 	$('#subategoria').on('change', function(){
