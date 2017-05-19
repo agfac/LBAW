@@ -8,18 +8,17 @@ $(document).ready(function() {
             var nome_editora = $('#nome_editora').val();
             var categoria = $('#categoria').find('option:selected').val();
             var subcategoria = $('#subcategoria').find('option:selected').val();
-            var ordernar = $('#ordernar').find('option:selected').val();
             
             if(typeof subcategoria === 'undefined')
                 subcategoria = "Escolha uma opção";
 
             $('.publications_content').empty(); 
 
-            $.getJSON("../../api/owner/publications_search.php", {nome_livro: nome_livro, nome_autor: nome_autor, nome_editora: nome_editora, categoria: categoria, subcategoria: subcategoria, ordernar: ordernar}, function(data){
+            $.getJSON("../../api/owner/publications_search.php", {nome_livro: nome_livro, nome_autor: nome_autor, nome_editora: nome_editora, categoria: categoria, subcategoria: subcategoria}, function(data){
                 if(data.length === 0 || data == "NULL"){
                     $('.publications_content').append('<p>Sem Publicações com os dados de entrada</p>');
                 }else{
-                    $('.publications_content').append('<p>Todos as publicações presentes na loja</p><table class="table table-striped projects"><thead><tr><th style="width: 1%">ID</th><th style="width: 30%">Nome do livro</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th><th style="width: 24%">#Editar</th></tr></thead><tbody>');
+                    $('.publications_content').append('<p>Todos as publicações presentes na loja</p><table class="table table-striped projects"><thead><tr><th style="width: 1%">ID</th><th style="width: 30%">Nome do livro</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th><th style="width: 24%">Ações</th></tr></thead><tbody>');
                     
                     for (var i in data){
                         var nome_autor
@@ -61,7 +60,6 @@ $(document).ready(function() {
         $('#nome_editora').val("");
         $('#categoria').val("Escolha uma opção");
         $('#subcategoria').val("Escolha uma opção");
-        $('#ordernar').val("Escolha uma opção");
     });
 
 });
