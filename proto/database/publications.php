@@ -30,12 +30,13 @@ function getPublicationData($id)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE publicacao.publicacaoid = ?");
+                            WHERE publicacao.publicacaoid = ?
+                            ORDER BY publicacao.publicacaoid");
     $stmt->execute(array($id));
     return $stmt->fetchAll();
 }
 
-function getPublicationDataSearchBookName($nome_livro)
+function getPublicationDataSearchPublicationName($nome_livro)
 {
 	global $conn;
     $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
@@ -50,7 +51,8 @@ function getPublicationDataSearchBookName($nome_livro)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE (publicacao.titulo like '%'||?||'%')");
+                            WHERE (publicacao.titulo like '%'||?||'%')
+                            ORDER BY publicacao.publicacaoid");
     $stmt->execute(array($nome_livro));
     return $stmt->fetchAll();
 }
@@ -69,7 +71,8 @@ function getPublicationDataSearchAutorName($nome_autor)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE (autor.nome like '%'||?||'%')");
+                            WHERE (autor.nome like '%'||?||'%')
+                            ORDER BY publicacao.publicacaoid");
     $stmt->execute(array($nome_autor));
     return $stmt->fetchAll();
 }
@@ -89,7 +92,8 @@ function getPublicationDataSearchEditorName($nome_editora)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE (editora.nome like '%'||?||'%')");
+                            WHERE (editora.nome like '%'||?||'%')
+                            ORDER BY publicacao.publicacaoid");
     $stmt->execute(array($nome_editora));
     return $stmt->fetchAll();
 }
@@ -109,7 +113,8 @@ function getPublicationDataSearchCat($categoriaid, $subcategoriaid)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE categoria.categoriaid = ? OR subcategoria.subcategoriaid = ?");
+                            WHERE categoria.categoriaid = ? OR subcategoria.subcategoriaid = ?
+                            ORDER BY publicacao.publicacaoid");
     $stmt->execute(array($categoriaid,$subcategoriaid));
     return $stmt->fetchAll();
 }
@@ -151,6 +156,174 @@ function getPublicationsOrderedByDESC()
                             ON subcategoria.categoriaid = categoria.categoriaid
                             ORDER BY publicacao.preco DESC");
     $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedByAutorNameASC($nome_autor)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE (autor.nome like '%'||?||'%')
+                            ORDER BY publicacao.preco ASC");
+    $stmt->execute(array($nome_autor));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedByAutorNameDESC($nome_autor)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE (autor.nome like '%'||?||'%')
+                            ORDER BY publicacao.preco DESC");
+    $stmt->execute(array($nome_autor));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedByEditorNameASC($nome_editora)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE (editora.nome like '%'||?||'%')
+                            ORDER BY publicacao.preco ASC");
+    $stmt->execute(array($nome_editora));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedByEditorNameDESC($nome_editora)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE (editora.nome like '%'||?||'%')
+                            ORDER BY publicacao.preco DESC");
+    $stmt->execute(array($nome_editora));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedBySubCategoryASC($subcategoria)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE subcategoria.subcategoriaid = ?
+                            ORDER BY publicacao.preco ASC");
+    $stmt->execute(array($subcategoria));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedBySubCategoryDESC($subcategoria)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE subcategoria.subcategoriaid = ?
+                            ORDER BY publicacao.preco DESC");
+    $stmt->execute(array($subcategoria));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedByCategoryASC($categoria)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE categoria.categoriaid = ?
+                            ORDER BY publicacao.preco ASC");
+    $stmt->execute(array($categoria));
+    return $stmt->fetchAll();
+}
+
+function getPublicationsOrderedByCategoryDESC($categoria)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE categoria.categoriaid = ?
+                            ORDER BY publicacao.preco DESC");
+    $stmt->execute(array($categoria));
     return $stmt->fetchAll();
 }
 

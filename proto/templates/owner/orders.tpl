@@ -55,6 +55,7 @@
                     <option value="Em processamento">Em processamento</option>
                     <option value="Processada">Processada</option>
                     <option value="Enviada">Enviada</option>
+                    <option value="Cancelada">Cancelada</option>
                     <option value="Devolvida">Devolvida</option>
                   </select>
                 </div>
@@ -100,7 +101,7 @@
                   <th>Preço Total</th>
                   <th>Estado</th>
                   <th>Data</th>
-                  <th style="width: 15%">#Editar</th>
+                  <th style="width: 15%">Ações</th>
                 </tr>
               </thead>
               <tbody>
@@ -120,8 +121,10 @@
                     <button class="btn btn-primary btn-xs">Processada</button>
                     {else if $order.estado == "Enviada"}
                     <button class="btn btn-success btn-xs">Enviada</button>
+                    {else if $order.estado == "Devolvida"}
+                    <button class="btn btn-warning btn-xs">Devolvida</button>
                     {else}
-                    <button class="btn btn-warning btn-xs">Cancelada</button>
+                    <button class="btn btn-danger btn-xs">Cancelada</button>
                     {/if}
                   </td>
                   <td>

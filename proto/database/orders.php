@@ -176,23 +176,51 @@ function updateOrderStatus($id, $estado){
 	}
 }
 
-function getOrdersSearch($nome_cliente, $email_cliente, $id_encomenda){
+function getOrdersByClientName($nome_cliente){
 	global $conn;
-	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome AS nome_cliente, cliente.email AS email_cliente, informacaofaturacao.*
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome AS nomecliente, cliente.email AS email_cliente, informacaofaturacao.*
                         	FROM encomenda
-                        	INNER JOIN cliente
+                        	JOIN cliente
                         	ON cliente.clienteid = encomenda.clienteid
-							INNER JOIN informacaofaturacao
+							JOIN informacaofaturacao
 							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
-            				WHERE encomenda.encomendaid = ? OR cliente.nome like '%'||?||'%' OR cliente.email = ?
+            				WHERE cliente.nome like '%'||?||'%'
             				ORDER BY encomenda.encomendaid");
-    $stmt->execute(array($id_encomenda, $nome_cliente, $email_cliente));
+    $stmt->execute(array($nome_cliente));
+    return $stmt->fetchAll();
+}
+
+function getOrdersByClientEmail($email_cliente){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome AS nomecliente, cliente.email AS email_cliente, informacaofaturacao.*
+                        	FROM encomenda
+                        	JOIN cliente
+                        	ON cliente.clienteid = encomenda.clienteid
+							JOIN informacaofaturacao
+							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+            				WHERE cliente.email = ?
+            				ORDER BY encomenda.encomendaid");
+    $stmt->execute(array($email_cliente));
+    return $stmt->fetchAll();
+}
+
+function getOrdersByOrderId($id_encomenda){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome AS nomecliente, cliente.email AS email_cliente, informacaofaturacao.*
+                        	FROM encomenda
+                        	JOIN cliente
+                        	ON cliente.clienteid = encomenda.clienteid
+							JOIN informacaofaturacao
+							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+            				WHERE encomenda.encomendaid = ?
+            				ORDER BY encomenda.encomendaid");
+    $stmt->execute(array($id_encomenda));
     return $stmt->fetchAll();
 }
 
 function getOrdersByStatus($estadoencomenda){
 	global $conn;
-	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nome_cliente, cliente.email as email_cliente, informacaofaturacao.*
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, cliente.email as email_cliente, informacaofaturacao.*
                         	FROM encomenda
                         	JOIN cliente
                         	ON cliente.clienteid = encomenda.clienteid
@@ -201,6 +229,34 @@ function getOrdersByStatus($estadoencomenda){
 							WHERE encomenda.estado = ?
 							ORDER BY encomenda.encomendaid");
     $stmt->execute(array($estadoencomenda));
+    return $stmt->fetchAll();
+}
+
+function getOrdersByClientNameAndStatus($nome_cliente, $estadoencomenda){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, cliente.email as email_cliente, informacaofaturacao.*
+                        	FROM encomenda
+                        	JOIN cliente
+                        	ON cliente.clienteid = encomenda.clienteid
+                        	JOIN informacaofaturacao
+                        	ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							WHERE cliente.nome like '%'||?||'%' AND encomenda.estado = ?
+							ORDER BY encomenda.encomendaid");
+    $stmt->execute(array($nome_cliente, $estadoencomenda));
+    return $stmt->fetchAll();
+}
+
+function getOrdersByClientEmailAndStatus($email_cliente, $estadoencomenda){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, cliente.email as email_cliente, informacaofaturacao.*
+                        	FROM encomenda
+                        	JOIN cliente
+                        	ON cliente.clienteid = encomenda.clienteid
+                        	JOIN informacaofaturacao
+                        	ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							WHERE cliente.email = ? AND encomenda.estado = ?
+							ORDER BY encomenda.encomendaid");
+    $stmt->execute(array($email_cliente, $estadoencomenda));
     return $stmt->fetchAll();
 }
 

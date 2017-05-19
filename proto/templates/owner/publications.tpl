@@ -121,7 +121,7 @@
                 <th>Autor</th>
                 <th>Preço</th>
                 <th>Preço Promocional</th>
-                <th style="width: 20%">#Editar</th>
+                <th style="width: 20%">Ações</th>
               </tr>
             </thead>
             <tbody>
