@@ -51,9 +51,9 @@ function getPublicationDataSearchPublicationName($nome_livro)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE (publicacao.titulo like '%'||?||'%')
+                            WHERE (LOWER(publicacao.titulo) like '%'||?||'%')
                             ORDER BY publicacao.publicacaoid");
-    $stmt->execute(array($nome_livro));
+    $stmt->execute(array(strtolower($nome_livro)));
     return $stmt->fetchAll();
 }
 function getPublicationDataSearchAutorName($nome_autor)
@@ -71,9 +71,9 @@ function getPublicationDataSearchAutorName($nome_autor)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE (autor.nome like '%'||?||'%')
+                            WHERE (LOWER(autor.nome) like '%'||?||'%')
                             ORDER BY publicacao.publicacaoid");
-    $stmt->execute(array($nome_autor));
+    $stmt->execute(array(strtolower($nome_autor)));
     return $stmt->fetchAll();
 }
 
@@ -92,9 +92,9 @@ function getPublicationDataSearchEditorName($nome_editora)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE (editora.nome like '%'||?||'%')
+                            WHERE (LOWER(editora.nome) like '%'||?||'%')
                             ORDER BY publicacao.publicacaoid");
-    $stmt->execute(array($nome_editora));
+    $stmt->execute(array(strtolower($nome_editora)));
     return $stmt->fetchAll();
 }
 

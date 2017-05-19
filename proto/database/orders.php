@@ -184,9 +184,9 @@ function getOrdersByClientName($nome_cliente){
                         	ON cliente.clienteid = encomenda.clienteid
 							JOIN informacaofaturacao
 							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
-            				WHERE cliente.nome like '%'||?||'%'
+            				WHERE LOWER(cliente.nome) like '%'||?||'%'
             				ORDER BY encomenda.encomendaid");
-    $stmt->execute(array($nome_cliente));
+    $stmt->execute(array(strtolower($nome_cliente)));
     return $stmt->fetchAll();
 }
 
@@ -240,9 +240,9 @@ function getOrdersByClientNameAndStatus($nome_cliente, $estadoencomenda){
                         	ON cliente.clienteid = encomenda.clienteid
                         	JOIN informacaofaturacao
                         	ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
-							WHERE cliente.nome like '%'||?||'%' AND encomenda.estado = ?
+							WHERE LOWER(cliente.nome) like '%'||?||'%' AND encomenda.estado = ?
 							ORDER BY encomenda.encomendaid");
-    $stmt->execute(array($nome_cliente, $estadoencomenda));
+    $stmt->execute(array(strtolower($nome_cliente), $estadoencomenda));
     return $stmt->fetchAll();
 }
 
