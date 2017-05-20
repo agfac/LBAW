@@ -125,9 +125,9 @@
 
             <hr class="spacer-5"><hr class="spacer-20 no-border">
 
-            <div class="row column-3" id="products-listing">
+            <div class="col-sm-12 text-left" id="products-listing">
                 <div class="row column-3" id="sub-products-listing">
-                    <table class="table">
+                    <table class="table" id="products-table">
                         <tbody>
                             {foreach $def_pubs as $publication}
                             <tr>
@@ -142,7 +142,7 @@
                                   {if $publication.nome_autor}
                                   <h7>{$publication.nome_autor}</h7>
                                   {else}
-                                  <h7>Sem Autor</h7>
+                                  <h7>Sem autor</h7>
                                   {/if}
                               </td>
                               <td>
