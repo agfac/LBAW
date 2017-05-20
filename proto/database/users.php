@@ -537,10 +537,11 @@ function getUserByNameEmailAndStatus($nomeCliente, $emailCliente, $estadoCliente
 
   $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
                           FROM cliente
-                          WHERE nome = ?
+                          WHERE LOWER(nome) like '%'||?||'%'
                           AND LOWER(email) = ?
                           AND ativo = ?");
-  $stmt->execute(array($nomeCliente, $emailCliente, $estadoCliente));
+
+  $stmt->execute(array(strtolower($nomeCliente), strtolower($emailCliente), $estadoCliente));
   
   return $stmt->fetchAll();
 }
@@ -551,10 +552,11 @@ function getUserByNameAndStatus($nomeCliente, $estadoCliente){
 
   $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
                           FROM cliente
-                          WHERE nome = ?
+                          WHERE LOWER(nome) like '%'||?||'%'
                           AND ativo = ?
                           ORDER BY clienteid ASC");
-  $stmt->execute(array($nomeCliente, $estadoCliente));
+
+  $stmt->execute(array(strtolower($nomeCliente), $estadoCliente));
   
   return $stmt->fetchAll();
 }
@@ -567,7 +569,8 @@ function getUserByEmailAndStatus($emailCliente, $estadoCliente){
                           FROM cliente
                           WHERE LOWER(email) = ?
                           AND ativo = ?");
-  $stmt->execute(array($emailCliente, $estadoCliente));
+
+  $stmt->execute(array(strtolower($emailCliente), $estadoCliente));
   
   return $stmt->fetchAll();
 }
@@ -578,8 +581,9 @@ function getUserByName($nomeCliente){
 
   $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
                           FROM cliente
-                          WHERE nome = ?");
-  $stmt->execute(array($nomeCliente));
+                          WHERE LOWER(nome) like '%'||?||'%'");
+
+  $stmt->execute(array(strtolower($nomeCliente)));
   
   return $stmt->fetchAll();
 }
@@ -590,7 +594,8 @@ function getUserByEmail($emailCliente){
   $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
                           FROM cliente
                           WHERE LOWER(email) = ?");
-  $stmt->execute(array($emailCliente));
+
+  $stmt->execute(array(strtolower($emailCliente)));
   
   return $stmt->fetchAll();
 }
@@ -602,6 +607,7 @@ function getUserByStatus($estadoCliente){
                           FROM cliente
                           WHERE ativo = ?
                           ORDER BY clienteid ASC");
+  
   $stmt->execute(array($estadoCliente));
   
   return $stmt->fetchAll();

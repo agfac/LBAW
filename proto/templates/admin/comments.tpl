@@ -53,8 +53,8 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select class="form-control" id="ordenar">
                     <option>Escolha uma opção</option>
-                    <option>Melhor classificado</option>
-                    <option>Menor classificado</option>
+                    <option value="DESC">Melhor classificado</option>
+                    <option value="ASC">Menor classificado</option>
                   </select>
                 </div>
               </div>
@@ -105,10 +105,10 @@
                 <tr>
                   <td>{$comment.comentarioid}</td>
                   <td>
-                    <a>{$comment.nome}</a>
+                    <a>{$comment.titulo}</a>
                   </td>
                   <td>
-                    <a>{$comment.titulo}</a>
+                    <a>{$comment.nome}</a>
                   </td>
                   <td>
                     <a class="fa fa-star"> {$comment.classificacao}</a>
