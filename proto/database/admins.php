@@ -211,7 +211,7 @@ function getAdminData($username) {
 function getAdminByNameOrderBy($nomeAdministrador, $estadoAdministrador){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT * 
+    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo 
                             FROM administrador
                             WHERE LOWER(nome) like '%'||?||'%' 
                             AND ativo = ?
@@ -232,7 +232,7 @@ function getAdminByNameOrderBy($nomeAdministrador, $estadoAdministrador){
 function getAdminByName($nomeAdministrador){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT * 
+    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo 
                             FROM administrador
                             WHERE LOWER(nome) like '%'||?||'%' 
                             ORDER BY administradorid ");
@@ -248,7 +248,7 @@ function getAdminByName($nomeAdministrador){
 // function getAdminByCessationData($dataCessacao){
 //     global $conn;
     
-//     $stmt = $conn->prepare("SELECT * 
+//     $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo
 //                             FROM administrador
 //                             WHERE datacessacao::date >= ? AND datacessacao::date <= ?
 //                             ORDER BY administradorid");
@@ -260,7 +260,7 @@ function getAdminByName($nomeAdministrador){
 function getAdminByAdminStatus($estadoAdministrador){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT * 
+    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo
                             FROM administrador
                             WHERE ativo = ?");
     
