@@ -145,7 +145,7 @@ function getAllAdmins(){
   global $conn;
   $stmt = $conn->prepare("SELECT *
                           FROM administrador
-                          ORDER BY administradorid;");
+                          ORDER BY administradorid");
   $stmt->execute();
   return $stmt->fetchAll();
 }
@@ -205,5 +205,69 @@ function getAdminData($username) {
     
     return $stmt->fetchAll();
 }
+
+
+
+function getAdminByNameOrderBy($nomeAdministrador, $estadoAdministrador){
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT * 
+                            FROM administrador
+                            WHERE LOWER(nome) like '%'||?||'%' 
+                            AND ativo = ?
+                            ORDER BY administradorid ");
+    
+    $stmt->execute(array(strtolower($nomeAdministrador), $estadoAdministrador));
+    return $stmt->fetchAll();
+}
+
+// function getAdminByEmailOrderBy($emailAministrador, $estadoAdministrador){
+
+// }
+
+// function getAdminByCessationDataOrderBy($dataCessacao, $estadoAdministrador){
+
+// }
+
+function getAdminByName($nomeAdministrador){
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT * 
+                            FROM administrador
+                            WHERE LOWER(nome) like '%'||?||'%' 
+                            ORDER BY administradorid ");
+    
+    $stmt->execute(array(strtolower($nomeAdministrador)));
+    return $stmt->fetchAll();
+}
+
+// function getAdminByEmail($emailAministrador){
+
+// }
+
+// function getAdminByCessationData($dataCessacao){
+//     global $conn;
+    
+//     $stmt = $conn->prepare("SELECT * 
+//                             FROM administrador
+//                             WHERE datacessacao::date >= ? AND datacessacao::date <= ?
+//                             ORDER BY administradorid");
+    
+//     $stmt->execute(array($dataCessacao, $dataCessacao));
+//     return $stmt->fetchAll();
+// }
+
+function getAdminByAdminStatus($estadoAdministrador){
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT * 
+                            FROM administrador
+                            WHERE ativo = ?");
+    
+    $stmt->execute(array($estadoAdministrador));
+    return $stmt->fetchAll();
+}
+
+
 
 ?>
