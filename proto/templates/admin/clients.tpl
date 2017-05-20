@@ -46,8 +46,8 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select class="form-control" id="estado_cliente">
                     <option>Escolha uma opção</option>
-                    <option>Ativo</option>
-                    <option>Inativo</option>
+                    <option value="True">Ativo</option>
+                    <option value="False">Inativo</option>
                   </select>
                 </div>
               </div>

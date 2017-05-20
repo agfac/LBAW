@@ -11,7 +11,7 @@ $(document).ready(function() {
 	        $('.clients_content').empty();
 
 	        $.getJSON("../../api/admin/clients_search.php", {nome_cliente: nome_cliente, email_cliente: email_cliente, estado_cliente: estado_cliente}, function(data){
-
+console.log(data);
 		        if(data.length === 0 || data == "NULL"){
 		            $('.clients_content').append('<p>Sem clientes com os dados de entrada</p>');
 		        

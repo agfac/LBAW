@@ -522,26 +522,88 @@ function updateUserPassword($username, $newpassword){
   return $stmt->fetchAll();
 }
 
-function getClientDataSearch($nomeCliente, $emailCliente, $estadoCliente){
-  
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT clienteid, nome, ativo
-                          FROM cliente
-                          WHERE cliente.nome = ?
-                          OR cliente.email = ?
-                          OR cliente.ativo = ?");
-  $stmt->execute(array($nomeCliente, $emailCliente, $estadoCliente));
-  
-  return $stmt->fetchAll();
-}
-
 function getUsersByDate($firstDate,$todayDate){
   global $conn;
   $stmt = $conn->prepare("SELECT *
                           FROM cliente
                           WHERE dataregisto BETWEEN ? AND ?");
   $stmt->execute(array($firstDate,$todayDate));
+  return $stmt->fetchAll();
+}
+
+function getUserByNameEmailAndStatus($nomeCliente, $emailCliente, $estadoCliente){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+                          FROM cliente
+                          WHERE nome = ?
+                          AND LOWER(email) = ?
+                          AND ativo = ?");
+  $stmt->execute(array($nomeCliente, $emailCliente, $estadoCliente));
+  
+  return $stmt->fetchAll();
+}
+
+function getUserByNameAndStatus($nomeCliente, $estadoCliente){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+                          FROM cliente
+                          WHERE nome = ?
+                          AND ativo = ?
+                          ORDER BY clienteid ASC");
+  $stmt->execute(array($nomeCliente, $estadoCliente));
+  
+  return $stmt->fetchAll();
+}
+
+function getUserByEmailAndStatus($emailCliente, $estadoCliente){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+                          FROM cliente
+                          WHERE LOWER(email) = ?
+                          AND ativo = ?");
+  $stmt->execute(array($emailCliente, $estadoCliente));
+  
+  return $stmt->fetchAll();
+}
+
+function getUserByName($nomeCliente){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+                          FROM cliente
+                          WHERE nome = ?");
+  $stmt->execute(array($nomeCliente));
+  
+  return $stmt->fetchAll();
+}
+function getUserByEmail($emailCliente){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+                          FROM cliente
+                          WHERE LOWER(email) = ?");
+  $stmt->execute(array($emailCliente));
+  
+  return $stmt->fetchAll();
+}
+function getUserByStatus($estadoCliente){
+  
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+                          FROM cliente
+                          WHERE ativo = ?
+                          ORDER BY clienteid ASC");
+  $stmt->execute(array($estadoCliente));
+  
   return $stmt->fetchAll();
 }
 ?>
