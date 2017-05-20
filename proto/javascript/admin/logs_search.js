@@ -6,9 +6,9 @@ $(document).ready(function() {
             flag = false;
 	    	var nome_utilizador = $('#nome_utilizador').val();
 	        var email_utilizador = $('#email_utilizador').val();
-	        var data_login = $('#single_cal4').val();//TODO, se alterar o id o calendario não funciona 
+	        var data_login = $('#single_cal4').val();
 	        var ordenar = $('#ordenar').val();
-
+console.log(ordenar);
 	        $('.logs_content').empty();
 
 	        $.getJSON("../../api/admin/logs_search.php", {nome_utilizador: nome_utilizador, email_utilizador: email_utilizador, data_login: data_login, ordenar: ordenar}, function(data){

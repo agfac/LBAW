@@ -6,7 +6,7 @@ $(document).ready(function() {
             flag = false;
 	    	var nome_administrador = $('#nome_administrador').val();
 	        var email_administrador = $('#email_administrador').val();
-	        var data_cessacao = $('#single_cal4').val(); //TODO, se alterar o id o calendario não funciona 
+	        var data_cessacao = $('#single_cal4').val(); 
 	        var estado_administrador = $('#estado_administrador').val();
 
 	        $('.admins_content').empty();

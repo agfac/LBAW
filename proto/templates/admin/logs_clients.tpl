@@ -55,8 +55,8 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select class="form-control" id="ordenar">
                     <option>Escolha uma opção</option>
-                    <option>Data mais recente</option>
-                    <option>Data menos recente</option>
+                    <option value="maisRecente">Data mais recente</option>
+                    <option value="menosRecente">Data menos recente</option>
                   </select>
                 </div>
               </div>

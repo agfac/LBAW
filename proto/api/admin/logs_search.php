@@ -7,9 +7,30 @@
 	$data_login = $_GET['data_login'];
 	$ordenar = $_GET['ordenar'];
 
-	if($nome_utilizador != null || $email_utilizador != null || $data_login != null || $ordenar != null)
-		$reply = getAllLogs(); //TODO, isto é só para testes
-	
+	if( $nome_utilizador == NULL && $email_utilizador == NULL && $data_login == NULL && $ordenar == "Escolha uma opção" )
+		$reply = getAllLogs(); 
+
+	// else if( $nome_utilizador != NULL && $ordenar != "Escolha uma opção" )
+	// 	$reply = getLogsByNameOrderBy($nome_utilizador, $ordenar);
+
+	// else if( $email_utilizador != NULL $ordenar != "Escolha uma opção" )
+	// 	$reply = getLogsByEmailOrderBy($email_utilizador, $ordenar); 
+
+	// else if( $data_login != NULL && $ordenar != "Escolha uma opção" )
+	// 	$reply = getLogsByLoginDateOrderBy($data_login, $ordenar); 
+
+	else if( $nome_utilizador != NULL )
+		$reply = getLogsByName($nome_utilizador);
+
+	else if( $email_utilizador != NULL )
+		$reply = getLogsByEmail($email_utilizador); 
+
+	// else if( $data_login != NULL )
+	// 	$reply = getLogsByLoginDate($data_login); 
+
+	// else if( $ordenar != "Escolha uma opção" )
+	// 	$reply = getAllLogsOrderBy($ordenar); 
+
 	else
 		$reply = "NULL";
 

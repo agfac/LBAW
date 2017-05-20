@@ -80,7 +80,7 @@ function getCommentsByPublicationName($nomePublicacao){
 	return $stmt->fetchAll();
 }
 
-function getCommentsOrdered($ordenar){
+function getCommentsOrderBy($ordenar){
 	global $conn;
 	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo
 							FROM comentario
