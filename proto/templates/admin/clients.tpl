@@ -89,10 +89,10 @@
             <table class="table table-striped projects">
               <thead>
                 <tr>
-                  <th style="width: 2%">ID</th>
-                  <th style="width: 55%">Nome do cliente</th>
-                  <th style="width: 13%">Estado</th>
-                  <th style="width: 20%">#Editar</th>
+                  <th style="width: 2%"><button type="button" class="btn btn-default btn-xs btn-block" id="id">ID</button></th>
+                  <th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="nome">Nome do cliente</button> </th>
+                  <th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="estado">Estado</button></th>
+                  <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">#Editar</button></th>
                 </tr>
               </thead>
               <tbody>

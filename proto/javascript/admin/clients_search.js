@@ -52,4 +52,17 @@ console.log(data);
         $('#email_cliente').val("");
         $('#estado_cliente').val("Escolha uma opção");
     });
+
+	$('#id').on('click', function(){
+		console.log("Ordena pelo id");
+	});
+
+	$('#nome').on('click', function(){
+		console.log("Ordena pelo nome");
+	});
+
+	$('#estado').on('click', function(){
+		console.log("Ordena pelo estado");
+	});
+
 });
