@@ -3,34 +3,28 @@
 	include_once($BASE_DIR .'database/admins.php');
 	
 	$nome_administrador = $_GET['nome_administrador'];
-	$email_administrador = $_GET['email_administrador'];
+	$username_administrador = $_GET['username_administrador'];
 	$data_cessacao = $_GET['data_cessacao'];
 	$estado_administrador = $_GET['estado_administrador'];
 
-	if($nome_administrador == NULL && $email_administrador == NULL && $data_cessacao == null && $estado_administrador == "Escolha uma opção")
+	if($nome_administrador == NULL && $username_administrador == NULL && $data_cessacao == null && $estado_administrador == "Escolha uma opção")
 		$reply = getAllAdmins();
 
-	else if($nome_administrador != NULL && $estado_administrador != "Escolha uma opção")
-		$reply = getAdminByNameOrderBy($nome_administrador, $estado_administrador);
+	else if($nome_administrador != NULL && $username_administrador == NULL && $data_cessacao == null && $estado_administrador != "Escolha uma opção")
+		$reply = getAdminByNameAndStatus($nome_administrador, $estado_administrador);
 
-	// else if($email_administrador != NULL && $estado_administrador != "Escolha uma opção")
-	// 	$reply = getAdminByEmailOrderBy($email_administrador, $estado_administrador);
-
-	// else if($data_cessacao != NULL && $estado_administrador != "Escolha uma opção")
-	// 	$reply = getAdminByCessationDataOrderBy($data_cessacao, $estado_administrador);
-
-
-	else if($nome_administrador != NULL)
+	else if($nome_administrador != NULL && $username_administrador == NULL && $data_cessacao == null && $estado_administrador == "Escolha uma opção")
 		$reply = getAdminByName($nome_administrador);
 
-	// else if($email_administrador != NULL)
-	// 	$reply = getAdminByEmail($email_administrador);
+	else if($nome_administrador == NULL && $username_administrador != NULL && $data_cessacao == null && $estado_administrador == "Escolha uma opção")
+		$reply = getAdminByUsername($username_administrador);
 
-	// else if($data_cessacao != NULL)
-	// 	$reply = getAdminByCessationData($data_cessacao);
+	else if($nome_administrador == NULL && $username_administrador == NULL && $data_cessacao != null && $estado_administrador == "Escolha uma opção")
+		$reply = getAdminByCessationDate($data_cessacao);
 
-	else if($estado_administrador != "Escolha uma opção")
+	else if($nome_administrador == NULL && $username_administrador == NULL && $data_cessacao == null && $estado_administrador != "Escolha uma opção")
 		$reply = getAdminByAdminStatus($estado_administrador);
+
 	else
 		$reply = "NULL";
 

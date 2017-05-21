@@ -5,13 +5,18 @@ $(document).ready(function() {
     	if (flag){
             flag = false;
 	    	var nome_administrador = $('#nome_administrador').val();
-	        var email_administrador = $('#email_administrador').val();
+	        var username_administrador = $('#username_administrador').val();
 	        var data_cessacao = $('#single_cal4').val(); 
 	        var estado_administrador = $('#estado_administrador').val();
 
+			if(data_cessacao){
+	            var arr = data_cessacao.split('/');
+	            data_cessacao = arr[2] +'/'+ arr[0] +'/'+ arr[1];
+			}
+
 	        $('.admins_content').empty();
 
-	        $.getJSON("../../api/admin/admins_search.php", {nome_administrador: nome_administrador, email_administrador: email_administrador, data_cessacao: data_cessacao, estado_administrador: estado_administrador}, function(data){
+	        $.getJSON("../../api/admin/admins_search.php", {nome_administrador: nome_administrador, username_administrador: username_administrador, data_cessacao: data_cessacao, estado_administrador: estado_administrador}, function(data){
 
 		        if(data.length === 0 || data == "NULL"){
 		            $('.admins_content').append('<p>Sem administradores com os dados de entrada</p>');

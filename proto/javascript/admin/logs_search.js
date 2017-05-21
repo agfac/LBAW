@@ -5,13 +5,21 @@ $(document).ready(function() {
     	if (flag){
             flag = false;
 	    	var nome_utilizador = $('#nome_utilizador').val();
-	        var email_utilizador = $('#email_utilizador').val();
+	        var username_utilizador = $('#username_utilizador').val();
 	        var data_login = $('#single_cal4').val();
 	        var ordenar = $('#ordenar').val();
-console.log(ordenar);
+
+	        if(data_login){
+	            var arr = data_login.split('/');
+	            data_login = arr[2] +'/'+ arr[0] +'/'+ arr[1];
+			}
+
+console.log(data_login);
+
+
 	        $('.logs_content').empty();
 
-	        $.getJSON("../../api/admin/logs_search.php", {nome_utilizador: nome_utilizador, email_utilizador: email_utilizador, data_login: data_login, ordenar: ordenar}, function(data){
+	        $.getJSON("../../api/admin/logs_search.php", {nome_utilizador: nome_utilizador, username_utilizador: username_utilizador, data_login: data_login, ordenar: ordenar}, function(data){
 
 		        if(data.length === 0 || data == "NULL"){
 		            $('.logs_content').append('<p>Sem comentários com os dados de entrada</p>');

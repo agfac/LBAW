@@ -37,6 +37,37 @@ function getLast5CommentsByDate($firstDate,$todayDate){
   return $stmt->fetchAll();
 }
 
+function getCommentsByClientNamePublicationName($nomeCliente, $nomePublicacao){
+	global $conn;
+	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo
+							FROM comentario
+							JOIN cliente
+							ON cliente.clienteid = comentario.clienteid
+							JOIN publicacao
+							ON publicacao.publicacaoid = comentario.publicacaoid
+							WHERE LOWER(cliente.nome) like '%'||?||'%'
+							AND LOWER(publicacao.titulo) like '%'||?||'%'
+							ORDER BY comentario.comentarioid ");
+
+	$stmt->execute(array(strtolower($nomeCliente), strtolower($nomePublicacao)));
+	return $stmt->fetchAll();
+}
+function getCommentsByClientEmailPublicationName($emailCliente, $nomePublicacao){
+	global $conn;
+	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo
+							FROM comentario
+							JOIN cliente
+							ON cliente.clienteid = comentario.clienteid
+							JOIN publicacao
+							ON publicacao.publicacaoid = comentario.publicacaoid
+							WHERE LOWER(cliente.email) = ?
+							AND LOWER(publicacao.titulo) like '%'||?||'%'
+							ORDER BY comentario.comentarioid ");
+
+	$stmt->execute(array(strtolower($emailCliente), strtolower($nomePublicacao)));
+	return $stmt->fetchAll();
+}
+
 function getCommentsByClientName($nomeCliente){
 	global $conn;
 	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo
@@ -74,12 +105,13 @@ function getCommentsByPublicationName($nomePublicacao){
 							ON cliente.clienteid = comentario.clienteid
 							JOIN publicacao
 							ON publicacao.publicacaoid = comentario.publicacaoid
-							WHERE LOWER(publicacao.titulo) like '%'||?||'%' ");
+							WHERE LOWER(publicacao.titulo) like '%'||?||'%' 
+							ORDER BY comentario.comentarioid ");
 
 	$stmt->execute(array(strtolower($nomePublicacao)));
 	return $stmt->fetchAll();
 }
-
+//TODO apagar ? ------------------------------------------------
 function getCommentsOrderBy($ordenar){
 	global $conn;
 	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo
@@ -146,5 +178,5 @@ function getCommentsByPublicationNameOrderBy($nomePublicacao, $ordenar){
 	$stmt->execute(array(strtolower($nomePublicacao), $ordenar, $ordenar));
 	return $stmt->fetchAll();
 }
-
+// ate aqui ------------------------------------------------
 ?>

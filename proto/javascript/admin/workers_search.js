@@ -9,6 +9,11 @@ $(document).ready(function() {
 	        var data_admissao = $('#single_cal4').val(); //TODO, se alterar o id o calendario não funciona 
 	        var estado_funcionario = $('#estado_funcionario').val();
 
+			if(data_admissao){
+	            var arr = data_admissao.split('/');
+	            data_admissao = arr[2] +'/'+ arr[0] +'/'+ arr[1];
+			}
+
 	        console.log(data_admissao);
 	        
 	        $('.workers_content').empty();

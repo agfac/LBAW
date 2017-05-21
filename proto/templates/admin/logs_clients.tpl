@@ -34,9 +34,9 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Email do Utilizador:</label>
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Username do Utilizador:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="email_utilizador" placeholder="Email do Cliente">
+                  <input type="text" class="form-control" id="username_utilizador" placeholder="Username do Cliente">
                 </div>
               </div>
 

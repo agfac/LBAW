@@ -531,21 +531,6 @@ function getUsersByDate($firstDate,$todayDate){
   return $stmt->fetchAll();
 }
 
-function getUserByNameEmailAndStatus($nomeCliente, $emailCliente, $estadoCliente){
-  
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
-                          FROM cliente
-                          WHERE LOWER(nome) like '%'||?||'%'
-                          AND LOWER(email) = ?
-                          AND ativo = ?");
-
-  $stmt->execute(array(strtolower($nomeCliente), strtolower($emailCliente), $estadoCliente));
-  
-  return $stmt->fetchAll();
-}
-
 function getUserByNameAndStatus($nomeCliente, $estadoCliente){
   
   global $conn;
@@ -557,20 +542,6 @@ function getUserByNameAndStatus($nomeCliente, $estadoCliente){
                           ORDER BY clienteid ASC");
 
   $stmt->execute(array(strtolower($nomeCliente), $estadoCliente));
-  
-  return $stmt->fetchAll();
-}
-
-function getUserByEmailAndStatus($emailCliente, $estadoCliente){
-  
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
-                          FROM cliente
-                          WHERE LOWER(email) = ?
-                          AND ativo = ?");
-
-  $stmt->execute(array(strtolower($emailCliente), $estadoCliente));
   
   return $stmt->fetchAll();
 }

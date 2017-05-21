@@ -7,8 +7,30 @@
 	$data_admissao = $_GET['data_admissao'];
 	$estado_funcionario = $_GET['estado_funcionario'];
 
-	if($nome_funcionario != null || $email_funcionario != null || $data_admissao != null || $estado_funcionario != null)
-		$reply = getWorkersAllData("manuellopes"); //TODO, isto é só para testes
+	if($nome_funcionario == null && $email_funcionario == null && $data_admissao == null && $estado_funcionario == "Escolha uma opção")
+		$reply = getAllWorkers(); 
+
+	else if($nome_funcionario != null && $email_funcionario == null && $data_admissao != null && $estado_funcionario != "Escolha uma opção")
+		$reply = getWorkerByNameAdmissionDateAndStatus($nome_funcionario, $data_admissao, $estado_funcionario); 
+
+	else if($nome_funcionario != null && $email_funcionario == null && $data_admissao == null && $estado_funcionario != "Escolha uma opção")
+		$reply = getWorkerByNameAndStatus($nome_funcionario, $estado_funcionario); 
+
+	else if($nome_funcionario == null && $email_funcionario == null && $data_admissao != null && $estado_funcionario != "Escolha uma opção")
+		$reply = getWorkerByAdmissionDateAndStatus($data_admissao, $estado_funcionario); 
+
+	else if($nome_funcionario != null && $email_funcionario == null && $data_admissao == null && $estado_funcionario == "Escolha uma opção")
+		$reply = getWorkerByName($nome_funcionario); 
+
+	else if($nome_funcionario == null && $email_funcionario != null && $data_admissao == null && $estado_funcionario == "Escolha uma opção")
+		$reply = getWorkerByEmail($email_funcionario); 
+
+	else if($nome_funcionario == null && $email_funcionario == null && $data_admissao != null && $estado_funcionario == "Escolha uma opção")
+		$reply = getWorkerByAdmissionDate($data_admissao); 
+
+	else if($nome_funcionario == null && $email_funcionario == null && $data_admissao == null && $estado_funcionario != "Escolha uma opção")
+		$reply = getWorkerByStatus($estado_funcionario); 
+
 	else
 		$reply = "NULL";
 

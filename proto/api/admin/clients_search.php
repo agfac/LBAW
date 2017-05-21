@@ -9,22 +9,16 @@
 	if( $nome_cliente == NULL && $email_cliente == NULL && $estado_cliente == "Escolha uma opção" )
 		$reply = getAllUsers();
 
-	else if( $nome_cliente != NULL && $email_cliente != NULL && $estado_cliente != "Escolha uma opção" )
-		$reply = getUserByNameEmailAndStatus($nome_cliente, $email_cliente, $estado_cliente);
-
-	else if( $nome_cliente != NULL && $estado_cliente != "Escolha uma opção" )
+	else if( $nome_cliente != NULL && $email_cliente == NULL && $estado_cliente != "Escolha uma opção" )
 		$reply = getUserByNameAndStatus($nome_cliente, $estado_cliente);
 
-	else if( $email_cliente != NULL && $estado_cliente != "Escolha uma opção" )
-		$reply = getUserByEmailAndStatus($email_cliente, $estado_cliente);
-
-	else if( $nome_cliente != NULL )
+	else if( $nome_cliente != NULL && $email_cliente == NULL && $estado_cliente == "Escolha uma opção" )
 		$reply = getUserByName($nome_cliente);
 
-	else if( $email_cliente != NULL )
+	else if( $nome_cliente == NULL && $email_cliente != NULL && $estado_cliente == "Escolha uma opção" )
 		$reply = getUserByEmail($email_cliente);
 
-	else if( $estado_cliente != "Escolha uma opção" )
+	else if( $nome_cliente == NULL && $email_cliente == NULL && $estado_cliente != "Escolha uma opção" )
 		$reply = getUserByStatus($estado_cliente);
 
 	else

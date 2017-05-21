@@ -207,8 +207,7 @@ function getAdminData($username) {
 }
 
 
-
-function getAdminByNameOrderBy($nomeAdministrador, $estadoAdministrador){
+function getAdminByNameAndStatus($nomeAdministrador, $estadoAdministrador){
     global $conn;
     
     $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo 
@@ -220,14 +219,6 @@ function getAdminByNameOrderBy($nomeAdministrador, $estadoAdministrador){
     $stmt->execute(array(strtolower($nomeAdministrador), $estadoAdministrador));
     return $stmt->fetchAll();
 }
-
-// function getAdminByEmailOrderBy($emailAministrador, $estadoAdministrador){
-
-// }
-
-// function getAdminByCessationDataOrderBy($dataCessacao, $estadoAdministrador){
-
-// }
 
 function getAdminByName($nomeAdministrador){
     global $conn;
@@ -241,33 +232,39 @@ function getAdminByName($nomeAdministrador){
     return $stmt->fetchAll();
 }
 
-// function getAdminByEmail($emailAministrador){
-
-// }
-
-// function getAdminByCessationData($dataCessacao){
-//     global $conn;
+function getAdminByUsername($usernameAdministrador){
+    global $conn;
     
-//     $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo
-//                             FROM administrador
-//                             WHERE datacessacao::date >= ? AND datacessacao::date <= ?
-//                             ORDER BY administradorid");
+    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo 
+                            FROM administrador
+                            WHERE LOWER(username) = ?");
     
-//     $stmt->execute(array($dataCessacao, $dataCessacao));
-//     return $stmt->fetchAll();
-// }
+    $stmt->execute(array(strtolower($usernameAdministrador)));
+    return $stmt->fetchAll();
+}
+
+function getAdminByCessationDate($dataCessacao){
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo
+                            FROM administrador
+                            WHERE datacessacao::date >= ? AND datacessacao::date <= ?
+                            ORDER BY administradorid");
+    
+    $stmt->execute(array($dataCessacao, $dataCessacao));
+    return $stmt->fetchAll();
+}
 
 function getAdminByAdminStatus($estadoAdministrador){
     global $conn;
     
     $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo
                             FROM administrador
-                            WHERE ativo = ?");
+                            WHERE ativo = ?
+                            ORDER BY administradorid");
     
     $stmt->execute(array($estadoAdministrador));
     return $stmt->fetchAll();
 }
-
-
 
 ?>

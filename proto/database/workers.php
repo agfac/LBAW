@@ -375,4 +375,92 @@ function getWorkerData($username) {
     return $stmt->fetchAll();
 }
 
+function getWorkerByNameAdmissionDateAndStatus($nomeFuncionario, $dataAdmissao, $estadoFuncionario){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+                            FROM funcionario
+                            WHERE LOWER(nome) like '%'||?||'%'
+                            AND dataadmissao::date = ?
+                            AND ativo = ?
+                            ORDER BY funcionarioid");
+
+    $stmt->execute(array(strtolower($nomeFuncionario), $dataAdmissao, $estadoFuncionario));
+    return $stmt->fetchAll();
+}
+
+function getWorkerByNameAndStatus($nomeFuncionario, $estadoFuncionario){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+                            FROM funcionario
+                            WHERE LOWER(nome) like '%'||?||'%'
+                            AND ativo = ?
+                            ORDER BY funcionarioid");
+
+    $stmt->execute(array(strtolower($nomeFuncionario), $estadoFuncionario));
+    return $stmt->fetchAll();
+}
+function getWorkerByAdmissionDateAndStatus($dataAdmissao, $estadoFuncionario){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+                            FROM funcionario
+                            WHERE dataadmissao::date = ?
+                            AND ativo = ?
+                            ORDER BY funcionarioid");
+
+    $stmt->execute(array($dataAdmissao, $estadoFuncionario));
+    return $stmt->fetchAll();
+}
+
+function getWorkerByName($nomeFuncionario){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+                            FROM funcionario
+                            WHERE LOWER(nome) like '%'||?||'%'
+                            ORDER BY funcionarioid");
+
+    $stmt->execute(array(strtolower($nomeFuncionario)));
+    return $stmt->fetchAll();
+}
+
+function getWorkerByEmail($emailFuncionario){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+                            FROM funcionario
+                            WHERE LOWER(email) = ?
+                            ORDER BY funcionarioid");
+
+    $stmt->execute(array(strtolower($emailFuncionario)));
+    return $stmt->fetchAll();
+}
+
+function getWorkerByAdmissionDate($dataAdmissao){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+                            FROM funcionario
+                            WHERE dataadmissao::date = ?
+                            ORDER BY funcionarioid");
+
+    $stmt->execute(array($dataAdmissao));
+    return $stmt->fetchAll();
+}
+
+function getWorkerByStatus($estadoFuncionario){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+                            FROM funcionario
+                            WHERE ativo = ?
+                            ORDER BY funcionarioid");
+
+    $stmt->execute(array($estadoFuncionario));
+    return $stmt->fetchAll();
+}
+
+
 ?>
