@@ -89,11 +89,19 @@
             <table class="table table-striped projects">
               <thead>
                 <tr>
-                  <th style="width: 2%"><button type="button" class="btn btn-default btn-xs btn-block" id="id">ID</button></th>
-                  <th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="nome">Nome do cliente</button> </th>
-                  <th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="estado">Estado</button></th>
-                  <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">#Editar</button></th>
+                  <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="id">ID <span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="nome">Nome do cliente <span class="glyphicon glyphicon-sort"></span></button> </th>
+                  <th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="estado">Estado <span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">#Editar </button></th>
                 </tr>
+                <!--
+                 <tr>
+                  <th style="width: 6%">ID <span id="id" class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 51%">Nome do cliente <span id="nome" class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 13%">Estado <span id="estado" class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 20%">#Editar </th>
+                </tr>
+                -->
               </thead>
               <tbody>
                 {foreach $allUseres as $user}
