@@ -52,7 +52,7 @@
 											</a>
 										</td>
 										<td>
-											<h6 class="regular"><a href="?page=single-product">{$publication.titulo}</a></h6>
+											<h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
 											<p>{$publication.nome_categoria} | {$publication.nome_subcategoria}</p>
 										</td>
 										<td>
