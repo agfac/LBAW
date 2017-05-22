@@ -1858,6 +1858,11 @@ UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=2
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=28;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=29;
 UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=30;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=1 WHERE informacaofaturacaoID=31;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=2 WHERE informacaofaturacaoID=32;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=4 WHERE informacaofaturacaoID=33;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=5 WHERE informacaofaturacaoID=34;
+UPDATE InformacaoFaturacao SET metodoPagamentoID=6 WHERE informacaofaturacaoID=35;
 
 /* ------------------------------------------------------ R25 PublicacaoEncomenda ------------------------------------------------------ */
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (43,1);

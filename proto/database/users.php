@@ -169,10 +169,18 @@ function getUserOrderList($clienteid) {
     
     global $conn;
     
-    $stmt = $conn->prepare("SELECT encomenda.encomendaid, informacaofaturacao.total, encomenda.data, encomenda.estado 
+    $stmt = $conn->prepare("SELECT encomenda.*, informacaofaturacao.portes, informacaofaturacao.total, metodopagamento.tipo, morada.*, codigopostal.*, localidade.nome 
                             FROM informacaofaturacao
-                            JOIN encomenda
+                            RIGHT JOIN encomenda
                             ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+                            LEFT JOIN metodopagamento
+                            ON informacaofaturacao.metodopagamentoid = metodopagamento.metodopagamentoid
+                            LEFT JOIN morada
+                            ON morada.moradaid = encomenda.moradafaturacaoid
+                            LEFT JOIN codigopostal
+                            ON morada.codigopostalid = codigopostal.codigopostalid
+                            LEFT JOIN localidade
+                            ON localidade.localidadeid = codigopostal.localidadeid
                             WHERE encomenda.clienteid = ?");
     
     $stmt->execute(array($clienteid));

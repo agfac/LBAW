@@ -30,15 +30,19 @@
 				<hr class="spacer-5"><hr class="spacer-20 no-border">
 				
 				<div class="row">
-					<div class="col-sm-12">
+					<div class="col-sm-13">
 						<div class="table-responsive">    
 							<table class="table table-striped">
 								<thead>
 									<tr>
 										<th>ID</th>
 										<th>Data</th>
-										<th>N.º Itens</th>
+										<th>Morada de Envio</th>
+										<th>Código-Postal</th>
+										<th>Localidade</th>
+										<th>Portes</th>
 										<th>Total</th>
+										<th>Método de Pagamento</th>
 										<th>Estado</th>
 									</tr>
 								</thead>
@@ -81,10 +85,26 @@
 											{$years.$val}
 										</td>
 										<td>
-											<span>{$orderspublications.$val}</span>
+											{$order.rua}
 										</td>
 										<td>
-											<span>€{$order.total}</span>
+											{$order.cod1}-{$order.cod2}
+										</td>
+										<td>
+											{$order.nome}
+										</td>
+										<td>
+											{if $order.portes eq '0'}
+											Grátis
+											{else}
+											€{$order.portes}
+											{/if}
+										</td>
+										<td>
+											€{$order.total}
+										</td>
+										<td>
+											{$order.tipo}
 										</td>
 										<td>
 											{if $order.estado eq 'Enviada'} 
