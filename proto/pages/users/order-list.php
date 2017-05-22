@@ -8,6 +8,10 @@
 
   $orders = getUserOrderList($userdata[0]['clienteid']);
   
+  $clientid = $_SESSION['userid'];
+  
+  $publicationsusercart = getUserPublicationsCart($clientid);
+
   $days = array();
   
   $months = array();
@@ -23,13 +27,11 @@
     $months[] = $dateparsed[1];
     $years[] = $dateparsed[0];
   }
-  print_r($orders);
-  print_r($days);
-  print_r($months);
-  print_r($years);
+
   $smarty->assign('orders', $orders);
   $smarty->assign('days', $days);
   $smarty->assign('months', $months);
   $smarty->assign('years', $years);
+  $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
   $smarty->display('users/order-list.tpl');
 ?>
