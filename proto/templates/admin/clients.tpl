@@ -86,13 +86,13 @@
             <p>Clientes da loja</p>
             <!-- start of list -->
             {if $allUseres}
-            <table class="table table-striped projects">
+            <table class="table table-striped projects" id="myTable">
               <thead>
                 <tr>
                   <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="id">ID <span class="glyphicon glyphicon-sort"></span></button></th>
                   <th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="nome">Nome do cliente <span class="glyphicon glyphicon-sort"></span></button> </th>
                   <th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="estado">Estado <span class="glyphicon glyphicon-sort"></span></button></th>
-                  <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">#Editar </button></th>
+                  <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th>
                 </tr>
                 <!--
                  <tr>

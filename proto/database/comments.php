@@ -17,7 +17,7 @@ function getCommentsByDate($firstDate,$todayDate){
   global $conn;
   $stmt = $conn->prepare("SELECT *
                           FROM comentario
-                          WHERE data BETWEEN ? AND ?
+                          WHERE data::date >= ? AND data::date <= ?
                           ORDER BY comentarioid ASC");
   $stmt->execute(array($firstDate,$todayDate));
   return $stmt->fetchAll();
@@ -29,12 +29,20 @@ function getLast5CommentsByDate($firstDate,$todayDate){
 						  FROM comentario
 						  JOIN cliente
 						  on cliente.clienteid = comentario.clienteid
-						  WHERE data BETWEEN ? AND ? 
+						  WHERE data::date >= ? AND data::date <= ?
 						  ORDER BY comentario.data DESC
 						  LIMIT 5");
   
   $stmt->execute(array($firstDate,$todayDate));
   return $stmt->fetchAll();
+}
+
+function deleteComment($idcomment){
+	global $conn;
+	$stmt = $conn->prepare("DELETE FROM comentario
+							WHERE comentarioid = ?");
+	$stmt->execute(array($idcomment));
+	return $stmt->fetchAll();
 }
 
 function getCommentsByClientNamePublicationName($nomeCliente, $nomePublicacao){

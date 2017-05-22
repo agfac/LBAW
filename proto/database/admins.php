@@ -210,7 +210,7 @@ function getAdminData($username) {
 function getAdminByNameAndStatus($nomeAdministrador, $estadoAdministrador){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo 
+    $stmt = $conn->prepare("SELECT * 
                             FROM administrador
                             WHERE LOWER(nome) like '%'||?||'%' 
                             AND ativo = ?
@@ -223,7 +223,7 @@ function getAdminByNameAndStatus($nomeAdministrador, $estadoAdministrador){
 function getAdminByName($nomeAdministrador){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo 
+    $stmt = $conn->prepare("SELECT * 
                             FROM administrador
                             WHERE LOWER(nome) like '%'||?||'%' 
                             ORDER BY administradorid ");
@@ -235,7 +235,7 @@ function getAdminByName($nomeAdministrador){
 function getAdminByUsername($usernameAdministrador){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo 
+    $stmt = $conn->prepare("SELECT * 
                             FROM administrador
                             WHERE LOWER(username) = ?");
     
@@ -246,19 +246,19 @@ function getAdminByUsername($usernameAdministrador){
 function getAdminByCessationDate($dataCessacao){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo
+    $stmt = $conn->prepare("SELECT *
                             FROM administrador
-                            WHERE datacessacao::date >= ? AND datacessacao::date <= ?
+                            WHERE datacessacao::date = ? 
                             ORDER BY administradorid");
     
-    $stmt->execute(array($dataCessacao, $dataCessacao));
+    $stmt->execute(array($dataCessacao));
     return $stmt->fetchAll();
 }
 
 function getAdminByAdminStatus($estadoAdministrador){
     global $conn;
     
-    $stmt = $conn->prepare("SELECT administradorid, nome, datacessacao, ativo
+    $stmt = $conn->prepare("SELECT *
                             FROM administrador
                             WHERE ativo = ?
                             ORDER BY administradorid");

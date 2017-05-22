@@ -19,7 +19,7 @@ function getlogsByDate($firstDate,$todayDate){
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM login
-                            WHERE data BETWEEN ? AND ?");
+                            WHERE data::date >= ? AND data::date <= ?");
     $stmt->execute(array($firstDate,$todayDate));
     return $stmt->fetchAll();
 }

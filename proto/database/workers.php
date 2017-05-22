@@ -378,7 +378,7 @@ function getWorkerData($username) {
 function getWorkerByNameAdmissionDateAndStatus($nomeFuncionario, $dataAdmissao, $estadoFuncionario){
     global $conn;
 
-    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+    $stmt = $conn->prepare("SELECT *
                             FROM funcionario
                             WHERE LOWER(nome) like '%'||?||'%'
                             AND dataadmissao::date = ?
@@ -392,7 +392,7 @@ function getWorkerByNameAdmissionDateAndStatus($nomeFuncionario, $dataAdmissao, 
 function getWorkerByNameAndStatus($nomeFuncionario, $estadoFuncionario){
     global $conn;
 
-    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+    $stmt = $conn->prepare("SELECT *
                             FROM funcionario
                             WHERE LOWER(nome) like '%'||?||'%'
                             AND ativo = ?
@@ -404,7 +404,7 @@ function getWorkerByNameAndStatus($nomeFuncionario, $estadoFuncionario){
 function getWorkerByAdmissionDateAndStatus($dataAdmissao, $estadoFuncionario){
     global $conn;
 
-    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+    $stmt = $conn->prepare("SELECT *
                             FROM funcionario
                             WHERE dataadmissao::date = ?
                             AND ativo = ?
@@ -417,7 +417,7 @@ function getWorkerByAdmissionDateAndStatus($dataAdmissao, $estadoFuncionario){
 function getWorkerByName($nomeFuncionario){
     global $conn;
 
-    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+    $stmt = $conn->prepare("SELECT *
                             FROM funcionario
                             WHERE LOWER(nome) like '%'||?||'%'
                             ORDER BY funcionarioid");
@@ -429,7 +429,7 @@ function getWorkerByName($nomeFuncionario){
 function getWorkerByEmail($emailFuncionario){
     global $conn;
 
-    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+    $stmt = $conn->prepare("SELECT *
                             FROM funcionario
                             WHERE LOWER(email) = ?
                             ORDER BY funcionarioid");
@@ -441,7 +441,7 @@ function getWorkerByEmail($emailFuncionario){
 function getWorkerByAdmissionDate($dataAdmissao){
     global $conn;
 
-    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+    $stmt = $conn->prepare("SELECT *
                             FROM funcionario
                             WHERE dataadmissao::date = ?
                             ORDER BY funcionarioid");
@@ -453,7 +453,7 @@ function getWorkerByAdmissionDate($dataAdmissao){
 function getWorkerByStatus($estadoFuncionario){
     global $conn;
 
-    $stmt = $conn->prepare("SELECT funcionarioid, nome, dataadmissao, ativo 
+    $stmt = $conn->prepare("SELECT *
                             FROM funcionario
                             WHERE ativo = ?
                             ORDER BY funcionarioid");

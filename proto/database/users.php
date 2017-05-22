@@ -518,7 +518,7 @@ function getUsersByDate($firstDate,$todayDate){
   global $conn;
   $stmt = $conn->prepare("SELECT *
                           FROM cliente
-                          WHERE dataregisto BETWEEN ? AND ?");
+                          WHERE dataregisto::date >= ? AND dataregisto::date <= ?");
   $stmt->execute(array($firstDate,$todayDate));
   return $stmt->fetchAll();
 }
@@ -527,7 +527,7 @@ function getUserByNameAndStatus($nomeCliente, $estadoCliente){
   
   global $conn;
 
-  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+  $stmt = $conn->prepare("SELECT *
                           FROM cliente
                           WHERE LOWER(nome) like '%'||?||'%'
                           AND ativo = ?
@@ -542,7 +542,7 @@ function getUserByName($nomeCliente){
   
   global $conn;
 
-  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+  $stmt = $conn->prepare("SELECT *
                           FROM cliente
                           WHERE LOWER(nome) like '%'||?||'%'");
 
@@ -554,7 +554,7 @@ function getUserByEmail($emailCliente){
   
   global $conn;
 
-  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+  $stmt = $conn->prepare("SELECT *
                           FROM cliente
                           WHERE LOWER(email) = ?");
 
@@ -566,7 +566,7 @@ function getUserByStatus($estadoCliente){
   
   global $conn;
 
-  $stmt = $conn->prepare("SELECT clienteid, nome, email, ativo
+  $stmt = $conn->prepare("SELECT *
                           FROM cliente
                           WHERE ativo = ?
                           ORDER BY clienteid ASC");

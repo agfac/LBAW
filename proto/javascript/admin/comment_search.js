@@ -22,7 +22,7 @@ console.log(ordenar);
 		            $('.comment_content').append('<p>Comentários das publicações na loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 15%">Nome da Publicação</th><th style="width: 15%">Nome do Cliente</th><th style="width: 10%">Classificação</th><th style="width: 20%">Comentário</th><th style="width: 15%">#Editar</th></tr></thead><tbody>');
 		            
 		            for (var i in data){
-		                $('.comment_content').find('tbody').append('<tr><td>'+data[i].comentarioid+'</td><td><a>'+data[i].titulo+'</a></td><td><a>'+data[i].nome+'</a></td><td><a class="fa fa-star"> '+data[i].classificacao+'</a></td><td><a>'+data[i].texto+'</a></td><td><a href="publication.php?id='+data[i].publicacaoid+'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a><a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a></td></tr>');
+		                $('.comment_content').find('tbody').append('<tr><td>'+data[i].comentarioid+'</td><td><a>'+data[i].titulo+'</a></td><td><a>'+data[i].nome+'</a></td><td><a class="fa fa-star"> '+data[i].classificacao+'</a></td><td><a>'+data[i].texto+'</a></td><td><a href="../publications/publication.php?id='+data[i].publicacaoid+'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a><a href="../../actions/admin/comment_remove.php?id='+data[i].comentarioid+'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a></td></tr>');
 					}
 
 		            $('.comment_content').append('</tbody></table>');
