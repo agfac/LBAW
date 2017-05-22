@@ -37,7 +37,7 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Preço</th>
+										<th>Total</th>
 										<th>Data</th>
 										<th>Estado</th>
 									</tr>
