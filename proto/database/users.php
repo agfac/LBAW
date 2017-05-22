@@ -217,7 +217,7 @@ function getUserPublicationsWishList($clienteid) {
   
   global $conn;
   
-  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.titulo, publicacao.preco, imagem.url
+  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.publicacaoid, publicacao.titulo, publicacao.preco, imagem.url
                           FROM wishlist
                           JOIN cliente
                           ON wishlist.clienteid = cliente.clienteid 
