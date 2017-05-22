@@ -30,7 +30,7 @@
 
                 <div class="widget">
                    <h6 class="subtitle">Categorias</h6>
-                   <select class="form-control" required="required" name="categoria" id="categoria-form">
+                   <select class="form-control" name="categoria" id="categoria-form">
                     {foreach $category as $c}
                     {if $c.nome == $def_cat}
                     <option value="{$c.categoriaid}" selected="selected">{$c.nome}</option>
@@ -43,7 +43,7 @@
 
             <div class="widget">
                <h6 class="subtitle">Subcategorias</h6>
-               <select class="form-control" required="required" name="subcategoria" id="subcategoria-form">
+               <select class="form-control" name="subcategoria" id="subcategoria-form">
                    {foreach $def_subcat_array as $sub}
                    {if $sub.nome == $def_subcat}
                    <option value="{$sub.subcategoriaid}" selected="selected">{$sub.nome}</option>
@@ -69,9 +69,8 @@
                 </div>
                 <div class="ui-range-slider">
                 </div>
-                <button id="price-submit" class="btn btn-default btn-block btn-sm">Filtrar Preços</button>
             </form>
-            
+            <button id="price-submit" class="btn btn-default btn-block btn-sm">Filtrar Preços</button>
         </div><!-- end widget -->
 
 
@@ -114,41 +113,41 @@
 
         <div class="col-sm-12 text-left" id="products-listing">
             <div class="sub-products-listing" >
-                <table class="table" id="products-table">
-                    <tbody>
-                        {foreach $def_pubs as $publication}
-                        <tr>
-                            <td>
-                                <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"></a>
-                                <img src='{$BASE_URL}{$publication.url}' width='60px' />
-                            </td>
-                            <td>
-                              <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"> {$publication.titulo}</a>
-                          </td>
-                          <td>
-                              {if $publication.nome_autor}
-                              <h7>{$publication.nome_autor}</h7>
-                              {else}
-                              <h7>Sem autor</h7>
-                              {/if}
-                          </td>
-                          <td>
-                              <h7>{$publication.preco|string_format:"%.2f"}€</h7>
-                          </td>
-                          <td>
-                              <h7>{$publication.precopromocional|string_format:"%.2f"}€</h7>
-                          </td>
-                      </tr>
-                      {/foreach}
-                  </tbody>
-              </table>
-          </div>
-      </div><!-- end row -->
-  </div><!-- end col -->   
+               <table class="table" id="products-table">
+                <tbody>
+                    {foreach $def_pubs as $publication}
+                    <tr>
+                        <td>
+                            <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"></a>
+                            <img src='{$BASE_URL}{$publication.url}' width='60px' />
+                        </td>
+                        <td>
+                          <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"> {$publication.titulo}</a>
+                      </td>
+                      <td>
+                          {if $publication.nome_autor}
+                          <h7>{$publication.nome_autor}</h7>
+                          {else}
+                          <h7>Sem autor</h7>
+                          {/if}
+                      </td>
+                      <td>
+                          <h7>{$publication.preco|string_format:"%.2f"}€</h7>
+                      </td>
+                      <td>
+                          <h7>{$publication.precopromocional|string_format:"%.2f"}€</h7>
+                      </td>
+                  </tr>
+                  {/foreach}
+              </tbody>
+          </table>
+      </div>
+  </div><!-- end row -->
+</div><!-- end col -->   
 </div>
 
 </section>
 <!-- end section -->
 
 {include file='common/footer.tpl'}
-<script src="{$BASE_URL}javascript/publications/filtering.js"></script>
+<script src="{$BASE_URL}javascript/publications/publication_filter.js"></script>
