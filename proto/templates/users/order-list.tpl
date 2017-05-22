@@ -104,7 +104,7 @@
 						
 						<hr class="spacer-10 no-border">
 						
-						<a href="checkout.html" class="btn btn-light semi-circle btn-sm">
+						<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm">
 							<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
 						</a>
 					</div><!-- end col -->
