@@ -6,7 +6,6 @@
 			<div class="col-sm-12">
 				<ul>
 					<li><a href="{$BASE_URL}">Página inicial</a></li>
-					<li><a href="#">Páginas</a></li>
 					<li class="active">Minhas Encomendas</li>
 				</ul><!-- end breadcrumb -->
 			</div><!-- end col -->    
@@ -47,7 +46,9 @@
 									{foreach $orders as $order}
 									<tr>
 										<td>
+											<a href="{$BASE_URL}pages/users/order-publications.php?id={$order.encomendaid}">
 											{$order.encomendaid}
+											</a>
 										</td>
 										<td>
 											<span>€{$order.total}</span>

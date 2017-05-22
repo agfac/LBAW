@@ -17,6 +17,12 @@
 				</a>
 			</li>
 			<li>
+				<a href="{$BASE_URL}pages/users/wishlist.php">
+					<i class="fa fa-heart mr-5"></i>
+					Lista de desejos 
+				</a>
+			</li>
+			<li>
 				<a href="{$BASE_URL}pages/users/cart.php">
 					<i class="fa fa-shopping-cart mr-5"></i>
 					Meu carrinho 
@@ -26,12 +32,6 @@
 				<a href="{$BASE_URL}pages/users/order-list.php">
 					<i class="fa fa fa-bar-chart mr-5"></i>
 					Minhas encomendas 
-				</a>
-			</li>
-			<li>
-				<a href="{$BASE_URL}pages/users/wishlist.php">
-					<i class="fa fa-heart mr-5"></i>
-					Lista de desejos 
 				</a>
 			</li>
 		</ul>

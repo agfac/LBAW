@@ -7,7 +7,7 @@
   $userdata = getUserData($username);
 
   $orders = getUserOrderList($userdata[0]['clienteid']);
-  
+
   $clientid = $_SESSION['userid'];
   
   $publicationsusercart = getUserPublicationsCart($clientid);

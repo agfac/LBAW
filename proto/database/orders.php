@@ -260,4 +260,24 @@ function getOrdersByClientEmailAndStatus($email_cliente, $estadoencomenda){
     return $stmt->fetchAll();
 }
 
+function getOrderPublications($order_id){
+
+	global $conn;
+    
+    $stmt = $conn->prepare("SELECT encomenda.*, informacaofaturacao.*, publicacaoencomenda.*, publicacao.titulo, publicacao.publicacaoid, imagem.url
+							FROM encomenda
+							LEFT JOIN informacaofaturacao
+							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
+							LEFT JOIN publicacaoencomenda
+							ON publicacaoencomenda.encomendaid = encomenda.encomendaid
+							LEFT JOIN publicacao
+							ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
+							LEFT JOIN imagem
+							ON imagem.publicacaoid = publicacao.publicacaoid
+							WHERE encomenda.encomendaid = ?");
+    
+    $stmt->execute(array($order_id));
+    
+    return $stmt->fetchAll();
+}
 ?>

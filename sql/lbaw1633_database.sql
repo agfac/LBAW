@@ -1920,6 +1920,27 @@ INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (26,29);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (82,29);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (68,30);
 INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (30,30);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (2,31);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (8,31);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (11,31);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (15,32);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (18,32);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (3,33);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (17,33);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (28,33);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (5,33);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (19,33);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (23,33);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (26,33);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (7,34);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (16,34);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (17,34);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (24,34);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (37,34);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (13,35);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (29,35);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (32,35);
+INSERT INTO PublicacaoEncomenda (publicacaoID,encomendaID) VALUES (43,35);
 
 /* ------------------------------------------------------ R6 Comentario ------------------------------------------------------ */
 INSERT INTO Comentario (clienteID,publicacaoID,classificacao,texto) VALUES (1,43,1,'Não gostei nada do livro, penso que foi dinheiro mal gasto.');
