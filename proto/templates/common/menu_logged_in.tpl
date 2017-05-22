@@ -29,6 +29,13 @@
             </span></a>
           </li>
           <li>
+          <a href="{$BASE_URL}pages/users/order-list.php">
+            <i class="fa fa fa-bar-chart mr-5"></i>
+            <span class="hidden-xs">
+              Encomendas
+            </span></a>
+          </li>
+          <li>
             <a href="{$BASE_URL}pages/users/checkout.php">
               <i class="fa fa-credit-card mr-5"></i>
               <span class="hidden-xs">
