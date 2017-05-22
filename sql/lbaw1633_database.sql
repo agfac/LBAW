@@ -1811,6 +1811,11 @@ INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES 
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (8,8,8,'Devolvida');
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (11,11,11,'Devolvida');
 INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (9,9,9,'Cancelada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (22,22,22,'Enviada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (22,22,22,'Processada');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (22,22,22,'Devolvida');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (22,22,22,'Em processamento');
+INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES (22,22,22,'Cancelada');
 
 /* ------------------------------------------------------ R27 MetodoPagamento ------------------------------------------------------ */
 INSERT INTO MetodoPagamento (tipo) VALUES ('Multibanco');
