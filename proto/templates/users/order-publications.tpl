@@ -45,7 +45,7 @@
 									{foreach $orderpublications as $publication}
 									<tr>
 										<td>
-											{$publication.publicacaoid}
+											#{$publication.publicacaoid}
 										</td>
 										<td>
 											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">

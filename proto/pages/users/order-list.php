@@ -1,6 +1,7 @@
 <?php
   include_once('../../config/init.php');
   include_once($BASE_DIR .'database/users.php');
+  include_once($BASE_DIR .'database/orders.php');
 
   $username = $_SESSION['username'];
   
@@ -17,6 +18,8 @@
   $months = array();
   
   $years = array();
+
+  $orderspublications = array();
   
   foreach ($orders as $order) {
     $timestamp = $order['data'];
@@ -26,12 +29,17 @@
     $days[] = $dateparsed[2];
     $months[] = $dateparsed[1];
     $years[] = $dateparsed[0];
+
+    $orderid = $order['encomendaid'];
+    $orderpublications = getOrderPublications($orderid);
+    $orderspublications[] = count($orderpublications);
   }
 
   $smarty->assign('orders', $orders);
   $smarty->assign('days', $days);
   $smarty->assign('months', $months);
   $smarty->assign('years', $years);
+  $smarty->assign('orderspublications', $orderspublications);
   $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
   $smarty->display('users/order-list.tpl');
 ?>

@@ -36,8 +36,9 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Total</th>
 										<th>Data</th>
+										<th>N.º Itens</th>
+										<th>Total</th>
 										<th>Estado</th>
 									</tr>
 								</thead>
@@ -47,11 +48,8 @@
 									<tr>
 										<td>
 											<a href="{$BASE_URL}pages/users/order-publications.php?id={$order.encomendaid}">
-											{$order.encomendaid}
+											#{$order.encomendaid}
 											</a>
-										</td>
-										<td>
-											<span>€{$order.total}</span>
 										</td>
 										<td>
 											{$days.$val}
@@ -81,6 +79,12 @@
 											DEZ
 											{/if}
 											{$years.$val}
+										</td>
+										<td>
+											<span>{$orderspublications.$val}</span>
+										</td>
+										<td>
+											<span>€{$order.total}</span>
 										</td>
 										<td>
 											{if $order.estado eq 'Enviada'} 
