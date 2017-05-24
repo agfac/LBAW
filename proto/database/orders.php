@@ -280,4 +280,15 @@ function getOrderPublications($order_id){
     
     return $stmt->fetchAll();
 }
+
+function checkIfOrderExists($order_id){
+	global $conn;
+	$stmt = $conn->prepare("SELECT encomendaid
+							FROM encomenda
+							WHERE encomendaid = ?");
+	$stmt->execute(array($order_id));
+
+	return ($stmt->fetch() !== false);
+}
+
 ?>

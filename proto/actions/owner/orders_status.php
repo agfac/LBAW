@@ -2,11 +2,6 @@
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/orders.php';
 
-if (!isset($_POST['order_id'])) {
-    header("Location: $BASE_URL" . 'pages/owner/books.php');
-    exit;
-}
-
 $order_id = $_POST['order_id'];
 
 if(!(isset($_POST['estadoencomenda']))){
