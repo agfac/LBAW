@@ -1,5 +1,16 @@
 <?php 
 
+
+function checkIfWorkerExists($username){
+  global $conn;
+  $stmt = $conn->prepare("SELECT username
+                          FROM funcionario
+                          WHERE username = ?");
+  $stmt->execute(array($username));
+
+  return ($stmt->fetch() !== false);
+}
+
 function createWorker($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $localidade, $cod1, $cod2, $pais, $currentDate, $telefone, $email, $nif, $cartaocidadao, $username, $password) {
 
   global $conn;

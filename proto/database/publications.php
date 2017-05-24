@@ -1,5 +1,15 @@
 <?php
 
+function checkIfPublicationExists($id){
+	global $conn;
+	$stmt = $conn->prepare("SELECT publicacaoid
+							FROM publicacao
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($id));
+
+	return ($stmt->fetch() !== false);
+}
+
 function getAllPublications(){
 	global $conn;
 	$stmt = $conn->prepare("SELECT publicacao.*, autor.nome AS nome_autor
