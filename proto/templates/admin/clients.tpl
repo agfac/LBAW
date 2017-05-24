@@ -89,16 +89,16 @@
             <table class="table table-striped projects" id="myTable">
               <thead>
                 <tr>
-                  <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="id">ID <span class="glyphicon glyphicon-sort"></span></button></th>
-                  <th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="nome">Nome do cliente <span class="glyphicon glyphicon-sort"></span></button> </th>
-                  <th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="estado">Estado <span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="orderByClientName">Nome do cliente <span class="glyphicon glyphicon-sort"></span></button> </th>
+                  <th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></button></th>
                   <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th>
                 </tr>
                 <!--
                  <tr>
-                  <th style="width: 6%">ID <span id="id" class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 51%">Nome do cliente <span id="nome" class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 13%">Estado <span id="estado" class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 6%">ID <span id="orderById" class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 51%">Nome do cliente <span id="orderByClientName" class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 13%">Estado <span id="orderByStatus" class="glyphicon glyphicon-sort"></span></th>
                   <th style="width: 20%">#Editar </th>
                 </tr>
                 -->
@@ -145,3 +145,4 @@
 
 {include file='admin/common/footer.tpl'}
 <script src="{$BASE_URL}javascript/admin/clients_search.js"></script>
+<script src="{$BASE_URL}javascript/utilities.js"></script>

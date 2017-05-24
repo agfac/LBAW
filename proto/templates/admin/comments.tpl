@@ -89,15 +89,15 @@
             <p>Comentários das publicações na loja</p>
             <!-- start of list -->
             {if $allcomments}
-            <table class="table table-striped projects">
+            <table class="table table-striped projects" id="myTable">
               <thead>
                 <tr>
-                  <th style="width: 2%">ID</th>
-                  <th style="width: 15%">Nome da Publicação</th>
-                  <th style="width: 15%">Nome do Cliente</th>
-                  <th style="width: 10%">Classificação</th>
-                  <th style="width: 20%">Comentário</th>
-                  <th style="width: 15%">#Editar</th>
+                  <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 15%"><button type="button" class="btn btn-default btn-xs" id="orderByPublicationName">Nome da Publicação<span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 15%"><button type="button" class="btn btn-default btn-xs" id="orderByCLientName">Nome do Cliente<span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 10%"><button type="button" class="btn btn-default btn-xs" id="orderByClassification">Classificação<span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 20%"><button type="button" class="btn btn-default btn-xs" id="orderByComments">Comentário<span class="glyphicon glyphicon-sort"></span></button></th>
+                  <th style="width: 15%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th>
                 </tr>
               </thead>
               <tbody>
@@ -137,3 +137,4 @@
 
 {include file='admin/common/footer.tpl'}
 <script src="{$BASE_URL}javascript/admin/comment_search.js"></script>
+<script src="{$BASE_URL}javascript/utilities.js"></script>

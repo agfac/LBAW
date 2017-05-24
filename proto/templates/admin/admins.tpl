@@ -99,14 +99,14 @@
           <p>Administradores da loja</p>
           <!-- start of list -->
           {if $allAdmins}
-          <table class="table table-striped projects">
+          <table class="table table-striped projects" id="myTable">
             <thead>
               <tr>
-                <th style="width: 2%">ID</th>
-                <th style="width: 40%">Nome do Administrador</th>
-                <th style="width: 18%">Data de Cessação</th>
-                <th style="width: 10%">Estado</th>
-                <th style="width: 20%">#Editar</th>
+                <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></button></th>
+                <th style="width: 40%"><button type="button" class="btn btn-default btn-xs" id="orderByAdminName">Nome do Administrador<span class="glyphicon glyphicon-sort"></span></button></th>
+                <th style="width: 18%"><button type="button" class="btn btn-default btn-xs" id="orderByDate">Data de Cessação<span class="glyphicon glyphicon-sort"></span></button></th>
+                <th style="width: 10%"><button type="button" class="btn btn-default btn-xs" id="orderByStatus">Estado<span class="glyphicon glyphicon-sort"></span></button></th>
+                <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th>
               </tr>
             </thead>
             <tbody>
@@ -157,3 +157,4 @@
 <!-- /page content -->
 {include file='admin/common/footer.tpl'}
 <script src="{$BASE_URL}javascript/admin/admins_search.js"></script>
+<script src="{$BASE_URL}javascript/utilities.js"></script>

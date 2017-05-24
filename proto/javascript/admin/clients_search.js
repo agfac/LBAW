@@ -23,7 +23,7 @@ $(document).on('click', '#search', function () {
 		        }else{		            
 		            console.log(data);
 		            
-		            $('.clients_content').append('<p>Clientes da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="id">ID <span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="nome">Nome do cliente <span class="glyphicon glyphicon-sort"></span></button> </th><th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="estado">Estado <span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th></tr></thead><tbody>');
+		            $('.clients_content').append('<p>Clientes da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="orderByClientName">Nome do cliente <span class="glyphicon glyphicon-sort"></span></button> </th><th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th></tr></thead><tbody>');
 		            
 		            for (var i in data){
 
@@ -59,74 +59,21 @@ $(document).on('click', '#search', function () {
     });
 
 
-  $(document).on('click', '#id', function () {
-		console.log("Ordena pelo id, flag = " + sortByIdFlag);
+  $(document).on('click', '#orderById', function () {
 		sortTable(0, "INTEGER", sortByIdFlag); 
     sortByIdFlag = !sortByIdFlag;
 	});
 
 
-  $(document).on('click', '#nome', function () {
-		console.log("Ordena pelo nome, flag = " + sortByNameFlag);
-  	sortTable(1, "OUTRO", sortByNameFlag);
+  $(document).on('click', '#orderByClientName', function () {
+  	sortTable(1, "STRING", sortByNameFlag);
     sortByNameFlag = !sortByNameFlag; 
 	});
 
 
-	$(document).on('click', '#estado', function () {
-		console.log("Ordena pelo estado, flag = " + sortByStatusFlag);
-    sortTable(2, "OUTRO", sortByStatusFlag); 
+	$(document).on('click', '#orderByStatus', function () {
+    sortTable(2, "STRING", sortByStatusFlag); 
     sortByStatusFlag = !sortByStatusFlag;
 	});
-
-
-
- function sortTable(index, tipe, sortFlag) {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("myTable");
-    switching = true;
-    /*Make a loop that will continue until no switching has been done:*/
-    while (switching) {
-      //start by saying: no switching is done:
-      switching = false;
-      rows = table.getElementsByTagName("TR");
-      /*Loop through all table rows (except the first, which contains table headers):*/
-      for (i = 1; i < (rows.length - 1); i++) {
-        //start by saying there should be no switching:
-        shouldSwitch = false;
-        /*Get the two elements you want to compare, one from current row and one from the next:*/
-       
-           if( tipe === "INTEGER") {
-              x = parseFloat( (rows[i].getElementsByTagName("TD")[index]).innerHTML );
-              y = parseFloat( (rows[i + 1].getElementsByTagName("TD")[index]).innerHTML );
-           }
-           else{
-             x = rows[i].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
-             y = rows[i + 1].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
-           }
-            
-          if (x > y && !sortFlag) {
-            //if so, mark as a switch and break the loop:
-            shouldSwitch= true;
-            break;
-          }
-          else if (x < y && sortFlag) {
-            //if so, mark as a switch and break the loop:
-            shouldSwitch= true;
-            break;
-          }
-      }
-
-      if (shouldSwitch) {
-        /*If a switch has been marked, make the switch and mark that a switch has been done:*/
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-        switching = true;
-      }
-
-    } 
-
-  }
-
-
 
 });

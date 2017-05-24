@@ -1,4 +1,10 @@
 flag = true;
+sortByIdFlag = true;
+sortByPublicationNameFlag = false;
+sortByCLientNameFlag = false;
+sortByClassificationFlag = false;
+sortByCommentsFlag = false;
+
 $(document).ready(function() {
     $('#search').on('click', function(){
 
@@ -19,7 +25,7 @@ console.log(ordenar);
 		        }else{		           
 		            console.log(data);
 		            
-		            $('.comment_content').append('<p>Comentários das publicações na loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 15%">Nome da Publicação</th><th style="width: 15%">Nome do Cliente</th><th style="width: 10%">Classificação</th><th style="width: 20%">Comentário</th><th style="width: 15%">#Editar</th></tr></thead><tbody>');
+		            $('.comment_content').append('<p>Comentários das publicações na loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 15%"><button type="button" class="btn btn-default btn-xs" id="orderByPublicationName">Nome da Publicação<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 15%"><button type="button" class="btn btn-default btn-xs" id="orderByCLientName">Nome do Cliente<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 10%"><button type="button" class="btn btn-default btn-xs" id="orderByClassification">Classificação<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%"><button type="button" class="btn btn-default btn-xs" id="orderByComments">Comentário<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 15%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th></tr></thead><tbody>');
 		            
 		            for (var i in data){
 		                $('.comment_content').find('tbody').append('<tr><td>'+data[i].comentarioid+'</td><td><a>'+data[i].titulo+'</a></td><td><a>'+data[i].nome+'</a></td><td><a class="fa fa-star"> '+data[i].classificacao+'</a></td><td><a>'+data[i].texto+'</a></td><td><a href="../publications/publication.php?id='+data[i].publicacaoid+'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a><a href="../../actions/admin/comment_remove.php?id='+data[i].comentarioid+'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a></td></tr>');
@@ -40,5 +46,33 @@ console.log(ordenar);
         $('#nome_publicacao').val("");
         $('#ordenar').val("Escolha uma opção");
     });
+
+
+	$(document).on('click', '#orderById', function () {
+		sortTable(0, "INTEGER", sortByIdFlag); 
+    	sortByIdFlag = !sortByIdFlag;
+	});
+
+	$(document).on('click', '#orderByPublicationName', function () {
+  		sortTable(1, "STRING", sortByPublicationNameFlag);
+    	sortByPublicationNameFlag = !sortByPublicationNameFlag; 
+	});
+
+	$(document).on('click', '#orderByCLientName', function () {
+  		sortTable(2, "DATE", sortByCLientNameFlag);
+   		sortByCLientNameFlag = !sortByCLientNameFlag; 
+	});
+	
+	$(document).on('click', '#orderByClassification', function () {
+    	sortTable(3, "STRING", sortByClassificationFlag); 
+   		sortByClassificationFlag = !sortByClassificationFlag;
+	});
+
+	$(document).on('click', '#orderByComments', function () {
+    	sortTable(3, "STRING", sortByCommentsFlag); 
+   		sortByCommentsFlag = !sortByCommentsFlag;
+	});
+
+	
 
 });

@@ -1,4 +1,8 @@
 flag = true;
+sortByIdFlag = true;
+sortByNameFlag = false;
+sortByStatusFlag = false;
+
 $(document).ready(function() {
     $('#search').on('click', function(){
 
@@ -24,7 +28,7 @@ $(document).ready(function() {
 		        }else{		
 		            console.log(data);
 
-		            $('.admins_content').append('<p>Administradores da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 40%">Nome do Administrador</th><th style="width: 18%">Data de Cessação</th><th style="width: 10%">Estado</th><th style="width: 20%">#Editar</th></tr></thead> <tbody>');
+		            $('.admins_content').append('<p>Administradores da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 40%"><button type="button" class="btn btn-default btn-xs" id="orderByAdminName">Nome do Administrador<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 18%"><button type="button" class="btn btn-default btn-xs" id="orderByDate">Data de Cessação<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 10%"><button type="button" class="btn btn-default btn-xs" id="orderByStatus">Estado<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th></tr></thead><tbody>');
 		            
 		            for (var i in data){
 
@@ -65,4 +69,37 @@ $(document).ready(function() {
         $('#single_cal4').val("");
         $('#estado_administrador').val("Escolha uma opção");
     });
+
+
+  $(document).on('click', '#orderById', function () {
+		sortTable(0, "INTEGER", sortByIdFlag); 
+    	sortByIdFlag = !sortByIdFlag;
+    	sortResete();
+	});
+
+
+  $(document).on('click', '#orderByAdminName', function () {
+  		sortTable(1, "STRING", sortByNameFlag);
+    	sortByNameFlag = !sortByNameFlag; 
+	});
+
+	$(document).on('click', '#orderByDate', function () {
+		//console.log("Ordena pelo nome, flag = " + sortByDateFlag);
+  		//sortTable(2, "DATE", sortByDateFlag);
+   		//sortByDateFlag = !sortByDateFlag; 
+   		console.log("FALTA FAZER, DÁ ERRO PQ ALGUNS ELEMETOS A NULL");
+	});
+	
+	$(document).on('click', '#orderByStatus', function () {
+    	sortTable(3, "STRING", sortByStatusFlag); 
+   		sortByStatusFlag = !sortByStatusFlag;
+	});
+
+	function sortResete(){
+		sortByIdFlag = false;
+		sortByNameFlag = false;
+		sortByDateFlag = false;
+		sortByStatusFlag = false;
+
+	}
 });
