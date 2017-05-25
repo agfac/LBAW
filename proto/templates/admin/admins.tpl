@@ -102,11 +102,11 @@
           <table class="table table-striped projects" id="myTable">
             <thead>
               <tr>
-                <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></button></th>
-                <th style="width: 40%"><button type="button" class="btn btn-default btn-xs" id="orderByAdminName">Nome do Administrador<span class="glyphicon glyphicon-sort"></span></button></th>
-                <th style="width: 18%"><button type="button" class="btn btn-default btn-xs" id="orderByDate">Data de Cessação<span class="glyphicon glyphicon-sort"></span></button></th>
-                <th style="width: 10%"><button type="button" class="btn btn-default btn-xs" id="orderByStatus">Estado<span class="glyphicon glyphicon-sort"></span></button></th>
-                <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th>
+                <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 36%" id="orderByAdminName">Nome do Administrador<span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 18%" id="orderByDate">Data de Cessação<span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 10%" id="orderByStatus">Estado<span class="glyphicon glyphicon-sort"></span></button></th>
+                <th style="width: 20%">Ações </th>
               </tr>
             </thead>
             <tbody>

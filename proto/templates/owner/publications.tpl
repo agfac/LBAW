@@ -98,7 +98,7 @@
           </ul>
           <div class="clearfix"></div>
         </div>
-        <div class="publications_content">
+        <div class="publications_content x_content">
           <p>Todos as publicações presentes na loja</p>
           <!-- start of books list -->
           {if $allPublications}

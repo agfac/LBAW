@@ -83,25 +83,17 @@
           </div>
 
           <div class="clients_content">
-            <p>Clientes da loja</p>
             <!-- start of list -->
             {if $allUseres}
+            <p>Clientes existentes na loja</p>
             <table class="table table-striped projects" id="myTable">
               <thead>
-                <tr>
-                  <th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></button></th>
-                  <th style="width: 55%"><button type="button" class="btn btn-default btn-xs btn-block" id="orderByClientName">Nome do cliente <span class="glyphicon glyphicon-sort"></span></button> </th>
-                  <th style="width: 13%"><button type="button" class="btn btn-default btn-xs btn-block" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></button></th>
-                  <th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th>
-                </tr>
-                <!--
                  <tr>
-                  <th style="width: 6%">ID <span id="orderById" class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 51%">Nome do cliente <span id="orderByClientName" class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 13%">Estado <span id="orderByStatus" class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 20%">#Editar </th>
+                  <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 51%" id="orderByClientName">Nome do cliente <span class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 13%" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 20%">Ações </th>
                 </tr>
-                -->
               </thead>
               <tbody>
                 {foreach $allUseres as $user}

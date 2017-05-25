@@ -89,7 +89,7 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="order_content">
+          <div class="order_content x_content">
             <p>Encomendas listadas da loja</p>
             <!-- start of orders list -->
             {if $allOrders}

@@ -66,6 +66,28 @@ function getPublicationDataSearchPublicationName($nome_livro)
     $stmt->execute(array(strtolower($nome_livro)));
     return $stmt->fetchAll();
 }
+
+function getPublicationDataSearchPublicationName2($nome_livro)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE to_tsvector(publicacao.titulo) @@ to_tsquery(?)
+                            ORDER BY publicacao.publicacaoid");
+    $stmt->execute(array($nome_livro));
+    return $stmt->fetchAll();
+}
+
 function getPublicationDataSearchAutorName($nome_autor)
 {
 	global $conn;
