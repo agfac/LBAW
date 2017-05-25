@@ -5,11 +5,11 @@ sortByStatusFlag = false;
 
 $(document).ready(function() {
 
-$(document).on('click', '#search', function () {
+	$(document).on('click', '#search', function () {
     //$('#search').on('click', function(){
     	if (flag){
-          flag = false;
-	    	  var nome_cliente = $('#nome_cliente').val();
+          	flag = false;
+	    	var nome_cliente = $('#nome_cliente').val();
 	        var email_cliente = $('#email_cliente').val();
 	        var estado_cliente = $('#estado_cliente').val();
 

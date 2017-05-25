@@ -93,15 +93,15 @@
             <p>Encomendas listadas da loja</p>
             <!-- start of orders list -->
             {if $allOrders}
-            <table class="table table-striped projects">
+            <table class="table table-striped projects" id="myTable">
               <thead>
                 <tr>
-                  <th style="width: 1%">ID</th>
-                  <th style="width: 30%">Nome cliente</th>
-                  <th>Preço Total</th>
-                  <th>Estado</th>
-                  <th>Data</th>
-                  <th style="width: 15%">Ações</th>
+                  <th id="orderByID" >ID <span class="glyphicon glyphicon-sort"></span></th>
+                  <th id="orderByName">Nome cliente <span class="glyphicon glyphicon-sort"></span></th>
+                  <th id="orderByTotalPrice">Preço Total <span class="glyphicon glyphicon-sort"></span></th>
+                  <th id="orderByState">Estado <span class="glyphicon glyphicon-sort"></span></th>
+                  <th id="orderByDate">Data <span class="glyphicon glyphicon-sort"></span></th>
+                  <th>Ações</th>
                 </tr>
               </thead>
               <tbody>
@@ -151,3 +151,4 @@
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
 <script src="{$BASE_URL}javascript/owner/orders_search.js"></script>
+<script src="{$BASE_URL}javascript/utilities.js"></script>

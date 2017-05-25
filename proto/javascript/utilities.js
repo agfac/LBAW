@@ -14,10 +14,9 @@ function sortTable(index, tipe, sortFlag) {
         /*Get the two elements you want to compare, one from current row and one from the next:*/
        
            if( tipe === "INTEGER") {
-              x = parseFloat( (rows[i].getElementsByTagName("TD")[index]).innerHTML );
-              y = parseFloat( (rows[i + 1].getElementsByTagName("TD")[index]).innerHTML );
-           }
-           else{
+              x = parseFloat( (rows[i].getElementsByTagName("TD")[index]).innerHTML.replace(' €', '').replace('<a>', '') );
+              y = parseFloat( (rows[i + 1].getElementsByTagName("TD")[index]).innerHTML.replace(' €', '').replace('<a>', '') );
+           }else{
              x = rows[i].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
              y = rows[i + 1].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
            }
