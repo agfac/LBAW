@@ -61,19 +61,39 @@ $(document).on('click', '#search', function () {
 
   $(document).on('click', '#orderById', function () {
 		sortTable(0, "INTEGER", sortByIdFlag); 
-    sortByIdFlag = !sortByIdFlag;
+		sortResete('sortByIdFlag');
 	});
 
 
   $(document).on('click', '#orderByClientName', function () {
   	sortTable(1, "STRING", sortByNameFlag);
-    sortByNameFlag = !sortByNameFlag; 
+  	sortResete('sortByNameFlag');
 	});
 
 
 	$(document).on('click', '#orderByStatus', function () {
     sortTable(2, "STRING", sortByStatusFlag); 
-    sortByStatusFlag = !sortByStatusFlag;
+    sortResete('sortByStatusFlag');
 	});
+
+
+	function sortResete(sortBy){
+		switch(sortBy) {
+		    case 'sortByIdFlag':
+    			sortByIdFlag = !sortByIdFlag;
+				sortByNameFlag = false;
+				sortByDateFlag = false;
+		        break;
+		    case 'sortByNameFlag':
+    			sortByNameFlag = !sortByNameFlag; 
+		        sortByIdFlag = false;
+				sortByDateFlag = false;
+		        break;
+		  	default:
+   				sortByStatusFlag = !sortByStatusFlag;
+		    	sortByIdFlag = false;
+				sortByNameFlag = false;
+		}
+	}
 
 });

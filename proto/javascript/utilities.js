@@ -16,13 +16,15 @@ function sortTable(index, tipe, sortFlag) {
            if( tipe === "INTEGER") {
               x = parseFloat( (rows[i].getElementsByTagName("TD")[index]).innerHTML );
               y = parseFloat( (rows[i + 1].getElementsByTagName("TD")[index]).innerHTML );
+           // }else if( tipe === "DATE" ){
+           //    x = rows[i].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
+           //    y = rows[i + 1].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
+           }else{ 
+              x = rows[i].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
+              y = rows[i + 1].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
            }
-           else{
-             x = rows[i].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
-             y = rows[i + 1].getElementsByTagName("TD")[index].innerHTML.toLowerCase();
-           }
-            
-          if (x > y && !sortFlag) {
+          
+          if (x > y && !sortFlag ) {
             //if so, mark as a switch and break the loop:
             shouldSwitch= true;
             break;
