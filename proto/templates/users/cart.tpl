@@ -67,9 +67,7 @@
 											<span class="text-primary">€{$publication.preco * $publication.quantidade}</span>
 										</td>
 										<td>
-											<a href="#">
-												<span class="close">x</span>
-											</a>
+											<button type="button" class="close">×</button>
 										</td>
 									</tr>
 									{/foreach}

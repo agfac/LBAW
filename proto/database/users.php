@@ -237,6 +237,16 @@ function updateCartItems($carrinhoid, $publicacaoid, $quantidade) {
   $stmt->execute(array($quantidade, $carrinhoid, $publicacaoid));
 }
 
+function removeCartItem($carrinhoid, $publicacaoid) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("DELETE FROM publicacaocarrinho
+                          WHERE carrinhoid = ? AND publicacaoid = ?");
+  
+  $stmt->execute(array($carrinhoid, $publicacaoid));
+}
+
 function getUserPublicationsWishList($clienteid) {
   
   global $conn;
