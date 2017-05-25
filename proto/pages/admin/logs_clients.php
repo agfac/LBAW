@@ -5,10 +5,13 @@ include_once('userInfo.php');
 
 $allLogs = getAllLogs();
 
-foreach ($allLogs as &$log) {
-	$nomeparsed = trim($log['nome'], '(),"');
-	$log['nome'] = $nomeparsed;
+if($allLogs){
+	foreach ($allLogs as &$log) {
+		$nomeparsed = trim($log['nome'], '(),"');
+		$log['nome'] = $nomeparsed;
+	}
 }
+
 
 $smarty->assign('allLogs', $allLogs);
 $smarty->display('admin/logs_clients.tpl');
