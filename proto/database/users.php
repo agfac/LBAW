@@ -213,6 +213,19 @@ function getUserPublicationsCart($clienteid) {
   return $stmt->fetchAll();
 }
 
+function getUserCartSubtotal($clienteid) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT subtotal
+                          FROM carrinho
+                          WHERE carrinhoid = ?");
+  
+  $stmt->execute(array($clienteid));
+  
+  return $stmt->fetchAll();
+}
+
 function getUserPublicationsWishList($clienteid) {
   
   global $conn;
