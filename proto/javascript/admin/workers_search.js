@@ -30,7 +30,7 @@ $(document).ready(function() {
 		        }else{		           
 		            console.log(data);
 		            
-		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></th><th style="width: 36%" id="orderByName">Nome do Funcionário<span class="glyphicon glyphicon-sort"></span></th><th style="width: 18%" id="orderByDate">Data de Admissão<span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByState">Estado<span class="glyphicon glyphicon-sort"></span></th><th style="width: 20%">Ações</th></tr></thead><tbody>');
+		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 36%" id="orderByName">Nome do Funcionário <span class="glyphicon glyphicon-sort"></span></th><th style="width: 18%" id="orderByDate">Data de Admissão <span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByState">Estado <span class="glyphicon glyphicon-sort"></span></th><th style="width: 20%">Ações</th></tr></thead><tbody>');
 		            
 		            for (var i in data){
 
@@ -89,7 +89,8 @@ $(document).ready(function() {
 
 	$(document).on('click', '#orderByDate', function () {
   		sortTable(2, "DATE", sortByDateFlag);
-   		sortByDateFlag = !sortByDateFlag; 
+   		sortByDateFlag = !sortByDateFlag;
+   		console.log("TODO DATE");
 	});
 	
 	$(document).on('click', '#orderByState', function () {
