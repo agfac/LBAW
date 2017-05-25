@@ -267,4 +267,14 @@ function getAdminByAdminStatus($estadoAdministrador){
     return $stmt->fetchAll();
 }
 
+function checkIfAdminExists($username){
+  global $conn;
+  $stmt = $conn->prepare("SELECT username
+                          FROM administrador
+                          WHERE username = ?");
+  $stmt->execute(array($username));
+
+  return ($stmt->fetch() !== false);
+}
+
 ?>

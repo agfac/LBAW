@@ -29,7 +29,7 @@ $(document).ready(function() {
                             nome_autor = "Sem Autor";
                         
                         if(data[i].publicacaoid !== null)
-                            $('.publications_content').find('tbody').append('<tr><td>'+data[i].publicacaoid+'</td><td><a>'+data[i].titulo+'</a></td><td><a>'+nome_autor+'</a></td><td><a>'+parseFloat(data[i].preco).toFixed(2)+' €</a></td><td><a>'+data[i].precopromocional+' €</a></td><td><a href="../publications/publication.php?id='+data[i].publicacaoid+'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a><a href="publication_edit.php?id='+data[i].publicacaoid+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a><a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a></td></tr>');
+                            $('.publications_content').find('tbody').append('<tr><td>'+data[i].publicacaoid+'</td><td><a>'+data[i].titulo+'</a></td><td><a>'+nome_autor+'</a></td><td><a>'+parseFloat(data[i].preco).toFixed(2)+' €</a></td><td><a>'+data[i].precopromocional+' €</a></td><td><a href="../publications/publication.php?id='+data[i].publicacaoid+'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a><a href="publication_edit.php?id='+data[i].publicacaoid+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a></td></tr>');
                     }
                     $('.publications_content').append('</tbody></table>');
                 }
