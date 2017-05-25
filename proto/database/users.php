@@ -226,6 +226,17 @@ function getUserCartSubtotal($clienteid) {
   return $stmt->fetchAll();
 }
 
+function updateCartItems($carrinhoid, $publicacaoid, $quantidade) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("UPDATE publicacaocarrinho
+                          SET quantidade = ?
+                          WHERE carrinhoid = ? AND publicacaoid = ?");
+  
+  $stmt->execute(array($quantidade, $carrinhoid, $publicacaoid));
+}
+
 function getUserPublicationsWishList($clienteid) {
   
   global $conn;
