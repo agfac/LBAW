@@ -95,7 +95,7 @@
           <div class="clearfix"></div>
         </div>
         
-        <div class="admins_content">
+        <div class="admins_content x_content">
           <p>Administradores da loja</p>
           <!-- start of list -->
           {if $allAdmins}

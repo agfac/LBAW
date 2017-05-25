@@ -87,7 +87,7 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="logs_content">
+          <div class="logs_content x_content">
             <!-- start of books list -->
             {if $allLogs}
             <table class="table table-striped projects">

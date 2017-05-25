@@ -45,8 +45,16 @@ $(document).ready(function() {
 		            		estado = ' btn-success btn-xs"><i class="fa fa-warning"></i> Ativar ';
 		            	}
 
-		            	if (data[i].datacessacao)
+		            	if (data[i].datacessacao){
 		            		data_cessacao = data[i].datacessacao;
+
+			            	split = data_cessacao.split('-');
+			            	ano = split[0];
+			            	mes = split[1];
+			            	dia = split[2];
+
+			            	data_cessacao = (dia + "-" + mes + "-" + ano);
+		            	}
 		            	else 
 		            		data_cessacao = "N/A";
 

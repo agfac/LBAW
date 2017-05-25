@@ -85,7 +85,7 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="comment_content">
+          <div class="comment_content x_content">
             <p>Comentários das publicações na loja</p>
             <!-- start of list -->
             {if $allcomments}

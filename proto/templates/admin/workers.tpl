@@ -96,18 +96,18 @@
           <div class="clearfix"></div>
         </div>
 
-        <div class="workers_content">
+        <div class="workers_content x_content">
           <p>Funcionários da loja</p>
           <!-- start of list -->
           {if $allWorkers}
-          <table class="table table-striped projects">
+          <table class="table table-striped projects" id="myTable">
             <thead>
               <tr>
-                <th style="width: 2%">ID</th>
-                <th style="width: 40%">Nome do Funcionário</th>
-                <th style="width: 18%">Data de Admissão</th>
-                <th style="width: 10%">Estado</th>
-                <th style="width: 20%">#Editar</th>
+                <th style="width: 6%" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 36%" id="orderByName">Nome do Funcionário<span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 18%" id="orderByDate">Data de Admissão<span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 10%" id="orderByState">Estado<span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 20%">Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -154,3 +154,4 @@
 <!-- /page content -->
 {include file='admin/common/footer.tpl'}
 <script src="{$BASE_URL}javascript/admin/workers_search.js"></script>
+<script src="{$BASE_URL}javascript/utilities.js"></script>

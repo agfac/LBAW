@@ -82,7 +82,7 @@
             <div class="clearfix"></div>
           </div>
 
-          <div class="clients_content">
+          <div class="clients_content x_content">
             <!-- start of list -->
             {if $allUseres}
             <p>Clientes existentes na loja</p>
