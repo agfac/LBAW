@@ -1,6 +1,12 @@
 flag = true;
+sortByIdFlag = true;
+sortByBookNameFlag = false;
+sortByAuthorNameFlag = false;
+sortByPriceFlag = false;
+sortByPromotionalFlag = false;
+
 $(document).ready(function() {
-    $('#search').on('click', function(){
+    $(document).on('click', '#search', function (){
         if (flag){
             flag = false;
             var nome_livro = $('#nome_livro').val();
@@ -18,7 +24,7 @@ $(document).ready(function() {
                 if(data.length === 0 || data == "NULL"){
                     $('.publications_content').append('<p>Sem Publicações com os dados de entrada</p>');
                 }else{
-                    $('.publications_content').append('<p>Todos as publicações presentes na loja</p><table class="table table-striped projects"><thead><tr><th style="width: 1%">ID</th><th style="width: 30%">Nome do livro</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th><th style="width: 24%">Ações</th></tr></thead><tbody>');
+                    $('.publications_content').append('<p>Todos as publicações presentes na loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderByID" >ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 30%" id="orderByBookName">Nome do livro <span class="glyphicon glyphicon-sort"></span></th><th id="orderByAuthorName">Nome do Autor <span class="glyphicon glyphicon-sort"></span></th><th id="orderByPrice">Preço <span class="glyphicon glyphicon-sort"></span></th><th style="width: 20%" id="orderByPromotionalPrice">Preço Promocional <span class="glyphicon glyphicon-sort"></span></th><th>Ações</th></tr></thead><tbody>');
                     
                     for (var i in data){
                         var nome_autor
@@ -62,4 +68,28 @@ $(document).ready(function() {
         $('#subcategoria').val("Escolha uma opção");
     });
 
+    $(document).on('click', '#orderByID', function () {
+        sortTable(0, "INTEGER", sortByIdFlag); 
+        sortByIdFlag = !sortByIdFlag;
+    });
+
+    $(document).on('click', '#orderByBookName', function () {
+        sortTable(1, "STRING", sortByBookNameFlag);
+        sortByBookNameFlag = !sortByBookNameFlag; 
+    });
+
+    $(document).on('click', '#orderByAuthorName', function () {
+        sortTable(2, "STRING", sortByAuthorNameFlag); 
+        sortByAuthorNameFlag = !sortByAuthorNameFlag;
+    });
+
+    $(document).on('click', '#orderByPrice', function () {
+        sortTable(3, "INTEGER", sortByPriceFlag);
+        sortByPriceFlag = !sortByPriceFlag; 
+    });
+
+    $(document).on('click', '#orderByPromotionalPrice', function () {
+        sortTable(4, "INTEGER", sortByPromotionalFlag);
+        sortByPromotionalFlag = !sortByPromotionalFlag; 
+    });
 });
