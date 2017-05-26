@@ -25,7 +25,7 @@
           </div>
 
           <div class="x_content">
-            <form action="{$BASE_URL}actions/owner/publication_add.php" method="post"class="form-horizontal form-label-left input_mask">
+            <form action="{$BASE_URL}actions/owner/publication_add.php" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask">
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Titulo <span class="required">*</span></label>
@@ -177,22 +177,7 @@
               <div class="form-group">
                 <p>Imagens do Produto</p>
                 <div class="col-md-55">
-                  <div class="thumbnail">
-                    <div class="image view view-first">
-                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
-                      <div class="mask">
-                        <p>Your Text</p>
-                        <div class="tools tools-bottom">
-                          <a href="#"><i class="fa fa-link"></i></a>
-                          <a href="#"><i class="fa fa-pencil"></i></a>
-                          <a href="#"><i class="fa fa-times"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="caption">
-                      <p>Imagem 1</p>
-                    </div>
-                  </div>
+                  <input type="file" name="fileUpload">
                 </div>
               </div>
 

@@ -5,7 +5,9 @@
 	$nome_cliente = $_GET['nome_cliente'];
 	$email_cliente = $_GET['email_cliente'];
 	$nome_publicacao = $_GET['nome_publicacao'];
+	$comments = $_GET['comments'];
 
+	//TODO COMMENTS
 	if( $nome_cliente == NULL && $email_cliente == NULL && $nome_publicacao == NULL )
 		$reply = getAllComments();
 

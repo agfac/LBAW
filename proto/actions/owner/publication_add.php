@@ -38,15 +38,16 @@ $isbn             = strip_tags($_POST['isbn']);
 $edicao           = strip_tags($_POST['edicao']);
 $periodicidade    = strip_tags($_POST['periodicidade']);
 
-if(!isset($descricao))
+
+if(!($descricao))
   $descricao = NULL;
-if(!isset($paginas))
-  $paginas = NULL;
-if(!isset($precopromocional))
-  $precopromocional = NULL;
-if(!isset($isbn))
+if(!($paginas))
+  $paginas = 0;
+if(!($precopromocional))
+  $precopromocional = $preco;
+if(!($isbn))
   $isbn = NULL;
-if(!isset($edicao))
+if(!($edicao))
   $edicao = NULL;
 if($periodicidade === "Escolha uma opção")
   $periodicidade = NULL;
@@ -139,7 +140,9 @@ $editoraId = verifyEditoraIfExists($editora);
 
 try {
 
-  createPublication($titulo, $descricao, $autorId, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $block3, $block4);
+  $url = createPublication($titulo, $descricao, $autorId, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $block3, $block4);
+
+  uploadFile($url);
 
 } catch (PDOException $e) {
 
@@ -155,4 +158,13 @@ try {
 }
 $_SESSION['success_messages'][] = 'Publicação adicionada com sucesso';  
 header("Location: $BASE_URL" . 'pages/owner/publications.php');
+
+
+function uploadFile($url){
+  if(($_FILES['fileUpload'])){
+    $path = ('../../' . $url);
+      if(move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path))
+        print_r("Fiz upload");
+   }
+}
 ?>
