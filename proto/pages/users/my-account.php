@@ -1,12 +1,18 @@
 <?php
-  include_once('../../config/init.php');
-  include_once($BASE_DIR .'database/users.php');
+include_once('../../config/init.php');
+include_once($BASE_DIR .'database/users.php');
 
-  $clientid = $_SESSION['userid'];
-  
-  $publicationsusercart = getUserPublicationsCart($clientid);
+if (!$_SESSION['username']) {
+	$_SESSION['error_messages'][] = 'Deverá efetuar login para aceder à página solicitada';
+	header("Location: $BASE_URL");
+	exit;
+}
 
-  $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
+$clientid = $_SESSION['userid'];
 
-  $smarty->display('users/my-account.tpl');
+$publicationsusercart = getUserPublicationsCart($clientid);
+
+$smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
+
+$smarty->display('users/my-account.tpl');
 ?>

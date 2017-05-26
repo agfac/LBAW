@@ -1,45 +1,51 @@
 <?php
-  include_once('../../config/init.php');
-  include_once($BASE_DIR .'database/users.php');
-  include_once($BASE_DIR .'database/orders.php');
+include_once('../../config/init.php');
+include_once($BASE_DIR .'database/users.php');
+include_once($BASE_DIR .'database/orders.php');
 
-  $username = $_SESSION['username'];
-  
-  $userdata = getUserData($username);
+if (!$_SESSION['username']) {
+  $_SESSION['error_messages'][] = 'Deverá efetuar login para aceder à página solicitada';
+  header("Location: $BASE_URL");
+  exit;
+}
 
-  $orders = getUserOrderList($userdata[0]['clienteid']);
+$username = $_SESSION['username'];
 
-  $clientid = $_SESSION['userid'];
-  
-  $publicationsusercart = getUserPublicationsCart($clientid);
+$userdata = getUserData($username);
 
-  $days = array();
-  
-  $months = array();
-  
-  $years = array();
+$orders = getUserOrderList($userdata[0]['clienteid']);
 
-  $orderspublications = array();
-  
-  foreach ($orders as $order) {
-    $timestamp = $order['data'];
-    $timestampparsed = explode(' ', $timestamp);
-    $date = $timestampparsed[0];
-    $dateparsed = explode('-', $date);
-    $days[] = $dateparsed[2];
-    $months[] = $dateparsed[1];
-    $years[] = $dateparsed[0];
+$clientid = $_SESSION['userid'];
 
-    $orderid = $order['encomendaid'];
-    $orderpublications = getOrderPublications($orderid);
-    $orderspublications[] = count($orderpublications);
-  }
+$publicationsusercart = getUserPublicationsCart($clientid);
 
-  $smarty->assign('orders', $orders);
-  $smarty->assign('days', $days);
-  $smarty->assign('months', $months);
-  $smarty->assign('years', $years);
-  $smarty->assign('orderspublications', $orderspublications);
-  $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
-  $smarty->display('users/order-list.tpl');
+$days = array();
+
+$months = array();
+
+$years = array();
+
+$orderspublications = array();
+
+foreach ($orders as $order) {
+  $timestamp = $order['data'];
+  $timestampparsed = explode(' ', $timestamp);
+  $date = $timestampparsed[0];
+  $dateparsed = explode('-', $date);
+  $days[] = $dateparsed[2];
+  $months[] = $dateparsed[1];
+  $years[] = $dateparsed[0];
+
+  $orderid = $order['encomendaid'];
+  $orderpublications = getOrderPublications($orderid);
+  $orderspublications[] = count($orderpublications);
+}
+
+$smarty->assign('orders', $orders);
+$smarty->assign('days', $days);
+$smarty->assign('months', $months);
+$smarty->assign('years', $years);
+$smarty->assign('orderspublications', $orderspublications);
+$smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
+$smarty->display('users/order-list.tpl');
 ?>
