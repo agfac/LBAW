@@ -213,6 +213,12 @@ function sortTableDateAll(index, sortFlag) {
                 break;
               }
             }
+
+            if (y.length > 3 && (x.length == 3)) {
+              //if so, mark as a switch and break the loop:
+              shouldSwitch= true;
+              break;
+            }
       }
 
       if (shouldSwitch) {

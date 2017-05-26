@@ -2,6 +2,7 @@ flag = true;
 sortByIdFlag = true;
 sortByNameFlag = false;
 sortByStatusFlag = false;
+sortByDateFlag = false;
 
 $(document).ready(function() {
     $(document).on('click', '#search', function (){
@@ -111,7 +112,7 @@ $(document).ready(function() {
 			sortByDateFlag = false;
 			sortByStatusFlag = false;
 	        break;
-	    case 'orderByDate':
+	    case 'sortByDateFlag':
 	    	sortByDateFlag = !sortByDateFlag; 
 	    	sortByIdFlag = false;
 			sortByNameFlag = false;
