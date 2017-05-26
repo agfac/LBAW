@@ -1,6 +1,12 @@
 flag = true;
+sortByIdFlag = true;
+sortByNameFlag = false;
+sortByTotalPriceFlag = false;
+sortByStatusFlag = false;
+sortByDateFlag = false;
+
 $(document).ready(function() {
-    $('#search').on('click', function(){
+    $(document).on('click', '#search', function (){
         if (flag){
             flag = false;
             var nome_cliente = $('#nome_cliente').val();
@@ -16,7 +22,7 @@ $(document).ready(function() {
                     $('.order_content').append('<p>Sem encomendas com os dados de entrada</p>');
 
                 }else{
-                    $('.order_content').append('<p>Encomendas listadas da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 1%">ID</th><th style="width: 30%">Nome cliente</th><th>Preço Total</th><th>Estado</th><th>Data</th><th style="width: 15%">#Editar</th></tr></thead><tbody>');
+                    $('.order_content').append('<p>Encomendas listadas da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th id="orderByID" >ID <span class="glyphicon glyphicon-sort"></span></th><th id="orderByName">Nome cliente <span class="glyphicon glyphicon-sort"></span></th><th id="orderByTotalPrice">Preço Total <span class="glyphicon glyphicon-sort"></span></th><th id="orderByState">Estado <span class="glyphicon glyphicon-sort"></span></th><th id="orderByDate">Data <span class="glyphicon glyphicon-sort"></span></th><th>Ações</th></tr></thead><tbody>');
                     
                     for (var i in data){
                         var estado_encomenda;
@@ -59,4 +65,30 @@ $(document).ready(function() {
         $('#id_encomenda').val("");
         $('#estadoencomenda').val("Escolha uma opção");
     });
+
+    $(document).on('click', '#orderByID', function () {
+        sortTable(0, "INTEGER", sortByIdFlag); 
+        sortByIdFlag = !sortByIdFlag;
+    });
+
+    $(document).on('click', '#orderByName', function () {
+        sortTable(1, "STRING", sortByNameFlag);
+        sortByNameFlag = !sortByNameFlag; 
+    });
+
+    $(document).on('click', '#orderByTotalPrice', function () {
+        sortTable(2, "INTEGER", sortByTotalPriceFlag); 
+        sortByTotalPriceFlag = !sortByTotalPriceFlag;
+    });
+
+    $(document).on('click', '#orderByState', function () {
+        sortTable(3, "STRING", sortByStatusFlag);
+        sortByStatusFlag = !sortByStatusFlag; 
+    });
+
+    $(document).on('click', '#orderByDate', function () {
+        sortTable(4, "STRING", sortByDateFlag);
+        sortByDateFlag = !sortByDateFlag; 
+    });
+
 });

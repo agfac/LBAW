@@ -14,7 +14,7 @@ $(document).ready(function() {
 	        var email_cliente = $('#email_cliente').val();
 	        var nome_publicacao = $('#nome_publicacao').val();
 	        var ordenar = $('#ordenar').val();
-console.log(ordenar);
+
 	        $('.comment_content').empty();
 
 	        $.getJSON("../../api/admin/comment_search.php", {nome_cliente: nome_cliente, email_cliente: email_cliente, nome_publicacao: nome_publicacao, ordenar: ordenar}, function(data){
@@ -25,7 +25,7 @@ console.log(ordenar);
 		        }else{		           
 		            console.log(data);
 		            
-		            $('.comment_content').append('<p>Comentários das publicações na loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 15%"><button type="button" class="btn btn-default btn-xs" id="orderByPublicationName">Nome da Publicação<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 15%"><button type="button" class="btn btn-default btn-xs" id="orderByCLientName">Nome do Cliente<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 10%"><button type="button" class="btn btn-default btn-xs" id="orderByClassification">Classificação<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%"><button type="button" class="btn btn-default btn-xs" id="orderByComments">Comentário<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 15%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th></tr></thead><tbody>');
+		            $('.comment_content').append('<p>Comentários das publicações na loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 14%" id="orderByPublicationName">Nome da Publicação <span class="glyphicon glyphicon-sort"></span></th><th style="width: 14%" id="orderByCLientName">Nome do Cliente <span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByClassification">Classificação <span class="glyphicon glyphicon-sort"></span></th><th style="width: 19%" id="orderByComments">Comentário <span class="glyphicon glyphicon-sort"></span></th><th style="width: 14%">Ações </th></tr></thead><tbody>');
 		            
 		            for (var i in data){
 		                $('.comment_content').find('tbody').append('<tr><td>'+data[i].comentarioid+'</td><td><a>'+data[i].titulo+'</a></td><td><a>'+data[i].nome+'</a></td><td><a class="fa fa-star"> '+data[i].classificacao+'</a></td><td><a>'+data[i].texto+'</a></td><td><a href="../publications/publication.php?id='+data[i].publicacaoid+'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a><a href="../../actions/admin/comment_remove.php?id='+data[i].comentarioid+'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a></td></tr>');

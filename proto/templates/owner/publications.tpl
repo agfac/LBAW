@@ -98,19 +98,19 @@
           </ul>
           <div class="clearfix"></div>
         </div>
-        <div class="publications_content">
+        <div class="publications_content x_content">
           <p>Todos as publicações presentes na loja</p>
           <!-- start of books list -->
           {if $allPublications}
-          <table class="table table-striped projects">
+          <table class="table table-striped projects" id="myTable">
             <thead>
               <tr>
-                <th style="width: 1%">ID</th>
-                <th style="width: 30%">Nome do livro</th>
-                <th>Autor</th>
-                <th>Preço</th>
-                <th>Preço Promocional</th>
-                <th style="width: 20%">Ações</th>
+                <th style="width: 6%" id="orderByID" >ID <span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 30%" id="orderByBookName">Nome do livro <span class="glyphicon glyphicon-sort"></span></th>
+                <th id="orderByAuthorName">Nome do Autor <span class="glyphicon glyphicon-sort"></span></th>
+                <th id="orderByPrice">Preço <span class="glyphicon glyphicon-sort"></span></th>
+                <th style="width: 20%" id="orderByPromotionalPrice">Preço Promocional <span class="glyphicon glyphicon-sort"></span></th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -155,3 +155,4 @@
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
 <script src="{$BASE_URL}javascript/owner/publications_search.js"></script>
+<script src="{$BASE_URL}javascript/utilities.js"></script>

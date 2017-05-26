@@ -1,12 +1,16 @@
 flag = true;
-$(document).ready(function() {
-    $('#search').on('click', function(){
+sortByIdFlag = true;
+sortByNameFlag = false;
+sortByDateFlag = false;
+sortByStatusFlag = false;
 
+$(document).ready(function() {
+    $(document).on('click', '#search', function (){
     	if (flag){
             flag = false;
 	    	var nome_funcionario = $('#nome_funcionario').val();
 	        var email_funcionario = $('#email_funcionario').val();
-	        var data_admissao = $('#single_cal4').val(); //TODO, se alterar o id o calendario não funciona 
+	        var data_admissao = $('#single_cal4').val();
 	        var estado_funcionario = $('#estado_funcionario').val();
 
 			if(data_admissao){
@@ -26,7 +30,7 @@ $(document).ready(function() {
 		        }else{		           
 		            console.log(data);
 		            
-		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects"><thead><tr><th style="width: 2%">ID</th><th style="width: 40%">Nome do Funcionário</th><th style="width: 18%">Data de Admissão</th><th style="width: 10%">Estado</th><th style="width: 20%">#Editar</th></tr></thead><tbody>');
+		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 36%" id="orderByName">Nome do Funcionário <span class="glyphicon glyphicon-sort"></span></th><th style="width: 18%" id="orderByDate">Data de Admissão <span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByState">Estado <span class="glyphicon glyphicon-sort"></span></th><th style="width: 20%">Ações</th></tr></thead><tbody>');
 		            
 		            for (var i in data){
 
@@ -42,7 +46,20 @@ $(document).ready(function() {
 		            		estado = ' btn-success btn-xs"><i class="fa fa-warning"></i> Ativar ';
 		            	}
 
-		                $('.workers_content').find('tbody').append('<tr><td>'+data[i].funcionarioid+'</td><td><a>'+data[i].nome+'</a></td><td><a>'+data[i].dataadmissao+'</a></td><td>'+estado_funcionario+'</td><td><a href="worker_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="../../actions/admin/worker_status.php?username='+data[i].username+'" class="btn'+estado+'</a></td></tr>');
+		            	date = data[i].dataadmissao;
+
+		            	split = date.split(' ');
+		            	date = split[0];
+		            	horas = split[1];
+
+		            	split = date.split('-');
+		            	ano = split[0];
+		            	mes = split[1];
+		            	dia = split[2];
+
+		            	date = (dia + "-" + mes + "-" + ano + " " + horas);
+
+		                $('.workers_content').find('tbody').append('<tr><td>'+data[i].funcionarioid+'</td><td><a>'+data[i].nome+'</a></td><td><a>'+date+'</a></td><td>'+estado_funcionario+'</td><td><a href="worker_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="../../actions/admin/worker_status.php?username='+data[i].username+'" class="btn'+estado+'</a></td></tr>');
 					}
 		            $('.workers_content').append('</tbody></table>');
 		        }
@@ -58,4 +75,26 @@ $(document).ready(function() {
         $('#single_cal4').val("");
         $('#estado_funcionario').val("Escolha uma opção");
     });
+
+    $(document).on('click', '#orderById', function () {
+		sortTable(0, "INTEGER", sortByIdFlag); 
+    	sortByIdFlag = !sortByIdFlag;
+	});
+
+
+  	$(document).on('click', '#orderByName', function () {
+  		sortTable(1, "STRING", sortByNameFlag);
+    	sortByNameFlag = !sortByNameFlag; 
+	});
+
+	$(document).on('click', '#orderByDate', function () {
+  		sortTable(2, "DATE", sortByDateFlag);
+   		sortByDateFlag = !sortByDateFlag;
+   		console.log("TODO DATE");
+	});
+	
+	$(document).on('click', '#orderByState', function () {
+    	sortTable(3, "STRING", sortByStatusFlag); 
+   		sortByStatusFlag = !sortByStatusFlag;
+	});
 });

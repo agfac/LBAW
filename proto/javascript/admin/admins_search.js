@@ -28,7 +28,7 @@ $(document).ready(function() {
 		        }else{		
 		            console.log(data);
 
-		            $('.admins_content').append('<p>Administradores da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 2%"><button type="button" class="btn btn-default btn-xs" id="orderById">ID<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 40%"><button type="button" class="btn btn-default btn-xs" id="orderByAdminName">Nome do Administrador<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 18%"><button type="button" class="btn btn-default btn-xs" id="orderByDate">Data de Cessação<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 10%"><button type="button" class="btn btn-default btn-xs" id="orderByStatus">Estado<span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%"><button type="button" class="btn  btn-default btn-xs btn-block disabled">Ações </button></th></tr></thead><tbody>');
+		            $('.admins_content').append('<p>Administradores da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 36%" id="orderByAdminName">Nome do Administrador <span class="glyphicon glyphicon-sort"></span></th><th style="width: 18%" id="orderByDate">Data de Cessação <span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%">Ações </th></tr></thead><tbody>');
 		            
 		            for (var i in data){
 
@@ -45,8 +45,16 @@ $(document).ready(function() {
 		            		estado = ' btn-success btn-xs"><i class="fa fa-warning"></i> Ativar ';
 		            	}
 
-		            	if (data[i].datacessacao)
+		            	if (data[i].datacessacao){
 		            		data_cessacao = data[i].datacessacao;
+
+			            	split = data_cessacao.split('-');
+			            	ano = split[0];
+			            	mes = split[1];
+			            	dia = split[2];
+
+			            	data_cessacao = (dia + "-" + mes + "-" + ano);
+		            	}
 		            	else 
 		            		data_cessacao = "N/A";
 
@@ -70,55 +78,36 @@ $(document).ready(function() {
         $('#estado_administrador').val("Escolha uma opção");
     });
 
-	$(document).on('click', '#orderById', function () {
+
+  $(document).on('click', '#orderById', function () {
 		sortTable(0, "INTEGER", sortByIdFlag); 
-    	sortResete('sortByIdFlag');
-    	console.log("tou aqui e o meu valor é: "+ sortByIdFlag);
+    	sortByIdFlag = !sortByIdFlag;
+    	//sortResete();
 	});
 
-	$(document).on('click', '#orderByAdminName', function () {
+
+  $(document).on('click', '#orderByAdminName', function () {
   		sortTable(1, "STRING", sortByNameFlag);
-    	sortResete('sortByNameFlag');
+    	sortByNameFlag = !sortByNameFlag; 
 	});
 
 	$(document).on('click', '#orderByDate', function () {
 		//console.log("Ordena pelo nome, flag = " + sortByDateFlag);
   		//sortTable(2, "DATE", sortByDateFlag);
-    	// sortResete('sortByDateFlag');
+   		//sortByDateFlag = !sortByDateFlag; 
    		console.log("FALTA FAZER, DÁ ERRO PQ ALGUNS ELEMETOS A NULL");
 	});
 	
 	$(document).on('click', '#orderByStatus', function () {
     	sortTable(3, "STRING", sortByStatusFlag); 
-    	sortResete('sortByStatusFlag');
+   		sortByStatusFlag = !sortByStatusFlag;
 	});
 
-	function sortResete(sortBy){
-		switch(sortBy) {
-		    case 'sortByIdFlag':
-    			sortByIdFlag = !sortByIdFlag;
-				sortByNameFlag = false;
-				sortByDateFlag = false;
-				sortByStatusFlag = false;
-		        break;
-		    case 'sortByNameFlag':
-    			sortByNameFlag = !sortByNameFlag; 
-		        sortByIdFlag = false;
-				sortByDateFlag = false;
-				sortByStatusFlag = false;
-		        break;
-		    case 'orderByDate':
-		    	sortByDateFlag = !sortByDateFlag; 
-		    	sortByIdFlag = false;
-				sortByNameFlag = false;
-				sortByStatusFlag = false;
-		    	break;
-		    default:
-		    	sortByStatusFlag = !sortByStatusFlag;
-		        sortByIdFlag = false;
-				sortByNameFlag = false;
-				sortByDateFlag = false;
-		}
+	function sortResete(){
+		sortByIdFlag = false;
+		sortByNameFlag = false;
+		sortByDateFlag = false;
+		sortByStatusFlag = false;
+
 	}
-	
 });

@@ -583,4 +583,15 @@ function getUserByStatus($estadoCliente){
   
   return $stmt->fetchAll();
 }
+
+function checkIfUserExists($username){
+  global $conn;
+  $stmt = $conn->prepare("SELECT username
+                          FROM cliente
+                          WHERE username = ?");
+  $stmt->execute(array($username));
+
+  return ($stmt->fetch() !== false);
+}
+
 ?>
