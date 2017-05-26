@@ -135,7 +135,7 @@
                   <div class="header-item mr-5">
                     <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Wishlist">
                       <i class="fa fa-heart-o"></i>
-                      <sub>32</sub>
+                      <sub></sub>
                     </a>
                   </div>
                   <div class="header-item"> </div>
@@ -435,3 +435,5 @@
               </div><!-- end navbar collapse -->
             </div><!-- end container -->
   </div><!-- end navbar -->
+
+  <script src="{$BASE_URL}javascript/common/header.js"></script>
