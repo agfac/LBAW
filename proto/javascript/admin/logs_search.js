@@ -11,7 +11,6 @@ $(document).ready(function() {
 	    	var nome_utilizador = $('#nome_utilizador').val();
 	        var username_utilizador = $('#username_utilizador').val();
 	        var data_login = $('#single_cal4').val();
-	        var ordenar = $('#ordenar').val();
 
 	        if(data_login){
 	            var arr = data_login.split('/');
@@ -21,7 +20,7 @@ $(document).ready(function() {
 
 	        $('.logs_content').empty();
 
-	        $.getJSON("../../api/admin/logs_search.php", {nome_utilizador: nome_utilizador, username_utilizador: username_utilizador, data_login: data_login, ordenar: ordenar}, function(data){
+	        $.getJSON("../../api/admin/logs_search.php", {nome_utilizador: nome_utilizador, username_utilizador: username_utilizador, data_login: data_login}, function(data){
 
 		        if(data.length === 0 || data == "NULL"){
 		            $('.logs_content').append('<p>Sem logins com os dados de entrada</p>');
@@ -58,9 +57,8 @@ $(document).ready(function() {
 
 	$('#clean').on('click', function(){
     	$('#nome_utilizador').val("");
-        $('#email_utilizador').val("");
+    	$('#username_utilizador').val("");
         $('#single_cal4').val("");
-        $('#ordenar').val("Escolha uma opção");
     });
 
    	$(document).on('click', '#orderById', function () {
