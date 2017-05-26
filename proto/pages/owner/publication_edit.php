@@ -3,7 +3,7 @@ include_once('../../config/init.php');
 include_once($BASE_DIR .'database/publications.php');
 include_once('userInfo.php');
 
-if (!isset($_GET['id']) || empty($_GET['id']) || !checkIfPublicationExists($_GET['id'])) {
+if (!($_GET['id']) || !checkIfPublicationExists($_GET['id'])) {
 	error_log('if');
     $_SESSION['error_messages'][] = 'Erro com o id da publicação';
     header("Location: $BASE_URL" . 'pages/owner/publications.php');

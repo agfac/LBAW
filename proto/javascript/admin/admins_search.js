@@ -4,7 +4,7 @@ sortByNameFlag = false;
 sortByStatusFlag = false;
 
 $(document).ready(function() {
-    $('#search').on('click', function(){
+    $(document).on('click', '#search', function (){
 
     	if (flag){
             flag = false;
@@ -49,11 +49,7 @@ $(document).ready(function() {
 		            		data_cessacao = data[i].datacessacao;
 
 			            	split = data_cessacao.split('-');
-			            	ano = split[0];
-			            	mes = split[1];
-			            	dia = split[2];
-
-			            	data_cessacao = (dia + "-" + mes + "-" + ano);
+			            	data_cessacao = (split[2] + "-" + split[1] + "-" + split[0]);
 		            	}
 		            	else 
 		            		data_cessacao = "N/A";
@@ -79,14 +75,14 @@ $(document).ready(function() {
     });
 
 
-  $(document).on('click', '#orderById', function () {
+  	$(document).on('click', '#orderById', function () {
 		sortTable(0, "INTEGER", sortByIdFlag); 
     	sortByIdFlag = !sortByIdFlag;
     	//sortResete();
 	});
 
 
-  $(document).on('click', '#orderByAdminName', function () {
+  	$(document).on('click', '#orderByAdminName', function () {
   		sortTable(1, "STRING", sortByNameFlag);
     	sortByNameFlag = !sortByNameFlag; 
 	});

@@ -213,6 +213,40 @@ function getUserPublicationsCart($clienteid) {
   return $stmt->fetchAll();
 }
 
+function getUserCartSubtotal($clienteid) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT subtotal
+                          FROM carrinho
+                          WHERE carrinhoid = ?");
+  
+  $stmt->execute(array($clienteid));
+  
+  return $stmt->fetchAll();
+}
+
+function updateCartItems($carrinhoid, $publicacaoid, $quantidade) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("UPDATE publicacaocarrinho
+                          SET quantidade = ?
+                          WHERE carrinhoid = ? AND publicacaoid = ?");
+  
+  $stmt->execute(array($quantidade, $carrinhoid, $publicacaoid));
+}
+
+function removeCartItem($carrinhoid, $publicacaoid) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("DELETE FROM publicacaocarrinho
+                          WHERE carrinhoid = ? AND publicacaoid = ?");
+  
+  $stmt->execute(array($carrinhoid, $publicacaoid));
+}
+
 function getUserPublicationsWishList($clienteid) {
   
   global $conn;

@@ -2,6 +2,12 @@
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/users.php';
 
+if (!$_SESSION['username']) {
+    $_SESSION['error_messages'][] = 'Deverá efetuar login para aceder à página solicitada';
+    header("Location: $BASE_URL");
+    exit;
+}
+
 $username = $_SESSION['username'];
 
 $newuserinformation = array(
@@ -19,7 +25,7 @@ $newuserinformation = array(
     'email'      => strip_tags($_POST['email']),
     'nif'        => strip_tags($_POST['nif']),
     'username'   => strip_tags($_POST['username']),
-);
+    );
 
 $password     = $_POST['password'];
 $newpassword  = $_POST['novapassword'];

@@ -29,14 +29,14 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome do Utilizador:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nome_utilizador" placeholder="Nome do Cliente">
+                  <input type="text" class="form-control" id="nome_utilizador" placeholder="Nome do Utilizador">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Username do Utilizador:</label>
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Username:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="username_utilizador" placeholder="Username do Cliente">
+                  <input type="text" class="form-control" id="username_utilizador" placeholder="Username do Utilizador">
                 </div>
               </div>
 
@@ -90,12 +90,12 @@
           <div class="logs_content x_content">
             <!-- start of books list -->
             {if $allLogs}
-            <table class="table table-striped projects">
+            <table class="table table-striped projects" id="myTalbe">
               <thead>
                 <tr>
-                  <th style="width: 2%">ID</th>
-                  <th style="width: 50%">Nome do Utilizador</th>
-                  <th style="width: 48%">Data</th>
+                  <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></th>
+                  <th style="width: 48%" id="orderByName">Nome do Utilizador <span class="glyphicon glyphicon-sort"></th>
+                  <th style="width: 46%" id="orderByDate">Data <span class="glyphicon glyphicon-sort"></th>
                 </tr>
               </thead>
               <tbody>
@@ -112,6 +112,8 @@
                 {/foreach}
               </tbody>
             </table>
+            {else}
+              <span>Sem Logins</span>
             {/if}
             <!-- end of books list -->
           </div>
@@ -124,3 +126,4 @@
 <!-- /page content -->
 {include file='admin/common/footer.tpl'}
 <script src="{$BASE_URL}javascript/admin/logs_search.js"></script>
+<script src="{$BASE_URL}javascript/utilities.js"></script>

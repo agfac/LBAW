@@ -53,11 +53,8 @@ $(document).ready(function() {
 		            	horas = split[1];
 
 		            	split = date.split('-');
-		            	ano = split[0];
-		            	mes = split[1];
-		            	dia = split[2];
 
-		            	date = (dia + "-" + mes + "-" + ano + " " + horas);
+		            	date = (split[2] + "-" + split[1] + "-" + split[0] + " " + horas);
 
 		                $('.workers_content').find('tbody').append('<tr><td>'+data[i].funcionarioid+'</td><td><a>'+data[i].nome+'</a></td><td><a>'+date+'</a></td><td>'+estado_funcionario+'</td><td><a href="worker_edit.php?username='+data[i].username+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a><a href="../../actions/admin/worker_status.php?username='+data[i].username+'" class="btn'+estado+'</a></td></tr>');
 					}

@@ -45,7 +45,7 @@
 								<tbody>
 									{foreach $publicationscart as $publication}
 
-									<tr>
+									<tr data-id="{$publication.publicacaoid}" data-price="{$publication.preco}">
 										<td>
 											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
 												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
@@ -63,7 +63,7 @@
 												{html_options options=$qtOptions selected=$publication.quantidade}
 											</select>
 										</td>
-										<td>
+										<td data-column="total">
 											<span class="text-primary">€{$publication.preco * $publication.quantidade}</span>
 										</td>
 										<td>
@@ -98,3 +98,5 @@
 <!-- end section -->
 
 {include file='common/footer.tpl'}
+
+<script src="{$BASE_URL}javascript/users/cart.js"></script>

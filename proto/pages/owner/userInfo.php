@@ -4,7 +4,7 @@ include_once($BASE_DIR .'database/workers.php');
 include_once($BASE_DIR .'database/users.php');
 include_once($BASE_DIR .'database/admins.php');
 
-// if (!isset($_SESSION['username']) || empty($_SESSION['username']) || !checkIfWorkerExists($_SESSION['username'])) {
+// if (!($_SESSION['username']) || !checkIfWorkerExists($_SESSION['username'])) {
 // 	error_log('if');
 //     $_SESSION['error_messages'][] = 'Erro com a autenticação do funcionário';
 //     if(checkIfAdminExists($_SESSION['username']))

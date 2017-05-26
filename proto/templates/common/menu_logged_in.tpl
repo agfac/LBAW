@@ -61,7 +61,7 @@
               <div class="cart-items">
                 <ol class="items">
                   {foreach $PUBLICATIONSUSERCART as $publicationusercart}
-                  <li> 
+                  <li data-id="{$publicationusercart.publicacaoid}"> 
                     <a href="{$BASE_URL}pages/publications/publication.php?id={$publicationusercart.publicacaoid}" class="product-image">
                       <img src="{$BASE_URL}{$publicationusercart.url}" alt="Sample Product ">
                     </a>
@@ -72,7 +72,7 @@
                       <p class="product-name"> 
                         <a href="{$BASE_URL}pages/publications/publication.php?id={$publicationusercart.publicacaoid}">{$publicationusercart.titulo}</a> 
                       </p>
-                      <strong>{$publicationusercart.quantidade}</strong> x <span class="price text-primary">€{$publicationusercart.preco}</span>
+                      <strong data-type="quantidade">{$publicationusercart.quantidade}</strong> x <span class="price text-primary">€{$publicationusercart.preco}</span>
                     </div><!-- end product-details -->
                   </li><!-- end item -->
                   {/foreach}
