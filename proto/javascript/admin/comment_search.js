@@ -12,10 +12,11 @@ $(document).ready(function() {
 	    	var nome_cliente = $('#nome_cliente').val();
 	        var email_cliente = $('#email_cliente').val();
 	        var nome_publicacao = $('#nome_publicacao').val();
+	        var comments = $('#comments').val();
 
 	        $('.comment_content').empty();
 
-	        $.getJSON("../../api/admin/comment_search.php", {nome_cliente: nome_cliente, email_cliente: email_cliente, nome_publicacao: nome_publicacao}, function(data){
+	        $.getJSON("../../api/admin/comment_search.php", {nome_cliente: nome_cliente, email_cliente: email_cliente, nome_publicacao: nome_publicacao, comments: comments}, function(data){
 
 		        if(data.length === 0 || data == "NULL"){
 		            $('.comment_content').append('<p>Sem comentários com os dados de entrada</p>');

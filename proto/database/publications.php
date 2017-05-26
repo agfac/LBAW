@@ -291,15 +291,15 @@ function getSubcategoryNameById($categoriaID,$subcategoriaID){
 }
 
 function createPublication($titulo, $descricao, $autorId, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $block3, $block4){
-	global $conn;
+	global $conn, $urlImagem;
 	$conn->beginTransaction();
 
 	try {
 		//CHECK PUBLICACAO ALREADY EXISTS
 		$stmt = $conn->prepare("SELECT *
 								FROM publicacao 
-								WHERE codigobarras = ? OR isbn = ?");
-		$stmt->execute(array($codigobarras, $isbn));
+								WHERE codigobarras = ?");
+		$stmt->execute(array($codigobarras));
 		$result = $stmt->fetch();
 
 		if($result){
@@ -323,8 +323,10 @@ function createPublication($titulo, $descricao, $autorId, $editoraId, $subCatego
 
 			$stmt = $conn->prepare("INSERT INTO imagem (publicacaoid, nome, url) VALUES (?,?,?)");
 			$stmt->execute(array($publicacaoID, $titulo, $urlImagem));
+
 		}
 		$conn->commit();
+		return $urlImagem;
 
 	}catch(Exception $e){
 		error_log($e->getMessage());
