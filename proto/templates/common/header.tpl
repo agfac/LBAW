@@ -133,7 +133,7 @@
                 </div><!-- end col -->
                 <div class="col-sm-3 vertical-align header-items">
                   <div class="header-item mr-5">
-                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                    <a href="{$BASE_URL}pages/users/wishlist.php" data-toggle="tooltip" data-placement="top" title="Wishlist">
                       <i class="fa fa-heart-o"></i>
                       <sub></sub>
                     </a>

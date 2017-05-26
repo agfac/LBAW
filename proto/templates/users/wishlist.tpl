@@ -45,7 +45,7 @@
 										</td>
 										<td>
 											<h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
-											<small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
+											<small>{$publication.nome_categoria} | {$publication.nome_subcategoria}</small>
 										</td>
 										<td>
 											<span class="text-primary">€{$publication.preco}</span>

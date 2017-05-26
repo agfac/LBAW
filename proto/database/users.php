@@ -251,7 +251,7 @@ function getUserPublicationsWishList($clienteid) {
   
   global $conn;
   
-  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.publicacaoid, publicacao.titulo, publicacao.preco, imagem.url
+  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.publicacaoid, publicacao.titulo, publicacao.preco, imagem.url, subcategoria.nome AS nome_subcategoria, categoria.nome AS nome_categoria
                           FROM wishlist
                           JOIN cliente
                           ON wishlist.clienteid = cliente.clienteid 
@@ -261,6 +261,10 @@ function getUserPublicationsWishList($clienteid) {
                           ON publicacao.publicacaoid = publicacaowishlist.publicacaoid 
                           JOIN imagem
                           ON imagem.publicacaoid = publicacao.publicacaoid
+                          JOIN subcategoria
+                          ON publicacao.subcategoriaid = subcategoria.subcategoriaid 
+                          JOIN categoria
+                          ON categoria.categoriaid = subcategoria.categoriaid
                           WHERE cliente.clienteid = ?");
   
   $stmt->execute(array($clienteid));
