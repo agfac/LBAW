@@ -29,6 +29,13 @@ function updateCartNumberItems() {
 			if(data){   	
 
 				itemSelected.remove();
+
+				$.getJSON("../../api/users/get_cart_items.php", function(data) {
+					if (data > 0) {
+						$('.fa-shopping-cart').parent().find('span').text("(" + data + ")");
+						$('.fa-shopping-basket').parent().find('span .text-primary').text("(" + data + ")");
+					}
+				});
 			}
 		});
 	});
