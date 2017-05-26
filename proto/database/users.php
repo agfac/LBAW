@@ -268,6 +268,18 @@ function getUserPublicationsWishList($clienteid) {
   return $stmt->fetchAll();
 }
 
+function removePublicationWishList($clienteid, $publicacaoid) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("DELETE FROM publicacaowishlist
+                          WHERE publicacaowishlist.publicacaoid = ? AND publicacaowishlist.wishlistid = (SELECT wishlist.wishlistid
+                          FROM wishlist
+                          WHERE wishlist.clienteid = ?)");
+  
+  $stmt->execute(array($publicacaoid, $clienteid));
+}
+
 function getAllUsers(){
   global $conn;
   

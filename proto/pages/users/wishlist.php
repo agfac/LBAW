@@ -11,7 +11,9 @@ if (!$_SESSION['username']) {
 $clientid = $_SESSION['userid'];
 
 $publicationswishlist = getUserPublicationsWishList($clientid);
+$publicationscart = getUserPublicationsCart($clientid);
 
 $smarty->assign('publicationswishlist', $publicationswishlist);
+$smarty->assign('PUBLICATIONSUSERCART', $publicationscart);
 $smarty->display('users/wishlist.tpl');
 ?>

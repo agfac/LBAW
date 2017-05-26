@@ -37,7 +37,7 @@
 							<table class="table">
 								<tbody>
 									{foreach $publicationswishlist as $publication}
-									<tr>
+									<tr data-id="{$publication.publicacaoid}">
 										<td>
 											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
 												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
@@ -81,3 +81,5 @@
 <!-- end section -->
 
 {include file='common/footer.tpl'}
+
+<script src="{$BASE_URL}javascript/users/wishlist.js"></script>
