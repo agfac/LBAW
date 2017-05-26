@@ -3,7 +3,7 @@ include_once('../../config/init.php');
 include_once($BASE_DIR .'database/orders.php');
 include_once('userInfo.php');
 
-if (!isset($_GET['id']) || empty($_GET['id']) || !checkIfOrderExists($_GET['id'])) {
+if (!($_GET['id']) || !checkIfOrderExists($_GET['id'])) {
 	error_log('if');
     $_SESSION['error_messages'][] = 'Erro com o id da encomenda';
     header("Location: $BASE_URL" . 'pages/owner/orders.php');

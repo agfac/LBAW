@@ -22,7 +22,7 @@
   $nif = strip_tags($_POST['nif']);
   $cartaocidadao = strip_tags($_POST['cartaocidadao']);
   $username = strip_tags($_POST['username']);
-  $password = $_POST['password'];
+  $password = strip_tags($_POST['password']);
 
   $pieces = explode('/', $datanascimento);
   $diaNasc = $pieces[1];

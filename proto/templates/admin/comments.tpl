@@ -48,17 +48,6 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Ordenar:</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control" id="ordenar">
-                    <option>Escolha uma opção</option>
-                    <option value="DESC">Melhor classificado</option>
-                    <option value="ASC">Menor classificado</option>
-                  </select>
-                </div>
-              </div>
-
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
@@ -96,7 +85,7 @@
                   <th style="width: 14%" id="orderByPublicationName">Nome da Publicação <span class="glyphicon glyphicon-sort"></span></th>
                   <th style="width: 14%" id="orderByCLientName">Nome do Cliente <span class="glyphicon glyphicon-sort"></span></th>
                   <th style="width: 10%" id="orderByClassification">Classificação <span class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 19%" id="orderByComments">Comentário <span class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 19%">Comentário</th>
                   <th style="width: 14%">Ações </th>
                 </tr>
               </thead>

@@ -2,6 +2,7 @@ flag = true;
 sortByIdFlag = true;
 sortByNameFlag = false;
 sortByStatusFlag = false;
+sortByDateFlag = false;
 
 $(document).ready(function() {
     $(document).on('click', '#search', function (){
@@ -77,33 +78,52 @@ $(document).ready(function() {
 
   	$(document).on('click', '#orderById', function () {
 		sortTable(0, "INTEGER", sortByIdFlag); 
-    	sortByIdFlag = !sortByIdFlag;
-    	//sortResete();
+    	sortResete('sortByIdFlag');
 	});
 
 
   	$(document).on('click', '#orderByAdminName', function () {
   		sortTable(1, "STRING", sortByNameFlag);
-    	sortByNameFlag = !sortByNameFlag; 
+    	sortResete('sortByNameFlag');
 	});
 
 	$(document).on('click', '#orderByDate', function () {
-		//console.log("Ordena pelo nome, flag = " + sortByDateFlag);
-  		//sortTable(2, "DATE", sortByDateFlag);
-   		//sortByDateFlag = !sortByDateFlag; 
-   		console.log("FALTA FAZER, DÁ ERRO PQ ALGUNS ELEMETOS A NULL");
+  		sortTableDate(2, sortByDateFlag);
+  		sortResete('sortByDateFlag');
 	});
 	
 	$(document).on('click', '#orderByStatus', function () {
     	sortTable(3, "STRING", sortByStatusFlag); 
-   		sortByStatusFlag = !sortByStatusFlag;
+    	sortResete('sortByStatusFlag');
+
 	});
 
-	function sortResete(){
-		sortByIdFlag = false;
-		sortByNameFlag = false;
-		sortByDateFlag = false;
-		sortByStatusFlag = false;
-
+	function sortResete(sortBy){
+	switch(sortBy) {
+	    case 'sortByIdFlag':
+			sortByIdFlag = !sortByIdFlag;
+			sortByNameFlag = false;
+			sortByDateFlag = false;
+			sortByStatusFlag = false;
+	        break;
+	    case 'sortByNameFlag':
+			sortByNameFlag = !sortByNameFlag; 
+	        sortByIdFlag = false;
+			sortByDateFlag = false;
+			sortByStatusFlag = false;
+	        break;
+	    case 'sortByDateFlag':
+	    	sortByDateFlag = !sortByDateFlag; 
+	    	sortByIdFlag = false;
+			sortByNameFlag = false;
+			sortByStatusFlag = false;
+	    	break;
+	    default:
+	    	sortByStatusFlag = !sortByStatusFlag;
+	        sortByIdFlag = false;
+			sortByNameFlag = false;
+			sortByDateFlag = false;
+		}
 	}
+
 });

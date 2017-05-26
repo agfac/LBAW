@@ -49,18 +49,7 @@
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>
               </div>
-
-              <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Ordenar:</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control" id="ordenar">
-                    <option>Escolha uma opção</option>
-                    <option value="maisRecente">Data mais recente</option>
-                    <option value="menosRecente">Data menos recente</option>
-                  </select>
-                </div>
-              </div>
-
+              
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
@@ -90,7 +79,7 @@
           <div class="logs_content x_content">
             <!-- start of books list -->
             {if $allLogs}
-            <table class="table table-striped projects" id="myTalbe">
+            <table class="table table-striped projects" id="myTable">
               <thead>
                 <tr>
                   <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></th>

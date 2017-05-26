@@ -24,18 +24,6 @@ function getlogsByDate($firstDate,$todayDate){
     return $stmt->fetchAll();
 }
 
-//TODO
-// function getLogsByNameOrderBy($nomeUtilizador, $ordenar){
-
-// }
-
-// function getLogsByEmailOrderBy($emailUtilizador, $ordenar){
-  
-// }
-
-// function getLogsByLoginDateOrderBy($dataLogin, $ordenar){
-  
-// }
 
 function getLogsByNameAndDate($nomeUtilizador, $dataLogin){
     global $conn;
@@ -79,7 +67,6 @@ function getLogsByUsernameAndDate($usernameUtilizador, $dataLogin){
     return $stmt->fetchAll();
 }
 
-//TODO não funciona bem
 function getLogsByName($nomeUtilizador){
     global $conn;
 
@@ -100,7 +87,7 @@ function getLogsByName($nomeUtilizador){
     return $stmt->fetchAll();
 }
 
-//TODO não funciona bem
+
 function getLogsByUsername($usernameUtilizador){
     global $conn;
 
@@ -137,26 +124,6 @@ function getLogsByLoginDate($dataLogin){
                             ORDER BY login.loginid ");
 
     $stmt->execute(array($dataLogin));
-    return $stmt->fetchAll();
-}
-
-//TODO
-function getAllLogsOrderBy($ordenar){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT DISTINCT login.*, (administrador.nome, cliente.nome, funcionario.nome) as nome
-                            FROM login
-                            LEFT JOIN administrador
-                            ON administrador.administradorid = login.administradorid
-                            LEFT JOIN cliente
-                            ON cliente.clienteid = login.clienteid
-                            LEFT JOIN funcionario
-                            ON funcionario.funcionarioid = login.funcionarioid
-                            ORDER BY 
-                                CASE WHEN ('maisRecente' = ?) THEN login.data END DESC,
-                                CASE WHEN ('menosRecente' = ?) THEN login.data END ASC ");
-
-    $stmt->execute(array($ordenar,$ordenar));
     return $stmt->fetchAll();
 }
 
