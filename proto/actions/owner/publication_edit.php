@@ -29,6 +29,7 @@ $isbn             = strip_tags($_POST['isbn']);
 $edicao           = strip_tags($_POST['edicao']);
 $periodicidade    = strip_tags($_POST['periodicidade']);
 
+
 if(!isset($descricao))
 	$descricao = NULL;
 if(!isset($paginas))
@@ -50,7 +51,7 @@ $anoPub = $pieces[0];
 $datapublicacao = sprintf("%04d-%02d-%02d",$anoPub,$mesPub,$diaPub);
 
 
-if($publicationData[0]['id_subcategoria'] != $subCategoriaId){
+if(!($publicationData[0]['id_subcategoria'] === $subCategoriaId)){
 
 	$categoria = getCategoryNameById($categoriaId);
 
@@ -76,11 +77,17 @@ if($publicationData[0]['id_subcategoria'] != $subCategoriaId){
 	$block4 = preg_replace("/ç+/", 'c', $block4);
 	$block4 = preg_replace("/ã+/", 'a', $block4);
 
-	$urlImagem = "images/publications/" . $block3 . "/" . $block4 . "/" . $publication_id .".jpg";
+	$urlImagem = "images/publications/" . $block3 . "/" . $block4 . "/" . $publication_id .".jpeg";
 
 	updateURL($publication_id, $titulo, $urlImagem);
+	updateSubCategoryPublicacao($subCategoriaId, $publication_id)
+	$newPathImageFlag = 1;
+}else{
+	$urlImagem = getURLPublication($publication_id);
+	$newPathImageFlag = 0;
 }
 
+uploadFile($urlImagem, $newPathImageFlag);
 
 if($autorId == "novoAutor"){
 	if (!$_POST['nomeAutor'] || !$_POST['datanascimento'] || !$_POST['paisAutor']){
@@ -136,12 +143,11 @@ if($autorId == "novoAutor"){
 	updateAutorPublicacao($autorId, $publication_id);
 }
 
-
-if(!($publicationData[0]['titulo'] === $titulo) || !($publicationData[0]['descricao'] === $descricao) || !($publicationData[0]['editora'] === $editora) || !($publicationData[0]['subcategoria'] === $subCategoriaId) || !($publicationData[0]['datapublicacao'] === $datapublicacao) || !($publicationData[0]['stock'] === $stock) || !($publicationData[0]['peso'] === $peso) || !($publicationData[0]['nrpaginas'] === $paginas) || !($publicationData[0]['preco'] === $preco) || !($publicationData[0]['precopromocional'] === $precopromocional) || !($publicationData[0]['codigobarras'] === $codigobarras) || !($publicationData[0]['novidade'] === $novidade) || !($publicationData[0]['isbn'] === $isbn) || !($publicationData[0]['edicao'] === $edicao) || !($publicationData[0]['periodicidade'] === $periodicidade)){
+if(!($publicationData[0]['titulo'] === $titulo) || !($publicationData[0]['descricao'] === $descricao) || !($publicationData[0]['editora'] === $editora) || !($publicationData[0]['datapublicacao'] === $datapublicacao) || !($publicationData[0]['stock'] === $stock) || !($publicationData[0]['peso'] === $peso) || !($publicationData[0]['nrpaginas'] === $paginas) || !($publicationData[0]['preco'] === $preco) || !($publicationData[0]['precopromocional'] === $precopromocional) || !($publicationData[0]['codigobarras'] === $codigobarras) || !($publicationData[0]['novidade'] === $novidade) || !($publicationData[0]['isbn'] === $isbn) || !($publicationData[0]['edicao'] === $edicao) || !($publicationData[0]['periodicidade'] === $periodicidade)){
 	try {
 		$editoraId = verifyEditoraIfExists($editora);
 
-		updatePublication($titulo, $descricao, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $publication_id);
+		updatePublication($titulo, $descricao, $editoraId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $publication_id);
 	} catch (PDOException $e) {
 
 		$_SESSION['error_messages'][] = 'Erro ao editar a publicação';
@@ -153,4 +159,25 @@ if(!($publicationData[0]['titulo'] === $titulo) || !($publicationData[0]['descri
 
 $_SESSION['success_messages'][] = 'Publicação editada com sucesso';
 header("Location: $BASE_URL" . 'pages/owner/publications.php');
+
+function uploadFile($urlImagem, $newPathImageFlag){
+
+	if(($newPathImageFlag === 0) && ($_FILES['fileUpload']['size'] === 0)){
+		//Pegar na imagem, apagar e fazer novo upload no novo diretorio
+		print_r("1º if");
+	}else if($newPathImageFlag && $_FILES['fileUpload']){
+		//Apagar a imagem e fazer novo upload no novo diretorio
+		print_r("2º if");
+	}else if(!$newPathImageFlag && $_FILES['fileUpload']){
+		//Apagar a imagem e fazer novo upload no diretorio atual
+		print_r("3º if");
+	}
+
+	exit;
+	// $path = ('../../' . $urlImagem);
+	// if(move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path))
+	// 		print_r("Fiz upload");
+
+}
+
 ?>

@@ -23,6 +23,15 @@ function getAllPublications(){
 	return $stmt->fetchAll();
 }
 
+function getURLPublication($id){
+	global $conn;
+	$stmt = $conn->prepare("SELECT url
+							FROM imagem
+							WHERE publicacaoid = ?");
+	$stmt->execute(array($id));
+	return $stmt->fetchAll();
+}
+
 function getPublicationData($id)
 {
 	global $conn;
@@ -319,7 +328,7 @@ function createPublication($titulo, $descricao, $autorId, $editoraId, $subCatego
 			$stmt->execute(array($publicacaoID, $autorId));
 
     		//need to create a new imagem values after insert a new publication
-			$urlImagem = "images/publications/" . $block3 . "/" . $block4 . "/" . $publicacaoID .".jpg";
+			$urlImagem = "images/publications/" . $block3 . "/" . $block4 . "/" . $publicacaoID .".jpeg";
 
 			$stmt = $conn->prepare("INSERT INTO imagem (publicacaoid, nome, url) VALUES (?,?,?)");
 			$stmt->execute(array($publicacaoID, $titulo, $urlImagem));
@@ -353,17 +362,27 @@ function updateAutorPublicacao($autorId, $publication_id){
 	$stmt->execute(array($autorId, $publication_id));
 }
 
-function updatePublication($titulo, $descricao, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $publication_id){
+function updateSubCategoryPublicacao($subCategoriaId, $publication_id){
+	global $conn;
+
+	$stmt = $conn->prepare("UPDATE publicacao
+	                     	SET subcategoriaid = ?
+	                    	WHERE publicacaoid = ?");
+	$stmt->execute(array($subCategoriaId, $publication_id));
+}
+
+
+function updatePublication($titulo, $descricao, $editoraId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $publication_id){
 	global $conn;
 	$conn->beginTransaction();
 
 	try {
 		$stmt = $conn->prepare("UPDATE publicacao
-								SET editoraid = ?, subcategoriaid = ?, titulo = ?, datapublicacao = ?, codigobarras = ?, descricao = ?, paginas = ?, peso = ?, preco = ?, precopromocional = ?, novidade = ?, stock = ?, edicao = ?, periodicidade = ?, isbn = ?
+								SET editoraid = ?, titulo = ?, datapublicacao = ?, codigobarras = ?, descricao = ?, paginas = ?, peso = ?, preco = ?, precopromocional = ?, novidade = ?, stock = ?, edicao = ?, periodicidade = ?, isbn = ?
 								WHERE publicacaoid = ?");
 
 
-		$stmt->execute(array($editoraId, $subCategoriaId, $titulo, $datapublicacao, $codigobarras, $descricao, $paginas, $peso, $preco, $precopromocional, $novidade, $stock, $edicao, $periodicidade, $isbn, $publication_id));
+		$stmt->execute(array($editoraId, $titulo, $datapublicacao, $codigobarras, $descricao, $paginas, $peso, $preco, $precopromocional, $novidade, $stock, $edicao, $periodicidade, $isbn, $publication_id));
 
 		$conn->commit();
 
