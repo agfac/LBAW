@@ -226,6 +226,16 @@ function getUserCartSubtotal($clienteid) {
   return $stmt->fetchAll();
 }
 
+function insertCartPublication($carrinhoid, $publicacaoid, $quantidade) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("INSERT INTO publicacaocarrinho
+                          VALUES (?, ?, ?)");
+  
+  $stmt->execute(array($publicacaoid, $carrinhoid, $quantidade));
+}
+
 function updateCartItems($carrinhoid, $publicacaoid, $quantidade) {
   
   global $conn;
@@ -245,6 +255,19 @@ function removeCartItem($carrinhoid, $publicacaoid) {
                           WHERE carrinhoid = ? AND publicacaoid = ?");
   
   $stmt->execute(array($carrinhoid, $publicacaoid));
+}
+
+function isPublicationOnCart($carrinhoid, $publicacaoid) {
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT * 
+                          FROM publicacaocarrinho 
+                          WHERE publicacaoid = ? AND carrinhoid = ?");
+  
+  $stmt->execute(array($publicacaoid, $carrinhoid));
+  
+  return $stmt->fetch() == true;
 }
 
 function getUserPublicationsWishList($clienteid) {

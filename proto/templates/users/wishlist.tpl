@@ -51,7 +51,7 @@
 											<span class="text-primary">€{$publication.preco}</span>
 										</td>
 										<td>
-											<a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
+											<button type="button" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</button>
 										</td>
 										<td>
 											<button type="button" class="close">×</button>
