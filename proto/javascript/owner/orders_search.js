@@ -68,27 +68,71 @@ $(document).ready(function() {
 
     $(document).on('click', '#orderByID', function () {
         sortTable(0, "INTEGER", sortByIdFlag); 
-        sortByIdFlag = !sortByIdFlag;
+        sortResete('sortByIdFlag');
     });
 
     $(document).on('click', '#orderByName', function () {
         sortTable(1, "STRING", sortByNameFlag);
-        sortByNameFlag = !sortByNameFlag; 
+        sortResete('sortByNameFlag');
     });
 
     $(document).on('click', '#orderByTotalPrice', function () {
         sortTable(2, "INTEGER", sortByTotalPriceFlag); 
-        sortByTotalPriceFlag = !sortByTotalPriceFlag;
+        sortResete('sortByTotalPriceFlag');
     });
 
     $(document).on('click', '#orderByState', function () {
         sortTable(3, "STRING", sortByStatusFlag);
-        sortByStatusFlag = !sortByStatusFlag; 
+        sortResete('sortByStatusFlag');
     });
 
     $(document).on('click', '#orderByDate', function () {
-        sortTable(4, "STRING", sortByDateFlag);
-        sortByDateFlag = !sortByDateFlag; 
+        sortTableDateAll(4, sortByDateFlag);
+        sortResete('sortByDateFlag');
     });
+
+    function sortResete(sortBy){
+        switch(sortBy) {
+            case 'sortByIdFlag':
+                sortByIdFlag = !sortByIdFlag;
+                sortByNameFlag = false;
+                sortByTotalPriceFlag = false;
+                sortByStatusFlag = false;
+                sortByDateFlag = false;
+                break;
+
+            case 'sortByNameFlag':
+                sortByNameFlag = !sortByNameFlag; 
+                sortByIdFlag = false;
+                sortByTotalPriceFlag = false;
+                sortByStatusFlag = false;
+                sortByDateFlag = false;
+                break;
+
+            case 'sortByTotalPriceFlag':
+                sortByTotalPriceFlag = !sortByTotalPriceFlag;
+                sortByIdFlag = false;
+                sortByNameFlag = false;
+                sortByStatusFlag = false;
+                sortByDateFlag = false;
+                break;
+
+            case 'sortByStatusFlag':
+                sortByStatusFlag = !sortByStatusFlag; 
+                sortByIdFlag = false;
+                sortByNameFlag = false;
+                sortByTotalPriceFlag = false;
+                sortByDateFlag = false;
+                break;
+
+            case 'sortByDateFlag':
+                sortByDateFlag = !sortByDateFlag; 
+                sortByIdFlag = false;
+                sortByNameFlag = false;
+                sortByTotalPriceFlag = false;
+                sortByStatusFlag = false;
+                break;
+        }
+    }
 
 });
