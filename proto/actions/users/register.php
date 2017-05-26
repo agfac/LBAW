@@ -24,7 +24,7 @@
   $email = strip_tags($_POST['email']);
   $nif = strip_tags($_POST['nif']);
   $username = strip_tags($_POST['username']);
-  $password = $_POST['password'];
+  $password = strip_tags($_POST['password']);
 
   try {
 
