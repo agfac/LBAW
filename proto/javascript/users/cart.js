@@ -23,7 +23,7 @@ function updateCartNumberItems() {
 	});
 
 	$('.close').on('click', function (){
-		console.log("Entrei");
+
 		var itemSelected = this.closest('tr');
 		var idSelected = itemSelected.getAttribute('data-id');
 
