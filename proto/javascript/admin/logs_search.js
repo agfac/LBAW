@@ -65,20 +65,40 @@ $(document).ready(function() {
 
    	$(document).on('click', '#orderById', function () {
 		sortTable(0, "INTEGER", sortByIdFlag); 
-    	sortByIdFlag = !sortByIdFlag;
+		sortResete('sortByIdFlag');
 	});
 
 
   	$(document).on('click', '#orderByName', function () {
   		sortTable(1, "STRING", sortByNameFlag);
-    	sortByNameFlag = !sortByNameFlag; 
+  		sortResete('sortByNameFlag'); 
 	});
 
 	$(document).on('click', '#orderByDate', function () {
-		//console.log("Ordena pelo nome, flag = " + sortByDateFlag);
-  		//sortTable(2, "DATE", sortByDateFlag);
-   		//sortByDateFlag = !sortByDateFlag; 
-   		console.log("FALTA FAZER, DÁ ERRO PQ ALGUNS ELEMETOS A NULL");
+  		sortTableDateAll(2, sortByDateFlag);
+   		sortResete('sortByDateFlag');
 	});
+
+	function sortResete(sortBy){
+	switch(sortBy) {
+	    case 'sortByIdFlag':
+    		sortByIdFlag = !sortByIdFlag;
+			sortByNameFlag = false;
+			sortByDateFlag = false;
+	        break;
+
+	    case 'sortByNameFlag':
+    		sortByNameFlag = !sortByNameFlag;
+    		sortByIdFlag = false;
+			sortByDateFlag = false;
+	        break;
+
+	    case 'sortByDateFlag':
+	    	sortByDateFlag = !sortByDateFlag; 
+   			sortByIdFlag = false;
+			sortByNameFlag = false;
+	    	break;
+		}
+	}
 	
 });

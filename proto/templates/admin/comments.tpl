@@ -96,7 +96,7 @@
                   <th style="width: 14%" id="orderByPublicationName">Nome da Publicação <span class="glyphicon glyphicon-sort"></span></th>
                   <th style="width: 14%" id="orderByCLientName">Nome do Cliente <span class="glyphicon glyphicon-sort"></span></th>
                   <th style="width: 10%" id="orderByClassification">Classificação <span class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 19%" id="orderByComments">Comentário <span class="glyphicon glyphicon-sort"></span></th>
+                  <th style="width: 19%">Comentário</th>
                   <th style="width: 14%">Ações </th>
                 </tr>
               </thead>

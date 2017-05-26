@@ -70,26 +70,70 @@ $(document).ready(function() {
 
     $(document).on('click', '#orderByID', function () {
         sortTable(0, "INTEGER", sortByIdFlag); 
-        sortByIdFlag = !sortByIdFlag;
+        sortResete('sortByIdFlag');
     });
 
     $(document).on('click', '#orderByBookName', function () {
         sortTable(1, "STRING", sortByBookNameFlag);
-        sortByBookNameFlag = !sortByBookNameFlag; 
+        sortResete('sortByBookNameFlag');
     });
 
     $(document).on('click', '#orderByAuthorName', function () {
         sortTable(2, "STRING", sortByAuthorNameFlag); 
-        sortByAuthorNameFlag = !sortByAuthorNameFlag;
+        sortResete('sortByAuthorNameFlag');
     });
 
     $(document).on('click', '#orderByPrice', function () {
         sortTable(3, "INTEGER", sortByPriceFlag);
-        sortByPriceFlag = !sortByPriceFlag; 
+        sortResete('sortByPriceFlag'); 
     });
 
     $(document).on('click', '#orderByPromotionalPrice', function () {
         sortTable(4, "INTEGER", sortByPromotionalFlag);
-        sortByPromotionalFlag = !sortByPromotionalFlag; 
+        sortResete('sortByPromotionalFlag');
     });
+
+    function sortResete(sortBy){
+        switch(sortBy) {
+            case 'sortByIdFlag':
+                sortByIdFlag = !sortByIdFlag;
+                sortByBookNameFlag = false;
+                sortByAuthorNameFlag = false;
+                sortByPriceFlag = false;
+                sortByPromotionalFlag = false;
+                break;
+
+            case 'sortByBookNameFlag':
+                sortByBookNameFlag = !sortByBookNameFlag; 
+                sortByIdFlag = false;
+                sortByAuthorNameFlag = false;
+                sortByPriceFlag = false;
+                sortByPromotionalFlag = false;
+                break;
+
+            case 'sortByAuthorNameFlag':
+                sortByAuthorNameFlag = !sortByAuthorNameFlag;
+                sortByIdFlag = false;
+                sortByBookNameFlag = false;
+                sortByPriceFlag = false;
+                sortByPromotionalFlag = false;
+                break;
+
+            case 'sortByPriceFlag':
+                sortByPriceFlag = !sortByPriceFlag; 
+                sortByIdFlag = false;
+                sortByBookNameFlag = false;
+                sortByAuthorNameFlag = false;
+                sortByPromotionalFlag = false;
+                break;
+
+            case 'sortByPromotionalFlag':
+                sortByPromotionalFlag = !sortByPromotionalFlag;
+                sortByIdFlag = false;
+                sortByBookNameFlag = false;
+                sortByAuthorNameFlag = false;
+                sortByPriceFlag = false;
+                break;
+        }
+    }
 });

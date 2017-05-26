@@ -5,7 +5,6 @@ sortByDateFlag = false;
 sortByStatusFlag = false;
 
 $(document).ready(function() {
-
     $(document).on('click', '#search', function (){
     	if (flag){
             flag = false;
@@ -76,22 +75,55 @@ $(document).ready(function() {
 
     $(document).on('click', '#orderById', function () {
 		sortTable(0, "INTEGER", sortByIdFlag); 
-    	sortByIdFlag = !sortByIdFlag;
+    	sortResete('sortByIdFlag');
 	});
 
 
   	$(document).on('click', '#orderByName', function () {
   		sortTable(1, "STRING", sortByNameFlag);
-    	sortByNameFlag = !sortByNameFlag; 
+  		sortResete('sortByNameFlag');
 	});
 
 	$(document).on('click', '#orderByDate', function () {
-  		sortTableDate(2, sortByDateFlag);
-   		sortByDateFlag = !sortByDateFlag;
+  		sortTableDateAll(2, sortByDateFlag);
+  		sortResete('sortByDateFlag');
 	});
 	
 	$(document).on('click', '#orderByState', function () {
     	sortTable(3, "STRING", sortByStatusFlag); 
-   		sortByStatusFlag = !sortByStatusFlag;
+  		sortResete('sortByStatusFlag');
 	});
+
+	function sortResete(sortBy){
+	switch(sortBy) {
+	    case 'sortByIdFlag':
+			sortByIdFlag = !sortByIdFlag;
+			sortByNameFlag = false;
+			sortByDateFlag = false;
+			sortByStatusFlag = false;
+	        break;
+
+	    case 'sortByNameFlag':
+    		sortByNameFlag = !sortByNameFlag; 
+    		sortByIdFlag = false;
+			sortByDateFlag = false;
+			sortByStatusFlag = false;
+	        break;
+
+	    case 'sortByDateFlag':
+   			sortByDateFlag = !sortByDateFlag;
+			sortByIdFlag = false;
+			sortByNameFlag = false;
+			sortByStatusFlag = false;
+	    	break;
+
+	     case 'sortByStatusFlag':
+	     	sortByStatusFlag = !sortByStatusFlag;
+			sortByIdFlag = false;
+			sortByNameFlag = false;
+			sortByDateFlag = false;
+	     	break;
+		}
+	}
+
 });

@@ -90,7 +90,7 @@
           <div class="logs_content x_content">
             <!-- start of books list -->
             {if $allLogs}
-            <table class="table table-striped projects" id="myTalbe">
+            <table class="table table-striped projects" id="myTable">
               <thead>
                 <tr>
                   <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></th>
