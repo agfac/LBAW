@@ -2,7 +2,7 @@
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/orders.php';
 
-$order_id = $_POST['order_id'];
+$order_id = strip_tags($_POST['order_id']);
 
 if(!(isset($_POST['estadoencomenda']))){
 	$_SESSION['success_messages'][] = 'Estado da encomenda sem alteração';

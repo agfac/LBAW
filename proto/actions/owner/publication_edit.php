@@ -3,7 +3,7 @@ include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/publications.php';
 include_once($BASE_DIR .'database/users.php');
 
-$publication_id = $_POST['publication_id'];
+$publication_id = strip_tags($_POST['publication_id']);
 $publicationData = getPublicationData($publication_id);
 
 //Generate rand number for codigobarras if empty

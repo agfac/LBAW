@@ -2,7 +2,7 @@
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/users.php';
 
-$username = $_POST['client_username'];
+$username = strip_tags($_POST['client_username']);
 
 $datanascimento = strip_tags($_POST['datanascimento']);
 $pieces = explode('-', $datanascimento);
