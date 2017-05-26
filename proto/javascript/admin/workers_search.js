@@ -5,6 +5,7 @@ sortByDateFlag = false;
 sortByStatusFlag = false;
 
 $(document).ready(function() {
+
     $(document).on('click', '#search', function (){
     	if (flag){
             flag = false;
@@ -85,9 +86,8 @@ $(document).ready(function() {
 	});
 
 	$(document).on('click', '#orderByDate', function () {
-  		sortTable(2, "DATE", sortByDateFlag);
+  		sortTableDate(2, sortByDateFlag);
    		sortByDateFlag = !sortByDateFlag;
-   		console.log("TODO DATE");
 	});
 	
 	$(document).on('click', '#orderByState', function () {
