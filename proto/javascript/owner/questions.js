@@ -64,7 +64,7 @@ $(document).ready(function() {
 
 
   $(document).on('click', '#questionByName', function () {
-		sortTable(0, "INTEGER", sortByUserNameFlag); 
+		sortTable(0, "STRING", sortByUserNameFlag); 
 		sortResete('sortByUserNameFlag');
 	});
 
@@ -97,7 +97,6 @@ $(document).ready(function() {
 		  		sortByStatusFlag = !sortByStatusFlag;
 				sortByUserNameFlag = false;
 				sortByDateFlag = false;
-				sortByStatusFlag = false;
 		}
 	}
 
