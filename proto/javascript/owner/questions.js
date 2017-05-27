@@ -48,6 +48,11 @@ $(document).ready(function() {
         }
 	});
 
+	$(document).on('click', '#updateStatus', function () {
+		var idQuestion = $('#updateStatus');
+		console.log(idQuestion);
+	});
+
 
 	$('#clean').on('click', function(){
     	$('#nome_utilizador').val("");
