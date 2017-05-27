@@ -11,11 +11,11 @@ function updateWishListNumberItems() {
 		var quantity = 1;
 
 		$.getJSON("../../api/users/add_cart_item.php", {id: idSelected, value: quantity}, function(data) {
-			
+
 			if(data){   	
 
 				$.getJSON("../../api/users/remove_wishlist_item.php", {id: idSelected}, function(data) {
-					console.log("DATA: " + JSON.parse(data));
+					
 					if(data){   	
 
 						itemSelected.remove();
@@ -39,8 +39,13 @@ function updateWishListNumberItems() {
 						$('.fa-shopping-basket').parent().find('span .text-primary').text("(" + data + ")");
 					}
 				});
-
-				//$('body').append('<div class="modal fade myModalSmall in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: block; padding-right: 15px;"><div class="modal-dialog modal-sm" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel">Modal title</h4></div><!-- end modal-header --><div class="modal-body"><p>Consectetur adipisicing elit. Nemo architecto debitis dolorum ullam in ut sint, odit maiores eaque explicabo, repellendus minima soluta sunt! Nisi minima blanditiis voluptate, ut atque.</p></div><!-- end modal-body --></div><!-- end modal-content --></div><!-- end modal-dialog --></div>');
+				
+				if(data.Success){
+					$('.pace-inactive').after('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>'+ data.Success + '</strong></div><!-- end alert -->');
+				}
+				else{
+					$('.pace-inactive').after('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>'+ data.Error + '</strong></div><!-- end alert -->');
+				}
 			}
 		});
 	});

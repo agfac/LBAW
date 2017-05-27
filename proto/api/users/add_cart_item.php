@@ -3,19 +3,29 @@ include_once('../../config/init.php');
 include_once($BASE_DIR .'database/users.php');
 
 if($_GET['id'] && $_GET['value']){
-	
+
 	try{
 		insertCartPublication($_SESSION['userid'], $_GET['id'], $_GET['value']);
 		
-		$message['success_messages'][] = "Publicação adicionada ao carrinho";
+		$success = "Publicação adicionada ao carrinho";
+		
+		$response = array('Success' => $success); 
 
 	}catch (PDOException $e) {
-		if (strpos($e->getMessage(), 'PK_Publicacaocarrinho') !== false) 
-			$message['error_messages'][] = "Publicação já existe no carrinho";
-		else
-			$message['error_messages'][] = "Erro ao adicionar publicação no carrinho";
+		if (strpos($e->getMessage(), 'pk_publicacaocarrinho') !== false){
+			
+			$error = "Publicação já existe no carrinho";
+		
+			$response = array('Error' => $error);
+		} 
+		else{
+
+			$error = "Erro ao adicionar publicação no carrinho";
+		
+			$response = array('Error' => $error);
+		}
 	}
 
-	echo json_encode($message);
+	echo json_encode($response);
 }
 ?>
