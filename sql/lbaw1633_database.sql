@@ -486,6 +486,7 @@ CREATE TABLE Perguntautilizador
 	Nome varchar(100) NOT NULL,
 	Email varchar(50) NOT NULL,
 	Mensagem text NOT NULL,
+	Respondido boolean NOT NULL,
 	CONSTRAINT PK_Perguntautilizador PRIMARY KEY (PerguntautilizadorID)
 )
 ;
@@ -2056,34 +2057,34 @@ INSERT INTO Pesquisa (expressao) VALUES ('Preparacao');
 INSERT INTO Pesquisa (expressao) VALUES ('Men');
 
 /* ------------------------------------------------------ R31 PerguntaUtilizador ------------------------------------------------------ */
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Cameron Rhodes','et.libero@etipsum.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Faith Grant','Sed.auctor@nullaat.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Aretha Mcdaniel','nec.euismod@nibh.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Ulla Leach','erat.eget@facilisislorem.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Angela Bartlett','ut.molestie.in@at.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Zorita Mercado','Curabitur.consequat.lectus@sedturpis.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Frances Norman','nec@velit.org','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Eugenia Douglas','gravida.molestie@nequevenenatislacus.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Regina Cooke','semper.rutrum.Fusce@atortorNunc.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Colin Sears','eu@aliquet.net','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Sierra Yates','vestibulum@imperdieteratnonummy.com','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Elmo Mccullough','tempor.diam@magnis.co.uk','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Hashim Dudley','lectus.Nullam.suscipit@tristique.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Grady Roberson','cursus.Integer.mollis@Namporttitorscelerisque.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jakeem Burt','velit@seddolor.edu','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Berk Riggs','convallis.dolor.Quisque@Nullamenim.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Sylvia Hardy','quis.accumsan@semPellentesque.net','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Avram Hebert','mi.Duis@mauriserat.co.uk','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jaden David','non.sollicitudin@Donec.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Kyle Huffman','Curabitur@Donec.ca','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Fallon Hardy','aliquet@diamProindolor.net','Posso levantar em loja física?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lael Lynn','hendrerit.Donec@libero.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Octavius Merritt','auctor.velit.Aliquam@volutpatnuncsit.org','Olá, quanto tempo demora a chegar a minha encomenda?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Laura Frye','nec.leo.Morbi@commodotincidunt.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Jarrod Powell','ac.nulla.In@tincidunt.edu','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Preston Carr','accumsan.convallis.ante@gravida.org','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Quyn Mcmillan','tempus.lorem@ultrices.org','Não consigo esperar mais pela minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Lana Crosby','et.netus@utlacusNulla.edu','Olá, pode indicar quais os métodos de pagamento disponíveis?');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Serena Mccarty','mus.Proin@fringilla.com','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda');
-INSERT INTO PerguntaUtilizador (nome,email,mensagem) VALUES ('Orson Dennis','Proin.vel@Donecnonjusto.co.uk','Posso levantar em loja física?');
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Lacy Sexton','ornare.facilisis.eget@euaugueporttitor.edu','Posso levantar em loja física?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Cameron Rhodes','et.libero@etipsum.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Faith Grant','Sed.auctor@nullaat.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Aretha Mcdaniel','nec.euismod@nibh.ca','Olá, pode indicar quais os métodos de pagamento disponíveis?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Ulla Leach','erat.eget@facilisislorem.ca','Não consigo esperar mais pela minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Angela Bartlett','ut.molestie.in@at.org','Não consigo esperar mais pela minha encomenda',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Zorita Mercado','Curabitur.consequat.lectus@sedturpis.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Frances Norman','nec@velit.org','Posso levantar em loja física?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Eugenia Douglas','gravida.molestie@nequevenenatislacus.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Regina Cooke','semper.rutrum.Fusce@atortorNunc.org','Não consigo esperar mais pela minha encomenda',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Colin Sears','eu@aliquet.net','Posso levantar em loja física?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Sierra Yates','vestibulum@imperdieteratnonummy.com','Olá, quanto tempo demora a chegar a minha encomenda?',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Elmo Mccullough','tempor.diam@magnis.co.uk','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Hashim Dudley','lectus.Nullam.suscipit@tristique.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Grady Roberson','cursus.Integer.mollis@Namporttitorscelerisque.edu','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Jakeem Burt','velit@seddolor.edu','Olá, quanto tempo demora a chegar a minha encomenda?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Berk Riggs','convallis.dolor.Quisque@Nullamenim.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Sylvia Hardy','quis.accumsan@semPellentesque.net','Olá, pode indicar quais os métodos de pagamento disponíveis?',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Avram Hebert','mi.Duis@mauriserat.co.uk','Posso levantar em loja física?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Jaden David','non.sollicitudin@Donec.ca','Não consigo esperar mais pela minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Kyle Huffman','Curabitur@Donec.ca','Não consigo esperar mais pela minha encomenda',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Fallon Hardy','aliquet@diamProindolor.net','Posso levantar em loja física?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Lael Lynn','hendrerit.Donec@libero.org','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Octavius Merritt','auctor.velit.Aliquam@volutpatnuncsit.org','Olá, quanto tempo demora a chegar a minha encomenda?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Laura Frye','nec.leo.Morbi@commodotincidunt.co.uk','Olá, pode indicar quais os métodos de pagamento disponíveis?',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Jarrod Powell','ac.nulla.In@tincidunt.edu','Não consigo esperar mais pela minha encomenda',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Preston Carr','accumsan.convallis.ante@gravida.org','Olá, pode indicar quais os métodos de pagamento disponíveis?',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Quyn Mcmillan','tempus.lorem@ultrices.org','Não consigo esperar mais pela minha encomenda',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Lana Crosby','et.netus@utlacusNulla.edu','Olá, pode indicar quais os métodos de pagamento disponíveis?',FALSE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Serena Mccarty','mus.Proin@fringilla.com','Olá, tudo bem? Tenho uma duvida relativamente à minha encomenda',TRUE);
+INSERT INTO PerguntaUtilizador (nome,email,mensagem,respondido) VALUES ('Orson Dennis','Proin.vel@Donecnonjusto.co.uk','Posso levantar em loja física?',TRUE);
