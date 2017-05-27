@@ -30,15 +30,15 @@ $edicao           = strip_tags($_POST['edicao']);
 $periodicidade    = strip_tags($_POST['periodicidade']);
 
 
-if(!isset($descricao))
+if(!($descricao))
 	$descricao = NULL;
-if(!isset($paginas))
-	$paginas = NULL;
-if(!isset($precopromocional))
-	$precopromocional = NULL;
-if(!isset($isbn))
+if(!($paginas))
+	$paginas = 0;
+if(!($precopromocional))
+	$precopromocional = $preco;
+if(!($isbn))
 	$isbn = NULL;
-if(!isset($edicao))
+if(!($edicao))
 	$edicao = NULL;
 if($periodicidade === "Escolha uma opção")
 	$periodicidade = NULL;
@@ -51,7 +51,7 @@ $anoPub = $pieces[0];
 $datapublicacao = sprintf("%04d-%02d-%02d",$anoPub,$mesPub,$diaPub);
 
 
-if(!($publicationData[0]['id_subcategoria'] === $subCategoriaId)){
+if(($publicationData[0]['id_subcategoria'] != $subCategoriaId)){
 
 	$categoria = getCategoryNameById($categoriaId);
 
@@ -78,16 +78,18 @@ if(!($publicationData[0]['id_subcategoria'] === $subCategoriaId)){
 	$block4 = preg_replace("/ã+/", 'a', $block4);
 
 	$urlImagem = "images/publications/" . $block3 . "/" . $block4 . "/" . $publication_id .".jpeg";
+	$oldUrlImagem = getURLPublication($publication_id)[0]['url'];
 
 	updateURL($publication_id, $titulo, $urlImagem);
-	updateSubCategoryPublicacao($subCategoriaId, $publication_id)
+	updateSubCategoryPublicacao($subCategoriaId, $publication_id);
 	$newPathImageFlag = 1;
 }else{
-	$urlImagem = getURLPublication($publication_id);
+	$urlImagem = getURLPublication($publication_id)[0]['url'];
 	$newPathImageFlag = 0;
+	$oldUrlImagem = 0;
 }
 
-uploadFile($urlImagem, $newPathImageFlag);
+uploadFile($urlImagem, $newPathImageFlag, $oldUrlImagem);
 
 if($autorId == "novoAutor"){
 	if (!$_POST['nomeAutor'] || !$_POST['datanascimento'] || !$_POST['paisAutor']){
@@ -104,7 +106,7 @@ if($autorId == "novoAutor"){
 	$datanascimento = strip_tags($_POST['datanascimento']);
 	$paisAutor      = strip_tags($_POST['paisAutor']);
 
-	if(!isset($biografia))
+	if(!($biografia))
 		$biografia = "N/A";
 
 	if (!preg_match("/^(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])\/[0-9]{4}$/",$datanascimento)){
@@ -126,7 +128,7 @@ if($autorId == "novoAutor"){
 	try {
 
 		$autorId = createAutor($paisId, $nomeAutor, $genero, $datanascimento, $biografia);
-
+		updateAutorPublicacao($autorId, $publication_id);
 	} catch (PDOException $e) {
 
 		if (strpos($e->getMessage(), 'autor_nome_key') !== false) {
@@ -160,23 +162,29 @@ if(!($publicationData[0]['titulo'] === $titulo) || !($publicationData[0]['descri
 $_SESSION['success_messages'][] = 'Publicação editada com sucesso';
 header("Location: $BASE_URL" . 'pages/owner/publications.php');
 
-function uploadFile($urlImagem, $newPathImageFlag){
+function uploadFile($urlImagem, $newPathImageFlag, $oldUrlImagem){
+	$flagToUpload = false;
 
-	if(($newPathImageFlag === 0) && ($_FILES['fileUpload']['size'] === 0)){
-		//Pegar na imagem, apagar e fazer novo upload no novo diretorio
-		print_r("1º if");
-	}else if($newPathImageFlag && $_FILES['fileUpload']){
-		//Apagar a imagem e fazer novo upload no novo diretorio
-		print_r("2º if");
-	}else if(!$newPathImageFlag && $_FILES['fileUpload']){
-		//Apagar a imagem e fazer novo upload no diretorio atual
-		print_r("3º if");
+	if(($newPathImageFlag === 1) && ($_FILES['fileUpload']['size'] === 0)){
+		//Mudar a foto de diretorio
+		$flagToUpload = false;
+		rename('../../'.$oldUrlImagem, '../../'.$urlImagem);
+	}else if(($newPathImageFlag === 1) && ($_FILES['fileUpload']['size'] != 0)){
+		//Apagar a imagem e fazer upload no novo diretorio
+		$flagToUpload = true;
+		if(unlink(realpath('../../'.$oldUrlImagem)))
+			print_r("apaguei");
+	}else if(($newPathImageFlag === 0) && ($_FILES['fileUpload']['size'] != 0)){
+		//Apagar a imagem e fazer upload no diretorio atual
+		$flagToUpload = true;
+		if(unlink(realpath('../../'.$urlImagem)))
+			print_r('../../'.$urlImagem);
 	}
-
-	exit;
-	// $path = ('../../' . $urlImagem);
-	// if(move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path))
-	// 		print_r("Fiz upload");
+	if($flagToUpload){
+		$path = ('../../' . $urlImagem);
+		if(move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path))
+			print_r("Fiz upload");
+	}
 
 }
 

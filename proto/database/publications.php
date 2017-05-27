@@ -205,6 +205,27 @@ function getPublicationsBySubcategory($subcategory_name, $category_name)
     return $stmt->fetchAll();
 }
 
+function getPublicationDataSearchPublicationNameAndSubcategory($nome_editora, $subcategoria)
+{
+	global $conn;
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE (LOWER(editora.nome) like '%'||?||'%') AND subcategoria.subcategoriaid = ?
+                            ORDER BY publicacao.publicacaoid");
+    $stmt->execute(array(strtolower($nome_editora), $subcategoria));
+    return $stmt->fetchAll();
+}
+
 function getAllSubCategorys(){
 	global $conn;
     $stmt = $conn->prepare("SELECT subcategoria.*, categoria.nome as nome_categoria

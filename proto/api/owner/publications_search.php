@@ -10,6 +10,8 @@
 
 	if($nome_livro == NULL && $nome_autor == NULL && $nome_editora == NULL && $subcategoria == "Escolha uma opção" && $categoria == "Escolha uma opção")
 		$reply = getAllPublications();
+	else if($nome_editora != null && $subcategoria != "Escolha uma opção")
+		$reply = getPublicationDataSearchPublicationNameAndSubcategory($nome_editora, $subcategoria);
 	else if($nome_livro != null)
 		$reply = getPublicationDataSearchPublicationName($nome_livro);
 	else if($nome_autor != null)
