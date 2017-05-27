@@ -569,6 +569,8 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
     error_log($e->getMessage());
 
     $conn->rollBack();
+
+    throw $e;
   }
 }
 

@@ -35,8 +35,7 @@
   } catch (PDOException $e) {
 
     if (strpos($e->getMessage(), 'administrador_username_key') !== false) {
-      $_SESSION['error_messages'][] = 'Username duplicado';
-      $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
+      $_SESSION['error_messages'][] = 'Já existe um administrador com o username introduzido';
     }
     else $_SESSION['error_messages'][] = 'Erro ao criar utilizador';
 

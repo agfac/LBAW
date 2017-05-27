@@ -361,6 +361,7 @@ function createPublication($titulo, $descricao, $autorId, $editoraId, $subCatego
 	}catch(Exception $e){
 		error_log($e->getMessage());
 		$conn->rollBack();
+		throw $e;
 	}
 
 }
@@ -410,6 +411,7 @@ function updatePublication($titulo, $descricao, $editoraId, $datapublicacao, $st
 	}catch(Exception $e){
 		error_log($e->getMessage());
 		$conn->rollBack();
+		throw $e;
 	}
 }
 

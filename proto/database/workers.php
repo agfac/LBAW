@@ -113,6 +113,8 @@ function createWorker($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $lo
     error_log($e->getMessage());
 
     $conn->rollBack();
+
+    throw $e;
   }
 }
 
@@ -310,6 +312,8 @@ function updateWorkerInformation($username, $userdata, $newuserinformation) {
     error_log($e->getMessage());
 
     $conn->rollBack();
+
+    throw $e;
   }
 }
 

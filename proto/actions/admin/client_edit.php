@@ -40,11 +40,14 @@ try {
 
 } catch (PDOException $e) {
 
-    if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
-        $_SESSION['error_messages'][]         = 'Cliente já existe';
-        $_SESSION['field_errors']['username'] = 'Username already exists';
+    if (strpos($e->getMessage(), 'cliente_email_key') !== false ) {
+        $_SESSION['error_messages'][] = 'Já existe um utilizador com o Email introduzido';
+    } else if (strpos($e->getMessage(), 'cliente_nif_key') !== false ) {
+        $_SESSION['error_messages'][] = 'Já existe um utilizador com o NIF introduzido';
+    } else if (strpos($e->getMessage(), 'cliente_username_key') !== false) {
+        $_SESSION['error_messages'][] = 'Já existe um utilizador com o Username introduzido';
     } else {
-        $_SESSION['error_messages'][] = 'Error user information edition';
+        $_SESSION['error_messages'][] = 'Erro ao editar o cliente';
     }
 
     $_SESSION['form_values'] = $_POST;

@@ -38,6 +38,7 @@ function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $usern
     error_log($e->getMessage());
 
     $conn->rollBack();
+    throw $e;
   }
 }
 
@@ -125,6 +126,7 @@ function updateAdminInformation($username, $userdata, $newuserinformation) {
     error_log($e->getMessage());
 
     $conn->rollBack();
+    throw $e;
   }
 }
 
