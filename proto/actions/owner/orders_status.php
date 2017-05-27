@@ -26,12 +26,7 @@ try {
 
 } catch (PDOException $e) {
 
-    if (strpos($e->getMessage(), 'encomenda_encomendaid_key') !== false) {
-        $_SESSION['error_messages'][]         = 'Encomenda não existe';
-        $_SESSION['field_errors']['encomenda'] = 'Encomenda não existe';
-    } else {
-        $_SESSION['error_messages'][] = 'Error user information edition';
-    }
+    $_SESSION['error_messages'][] = 'Erro ao editar o estado da encomenda';
     header("Location: $BASE_URL" . 'pages/owner/order.php?id=' . urlencode($order_id));
     exit;
 }

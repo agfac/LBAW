@@ -25,25 +25,12 @@ function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $usern
       $paisID = $conn->lastInsertId('pais_paisid_seq');
     }
     
-    //CHECK ADMINISTRADOR ALREADY EXISTS
-    $stmt = $conn->prepare("SELECT *
-                            FROM administrador 
-                            WHERE username = ?");
-    $stmt->execute(array($username));
-    $result = $stmt->fetch();
+    //INSERT INTO ADMINISTRADOR
+    $stmt = $conn->prepare("INSERT INTO administrador (paisid, nome, genero, datanascimento, username, password, ativo) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-    if($result){
-      die('Administrador já existe!');
-    }
-    else{
-      //INSERT INTO ADMINISTRADOR
-      $stmt = $conn->prepare("INSERT INTO administrador (paisid, nome, genero, datanascimento, username, password, ativo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-
-      $datanasc = sprintf("%04d-%02d-%02d",$anoNasc,$mesNasc,$diaNasc);
-      
-      $stmt->execute(array($paisID, $nome, $genero, $datanasc, $username, sha1($password), $atividade));
-    }
-
+    $datanasc = sprintf("%04d-%02d-%02d",$anoNasc,$mesNasc,$diaNasc);
+    
+    $stmt->execute(array($paisID, $nome, $genero, $datanasc, $username, sha1($password), $atividade));
 
     $conn->commit();
   }catch(Exception $e){

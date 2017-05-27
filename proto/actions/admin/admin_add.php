@@ -15,7 +15,7 @@
   $datanascimento = strip_tags($_POST['datanascimento']);
   $pais = strip_tags($_POST['pais']);
   $username = strip_tags($_POST['username']);
-  $password = $_POST['password'];
+  $password = strip_tags($_POST['password']);
   $atividade = strip_tags($_POST['atividade']);
 
   if($atividade == "Ativo")
@@ -33,8 +33,8 @@
     createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $username, $password, $atividade);
 
   } catch (PDOException $e) {
-  
-    if (strpos($e->getMessage(), 'cliente_username_key') !== false) {
+
+    if (strpos($e->getMessage(), 'administrador_username_key') !== false) {
       $_SESSION['error_messages'][] = 'Username duplicado';
       $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
     }
