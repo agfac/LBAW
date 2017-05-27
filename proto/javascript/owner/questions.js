@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 	$(document).on('click', '#updateStatus', function () {
 		var idQuestion = $(this).attr('value');
-		console.log(idQuestion);
+		var parent = $(this).parent().parent()[0].innerHTML;
 	});
 
 
