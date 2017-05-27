@@ -115,21 +115,20 @@
             <div class="sub-products-listing" >
                <table class="table" id="products-table">
                 <tbody>
+                    {if $def_pubs[0].publicacaoid == null}
+                    <p>Sem publicações sobre {$def_pubs[0].nome_subcategoria}</p>
+                    {else}
                     {foreach $def_pubs as $publication}
                     <tr>
                         <td>
                             <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"></a>
-                            <img src='{$BASE_URL}{$publication.url}' width='60px' />
+                            <img src='{$BASE_URL}{$publication.url}' width='70px' />
                         </td>
                         <td>
                           <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"> {$publication.titulo}</a>
                       </td>
                       <td>
-                          {if $publication.nome_autor}
-                          <h7>{$publication.nome_autor}</h7>
-                          {else}
-                          <h7>Sem autor</h7>
-                          {/if}
+                          <h7> {$publication.nome_autor} </h7>
                       </td>
                       <td>
                           <h7>{$publication.preco|string_format:"%.2f"}€</h7>
@@ -139,6 +138,7 @@
                       </td>
                   </tr>
                   {/foreach}
+                  {/if}
               </tbody>
           </table>
       </div>
