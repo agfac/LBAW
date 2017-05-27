@@ -13,6 +13,15 @@ function getAllComments(){
 	return $stmt->fetchAll();
 }
 
+function getAllQuestions(){
+	global $conn;
+	$stmt = $conn->prepare("SELECT *
+							FROM perguntautilizador
+							ORDER BY data DESC");
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
 function getCommentsByDate($firstDate,$todayDate){
   global $conn;
   $stmt = $conn->prepare("SELECT *

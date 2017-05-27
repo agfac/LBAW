@@ -82,6 +82,7 @@
                     <li><a href="{$BASE_URL}pages/owner/home.php">Página Inicial</a></li>
                     <li><a href="{$BASE_URL}pages/owner/orders.php">Encomendas</a></li>
                     <li><a href="{$BASE_URL}pages/owner/publications.php">Publicações</a></li>
+                    <li><a href="{$BASE_URL}pages/owner/questions.php">Perguntas Utilizador</a></li>
                   </ul>
                 </li>
               </ul>
