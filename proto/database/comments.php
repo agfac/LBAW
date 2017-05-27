@@ -60,6 +60,7 @@ function getCommentsByClientNamePublicationName($nomeCliente, $nomePublicacao){
 	$stmt->execute(array(strtolower($nomeCliente), strtolower($nomePublicacao)));
 	return $stmt->fetchAll();
 }
+
 function getCommentsByClientEmailPublicationName($emailCliente, $nomePublicacao){
 	global $conn;
 	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo
@@ -117,6 +118,20 @@ function getCommentsByPublicationName($nomePublicacao){
 							ORDER BY comentario.comentarioid ");
 
 	$stmt->execute(array(strtolower($nomePublicacao)));
+	return $stmt->fetchAll();
+}
+
+function getCommentsByComment($comments){
+	global $conn;
+	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo
+							FROM comentario
+							JOIN cliente
+							ON cliente.clienteid = comentario.clienteid
+							JOIN publicacao
+							ON publicacao.publicacaoid = comentario.publicacaoid
+							WHERE LOWER(comentario.texto) like '%'||?||'%'
+							ORDER BY comentario.comentarioid ");
+	$stmt->execute(array(strtolower($comments)));
 	return $stmt->fetchAll();
 }
 
