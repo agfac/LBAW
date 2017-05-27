@@ -1,12 +1,11 @@
 flag = true;
-// sortByUserNameFlag = true;
-// sortByDateFlag = false;
-// sortByStatusFlag = false;
+sortByUserNameFlag = false;
+sortByDateFlag = true;
+sortByStatusFlag = false;
 
 $(document).ready(function() {
 
 	$(document).on('click', '#search', function () {
-		console.log("nwkdjfbwvabvgiws");
     	if (flag){
           	flag = false;
 	    	var nome_utilizador = $('#nome_utilizador').val();
@@ -36,7 +35,15 @@ $(document).ready(function() {
 		            		estado_utilizador = '<button class="btn btn-warning btn-xs">Não respondido</button>';
 		            	}
 
-		                $('.question_content').find('tbody').append('<tr><td>'+data[i].nome+'</td><td>'+data[i].data+'</td><td>'+estado_utilizador+'</td><td>'+data[i].mensagem+'</td> <td><a href="../../actions/owner/question_status.php?id='+data[i].perguntautilizadorid+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Mudar Estado </a></td></tr>');
+		            	var dataRes = data[i].data;
+
+                        var arr = dataRes.split(' ');
+                        
+                        var arr1 = arr[1].split('.');
+                        split = arr[0].split('-');
+			            arr = (split[2] + "-" + split[1] + "-" + split[0]);
+                        dataRes = arr + " " + arr1[0];
+		                $('.question_content').find('tbody').append('<tr><td>'+data[i].nome+'</td><td>'+dataRes+'</td><td>'+estado_utilizador+'</td><td>'+data[i].mensagem+'</td> <td><a href="../../actions/owner/question_status.php?id='+data[i].perguntautilizadorid+'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Mudar Estado </a></td></tr>');
 
 					}
 		 
@@ -56,41 +63,42 @@ $(document).ready(function() {
     });
 
 
- //  $(document).on('click', '#orderById', function () {
-	// 	sortTable(0, "INTEGER", sortByIdFlag); 
-	// 	sortResete('sortByIdFlag');
-	// });
+  $(document).on('click', '#questionByName', function () {
+		sortTable(0, "INTEGER", sortByUserNameFlag); 
+		sortResete('sortByUserNameFlag');
+	});
 
 
- //  $(document).on('click', '#orderByClientName', function () {
- //  	sortTable(1, "STRING", sortByNameFlag);
- //  	sortResete('sortByNameFlag');
-	// });
+  $(document).on('click', '#questionByDate', function () {
+	  	sortTableDateAll(1, sortByDateFlag);
+	  	sortResete('sortByDateFlag');
+	});
 
 
-	// $(document).on('click', '#orderByStatus', function () {
- //    sortTable(2, "STRING", sortByStatusFlag); 
- //    sortResete('sortByStatusFlag');
-	// });
+	$(document).on('click', '#questionByStatus', function () {
+	    sortTable(2, "STRING", sortByStatusFlag); 
+	    sortResete('sortByStatusFlag');
+	});
 
 
-	// function sortResete(sortBy){
-	// 	switch(sortBy) {
-	// 	    case 'sortByIdFlag':
- //    			sortByIdFlag = !sortByIdFlag;
-	// 			sortByNameFlag = false;
-	// 			sortByDateFlag = false;
-	// 	        break;
-	// 	    case 'sortByNameFlag':
- //    			sortByNameFlag = !sortByNameFlag; 
-	// 	        sortByIdFlag = false;
-	// 			sortByDateFlag = false;
-	// 	        break;
-	// 	  	default:
- //   				sortByStatusFlag = !sortByStatusFlag;
-	// 	    	sortByIdFlag = false;
-	// 			sortByNameFlag = false;
-	// 	}
-	// }
+	function sortResete(sortBy){
+		switch(sortBy) {
+		    case 'sortByUserNameFlag':
+		    	sortByUserNameFlag = !sortByUserNameFlag;
+				sortByDateFlag = false;
+				sortByStatusFlag = false;
+		        break;
+		    case 'sortByDateFlag':
+		    	sortByDateFlag = !sortByDateFlag;
+			    sortByUserNameFlag = false;
+				sortByStatusFlag = false;
+		        break;
+		  	default:
+		  		sortByStatusFlag = !sortByStatusFlag;
+				sortByUserNameFlag = false;
+				sortByDateFlag = false;
+				sortByStatusFlag = false;
+		}
+	}
 
 });

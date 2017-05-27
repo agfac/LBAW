@@ -45,8 +45,8 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select id="estadoPergunta" class="form-control">
                     <option>Escolha uma opção</option>
-                    <option value="Respondida">Respondida</option>
-                    <option value="NaoRespondida">Não respondida</option>
+                    <option value="true">Respondida</option>
+                    <option value="false">Não respondida</option>
                   </select>
                 </div>
               </div>
