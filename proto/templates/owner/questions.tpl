@@ -45,8 +45,8 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select id="estadoPergunta" class="form-control">
                     <option>Escolha uma opção</option>
-                    <option value="Respondida">Respondida</option>
-                    <option value="NaoRespondida">Não respondida</option>
+                    <option value="true">Respondida</option>
+                    <option value="false">Não respondida</option>
                   </select>
                 </div>
               </div>
@@ -107,7 +107,8 @@
                   </td>
                   <td>{$question.mensagem}</td>
                   <td>
-                    <a value="{$question.perguntautilizadorid}" id="changeQuestionStatus" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Mudar Estado </a>
+                    <a href="{$BASE_URL}actions/owner/question_status.php?id={$question.perguntautilizadorid}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Mudar Estado </a>
+                    <!-- <a value="{$question.perguntautilizadorid}" class="btn btn-info btn-xs" id="updateStatus"><i class="fa fa-pencil"></i> Mudar Estado </a> -->
                   </td>
                 </tr>
                 {/foreach}

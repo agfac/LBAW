@@ -8,7 +8,7 @@
 	$comments = $_GET['comments'];
 
 	//TODO COMMENTS
-	if( $nome_cliente == NULL && $email_cliente == NULL && $nome_publicacao == NULL )
+	if( $nome_cliente == NULL && $email_cliente == NULL && $nome_publicacao == NULL && $comments == NULL)
 		$reply = getAllComments();
 
 	else if ( $nome_cliente != NULL && $email_cliente == NULL && $nome_publicacao != NULL )
@@ -25,6 +25,9 @@
 
 	else if( $nome_cliente == NULL && $email_cliente == NULL && $nome_publicacao != NULL )
 		$reply = getCommentsByPublicationName($nome_publicacao);
+
+	else if( $comments != NULL )
+		$reply = getCommentsByComment($comments);
 	
 	else
 		$reply = "NULL";
