@@ -49,12 +49,20 @@ try {
 
 } catch (PDOException $e) {
 
-    if (strpos($e->getMessage(), 'funcionario_cartaocidadao_key') !== false || strpos($e->getMessage(), 'funcionario_email_key') !== false || strpos($e->getMessage(), 'funcionario_nif_key') !== false || strpos($e->getMessage(), 'funcionario_username_key') !== false) {
-        $_SESSION['error_messages'][]         = 'Funcionario duplicado';
-        $_SESSION['field_errors']['username'] = 'Username already exists';
-    } else {
-        $_SESSION['error_messages'][] = 'Erro na edição do funcionario';
+    if (strpos($e->getMessage(), 'funcionario_cartaocidadao_key') !== false) {
+      $_SESSION['error_messages'][] = 'Já existe um funcionário com o cartão de cidadao introduzido';
     }
+    else if (strpos($e->getMessage(), 'funcionario_email_key') !== false) {
+      $_SESSION['error_messages'][] = 'Já existe um funcionário com o email introduzido';
+    }
+    else if (strpos($e->getMessage(), 'funcionario_nif_key') !== false) {
+      $_SESSION['error_messages'][] = 'Já existe um funcionário com o nif introduzido';
+    }
+    else if (strpos($e->getMessage(), 'funcionario_username_key') !== false) {
+      $_SESSION['error_messages'][] = 'Já existe um funcionário com o username introduzido';
+    }
+    else $_SESSION['error_messages'][] = 'Erro ao editar o funcionário';
+
 
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/admin/worker_edit.php?username=' . $username);

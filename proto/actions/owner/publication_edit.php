@@ -152,7 +152,15 @@ if(!($publicationData[0]['titulo'] === $titulo) || !($publicationData[0]['descri
 		updatePublication($titulo, $descricao, $editoraId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $publication_id);
 	} catch (PDOException $e) {
 
-		$_SESSION['error_messages'][] = 'Erro ao editar a publicação';
+		if (strpos($e->getMessage(), 'publicacao_codigobarras_key') !== false) {
+			$_SESSION['error_messages'][] = 'Publicação duplicada';
+			$_SESSION['field_errors']['publicacao'] = 'Código de barras escolhido já existe';
+		}
+		else if (strpos($e->getMessage(), 'ck_publicacao_precopromocional') !== false) {
+			$_SESSION['error_messages'][] = 'Erro no preço promocional';
+			$_SESSION['field_errors']['publicacao'] = 'Preço promocional não pode ser superior ao preço normal';
+		}
+		else $_SESSION['error_messages'][] = 'Erro ao editar a publicação';
 
 		header("Location: $BASE_URL" . 'pages/owner/publication_edit.php?id=' . $publication_id);
 		exit;

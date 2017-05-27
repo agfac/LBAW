@@ -153,7 +153,7 @@ try {
     $_SESSION['error_messages'][] = 'Erro no preço promocional';
     $_SESSION['field_errors']['publicacao'] = 'Preço promocional não pode ser superior ao preço normal';
   }
-  $_SESSION['error_messages'][] = 'Erro ao criar a publicação';
+  else $_SESSION['error_messages'][] = 'Erro ao criar a publicação';
 
   $_SESSION['form_values'] = $_POST;
   header("Location: $BASE_URL" . 'pages/owner/publication_add.php');

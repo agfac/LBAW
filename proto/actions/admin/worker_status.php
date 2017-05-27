@@ -17,8 +17,7 @@ try {
 
 } catch (PDOException $e) {
     
-    $_SESSION['error_messages'][] = 'Erro na edição do funcionario';
-
+    $_SESSION['error_messages'][] = 'Erro na edição do estado do funcionario';
     header("Location: $BASE_URL" . 'pages/admin/workers.php');
     exit;
 }
