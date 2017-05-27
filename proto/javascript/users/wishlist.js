@@ -6,6 +6,7 @@ function updateWishListNumberItems() {
 
 	$('.btn').on('click', function (){
 
+		var tableBody = $(this).closest('tbody');
 		var itemSelected = this.closest('tr');
 		var idSelected = itemSelected.getAttribute('data-id');
 		var quantity = 1;
@@ -28,6 +29,8 @@ function updateWishListNumberItems() {
 							else if(data == 0){
 								$('.fa-heart').parent().find('span').remove();
 								$(".middleBar a[data-original-title='Wishlist'] sub").text(data);
+								tableBody.append("<tr></tr>");
+								tableBody.find('tr').append('<span>Não existem produtos na sua lista de desejos</span>');
 							}
 						});
 					}
@@ -40,11 +43,35 @@ function updateWishListNumberItems() {
 					}
 				});
 				
+				
 				if(data.Success){
-					$('.pace-inactive').after('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>'+ data.Success + '</strong></div><!-- end alert -->');
+					$.confirm({
+						title: 'Sucesso!',
+						content: 'Publicação adicionada ao carrinho',
+						type: 'green',
+						typeAnimated: true,
+						autoClose: 'success|3000',
+						buttons: {
+							success: {
+								text: 'ok',
+								btnClass: 'btn-success',
+							}
+						}
+					});
 				}
 				else{
-					$('.pace-inactive').after('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>'+ data.Error + '</strong></div><!-- end alert -->');
+					$.confirm({
+						title: 'Erro!',
+						content: 'Publicação já existente no carrinho',
+						type: 'red',
+						typeAnimated: true,
+						buttons: {
+							error: {
+								text: 'ok',
+								btnClass: 'btn-red',
+							}
+						}
+					});
 				}
 			}
 		});
@@ -52,14 +79,29 @@ function updateWishListNumberItems() {
 
 	$('.close').on('click', function (){
 
+		var tableBody = $(this).closest('tbody');
 		var itemSelected = this.closest('tr');
 		var idSelected = itemSelected.getAttribute('data-id');
 
 		$.getJSON("../../api/users/remove_wishlist_item.php", {id: idSelected}, function(data) {
-			
+
 			if(data){   	
 
 				itemSelected.remove();
+
+				$.confirm({
+					title: 'Sucesso!',
+					content: 'Publicação removida da wishlist',
+					type: 'green',
+					typeAnimated: true,
+					autoClose: 'success|3000',
+					buttons: {
+						success: {
+							text: 'ok',
+							btnClass: 'btn-success',
+						}
+					}
+				});
 
 				$.getJSON("../../api/users/get_wishlist_items.php", function(data) {
 					if (data > 0) {
@@ -69,6 +111,8 @@ function updateWishListNumberItems() {
 					else if(data == 0){
 						$('.fa-heart').parent().find('span').remove();
 						$(".middleBar a[data-original-title='Wishlist'] sub").text(data);
+						tableBody.append("<tr></tr>");
+						tableBody.find('tr').append('<span>Não existem produtos na sua lista de desejos</span>');
 					}
 				});
 			}

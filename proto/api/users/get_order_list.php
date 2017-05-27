@@ -5,6 +5,6 @@
   $orders = getUserOrderList($_SESSION['userid']);  
   
   $count = count($orders);
-  
+
   echo json_encode($count);
 ?>

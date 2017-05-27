@@ -22,6 +22,7 @@
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/register.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/login.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/edit-form.css" />
+  <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/jquery-confirm.min.css" />
 
   <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
   <link id="pagestyle" rel="stylesheet" type="text/css" href="{$BASE_URL}css/default.css" />
@@ -33,6 +34,7 @@
 
   <!-- JavaScript Files -->
   <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/bootstrap.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/owl.carousel.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.downCount.js"></script>
