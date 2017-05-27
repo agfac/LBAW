@@ -41,7 +41,7 @@
     
   } catch (PDOException $e) {
   
-    if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
+    if (strpos($e->getMessage(), 'funcionario_cartaocidadao_key') !== false || strpos($e->getMessage(), 'funcionario_email_key') !== false || strpos($e->getMessage(), 'funcionario_nif_key') !== false || strpos($e->getMessage(), 'funcionario_username_key') !== false) {
       $_SESSION['error_messages'][] = 'Funcionario duplicado';
       $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
     }

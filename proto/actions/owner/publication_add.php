@@ -137,7 +137,6 @@ if($autorId == "novoAutor"){
   //Verify Editora and return id, if not exists add it
 $editoraId = verifyEditoraIfExists($editora);
 
-
 try {
 
   $url = createPublication($titulo, $descricao, $autorId, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $block3, $block4);
@@ -146,11 +145,15 @@ try {
 
 } catch (PDOException $e) {
 
-  if (strpos($e->getMessage(), 'publicacao_isbn_key') !== false) {
+  if (strpos($e->getMessage(), 'publicacao_codigobarras_key') !== false) {
     $_SESSION['error_messages'][] = 'Publicação duplicada';
-    $_SESSION['field_errors']['publicacao'] = 'ISBN escolhido já existe';
+    $_SESSION['field_errors']['publicacao'] = 'Código de barras escolhido já existe';
   }
-  else $_SESSION['error_messages'][] = 'Erro ao criar a publicação';
+  else if (strpos($e->getMessage(), 'ck_publicacao_precopromocional') !== false) {
+    $_SESSION['error_messages'][] = 'Erro no preço promocional';
+    $_SESSION['field_errors']['publicacao'] = 'Preço promocional não pode ser superior ao preço normal';
+  }
+  $_SESSION['error_messages'][] = 'Erro ao criar a publicação';
 
   $_SESSION['form_values'] = $_POST;
   header("Location: $BASE_URL" . 'pages/owner/publication_add.php');
