@@ -46,35 +46,40 @@ $('#subcategoria-form').on('change', function(){
 		subcategory = $(this).find('option:selected').val();
 
 		$.getJSON("../../api/publications/get_by_category.php", {subcat_name: subcategory, cat_name: category}, function(data){
-			
+
+			console.log(data[0].publicacaoid);
+
 			$('.sub-products-listing').remove();
 
-			if(data.length === 0 || data == "NULL"){
-				$('.sub-products-listing').append('<p>Sem Publicações com os dados de entrada</p>');
-			}
+			$('#products-listing').append('<div class="sub-products-listing" >');
 
+			if(data[0].publicacaoid == null){
+				$('.sub-products-listing').append('<p>Sem publicações sobre ' + data[0].nome_subcategoria +'</p>');
+			}
+			
 			else{
 				products = data;
-
-				$('#products-listing').append('<div class="sub-products-listing" >');
 
 				$('.sub-products-listing').append('<table class="table" id="products-table"> <tbody>');
 
 				for (var i in data){
-					$('.sub-products-listing').append('<tr>');
-					
-					$('.sub-products-listing').append('<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"></a> <img src="../../' + data[i].url +'" width="60px" /> </td>');
-
-					$('.sub-products-listing').append('<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"> ' + data[i].titulo + '</a> </td>');
-					
+					var autor;
 					if(data[i].nome_autor != null)
-						$('.sub-products-listing').append('<td> <h7>'+ data[i].nome_autor +' </h7></td>');
+						autor = data[i].nome_autor;
 					else
-						$('.sub-products-listing').append('<td> <h7> Sem autor </h7></td>');
+						autor = 'Sem autor';
 
-					$('.sub-products-listing').append('<td> <h7>' + data[i].preco+ '€' +'</h7> </td> <td> <h7>' + data[i].precopromocional + '€' +'</h7> </td>');
+					$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"></a> <img src="../../' + data[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"> ' + data[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <h7>' + data[i].preco+ '€' +'</h7> </td> <td> <h7>' + data[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
+					
+					//$('.sub-products-listing').append('<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"></a> <img src="../../' + data[i].url +'" width="60px" /> </td>');
 
-					$('.sub-products-listing').append('</tr>');
+					//$('.sub-products-listing').append('<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"> ' + data[i].titulo + '</a> </td>');
+					
+					//$('.sub-products-listing').append('<td> <h7>'+ data[i].nome_autor +' </h7></td>');					
+
+					//$('.sub-products-listing').append('<td> <h7>' + data[i].preco+ '€' +'</h7> </td> <td> <h7>' + data[i].precopromocional + '€' +'</h7> </td>');
+
+					//$('.sub-products-listing').append('</tr>');
 				}
 
 				$('.sub-products-listing').append('</tbody>');
