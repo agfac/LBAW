@@ -33,8 +33,7 @@
   } catch (PDOException $e) {
   
     if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
-      $_SESSION['error_messages'][] = 'Username duplicado';
-      $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
+      $_SESSION['error_messages'][] = 'Username escolhido já existe';
     }
     else $_SESSION['error_messages'][] = 'Erro ao criar utilizador';
 
