@@ -486,7 +486,7 @@ CREATE TABLE Perguntautilizador
 	Nome varchar(100) NOT NULL,
 	Email varchar(50) NOT NULL,
 	Mensagem text NOT NULL,
-	Respondido boolean NOT NULL,
+	Respondido boolean NOT NULL DEFAULT FALSE,
 	CONSTRAINT PK_Perguntautilizador PRIMARY KEY (PerguntautilizadorID)
 )
 ;
