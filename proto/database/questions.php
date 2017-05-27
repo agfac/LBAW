@@ -9,10 +9,10 @@ function getAllQuestions(){
 	return $stmt->fetchAll();
 }
 
-function updateQueryStatus($id){
+function updateQuestionStatus($id){
 	global $conn;
 	$stmt = $conn->prepare("UPDATE perguntautilizador
-							SET respondido = !respondido
+							SET respondido = NOT respondido
 							WHERE perguntautilizadorid = ?");
     $stmt->execute(array($id));
     return $stmt->fetch();

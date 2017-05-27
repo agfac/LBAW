@@ -6,7 +6,7 @@ $comment_id = $_GET['id'];
 
 try {
 
-    updateQueryStatus($comment_id);
+    updateQuestionStatus($comment_id);
 
 } catch (PDOException $e) {
     
