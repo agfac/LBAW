@@ -24,7 +24,7 @@ function getQuestionsByUserNameAndStatus($nome_utilizador, $estadoPergunta){
 							FROM perguntautilizador
 							WHERE LOWER(nome) like '%'||?||'%'
 							AND respondido = ?
-							ORDER BY perguntautilizadorid");
+							ORDER BY data DESC");
 
 	$stmt->execute(array(strtolower($nome_utilizador),$estadoPergunta));
 	return $stmt->fetchAll();
@@ -36,7 +36,7 @@ function getQuestionsByUserEmailAndStatus($email_utilizador, $estadoPergunta){
 							FROM perguntautilizador
 							WHERE LOWER(email) = ?
 							AND respondido = ?
-							ORDER BY perguntautilizadorid");
+							ORDER BY data DESC");
 
 	$stmt->execute(array(strtolower($email_utilizador),$estadoPergunta));
 	return $stmt->fetchAll();
@@ -47,7 +47,7 @@ function getQuestionsByUserName($nome_utilizador){
 	$stmt = $conn->prepare("SELECT *
 							FROM perguntautilizador
 							WHERE LOWER(nome) like '%'||?||'%'
-							ORDER BY perguntautilizadorid");
+							ORDER BY data DESC");
 
 	$stmt->execute(array(strtolower($nome_utilizador)));
 	return $stmt->fetchAll();
@@ -58,7 +58,7 @@ function getQuestionsByUserEmail($email_utilizador){
 	$stmt = $conn->prepare("SELECT *
 							FROM perguntautilizador
 							WHERE LOWER(email) = ?
-							ORDER BY perguntautilizadorid");
+							ORDER BY data DESC");
 
 	$stmt->execute(array(strtolower($email_utilizador)));
 	return $stmt->fetchAll();
@@ -69,8 +69,7 @@ function getQuestionsByStatus($estadoPergunta){
 	$stmt = $conn->prepare("SELECT *
 							FROM perguntautilizador
 							WHERE respondido = ?
-							ORDER BY perguntautilizadorid");
-
+							ORDER BY data DESC");
 	$stmt->execute(array($estadoPergunta));
 	return $stmt->fetchAll();
 }

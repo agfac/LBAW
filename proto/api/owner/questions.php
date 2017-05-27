@@ -7,13 +7,13 @@
 	$estadoPergunta = $_GET['estadoPergunta'];
 
 
-	if($nome_utilizador == NULL && $email_utilizador == NULL && $estadoPergunta == "Escolha uma opção")
+	if($nome_utilizador == NULL && $email_utilizador == NULL && $estadoPergunta === "Escolha uma opção")
 		$reply = getAllQuestions();
 
-	else if($nome_utilizador != NULL && $estadoPergunta != "Escolha uma opção")
+	else if($nome_utilizador != NULL && $estadoPergunta !== "Escolha uma opção")
 		$reply = getQuestionsByUserNameAndStatus($nome_utilizador, $estadoPergunta);
 
-	else if($email_utilizador != NULL && $estadoPergunta != "Escolha uma opção")
+	else if($email_utilizador != NULL && $estadoPergunta !== "Escolha uma opção")
 		$reply = getQuestionsByUserEmailAndStatus($email_utilizador, $estadoPergunta);
 
 	else if($nome_utilizador != NULL)
@@ -22,7 +22,7 @@
 	else if($email_utilizador != NULL)
 		$reply = getQuestionsByUserEmail($email_utilizador);
 
-	else if($estadoPergunta != "Escolha uma opção")
+	else if($estadoPergunta !== "Escolha uma opção")
 		$reply = getQuestionsByStatus($estadoPergunta);
 
 	else
