@@ -107,7 +107,7 @@
                   </td>
                   <td>{$question.mensagem}</td>
                   <td>
-                    <a value="{$question.perguntautilizadorid}" id="changeQuestionStatus" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Mudar Estado </a>
+                    <a href="{$BASE_URL}actions/owner/question_status.php?id={$question.perguntautilizadorid}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Mudar Estado </a>
                   </td>
                 </tr>
                 {/foreach}

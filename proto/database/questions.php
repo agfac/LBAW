@@ -1,4 +1,5 @@
 <?php
+
 function getAllQuestions(){
 	global $conn;
 	$stmt = $conn->prepare("SELECT *
@@ -7,4 +8,14 @@ function getAllQuestions(){
 	$stmt->execute();
 	return $stmt->fetchAll();
 }
+
+function updateQueryStatus($id){
+	global $conn;
+	$stmt = $conn->prepare("UPDATE perguntautilizador
+							SET respondido = !respondido
+							WHERE perguntautilizadorid = ?");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+}
+
 ?>
