@@ -25,7 +25,7 @@
           </div>
 
           <div class="x_content">
-            <form action="{$BASE_URL}actions/admin/worker_add.php" method="post" class="form-horizontal form-label-left input_mask">
+            <form action="{$BASE_URL}actions/admin/worker_add.php" method="post" class="form-horizontal form-label-left  role="form" data-toggle="validator">
 
               <div class="col-md-12 col-sm-6 col-xs-12 form-group has-feedback">
                 <input title="Insira seu nome completo" type="text" class="form-control has-feedback-left" name="nome" value="{$FORM_VALUES.nome}" required="required" placeholder="Nome Completo *">
@@ -50,6 +50,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                 <input id="password" title="Insira password com mais de 6 caracteres" type="password" class="form-control has-feedback-left" name="password" required="required" placeholder="Password *">
                 <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                <span class="help-block with-errors" data-valmsg-for="pass" data-valmsg-replace="true"></span>
               </div>
 
               <div class="form-group">
