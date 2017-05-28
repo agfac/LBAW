@@ -34,9 +34,8 @@ $newuserinformation = array(
 try {
     
     $userdata = getAdminAllData($username);
-    $oldPaisID = getPaisIdByName($userdata[0]['nomepais']);
 
-    updateAdminInformation($username, $userdata, $newuserinformation, $oldPaisID['paisid']);
+    updateAdminInformation($username, $userdata, $newuserinformation);
 
 
 } catch (PDOException $e) {

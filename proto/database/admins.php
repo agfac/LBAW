@@ -25,7 +25,7 @@ function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $usern
   }
 }
 
-function updateAdminInformation($username, $userdata, $newuserinformation, $oldPaisID) {
+function updateAdminInformation($username, $userdata, $newuserinformation) {
 
   global $conn;
 
@@ -63,7 +63,7 @@ function updateAdminInformation($username, $userdata, $newuserinformation, $oldP
     $birthmonth = ltrim($str, '0');
     $birthday = $birthdate[2];
 
-    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc) || !($pais == $oldPaisID)){
+    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc) || !($userdata[0]['paisid'] === $pais)){
 
       $stmt = $conn->prepare("UPDATE administrador 
                               SET nome = ?, genero = ?, datanascimento = ?, paisid = ?
