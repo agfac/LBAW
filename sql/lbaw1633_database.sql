@@ -1172,49 +1172,284 @@ INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBar
 INSERT INTO Publicacao (editoraID,subcategoriaID,titulo,dataPublicacao,codigoBarras,descricao,paginas,peso,preco,precoPromocional,novidade,stock,edicao,periodicidade,ISBN) VALUES (10,60,'CITYPACK - Londres','01/01/2017','0063535683248','Descubra a cidade de Londres com a ajuda do guia CityPack',176,0.176,13.30,11.97,TRUE,7,'primeira',NULL,'978-972-0-00039-2');
 
 /* ------------------------------------------------------ R20 Pais ------------------------------------------------------ */
-INSERT INTO Pais (nome) VALUES ('Portugal');
-INSERT INTO Pais (nome) VALUES ('Espanha');
-INSERT INTO Pais (nome) VALUES ('Angola');
-INSERT INTO Pais (nome) VALUES ('Argentina');
-INSERT INTO Pais (nome) VALUES ('Mexico');
-INSERT INTO Pais (nome) VALUES ('Brasil');
-INSERT INTO Pais (nome) VALUES ('Cabo Verde');
-INSERT INTO Pais (nome) VALUES ('Chile');
-INSERT INTO Pais (nome) VALUES ('Dinamarca');
-INSERT INTO Pais (nome) VALUES ('USA');
-INSERT INTO Pais (nome) VALUES ('Reino Unido');
-INSERT INTO Pais (nome) VALUES ('Irlanda');
-INSERT INTO Pais (nome) VALUES ('Venezuela');
-INSERT INTO Pais (nome) VALUES ('Peru');
-INSERT INTO Pais (nome) VALUES ('Egito');
-INSERT INTO Pais (nome) VALUES ('Hong Kong');
-INSERT INTO Pais (nome) VALUES ('Timor-Leste');
-INSERT INTO Pais (nome) VALUES ('Jamaica');
+INSERT INTO Pais (nome) VALUES 
+('AFEGANISTÃO'),
+('ACROTÍRI E DECELIA'),
+('ÁFRICA DO SUL'),
+('ALBÂNIA'),
+('ALEMANHA'),
+('AMERICAN SAMOA'),
+('ANDORRA'),
+('ANGOLA'),
+('ANGUILLA'),
+('ANTÍGUA E BARBUDA'),
+('ANTILHAS NEERLANDESAS'),
+('ARÁBIA SAUDITA'),
+('ARGÉLIA'),
+('ARGENTINA'),
+('ARMÉNIA'),
+('ARUBA'),
+('AUSTRÁLIA'),
+('ÁUSTRIA'),
+('AZERBAIJÃO'),
+('BAHAMAS'),
+('BANGLADECHE'),
+('BARBADOS'),
+('BARÉM'),
+('BASSAS DA ÍNDIA'),
+('BÉLGICA'),
+('BELIZE'),
+('BENIM'),
+('BERMUDAS'),
+('BIELORRÚSSIA'),
+('BOLÍVIA'),
+('BÓSNIA E HERZEGOVINA'),
+('BOTSUANA'),
+('BRASIL'),
+('BRUNEI DARUSSALAM'),
+('BULGÁRIA'),
+('BURQUINA FASO'),
+('BURUNDI'),
+('BUTÃO'),
+('CABO VERDE'),
+('CAMARÕES'),
+('CAMBOJA'),
+('CANADÁ'),
+('CATAR'),
+('CAZAQUISTÃO'),
+('CENTRO-AFRICANA REPÚBLICA'),
+('CHADE'),
+('CHILE'),
+('CHINA'),
+('CHIPRE'),
+('COLÔMBIA'),
+('COMORES'),
+('CONGO'),
+('CONGO REPÚBLICA DEMOCRÁTICA'),
+('COREIA DO NORTE'),
+('COREIA DO SUL'),
+('COSTA DO MARFIM'),
+('COSTA RICA'),
+('CROÁCIA'),
+('CUBA'),
+('DINAMARCA'),
+('DOMÍNICA'),
+('EGIPTO'),
+('EMIRADOS ÁRABES UNIDOS'),
+('EQUADOR'),
+('ERITREIA'),
+('ESLOVÁQUIA'),
+('ESLOVÉNIA'),
+('ESPANHA'),
+('ESTADOS UNIDOS'),
+('ESTÓNIA'),
+('ETIÓPIA'),
+('FAIXA DE GAZA'),
+('FIJI'),
+('FILIPINAS'),
+('FINLÂNDIA'),
+('FRANÇA'),
+('GABÃO'),
+('GÂMBIA'),
+('GANA'),
+('GEÓRGIA'),
+('GIBRALTAR'),
+('GRANADA'),
+('GRÉCIA'),
+('GRONELÂNDIA'),
+('GUADALUPE'),
+('GUAM'),
+('GUATEMALA'),
+('GUERNSEY'),
+('GUIANA'),
+('GUIANA FRANCESA'),
+('GUINÉ'),
+('GUINÉ EQUATORIAL'),
+('GUINÉ-BISSAU'),
+('HAITI'),
+('HONDURAS'),
+('HONG KONG'),
+('HUNGRIA'),
+('IÉMEN'),
+('ILHA BOUVET'),
+('ILHA CHRISTMAS'),
+('ILHA DE CLIPPERTON'),
+('ILHA DE JOÃO DA NOVA'),
+('ILHA DE MAN'),
+('ILHA DE NAVASSA'),
+('ILHA EUROPA'),
+('ILHA NORFOLK'),
+('ILHA TROMELIN'),
+('ILHAS ASHMORE E CARTIER'),
+('ILHAS CAIMAN'),
+('ILHAS COCOS (KEELING)'),
+('ILHAS COOK'),
+('ILHAS DO MAR DE CORAL'),
+('ILHAS FALKLANDS (ILHAS MALVINAS)'),
+('ILHAS FEROE'),
+('ILHAS GEÓRGIA DO SUL E SANDWICH DO SUL'),
+('ILHAS MARIANAS DO NORTE'),
+('ILHAS MARSHALL'),
+('ILHAS PARACEL'),
+('ILHAS PITCAIRN'),
+('ILHAS SALOMÃO'),
+('ILHAS SPRATLY'),
+('ILHAS VIRGENS AMERICANAS'),
+('ILHAS VIRGENS BRITÂNICAS'),
+('ÍNDIA'),
+('INDONÉSIA'),
+('IRÃO'),
+('IRAQUE'),
+('IRLANDA'),
+('ISLÂNDIA'),
+('ISRAEL'),
+('ITÁLIA'),
+('JAMAICA'),
+('JAN MAYEN'),
+('JAPÃO'),
+('JERSEY'),
+('JIBUTI'),
+('JORDÂNIA'),
+('KIRIBATI'),
+('KOWEIT'),
+('LAOS'),
+('LESOTO'),
+('LETÓNIA'),
+('LÍBANO'),
+('LIBÉRIA'),
+('LÍBIA'),
+('LISTENSTAINE'),
+('LITUÂNIA'),
+('LUXEMBURGO'),
+('MACAU'),
+('MACEDÓNIA'),
+('MADAGÁSCAR'),
+('MALÁSIA'),
+('MALAVI'),
+('MALDIVAS'),
+('MALI'),
+('MALTA'),
+('MARROCOS'),
+('MARTINICA'),
+('MAURÍCIA'),
+('MAURITÂNIA'),
+('MAYOTTE'),
+('MÉXICO'),
+('MIANMAR'),
+('MICRONÉSIA'),
+('MOÇAMBIQUE'),
+('MOLDÁVIA'),
+('MÓNACO'),
+('MONGÓLIA'),
+('MONTENEGRO'),
+('MONTSERRAT'),
+('NAMÍBIA'),
+('NAURU'),
+('NEPAL'),
+('NICARÁGUA'),
+('NÍGER'),
+('NIGÉRIA'),
+('NIUE'),
+('NORUEGA'),
+('NOVA CALEDÓNIA'),
+('NOVA ZELÂNDIA'),
+('OMÃ'),
+('PAÍSES BAIXOS'),
+('PALAU'),
+('PALESTINA'),
+('PANAMÁ'),
+('PAPUÁSIA-NOVA GUINÉ'),
+('PAQUISTÃO'),
+('PARAGUAI'),
+('PERU'),
+('POLINÉSIA FRANCESA'),
+('POLÓNIA'),
+('PORTO RICO'),
+('PORTUGAL'),
+('QUÉNIA'),
+('QUIRGUIZISTÃO'),
+('REINO UNIDO'),
+('REPÚBLICA CHECA'),
+('REPÚBLICA DOMINICANA'),
+('ROMÉNIA'),
+('RUANDA'),
+('RÚSSIA'),
+('SAHARA OCCIDENTAL'),
+('SALVADOR'),
+('SAMOA'),
+('SANTA HELENA'),
+('SANTA LÚCIA'),
+('SANTA SÉ'),
+('SÃO CRISTÓVÃO E NEVES'),
+('SÃO MARINO'),
+('SÃO PEDRO E MIQUELÃO'),
+('SÃO TOMÉ E PRÍNCIPE'),
+('SÃO VICENTE E GRANADINAS'),
+('SEICHELES'),
+('SENEGAL'),
+('SERRA LEOA'),
+('SÉRVIA'),
+('SINGAPURA'),
+('SÍRIA'),
+('SOMÁLIA'),
+('SRI LANCA'),
+('SUAZILÂNDIA'),
+('SUDÃO'),
+('SUÉCIA'),
+('SUÍÇA'),
+('SURINAME'),
+('SVALBARD'),
+('TAILÂNDIA'),
+('TAIWAN'),
+('TAJIQUISTÃO'),
+('TANZÂNIA'),
+('TERRITÓRIO BRITÂNICO DO OCEANO ÍNDICO'),
+('TERRITÓRIO DAS ILHAS HEARD E MCDONALD'),
+('TIMOR-LESTE'),
+('TOGO'),
+('TOKELAU'),
+('TONGA'),
+('TRINDADE E TOBAGO'),
+('TUNÍSIA'),
+('TURKS E CAICOS'),
+('TURQUEMENISTÃO'),
+('TURQUIA'),
+('TUVALU'),
+('UCRÂNIA'),
+('UGANDA'),
+('URUGUAI'),
+('USBEQUISTÃO'),
+('VANUATU'),
+('VENEZUELA'),
+('VIETNAME'),
+('WALLIS E FUTUNA'),
+('ZÂMBIA'),
+('ZIMBABUÉ');
 
 /* ------------------------------------------------------ R12 Cliente ------------------------------------------------------ */
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Joao Americo Pereira Ribeiro','Masculino','21/03/1993','joaoribeiro','QYU41RAX3FI',TRUE,'05/03/2013 11:54:40','934844763','joaoribeiro@gmail.com','044593724');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Antonio Joaquim dos Santos Teixeira','Masculino','24/03/1995','antonioteixeira','BRD41MAM5ON',TRUE,'03/10/2015 13:34:40','966450982','antonioteixiera@gmail.com','283234271');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Eduardo Paredes da Silva','Masculino','15/11/1988','eduardosilva','RQV35LJX2ML',TRUE,'12/10/2013 15:32:42','917716855','eduardoparedessilva@gmail.com','239054718');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Alexandre Jose Ribeiro Gaspar','Masculino','15/03/1979','alexandregaspar','LSL47AZW9BX',TRUE,'09/11/2013 17:26:35','917176613','alexandrejosegaspar@gmail.com','405583318');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Maria de Castro Meireles Guerra','Feminino','13/11/1980','mariaguerra','VEF30WBO4MB',TRUE,'01/08/2013 14:32:12','968203005','mariameirelesguerra@hotmail.com','161643248');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Luis Alberto Martins Guimaraes','Masculino','07/06/1996','luisguimaraes','GCV39KPT8BG',TRUE,'22/09/2014 15:29:18','964412884','luisalbertoguimaraes@gmail.com','156008522');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Ricardo Martins Marques','Masculino','08/02/1971','ricardomarques','PGT76GUP3KT',TRUE,'07/10/2012 12:16:32','962680460','ricardomartinsmarques@gmail.com','551775972');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Belmiro Jose Guimaraes Pinto','Masculino','11/07/1993','belmiropinto','UCQ67FXR1YJ',TRUE,'23/09/2017 09:36:35','914899512','belmirojoseguimaraespinto@hotmail.com','156795223');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Ricardo Antonio Ramos Cruz','Masculino','12/08/1988','ricardocruz','FBT96EWW3LM',TRUE,'01/04/2015 11:02:34','934216494','ricardoantonioramoscruz@gmail.com','122897197');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Daniel Rodrigues de Sousa Carmo','Masculino','01/10/1976','danielcarmo','MCL83NVJ2EH',TRUE,'30/07/2014 11:43:22','933835578','danielsousacarmo@hotmail.com','817189216');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Henrique Jose Gouveia Pinto','Masculino','01/09/1981','henriquepinto,','QYZ07WLN7YC',TRUE,'21/04/2012 14:33:22','912356510','henriquegouveiapinto@gmail.com','220227873');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Augusto Manuel Alves Pardal','Masculino','12/01/1979','augustopardal','YBS70AHE9VH',TRUE,'22/08/2015 10:07:12','967193101','augustomanuelpardal@gmail.com','184681792');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Manuel da Costa Soares de Sampaio','Masculino','12/09/1976','manuelsampaio','ORU30BNL0JK',TRUE,'28/11/2016 11:12:40','964749241','manuelsoaressampaio@gmail.com','995300138');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Maria Adelaide Ribeiro','Feminino','12/06/1976','mariaribeiro','NGJ01GJR0YA',TRUE,'18/04/2014 09:08:33','918367885','mariaadelaideribeiro@gmail.com','828257176');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Fernando Jose Costa Matos','Masculino','04/10/1988','fernandomatos','EEK74UJV6HC',TRUE,'09/05/2012 21:50:32','932641906','fernandojosecostamatos@gmail.com','337520918');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Teresa Maria Ribeiro Gaspar','Feminino','11/12/1975','teresagaspar','HGY55RMA9YB',TRUE,'12/12/2013 08:32:21','938501001','teresamariagaspar@gmail.com','794359407');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Teresa de Jesus Teixeira Ferreira','Feminino','02/11/1990','teresaferreira','YJP07DRL9MK',TRUE,'03/01/2013 12:43:21','926131659','teresajesusteixeira@hotmail.com','736225027');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Jose Manuel Carvalho dos Santos','Masculino','09/07/1970','josesantos','BKF67NLO2SU',TRUE,'01/03/2014 15:50:32','965650958','josemanuelcarvalhodossantos@hotmail.com','833984062');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Jorge Manuel Rodrigues Goncalves','Masculino','22/03/1986','jorgegoncalves','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','966172007','jorgemanuelrodriguesgoncalves@gmail.com','866169562');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Helena Isabel Duarte Dias Ribeiro','Feminino','29/06/1973','helenaribeiro','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','966229693','helenaisabelribeiro@hotmail.com','898351545');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'Armando Dina Mieiro','Masculino','06/09/1998','armandomieiro','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','917865498','armandomieiro@gmail.com','259873398');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (1,'ClienteProto','Masculino','06/09/1998','cli_proto','219d87a2f4b50249b71bdea4184b662b7cea3c95',TRUE,'12/11/2012 18:21:34','917865498','cliproto@gmail.com','259873376');
-INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,telefone,email,nif) VALUES (1,'Andre Correia','Masculino','15/03/1989','agfac','883768b6dd2c42aea0031b24be8a2da40fef4b64',TRUE,'916735524','andrecorreia@gmail.com','258684542');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Joao Americo Pereira Ribeiro','Masculino','21/03/1993','joaoribeiro','QYU41RAX3FI',TRUE,'05/03/2013 11:54:40','934844763','joaoribeiro@gmail.com','044593724');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Antonio Joaquim dos Santos Teixeira','Masculino','24/03/1995','antonioteixeira','BRD41MAM5ON',TRUE,'03/10/2015 13:34:40','966450982','antonioteixiera@gmail.com','283234271');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Eduardo Paredes da Silva','Masculino','15/11/1988','eduardosilva','RQV35LJX2ML',TRUE,'12/10/2013 15:32:42','917716855','eduardoparedessilva@gmail.com','239054718');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Alexandre Jose Ribeiro Gaspar','Masculino','15/03/1979','alexandregaspar','LSL47AZW9BX',TRUE,'09/11/2013 17:26:35','917176613','alexandrejosegaspar@gmail.com','405583318');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Maria de Castro Meireles Guerra','Feminino','13/11/1980','mariaguerra','VEF30WBO4MB',TRUE,'01/08/2013 14:32:12','968203005','mariameirelesguerra@hotmail.com','161643248');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Luis Alberto Martins Guimaraes','Masculino','07/06/1996','luisguimaraes','GCV39KPT8BG',TRUE,'22/09/2014 15:29:18','964412884','luisalbertoguimaraes@gmail.com','156008522');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Ricardo Martins Marques','Masculino','08/02/1971','ricardomarques','PGT76GUP3KT',TRUE,'07/10/2012 12:16:32','962680460','ricardomartinsmarques@gmail.com','551775972');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Belmiro Jose Guimaraes Pinto','Masculino','11/07/1993','belmiropinto','UCQ67FXR1YJ',TRUE,'23/09/2017 09:36:35','914899512','belmirojoseguimaraespinto@hotmail.com','156795223');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Ricardo Antonio Ramos Cruz','Masculino','12/08/1988','ricardocruz','FBT96EWW3LM',TRUE,'01/04/2015 11:02:34','934216494','ricardoantonioramoscruz@gmail.com','122897197');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Daniel Rodrigues de Sousa Carmo','Masculino','01/10/1976','danielcarmo','MCL83NVJ2EH',TRUE,'30/07/2014 11:43:22','933835578','danielsousacarmo@hotmail.com','817189216');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Henrique Jose Gouveia Pinto','Masculino','01/09/1981','henriquepinto,','QYZ07WLN7YC',TRUE,'21/04/2012 14:33:22','912356510','henriquegouveiapinto@gmail.com','220227873');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Augusto Manuel Alves Pardal','Masculino','12/01/1979','augustopardal','YBS70AHE9VH',TRUE,'22/08/2015 10:07:12','967193101','augustomanuelpardal@gmail.com','184681792');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Manuel da Costa Soares de Sampaio','Masculino','12/09/1976','manuelsampaio','ORU30BNL0JK',TRUE,'28/11/2016 11:12:40','964749241','manuelsoaressampaio@gmail.com','995300138');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Maria Adelaide Ribeiro','Feminino','12/06/1976','mariaribeiro','NGJ01GJR0YA',TRUE,'18/04/2014 09:08:33','918367885','mariaadelaideribeiro@gmail.com','828257176');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Fernando Jose Costa Matos','Masculino','04/10/1988','fernandomatos','EEK74UJV6HC',TRUE,'09/05/2012 21:50:32','932641906','fernandojosecostamatos@gmail.com','337520918');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Teresa Maria Ribeiro Gaspar','Feminino','11/12/1975','teresagaspar','HGY55RMA9YB',TRUE,'12/12/2013 08:32:21','938501001','teresamariagaspar@gmail.com','794359407');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Teresa de Jesus Teixeira Ferreira','Feminino','02/11/1990','teresaferreira','YJP07DRL9MK',TRUE,'03/01/2013 12:43:21','926131659','teresajesusteixeira@hotmail.com','736225027');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Jose Manuel Carvalho dos Santos','Masculino','09/07/1970','josesantos','BKF67NLO2SU',TRUE,'01/03/2014 15:50:32','965650958','josemanuelcarvalhodossantos@hotmail.com','833984062');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Jorge Manuel Rodrigues Goncalves','Masculino','22/03/1986','jorgegoncalves','NWH27SAD6MP',TRUE,'02/10/2015 16:21:40','966172007','jorgemanuelrodriguesgoncalves@gmail.com','866169562');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Helena Isabel Duarte Dias Ribeiro','Feminino','29/06/1973','helenaribeiro','NNS43YYQ8GT',TRUE,'01/03/2016 17:21:32','966229693','helenaisabelribeiro@hotmail.com','898351545');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'Armando Dina Mieiro','Masculino','06/09/1998','armandomieiro','HLL49KIO9FU',TRUE,'12/11/2012 18:21:34','917865498','armandomieiro@gmail.com','259873398');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,dataRegisto,telefone,email,nif) VALUES (193,'ClienteProto','Masculino','06/09/1998','cli_proto','219d87a2f4b50249b71bdea4184b662b7cea3c95',TRUE,'12/11/2012 18:21:34','917865498','cliproto@gmail.com','259873376');
+INSERT INTO Cliente (paisID,nome,genero,dataNascimento,userName,passWord,ativo,telefone,email,nif) VALUES (193,'Andre Correia','Masculino','15/03/1989','agfac','883768b6dd2c42aea0031b24be8a2da40fef4b64',TRUE,'916735524','andrecorreia@gmail.com','258684542');
 
 /* ------------------------------------------------------ R3 PublicacaoCarrinho ------------------------------------------------------ */
 INSERT INTO PublicacaoCarrinho (publicacaoID,carrinhoID,quantidade) VALUES (11,4,3);
@@ -1455,46 +1690,45 @@ INSERT INTO Imagem (publicacaoID,url) VALUES (94,'images/publications/turisticgu
 INSERT INTO Imagem (publicacaoID,url) VALUES (95,'images/publications/turisticguides/Europa/95.jpeg');
 
 /* ------------------------------------------------------ R18 Autor ------------------------------------------------------ */
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Bernardo Pinto de Almeida','Masculino','10/02/1954','Bernardo Pinto de Almeida nasceu em 1954.Vive e trabalha no Porto. Professor Catedrático na Faculdade de Belas Artes da Universidade do Porto.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Grant Scott','Masculino','27/04/1973','Grant Scott é fotógrafo profissional. Depois de atuar durante quinze anos como diretor de fotografia de livros e revistas como Elle e Tatler, no ano 2000 ele decidiu abrir seu próprio estúdio como fotógrafo freelancer, trabalho que executa até os dias de hoje, paralelamente às aulas que ministra no curso de graduação em Fotografia Editorial e Publicitária da Universidade de Gloucestershire, na Inglaterra.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Brian K. Vaughan','Masculino','18/11/1975','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'ED Brubaker','Masculino','31/12/1984','Ed Brubaker é um dos mais aclamados argumentistas da actualidade, com histórias em todas as grandes editoras americanas.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Jorge Dias de Deus','Masculino','10/06/1976','Jorge Dias de Deus é professor catedrático jubilado no Instituto Superior Técnico, da Universidade de Lisboa, com notável obra científica em física de altas energias, astrofísica e cosmologia, e sistemas dinâmicos.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Sem Autor','Masculino','09/10/1974','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Augusto Cury','Masculino','17/06/1986','O Dr. Augusto Cury é psiquiatra, psicoterapeuta, cientista e escritor. Desenvolveu o conceito de inteligência multifocal, uma perspetiva inovadora do funcionamento da mente e da construção do pensamento.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Iñaki Piñuel','Masculino','29/06/1972','Iñaki Piñuel é doutorado em Psicologia, psicoterapeuta, investigador e divulgador especializado na avaliação e no tratamento das vítimas de abuso psicológico e de psicopatas integrados.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Gareth Moore','Masculino','18/02/1980','Dr. Gareth Moore é autor de mais de 35 best-sellers internacionais de puzzles e outros exercícios para o cérebro.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'João Tiago Lima','Masculino','05/08/1980','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Joaquim Rocha','Masculino','07/02/1977','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'André Fernando Ribeiro de Sá','Masculino','12/04/1980','Engenheiro Eletrotécnico e de Computadores, ramo de sistemas de energia, pela FEUP – Licenciatura (2000) e Mestrado (2003). Pós-graduado em gestão de energia – eficiência energética, pelo ISQ (2008). Título de Especialista em Engenharia Eletrotécnica pela Universidade de Aveiro (2012).');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Rita Castanheira Alves','Feminino','12/01/1979','Rita Castanheira Alves é licenciada em Psicologia Clínica desde 2007. A sua prática profissional tem-se dividido entre a prática clínica com crianças, adolescentes e pais, passando pela gestão, implementação e coordenação de projetos de prevenção e intervenção em saúde mental na área infanto-juvenil');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Mário Cordeiro','Masculino','23/08/1981','Mário Cordeiro, pediatra, professor aposentado de pediatria e de saúde pública da Faculdade de Ciências Médicas de Lisboa.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Dolores Aveiro','Feminino','22/01/1984','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Caroline Webb','Feminino','10/07/1974','Caroline Webb foi partner da McKinsey & Co., onde trabalhou mais de uma década. Ocupa o cargo de CEO na empresa de consultadoria Sevenshift, que criou. Dedica-se a ajudar os seus clientes a serem mais produtivos e mais eficazes no trabalho.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Ana Teresa Penim','Feminino','21/04/1975','É especialista em Coaching Apreciativo, Liderança, Psicologia Positiva, Comunicação, Consumer Behavior e Desenvolvimento de Performance. Possui uma carreira marcada pela liderança e desenvolvimento de projectos formativos inovadores na área do comércio e da aprendizagem ao longo da vida.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Joshua Rubenstein','Masculino','20/09/1978','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Henrique Monteiro','Masculino','07/10/1978','Henrique Monteiro é jornalista profissional há quase 40. Foi repórter em mais de 30 países, incluindo cenários de guerra em Moçambique, Angola e Irão. Foi ainda repórter político e parlamentar. É cronista, assinando desde 1990, na revista do Expresso, a coluna Cartas do Comendador; faz, desde 1995, comentário político no caderno principal do mesmo jornal e, desde 2011, comentários diários na sua versão digital. É ainda comentador na SIC Notícias e na Rádio Renascença. Foi subdiretor do Expresso de 1995 a 2005 e depois disso diretor até 2011.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luis Marcelino','Masculino','02/01/1972','Licenciado em Eng.ª Eletrotécnica e de Computadores (IST/UTL) com doutoramento em Sistemas de Informação (University of Salford, Reino Unido). Foi docente na Universidade do Algarve e na Universidade Nova de Lisboa. Dedica-se à interação pessoa-máquina e aos dispositivos móveis.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Ricardo Queirós','Masculino','17/07/1983','Licenciado em Informática pelo Instituto Superior de Engenharia do Porto (ISEP) e Mestrado em Informática pela Faculdade de Ciências da Universidade do Porto (FCUP). Exerce a sua actividade como docente na Escola Superior de Estudos Industriais e Gestão (ESEIG), em Vila do Conde, onde é responsável por disciplinas na área das Linguagens e Técnicas de Programação e Bases de Dados.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Rosanna Ley','Feminino','10/03/1977','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luís Cardoso','Masculino','16/03/1970','Luís Cardoso nasceu em Kailako, uma vila no interior de Timor que aparece por diversas vezes referenciada nos seus romances.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Teresa Rodrigues','Feminino','13/05/1970','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Cinnamon Vanputte','Masculino','03/01/1972','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'José Pedro Castanheira','Masculino','11/04/1981','Ganhou alguns dos mais prestigiados galardões de jornalismo atribuídos em Portugal: Prémio Macau de Jornalismo (1990) e Prémio Nacional de Reportagem de Imprensa (1993), ambos do Clube de Jornalistas; Primeiro Prémio de Reportagem (1993 e 1997), do Clube Português de Imprensa;');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Aníbal Cavaco Silva','Masculino','15/07/1939','Aníbal Cavaco Silva, nascido a 15 de julho de 1939, em Boliqueime, Loulé. É casado com Maria Alves da Silva Cavaco Silva. O casal tem dois filhos e cinco netos. Foi o 19º Presidente da República Portuguesa entre 2006 e 2016.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (3,'Papa Francisco','Masculino','10/12/1986','Francisco (em latim: Franciscus), nascido Jorge Mario Bergoglio SJ (Buenos Aires, 17 de dezembro de 1936) é o 266.º Papa da Igreja Católica e atual chefe de estado do Vaticano,4 sucedendo o Papa Bento XVI, que abdicou ao papado em 28 de fevereiro de 2013.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Robert Sarah','Masculino','16/12/1970','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Isabel Oliveira','Feminino','27/10/1968','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Manuel Pinto Coelho','Masculino','04/01/1986','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Alcides Azevedo Canelas','Feminino','18/04/1983','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Luísa Ducla Soares','Feminino','20/09/1939','uísa Ducla Soares nasceu em Lisboa a 20 de julho de 1939. É licenciada em Filologia Germânica pela Universidade Clássica de Lisboa. Iniciou a sua atividade profissional como tradutora, consultora literária e jornalista, tendo sido diretora da revista de divulgação cultural Vida (1971-2)');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Maria Helena Marques','Feminino','18/09/1978','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Mia Couto','Masculino','16/12/1955','Nasceu na Beira, Moçambique, em 1955. Foi jornalista e professor, e é, atualmente, biólogo e escritor. Está traduzido em diversas línguas.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'António Botto','Feminino','27/10/1968','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Alice Vieira','Feminino','18/09/1943','Escritora portuguesa de livros infantis e juvenis, nascida em 1943. Neste domínio da literatura, ganhou em 1979 o Prémio do Ano Internacional da Criança, com Rosa, Minha Irmã Rosa. Tem publicado regularmente obras em volume - entre elas, Chocolate à Chuva (1982) e Graças e Desgraças da Corte de El-Rei Tadinho (1984)');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'MARIA ALBERTA MENÉRES','Feminino','04/01/1930','Maria Alberta Menéres nasceu em 1930, em Vila Nova de Gaia. Tem uma vasta obra poética, estando representada em várias antologias literárias nacionais e estrangeiras. Foi professora dos Ensinos Básico e Secundário nas disciplinas de Língua Portuguesa e História. É autora de inúmeros programas televisivos para crianças, tendo sido Diretora do Departamento de Programas Infantis e Juvenis da RTP de 1974 a 1986.');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (2,'Angelina G.Beck','Feminino','18/04/1983','N/A');
-INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Lonely Planet','Masculino','18/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Bernardo Pinto de Almeida','Masculino','10/02/1954','Bernardo Pinto de Almeida nasceu em 1954.Vive e trabalha no Porto. Professor Catedrático na Faculdade de Belas Artes da Universidade do Porto.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Grant Scott','Masculino','27/04/1973','Grant Scott é fotógrafo profissional. Depois de atuar durante quinze anos como diretor de fotografia de livros e revistas como Elle e Tatler, no ano 2000 ele decidiu abrir seu próprio estúdio como fotógrafo freelancer, trabalho que executa até os dias de hoje, paralelamente às aulas que ministra no curso de graduação em Fotografia Editorial e Publicitária da Universidade de Gloucestershire, na Inglaterra.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Brian K. Vaughan','Masculino','18/11/1975','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'ED Brubaker','Masculino','31/12/1984','Ed Brubaker é um dos mais aclamados argumentistas da actualidade, com histórias em todas as grandes editoras americanas.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Jorge Dias de Deus','Masculino','10/06/1976','Jorge Dias de Deus é professor catedrático jubilado no Instituto Superior Técnico, da Universidade de Lisboa, com notável obra científica em física de altas energias, astrofísica e cosmologia, e sistemas dinâmicos.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Augusto Cury','Masculino','17/06/1986','O Dr. Augusto Cury é psiquiatra, psicoterapeuta, cientista e escritor. Desenvolveu o conceito de inteligência multifocal, uma perspetiva inovadora do funcionamento da mente e da construção do pensamento.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (131,'Iñaki Piñuel','Masculino','29/06/1972','Iñaki Piñuel é doutorado em Psicologia, psicoterapeuta, investigador e divulgador especializado na avaliação e no tratamento das vítimas de abuso psicológico e de psicopatas integrados.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Gareth Moore','Masculino','18/02/1980','Dr. Gareth Moore é autor de mais de 35 best-sellers internacionais de puzzles e outros exercícios para o cérebro.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'João Tiago Lima','Masculino','05/08/1980','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Joaquim Rocha','Masculino','07/02/1977','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'André Fernando Ribeiro de Sá','Masculino','12/04/1980','Engenheiro Eletrotécnico e de Computadores, ramo de sistemas de energia, pela FEUP – Licenciatura (2000) e Mestrado (2003). Pós-graduado em gestão de energia – eficiência energética, pelo ISQ (2008). Título de Especialista em Engenharia Eletrotécnica pela Universidade de Aveiro (2012).');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Rita Castanheira Alves','Feminino','12/01/1979','Rita Castanheira Alves é licenciada em Psicologia Clínica desde 2007. A sua prática profissional tem-se dividido entre a prática clínica com crianças, adolescentes e pais, passando pela gestão, implementação e coordenação de projetos de prevenção e intervenção em saúde mental na área infanto-juvenil');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Mário Cordeiro','Masculino','23/08/1981','Mário Cordeiro, pediatra, professor aposentado de pediatria e de saúde pública da Faculdade de Ciências Médicas de Lisboa.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Dolores Aveiro','Feminino','22/01/1984','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Caroline Webb','Feminino','10/07/1974','Caroline Webb foi partner da McKinsey & Co., onde trabalhou mais de uma década. Ocupa o cargo de CEO na empresa de consultadoria Sevenshift, que criou. Dedica-se a ajudar os seus clientes a serem mais produtivos e mais eficazes no trabalho.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Ana Teresa Penim','Feminino','21/04/1975','É especialista em Coaching Apreciativo, Liderança, Psicologia Positiva, Comunicação, Consumer Behavior e Desenvolvimento de Performance. Possui uma carreira marcada pela liderança e desenvolvimento de projectos formativos inovadores na área do comércio e da aprendizagem ao longo da vida.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Joshua Rubenstein','Masculino','20/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Henrique Monteiro','Masculino','07/10/1978','Henrique Monteiro é jornalista profissional há quase 40. Foi repórter em mais de 30 países, incluindo cenários de guerra em Moçambique, Angola e Irão. Foi ainda repórter político e parlamentar. É cronista, assinando desde 1990, na revista do Expresso, a coluna Cartas do Comendador; faz, desde 1995, comentário político no caderno principal do mesmo jornal e, desde 2011, comentários diários na sua versão digital. É ainda comentador na SIC Notícias e na Rádio Renascença. Foi subdiretor do Expresso de 1995 a 2005 e depois disso diretor até 2011.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Luis Marcelino','Masculino','02/01/1972','Licenciado em Eng.ª Eletrotécnica e de Computadores (IST/UTL) com doutoramento em Sistemas de Informação (University of Salford, Reino Unido). Foi docente na Universidade do Algarve e na Universidade Nova de Lisboa. Dedica-se à interação pessoa-máquina e aos dispositivos móveis.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Ricardo Queirós','Masculino','17/07/1983','Licenciado em Informática pelo Instituto Superior de Engenharia do Porto (ISEP) e Mestrado em Informática pela Faculdade de Ciências da Universidade do Porto (FCUP). Exerce a sua actividade como docente na Escola Superior de Estudos Industriais e Gestão (ESEIG), em Vila do Conde, onde é responsável por disciplinas na área das Linguagens e Técnicas de Programação e Bases de Dados.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Rosanna Ley','Feminino','10/03/1977','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Luís Cardoso','Masculino','16/03/1970','Luís Cardoso nasceu em Kailako, uma vila no interior de Timor que aparece por diversas vezes referenciada nos seus romances.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Teresa Rodrigues','Feminino','13/05/1970','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Cinnamon Vanputte','Masculino','03/01/1972','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'José Pedro Castanheira','Masculino','11/04/1981','Ganhou alguns dos mais prestigiados galardões de jornalismo atribuídos em Portugal: Prémio Macau de Jornalismo (1990) e Prémio Nacional de Reportagem de Imprensa (1993), ambos do Clube de Jornalistas; Primeiro Prémio de Reportagem (1993 e 1997), do Clube Português de Imprensa;');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Aníbal Cavaco Silva','Masculino','15/07/1939','Aníbal Cavaco Silva, nascido a 15 de julho de 1939, em Boliqueime, Loulé. É casado com Maria Alves da Silva Cavaco Silva. O casal tem dois filhos e cinco netos. Foi o 19º Presidente da República Portuguesa entre 2006 e 2016.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (131,'Papa Francisco','Masculino','10/12/1986','Francisco (em latim: Franciscus), nascido Jorge Mario Bergoglio SJ (Buenos Aires, 17 de dezembro de 1936) é o 266.º Papa da Igreja Católica e atual chefe de estado do Vaticano,4 sucedendo o Papa Bento XVI, que abdicou ao papado em 28 de fevereiro de 2013.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Robert Sarah','Masculino','16/12/1970','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Isabel Oliveira','Feminino','27/10/1968','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Manuel Pinto Coelho','Masculino','04/01/1986','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Alcides Azevedo Canelas','Feminino','18/04/1983','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Luísa Ducla Soares','Feminino','20/09/1939','uísa Ducla Soares nasceu em Lisboa a 20 de julho de 1939. É licenciada em Filologia Germânica pela Universidade Clássica de Lisboa. Iniciou a sua atividade profissional como tradutora, consultora literária e jornalista, tendo sido diretora da revista de divulgação cultural Vida (1971-2)');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Maria Helena Marques','Feminino','18/09/1978','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Mia Couto','Masculino','16/12/1955','Nasceu na Beira, Moçambique, em 1955. Foi jornalista e professor, e é, atualmente, biólogo e escritor. Está traduzido em diversas línguas.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'António Botto','Feminino','27/10/1968','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Alice Vieira','Feminino','18/09/1943','Escritora portuguesa de livros infantis e juvenis, nascida em 1943. Neste domínio da literatura, ganhou em 1979 o Prémio do Ano Internacional da Criança, com Rosa, Minha Irmã Rosa. Tem publicado regularmente obras em volume - entre elas, Chocolate à Chuva (1982) e Graças e Desgraças da Corte de El-Rei Tadinho (1984)');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'MARIA ALBERTA MENÉRES','Feminino','04/01/1930','Maria Alberta Menéres nasceu em 1930, em Vila Nova de Gaia. Tem uma vasta obra poética, estando representada em várias antologias literárias nacionais e estrangeiras. Foi professora dos Ensinos Básico e Secundário nas disciplinas de Língua Portuguesa e História. É autora de inúmeros programas televisivos para crianças, tendo sido Diretora do Departamento de Programas Infantis e Juvenis da RTP de 1974 a 1986.');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (196,'Angelina G.Beck','Feminino','18/04/1983','N/A');
+INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (193,'Lonely Planet','Masculino','18/09/1978','N/A');
 INSERT INTO Autor (PaisID,nome,genero,dataNascimento,biografia) VALUES (1,'Joaquim Magalhães De Castro','Masculino','18/09/1978','Nasceu nas Caldas de São Jorge, em Santa Maria da Feira. Escritor, jornalista independente, fotógrafo e investigador da História da Expansão Portuguesa');
 
 /* ------------------------------------------------------ R11 AutorPublicacao ------------------------------------------------------ */
@@ -1539,42 +1773,42 @@ INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (42,36);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (43,37);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (44,38);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (89,39);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (92,41);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (92,40);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (93,40);
-INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,41);
+INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (94,40);
 INSERT INTO AutorPublicacao (publicacaoID,autorID) VALUES (95,40);
 
 /* ------------------------------------------------------ R21 Localidade ------------------------------------------------------ */
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Abrantes');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Albufeira');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Amarante');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Aveiro');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Barcelos');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Beja');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Braga');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Bragança');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Caldas da Rainha');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Castelo Branco');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Coimbra');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Ermesinde');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Espinho');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Évora');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Faro');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Figueira da Foz');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Funchal');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Guarda');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Guimarães');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Lamego');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Leiria');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Lisboa');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Maia');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Matosinhos');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Mealhada');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Mirandela');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Odivelas');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Paredes');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Penafiel');
-INSERT INTO Localidade (paisID,nome) VALUES (1,'Porto');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Abrantes');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Albufeira');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Amarante');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Aveiro');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Barcelos');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Beja');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Braga');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Bragança');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Caldas da Rainha');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Castelo Branco');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Coimbra');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Ermesinde');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Espinho');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Évora');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Faro');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Figueira da Foz');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Funchal');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Guarda');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Guimarães');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Lamego');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Leiria');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Lisboa');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Maia');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Matosinhos');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Mealhada');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Mirandela');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Odivelas');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Paredes');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Penafiel');
+INSERT INTO Localidade (paisID,nome) VALUES (193,'Porto');
 
 /* ------------------------------------------------------ R22 CodigoPostal ------------------------------------------------------ */
 INSERT INTO CodigoPostal (localidadeID,cod1,cod2) VALUES (1,'2200','320');
@@ -1713,21 +1947,21 @@ INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19
 INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4532854254501211','14/09/2011','735');
 
 /* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
-INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,1,'Manuel Pereira Lopes','Masculino','08/12/1980','manuellopes','YPB58AJH6LE','02/09/2009 12:12:50','938321270','manuelpereiralopes@hotmail.com','998187586','51057539 8NE7');
-INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (2,1,'Rui Manuel Fernandes Varela','Masculino','10/05/1991','ruivarela','FOT73YNK8JP','15/08/2012 15:48:15','919232515','ruivarela@gmail.com','102798307','79782665 1XL6');
-INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (3,1,'Emanuel Jose Costa Frade','Masculino','02/02/2000','emanuelfrade','AXK90DBX1NI','19/11/2002 11:50:50','917672257','emanueljosecostafrade@hotmail.com','637237286','44216592 7KU5');
-INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (4,1,'Flavio Vieira Marques','Masculino','29/03/1978','flaviomarques','ODB56YJQ9SX','19/03/1997 10:08:10','934216494','flaviovieiramarques@gmail.com','060839699','96659782 2YM1');
-INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,1,'Fernanda Goncalves Teixeira','Feminino','07/02/1996','fernandateixeira','OLP29HOE9KR',FALSE,'07/05/2014 09:40:20','12/12/2016 19:15:08','938713908','fernandagoncalvesteixeira@gmail.com','937865341','67542959 4IL4');
-INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (6,1,'FuncionarioProto','Masculino','06/09/1998','func_proto','8950a1913eae349b3a8f40b115efec916af587e8','12/11/2012 18:21:34','917865498','funcproto@gmail.com','259878798', '11342959 4IB4');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,193,'Manuel Pereira Lopes','Masculino','08/12/1980','manuellopes','YPB58AJH6LE','02/09/2009 12:12:50','938321270','manuelpereiralopes@hotmail.com','998187586','51057539 8NE7');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (2,193,'Rui Manuel Fernandes Varela','Masculino','10/05/1991','ruivarela','FOT73YNK8JP','15/08/2012 15:48:15','919232515','ruivarela@gmail.com','102798307','79782665 1XL6');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (3,193,'Emanuel Jose Costa Frade','Masculino','02/02/2000','emanuelfrade','AXK90DBX1NI','19/11/2002 11:50:50','917672257','emanueljosecostafrade@hotmail.com','637237286','44216592 7KU5');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (4,193,'Flavio Vieira Marques','Masculino','29/03/1978','flaviomarques','ODB56YJQ9SX','19/03/1997 10:08:10','934216494','flaviovieiramarques@gmail.com','060839699','96659782 2YM1');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,ativo,dataAdmissao,dataCessacao,telefone,email,nif,cartaoCidadao) VALUES (5,193,'Fernanda Goncalves Teixeira','Feminino','07/02/1996','fernandateixeira','OLP29HOE9KR',FALSE,'07/05/2014 09:40:20','12/12/2016 19:15:08','938713908','fernandagoncalvesteixeira@gmail.com','937865341','67542959 4IL4');
+INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (6,193,'FuncionarioProto','Masculino','06/09/1998','func_proto','8950a1913eae349b3a8f40b115efec916af587e8','12/11/2012 18:21:34','917865498','funcproto@gmail.com','259878798', '11342959 4IB4');
 
 /* ------------------------------------------------------ R17 Administrador ------------------------------------------------------ */
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Renata Vieira Esteves','Feminino','17/8/1994','renataesteves','AIQ85AQG4TJ');
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Carla Maria dos Santos Botelho','Feminino','27/3/1994','carlabotelho','MAV09WFT8TE');
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Tiago Miguel Alves Campos','Masculino','15/3/1993','tiagocampos','QDQ58ODE1KV');
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Armindo Alves Teixeira','Masculino','8/3/1992','armindoteixeira','VBN58OSG2YG');
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'Joaquim da Costa Torres','Masculino','19/7/1991','joaquimtorres','WPZ07DVI9PP');
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,dataCessacao,username,password,ativo) VALUES (1,'Carlos Manuel Teixeira','Masculino','8/9/1991','12/02/2017','carlosteixeira','BSO38NJN5MA',FALSE);
-INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (1,'AdministradorProto','Masculino','06/09/1998','admin_proto','13bfea3892ba2b5683c6a8f2ebf2b8b182ec1044');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (193,'Renata Vieira Esteves','Feminino','17/8/1994','renataesteves','AIQ85AQG4TJ');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (193,'Carla Maria dos Santos Botelho','Feminino','27/3/1994','carlabotelho','MAV09WFT8TE');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (193,'Tiago Miguel Alves Campos','Masculino','15/3/1993','tiagocampos','QDQ58ODE1KV');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (193,'Armindo Alves Teixeira','Masculino','8/3/1992','armindoteixeira','VBN58OSG2YG');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (193,'Joaquim da Costa Torres','Masculino','19/7/1991','joaquimtorres','WPZ07DVI9PP');
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,dataCessacao,username,password,ativo) VALUES (193,'Carlos Manuel Teixeira','Masculino','8/9/1991','12/02/2017','carlosteixeira','BSO38NJN5MA',FALSE);
+INSERT INTO Administrador (paisID,nome,genero,dataNascimento,username,password) VALUES (193,'AdministradorProto','Masculino','06/09/1998','admin_proto','13bfea3892ba2b5683c6a8f2ebf2b8b182ec1044');
 
 /* ------------------------------------------------------ R19 Login ------------------------------------------------------ */
 INSERT INTO Login (administradorID) VALUES (6);
