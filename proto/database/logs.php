@@ -41,8 +41,7 @@ function getLogsByNameAndDate($nomeUtilizador, $startDate, $endDate){
                             OR LOWER(cliente.nome) like '%'||?||'%'
                             OR LOWER(funcionario.nome) like '%'||?||'%' )
                             ORDER BY login.loginid ");
-
-    $stmt->execute(array($dataLogin, $endDate, strtolower($nomeUtilizador), strtolower($nomeUtilizador), strtolower($nomeUtilizador)));
+    $stmt->execute(array($startDate, $endDate, strtolower($nomeUtilizador), strtolower($nomeUtilizador), strtolower($nomeUtilizador)));
     return $stmt->fetchAll();
 }
 
@@ -57,19 +56,17 @@ function getLogsByUsernameAndDate($usernameUtilizador, $startDate, $endDate){
                             ON cliente.clienteid = login.clienteid
                             LEFT JOIN funcionario
                             ON funcionario.funcionarioid = login.funcionarioid
-                            WHERE (login.data::date >= ? AND login.data::date <= ?)
+                            WHERE (login.data::date >= ?) AND (login.data::date <= ?)
                             AND ( LOWER(cliente.username) = ?
                             OR LOWER(funcionario.username) = ?
                             OR LOWER(administrador.username) = ? )
                             ORDER BY login.loginid");
-
-    $stmt->execute(array($dataLogin, $endDate, strtolower($usernameUtilizador),strtolower($usernameUtilizador),strtolower($usernameUtilizador)));
+    $stmt->execute(array($startDate, $endDate, strtolower($usernameUtilizador),strtolower($usernameUtilizador),strtolower($usernameUtilizador)));
     return $stmt->fetchAll();
 }
 
 function getLogsByName($nomeUtilizador){
     global $conn;
-
     $stmt = $conn->prepare("SELECT DISTINCT login.*, (administrador.nome, cliente.nome, funcionario.nome) as nome
                             FROM login
                             LEFT JOIN administrador
@@ -102,7 +99,6 @@ function getLogsByUsername($usernameUtilizador){
                             OR LOWER(funcionario.username) = ?
                             OR LOWER(administrador.username) = ?
                             ORDER BY login.loginid");
-
     $stmt->execute(array(strtolower($usernameUtilizador),strtolower($usernameUtilizador),strtolower($usernameUtilizador)));
     return $stmt->fetchAll();
 }
@@ -110,7 +106,6 @@ function getLogsByUsername($usernameUtilizador){
 
 function getLogsByLoginDate($startDate, $endDate){
     global $conn;
-
     $stmt = $conn->prepare("SELECT DISTINCT login.*, (administrador.nome, cliente.nome, funcionario.nome) as nome
                             FROM login
                             LEFT JOIN administrador
