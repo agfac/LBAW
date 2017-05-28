@@ -28,7 +28,7 @@ $password = strip_tags($_POST['password']);
 
 try {
 
-  createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $localidade, $cod1, $cod2, $pais, $telefone, $email, $nif, $username, $password);
+  createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $localidade, $cod1, $cod2, $pais+1, $telefone, $email, $nif, $username, $password);
   
 } catch (PDOException $e) {
   
@@ -47,6 +47,10 @@ try {
   header("Location: $BASE_URL" . 'pages/users/register.php');
   exit;
 }
+$_SESSION['username'] = $username;
+$userdata = getUserData($username);
+$userid = $userdata[0]['clienteid'];
+$_SESSION['userid'] = $userid;
 $_SESSION['success_messages'][] = 'Utilizador registado com sucesso';  
 header("Location: $BASE_URL");
 ?>

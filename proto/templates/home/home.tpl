@@ -655,7 +655,7 @@
 
 
     <!-- start section -->
-    <section class="section image-background layer-dark" style="background-image: url({$BASE_URL}images/slider/slider_03.jpg);">
+    <section class="section image-background layer-dark" style="background-image: url();">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">

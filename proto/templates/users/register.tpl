@@ -167,7 +167,12 @@
             <div class="form-group">
               <label for="pais" class="col-sm-2 control-label">País<span class="text-danger">*</span></label>
               <div class="col-sm-10">
-                <input type="text" class="form-control input-md" name="pais" value="{$FORM_VALUES.pais}" placeholder="País">
+                <select class="form-control" name="pais">
+                {foreach from=$countries item=label key=key}
+                  <option value="{$key}">{$label.nome}
+                  </option>
+                  {/foreach}
+                </select>
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
@@ -183,7 +188,7 @@
               </div>
             </div><!-- end form-group -->
             <div class="form-group">
-              <label for="nif" class="col-sm-2 control-label">NIF </label>
+              <label for="nif" class="col-sm-2 control-label">NIF <span class="text-danger">*</span></label>
               <div class="col-sm-10">
                 <input type="text" class="form-control input-md" name="nif" value="{$FORM_VALUES.nif}" placeholder="NIF">
               </div>
@@ -204,7 +209,7 @@
               <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default round btn-md">
                   <i class="fa fa-user-plus mr-5"></i>
-                  Registrar
+                  Registar
                 </button>
               </div>
             </div><!-- end form-group -->

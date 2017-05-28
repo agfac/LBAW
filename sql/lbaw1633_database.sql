@@ -302,7 +302,7 @@ CREATE TABLE Cliente
 	Datacancelamento timestamp NULL,
 	Telefone varchar(50) NULL,
 	Email varchar(50) NOT NULL,
-	Nif varchar(50) NULL,
+	Nif varchar(50) NOT NULL,
 	Idade integer NOT NULL,
 	CONSTRAINT PK_Cliente PRIMARY KEY (ClienteID),
 	CONSTRAINT cliente_email_key UNIQUE (Email),
