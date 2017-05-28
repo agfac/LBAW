@@ -52,7 +52,7 @@
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="password" class="form-control has-feedback-left" name="password" required="required" placeholder="Password *">
+                <input id="password" title="Insira password com mais de 6 caracteres" type="password" class="form-control has-feedback-left" name="password" required="required" placeholder="Password *">
                 <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
               </div>
 
@@ -90,7 +90,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
                   <a href="{$BASE_URL}pages/admin/admins.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button type="submit" class="btn btn-success">Submeter</button>
+                  <button id="submit" type="submit" class="btn btn-success">Submeter</button>
                 </div>
 
             </form>
@@ -103,3 +103,4 @@
 </div>
 <!-- /page content -->
 {include file='admin/common/footer.tpl'}
+<script src="{$BASE_URL}javascript/validator.js"></script>
