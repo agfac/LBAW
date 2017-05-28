@@ -2,7 +2,7 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR .'database/admins.php');
 
-  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['pais'] || !$_POST['username'] || !$_POST['password'] || !$_POST['atividade']) {
+  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || ($_POST['pais'] === "Escolha um País") || !$_POST['username'] || !$_POST['password'] || !$_POST['atividade']) {
     error_log('if');
     $_SESSION['error_messages'][] = 'Todos os campos são de preenchimento obrigatório';
     $_SESSION['form_values'] = $_POST;

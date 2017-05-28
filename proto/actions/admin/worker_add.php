@@ -2,9 +2,17 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR .'database/workers.php');
 
-  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['morada'] || !$_POST['localidade'] || !$_POST['codigopostal'] || !$_POST['pais'] || !$_POST['email'] || !$_POST['username'] || !$_POST['password'] || !$_POST['telefone'] || !$_POST['nif'] || !$_POST['cartaocidadao']) {
+  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['morada'] || !$_POST['localidade'] || !$_POST['codigopostal'] || ($_POST['pais'] === "Escolha um País") || !$_POST['email'] || !$_POST['username'] || !$_POST['password'] || !$_POST['telefone'] || !$_POST['nif'] || !$_POST['cartaocidadao']) {
     error_log('if');
     $_SESSION['error_messages'][] = 'Todos os campos são de preenchimento obrigatório';
+    $_SESSION['form_values'] = $_POST;
+    header("Location: $BASE_URL" . 'pages/admin/worker_add.php');
+    exit;
+  }
+
+  if (!preg_match("/[0-9]{4}-[0-9]{3}/", $_POST['codigopostal'])) {
+    error_log('if');
+    $_SESSION['error_messages'][] = 'Erro no código postal - Tem de introduzir no formato: XXXX-XXX';
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/admin/worker_add.php');
     exit;

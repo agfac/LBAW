@@ -98,15 +98,17 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div id="div_preco" class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço *</label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="number" step="0.01" min="0.01" class="form-control" name="preco" required="required" value="{$publicationData.preco}" placeholder="Preço da Publicação">
+                  <input  id="preco" type="number" step="0.01" min="0.01" class="form-control" name="preco" required="required" value="{$publicationData.preco}" placeholder="Preço da Publicação">
+                  <span class="help-block with-errors" data-valmsg-for="preco" data-valmsg-replace="true"></span>
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Promocional </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="number" step="0.01" min="0.0" class="form-control" name="precopromocional" value="{$publicationData.precopromocional}" placeholder="Preço Promocional da Publicação">
+                  <input id="preco_promocional" type="number" step="0.01" min="0.0" class="form-control" name="precopromocional" value="{$publicationData.precopromocional}" placeholder="Preço Promocional da Publicação">
+                   <span class="help-block with-errors" data-valmsg-for="preco_promocional" data-valmsg-replace="true"></span>
                 </div>
               </div>
 
@@ -211,7 +213,7 @@
                   <input type="hidden" name="publication_id" value="{$publicationData.publicacaoid}">
                   <a href="{$BASE_URL}pages/owner/publications.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button type="submit" class="btn btn-success">Submeter</button>
+                  <button id="submit" type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>

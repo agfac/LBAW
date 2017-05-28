@@ -1,6 +1,7 @@
 <?php
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/admins.php';
+include_once $BASE_DIR . 'database/users.php';
 
 $username = strip_tags($_POST['admin_username']);
 
@@ -28,11 +29,14 @@ $newuserinformation = array(
     'atividade'     => $atividade,
 );
 
+
+
 try {
     
     $userdata = getAdminAllData($username);
-    
+
     updateAdminInformation($username, $userdata, $newuserinformation);
+
 
 } catch (PDOException $e) {
 

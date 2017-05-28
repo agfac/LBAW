@@ -33,8 +33,14 @@
               </div>
 
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left" name="pais" required="required" value="{$admindata.nomepais}" placeholder="País">
-                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                <!-- <input type="text" class="form-control has-feedback-left" name="pais" required="required" value="{$admindata.nomepais}" placeholder="País">
+                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span> -->
+                <select class="form-control" required="required" name="pais" id="pais">
+                    <option>Escolha um País</option>
+                    {foreach $countries as $country}
+                    <option value="{$country.paisid}" {if $country.nome === $admindata.nomepais}selected{/if}>{$country.nome}</option>
+                    {/foreach}
+                </select>
               </div>
 
               <div class="form-group">

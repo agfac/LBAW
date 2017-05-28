@@ -22,4 +22,25 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#preco_promocional').on('change input', function(){
+        var price = parseFloat($('#preco').val());
+        var promotionalPrice = parseFloat($('#preco_promocional').val());
+        var div = ($(this).closest('div')).parent();
+
+       if(promotionalPrice >= price){
+            div.addClass('has-error');
+            $('#submit').prop('disabled', true);
+            $('span[data-valmsg-for="preco"]').text('Preço tem que ser superior ao preço promocional!'); 
+            $('span[data-valmsg-for="preco_promocional"]').text('Preço promocional tem que ser inferior ao preço!'); 
+        }
+        else{
+            div.addClass('has-success');
+            div.removeClass('has-error');
+            $('#submit').prop('disabled', false);
+            $('span[data-valmsg-for="preco"]').text(''); 
+            $('span[data-valmsg-for="preco_promocional"]').text(''); 
+        }
+    });
+
 });
