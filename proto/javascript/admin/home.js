@@ -12,7 +12,6 @@ $(document).ready(function() {
 
         var flag = "top_comentarios";
         $.getJSON("../../api/admin/home.php", {firstDate: firstDate, lastDate: lastDate, flag: flag}, function(data){
-            console.log(data);
             $('.top_comentarios').append('<div class="x_title"><h2>Últimos 5 Comentários <small>'+firstDate+' e '+lastDate+'</small></h2><div class="clearfix"></div></div><div class="x_content">');
             if(data.length === 0 || data == "NULL"){
                 $('.top_comentarios').append('<article class="media event"><div class="media-body"><a class="title">Sem comentários entre as datas selecionadas</a></div></article>');
@@ -26,7 +25,6 @@ $(document).ready(function() {
 
         flag = "top_usuarios";
     	$.getJSON("../../api/admin/home.php", {firstDate: firstDate, lastDate: lastDate, flag: flag}, function(data){
-    		console.log(data);
             $('.top_usuarios').append('<div class="x_title"><h2>Top Usuários <small>'+firstDate+' e '+lastDate+'</small></h2><div class="clearfix"></div></div><div class="x_content">');
             if(data.length === 0 || data == "NULL"){
                 $('.top_usuarios').append('<article class="media event"><div class="media-body"><a class="title">Sem encomendas entre as datas selecionadas</a></div></article>');
@@ -40,7 +38,6 @@ $(document).ready(function() {
 
         flag = 'top_livros';
         $.getJSON("../../api/admin/home.php", {firstDate: firstDate, lastDate: lastDate, flag: flag}, function(data){
-            console.log(data);
             $('.top_livros').append('<div class="x_title"><h2>Top Publicações <small>'+firstDate+' e '+lastDate+'</small></h2><div class="clearfix"></div></div><div class="x_content">');
             if(data.length === 0 || data == "NULL"){
                 $('.top_livros').append('<article class="media event"><div class="media-body"><a class="title">Sem Publicações entre as datas selecionadas</a></div></article>');

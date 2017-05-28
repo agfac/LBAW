@@ -6,7 +6,16 @@ sortByStatusFlag = false;
 
 $(document).ready(function() {
     $(document).on('click', '#search', function (){
-    	if (flag){
+    	workersSearch();
+	});
+
+	$('.form-horizontal').keypress(function(e){
+		if(e.keyCode==13)
+			workersSearch();
+    });
+
+	function workersSearch(){
+		if (flag){
             flag = false;
 	    	var nome_funcionario = $('#nome_funcionario').val();
 	        var email_funcionario = $('#email_funcionario').val();
@@ -18,18 +27,15 @@ $(document).ready(function() {
 	            data_admissao = arr[2] +'/'+ arr[0] +'/'+ arr[1];
 			}
 
-	        console.log(data_admissao);
-	        
 	        $('.workers_content').empty();
 
 	        $.getJSON("../../api/admin/workers_search.php", {nome_funcionario: nome_funcionario, email_funcionario: email_funcionario, data_admissao: data_admissao, estado_funcionario: estado_funcionario}, function(data){
 
 		        if(data.length === 0 || data == "NULL"){
 		            $('.workers_content').append('<p>Sem funcionários com os dados de entrada</p>');
-		        
-		        }else{		           
-		            console.log(data);
 		            
+		        }else{
+
 		            $('.workers_content').append('<p>Funcionários da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 36%" id="orderByName">Nome do Funcionário <span class="glyphicon glyphicon-sort"></span></th><th style="width: 18%" id="orderByDate">Data de Admissão <span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByState">Estado <span class="glyphicon glyphicon-sort"></span></th><th style="width: 20%">Ações</th></tr></thead><tbody>');
 		            
 		            for (var i in data){
@@ -64,7 +70,7 @@ $(document).ready(function() {
 		        flag = true;
 	        });
         }
-	});
+	}
 
 	$('#clean').on('click', function(){
     	$('#nome_funcionario').val("");

@@ -6,7 +6,15 @@ sortByDateFlag = false;
 
 $(document).ready(function() {
     $(document).on('click', '#search', function (){
+    	searchAdminAction();
+	});
 
+	$('.form-horizontal').keypress(function(e){
+		if(e.keyCode==13)
+			searchAdminAction();
+    });
+
+    function searchAdminAction() {
     	if (flag){
             flag = false;
 	    	var nome_administrador = $('#nome_administrador').val();
@@ -26,9 +34,7 @@ $(document).ready(function() {
 		        if(data.length === 0 || data == "NULL"){
 		            $('.admins_content').append('<p>Sem administradores com os dados de entrada</p>');
 
-		        }else{		
-		            console.log(data);
-
+		        }else{
 		            $('.admins_content').append('<p>Administradores da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 36%" id="orderByAdminName">Nome do Administrador <span class="glyphicon glyphicon-sort"></span></th><th style="width: 18%" id="orderByDate">Data de Cessação <span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></button></th><th style="width: 20%">Ações </th></tr></thead><tbody>');
 		            
 		            for (var i in data){
@@ -65,8 +71,7 @@ $(document).ready(function() {
 		        flag = true;
 	        });
         }
-	});
-
+    }
 
 	$('#clean').on('click', function(){
     	$('#nome_administrador').val("");
