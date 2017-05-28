@@ -95,7 +95,7 @@ if($autorId == "novoAutor"){
   $biografia      = strip_tags($_POST['biografia']);
   $genero         = strip_tags($_POST['genero']);
   $datanascimento = strip_tags($_POST['datanascimento']);
-  $paisAutor      = strip_tags($_POST['paisAutor']);
+  $paisId      = strip_tags($_POST['paisAutor']);
 
   if(!isset($biografia))
     $biografia = "N/A";
@@ -113,8 +113,6 @@ if($autorId == "novoAutor"){
   $mesNasc = $pieces[0];
   $anoNasc = $pieces[2];
   $datanascimento = sprintf("%04d-%02d-%02d",$anoNasc,$mesNasc,$diaNasc);
-
-  $paisId = verifyPaisIfExists($paisAutor);
 
   try {
     
