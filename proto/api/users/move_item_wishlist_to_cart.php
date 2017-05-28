@@ -2,10 +2,12 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/users.php');
 
-if($_GET['id'] && $_GET['value']){
+if($_GET['id']){
+	
+	$quantity = 1;
 
 	try{
-		insertCartPublication($_SESSION['userid'], $_GET['id'], $_GET['value']);
+		movePublicationWishListToCart($_SESSION['userid'], $_GET['id'], $quantity);
 		
 		$success = "Publicação adicionada ao carrinho";
 		
@@ -16,17 +18,21 @@ if($_GET['id'] && $_GET['value']){
 		if (strpos($e->getMessage(), 'pk_publicacaocarrinho') !== false){
 			
 			$error = "Publicação já existe no carrinho";
-		
+
 			$response = array('Error' => $error);
 		} 
 		else{
 
-			$error = "Erro ao adicionar publicação no carrinho";
-		
+			$error = "Erro ao remover publicação da wishlist";
+
 			$response = array('Error' => $error);
 		}
 	}
-
-	echo json_encode($response);
 }
+else{
+	$error = "Erro ao identificar a publicação";
+
+	$response = array('Error' => $error);
+}
+echo json_encode($response);
 ?>

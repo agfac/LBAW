@@ -289,11 +289,42 @@ function removePublicationWishList($clienteid, $publicacaoid) {
   global $conn;
   
   $stmt = $conn->prepare("DELETE FROM publicacaowishlist
-    WHERE publicacaowishlist.publicacaoid = ? AND publicacaowishlist.wishlistid = (SELECT wishlist.wishlistid
-    FROM wishlist
-    WHERE wishlist.clienteid = ?)");
+                          WHERE publicacaowishlist.publicacaoid = ? AND publicacaowishlist.wishlistid = (SELECT wishlist.wishlistid
+                          FROM wishlist
+                          WHERE wishlist.clienteid = ?)");
   
   $stmt->execute(array($publicacaoid, $clienteid));
+}
+
+function movePublicationWishListToCart($clienteid, $publicacaoid, $quantidade) {
+
+  global $conn;
+  
+  $conn->beginTransaction();
+
+  try{
+
+    //INSERT PUBLICATION ON CART
+    $stmt = $conn->prepare("INSERT INTO publicacaocarrinho
+                            VALUES (?, ?, ?)");
+    $stmt->execute(array($publicacaoid, $clienteid, $quantidade));
+
+    //REMOVE PUBLICATION FROM WISHLIST
+    $stmt = $conn->prepare("DELETE FROM publicacaowishlist
+                            WHERE publicacaowishlist.publicacaoid = ? AND publicacaowishlist.wishlistid = (SELECT wishlist.wishlistid
+                            FROM wishlist
+                            WHERE wishlist.clienteid = ?)");
+    $stmt->execute(array($publicacaoid, $clienteid));
+
+    $conn->commit();
+  }catch(Exception $e){
+
+    error_log($e->getMessage());
+
+    $conn->rollBack();
+
+    throw $e;
+  }
 }
 
 function getAllUsers(){
