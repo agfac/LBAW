@@ -13,7 +13,7 @@ if (!($_GET['username']) || !checkIfWorkerExists($_GET['username'])) {
 
 $username = $_GET['username'];
 $userdata = getWorkersAllData($username);
-$countries = getAllCountries();
+$countries = getAllCountriesAllInfo();
 
 $smarty->assign('countries',$countries);
 $smarty->assign('workerdata',$userdata[0]);

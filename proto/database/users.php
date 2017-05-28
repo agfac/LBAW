@@ -710,4 +710,15 @@ function getAllCountries(){
 
   return $stmt->fetchAll();
 }
+
+function getAllCountriesAllInfo(){
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT *
+                          FROM pais");
+  $stmt->execute();
+
+  return $stmt->fetchAll();
+}
 ?>

@@ -13,7 +13,7 @@ if (!($_GET['username']) || !checkIfAdminExists($_GET['username'])) {
 
 $username = $_GET['username'];
 $userdata = getAdminAllData($username);
-$countries = getAllCountries();
+$countries = getAllCountriesAllInfo();
 
 $smarty->assign('countries',$countries);
 $smarty->assign('admindata',$userdata[0]);
