@@ -14,7 +14,8 @@ $(document).ready(function() {
 		else{
 			div.addClass("has-error");
 			$("#submit").prop("disabled", true);
-			$(this).prop("title", "A password tem que ter mais de 6 carateres");
+			$(this).prop("title", "A password tem que ter mais de 6 carateres");	
+			$("#submit").prop("title", "Verifique a password");
 			passFlag = false;
 		}
 		

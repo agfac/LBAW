@@ -90,7 +90,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
                   <a href="{$BASE_URL}pages/admin/admins.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button id="submit" type="submit" class="btn btn-success">Submeter</button>
+                  <button id="submit" type="submit" class="btn btn-success" disabled>Submeter</button>
                 </div>
 
             </form>
