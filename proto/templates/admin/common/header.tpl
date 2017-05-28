@@ -86,6 +86,7 @@
                     <li><a href="{$BASE_URL}pages/admin/admins.php">Administradores</a></li>
                     <li><a href="{$BASE_URL}pages/admin/comments.php">Comentários</a></li>
                     <li><a href="{$BASE_URL}pages/admin/logs_clients.php">Logs Clientes</a></li>
+                    <li><a href="{$BASE_URL}pages/admin/logs_search.php">Logs de Pesquisa</a></li>
                   </ul>
                 </li>
               </ul>
@@ -106,7 +107,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="{$BASE_URL}javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="{$BASE_URL}images/admin/user.png" alt="">Tiago Miguel Alves Campos
+                  <img src="{$BASE_URL}images/admin/user.png" alt="">{$adminData.nome}
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">

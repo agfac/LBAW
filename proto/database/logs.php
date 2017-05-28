@@ -120,5 +120,50 @@ function getLogsByLoginDate($startDate, $endDate){
     return $stmt->fetchAll();
 }
 
+function getAllLogsSearch(){
+    global $conn;
+    $stmt = $conn->prepare("SELECT expressao, COUNT (LOWER(expressao)) as conta
+                            FROM pesquisa
+                            GROUP BY expressao
+                            ORDER BY conta desc");
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function getLogsByExpressionAndDate($expressao, $startDate, $endDate){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT expressao, COUNT (LOWER(expressao)) as conta
+                            FROM pesquisa
+                            WHERE data::date >= ? AND data::date <= ? 
+                            AND LOWER(expressao) = ?
+                            GROUP BY expressao
+                            ORDER BY conta desc");
+    $stmt->execute(array($startDate, $endDate, strtolower($expressao)));
+    return $stmt->fetchAll();
+}
+
+function getLogsByExpression($expressao){
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT expressao, COUNT (LOWER(expressao)) as conta
+                            FROM pesquisa
+                            WHERE LOWER(expressao) = ?
+                            GROUP BY expressao
+                            ORDER BY conta desc");
+    $stmt->execute(array(strtolower($expressao)));
+    return $stmt->fetchAll();
+}
+
+function getLogsByDateEx($startDate, $endDate){
+    global $conn;
+    $stmt = $conn->prepare("SELECT expressao, COUNT (LOWER(expressao)) as conta
+                            FROM pesquisa
+                            WHERE data::date >= ? AND data::date <= ? 
+                            GROUP BY expressao
+                            ORDER BY conta desc");
+    $stmt->execute(array($startDate, $endDate));
+    return $stmt->fetchAll();
+}
 
 ?>
