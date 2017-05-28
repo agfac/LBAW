@@ -54,6 +54,7 @@
               <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                 <input id="password" title="Insira password com mais de 6 caracteres" type="password" class="form-control has-feedback-left" name="password" required="required" placeholder="Password *">
                 <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                <span class="help-block with-errors" data-valmsg-for="pass" data-valmsg-replace="true"></span>
               </div>
 
                 <!-- Sexo -->
