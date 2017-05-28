@@ -1,6 +1,15 @@
 <?php
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/workers.php';
+include_once $BASE_DIR . 'database/users.php';
+
+if (!preg_match("/[0-9]{4}-[0-9]{3}/", $_POST['codigopostal'])) {
+    error_log('if');
+    $_SESSION['error_messages'][] = 'Erro no código postal - Tem de introduzir no formato: XXXX-XXX';
+    $_SESSION['form_values'] = $_POST;
+    header("Location: $BASE_URL" . 'pages/admin/worker_edit.php?username=' . $username);
+    exit;
+  }
 
 $username = strip_tags($_POST['worker_username']);
 
@@ -44,7 +53,6 @@ $newuserinformation = array(
 try {
     
     $userdata = getWorkersAllData($username);
-    
     updateWorkerInformation($username, $userdata, $newuserinformation);
 
 } catch (PDOException $e) {
