@@ -7,22 +7,22 @@
 	$startDate = $_GET['startDate'];
 	$endDate = $_GET['endDate'];
 
-	if( $nome_utilizador == NULL && $username_utilizador == NULL && $startDate == NULL  )
+	if( $nome_utilizador == NULL && $username_utilizador == NULL && $startDate == NULL && $endDate == NULL )
 		$reply = getAllLogs(); 
 
-	else if( $nome_utilizador != NULL && $username_utilizador == NULL && $startDate != NULL )
+	else if( $nome_utilizador != NULL && $username_utilizador == NULL && $startDate != NULL && $endDate != NULL)
 		$reply = getLogsByNameAndDate($nome_utilizador, $startDate, $endDate);
 
-	else if( $nome_utilizador == NULL && $username_utilizador != NULL && $startDate != NULL )
+	else if( $nome_utilizador == NULL && $username_utilizador != NULL && $startDate != NULL && $endDate != NULL)
 		$reply = getLogsByUsernameAndDate($username_utilizador, $startDate, $endDate);
 
-	else if( $nome_utilizador != NULL && $username_utilizador == NULL && $startDate == NULL )
+	else if( $nome_utilizador != NULL && $username_utilizador == NULL && $startDate == NULL && $endDate == NULL)
 		$reply = getLogsByName($nome_utilizador);
 
-	else if( $nome_utilizador == NULL && $username_utilizador != NULL && $startDate == NULL )
+	else if( $nome_utilizador == NULL && $username_utilizador != NULL && $startDate == NULL && $endDate == NULL)
 		$reply = getLogsByUsername($username_utilizador); 
 
-	else if( $nome_utilizador == NULL && $username_utilizador == NULL && $startDate != NULL )
+	else if( $nome_utilizador == NULL && $username_utilizador == NULL && $startDate != NULL && $endDate != NULL)
 		$reply = getLogsByLoginDate($startDate, $endDate); 
 
 	else

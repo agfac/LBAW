@@ -2,8 +2,8 @@ flag = true;
 sortByIdFlag = true;
 sortByNameFlag = false;
 sortByDateFlag = false;
-var startDate;
-var endDate;
+var startDate = null;
+var endDate = null;
 
 $(document).ready(function() {
 
@@ -11,7 +11,7 @@ $(document).ready(function() {
 		startDate = start.format("YYYY-MM-DD");
 		endDate = end.format("YYYY-MM-DD");
 	});
-	
+
 	$('#reservation').val("");
 	
     $(document).on('click', '#search', function (){
@@ -20,7 +20,7 @@ $(document).ready(function() {
             flag = false;
 	    	var nome_utilizador = $('#nome_utilizador').val();
 	        var username_utilizador = $('#username_utilizador').val();
-	        
+
 	        $('.logs_content').empty();
 
 	        $.getJSON("../../api/admin/logs_search.php", {nome_utilizador: nome_utilizador, username_utilizador: username_utilizador, startDate: startDate, endDate: endDate}, function(data){
