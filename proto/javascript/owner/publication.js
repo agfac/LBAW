@@ -12,7 +12,6 @@ $(document).ready(function() {
 
     $('#categoria').on('change', function(){
         var category = $(this).find('option:selected').val();
-        console.log(category);
 
         $('#subcategoria').empty();
         
@@ -20,7 +19,6 @@ $(document).ready(function() {
             
             for (var i in data){
                 $('#subcategoria').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
-                // console.log(data[i].subcategoriaid + " " + data[i].nome);
             }
         });
     });

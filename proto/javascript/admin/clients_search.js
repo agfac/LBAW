@@ -5,9 +5,17 @@ sortByStatusFlag = false;
 
 $(document).ready(function() {
 
-	$(document).on('click', '#search', function () {
-    //$('#search').on('click', function(){
-    	if (flag){
+	$(document).on('click', '#search', function (){
+    	searchClientsAction();
+	});
+
+	$('.form-horizontal').keypress(function(e){
+		if(e.keyCode==13)
+			searchClientsAction();
+    });
+
+	function searchClientsAction(){
+		if (flag){
           	flag = false;
 	    	var nome_cliente = $('#nome_cliente').val();
 	        var email_cliente = $('#email_cliente').val();
@@ -20,9 +28,8 @@ $(document).ready(function() {
 		        if(data.length === 0 || data == "NULL"){
 		            $('.clients_content').append('<p>Sem clientes com os dados de entrada</p>');
 		        
-		        }else{		            
-		            console.log(data);
-		            
+		        }else{
+		        	
 		            $('.clients_content').append('<p>Clientes existentes na loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 51%" id="orderByClientName">Nome do cliente <span class="glyphicon glyphicon-sort"></span></th><th style="width: 13%" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></th><th style="width: 20%">Ações </th></tr></thead><tbody>');
 		            
 		            for (var i in data){
@@ -49,8 +56,7 @@ $(document).ready(function() {
 		        flag = true;
 	        });
         }
-	});
-
+	}
 
 	$('#clean').on('click', function(){
     	$('#nome_cliente').val("");

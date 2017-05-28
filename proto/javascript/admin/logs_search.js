@@ -15,8 +15,16 @@ $(document).ready(function() {
 	$('#reservation').val("");
 	
     $(document).on('click', '#search', function (){
-    	
-    	if (flag){
+    	logsSearch();
+	});
+
+	$('.form-horizontal').keypress(function(e){
+		if(e.keyCode==13)
+			logsSearch();
+    });
+
+	function logsSearch(){
+		if (flag){
             flag = false;
 	    	var nome_utilizador = $('#nome_utilizador').val();
 	        var username_utilizador = $('#username_utilizador').val();
@@ -28,9 +36,8 @@ $(document).ready(function() {
 		        if(data.length === 0 || data == "NULL"){
 		            $('.logs_content').append('<p>Sem logins com os dados de entrada</p>');
 
-		        }else{		           
-		            console.log(data);
-
+		        }else{
+		        	
 		            $('.logs_content').append('<table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></th><th style="width: 48%" id="orderByName">Nome do Utilizador <span class="glyphicon glyphicon-sort"></th><th style="width: 46%" id="orderByDate">Data <span class="glyphicon glyphicon-sort"></th></tr></thead><tbody>');
 
 		            for (var i in data){
@@ -55,7 +62,7 @@ $(document).ready(function() {
 		        flag = true;
 	        });
         }
-	});
+	}
 
 
 	$('#clean').on('click', function(){

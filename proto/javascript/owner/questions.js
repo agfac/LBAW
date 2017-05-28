@@ -6,7 +6,16 @@ sortByStatusFlag = false;
 $(document).ready(function() {
 
 	$(document).on('click', '#search', function () {
-    	if (flag){
+    	questionsSearch();
+	});
+
+	$('.form-horizontal').keypress(function(e){
+		if(e.keyCode==13)
+			questionsSearch();
+	});
+
+	function questionsSearch(){
+		if (flag){
           	flag = false;
 	    	var nome_utilizador = $('#nome_utilizador').val();
 	        var email_utilizador = $('#email_utilizador').val();
@@ -19,9 +28,8 @@ $(document).ready(function() {
 		        if(data.length === 0 || data == "NULL"){
 		            $('.question_content').append('<p>Sem perguntas com os dados de entrada</p>');
 		        
-		        }else{		            
-		            console.log(data);
-		            
+		        }else{
+		        	
 		            $('.question_content').append('<p>Perguntas listadas da loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th id="questionByName">Nome Utilizador <span class="glyphicon glyphicon-sort"></span></th><th id="questionByDate">Data <span class="glyphicon glyphicon-sort"></span></th><th id="questionByStatus">Estado <span class="glyphicon glyphicon-sort"></span></th><th>Mensagem</th><th>Ações</th></tr></thead><tbody>');
 		            
 		            for (var i in data){
@@ -53,8 +61,9 @@ $(document).ready(function() {
 		        flag = true;
 	        });
         }
-	});
+	}
 
+	//TESTE
 	$(document).on('click', '#updateStatus', function () {
 		var idQuestion = $(this).attr('value');
 		var parent = $(this).parent().parent()[0].innerHTML;
