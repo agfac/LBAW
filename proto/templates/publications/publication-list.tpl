@@ -56,15 +56,15 @@
 
            <div class="widget">
             <h6 class="subtitle">Preços</h6>
-            <form method="post" id="price-filter" class="price-range" data-start-min="10" data-start-max="200" data-min="0" data-max="400" data-step="10">
+            <form method="post" id="price-filter" class="price-range" data-start-min="0" data-start-max="50" data-min="0" data-max="150" data-step="5">
                 <div class="ui-range-values">
                     <div class="ui-range-value-min">
                         €<span></span>
-                        <input type="hidden">
+                        <input type="hidden" id="min-val">
                     </div> -
                     <div class="ui-range-value-max">
                         €<span></span>
-                        <input type="hidden">
+                        <input type="hidden" id="max-val">
                     </div>
                 </div>
                 <div class="ui-range-slider">
@@ -131,7 +131,7 @@
                           <h7> {$publication.nome_autor} </h7>
                       </td>
                       <td>
-                          <h7>{$publication.preco|string_format:"%.2f"}€</h7>
+                          <strike>{$publication.preco|string_format:"%.2f"}€</strike>
                       </td>
                       <td>
                           <h7>{$publication.precopromocional|string_format:"%.2f"}€</h7>
@@ -150,4 +150,4 @@
 <!-- end section -->
 
 {include file='common/footer.tpl'}
-<script src="{$BASE_URL}javascript/publications/publication_filter.js"></script>
+<script src="{$BASE_URL}javascript/publications/filter.js"></script>
