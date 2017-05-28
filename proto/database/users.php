@@ -230,8 +230,8 @@ function updateCartItems($carrinhoid, $publicacaoid, $quantidade) {
   global $conn;
   
   $stmt = $conn->prepare("UPDATE publicacaocarrinho
-    SET quantidade = ?
-    WHERE carrinhoid = ? AND publicacaoid = ?");
+                          SET quantidade = ?
+                          WHERE carrinhoid = ? AND publicacaoid = ?");
   
   $stmt->execute(array($quantidade, $carrinhoid, $publicacaoid));
 }
@@ -241,7 +241,7 @@ function removeCartItem($carrinhoid, $publicacaoid) {
   global $conn;
   
   $stmt = $conn->prepare("DELETE FROM publicacaocarrinho
-    WHERE carrinhoid = ? AND publicacaoid = ?");
+                          WHERE carrinhoid = ? AND publicacaoid = ?");
   
   $stmt->execute(array($carrinhoid, $publicacaoid));
 }

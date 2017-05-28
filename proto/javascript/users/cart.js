@@ -11,7 +11,7 @@ function updateCartNumberItems() {
 
 		$.getJSON("../../api/users/update_cart_items.php", {id: idSelected, value: valueSelected}, function(data) {
 
-			if(data){   	
+			if(data.Success){   	
 
 				var price = itemSelected.getAttribute('data-price');
 				
@@ -29,9 +29,23 @@ function updateCartNumberItems() {
 
 		$.getJSON("../../api/users/update_cart_items.php", {id: idSelected, value: 0}, function(data) {
 			
-			if(data){   	
+			if(data.Success){   	
 
 				itemSelected.remove();
+
+				$.confirm({
+					title: 'Sucesso!',
+					content: data.Success,
+					type: 'green',
+					typeAnimated: true,
+					autoClose: 'success|3000',
+					buttons: {
+						success: {
+							text: 'ok',
+							btnClass: 'btn-success',
+						}
+					}
+				});
 
 				$.getJSON("../../api/users/get_cart_items.php", function(data) {
 					if (data > 0) {
