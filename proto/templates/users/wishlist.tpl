@@ -37,7 +37,7 @@
 							<table class="table">
 								<tbody>
 									{foreach $publicationswishlist as $publication}
-									<tr data-id="{$publication.publicacaoid}">
+									<tr data-id="{$publication.publicacaoid}" data-price="{$publication.preco}">
 										<td>
 											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
 												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">

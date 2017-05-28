@@ -13,9 +13,17 @@ $(document).ready(function() {
 
 	$('#reservation').val("");
 	
-    $(document).on('click', '#search', function (){
-    	
-    	if (flag){
+    $(document).on('click', '#search', function(){
+    	logsExpressionsSearch();
+	});
+
+	$('.form-horizontal').keypress(function(e){
+		if(e.keyCode==13)
+			logsExpressionsSearch();
+    });
+
+	function logsExpressionsSearch(){
+		if (flag){
             flag = false;
 	    	var expressao = $('#expressao').val();
 
@@ -26,9 +34,8 @@ $(document).ready(function() {
 		        if(data.length === 0 || data == "NULL"){
 		            $('.logs_content').append('<p>Sem dados de pesquisa</p>');
 
-		        }else{		           
-		            console.log(data);
-
+		        }else{
+		        	
 		            $('.logs_content').append('<table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 50%" id="orderByExpression">Expressão <span class="glyphicon glyphicon-sort"></th><th style="width: 50%" id="orderByTimes">Número de pesquisas <span class="glyphicon glyphicon-sort"></th></tr></thead><tbody>');
 
 		            for (var i in data){
@@ -40,7 +47,7 @@ $(document).ready(function() {
 		        flag = true;
 	        });
         }
-	});
+	}
 
 
 	$('#clean').on('click', function(){

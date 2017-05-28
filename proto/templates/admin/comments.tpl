@@ -59,7 +59,7 @@
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
                   <button class="btn btn-primary" id="clean" type="button">Limpar</button>
-                  <button id="search" type="button" class="btn btn-success">Submeter</button>
+                  <button id="search" type="button" type=submit class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>

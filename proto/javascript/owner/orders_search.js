@@ -7,6 +7,15 @@ sortByDateFlag = false;
 
 $(document).ready(function() {
     $(document).on('click', '#search', function (){
+        ordersSearch();
+    });
+
+    $('.form-horizontal').keypress(function(e){
+        if(e.keyCode==13)
+            ordersSearch();
+    });
+
+    function ordersSearch(){
         if (flag){
             flag = false;
             var nome_cliente = $('#nome_cliente').val();
@@ -17,7 +26,6 @@ $(document).ready(function() {
             $('.order_content').empty();
 
             $.getJSON("../../api/owner/orders_search.php", {nome_cliente: nome_cliente, email_cliente: email_cliente, id_encomenda: id_encomenda, estadoencomenda: estadoencomenda}, function(data){
-                console.log(data);
                 if(data.length === 0 || data == "NULL"){
                     $('.order_content').append('<p>Sem encomendas com os dados de entrada</p>');
 
@@ -56,8 +64,7 @@ $(document).ready(function() {
                 flag = true;
             });
         }
-    });
-
+    }
 
     $('#clean').on('click', function(){
         $('#nome_cliente').val("");

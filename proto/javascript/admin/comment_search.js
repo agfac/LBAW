@@ -6,7 +6,15 @@ sortByClassificationFlag = false;
 
 $(document).ready(function() {
     $('#search').on('click', function(){
+    	commentAction();
+	});
 
+	$('.form-horizontal').keypress(function(e){
+		if(e.keyCode==13)
+			commentAction();
+	});
+
+    function commentAction(){
     	if (flag){
             flag = false;
 	    	var nome_cliente = $('#nome_cliente').val();
@@ -21,8 +29,7 @@ $(document).ready(function() {
 		        if(data.length === 0 || data == "NULL"){
 		            $('.comment_content').append('<p>Sem comentários com os dados de entrada</p>');
 		        
-		        }else{		           
-		            console.log(data);
+		        }else{
 		            
 		            $('.comment_content').append('<p>Comentários das publicações na loja</p><table class="table table-striped projects" id="myTable"><thead><tr><th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th><th style="width: 14%" id="orderByPublicationName">Nome da Publicação <span class="glyphicon glyphicon-sort"></span></th><th style="width: 14%" id="orderByCLientName">Nome do Cliente <span class="glyphicon glyphicon-sort"></span></th><th style="width: 10%" id="orderByClassification">Classificação <span class="glyphicon glyphicon-sort"></span></th><th style="width: 19%">Comentário</th><th style="width: 14%">Ações </th></tr></thead><tbody>');
 		            
@@ -36,8 +43,7 @@ $(document).ready(function() {
 		        flag = true;
 	        });
         }
-	});
-
+    }
 
 	$('#clean').on('click', function(){
     	$('#nome_cliente').val("");

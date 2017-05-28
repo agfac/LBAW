@@ -7,6 +7,31 @@ sortByPromotionalFlag = false;
 
 $(document).ready(function() {
     $(document).on('click', '#search', function (){
+        publicationsSearch();
+    });
+
+    $('.form-horizontal').keypress(function(e){
+        if(e.keyCode==13)
+            publicationsSearch();
+    });
+
+    $('#categoria').on('change', function(){
+        var category = $(this).find('option:selected').val();
+
+        $('#subcategoria').empty();
+
+        if(category != "Escolha uma opção"){
+            $.getJSON("../../api/owner/updateSubCategories.php", {categoria: category}, function(data){
+                $('#subcategoria').append('<option value="Escolha uma opção">Escolha uma opção</option>');
+                for (var i in data){
+                    $('#subcategoria').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
+                }
+            });
+        }else
+            $('#subcategoria').append('<option value="Escolha uma opção">Escolha uma opção</option>');
+    });
+
+    function publicationsSearch(){
         if (flag){
             flag = false;
             var nome_livro = $('#nome_livro').val();
@@ -42,23 +67,7 @@ $(document).ready(function() {
                 flag = true;
             });
         }
-    });
-
-    $('#categoria').on('change', function(){
-        var category = $(this).find('option:selected').val();
-
-        $('#subcategoria').empty();
-
-        if(category != "Escolha uma opção"){
-            $.getJSON("../../api/owner/updateSubCategories.php", {categoria: category}, function(data){
-                $('#subcategoria').append('<option value="Escolha uma opção">Escolha uma opção</option>');
-                for (var i in data){
-                    $('#subcategoria').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
-                }
-            });
-        }else
-            $('#subcategoria').append('<option value="Escolha uma opção">Escolha uma opção</option>');
-    });
+    }
 
     $('#clean').on('click', function(){
         $('#nome_livro').val("");
