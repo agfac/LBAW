@@ -665,6 +665,7 @@ function getUserByEmail($emailCliente){
   
   return $stmt->fetchAll();
 }
+
 function getUserByStatus($estadoCliente){
 
   global $conn;
@@ -687,6 +688,28 @@ function checkIfUserExists($username){
   $stmt->execute(array($username));
 
   return ($stmt->fetch() !== false);
+}
+
+function getAllCountries(){
+    global $conn;
+  
+  $stmt = $conn->prepare("SELECT * 
+    FROM pais");
+  $stmt->execute();
+  
+  return $stmt->fetchAll();
+}
+
+function getPaisIdByName($nome){
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT paisid
+    FROM pais
+    WHERE nome = ?");
+  $stmt->execute(array($nome));
+  
+  return $stmt->fetch();
 }
 
 ?>

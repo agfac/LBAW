@@ -8,29 +8,12 @@ function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $usern
 
   try{
     
-  //CHECK PAIS ALREADY EXISTS
-    $stmt = $conn->prepare("SELECT *
-                            FROM pais 
-                            WHERE nome = ?");
-    $stmt->execute(array($pais));
-    $result = $stmt->fetch();
-
-    if($result){
-      $paisID = $result['paisid'];
-    }
-    else{
-      //INSERT INTO PAIS
-      $stmt = $conn->prepare("INSERT INTO pais (nome) VALUES (?)");
-      $stmt->execute(array($pais));
-      $paisID = $conn->lastInsertId('pais_paisid_seq');
-    }
-    
     //INSERT INTO ADMINISTRADOR
     $stmt = $conn->prepare("INSERT INTO administrador (paisid, nome, genero, datanascimento, username, password, ativo) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
     $datanasc = sprintf("%04d-%02d-%02d",$anoNasc,$mesNasc,$diaNasc);
     
-    $stmt->execute(array($paisID, $nome, $genero, $datanasc, $username, sha1($password), $atividade));
+    $stmt->execute(array($pais, $nome, $genero, $datanasc, $username, sha1($password), $atividade));
 
     $conn->commit();
   }catch(Exception $e){
@@ -42,7 +25,7 @@ function createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $usern
   }
 }
 
-function updateAdminInformation($username, $userdata, $newuserinformation) {
+function updateAdminInformation($username, $userdata, $newuserinformation, $oldPaisID) {
 
   global $conn;
 
@@ -50,35 +33,6 @@ function updateAdminInformation($username, $userdata, $newuserinformation) {
 
   try{
 
-    $paisID = $userdata[0]['paisid'];
-    $pais = $newuserinformation['pais']; 
-
-    if (!($userdata[0]['nomepais'] === $pais)) {
-      //CHECK PAIS ALREADY EXISTS
-      $stmt = $conn->prepare("SELECT *
-                              FROM pais 
-                              WHERE nome = ?");
-      $stmt->execute(array($pais));
-      $result = $stmt->fetch();
-
-      if($result){
-        $paisID = $result['paisid'];
-      }
-      else{
-      //INSERT INTO PAIS
-        $stmt = $conn->prepare("INSERT INTO pais (nome) 
-                                VALUES (?)");
-        $stmt->execute(array($pais));
-        $paisID = $conn->lastInsertId('pais_paisid_seq');
-      }
-
-      //UPDATE INTO PAIS
-      $stmt = $conn->prepare("UPDATE administrador
-                              SET paisid = ? 
-                              WHERE username = ?");
-      $stmt->execute(array($paisID, $username));
-    }
-   
     $atividade = $newuserinformation['atividade'];
     //Check atividade
     if (!($userdata[0]['ativo'] == $atividade) && $atividade == FALSE) {
@@ -100,6 +54,7 @@ function updateAdminInformation($username, $userdata, $newuserinformation) {
     $diaNasc = $newuserinformation['diaNasc'];
     $mesNasc = $newuserinformation['mesNasc'];
     $anoNasc = $newuserinformation['anoNasc'];
+    $pais = $newuserinformation['pais'];
 
     $birthdate = explode('-', $userdata[0]['datanascimento']);
 
@@ -108,15 +63,15 @@ function updateAdminInformation($username, $userdata, $newuserinformation) {
     $birthmonth = ltrim($str, '0');
     $birthday = $birthdate[2];
 
-    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc)){
+    if (!($userdata[0]['nome'] === $nome) || !($userdata[0]['genero'] === $genero) || !($birthday === $diaNasc) || !($birthmonth === $mesNasc) || !($birthyear === $anoNasc) || !($pais == $oldPaisID)){
 
       $stmt = $conn->prepare("UPDATE administrador 
-                              SET nome = ?, genero = ?, datanascimento = ?
+                              SET nome = ?, genero = ?, datanascimento = ?, paisid = ?
                               WHERE administrador.username = ?");
 
       $datanasc = sprintf("%04d-%02d-%02d",$anoNasc,$mesNasc,$diaNasc);
 
-      $stmt->execute(array($nome, $genero, $datanasc, $username));
+      $stmt->execute(array($nome, $genero, $datanasc, $pais, $username));
     }
 
     $conn->commit();

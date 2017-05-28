@@ -32,7 +32,6 @@ $newuserinformation = array(
     'username'   => strip_tags($_POST['username']),
 );
 
-
 try {
     $userdata = getUserAllData($username);
     

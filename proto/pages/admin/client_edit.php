@@ -12,7 +12,9 @@ if (!($_GET['username']) || !checkIfUserExists($_GET['username'])) {
 
 $username = $_GET['username'];
 $userdata = getUserAllData($username);
+$countries = getAllCountries();
 
+$smarty->assign('countries',$countries);
 $smarty->assign('clientdata',$userdata[0]);
 $smarty->display('admin/client_edit.tpl');
 ?>
