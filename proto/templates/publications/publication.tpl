@@ -52,9 +52,9 @@
 							</li>
 							<li><a data-type="gotocomments">
 								(
-								{if $publication.$val.comentarios == 1} {$publication.$val.comentarios} comentário
+								{if $publication|@count == 1} {$publication|@count} comentário
 								{else}
-								{$publication.$val.comentarios} comentários
+								{$publication|@count} comentários
 								{/if}
 								)</a></li>
 							</ul>
@@ -109,7 +109,7 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs style2 tabs-left">
 						<li class="active"><a href="#description" data-toggle="tab">Informação adicional</a></li>
-						<li><a href="#reviews" data-toggle="tab">Comentários ({$publication.$val.comentarios})</a></li>
+						<li><a href="#reviews" data-toggle="tab">Comentários ({$publication|@count})</a></li>
 					</ul>
 				</div><!-- end col -->
 				<div class="col-xs-12 col-sm-9">
@@ -140,9 +140,9 @@
 							</div><!-- end row -->
 						</div><!-- end tab-pane -->
 						<div class="tab-pane" id="reviews">
-							<h5>{if $publication.$val.comentarios == 1} {$publication.$val.comentarios} comentário
+							<h5>{if $publication|@count == 1} {$publication|@count} comentário
 								{else}
-								{$publication.$val.comentarios} comentários
+								{$publication|@count} comentários
 								{/if} para "{$publication.$val.titulo}"</h5>
 
 								<hr class="spacer-10 no-border">
@@ -177,33 +177,48 @@
 								{/foreach}
 
 								<hr class="spacer-30">
-
+								{if $USERNAME && $bought && !$havecommented}
 								<h5>Adicionar um comentário</h5>
 								<p>Como classifica este produto?</p>
 
 								<hr class="spacer-5 no-border">
 
-								<form>
-									<input type="text" class="rating rating-loading" value="5" data-size="sm" title="">
+								<form action="{$BASE_URL}actions/users/send_comment_item.php" method="post">
+									{html_radios name='classificacao' values=$ratingvalues output=$rating_names separator='<br />'}
+
+									<hr class="spacer-10 no-border">
+
+									<div class="form-group">
+										<label for="nome">Nome<span class="text-danger">*</span></label>
+										<input type="text" name="nome" class="form-control input-md" {if $USER_DATA}
+										value="{$USER_DATA.nome}"
+										{else}
+										value="{$FORM_VALUES.nome}"
+										{/if}
+										placeholder="Nome">
+									</div><!-- end form-group -->
+									<div class="form-group">
+										<label for="email">E-mail<span class="text-danger">*</span></label>
+										<input type="email" name="email" class="form-control input-md" {if $USER_DATA}
+										value="{$USER_DATA.email}"
+										{else}
+										value="{$FORM_VALUES.email}"
+										{/if}
+										placeholder="E-mail">
+									</div><!-- end form-group -->
+									<div class="form-group">
+										<label for="comentario">Comentário<span class="text-danger">*</span></label>
+										<textarea name="comentario" rows="5" class="form-control" placeholder="Comentário"></textarea>
+									</div><!-- end form-group -->
+									<div class="form-group">
+										<input type="hidden" name="publicacaoid" value="{$publication.$val.publicacaoid}">
+									</div><!-- end form-group -->
+									<div class="form-group">
+										<button type="submit" class="btn btn-default round btn-md">Submeter
+										</button>
+									</div><!-- end form-group -->
 								</form>
-
-								<hr class="spacer-10 no-border">
-
-								<div class="form-group">
-									<label for="reviewName">Nome</label>
-									<input type="text" id="reviewName" class="form-control input-md" placeholder="Nome">
-								</div><!-- end form-group -->
-								<div class="form-group">
-									<label for="reviewEmail">E-mail</label>
-									<input type="text" id="reviewEmail" class="form-control input-md" placeholder="E-mail">
-								</div><!-- end form-group -->
-								<div class="form-group">
-									<label for="reviewMessage">Comentário</label>
-									<textarea id="reviewMessage" rows="5" class="form-control" placeholder="Comentário"></textarea>
-								</div><!-- end form-group -->
-								<div class="form-group">
-									<input type="submit" class="btn btn-default round btn-md" value="Submeter">
-								</div><!-- end form-group -->
+								{/if}
 							</div><!-- end tab-pane -->
 						</div><!-- end tab-content -->
 					</div><!-- end col -->

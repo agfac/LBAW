@@ -135,4 +135,10 @@ function getCommentsByComment($comments){
 	return $stmt->fetchAll();
 }
 
+function insertComment($clientid, $publicacaoid, $classificacao, $texto){
+	global $conn;
+	$stmt = $conn->prepare("INSERT INTO comentario (clienteid, publicacaoid, classificacao, texto)
+							VALUES (?, ?, ?, ?)");
+	$stmt->execute(array($clientid, $publicacaoid, $classificacao, $texto));
+}
 ?>

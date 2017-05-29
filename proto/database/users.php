@@ -734,4 +734,40 @@ function getAllCountriesAllInfo(){
 
   return $stmt->fetchAll();
 }
+
+function checkIfUserBoughtPublication($clienteid, $publicacaoid){
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT DISTINCT publicacaoencomenda.publicacaoid
+                          FROM encomenda
+                          JOIN cliente
+                          ON encomenda.clienteid = cliente.clienteid 
+                          JOIN publicacaoencomenda
+                          ON publicacaoencomenda.encomendaid = encomenda.encomendaid 
+                          JOIN publicacao
+                          ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
+                          WHERE cliente.clienteid = ? AND publicacao.publicacaoid = ?");
+  
+  $stmt->execute(array($clienteid, $publicacaoid));
+
+  return ($stmt->fetch() !== false);
+}
+
+function checkIfUserCommentedPublication($clienteid, $publicacaoid){
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.publicacaoid
+                          FROM cliente
+                          JOIN comentario
+                          ON cliente.clienteid = comentario.clienteid 
+                          JOIN publicacao
+                          ON publicacao.publicacaoid = comentario.publicacaoid
+                          WHERE cliente.clienteid = ? AND publicacao.publicacaoid = ?");
+  
+  $stmt->execute(array($clienteid, $publicacaoid));
+
+  return ($stmt->fetch() !== false);
+}
 ?>
