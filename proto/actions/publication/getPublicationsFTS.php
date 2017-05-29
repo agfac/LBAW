@@ -2,20 +2,17 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/publications.php');
 
-$oneRandomNewPublication = getNewPublications(1);
-$smarty->assign('oneRandomNewPublication', $oneRandomNewPublication[0]);
+$valor = strip_tags($_POST['searchpublication']);
 
-$getNPromotionalPublications = getNPromotionalPublications(5);
+$getPublicationFTS = testeFullTextSearch($valor);
 
-foreach ($getNPromotionalPublications as &$publications) {
+
+foreach ($getPublicationFTS as &$publications) {
 	if(!$publications['nome_autor'])
 		$publications['nome_autor'] = "Sem autor";
 }
 
-$smarty->assign('def_pubs', $getNPromotionalPublications);
-
-//pedro
-
+$smarty->assign('def_pubs', $getPublicationFTS);
 
 
 
@@ -50,6 +47,6 @@ $smarty->assign('subcategoriasRevistas', $subcategoriasRevistas);
 $smarty->assign('subcategoriasDicionarios', $subcategoriasDicionarios);
 $smarty->assign('subcategoriasGuiasEMapas', $subcategoriasGuiasEMapas);
 
-$smarty->display('publications/publications-promotion.tpl');
+$smarty->display('publications/publication-list.tpl');
 
 ?>

@@ -133,7 +133,10 @@
                   </a>
                 </div><!-- end col -->
                 <div class="col-sm-6 vertical-align text-center col-lg-offset-3">
-                  <input type="text" placeholder="Pesquisar" name="email" class="form-control input-md">
+                  <form action="{$BASE_URL}actions/publication/getPublicationsFTS.php" method="post" class="form-horizontal form-label-left input_mask">
+                    <input type="text" placeholder="Pesquisar" name="searchpublication" id="searchpublication" class="form-control input-md">
+                    <button type="submit" class="btn btn-success">Pesquisar</button>
+                  </form>
                 </div><!-- end col -->
                 {if $USERNAME}
                 <div class="col-sm-3 vertical-align header-items">
