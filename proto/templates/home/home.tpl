@@ -464,9 +464,9 @@
                     {/if} {$dayscommented.$val}, {$yearscommented.$val}</span>
                     <div class="category">
                       <i class="fa fa-book text-danger mr-5"></i>
-                      <a href="javascript:void(0);">{$publication.nome_categoria}</a>
+                      <span>{$publication.nome_categoria}</span>
                       <span> | </span>
-                      <a href="javascript:void(0);">{$publication.nome_subcategoria}</a>
+                      <a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome_subcategoria}&cat={$publication.nome_categoria}">{$publication.nome_subcategoria}</a>
                     </div>
                   </div>
                   <p>{$publication.texto}</p>
