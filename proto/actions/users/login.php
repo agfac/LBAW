@@ -1,6 +1,7 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/users.php');  
+include_once($BASE_DIR .'database/logs.php');  
 
 if (!$_POST['username'] || !$_POST['password']) {
   $_SESSION['error_messages'][] = 'Deverá preencher o username e a password para efetuar o login';
@@ -17,6 +18,8 @@ if (isClientLoginCorrect($username, $password)) {
   $_SESSION['usertype'] = 'client';
   $userdata = getUserData($username);
   $userid = $userdata[0]['clienteid'];
+  
+  insertClientLog($userid);
 
   $_SESSION['userid'] = $userid;
   
@@ -27,8 +30,10 @@ if (isClientLoginCorrect($username, $password)) {
 else if(isOwnerLoginCorrect($username, $password)){
   $_SESSION['username'] = $username;
   $_SESSION['usertype'] = 'owner';
-  $userdata = getUserData($username);
+  $userdata = getOwnerData($username);
   $userid = $userdata[0]['funcionarioid'];
+
+  insertOwnerLog($userid);
 
   $_SESSION['userid'] = $userid;
   
@@ -37,11 +42,13 @@ else if(isOwnerLoginCorrect($username, $password)){
   header("Location: $BASE_URL");
 }
 else if(isAdminLoginCorrect($username, $password)){
-  
+
   $_SESSION['username'] = $username;
   $_SESSION['usertype'] = 'admin';
-  $userdata = getUserData($username);
+  $userdata = getAdminData($username);
   $userid = $userdata[0]['administradorid'];
+
+  insertAdminLog($userid);
 
   $_SESSION['userid'] = $userid;
 

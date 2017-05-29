@@ -167,6 +167,32 @@ function getUserData($username) {
   return $stmt->fetchAll();
 }
 
+function getOwnerData($username) {
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * 
+                          FROM funcionario
+                          WHERE username = ?");
+
+  $stmt->execute(array($username));
+
+  return $stmt->fetchAll();
+}
+
+function getAdminData($username) {
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * 
+                          FROM administrador
+                          WHERE username = ?");
+
+  $stmt->execute(array($username));
+
+  return $stmt->fetchAll();
+}
+
 //GET USER ORDER LIST
 function getUserOrderList($clienteid) {
 
