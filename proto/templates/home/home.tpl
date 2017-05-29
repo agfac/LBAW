@@ -596,114 +596,37 @@
         <div class="row">
           <div class="col-sm-12">
             <div id="owl-demo" class="owl-carousel column-3 owl-theme">
+              {foreach $commentedpublications as $publication}
               <div class="item">
                 <div class="thumbnail blog">
                   <div class="header">
                     <figure>
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                      <img src="{$BASE_URL}{$publication.url}" alt="">
                     </figure>
                     <div class="meta">
                       <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
+                      <span><i class="fa fa-comment mr-5"></i>({$publication.comentarios})</span>
+                      <span><i class="fa fa-heart mr-5"></i>({$publication.numvendas})</span>
                     </div>
                   </div>
                   <div class="caption">
-                    <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
                     <div class="author-category">
                       <span class="author mr-20">
-                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
+                        <i class="fa fa-user mr-5"></i><span>{$publication.nome_cliente}</span>
                       </span>
-                      <span class="category">
-                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                      </span>
+                      <div class="category">
+                        <i class="fa fa-book text-danger mr-5"></i>
+                        <a href="javascript:void(0);">{$publication.nome_categoria}</a>
+                        <span> | </span>
+                        <a href="javascript:void(0);">{$publication.nome_subcategoria}</a>
+                      </div>
                     </div>
-                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
+                    <p>{$publication.texto}</p>
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
                   </div><!-- end caption -->
                 </div><!-- end thumbnail -->
               </div><!-- end item -->
-              <div class="item">
-                <div class="thumbnail blog">
-                  <div class="header">
-                    <figure>
-                      <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
-                    </figure>
-                    <div class="meta">
-                      <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
-                    </div>
-                  </div>
-                  <div class="caption">
-                    <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
-                    <div class="author-category">
-                      <span class="author mr-20">
-                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
-                      </span>
-                      <span class="category">
-                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                      </span>
-                    </div>
-                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-                  </div><!-- end caption -->
-                </div><!-- end thumbnail -->
-              </div><!-- end item -->
-              <div class="item">
-                <div class="thumbnail blog">
-                  <div class="header">
-                    <figure>
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-                    </figure>
-                    <div class="meta">
-                      <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
-                    </div>
-                  </div>
-                  <div class="caption">
-                    <h6><a href="blog-article-v1.html">Adorei este livro! Recomendo!</a></h6>
-                    <div class="author-category">
-                      <span class="author mr-20">
-                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
-                      </span>
-                      <span class="category">
-                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                      </span>
-                    </div>
-                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-                  </div><!-- end caption -->
-                </div><!-- end thumbnail -->
-              </div><!-- end item -->
-              <div class="item">
-                <div class="thumbnail blog">
-                  <div class="header">
-                    <figure>
-                      <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
-                    </figure>
-                    <div class="meta">
-                      <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
-                      <span><i class="fa fa-comment mr-5"></i>(15)</span>
-                      <span><i class="fa fa-heart mr-5"></i>(35)</span>
-                    </div>
-                  </div>
-                  <div class="caption">
-                    <h6><a href="javascript:void(0);">Adorei este livro! Recomendo!</a></h6>
-                    <div class="author-category">
-                      <span class="author mr-20">
-                        <i class="fa fa-user mr-5"></i><a href="javascript:void(0);">Ana Dias</a>
-                      </span>
-                      <span class="category">
-                        <a href="javascript:void(0);">Saúde e Bem Estar</a>
-                      </span>
-                    </div>
-                    <p>Aenean semper lacus sed molestie sollicitudin. In semper, tellus id posuere interdum, est justo faucibus quam, sed eleifend arcu nulla id eros.</p>
-                    <a href="javascript:void(0);" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-                  </div><!-- end caption -->
-                </div><!-- end thumbnail -->
-              </div><!-- end item -->
+              {/foreach}
             </div><!-- end owl carousel -->
           </div><!-- end col -->
         </div><!-- end row -->

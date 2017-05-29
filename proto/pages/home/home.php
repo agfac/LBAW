@@ -15,9 +15,11 @@
   $eightnewpublications = getNewPublications(8);
   $fivenewpublications = getNewPublications(5);
   $fivemostsellpublications = getMostSellPublications(5);
+  $commentedpublications = getCommentedPublications(4);
 
   $smarty->assign('eightnewpublications', $eightnewpublications);
   $smarty->assign('fivenewpublications', $fivenewpublications);
   $smarty->assign('fivemostsellpublications', $fivemostsellpublications);
+  $smarty->assign('commentedpublications', $commentedpublications);
   $smarty->display('home/home.tpl');
 ?>

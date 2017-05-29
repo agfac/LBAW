@@ -455,4 +455,30 @@ function getMostSellPublications($number){
 	
 	return $stmt->fetchAll();
 }
+
+function getCommentedPublications($number){
+	
+	global $conn;
+
+    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, comentario.texto, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, cliente.nome as nome_cliente, avg(comentario.classificacao) as classificacao, count(publicacaoencomenda.encomendaid) as numvendas, count(comentario.comentarioid) as comentarios
+                            FROM publicacao
+							LEFT JOIN imagem
+							ON imagem.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN comentario
+							ON comentario.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN publicacaoencomenda
+							ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            LEFT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            LEFT JOIN cliente
+                            ON cliente.clienteid = comentario.clienteid
+                            GROUP BY publicacao.publicacaoid, imagem.url, comentario.texto, subcategoria.nome, categoria.nome, nome_cliente
+                            HAVING count(comentario.comentarioid)>0
+                            LIMIT ?");
+    $stmt->execute(array($number));
+	
+	return $stmt->fetchAll();
+}
 ?>

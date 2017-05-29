@@ -67,10 +67,10 @@
                     <div class="col-sm-3">
                         <h5 class="title">Minha Conta</h5>
                         <ul class="list alt-list">
-                            <li><a href="?page=my-account"><i class="fa fa-angle-right"></i>Conta</a></li>
-                            <li><a href="?page=wishlist"><i class="fa fa-angle-right"></i>Wishlist</a></li>
-                            <li><a href="?page=cart"><i class="fa fa-angle-right"></i>Carrinho</a></li>
-                            <li><a href="?page=checkout"><i class="fa fa-angle-right"></i>Checkout</a></li>
+                            <li><a href="{$BASE_URL}pages/users/my-account.php"><i class="fa fa-angle-right"></i>Conta</a></li>
+                            <li><a href="{$BASE_URL}pages/users/wishlist.php"><i class="fa fa-angle-right"></i>Wishlist</a></li>
+                            <li><a href="{$BASE_URL}pages/users/cart.php"><i class="fa fa-angle-right"></i>Carrinho</a></li>
+                            <li><a href="{$BASE_URL}pages/users/checkout.php"><i class="fa fa-angle-right"></i>Checkout</a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-sm-3">
