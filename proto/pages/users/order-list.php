@@ -2,6 +2,7 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/users.php');
 include_once($BASE_DIR .'database/orders.php');
+include_once $BASE_DIR . 'database/publications.php';
 
 if (!$_SESSION['username']) {
   $_SESSION['error_messages'][] = 'Deverá efetuar login para aceder à página solicitada';

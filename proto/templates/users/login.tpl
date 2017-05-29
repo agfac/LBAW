@@ -7,7 +7,6 @@
             <div class="col-sm-12">
                 <ul>
                     <li><a href="{$BASE_URL}">Página inicial</a></li>
-                    <li><a href="#">Páginas</a></li>
                     <li class="active">Login</li>
                 </ul><!-- end breadcrumb -->
             </div><!-- end col -->    

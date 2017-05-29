@@ -286,9 +286,9 @@
                                     <img src="{$BASE_URL}{$eightnewpublications.$var.url}" alt="">
                                   </figure>
                                   <div class="icons">
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-search"></i></a>
+                                    <a class="icon semi-circle" data-type="Adicionar à wishlist" data-toggle="tooltip" data-placement="top" title="Adicionar à wishlist" data-id="{$eightnewpublications.$var.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}" data-img="{$BASE_URL}{$eightnewpublications.$var.url}" data-titulo="{$eightnewpublications.$var.titulo}" data-price="$eightnewpublications.$var.precopromocional"><i class="fa fa-heart-o"></i></a>
+                                    <a class="icon semi-circle" data-type="Adicionar ao carrinho" data-toggle="tooltip" data-placement="top" title="Adicionar ao carrinho" data-id="{$eightnewpublications.$var.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}" data-img="{$BASE_URL}{$eightnewpublications.$var.url}" data-titulo="{$eightnewpublications.$var.titulo}" data-price="$eightnewpublications.$var.precopromocional"><i class="fa fa-cart-plus"></i></a>
+                                    <a class="icon semi-circle" data-toggle="tooltip" data-placement="top" title="Ver página da publicação"href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}"><i class="fa fa-search"></i></a>
                                   </div>
                                 </div>
                                 <div class="caption">
@@ -301,7 +301,6 @@
                                     <span class="amount text-primary">€{$eightnewpublications.$var.preco}</span>
                                     {/if}
                                   </div>
-                                  <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
                                 </div><!-- end caption -->
                               </div><!-- end thumbnail -->
                             </div><!-- end col -->

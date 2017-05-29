@@ -1,5 +1,6 @@
 <?php
 include_once('../../config/init.php');
+include_once $BASE_DIR . 'database/publications.php';
 
 $eightnewpublications = getNewPublications(8);
 $smarty->assign('eightnewpublications', $eightnewpublications);
