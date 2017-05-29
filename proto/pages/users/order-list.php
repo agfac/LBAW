@@ -41,6 +41,9 @@ foreach ($orders as $order) {
   $orderspublications[] = count($orderpublications);
 }
 
+$eightnewpublications = getNewPublications(8);
+$smarty->assign('eightnewpublications', $eightnewpublications);
+
 $smarty->assign('orders', $orders);
 $smarty->assign('days', $days);
 $smarty->assign('months', $months);

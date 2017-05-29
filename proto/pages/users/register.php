@@ -38,6 +38,9 @@ if(!$_SESSION['username']){
 
 	$smarty->assign('YEAR_ARRAY', array_combine(range(1976, 2006), range(1976, 2006)));
 
+	$eightnewpublications = getNewPublications(8);
+	$smarty->assign('eightnewpublications', $eightnewpublications);
+
 	$smarty->assign('newpublication', $newpublication[0]);
 	$smarty->assign('countries', $countries);
 	$smarty->display('users/register.tpl');

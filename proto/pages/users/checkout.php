@@ -13,6 +13,9 @@ $clientid = $_SESSION['userid'];
 $publicationscart = getUserPublicationsCart($clientid);
 $cartsubtotal = getUserCartSubtotal($clientid);
 
+$eightnewpublications = getNewPublications(8);
+$smarty->assign('eightnewpublications', $eightnewpublications);
+
 $smarty->assign('publicationscart', $publicationscart);
 $smarty->assign('PUBLICATIONSUSERCART', $publicationscart);
 $smarty->assign('qtOptions', array_combine(range(1,10),range(1,10)));

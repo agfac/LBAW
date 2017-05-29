@@ -287,59 +287,47 @@
                       <li>
                         <div class="yamm-content">
                           <div class="row">
+                            {for $var=0 to 3}
                             <div class="col-xs-12 col-sm-3">
-                              <a href="javascript:void(0);">
+                              <a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}">
                                 <figure class="zoom-out">
-                                  <img alt="" src="{$BASE_URL}images/publications/books/books_5.jpg">
+                                  <img alt="" src="{$BASE_URL}{$eightnewpublications.$var.url}">
                                 </figure>
                               </a>
                             </div><!-- end col -->
-                            <div class="col-xs-12 col-sm-3">
-                              <a href="javascript:void(0);">
-                                <figure class="zoom-in">
-                                  <img alt="" src="{$BASE_URL}images/publications/books/books_5.jpg">
-                                </figure>
-                              </a>
-                            </div><!-- end col -->
-                            <div class="col-xs-12 col-sm-3">
-                              <a href="javascript:void(0);">
-                                <figure class="zoom-out">
-                                  <img alt="" src="{$BASE_URL}images/publications/books/books_6.jpg">
-                                </figure>
-                              </a>
-                            </div><!-- end col -->
-                            <div class="col-xs-12 col-sm-3">
-                              <a href="javascript:void(0);">
-                                <figure class="zoom-in">
-                                  <img alt="" src="{$BASE_URL}images/publications/books/books_6.jpg">
-                                </figure>
-                              </a>
-                            </div><!-- end col -->
+                            {/for}
                           </div><!-- end row -->
 
                           <hr class="spacer-20 no-border">
 
                           <div class="row">
                             <div class="col-xs-12 col-sm-3">
-                              <h6>Pellentes que nec diam lectus</h6>
-                              <p>Proin pulvinar libero quis auctor pharet ra. Aenean fermentum met us orci, sedf eugiat augue pulvina r vitae. Nulla dolor nisl, molestie nec aliquam vitae, gravida sodals dolor...</p>
+                              <h6>Novidades</h6>
+                              <p>Confira aqui as mais recentes publicações. Fique a par das últimas novidades. Queremos que esteja sempre atualizado!</p>
                               <button type="button" class="btn btn-default round btn-sm">Saiba mais</button>
                             </div><!-- end col -->
+                            {for $var=4 to 6}
                             <div class="col-xs-12 col-sm-3">
                               <div class="thumbnail store style1">
                                 <div class="header">
                                   <div class="badges">
+                                    {if $eightnewpublications.$var.preco != $eightnewpublications.$var.precopromocional}
                                     <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
+                                    {/if}
                                     <span class="product-badge top right text-primary">
+                                      {for $val=1 to ($eightnewpublications.$var.classificacao)|floor}
                                       <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
+                                      {/for}
+                                      {if $eightnewpublications.$var.classificacao}
+                                      {if is_numeric($eightnewpublications.$var.classificacao) && (float)(int)$eightnewpublications.$var.classificacao===(float)$eightnewpublications.$var.classificacao}
+                                      {else}
                                       <i class="fa fa-star-half-o"></i>
+                                      {/if}
+                                      {/if}
                                     </span>
                                   </div>
                                   <figure class="layer">
-                                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                                    <img src="{$BASE_URL}{$eightnewpublications.$var.url}" alt="">
                                   </figure>
                                   <div class="icons">
                                     <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
@@ -348,79 +336,20 @@
                                   </div>
                                 </div>
                                 <div class="caption">
-                                  <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
+                                  <h6 class="thin"><a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}">{$eightnewpublications.$var.titulo}</a></h6>
                                   <div class="price">
-                                    <small class="amount off">€68.99</small>
-                                    <span class="amount text-primary">€59.99</span>
+                                  {if $eightnewpublications.$var.preco != $eightnewpublications.$var.precopromocional}
+                                    <small class="amount off">€{$eightnewpublications.$var.preco}</small>
+                                    <span class="amount text-primary">€{$eightnewpublications.$var.precopromocional}</span>
+                                    {else}
+                                    <span class="amount text-primary">€{$eightnewpublications.$var.preco}</span>
+                                    {/if}
                                   </div>
                                   <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
                                 </div><!-- end caption -->
                               </div><!-- end thumbnail -->
                             </div><!-- end col -->
-                            <div class="col-xs-12 col-sm-3">
-                              <div class="thumbnail store style1">
-                                <div class="header">
-                                  <div class="badges">
-                                    <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
-                                    <span class="product-badge top right text-primary">
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star-half-o"></i>
-                                    </span>
-                                  </div>
-                                  <figure class="layer">
-                                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-                                  </figure>
-                                  <div class="icons">
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-search"></i></a>
-                                  </div>
-                                </div>
-                                <div class="caption">
-                                  <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
-                                  <div class="price">
-                                    <small class="amount off">€68.99</small>
-                                    <span class="amount text-primary">€59.99</span>
-                                  </div>
-                                  <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
-                                </div><!-- end caption -->
-                              </div><!-- end thumbnail -->
-                            </div><!-- end col -->
-                            <div class="col-xs-12 col-sm-3">
-                              <div class="thumbnail store style1">
-                                <div class="header">
-                                  <div class="badges">
-                                    <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
-                                    <span class="product-badge top right text-primary">
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star"></i>
-                                      <i class="fa fa-star-half-o"></i>
-                                    </span>
-                                  </div>
-                                  <figure class="layer">
-                                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
-                                  </figure>
-                                  <div class="icons">
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-search"></i></a>
-                                  </div>
-                                </div>
-                                <div class="caption">
-                                  <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
-                                  <div class="price">
-                                    <small class="amount off">€68.99</small>
-                                    <span class="amount text-primary">€59.99</span>
-                                  </div>
-                                  <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
-                                </div><!-- end caption -->
-                              </div><!-- end thumbnail -->
-                            </div><!-- end col -->
+                            {/for}
                           </div><!-- end row -->
                         </div><!-- end yamm-content -->
                       </li><!-- end li -->
@@ -436,6 +365,6 @@
                 </ul><!-- end navbar-nav -->
               </div><!-- end navbar collapse -->
             </div><!-- end container -->
-  </div><!-- end navbar -->
+          </div><!-- end navbar -->
 
-  <script src="{$BASE_URL}javascript/common/header.js"></script>
+          <script src="{$BASE_URL}javascript/common/header.js"></script>

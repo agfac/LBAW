@@ -17,6 +17,9 @@ $orderid = $_GET['id'];
 
 $orderpublications = getOrderPublications($orderid);
 
+$eightnewpublications = getNewPublications(8);
+$smarty->assign('eightnewpublications', $eightnewpublications);
+
 $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
 $smarty->assign('orderpublications', $orderpublications);
 $smarty->assign('orderid', $orderid);

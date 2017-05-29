@@ -13,6 +13,9 @@ $clientid = $_SESSION['userid'];
 $publicationswishlist = getUserPublicationsWishList($clientid);
 $publicationscart = getUserPublicationsCart($clientid);
 
+$eightnewpublications = getNewPublications(8);
+$smarty->assign('eightnewpublications', $eightnewpublications);
+
 $smarty->assign('publicationswishlist', $publicationswishlist);
 $smarty->assign('PUBLICATIONSUSERCART', $publicationscart);
 $smarty->display('users/wishlist.tpl');

@@ -12,6 +12,9 @@ $clientid = $_SESSION['userid'];
 
 $publicationsusercart = getUserPublicationsCart($clientid);
 
+$eightnewpublications = getNewPublications(8);
+$smarty->assign('eightnewpublications', $eightnewpublications);
+
 $smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
 
 $smarty->display('users/my-account.tpl');

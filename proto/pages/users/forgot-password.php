@@ -1,5 +1,8 @@
 <?php
-  include_once('../../config/init.php');
-  
-  $smarty->display('users/forgot-password.tpl');
+include_once('../../config/init.php');
+
+$eightnewpublications = getNewPublications(8);
+$smarty->assign('eightnewpublications', $eightnewpublications);
+
+$smarty->display('users/forgot-password.tpl');
 ?>
