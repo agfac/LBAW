@@ -36,7 +36,7 @@ $(document).ready(function() {
         var promotionalPrice = parseFloat($('#preco_promocional').val());
         var div = ($(this).closest('div')).parent();
 
-       if(promotionalPrice >= price){
+       if(promotionalPrice > price){
             div.addClass('has-error');
             $('#submit').prop('disabled', true);
             $('span[data-valmsg-for="preco"]').text('Preço tem que ser superior ao preço promocional!'); 

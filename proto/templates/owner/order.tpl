@@ -56,6 +56,48 @@
               </div>
 
               <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Data:</label>
+                <div class="col-md-10 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].data|date_format:$parsedata.fulldata}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Meio de pagamento:</label>
+                <div class="col-md-10 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].metodopagamento}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Sub-Total:</label>
+                <div class="col-md-10 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].subtotal|string_format:'%.2f'} €">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço IVA:</label>
+                <div class="col-md-10 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].iva|string_format:'%.2f'} € (Já incluido no Sub-Total)">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Portes:</label>
+                <div class="col-md-10 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].portes|string_format:'%.2f'} €">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Total:</label>
+                <div class="col-md-10 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].total|string_format:'%.2f'} €">
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Alterar estado da encomenda: </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div id="estadoencomenda" class="btn-group" data-toggle="buttons">
@@ -107,7 +149,7 @@
               <div class="ln_solid"></div>
 
               <div class="x_content">
-                <p>Publicações da compra</p>
+                <h4>Publicações da compra</h4>
                 <!-- start of books list -->
                 <table class="table table-striped projects">
                   <thead>
@@ -122,21 +164,16 @@
                   <tbody>
                     {foreach $orderData as $publication}
                     <tr>
-                      <td>{$publication.publicacaoid}
-                      </td>
-                      <td>{$publication.titulo}
-                      </td>
-                      <td>{$publication.preco|string_format:"%.2f"} €
-                      </td>
-                      <td>{$publication.quantidade}
-                      </td>
+                      <td>{$publication.publicacaoid}</td>
+                      <td>{$publication.titulo}</td>
+                      <td>{$publication.preco|string_format:"%.2f"} €</td>
+                      <td>{$publication.quantidade}</td>
                       <td>
                         <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
                       </td>
                     </tr>
                     {/foreach}
                   </tbody>
-                  <tfoot><td colspan="5">PRECO TOTAL: {$publication.total|string_format:"%.2f"} €</td></tfoot>
                 </table>
               </div>
 
