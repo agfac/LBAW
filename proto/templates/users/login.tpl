@@ -22,8 +22,9 @@
                 <div class="widget">
                     <h6 class="subtitle">Novidades</h6>
                     <figure>
-                        <a href="javascript:void(0);">
-                            <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="collection">
+                        {assign var=val value=0}
+                        <a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$val.publicacaoid}">
+                            <img src="{$BASE_URL}{$eightnewpublications.$val.url}" alt="collection">
                         </a>
                     </figure>
                 </div><!-- end widget -->
