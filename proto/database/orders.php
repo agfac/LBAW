@@ -101,7 +101,7 @@ function getLast5Orders($firstDate,$lastDate){
 function getOrderData($id)
 {
 	global $conn;
-    $stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, informacaofaturacao.*, publicacaoencomenda.*, morada.rua, codigopostal.*, localidade.nome as nome_localidade, pais.nome as nome_pais, publicacao.titulo, publicacao.publicacaoid
+    $stmt = $conn->prepare("SELECT encomenda.*, cliente.nome as nomecliente, informacaofaturacao.*, publicacaoencomenda.*, morada.rua, codigopostal.*, localidade.nome as nome_localidade, pais.nome as nome_pais, publicacao.titulo, publicacao.publicacaoid, metodopagamento.tipo as metodopagamento
 							FROM encomenda
 							LEFT JOIN informacaofaturacao
 							ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
@@ -121,6 +121,8 @@ function getOrderData($id)
 							ON pais.paisid = localidade.paisid
 							LEFT JOIN cliente
 							ON cliente.clienteid = encomenda.clienteid
+							LEFT JOIN metodopagamento
+							ON informacaofaturacao.metodopagamentoid = metodopagamento.metodopagamentoid
 							WHERE encomenda.encomendaid = ?");
     $stmt->execute(array($id));
     return $stmt->fetchAll();
