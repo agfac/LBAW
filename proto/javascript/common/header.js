@@ -3,6 +3,7 @@ $(document).ready(function() {
 	addEventButtons();
 });
 
+
 function updateWishListNumItemsTopBar() {
 	$.getJSON("../../api/users/get_wishlist_items.php", function(data) {
 		if (data > 0) {

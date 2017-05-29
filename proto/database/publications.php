@@ -83,7 +83,7 @@ function getPublicationDataSearchPublicationName($nome_livro)
 function testeFullTextSearch($nome_livro)
 {
 	global $conn;
-    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+    $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria, imagem.url
                             FROM autor
 							RIGHT JOIN autorpublicacao
 							ON autor.autorid = autorpublicacao.autorid 
@@ -91,6 +91,8 @@ function testeFullTextSearch($nome_livro)
 							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
 							RIGHT JOIN editora
 							ON editora.editoraid = publicacao.editoraid
+							RIGHT JOIN imagem
+							ON imagem.publicacaoid = publicacao.publicacaoid
                             RIGHT JOIN subcategoria
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria

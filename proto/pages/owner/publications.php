@@ -8,8 +8,8 @@ $allPublications = getAllPublications();
 $allCategorys = getAllCategorys();
 
 // For test only!!!
-//$arrayToSend = "ortogra";
-//print_r(testeFullTextSearch($arrayToSend));
+$arrayToSend = "ortogra";
+print_r(testeFullTextSearch($arrayToSend));
 
 $smarty->assign('allCategorys', $allCategorys);
 $smarty->assign('allPublications', $allPublications);
