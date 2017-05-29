@@ -76,28 +76,10 @@
         <div class="widget">
             <h6 class="subtitle">Novidades</h6>
             <figure>
-                <a href="javascript:void(0);">
-                    <img src="{$BASE_URL}img/books/books_5.jpg" alt="collection">
+                <a href="{$BASE_URL}pages/publications/publication.php?id={$oneRandomNewPublication.publicacaoid}">
+                    <img src="{$BASE_URL}{$oneRandomNewPublication.url}" alt="collection">
                 </a>
             </figure>
-        </div><!-- end widget -->
-        <div class="widget">
-            <h6 class="subtitle">Tags populares</h6>
-
-            <ul class="tags">
-                <li>
-                    <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">arte</a>
-                </li>
-                <li>
-                    <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">economia</a>
-                </li>
-                <li>
-                    <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">gestão</a>
-                </li>
-                <li>
-                    <a class="btn btn-gray-outline semi-circle btn-xs" href="javascript:void(0);">história</a>
-                </li>
-            </ul>
         </div><!-- end widget -->
     </div><!-- end col -->
     <!-- end sidebar -->

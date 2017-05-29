@@ -47,6 +47,8 @@ $smarty->assign('category', $category);
 
 $eightnewpublications = getNewPublications(8);
 $smarty->assign('eightnewpublications', $eightnewpublications);
+$oneRandomNewPublication = getNewPublications(1);
+$smarty->assign('oneRandomNewPublication', $oneRandomNewPublication[0]);
 
 $subcategoriasLivros = getAllSubCategorysByCategoryName('Livros');
 $subcategoriasLivrosEscolares = getAllSubCategorysByCategoryName('Livros Escolares');
