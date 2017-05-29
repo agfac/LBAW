@@ -415,20 +415,50 @@ function updatePublication($titulo, $descricao, $editoraId, $datapublicacao, $st
 	}
 }
 
-function getOneNewPublication(){
+function getNewPublications($number){
 	
 	global $conn;
 
-    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url
+    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, avg(comentario.classificacao) as classificacao, count(publicacaoencomenda.encomendaid) as numvendas
                             FROM publicacao
 							LEFT JOIN imagem
 							ON imagem.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN comentario
+							ON comentario.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN publicacaoencomenda
+							ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
                             WHERE publicacao.novidade = ?
+                            GROUP BY publicacao.publicacaoid, imagem.url
                             OFFSET floor(random()*(SELECT count(*) FROM publicacao
 							LEFT JOIN imagem
 							ON imagem.publicacaoid = publicacao.publicacaoid
-                            WHERE publicacao.novidade = ?)) LIMIT 1");
-    $stmt->execute(array(TRUE, TRUE));
+							LEFT JOIN comentario
+							ON comentario.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN publicacaoencomenda
+							ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
+                            WHERE publicacao.novidade = ?))
+                            LIMIT ?");
+    $stmt->execute(array(TRUE, TRUE, $number));
+	
+	return $stmt->fetchAll();
+}
+
+function getMostSellPublications($number){
+	
+	global $conn;
+
+    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, avg(comentario.classificacao) as classificacao, count(publicacaoencomenda.encomendaid) as numvendas
+                            FROM publicacao
+							LEFT JOIN imagem
+							ON imagem.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN comentario
+							ON comentario.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN publicacaoencomenda
+							ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
+                            GROUP BY publicacao.publicacaoid, imagem.url
+                            ORDER BY numvendas DESC
+                            LIMIT ?");
+    $stmt->execute(array($number));
 	
 	return $stmt->fetchAll();
 }

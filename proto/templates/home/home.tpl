@@ -162,102 +162,34 @@
     </div><!-- end row -->
 
     <div class="row column-4">
-      <div class="col-sm-6 col-md-3">
-        <div class="thumbnail store style1">
-          <div class="header">
-            <div class="badges">
-              <span class="product-badge top left primary-background text-white semi-circle">Top 1</span>
-              <span class="product-badge top right text-warning">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-              </span>
-            </div>
-            <figure class="layer">
-              <a href="javascript:void(0);">
-                <img class="front" src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-                <img class="back" src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
-              </a>
-            </figure>
-            <div class="icons">
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
-          <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-            <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
-            </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
-          </div><!-- end caption -->
-        </div><!-- end thumbnail -->
-      </div><!-- end col -->
-
-      <div class="col-sm-6 col-md-3">
-        <div class="thumbnail store style1">
-          <div class="header">
-            <div class="badges">
-              <span class="product-badge top right danger-background text-white semi-circle">-20%</span>
-            </div>
-            <figure class="layer">
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-              </a>
-            </figure>
-            <div class="icons">
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
-          <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-            <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
-            </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
-          </div><!-- end caption -->
-        </div><!-- end thumbnail -->
-      </div><!-- end col -->
-
-      <div class="col-sm-6 col-md-3">
-        <div class="thumbnail store style1">
-          <div class="header">
-            <div class="badges">
-              <span class="product-badge bottom left warning-background text-white semi-circle">Indisponível</span>
-            </div>
-            <figure class="layer">
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-              </a>
-            </figure>
-          </div>
-          <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-            <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
-            </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
-          </div><!-- end caption -->
-        </div><!-- end thumbnail -->
-      </div><!-- end col -->
-
+      {foreach $eightnewpublications as $publication}
       <div class="col-sm-6 col-md-3">
         <div class="thumbnail store style1">
           <div class="header">
             <div class="badges">
               <span class="product-badge bottom right info-background text-white semi-circle">Novidade</span>
+              {if $publication.stock == 0}
+              <span class="product-badge bottom left warning-background text-white semi-circle">Indisponível</span>
+              {/if}
+              {if $publication.preco != $publication.precopromocional}
+              <span class="product-badge top right danger-background text-white semi-circle">-{(100-($publication.precopromocional* 100/$publication.preco))|string_format:"%.0f"}%</span>
+              {/if}
+              <span class="product-badge top left text-warning">
+                {for $val=1 to ($publication.classificacao)|floor}
+                <i class="fa fa-star"></i>
+                {/for}
+                {if $publication.classificacao}
+                {if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+                {else}
+                <i class="fa fa-star-half-o"></i>
+                {/if}
+                {/if}
+              </span>
             </div>
             <figure class="layer">
               <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                <img class="front" src="{$BASE_URL}{$publication.url}" alt="">
+                <img class="back" src="{$BASE_URL}{$publication.url}" alt="">
               </a>
             </figure>
             <div class="icons">
@@ -267,115 +199,16 @@
             </div>
           </div>
           <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+            <h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
             <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
+              <small class="amount off">€{$publication.preco}</small>
+              <span class="amount text-primary">€{$publication.precopromocional}</span>
             </div>
             <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
           </div><!-- end caption -->
         </div><!-- end thumbnail -->
       </div><!-- end col -->
-
-      <div class="col-sm-6 col-md-3">
-        <div class="thumbnail store style1">
-          <div class="header">
-            <figure class="layer">
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-              </a>
-            </figure>
-            <div class="icons">
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
-          <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-            <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
-            </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
-          </div><!-- end caption -->
-        </div><!-- end thumbnail -->
-      </div><!-- end col -->
-
-      <div class="col-sm-6 col-md-3">
-        <div class="thumbnail store style1">
-          <div class="header">
-            <figure class="layer">
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-              </a>
-            </figure>
-            <div class="icons">
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
-          <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-            <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
-            </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
-          </div><!-- end caption -->
-        </div><!-- end thumbnail -->
-      </div><!-- end col -->
-
-      <div class="col-sm-6 col-md-3">
-        <div class="thumbnail store style1">
-          <div class="header">
-            <figure class="layer">
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-              </a>
-            </figure>
-            <div class="icons">
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
-          <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-            <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
-            </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
-          </div><!-- end caption -->
-        </div><!-- end thumbnail -->
-      </div><!-- end col -->
-
-      <div class="col-sm-6 col-md-3">
-        <div class="thumbnail store style1">
-          <div class="header">
-            <figure class="layer">
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
-              </a>
-            </figure>
-            <div class="icons">
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
-            </div>
-          </div>
-          <div class="caption">
-            <h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
-            <div class="price">
-              <small class="amount off">€68.99</small>
-              <span class="amount text-primary">€59.99</span>
-            </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
-          </div><!-- end caption -->
-        </div><!-- end thumbnail -->
-      </div><!-- end col -->
+      {/foreach}
     </div><!-- end row -->
 
     <hr class="spacer-30 no-border"/>
@@ -883,78 +716,34 @@
               <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Novas</span></h5>
 
               <ul class="items">
+                {foreach $fivenewpublications as $publication}
                 <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+                  <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
+                    <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
                   </a>
                   <div class="product-details">
                     <h6 class="regular"> 
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                      <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a> 
                     </h6>
-                    <span class="price text-primary">€19.99</span>
+                    {if $publication.preco != $publication.precopromocional}
+                    <span class="price text-primary">€{$publication.precopromocional}</span>
+                    {else}
+                    <span class="price text-primary">€{$publication.preco}</span>
+                    {/if}
                     <div class="rate text-warning">
+                      {for $val=1 to ($publication.classificacao)|floor}
                       <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
+                      {/for}
+                      {if $publication.classificacao}
+                      {if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+                      {else}
+                      <i class="fa fa-star-half-o"></i>
+                      {/if}
+                      {/if}
                     </div>
                   </div>
                 </li><!-- end item -->
-                <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-                  </a>
-                  <div class="product-details">
-                    <h6 class="regular">
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                    </h6>
-                    <span class="price text-primary">€29.99</span>
-                    <div class="rate text-warning">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                </li><!-- end item -->
-                <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-                  </a>
-                  <div class="product-details">
-                    <h6 class="regular">
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                    </h6>
-                    <span class="price text-primary">€15.99</span>
-                    <div class="rate text-warning">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                </li><!-- end item -->
-                <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
-                  </a>
-                  <div class="product-details">
-                    <h6 class="regular">
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                    </h6>
-                    <span class="price text-primary">€45.99</span>
-                    <div class="rate text-warning">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                </li><!-- end item -->
+                {/foreach}
               </ul>
             </div><!-- end widget -->
           </div><!-- end col -->
@@ -964,78 +753,34 @@
               <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Mais vendidas</span></h5>
 
               <ul class="items">
+                {foreach $fivemostsellpublications as $publication}
                 <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
+                  <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
+                    <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
                   </a>
                   <div class="product-details">
                     <h6 class="regular"> 
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+                      <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a> 
                     </h6>
-                    <span class="price text-primary">€19.99</span>
+                    {if $publication.preco != $publication.precopromocional}
+                    <span class="price text-primary">€{$publication.precopromocional}</span>
+                    {else}
+                    <span class="price text-primary">€{$publication.preco}</span>
+                    {/if}
                     <div class="rate text-warning">
+                      {for $val=1 to ($publication.classificacao)|floor}
                       <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
+                      {/for}
+                      {if $publication.classificacao}
+                      {if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+                      {else}
+                      <i class="fa fa-star-half-o"></i>
+                      {/if}
+                      {/if}
                     </div>
                   </div>
                 </li><!-- end item -->
-                <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
-                  </a>
-                  <div class="product-details">
-                    <h6 class="regular">
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                    </h6>
-                    <span class="price text-primary">€29.99</span>
-                    <div class="rate text-warning">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                </li><!-- end item -->
-                <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
-                  </a>
-                  <div class="product-details">
-                    <h6 class="regular">
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                    </h6>
-                    <span class="price text-primary">€15.99</span>
-                    <div class="rate text-warning">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                </li><!-- end item -->
-                <li> 
-                  <a href="?page=single-product" class="product-image">
-                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
-                  </a>
-                  <div class="product-details">
-                    <h6 class="regular">
-                      <a href="?page=single-product">Lorem Ipsum dolor sit</a> 
-                    </h6>
-                    <span class="price text-primary">€45.99</span>
-                    <div class="rate text-warning">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
-                  </div>
-                </li><!-- end item -->
+                {/foreach}
               </ul>
             </div><!-- end widget -->
           </div><!-- end col -->
@@ -1138,7 +883,7 @@
               </h2>
             </div><!-- end col -->
             <div class="col-sm-4 vertical-align">
-              <p class="mt-20">Typi non habent claritatem insitam, est usus legentis in iis qui facit eorum claritatem.</p>
+              <p class="mt-20">Oferta de portes em compras de valor igual ou superior a 30€</p>
             </div><!-- end col -->
             <div class="col-sm-4 vertical-align text-right">
               <a target="_blank" href="javascript:void(0);" class="btn btn-light semi-circle btn-md">Aproveite já!</a>

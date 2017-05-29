@@ -8,7 +8,7 @@ if(!$_SESSION['username']){
 	$countries = getAllCountries();
 
 	try{
-		$newpublication = getOneNewPublication();
+		$newpublication = getNewPublications(1);
 	}catch(PDOException $e){
 		$_SESSION['error_messages'][] = 'Erro ao encontrar uma publicação nova';
 		header("Location: $BASE_URL");

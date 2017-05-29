@@ -9,7 +9,7 @@
                             </div><!-- end icon -->
                             <div class="box-content">
                                 <h6 class="alt-font text-light text-uppercase">Portes grátis</h6>
-                                <p class="text-gray">Oferta dos portes de envio para compras superiores a 50€</p>
+                                <p class="text-gray">Oferta dos portes de envio para compras superiores a 30€</p>
                             </div>
                         </div><!-- icon-box -->
                     </div><!-- end col -->
