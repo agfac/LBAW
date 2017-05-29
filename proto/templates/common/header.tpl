@@ -314,7 +314,7 @@
                   </li><!-- end dropdown -->
                   <!-- promoções -->
                   <li>
-                    <a href="javascript:void(0);">
+                    <a href="{$BASE_URL}pages/publications/publications-promotion.php">
                       <i class="glyphicon glyphicon-piggy-bank mr-5"></i>
                       Promoções
                     </a>

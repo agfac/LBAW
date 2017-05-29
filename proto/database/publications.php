@@ -554,4 +554,29 @@ function getRandomPublications($number){
 	
 	return $stmt->fetchAll();
 }
+
+function getNPromotionalPublications($number){
+	
+	global $conn;
+
+    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, avg(comentario.classificacao) as classificacao, count(publicacaoencomenda.encomendaid) as numvendas, autor.nome as nome_autor
+                            FROM publicacao
+							LEFT JOIN imagem
+							ON imagem.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN comentario
+							ON comentario.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN publicacaoencomenda
+							ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN autorpublicacao
+							ON publicacao.publicacaoid = autorpublicacao.publicacaoid
+							LEFT JOIN autor
+							ON autor.autorid = autorpublicacao.autorid
+                            WHERE publicacao.precopromocional < publicacao.preco
+                            GROUP BY publicacao.publicacaoid, imagem.url, autor.nome
+                            ORDER BY random()
+                            LIMIT ?");
+    $stmt->execute(array($number));
+	
+	return $stmt->fetchAll();
+}
 ?>
