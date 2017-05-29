@@ -76,10 +76,10 @@
                     <div class="col-sm-3">
                         <h5 class="title">Informação</h5>
                         <ul class="list alt-list">
-                            <li><a href="?page=about-us"><i class="fa fa-angle-right"></i>Sobre nós</a></li>
-                            <li><a href="?page=faq"><i class="fa fa-angle-right"></i>FAQ</a></li>
-                            <li><a href="?page=privacy-policy"><i class="fa fa-angle-right"></i>Condições gerais de venda</a></li>
-                            <li><a href="?page=contact-us"><i class="fa fa-angle-right"></i>Contactos</a></li>
+                            <li><a href="{$BASE_URL}pages/common/about_us.php"><i class="fa fa-angle-right"></i>Sobre nós</a></li>
+                            <li><a href="{$BASE_URL}pages/common/faq.php"><i class="fa fa-angle-right"></i>FAQ</a></li>
+                            <li><a href="{$BASE_URL}pages/common/policy.php"><i class="fa fa-angle-right"></i>Condições gerais de venda</a></li>
+                            <li><a href="{$BASE_URL}pages/common/contacts.php"><i class="fa fa-angle-right"></i>Contactos</a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-sm-3">
