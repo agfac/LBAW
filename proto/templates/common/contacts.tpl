@@ -32,7 +32,7 @@
 					</div><!-- end icon -->
 					<div class="box-content">
 						<h6 class="thin">Precisa de ajuda?</h6>
-						<h5 class="text-warning">Use o nosso chat!</h5>
+						<h5 class="text-warning">Deixe aqui a sua mensagem!</h5>
 					</div>
 				</div><!-- icon-box -->
 			</div><!-- end col -->   
@@ -43,7 +43,7 @@
 					</div><!-- end icon -->
 					<div class="box-content">
 						<h6 class="thin">Pergunta rápida?</h6>
-						<h5 class="text-info">Contacte-nos - 213 456 789!</h5>
+						<h5 class="text-info">Contacte-nos: 213 456 789!</h5>
 					</div>
 				</div><!-- icon-box -->
 			</div><!-- end col -->   
@@ -53,7 +53,7 @@
 						<i class="fa fa-envelope-o text-success"></i>
 					</div><!-- end icon -->
 					<div class="box-content">
-						<h6 class="thin">Ou mande-nos email</h6>
+						<h6 class="thin">Ou envie-nos um email</h6>
 						<h5 class="text-success">apoio@awesomebookshop.pt</h5>
 					</div>
 				</div><!-- icon-box -->
@@ -66,12 +66,26 @@
 			<div class="col-sm-10 col-sm-offset-1">
 				<form>
 					<div class="form-group">
-						<label for="name">Nome</label>
-						<input type="text" id="name" class="form-control input-lg" placeholder="Name">
+						<label for="name">
+						Nome
+						</label>
+						<input type="text" id="name" class="form-control input-lg" 
+						{if $USER_DATA}
+						value="{$USER_DATA.nome}"
+						{else}
+						value="{$FORM_VALUES.nome}"
+						{/if}
+						placeholder="Name">
 					</div>
 					<div class="form-group">
-						<label for="email">Email</label>
-						<input type="text" id="email" class="form-control input-lg" placeholder="E-mail">
+						<label for="email">E-mail</label>
+						<input type="text" id="email" class="form-control input-lg" 
+						{if $USER_DATA}
+						value="{$USER_DATA.email}"
+						{else}
+						value="{$FORM_VALUES.email}"
+						{/if}
+						placeholder="E-mail">
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="message">Mensagem</label>

@@ -10,6 +10,12 @@ if (array_key_exists('userid',$_SESSION)) {
 	$publicationsusercart = getUserPublicationsCart($clientid);
 
 	$smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
+
+	$username = $_SESSION['username'];
+
+	$userdata = getUserAllData($username);
+
+	$smarty->assign('USER_DATA', $userdata[0]);
 }
 
 $eightnewpublications = getNewPublications(8);
