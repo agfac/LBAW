@@ -147,9 +147,9 @@
               </a>
             </figure>
             <div class="icons">
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-              <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
+            <a class="icon semi-circle" data-type="Adicionar à wishlist" data-toggle="tooltip" data-placement="top" title="Adicionar à wishlist" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-heart-o"></i></a>
+              <a class="icon semi-circle" data-type="Adicionar ao carrinho" data-toggle="tooltip" data-placement="top" title="Adicionar ao carrinho" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-cart-plus"></i></a>
+              <a class="icon semi-circle" data-toggle="tooltip" data-placement="top" title="Ver página da publicação"href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"><i class="fa fa-search"></i></a>
             </div>
           </div>
           <div class="caption">
@@ -158,7 +158,7 @@
               <small class="amount off">€{$publication.preco}</small>
               <span class="amount text-primary">€{$publication.precopromocional}</span>
             </div>
-            <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
+            <a data-type="Adicionar ao carrinho" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
           </div><!-- end caption -->
         </div><!-- end thumbnail -->
       </div><!-- end col -->
