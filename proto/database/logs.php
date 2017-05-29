@@ -166,4 +166,33 @@ function getLogsByDateEx($startDate, $endDate){
     return $stmt->fetchAll();
 }
 
+function insertAdminLog($id){
+    
+    global $conn;
+    
+    $stmt = $conn->prepare("INSERT INTO login (administradorid)
+                            VALUES (?)");
+    
+    $stmt->execute(array($id));
+}
+
+function insertOwnerLog($id){
+    
+    global $conn;
+    
+    $stmt = $conn->prepare("INSERT INTO login (funcionarioid)
+                            VALUES (?)");
+    
+    $stmt->execute(array($id));
+}
+
+function insertClientLog($id){
+    
+    global $conn;
+    
+    $stmt = $conn->prepare("INSERT INTO login (clienteid)
+                            VALUES (?)");
+    
+    $stmt->execute(array($id));
+}
 ?>

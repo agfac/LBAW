@@ -114,12 +114,38 @@ function createAutor($paisId, $nomeAutor, $genero, $datanascimento, $biografia){
 }
 
 //LOGIN VERIFICATION
-function isLoginCorrect($username, $password) {
+function isClientLoginCorrect($username, $password) {
 
   global $conn;
   
   $stmt = $conn->prepare("SELECT * 
                           FROM cliente 
+                          WHERE username = ? AND password = ?");
+  
+  $stmt->execute(array($username, sha1($password)));
+  
+  return $stmt->fetch() == true;
+}
+
+function isOwnerLoginCorrect($username, $password) {
+
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT * 
+                          FROM funcionario 
+                          WHERE username = ? AND password = ?");
+  
+  $stmt->execute(array($username, sha1($password)));
+  
+  return $stmt->fetch() == true;
+}
+
+function isAdminLoginCorrect($username, $password) {
+
+  global $conn;
+  
+  $stmt = $conn->prepare("SELECT * 
+                          FROM administrador 
                           WHERE username = ? AND password = ?");
   
   $stmt->execute(array($username, sha1($password)));
@@ -134,6 +160,32 @@ function getUserData($username) {
 
   $stmt = $conn->prepare("SELECT * 
                           FROM cliente
+                          WHERE username = ?");
+
+  $stmt->execute(array($username));
+
+  return $stmt->fetchAll();
+}
+
+function getOwnerData($username) {
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * 
+                          FROM funcionario
+                          WHERE username = ?");
+
+  $stmt->execute(array($username));
+
+  return $stmt->fetchAll();
+}
+
+function getAdminData($username) {
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * 
+                          FROM administrador
                           WHERE username = ?");
 
   $stmt->execute(array($username));
