@@ -46,7 +46,7 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
       //INSERT INTO CLIENTE
     $stmt = $conn->prepare("INSERT INTO cliente (paisid, nome, genero, datanascimento, username, password, telefone, email, nif) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);
+    $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc,$anoNasc);
 
     $stmt->execute(array($pais, $nome, $genero, $datanasc, $username, sha1($password), $telefone, $email, $nif));
 
