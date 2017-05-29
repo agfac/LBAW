@@ -402,7 +402,6 @@ CREATE TABLE Informacaofaturacao
 	MetodopagamentoID integer NULL,
 	Portes real NULL,
 	Iva real NULL,
-	Subtotal real NULL,
 	Total real NULL,
 	CONSTRAINT PK_Informacaofaturacao PRIMARY KEY (InformacaofaturacaoID)
 )
@@ -721,13 +720,12 @@ RETURNS TRIGGER
 AS $$
 BEGIN
 	UPDATE Informacaofaturacao
-	SET subtotal=(SELECT SUM(preco*quantidade)
+	SET total=(SELECT SUM(preco*quantidade)
 						FROM Publicacaoencomenda
 						WHERE encomendaID = NEW.encomendaID),
-		portes=(CASE WHEN subtotal <= 30 THEN 2.99
+		portes=(CASE WHEN total <= 30 THEN 2.99
 						ELSE 0.00 END),
-		iva=subtotal-(subtotal/1.23),
-		total=subtotal+portes
+		iva=total-(total/1.23)
 	WHERE informacaoFaturacaoID = (SELECT InformacaofaturacaoID
 									FROM Encomenda
 									WHERE encomendaID = NEW.encomendaID);

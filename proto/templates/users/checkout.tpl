@@ -17,7 +17,7 @@
 <section class="section white-backgorund">
     <div class="container">
         <div class="row">
-        {include file='common/sidebar.tpl'}
+            {include file='common/sidebar.tpl'}
 
             <div class="col-sm-9">
                 <div class="row">
@@ -70,8 +70,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {foreach $publicationscart as $publication}
-                                            <tr>
+                                            {foreach $publicationscart as $publication}
+                                            <tr data-id="{$publication.publicacaoid}" data-price="{$publication.preco}">
                                                 <td>
                                                     <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
                                                         <img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
@@ -89,7 +89,7 @@
                                                         {html_options options=$qtOptions selected=$publication.quantidade}
                                                     </select>
                                                 </td>
-                                                <td>
+                                                <td data-column="total">
                                                     <span class="text-primary">€{$publication.preco * $publication.quantidade}</span>
                                                 </td>
                                                 <td>
@@ -880,12 +880,7 @@
 
                         <div class="row">
                             <div class="col-sm-7 text-left">
-                                <form class="form-inline">
-                                    <div class="form-group">
-                                        <input class="form-control input-md" type="text" placeholder="Código de cupão">
-                                    </div>
-                                    <button class="btn btn-default btn-md round" type="submit">Aplicar</button>
-                                </form>
+
                             </div><!-- end col -->
 
                             <div class="col-sm-5">
@@ -913,4 +908,6 @@
         </div><!-- end row -->                
     </div><!-- end container -->
 </section>
-        <!-- end section -->
+<!-- end section -->
+
+<script src="{$BASE_URL}javascript/users/checkout.js"></script>
