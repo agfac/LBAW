@@ -2,6 +2,8 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/users.php');  
 include_once($BASE_DIR .'database/logs.php');  
+include_once($BASE_DIR .'database/admins.php');  
+include_once($BASE_DIR .'database/workers.php');  
 
 if (!$_POST['username'] || !$_POST['password']) {
   $_SESSION['error_messages'][] = 'Deverá preencher o username e a password para efetuar o login';
@@ -30,7 +32,7 @@ if (isClientLoginCorrect($username, $password)) {
 else if(isOwnerLoginCorrect($username, $password)){
   $_SESSION['username'] = $username;
   $_SESSION['usertype'] = 'owner';
-  $userdata = getOwnerData($username);
+  $userdata = getWorkerData($username);
   $userid = $userdata[0]['funcionarioid'];
 
   insertOwnerLog($userid);

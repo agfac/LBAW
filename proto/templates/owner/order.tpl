@@ -70,13 +70,6 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Sub-Total:</label>
-                <div class="col-md-10 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].subtotal|string_format:'%.2f'} €">
-                </div>
-              </div>
-
-              <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço IVA:</label>
                 <div class="col-md-10 col-sm-9 col-xs-12">
                   <input type="text" class="form-control" readonly="readonly" placeholder="{$orderData[0].iva|string_format:'%.2f'} € (Já incluido no Sub-Total)">

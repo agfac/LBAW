@@ -23,7 +23,7 @@ function updateCartNumberItems() {
 	});
 
 	$('.close').on('click', function (){
-		var tableBody = $(this).closest('tbody');
+
 		var itemSelected = this.closest('tr');
 		var idSelected = itemSelected.getAttribute('data-id');
 
@@ -57,8 +57,6 @@ function updateCartNumberItems() {
 						$('.fa-shopping-cart').parent().find('span').remove();
 						$('.fa-shopping-basket').parent().find('span .text-primary').remove();
 						$('.cart-items').find("li[data-id='"+idSelected+"']").remove();
-						tableBody.append("<tr></tr>");
-						tableBody.find('tr').append('<span>Não existem produtos no seu carrinho</span>');
 					}
 				});
 			}

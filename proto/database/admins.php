@@ -137,19 +137,6 @@ function updateAdminStatus($username, $estado){
   $stmt->execute(array($estado, $username));
 }
 
-function getAdminData($username) {
-    
-    global $conn;
-    
-    $stmt = $conn->prepare("SELECT * 
-                            FROM administrador
-                            WHERE username = ?");
-    
-    $stmt->execute(array($username));
-    
-    return $stmt->fetchAll();
-}
-
 
 function getAdminByNameAndStatus($nomeAdministrador, $estadoAdministrador){
     global $conn;
