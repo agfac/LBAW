@@ -3,7 +3,7 @@ include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/users.php';
 include_once $BASE_DIR . 'database/publications.php';
 
-if(!$_SESSION['username']){
+if(!array_key_exists('username', $_SESSION)){
 
 	$countries = getAllCountries();
 
