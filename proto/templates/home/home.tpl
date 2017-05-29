@@ -147,7 +147,7 @@
               </a>
             </figure>
             <div class="icons">
-            <a class="icon semi-circle" data-type="Adicionar à wishlist" data-toggle="tooltip" data-placement="top" title="Adicionar à wishlist" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-heart-o"></i></a>
+              <a class="icon semi-circle" data-type="Adicionar à wishlist" data-toggle="tooltip" data-placement="top" title="Adicionar à wishlist" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-heart-o"></i></a>
               <a class="icon semi-circle" data-type="Adicionar ao carrinho" data-toggle="tooltip" data-placement="top" title="Adicionar ao carrinho" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-cart-plus"></i></a>
               <a class="icon semi-circle" data-toggle="tooltip" data-placement="top" title="Ver página da publicação"href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"><i class="fa fa-search"></i></a>
             </div>
@@ -227,9 +227,9 @@
                   </span>
                 </div>
                 <div class="icons">
-                  <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
-                  <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
-                  <a class="icon semi-circle" href="javascript:void(0);" data-toggle="modal" data-target=".productQuickView"><i class="fa fa-search"></i></a>
+                  <a class="icon semi-circle" data-type="Adicionar à wishlist" data-toggle="tooltip" data-placement="top" title="Adicionar à wishlist" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-heart-o"></i></a>
+                  <a class="icon semi-circle" data-type="Adicionar ao carrinho" data-toggle="tooltip" data-placement="top" title="Adicionar ao carrinho" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-cart-plus"></i></a>
+                  <a class="icon semi-circle" data-toggle="tooltip" data-placement="top" title="Ver página da publicação"href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"><i class="fa fa-search"></i></a>
                 </div>
               </div>
               <div class="caption">
@@ -242,7 +242,7 @@
                   <span class="amount text-primary">€{$publication.preco}</span>
                   {/if}
                 </div>
-                <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
+                <a data-type="Adicionar ao carrinho" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="fa fa-cart-plus mr-5"></i>Adcionar ao carrinho</a>
               </div><!-- end caption -->
             </div><!-- end thumbnail -->
           </div><!-- end item -->
@@ -333,7 +333,7 @@
               </figure>
             </div><!-- end cat-img -->
             <div class="cat-title">
-              <h6><a href="javascript:void(0)">Arte</a></h6>
+              <h6><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$arterandompublication.nome_subcategoria}&cat={$arterandompublication.nome_categoria}">{$arterandompublication.nome_subcategoria}</a></h6>
             </div><!-- end cat-title -->
           </div><!-- end cat-item -->
           <div class="cat-item">
@@ -345,7 +345,7 @@
               </figure>
             </div><!-- end cat-img -->
             <div class="cat-title">
-              <h6><a href="javascript:void(0)">Desporto e lazer</a></h6>
+              <h6><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$desportorandompublication.nome_subcategoria}&cat={$desportorandompublication.nome_categoria}">{$desportorandompublication.nome_subcategoria}</a></h6>
             </div><!-- end cat-title -->
           </div><!-- end cat-item -->
           <div class="cat-item">
@@ -357,7 +357,7 @@
               </figure>
             </div><!-- end cat-img -->
             <div class="cat-title">
-              <h6><a href="javascript:void(0)">Direito</a></h6>
+              <h6><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$direitorandompublication.nome_subcategoria}&cat={$direitorandompublication.nome_categoria}">{$direitorandompublication.nome_subcategoria}</a></h6>
             </div><!-- end cat-title -->
           </div><!-- end cat-item -->
           <div class="cat-item">
@@ -369,7 +369,7 @@
               </figure>
             </div><!-- end cat-img -->
             <div class="cat-title">
-              <h6><a href="javascript:void(0)">Engenharia</a></h6>
+              <h6><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$engenhariarandompublication.nome_subcategoria}&cat={$engenhariarandompublication.nome_categoria}">{$engenhariarandompublication.nome_subcategoria}</a></h6>
             </div><!-- end cat-title -->
           </div><!-- end cat-item -->
           <div class="cat-item">
@@ -381,7 +381,7 @@
               </figure>
             </div><!-- end cat-img -->
             <div class="cat-title">
-              <h6><a href="javascript:void(0)">Gestão</a></h6>
+              <h6><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$gestaorandompublication.nome_subcategoria}&cat={$gestaorandompublication.nome_categoria}">{$gestaorandompublication.nome_subcategoria}</a></h6>
             </div><!-- end cat-title -->
           </div><!-- end cat-item -->
           <div class="cat-item">
@@ -393,7 +393,7 @@
               </figure>
             </div><!-- end cat-img -->
             <div class="cat-title">
-              <h6><a href="javascript:void(0)">História</a></h6>
+              <h6><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$historiarandompublication.nome_subcategoria}&cat={$historiarandompublication.nome_categoria}">{$historiarandompublication.nome_subcategoria}</a></h6>
             </div><!-- end cat-title -->
           </div><!-- end cat-item -->
         </div><!-- end owl carousel -->
