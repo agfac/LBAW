@@ -272,7 +272,7 @@
                 </figure>
               </div><!-- end col -->
               <div class="col-sm-8 vertical-align">
-                <h4><a href="?page=single-product">{$publication.titulo}</a></h4>
+                <h4><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h4>
                 <ul class="list list-inline">
                   {if $publication.preco != $publication.precopromocional}
                   <li><del class="text-danger">€{$publication.preco}</del></li>
@@ -294,7 +294,7 @@
                 </ul>
                 <p>{$publication.descricao}</p>
 
-                <a title="Adcionar ao carrinho" class="btn btn-default btn-sm semi-circle"> 
+                <a title="Adcionar ao carrinho" class="btn btn-default btn-sm semi-circle" data-type="Adicionar ao carrinho" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"> 
                   <i class="fa fa-shopping-cart mr-5"></i> Adcionar ao carrinho
                 </a>
               </div><!-- end col -->
