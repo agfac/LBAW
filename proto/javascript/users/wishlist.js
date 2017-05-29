@@ -35,9 +35,8 @@ function updateWishListNumberItems() {
 				});
 
 				$.getJSON("../../api/users/get_cart_items.php", function(data) {
-					console.log(data);
 					if (data > 0) {
-						$('.fa-shopping-cart').parent().find('span').text("(" + data + ")");
+						$('.fa-shopping-cart').parent().find('.text-primary').text("(" + data + ")");
 						$('.fa-shopping-basket').parent().find('span .text-primary').text("(" + data + ")");
 						$('.cart-items').find('.items').append('<li data-id="' + idSelected + '"><a href="' + itemLinkSelected + '" class="product-image"><img src="' + itemImageSelected + '" alt="Sample Product "></a><div class="product-details"><div class="close-icon"> <a href="javascript:void(0);"><i class="fa fa-close"></i></a></div><p class="product-name"> <a href="' + itemLinkSelected + '">' + itemTitle + '</a></p><strong data-type="quantidade">' + 1 + '</strong> x <span class="price text-primary">€' + itemPrice + '</span></div><!-- end product-details --></li><!-- end item -->');
 					}
