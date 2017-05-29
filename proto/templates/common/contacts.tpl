@@ -64,12 +64,12 @@
 
 		<div class="row">
 			<div class="col-sm-10 col-sm-offset-1">
-				<form>
+				<form action="{$BASE_URL}actions/common/send_message.php" method="post" class="form-horizontal">
 					<div class="form-group">
-						<label for="name">
-						Nome
+						<label for="nome" class="control-label">
+						Nome <span class="text-danger">*</span>
 						</label>
-						<input type="text" id="name" class="form-control input-lg" 
+						<input type="text" name="nome" class="form-control input-lg" 
 						{if $USER_DATA}
 						value="{$USER_DATA.nome}"
 						{else}
@@ -78,8 +78,8 @@
 						placeholder="Name">
 					</div>
 					<div class="form-group">
-						<label for="email">E-mail</label>
-						<input type="text" id="email" class="form-control input-lg" 
+						<label for="email" class="control-label">E-mail <span class="text-danger">*</span></label>
+						<input type="email" name="email" class="form-control input-lg" 
 						{if $USER_DATA}
 						value="{$USER_DATA.email}"
 						{else}
@@ -88,11 +88,13 @@
 						placeholder="E-mail">
 					</div>
 					<div class="form-group">
-						<label class="control-label" for="message">Mensagem</label>
-						<textarea id="message" rows="6" class="form-control input-lg" placeholder="Messagem"></textarea>
+						<label class="control-label" for="message">Mensagem <span class="text-danger">*</span></label>
+						<textarea name="message" rows="6" class="form-control input-lg" placeholder="Messagem"></textarea>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-default round btn-lg" value="Submeter">
+						<button type="submit" class="btn btn-default round btn-lg">
+						Submeter
+						</button>
 					</div>
 				</form>
 			</div><!-- end col -->
@@ -103,3 +105,5 @@
 <!-- end section -->
 
 {include file='common/footer.tpl'}
+
+<script src="{$BASE_URL}javascript/common/contacts.js"></script>
