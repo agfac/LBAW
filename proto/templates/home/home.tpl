@@ -418,6 +418,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div id="owl-demo" class="owl-carousel column-3 owl-theme">
+          {assign var=val value=0}
           {foreach $commentedpublications as $publication}
           <div class="item">
             <div class="thumbnail blog">
@@ -426,9 +427,8 @@
                   <img src="{$BASE_URL}{$publication.url}" alt="">
                 </figure>
                 <div class="meta">
-                  <span><i class="fa fa-calendar mr-5"></i>Oct 25, 2016</span>
                   <span><i class="fa fa-comment mr-5"></i>({$publication.comentarios})</span>
-                  <span><i class="fa fa-heart mr-5"></i>({$publication.numvendas})</span>
+                  <span><i class="fa fa-area-chart mr-5"></i>({$publication.numvendas})</span>
                 </div>
               </div>
               <div class="caption">
@@ -436,126 +436,153 @@
                   <span class="author mr-20">
                     <i class="fa fa-user mr-5"></i><span>{$publication.nome_cliente}</span>
                   </span>
-                  <div class="category">
-                    <i class="fa fa-book text-danger mr-5"></i>
-                    <a href="javascript:void(0);">{$publication.nome_categoria}</a>
-                    <span> | </span>
-                    <a href="javascript:void(0);">{$publication.nome_subcategoria}</a>
+                  <span><i class="fa fa-calendar mr-5"></i>
+                    {if $monthscommented.$val eq '01'}
+                    JAN
+                    {elseif $monthscommented.$val eq '02'}
+                    FEV
+                    {elseif $monthscommented.$val eq '03'}
+                    MAR
+                    {elseif $monthscommented.$val eq '04'}
+                    ABR
+                    {elseif $monthscommented.$val eq '05'}
+                    MAI
+                    {elseif $monthscommented.$val eq '06'}
+                    JUN
+                    {elseif $monthscommented.$val eq '07'}
+                    JUL
+                    {elseif $monthscommented.$val eq '08'}
+                    AGO
+                    {elseif $monthscommented.$val eq '09'}
+                    SET
+                    {elseif $monthscommented.$val eq '10'}
+                    OUT
+                    {elseif $monthscommented.$val eq '11'}
+                    NOV
+                    {elseif $monthscommented.$val eq '12'}
+                    DEZ
+                    {/if} {$dayscommented.$val}, {$yearscommented.$val}</span>
+                    <div class="category">
+                      <i class="fa fa-book text-danger mr-5"></i>
+                      <a href="javascript:void(0);">{$publication.nome_categoria}</a>
+                      <span> | </span>
+                      <a href="javascript:void(0);">{$publication.nome_subcategoria}</a>
+                    </div>
+                  </div>
+                  <p>{$publication.texto}</p>
+                  <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
+                </div><!-- end caption -->
+              </div><!-- end thumbnail -->
+            </div><!-- end item -->
+            {assign var=val value=$val+1}
+            {/foreach}
+          </div><!-- end owl carousel -->
+        </div><!-- end col -->
+      </div><!-- end row -->
+
+      <hr class="spacer-30 no-border"/>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="widget">
+            <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Novas</span></h5>
+
+            <ul class="items">
+              {foreach $fivenewpublications as $publication}
+              <li> 
+                <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
+                  <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
+                </a>
+                <div class="product-details">
+                  <h6 class="regular"> 
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a> 
+                  </h6>
+                  {if $publication.preco != $publication.precopromocional}
+                  <span class="price text-primary">€{$publication.precopromocional}</span>
+                  {else}
+                  <span class="price text-primary">€{$publication.preco}</span>
+                  {/if}
+                  <div class="rate text-warning">
+                    {for $val=1 to ($publication.classificacao)|floor}
+                    <i class="fa fa-star"></i>
+                    {/for}
+                    {if $publication.classificacao}
+                    {if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+                    {else}
+                    <i class="fa fa-star-half-o"></i>
+                    {/if}
+                    {/if}
                   </div>
                 </div>
-                <p>{$publication.texto}</p>
-                <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="btn btn-default semi-circle btn-sm">Saiba mais</a>
-              </div><!-- end caption -->
-            </div><!-- end thumbnail -->
-          </div><!-- end item -->
-          {/foreach}
-        </div><!-- end owl carousel -->
-      </div><!-- end col -->
-    </div><!-- end row -->
-
-    <hr class="spacer-30 no-border"/>
-
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="widget">
-          <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Novas</span></h5>
-
-          <ul class="items">
-            {foreach $fivenewpublications as $publication}
-            <li> 
-              <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
-                <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular"> 
-                  <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a> 
-                </h6>
-                {if $publication.preco != $publication.precopromocional}
-                <span class="price text-primary">€{$publication.precopromocional}</span>
-                {else}
-                <span class="price text-primary">€{$publication.preco}</span>
-                {/if}
-                <div class="rate text-warning">
-                  {for $val=1 to ($publication.classificacao)|floor}
-                  <i class="fa fa-star"></i>
-                  {/for}
-                  {if $publication.classificacao}
-                  {if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
-                  {else}
-                  <i class="fa fa-star-half-o"></i>
-                  {/if}
-                  {/if}
-                </div>
-              </div>
-            </li><!-- end item -->
-            {/foreach}
-          </ul>
-        </div><!-- end widget -->
-      </div><!-- end col -->
-
-      <div class="col-sm-4">
-        <div class="widget">
-          <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Mais vendidas</span></h5>
-
-          <ul class="items">
-            {foreach $fivemostsellpublications as $publication}
-            <li> 
-              <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
-                <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
-              </a>
-              <div class="product-details">
-                <h6 class="regular"> 
-                  <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a> 
-                </h6>
-                {if $publication.preco != $publication.precopromocional}
-                <span class="price text-primary">€{$publication.precopromocional}</span>
-                {else}
-                <span class="price text-primary">€{$publication.preco}</span>
-                {/if}
-                <div class="rate text-warning">
-                  {for $val=1 to ($publication.classificacao)|floor}
-                  <i class="fa fa-star"></i>
-                  {/for}
-                  {if $publication.classificacao}
-                  {if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
-                  {else}
-                  <i class="fa fa-star-half-o"></i>
-                  {/if}
-                  {/if}
-                </div>
-              </div>
-            </li><!-- end item -->
-            {/foreach}
-          </ul>
-        </div><!-- end widget -->
-      </div><!-- end col -->
-    </div><!-- end row -->
-  </div><!-- end container -->
-</section>
-<!-- end section -->
-
-
-<!-- start section -->
-<section class="primary-background">
-  <div class="container">
-    <div class="box-banner-wide primary-background">
-      <div class="row">
-        <div class="col-sm-4 vertical-align">
-          <h2 class="alt-font text-uppercase text-white">
-            <span class="regular">Portes </span>
-            <br>grátis!
-          </h2>
+              </li><!-- end item -->
+              {/foreach}
+            </ul>
+          </div><!-- end widget -->
         </div><!-- end col -->
-        <div class="col-sm-4 vertical-align">
-          <p class="mt-20">Oferta de portes em compras de valor igual ou superior a 30€</p>
+
+        <div class="col-sm-4">
+          <div class="widget">
+            <h5 class="subtitle text-uppercase">Publicações <span class="text-primary">Mais vendidas</span></h5>
+
+            <ul class="items">
+              {foreach $fivemostsellpublications as $publication}
+              <li> 
+                <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
+                  <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
+                </a>
+                <div class="product-details">
+                  <h6 class="regular"> 
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a> 
+                  </h6>
+                  {if $publication.preco != $publication.precopromocional}
+                  <span class="price text-primary">€{$publication.precopromocional}</span>
+                  {else}
+                  <span class="price text-primary">€{$publication.preco}</span>
+                  {/if}
+                  <div class="rate text-warning">
+                    {for $val=1 to ($publication.classificacao)|floor}
+                    <i class="fa fa-star"></i>
+                    {/for}
+                    {if $publication.classificacao}
+                    {if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+                    {else}
+                    <i class="fa fa-star-half-o"></i>
+                    {/if}
+                    {/if}
+                  </div>
+                </div>
+              </li><!-- end item -->
+              {/foreach}
+            </ul>
+          </div><!-- end widget -->
         </div><!-- end col -->
-        <div class="col-sm-4 vertical-align text-right">
-          <a target="_blank" href="javascript:void(0);" class="btn btn-light semi-circle btn-md">Aproveite já!</a>
-        </div><!-- end col -->   
       </div><!-- end row -->
-    </div><!-- end box-banner-wide -->
-  </div><!-- end container -->
-</section>
-<!-- end section -->
+    </div><!-- end container -->
+  </section>
+  <!-- end section -->
 
-{include file='common/footer.tpl'}
+
+  <!-- start section -->
+  <section class="primary-background">
+    <div class="container">
+      <div class="box-banner-wide primary-background">
+        <div class="row">
+          <div class="col-sm-4 vertical-align">
+            <h2 class="alt-font text-uppercase text-white">
+              <span class="regular">Portes </span>
+              <br>grátis!
+            </h2>
+          </div><!-- end col -->
+          <div class="col-sm-4 vertical-align">
+            <p class="mt-20">Oferta de portes em compras de valor igual ou superior a 30€</p>
+          </div><!-- end col -->
+          <div class="col-sm-4 vertical-align text-right">
+            <a target="_blank" href="javascript:void(0);" class="btn btn-light semi-circle btn-md">Aproveite já!</a>
+          </div><!-- end col -->   
+        </div><!-- end row -->
+      </div><!-- end box-banner-wide -->
+    </div><!-- end container -->
+  </section>
+  <!-- end section -->
+
+  {include file='common/footer.tpl'}
