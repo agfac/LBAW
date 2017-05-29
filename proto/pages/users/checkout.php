@@ -17,6 +17,22 @@ if ($_SESSION['usertype'] != 'client') {
 
 $clientid = $_SESSION['userid'];
 
+$username = $_SESSION['username'];
+
+$userdata = getUserAllData($username);
+$smarty->assign('USER_DATA', $userdata[0]);
+
+$carddate = explode('/', $userdata[0]['numero']);
+
+$cardday = $carddate[0];
+$str = $carddate[1];
+$cardmonth = ltrim($str, '0');
+$cardyear = $carddate[2];
+
+$smarty->assign('cardday', $cardday);
+$smarty->assign('cardmonth', $cardmonth);
+$smarty->assign('cardyear', $cardyear);
+
 $publicationscart = getUserPublicationsCart($clientid);
 $cartsubtotal = getUserCartSubtotal($clientid);
 

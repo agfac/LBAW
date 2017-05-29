@@ -1945,6 +1945,7 @@ INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (17
 INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (18,'AmericanExpress','376016372768384','22/04/2016','970');
 INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (19,'MasterCard','5401454996774109','01/04/2012','885');
 INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (20,'Visa','4532854254501211','14/09/2011','735');
+INSERT INTO CartaoCreditoCliente (clienteID,tipo,numero,validade,cvv) VALUES (22,'Visa','4535654254534232','15/03/2018','798');
 
 /* ------------------------------------------------------ R16 Funcionario ------------------------------------------------------ */
 INSERT INTO Funcionario (moradaID,paisID,nome,genero,dataNascimento,username,password,dataAdmissao,telefone,email,nif,cartaoCidadao) VALUES (1,193,'Manuel Pereira Lopes','Masculino','08/12/1980','manuellopes','YPB58AJH6LE','02/09/2009 12:12:50','938321270','manuelpereiralopes@hotmail.com','998187586','51057539 8NE7');

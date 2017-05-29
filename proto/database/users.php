@@ -378,7 +378,7 @@ function getAllUsers(){
 function getUserAllData($username) {
   global $conn;
 
-  $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.paisid, pais.nome AS nomePais, localidade.localidadeid, localidade.nome AS nomeLocalidade
+  $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.paisid, pais.nome AS nomePais, localidade.localidadeid, localidade.nome AS nomeLocalidade, cartaocreditocliente.numero as numerocartao, cartaocreditocliente.*
     FROM cliente
     LEFT JOIN moradafaturacao
     ON moradafaturacao.clienteid = cliente.clienteid
@@ -390,6 +390,8 @@ function getUserAllData($username) {
     ON localidade.localidadeid = codigopostal.localidadeid
     LEFT JOIN pais
     ON pais.paisid = localidade.paisid
+    LEFT JOIN cartaocreditocliente
+    ON cartaocreditocliente.clienteid = cliente.clienteid
     WHERE cliente.username = ?");
   $stmt->execute(array($username));
 
@@ -795,5 +797,29 @@ function checkIfUserCommentedPublication($clienteid, $publicacaoid){
   $stmt->execute(array($clienteid, $publicacaoid));
 
   return ($stmt->fetch() !== false);
+}
+
+function insertOrder($clienteid, $moradaf, $moradae){
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("INSERT INTO encomenda
+                          VALUES (?, ?, ?)");
+  
+  $stmt->execute(array($clienteid, $moradaf, $moradae));
+
+  $encomendaID = $conn->lastInsertId('encomenda_encomendaid_seq');
+
+  return $encomendaID;
+}
+
+function insertPublicacaoEncomenda($publicationid, $idencomenda){
+  
+  global $conn;
+  
+  $stmt = $conn->prepare("INSERT INTO publicacaoencomenda (publicacaoID,encomendaID)
+                          VALUES (?, ?)");
+  
+  $stmt->execute(array($publicationid, $idencomenda));
 }
 ?>
