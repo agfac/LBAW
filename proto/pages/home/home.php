@@ -16,10 +16,24 @@
   $fivenewpublications = getNewPublications(5);
   $fivemostsellpublications = getMostSellPublications(5);
   $commentedpublications = getCommentedPublications(4);
+  $arterandompublication = getRandomPublicationsBySubcategory('Arte', 'Livros', 1);
+  $desportorandompublication = getRandomPublicationsBySubcategory('Desporto e Lazer', 'Livros', 1);
+  $direitorandompublication = getRandomPublicationsBySubcategory('Direito', 'Livros', 1);
+  $engenhariarandompublication = getRandomPublicationsBySubcategory('Engenharia', 'Livros', 1);
+  $gestaorandompublication = getRandomPublicationsBySubcategory('Gestao', 'Livros', 1);
+  $historiarandompublication = getRandomPublicationsBySubcategory('Historia', 'Livros', 1);
 
   $smarty->assign('eightnewpublications', $eightnewpublications);
   $smarty->assign('fivenewpublications', $fivenewpublications);
   $smarty->assign('fivemostsellpublications', $fivemostsellpublications);
   $smarty->assign('commentedpublications', $commentedpublications);
+
+  $smarty->assign('arterandompublication', $arterandompublication[0]);
+  $smarty->assign('desportorandompublication', $desportorandompublication[0]);
+  $smarty->assign('direitorandompublication', $direitorandompublication[0]);
+  $smarty->assign('engenhariarandompublication', $engenhariarandompublication[0]);
+  $smarty->assign('gestaorandompublication', $gestaorandompublication[0]);
+  $smarty->assign('historiarandompublication', $historiarandompublication[0]);
+
   $smarty->display('home/home.tpl');
 ?>

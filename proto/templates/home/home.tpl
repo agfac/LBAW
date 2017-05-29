@@ -505,8 +505,8 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$arterandompublication.publicacaoid}">
+                      <img src="{$BASE_URL}{$arterandompublication.url}" />
                     </a>
                   </figure>
                 </div><!-- end cat-img -->
@@ -517,8 +517,8 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$desportorandompublication.publicacaoid}">
+                      <img src="{$BASE_URL}{$desportorandompublication.url}" />
                     </a>
                   </figure>
                 </div><!-- end cat-img -->
@@ -529,8 +529,8 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$direitorandompublication.publicacaoid}">
+                      <img src="{$BASE_URL}{$direitorandompublication.url}" />
                     </a>
                   </figure>
                 </div><!-- end cat-img -->
@@ -541,8 +541,8 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$engenhariarandompublication.publicacaoid}">
+                      <img src="{$BASE_URL}{$engenhariarandompublication.url}" />
                     </a>
                   </figure>
                 </div><!-- end cat-img -->
@@ -553,8 +553,8 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$gestaorandompublication.publicacaoid}">
+                      <img src="{$BASE_URL}{$gestaorandompublication.url}" />
                     </a>
                   </figure>
                 </div><!-- end cat-img -->
@@ -565,8 +565,8 @@
               <div class="cat-item">
                 <div class="cat-img">
                   <figure>
-                    <a href="?page=product-list">
-                      <img src="{$BASE_URL}images/publications/books/books_5.jpg" />
+                    <a href="{$BASE_URL}pages/publications/publication.php?id={$historiarandompublication.publicacaoid}">
+                      <img src="{$BASE_URL}{$historiarandompublication.url}" />
                     </a>
                   </figure>
                 </div><!-- end cat-img -->
