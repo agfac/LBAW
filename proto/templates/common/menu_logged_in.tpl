@@ -7,6 +7,7 @@
     </span>
   </a>
   <ul class="w-150">
+  {if $USERTYPE == 'client'}
     <li>
       <a href="{$BASE_URL}pages/users/my-account.php">
         <i class="fa fa-edit mr-5"></i>
@@ -14,7 +15,6 @@
           Minha Conta
         </span></a>
       </li>
-      {if $USERTYPE == 'client'}
       <li>
         <a href="{$BASE_URL}pages/users/wishlist.php">
           <i class="fa fa-heart mr-5"></i>

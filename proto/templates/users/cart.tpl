@@ -85,10 +85,11 @@
 						<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm pull-left">
 							<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
 						</a>
-						
-						<a href="{$BASE_URL}pages/users/checkout.php" class="btn btn-default semi-circle btn-sm pull-right">
+						{if $publicationscart}
+						<a href="{$BASE_URL}pages/users/checkout.php" class="btn btn-default semi-circle btn-sm pull-right" data-type="checkoutbutton">
 							Checkout <i class="fa fa-arrow-right ml-5"></i>
 						</a>
+						{/if}
 					</div><!-- end col -->
 				</div><!-- end row -->
 			</div><!-- end col -->

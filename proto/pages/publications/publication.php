@@ -10,16 +10,27 @@ if (!$_GET['id']) {
 	exit;
 }
 
-$username = $_SESSION['username'];
+if (array_key_exists('username', $_SESSION)) {
+	$username = $_SESSION['username'];
 
-$userdata = getUserAllData($username);
-$smarty->assign('USER_DATA', $userdata[0]);
+	$userdata = getUserAllData($username);
+	$smarty->assign('USER_DATA', $userdata[0]);
+
+	$clientid = $_SESSION['userid'];
+	$publicationscart = getUserPublicationsCart($clientid);
+	$smarty->assign('publicationscart', $publicationscart);
+	$smarty->assign('PUBLICATIONSUSERCART', $publicationscart);
+
+	$bought = checkIfUserBoughtPublication($clientid, $publicationdata[0]['publicacaoid']);
+	$smarty->assign('bought', $bought);
+
+	$havecommented = checkIfUserCommentedPublication($clientid, $publicationdata[0]['publicacaoid']);
+	$smarty->assign('havecommented', $havecommented);
+}
 
 $publicationid = $_GET['id'];
-$clientid = $_SESSION['userid'];
 
 $publicationdata = getPublicationData($publicationid);
-$publicationscart = getUserPublicationsCart($clientid);
 
 $smarty->assign('publication', $publicationdata);
 
@@ -44,9 +55,6 @@ $smarty->assign('subcategoriasRevistas', $subcategoriasRevistas);
 $smarty->assign('subcategoriasDicionarios', $subcategoriasDicionarios);
 $smarty->assign('subcategoriasGuiasEMapas', $subcategoriasGuiasEMapas);
 
-$smarty->assign('publicationscart', $publicationscart);
-$smarty->assign('PUBLICATIONSUSERCART', $publicationscart);
-
 $smarty->assign('ratingvalues', array(1,2,3,4,5));
 $smarty->assign('rating_names', array(
 	' 1 Estrela',
@@ -55,12 +63,6 @@ $smarty->assign('rating_names', array(
 	' 4 Estrelas',
 	' 5 Estrelas')
 );
-
-$bought = checkIfUserBoughtPublication($clientid, $publicationdata[0]['publicacaoid']);
-$smarty->assign('bought', $bought);
-
-$havecommented = checkIfUserCommentedPublication($clientid, $publicationdata[0]['publicacaoid']);
-$smarty->assign('havecommented', $havecommented);
 
 $smarty->display('publications/publication.tpl');
 ?>

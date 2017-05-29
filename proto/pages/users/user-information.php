@@ -9,6 +9,12 @@
     exit;
   }
 
+  if ($_SESSION['usertype'] != 'client') {
+    $_SESSION['error_messages'][] = 'Deverá efetuar login com uma conta de cliente para aceder à página solicitada';
+    header("Location: $BASE_URL");
+    exit;
+  }
+
   $username = $_SESSION['username'];
   
   $userdata = getUserAllData($username);

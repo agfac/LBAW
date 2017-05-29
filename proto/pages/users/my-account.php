@@ -9,6 +9,12 @@ if (!$_SESSION['username']) {
 	exit;
 }
 
+if ($_SESSION['usertype'] != 'client') {
+	$_SESSION['error_messages'][] = 'Deverá efetuar login com uma conta de cliente para aceder à página solicitada';
+	header("Location: $BASE_URL");
+	exit;
+}
+
 $clientid = $_SESSION['userid'];
 
 $publicationsusercart = getUserPublicationsCart($clientid);
