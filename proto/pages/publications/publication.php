@@ -17,6 +17,10 @@ $publicationscart = getUserPublicationsCart($clientid);
 
 $smarty->assign('publication', $publicationdata);
 
+$recomendations = getRandomRecomendationPublications($publicationdata[0]['nome_subcategoria'], $publicationdata[0]['nome_categoria'], 5, $publicationdata[0]['publicacaoid']);
+
+$smarty->assign('recomendations', $recomendations);
+
 $eightnewpublications = getNewPublications(8);
 $smarty->assign('eightnewpublications', $eightnewpublications);
 

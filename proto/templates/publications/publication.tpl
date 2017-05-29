@@ -220,134 +220,37 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div id="owl-demo" class="owl-carousel column-4 owl-theme">
+							{foreach $recomendations as $publication}
 							<div class="item">
 								<div class="thumbnail store style1">
 									<div class="header">
 										<figure>
-											<a href="?page=single-product">
-												<img src='{$BASE_URL}images/publications/books/books_5.jpg' alt="">
+											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
+												<img src='{$BASE_URL}{$publication.url}' alt="">
 											</a>
 										</figure>
 									</div>
 									<div class="caption">
-										<h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
+										<h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
 										<div class="price">
-											<small class="amount off">€68.99</small>
-											<span class="amount text-primary">€59.99</span>
+											<small class="amount off">€{$publication.preco}</small>
+											<span class="amount text-primary">€{$publication.precopromocional}</span>
 										</div>
 										<span class="product-badge bottom left text-warning">
+											{for $val=1 to ($publication.classificacao)|floor}
 											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+											{/for}
+											{if $publication.classificacao}
+											{if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+											{else}
 											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
+											{/if}
+											{/if}
 										</span>
 									</div><!-- end caption -->
 								</div><!-- end thumbnail -->
 							</div><!-- end item -->
-
-							<div class="item">
-								<div class="thumbnail store style1">
-									<div class="header">
-										<figure>
-											<a href="?page=single-product">
-												<img src='{$BASE_URL}images/publications/books/books_5.jpg' alt="">
-											</a>
-										</figure>
-									</div>
-									<div class="caption">
-										<h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
-										<div class="price">
-											<small class="amount off">€68.99</small>
-											<span class="amount text-primary">€59.99</span>
-										</div>
-										<span class="product-badge bottom left text-warning">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
-										</span>
-									</div><!-- end caption -->
-								</div><!-- end thumbnail -->
-							</div><!-- end item -->
-
-							<div class="item">
-								<div class="thumbnail store style1">
-									<div class="header">
-										<figure>
-											<a href="?page=single-product">
-												<img src='{$BASE_URL}images/publications/books/books_5.jpg' alt="">
-											</a>
-										</figure>
-									</div>
-									<div class="caption">
-										<h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
-										<div class="price">
-											<small class="amount off">€68.99</small>
-											<span class="amount text-primary">€59.99</span>
-										</div>
-										<span class="product-badge bottom left text-warning">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
-										</span>
-									</div><!-- end caption -->
-								</div><!-- end thumbnail -->
-							</div><!-- end item -->
-
-							<div class="item">
-								<div class="thumbnail store style1">
-									<div class="header">
-										<figure>
-											<a href="?page=single-product">
-												<img src='{$BASE_URL}images/publications/books/books_5.jpg' alt="">
-											</a>
-										</figure>
-									</div>
-									<div class="caption">
-										<h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
-										<div class="price">
-											<small class="amount off">€68.99</small>
-											<span class="amount text-primary">€59.99</span>
-										</div>
-										<span class="product-badge bottom left text-warning">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
-										</span>
-									</div><!-- end caption -->
-								</div><!-- end thumbnail -->
-							</div><!-- end item -->
-							<div class="item">
-								<div class="thumbnail store style1">
-									<div class="header">
-										<figure>
-											<a href="?page=single-product">
-												<img src='{$BASE_URL}images/publications/books/books_5.jpg' alt="">
-											</a>
-										</figure>
-									</div>
-									<div class="caption">
-										<h6 class="regular"><a href="?page=single-product">Lorem ipsum dolor sit amet</a></h6>
-										<div class="price">
-											<small class="amount off">€68.99</small>
-											<span class="amount text-primary">€59.99</span>
-										</div>
-										<span class="product-badge bottom left text-warning">
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star-half-o"></i>
-											<i class="fa fa-star-o"></i>
-										</span>
-									</div><!-- end caption -->
-								</div><!-- end thumbnail -->
-							</div><!-- end item -->
+							{/foreach}
 						</div><!-- end owl carousel -->
 					</div><!-- end col -->
 				</div><!-- end row -->
