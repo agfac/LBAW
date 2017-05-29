@@ -508,4 +508,22 @@ function getRandomPublicationsBySubcategory($subcategory_name, $category_name, $
     
     return $stmt->fetchAll();
 }
+
+function getRandomPublications($number){
+	
+	global $conn;
+
+    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, avg(comentario.classificacao) as classificacao
+                            FROM publicacao
+							LEFT JOIN imagem
+							ON imagem.publicacaoid = publicacao.publicacaoid
+							LEFT JOIN comentario
+							ON comentario.publicacaoid = publicacao.publicacaoid
+                            GROUP BY publicacao.publicacaoid, imagem.url
+                            ORDER BY random()
+                            LIMIT ?");
+    $stmt->execute(array($number));
+	
+	return $stmt->fetchAll();
+}
 ?>
