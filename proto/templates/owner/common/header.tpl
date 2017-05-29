@@ -108,6 +108,7 @@
                   <span class=" fa fa-angle-down" ></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="{$BASE_URL}pages/home/home.php"><i class="fa fa-home pull-right"></i> Home Page</a></li>
                   <li><a href="{$BASE_URL}actions/users/logout.php"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
                 </ul>
               </ul>

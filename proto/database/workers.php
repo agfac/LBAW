@@ -346,19 +346,6 @@ function updateWorkerStatus($username, $estado){
   $stmt->execute(array($estado, $username));
 }
 
-function getWorkerData($username) {
-    
-    global $conn;
-    
-    $stmt = $conn->prepare("SELECT * 
-                            FROM funcionario
-                            WHERE username = ?");
-    
-    $stmt->execute(array($username));
-    
-    return $stmt->fetchAll();
-}
-
 function getWorkerByNameAdmissionDateAndStatus($nomeFuncionario, $dataAdmissao, $estadoFuncionario){
     global $conn;
 
