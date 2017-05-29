@@ -36,59 +36,68 @@
 			</li>
 		</ul>
 	</div><!-- end widget -->
-
+	{assign var=val value=0}
 	<div class="widget">
 		<h6 class="subtitle">Novidades</h6>
 		<figure>
-			<a href="javascript:void(0);">
-				<img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="collection">
+			<a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$val.publicacaoid}">
+				<img src="{$BASE_URL}{$eightnewpublications.$val.url}" alt="collection">
 			</a>
 		</figure>
 	</div><!-- end widget -->
-
+	{assign var=val value=$val+1}
 	<div class="widget">
 
 		<ul class="items">
 			<li> 
-				<a href="?page=single-product" class="product-image">
-					<img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="Sample Product ">
+				<a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$val.publicacaoid}" class="product-image">
+					<img src="{$BASE_URL}{$eightnewpublications.$val.url}" alt="Sample Product ">
 				</a>
 				<div class="product-details">
 					<p class="product-name"> 
-						<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+						<a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$val.publicacaoid}">{$eightnewpublications.$val.titulo}</a> 
 					</p>
-					<span class="Preço text-primary">€19.99</span>
+					<span class="Preço text-primary">€{$eightnewpublications.$val.precopromocional}</span>
 					<div class="rate text-warning">
+						{for $valor=1 to ($eightnewpublications.$val.classificacao)|floor}
 						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
+						{/for}
+						{if $eightnewpublications.$val.classificacao}
+						{if is_numeric($eightnewpublications.$val.classificacao) && (float)(int)$eightnewpublications.$val.classificacao===(float)$eightnewpublications.$val.classificacao}
+						{else}
+						<i class="fa fa-star-half-o"></i>
+						{/if}
+						{/if}
 					</div>
 				</div>
 			</li><!-- end item -->
+			{assign var=val value=$val+1}
 			<li> 
-				<a href="?page=single-product" class="product-image">
-					<img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="Sample Product ">
+				<a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$val.publicacaoid}" class="product-image">
+					<img src="{$BASE_URL}{$eightnewpublications.$val.url}" alt="Sample Product ">
 				</a>
 				<div class="product-details">
 					<p class="product-name"> 
-						<a href="?page=single-product">Lorem Ipsum dolor sit</a> 
+						<a href="?page=single-product">{$eightnewpublications.$val.titulo}</a> 
 					</p>
-					<span class="Preço text-primary">€19.99</span>
+					<span class="Preço text-primary">€{$eightnewpublications.$val.precopromocional}</span>
 					<div class="rate text-warning">
+						{for $valor=1 to ($eightnewpublications.$val.classificacao)|floor}
 						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
+						{/for}
+						{if $eightnewpublications.$val.classificacao}
+						{if is_numeric($eightnewpublications.$val.classificacao) && (float)(int)$eightnewpublications.$val.classificacao===(float)$eightnewpublications.$val.classificacao}
+						{else}
+						<i class="fa fa-star-half-o"></i>
+						{/if}
+						{/if}
 					</div>
 				</div>
 			</li><!-- end item -->
 		</ul>
 
 		<hr class="spacer-10 no-border">
-		<a href="shop-sidebar-left.html" class="btn btn-default btn-block semi-circle btn-sm">Todos os produtos</a>
+		<a href="{$BASE_URL}" class="btn btn-default btn-block semi-circle btn-sm">Todos os produtos</a>
 	</div><!-- end widget -->
 </div><!-- end col -->
 <!-- end sidebar -->
