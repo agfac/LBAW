@@ -133,6 +133,7 @@
                 <div class="col-sm-6 vertical-align text-center col-lg-offset-3">
                   <input type="text" placeholder="Pesquisar" name="email" class="form-control input-md">
                 </div><!-- end col -->
+                {if $USERNAME}
                 <div class="col-sm-3 vertical-align header-items">
                   <div class="header-item mr-5">
                     <a href="{$BASE_URL}pages/users/wishlist.php" data-toggle="tooltip" data-placement="top" title="Wishlist">
@@ -142,6 +143,7 @@
                   </div>
                   <div class="header-item"> </div>
                 </div><!-- end col -->
+                {/if}
               </div><!-- end  row -->
             </div><!-- end container -->
           </div><!-- end middleBar -->
@@ -184,90 +186,44 @@
                               <li class="title">
                                 <h6>Livros</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Arte&cat=Livros">Arte</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Banda Desenhada&cat=Livros">Banda Desenhada</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Ciencias Exatas e Naturais&cat=Livros">Ciências Exatas e Naturais</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Ciencias Sociais e Humanas&cat=Livros">Ciências Sociais e Humanas</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Desenvolvimento Pessoal e Espiritual&cat=Livros">Desenvolvimento Pessoal e Espiritual</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Desporto e Lazer&cat=Livros">Desporto e Lazer</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Dicionarios e Enciclopedias&cat=Livros">Dicionários e Enciclopédias</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Direito&cat=Livros">Direito</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Economia, Financas e Contabilidade&cat=Livros">Economia, Finanças e Contabilidade</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Engenharia&cat=Livros">Engenharia</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Ensino e Educacao&cat=Livros">Ensino e Educação</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Gastronomia e Vinhos&cat=Livros">Gastronomia e Vinhos</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Gestao&cat=Livros">Gestão</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Guias Turisticos e Mapas&cat=Livros">Guias Turísticos e Mapas</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Historia&cat=Livros">História</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Informatica&cat=Livros">Informática</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Literatura&cat=Livros">Literatura</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Medicina&cat=Livros">Medicina</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Politica&cat=Livros">Política</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Religiao e Moral&cat=Livros">Religião e Moral</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Saude e Bem Estar&cat=Livros">Saúde e Bem Estar</a></li>
+                              {foreach $subcategoriasLivros as $publication}
+                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Livros">{$publication.nome}</a></li>
+                              {/foreach}
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
                                 <h6>Livros Escolares</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=1.º ano&cat=Livros Escolares">1.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=2.º ano&cat=Livros Escolares">2.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=3.º ano&cat=Livros Escolares">3.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=4.º ano&cat=Livros Escolares">4.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=5.º e 6.º ano&cat=Livros Escolares">5.º e 6.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=7.º, 8.º e 9.º ciclo&cat=Livros Escolares">7.º, 8.º e 9.º ciclo</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Ensino Secundario&cat=Livros Escolares">Ensino Secundário</a></li>
+                              {foreach $subcategoriasLivrosEscolares as $publication}
+                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Livros Escolares">{$publication.nome}</a></li>
+                              {/foreach}
                               <li class="title">
                                 <h6>Apoio Escolar</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=1.º ano&cat=Apoio Escolar">1.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=2.º ano&cat=Apoio Escolar">2.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=3.º ano&cat=Apoio Escolar">3.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=4.º ano&cat=Apoio Escolar">4.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=5.º e 6.º ano&cat=Apoio Escolar">5.º e 6.º ano</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=7.º, 8.º e 9.º ciclo&cat=Apoio Escolar">7.º, 8.º e 9.º ciclo</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Ensino Secundario&cat=Apoio Escolar">Ensino Secundário</a></li>
+                              {foreach $subcategoriasApoioEscolar as $publication}
+                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Apoio Escolar">{$publication.nome}</a></li>
+                              {/foreach}
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
                                 <h6>Revistas</h6>
                               </li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Agricultura&cat=Revistas">Agricultura</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Arquitetura&cat=Revistas">Arquitetura</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Arte&cat=Revistas">Arte</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Automobilismo&cat=Revistas">Automobilismo</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Aviacao&cat=Revistas">Aviação</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Cientificas&cat=Revistas">Científicas</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Cinema&cat=Revistas">Cinema</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Decoracao&cat=Revistas">Decoração</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Desporto&cat=Revistas">Desporto</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Direito&cat=Revistas">Direito</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Economia&cat=Revistas">Economia</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Fotografia&cat=Revistas">Fotografia</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Historia&cat=Revistas">História</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Humor&cat=Revistas">Humor</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Infantis&cat=Revistas">Infantis</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Informatica&cat=Revistas">Informática</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Moda&cat=Revistas">Moda</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Musica&cat=Revistas">Música</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Quebra-cabecas&cat=Revistas">Quebra-cabeças</a></li>
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Turismo&cat=Revistas">Turismo</a></li>
+                              {foreach $subcategoriasRevistas as $publication}
+                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Revistas">{$publication.nome}</a></li>
+                              {/foreach}
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
                                 <h6>Dicionários e Enciclopédias</h6>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Portugues&cat=Dicionarios e Enciclopedias">Português</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Ingles&cat=Dicionarios e Enciclopedias">Inglês</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Frances&cat=Dicionarios e Enciclopedias">Francês</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Alemao&cat=Dicionarios e Enciclopedias">Alemão</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Espanhol&cat=Dicionarios e Enciclopedias">Espanhol</a></li>
+                                {foreach $subcategoriasDicionarios as $publication}
+                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Dicionarios e Enciclopedias">{$publication.nome}</a></li>
+                                {/foreach}
                               </li>
                               <li class="title">
                                 <h6>Guias Turísticos e Mapas</h6>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Africa&cat=Guias Turisticos e Mapas">África</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=America&cat=Guias Turisticos e Mapas">América</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Asia&cat=Guias Turisticos e Mapas">Ásia</a></li>
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat=Europa&cat=Guias Turisticos e Mapas">Europa</a></li>
+                                {foreach $subcategoriasGuiasEMapas as $publication}
+                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Guias Turisticos e Mapas">{$publication.nome}</a></li>
+                                {/foreach}
                               </li>
 
                             </ul><!-- end ul col -->
@@ -338,7 +294,7 @@
                                 <div class="caption">
                                   <h6 class="thin"><a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}">{$eightnewpublications.$var.titulo}</a></h6>
                                   <div class="price">
-                                  {if $eightnewpublications.$var.preco != $eightnewpublications.$var.precopromocional}
+                                    {if $eightnewpublications.$var.preco != $eightnewpublications.$var.precopromocional}
                                     <small class="amount off">€{$eightnewpublications.$var.preco}</small>
                                     <span class="amount text-primary">€{$eightnewpublications.$var.precopromocional}</span>
                                     {else}
