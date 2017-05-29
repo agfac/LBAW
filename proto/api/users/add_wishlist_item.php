@@ -21,7 +21,7 @@ else{
 
 		}catch (PDOException $e) {
 
-			if (strpos($e->getMessage(), 'pk_publicacaoWishList') !== false){
+			if (strpos($e->getMessage(), 'pk_publicacaowishlist') !== false){
 
 				$error = "Publicação já existe na wishlist";
 

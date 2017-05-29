@@ -1,28 +1,19 @@
 $(document).ready(function() {
-	updateWishListNumItemsTopBar();
-	addEventButtons();
+	addEventButton();
 });
 
-function updateWishListNumItemsTopBar() {
-	$.getJSON("../../api/users/get_wishlist_items.php", function(data) {
-		if (data > 0) {
-			$(".middleBar a[data-original-title='Wishlist'] sub").text(data);
-		}
-	});
-}
-function addEventButtons() {
+function addEventButton() {
 
-	$('a[data-type="Adicionar ao carrinho"]').on('click', function (){
-
+	$('a[data-type="Adicionar ao cart"]').on('click', function (event){
+		event.preventDefault();
 		var idSelected = $(this).attr('data-id');
 		var itemLinkSelected = $(this).attr('data-url');
 		var itemImageSelected = $(this).attr('data-img');
 		var itemTitle = $(this).attr('data-titulo');
 		var itemPrice = $(this).attr('data-price');
-		var quantity = 1;
+		var quantity = $(this).parent().parent().parent().find('select').val();
 
 		$.getJSON("../../api/users/add_cart_item.php", {id: idSelected, value: quantity}, function(data) {
-
 			if(data.Success){   	  	
 
 				$.confirm({
@@ -64,7 +55,7 @@ function addEventButtons() {
 		});
 	});
 
-	$('a[data-type="Adicionar à wishlist"]').on('click', function (){
+	$('a[data-type="Adicionar à wish"]').on('click', function (){
 
 		var idSelected = $(this).attr('data-id');
 		var itemLinkSelected = $(this).attr('data-url');
@@ -74,7 +65,6 @@ function addEventButtons() {
 		var quantity = 1;
 
 		$.getJSON("../../api/users/add_wishlist_item.php", {id: idSelected}, function(data) {
-
 			if(data.Success){   	  	
 
 				$.confirm({

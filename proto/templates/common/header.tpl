@@ -34,6 +34,8 @@
 
   <!-- JavaScript Files -->
   <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.scrollTo.js"></script>
+  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.scrollTo.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/bootstrap.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/owl.carousel.min.js"></script>

@@ -1,5 +1,6 @@
 <?php
 include_once('../../config/init.php');
+include_once($BASE_DIR .'database/users.php');
 include_once($BASE_DIR .'database/publications.php');
 
 if (!$_GET['id']) {
@@ -9,8 +10,10 @@ if (!$_GET['id']) {
 }
 
 $publicationid = $_GET['id'];
+$clientid = $_SESSION['userid'];
 
 $publicationdata = getPublicationData($publicationid);
+$publicationscart = getUserPublicationsCart($clientid);
 
 $smarty->assign('publication', $publicationdata);
 
@@ -30,6 +33,9 @@ $smarty->assign('subcategoriasApoioEscolar', $subcategoriasApoioEscolar);
 $smarty->assign('subcategoriasRevistas', $subcategoriasRevistas);
 $smarty->assign('subcategoriasDicionarios', $subcategoriasDicionarios);
 $smarty->assign('subcategoriasGuiasEMapas', $subcategoriasGuiasEMapas);
+
+$smarty->assign('publicationscart', $publicationscart);
+$smarty->assign('PUBLICATIONSUSERCART', $publicationscart);
 
 $smarty->display('publications/publication.tpl');
 ?>

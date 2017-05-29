@@ -50,7 +50,7 @@
 								{/if}
 								{/if}
 							</li>
-							<li><a href="javascript:void(0);">
+							<li><a data-type="gotocomments">
 								(
 								{if $publication.$val.comentarios == 1} {$publication.$val.comentarios} comentário
 								{else}
@@ -72,21 +72,21 @@
 								<div class="col-md-4 col-sm-12">
 									<select class="form-control" name="select">
 										<option value="" selected>Quantidade</option>
-										<option value="">1</option>
-										<option value="">2</option>
-										<option value="">3</option>
-										<option value="">4</option>
-										<option value="">5</option>
-										<option value="">6</option>
-										<option value="">7</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
 									</select>
 								</div><!-- end col -->
 							</div><!-- end row -->
 							<hr class="spacer-15">
 
 							<ul class="list list-inline">
-								<li><button type="button" class="btn btn-default btn-md round"><i class="glyphicon glyphicon-shopping-cart mr-5"></i>Adicionar ao carrinho</button></li>
-								<li><button type="button" class="btn btn-gray btn-md round"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</button></li>
+								<li><a class="btn btn-default btn-md round" data-type="Adicionar ao cart" data-id="{$publication.$val.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.$val.publicacaoid}" data-img="{$BASE_URL}{$publication.$val.url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.$val.precopromocional}"><i class="glyphicon glyphicon-shopping-cart mr-5"></i>Adicionar ao carrinho</a></li>
+								<li><a class="btn btn-gray btn-md round" data-type="Adicionar à wish" data-id="{$publication.$val.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.$val.publicacaoid}" data-img="{$BASE_URL}{$publication.$val.url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.$val.precopromocional}"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</a></li>
 								<br><br>
 								<li>Partilhar este produto: </li>
 								<li>
@@ -355,3 +355,5 @@
 		</section>
 		<!-- end section -->
 		{include file='common/footer.tpl'}
+
+		<script src="{$BASE_URL}javascript/publications/publication.js"></script>
