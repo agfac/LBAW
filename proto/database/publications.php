@@ -429,16 +429,9 @@ function getNewPublications($number){
 							ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
                             WHERE publicacao.novidade = ?
                             GROUP BY publicacao.publicacaoid, imagem.url
-                            OFFSET floor(random()*(SELECT count(*) FROM publicacao
-							LEFT JOIN imagem
-							ON imagem.publicacaoid = publicacao.publicacaoid
-							LEFT JOIN comentario
-							ON comentario.publicacaoid = publicacao.publicacaoid
-							LEFT JOIN publicacaoencomenda
-							ON publicacaoencomenda.publicacaoid = publicacao.publicacaoid
-                            WHERE publicacao.novidade = ?))
+                            ORDER BY random()
                             LIMIT ?");
-    $stmt->execute(array(TRUE, TRUE, $number));
+    $stmt->execute(array(TRUE, $number));
 	
 	return $stmt->fetchAll();
 }
