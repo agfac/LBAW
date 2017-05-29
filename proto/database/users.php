@@ -279,6 +279,19 @@ function getUserPublicationsWishList($clienteid) {
   return $stmt->fetchAll();
 }
 
+//INSERT PUBLICATION ON WISHLIST
+function insertPublicationWishList($clienteid, $publicacaoid) {
+
+  global $conn;
+  
+  $stmt = $conn->prepare("INSERT INTO publicacaowishlist
+                          VALUES ((SELECT wishlist.wishlistid
+                          FROM wishlist
+                          WHERE wishlist.clienteid = ?), ?)");
+  
+  $stmt->execute(array($clienteid, $publicacaoid));
+}
+
 //REMOVE PUBLICATION FROM WISHLIST
 function removePublicationWishList($clienteid, $publicacaoid) {
 
