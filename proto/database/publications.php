@@ -415,4 +415,41 @@ function updatePublication($titulo, $descricao, $editoraId, $datapublicacao, $st
 	}
 }
 
+function getOneNewPublication(){
+	
+	global $conn;
+
+    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
+                            FROM autor
+							RIGHT JOIN autorpublicacao
+							ON autor.autorid = autorpublicacao.autorid 
+							RIGHT JOIN publicacao
+							ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+							RIGHT JOIN editora
+							ON editora.editoraid = publicacao.editoraid 
+							RIGHT JOIN imagem
+							ON imagem.publicacaoid = publicacao.publicacaoid
+                            RIGHT JOIN subcategoria
+                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+                            RIGHT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE publicacao.novidade = ?
+                            OFFSET floor(random()*(SELECT count(*) FROM autor
+																	RIGHT JOIN autorpublicacao
+																	ON autor.autorid = autorpublicacao.autorid 
+																	RIGHT JOIN publicacao
+																	ON autorpublicacao.publicacaoid = publicacao.publicacaoid 
+																	RIGHT JOIN editora
+																	ON editora.editoraid = publicacao.editoraid 
+																	RIGHT JOIN imagem
+																	ON imagem.publicacaoid = publicacao.publicacaoid
+										                            RIGHT JOIN subcategoria
+										                            ON subcategoria.subcategoriaid = publicacao.subcategoriaid
+										                            RIGHT JOIN categoria
+										                            ON subcategoria.categoriaid = categoria.categoriaid
+										                            WHERE publicacao.novidade = ?)) LIMIT 1");
+    $stmt->execute(array(TRUE, TRUE));
+	
+	return $stmt->fetchAll();
+}
 ?>
