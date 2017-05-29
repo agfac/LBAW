@@ -76,7 +76,7 @@ function getPublicationDataSearchPublicationName($nome_livro)
     return $stmt->fetchAll();
 }
 
-function getPublicationDataSearchPublicationName2($nome_livro)
+function testeFullTextSearch($nome_livro)
 {
 	global $conn;
     $stmt = $conn->prepare("SELECT publicacao.*, editora.nome AS nome_editora, autor.nome AS nome_autor, autor.autorid as id_autor, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria
@@ -91,7 +91,7 @@ function getPublicationDataSearchPublicationName2($nome_livro)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE to_tsvector(publicacao.titulo) @@ to_tsquery(?)
+                            WHERE to_tsvector(publicacao.titulo) @@ to_tsquery(?||':*')
                             ORDER BY publicacao.publicacaoid");
     $stmt->execute(array($nome_livro));
     return $stmt->fetchAll();
