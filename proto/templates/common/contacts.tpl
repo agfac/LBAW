@@ -89,7 +89,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="message">Mensagem <span class="text-danger">*</span></label>
-						<textarea name="message" rows="6" class="form-control input-lg" placeholder="Messagem"></textarea>
+						<textarea name="mensagem" rows="6" class="form-control input-lg" placeholder="Messagem"></textarea>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-default round btn-lg">

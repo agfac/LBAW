@@ -74,5 +74,12 @@ function getQuestionsByStatus($estadoPergunta){
 	return $stmt->fetchAll();
 }
 
-
+function insertQuestion($nome, $email, $mensagem){
+	
+	global $conn;
+	
+	$stmt = $conn->prepare("INSERT INTO perguntautilizador (nome, email, mensagem)
+							VALUES (?, ?, ?)");
+	$stmt->execute(array($nome, $email, $mensagem));
+}
 ?>
