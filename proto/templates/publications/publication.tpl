@@ -116,184 +116,188 @@
 					<ul class="nav nav-tabs style2 tabs-left">
 						<li class="active"><a href="#description" data-toggle="tab">Informação adicional</a></li>
 						<li><a href="#reviews" data-toggle="tab">Comentários (
-						{if isset($numcomments)}
-						{$numcomments.comentarios}
-						{else}
-						0
-						{/if})</a></li>
-					</ul>
-				</div><!-- end col -->
-				<div class="col-xs-12 col-sm-9">
-					<!-- Tab panes -->
-					<div class="tab-content style2">
-						<div class="tab-pane active" id="description">
-							<h5>Informação adicional</h5>
-
-							<hr class="spacer-15">
-
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<dl class="dl-horizontal">
-										<dt>Ano de publicação</dt>
-										<dd>{$publication.datapublicacao}</dd>
-										<dt>Autor</dt>
-										<dd>{$publication.nome_autor}</dd>
-									</dl>
-								</div><!-- end col -->
-								<div class="col-sm-12 col-md-6">
-									<dl class="dl-horizontal">
-										<dt>Editora</dt>
-										<dd>{$publication.nome_editora}</dd>
-										<dt>ISBN</dt>
-										<dd>{$publication.isbn}</dd>
-									</dl>
-								</div><!-- end col -->
-							</div><!-- end row -->
-						</div><!-- end tab-pane -->
-						<div class="tab-pane" id="reviews">
-							<h5>
 							{if isset($numcomments)}
-								{if $numcomments.comentarios == 1} 
-									{$numcomments.comentarios} comentário
-								{else}
-								{$numcomments.comentarios} comentários
-								{/if} 
+							{$numcomments.comentarios}
 							{else}
-							0 comentários
-							{/if}
-								para "{$publication.titulo}"</h5>
+							0
+							{/if})</a></li>
+						</ul>
+					</div><!-- end col -->
+					<div class="col-xs-12 col-sm-9">
+						<!-- Tab panes -->
+						<div class="tab-content style2">
+							<div class="tab-pane active" id="description">
+								<h5>Informação adicional</h5>
 
-								<hr class="spacer-10 no-border">
-								{foreach $comments as $comment}
-								<div class="comments">
-									<div class="comment-image">
-										<figure>
-											<img src='{$BASE_URL}{$publication.url}' alt="" />
-										</figure>
-									</div><!-- end comments-image -->
-									<div class="comment-content">
-										<div class="comment-content-head">
-											<h6 class="comment-title">{$publication.titulo}</h6>
-											<ul class="list list-inline comment-meta">
-												<li>
-													{for $valor=1 to ($comment.classificacao)|floor}
-													<i class="fa fa-star text-warning"></i>
-													{/for}
-													{if $comment.classificacao}
-													{if is_numeric($comment.classificacao) && (float)(int)$comment.classificacao===(float)$comment.classificacao}
-													{else}
-													<i class="fa fa-star-half-o text-warning"></i>
-													{/if}
-													{/if}
-												</li>
-											</ul>
-										</div><!-- end comment-content-head -->
-										<p>{$comment.texto}</p>
-										<cite>{$comment.nome}</cite>
-									</div><!-- end comment-content -->
-								</div><!-- end comments -->
-								{/foreach}
+								<hr class="spacer-15">
 
-								<hr class="spacer-30">
-								{if $USERNAME && $bought && !$havecommented}
-								<h5>Adicionar um comentário</h5>
-								<p>Como classifica este produto?</p>
-
-								<hr class="spacer-5 no-border">
-
-								<form action="{$BASE_URL}actions/users/send_comment_item.php" method="post">
-									{html_radios name='classificacao' values=$ratingvalues output=$rating_names separator='<br />'}
+								<div class="row">
+									<div class="col-sm-12 col-md-6">
+										<dl class="dl-horizontal">
+											<dt>Categoria</dt>
+											<dd>{$publication.nome_categoria}</dd>
+											<dt>Ano de publicação</dt>
+											<dd>{$publication.datapublicacao}</dd>
+											<dt>Autor</dt>
+											<dd>{$publication.nome_autor}</dd>
+										</dl>
+									</div><!-- end col -->
+									<div class="col-sm-12 col-md-6">
+										<dl class="dl-horizontal">
+											<dt>Sub-Categoria</dt>
+											<dd>{$publication.nome_subcategoria}</dd>
+											<dt>Editora</dt>
+											<dd>{$publication.nome_editora}</dd>
+											<dt>ISBN</dt>
+											<dd>{$publication.isbn}</dd>
+										</dl>
+									</div><!-- end col -->
+								</div><!-- end row -->
+							</div><!-- end tab-pane -->
+							<div class="tab-pane" id="reviews">
+								<h5>
+									{if isset($numcomments)}
+									{if $numcomments.comentarios == 1} 
+									{$numcomments.comentarios} comentário
+									{else}
+									{$numcomments.comentarios} comentários
+									{/if} 
+									{else}
+									0 comentários
+									{/if}
+									para "{$publication.titulo}"</h5>
 
 									<hr class="spacer-10 no-border">
+									{foreach $comments as $comment}
+									<div class="comments">
+										<div class="comment-image">
+											<figure>
+												<img src='{$BASE_URL}{$publication.url}' alt="" />
+											</figure>
+										</div><!-- end comments-image -->
+										<div class="comment-content">
+											<div class="comment-content-head">
+												<h6 class="comment-title">{$publication.titulo}</h6>
+												<ul class="list list-inline comment-meta">
+													<li>
+														{for $valor=1 to ($comment.classificacao)|floor}
+														<i class="fa fa-star text-warning"></i>
+														{/for}
+														{if $comment.classificacao}
+														{if is_numeric($comment.classificacao) && (float)(int)$comment.classificacao===(float)$comment.classificacao}
+														{else}
+														<i class="fa fa-star-half-o text-warning"></i>
+														{/if}
+														{/if}
+													</li>
+												</ul>
+											</div><!-- end comment-content-head -->
+											<p>{$comment.texto}</p>
+											<cite>{$comment.nome}</cite>
+										</div><!-- end comment-content -->
+									</div><!-- end comments -->
+									{/foreach}
 
-									<div class="form-group">
-										<label for="nome">Nome<span class="text-danger">*</span></label>
-										<input type="text" name="nome" class="form-control input-md" {if $USER_DATA}
-										value="{$USER_DATA.nome}"
-										{else}
-										value="{$FORM_VALUES.nome}"
-										{/if}
-										placeholder="Nome">
-									</div><!-- end form-group -->
-									<div class="form-group">
-										<label for="email">E-mail<span class="text-danger">*</span></label>
-										<input type="email" name="email" class="form-control input-md" {if $USER_DATA}
-										value="{$USER_DATA.email}"
-										{else}
-										value="{$FORM_VALUES.email}"
-										{/if}
-										placeholder="E-mail">
-									</div><!-- end form-group -->
-									<div class="form-group">
-										<label for="comentario">Comentário<span class="text-danger">*</span></label>
-										<textarea name="comentario" rows="5" class="form-control" placeholder="Comentário"></textarea>
-									</div><!-- end form-group -->
-									<div class="form-group">
-										<input type="hidden" name="publicacaoid" value="{$publication.$val.publicacaoid}">
-									</div><!-- end form-group -->
-									<div class="form-group">
-										<button type="submit" class="btn btn-default round btn-md">Submeter
-										</button>
-									</div><!-- end form-group -->
-								</form>
-								{/if}
-							</div><!-- end tab-pane -->
-						</div><!-- end tab-content -->
-					</div><!-- end col -->
-				</div><!-- end row -->
+									<hr class="spacer-30">
+									{if $USERNAME && $bought && !$havecommented}
+									<h5>Adicionar um comentário</h5>
+									<p>Como classifica este produto?</p>
 
-				<hr class="spacer-60">
+									<hr class="spacer-5 no-border">
 
-				<div class="row">
-					<div class="col-sm-12">
-						<h4 class="mb-20">Recomendações</h4>
-					</div><!-- end col -->
-				</div><!-- end row -->
+									<form action="{$BASE_URL}actions/users/send_comment_item.php" method="post">
+										{html_radios name='classificacao' values=$ratingvalues output=$rating_names separator='<br />'}
 
-				<div class="row">
-					<div class="col-sm-12">
-						<div id="owl-demo" class="owl-carousel column-4 owl-theme">
-							{foreach $recomendations as $publication}
-							<div class="item">
-								<div class="thumbnail store style1">
-									<div class="header">
-										<figure>
-											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
-												<img src='{$BASE_URL}{$publication.url}' alt="">
-											</a>
-										</figure>
-									</div>
-									<div class="caption">
-										<h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
-										<div class="price">
-											<small class="amount off">€{$publication.preco}</small>
-											<span class="amount text-primary">€{$publication.precopromocional}</span>
-										</div>
-										<span class="product-badge bottom left text-warning">
-											{for $val=1 to ($publication.classificacao)|floor}
-											<i class="fa fa-star"></i>
-											{/for}
-											{if $publication.classificacao}
-											{if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+										<hr class="spacer-10 no-border">
+
+										<div class="form-group">
+											<label for="nome">Nome<span class="text-danger">*</span></label>
+											<input type="text" name="nome" class="form-control input-md" {if $USER_DATA}
+											value="{$USER_DATA.nome}"
 											{else}
-											<i class="fa fa-star-half-o"></i>
+											value="{$FORM_VALUES.nome}"
 											{/if}
+											placeholder="Nome">
+										</div><!-- end form-group -->
+										<div class="form-group">
+											<label for="email">E-mail<span class="text-danger">*</span></label>
+											<input type="email" name="email" class="form-control input-md" {if $USER_DATA}
+											value="{$USER_DATA.email}"
+											{else}
+											value="{$FORM_VALUES.email}"
 											{/if}
-										</span>
-									</div><!-- end caption -->
-								</div><!-- end thumbnail -->
-							</div><!-- end item -->
-							{/foreach}
-						</div><!-- end owl carousel -->
-					</div><!-- end col -->
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</section>
-		<!-- end section -->
-		{include file='common/footer.tpl'}
+											placeholder="E-mail">
+										</div><!-- end form-group -->
+										<div class="form-group">
+											<label for="comentario">Comentário<span class="text-danger">*</span></label>
+											<textarea name="comentario" rows="5" class="form-control" placeholder="Comentário"></textarea>
+										</div><!-- end form-group -->
+										<div class="form-group">
+											<input type="hidden" name="publicacaoid" value="{$publication.$val.publicacaoid}">
+										</div><!-- end form-group -->
+										<div class="form-group">
+											<button type="submit" class="btn btn-default round btn-md">Submeter
+											</button>
+										</div><!-- end form-group -->
+									</form>
+									{/if}
+								</div><!-- end tab-pane -->
+							</div><!-- end tab-content -->
+						</div><!-- end col -->
+					</div><!-- end row -->
 
-		{if isset($USER_DATA)}
-		<script>userdata = {$USER_DATA}</script>
-		{/if}
+					<hr class="spacer-60">
 
-		<script src="{$BASE_URL}javascript/publications/publication.js"></script>
+					<div class="row">
+						<div class="col-sm-12">
+							<h4 class="mb-20">Recomendações</h4>
+						</div><!-- end col -->
+					</div><!-- end row -->
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div id="owl-demo" class="owl-carousel column-4 owl-theme">
+								{foreach $recomendations as $publication}
+								<div class="item">
+									<div class="thumbnail store style1">
+										<div class="header">
+											<figure>
+												<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
+													<img src='{$BASE_URL}{$publication.url}' alt="">
+												</a>
+											</figure>
+										</div>
+										<div class="caption">
+											<h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
+											<div class="price">
+												<small class="amount off">€{$publication.preco}</small>
+												<span class="amount text-primary">€{$publication.precopromocional}</span>
+											</div>
+											<span class="product-badge bottom left text-warning">
+												{for $val=1 to ($publication.classificacao)|floor}
+												<i class="fa fa-star"></i>
+												{/for}
+												{if $publication.classificacao}
+												{if is_numeric($publication.classificacao) && (float)(int)$publication.classificacao===(float)$publication.classificacao}
+												{else}
+												<i class="fa fa-star-half-o"></i>
+												{/if}
+												{/if}
+											</span>
+										</div><!-- end caption -->
+									</div><!-- end thumbnail -->
+								</div><!-- end item -->
+								{/foreach}
+							</div><!-- end owl carousel -->
+						</div><!-- end col -->
+					</div><!-- end row -->
+				</div><!-- end container -->
+			</section>
+			<!-- end section -->
+			{include file='common/footer.tpl'}
+
+			{if isset($USER_DATA)}
+			<script>userdata = {$USER_DATA}</script>
+			{/if}
+
+			<script src="{$BASE_URL}javascript/publications/publication.js"></script>
