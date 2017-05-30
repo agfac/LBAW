@@ -96,7 +96,7 @@
 
 							<ul class="list list-inline">
 								<li><a class="btn btn-default btn-md round" data-type="Adicionar ao cart" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-shopping-cart mr-5"></i>Adicionar ao carrinho</a></li>
-								<li><a class="btn btn-gray btn-md round" data-type="Adicionar à wish" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.$url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</a></li>
+								<li><a class="btn btn-gray btn-md round" data-type="Adicionar à wish" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</a></li>
 								<br><br>
 								<li>Partilhar este produto: </li>
 								<li>
@@ -237,7 +237,7 @@
 											<textarea name="comentario" rows="5" class="form-control" placeholder="Comentário"></textarea>
 										</div><!-- end form-group -->
 										<div class="form-group">
-											<input type="hidden" name="publicacaoid" value="{$publication.$val.publicacaoid}">
+											<input type="hidden" name="publicacaoid" value="{$publication.publicacaoid}">
 										</div><!-- end form-group -->
 										<div class="form-group">
 											<button type="submit" class="btn btn-default round btn-md">Submeter

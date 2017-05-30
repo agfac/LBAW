@@ -23,7 +23,7 @@ try {
   insertComment($clientid, $publicacaoid, $classificacao, $comentario);
   
 } catch (PDOException $e) {
-  
+  error_log(print_r($e, TRUE));
   $_SESSION['error_messages'][] = 'Erro ao enviar comentario';
 
   $_SESSION['form_values'] = $_POST;

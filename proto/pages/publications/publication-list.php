@@ -1,6 +1,7 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/publications.php');
+include_once($BASE_DIR .'database/users.php');
 
 if (!$_GET['subcat']) {
 	$_SESSION['error_messages'][] = 'Undefined filter identifier';
@@ -29,6 +30,15 @@ else {
 		$smarty->assign('def_pubs', $def_pubs);
 
 		$smarty->assign('def_subcat_array', $def_subcat_array);
+	}
+}
+
+if(array_key_exists('username', $_SESSION)){
+	if ($_SESSION['usertype'] == 'client') {
+		$clientid = $_SESSION['userid'];
+		$publicationscart = getUserPublicationsCart($clientid);
+		$smarty->assign('publicationscart', $publicationscart);
+		$smarty->assign('PUBLICATIONSUSERCART', $publicationscart);
 	}
 }
 
