@@ -79,11 +79,11 @@ $('#price-submit').click(function() {
 	var max_price = $('.ui-range-values').find('#max-val').val();
 	
 
-	$('.sub-products-listing').remove();
+	$('.sub-products-listing').find('table').remove();
 
-	$('#products-listing').append('<div class="sub-products-listing" >');
+	//$('#products-listing').append('<div class="sub-products-listing" >');
 
-	$('.sub-products-listing').append('<table class="table" id="products-table"> <tbody>');
+	$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
 
 	for (var i in products){
 		console.log(i + '\nmin: ' + min_price);
