@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	updateWishListNumItemsTopBar();
 	addEventButtons();
+	checkSearchBoxLength();
 });
-
 
 function updateWishListNumItemsTopBar() {
 	$.getJSON("../../api/users/get_wishlist_items.php", function(data) {
@@ -11,6 +11,7 @@ function updateWishListNumItemsTopBar() {
 		}
 	});
 }
+
 function addEventButtons() {
 
 	$('a[data-type="Adicionar ao carrinho"]').on('click', function (){
@@ -153,4 +154,21 @@ function addEventButtons() {
 			});
 		}
 	});
+}
+
+function checkSearchBoxLength() {
+	
+	$('#searchpublication').on('blur', function(){
+    if(this.value.length < 1){ // checks the value length
+    	$(this).closest('div').addClass('has-error');
+    	$(this).siblings('span').remove();
+    	$(this).after('<span id="helpBlock" class="help-block">Deverá preencher a caixa de pesquisa</span>');
+    	$(this).siblings('button').attr("disabled", true);
+    }
+    else{
+    	$(this).closest('div').removeClass('has-error');
+    	$(this).siblings('span').remove();
+    	$(this).siblings('button').attr("disabled", false);
+    }
+});
 }
