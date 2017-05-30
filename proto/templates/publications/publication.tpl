@@ -5,8 +5,10 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<ul>
-					<li><a href="?page=home">Página inicial</a></li>
-					<li class="active">Produto</li>
+					<li><a href="{$BASE_URL}">Página inicial</a></li>
+					<li><a>{$publication.nome_categoria}</a></li>
+					<li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome_subcategoria}&cat={$publication.nome_categoria}">{$publication.nome_subcategoria}</a></li>
+					<li class="active">{$publication.titulo}</li>
 				</ul><!-- end breadcrumb -->
 			</div><!-- end col -->    
 		</div><!-- end row -->
@@ -37,7 +39,9 @@
 						<p class="text-gray alt-font">ID: {$publication.publicacaoid}</p>
 						
 						<ul class="list list-inline">
+							{if $publication.preco != $publication.precopromocional}
 							<li><h6 class="text-danger text-xs">€{$publication.preco}</h6></li>
+							{/if}
 							<li><h5 class="text-primary">€{$publication.precopromocional}</h5></li>
 							<li>
 								{if isset($numcomments)}
