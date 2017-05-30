@@ -5,7 +5,7 @@
 
 	if (!$_SESSION['username']) {
     $_SESSION['error_messages'][] = 'Deverá efetuar login para aceder à página solicitada';
-    header("Location: $BASE_URL");
+    header("Location: $BASE_URL" . 'pages/users/login.php');
     exit;
   }
 
