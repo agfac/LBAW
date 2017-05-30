@@ -17,7 +17,7 @@ function addEventButton() {
 			var itemTitle = $(this).attr('data-titulo');
 			var itemPrice = $(this).attr('data-price');
 			var quantity = $(this).parent().parent().parent().find('select').val();
-
+			console.log(quantity);
 			$.getJSON("../../api/users/add_cart_item.php", {id: idSelected, value: quantity}, function(data) {
 				if(data.Success){   	  	
 

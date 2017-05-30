@@ -95,8 +95,8 @@
 							<hr class="spacer-15">
 
 							<ul class="list list-inline">
-								<li><a class="btn btn-default btn-md round" data-type="Adicionar ao cart" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-shopping-cart mr-5"></i>Adicionar ao carrinho</a></li>
-								<li><a class="btn btn-gray btn-md round" data-type="Adicionar à wish" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.$url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</a></li>
+								<li><a class="btn btn-default btn-md round" data-type="Adicionar ao cart" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-shopping-cart mr-5"></i>Adicionar ao carrinho</a></li>
+								<li><a class="btn btn-gray btn-md round" data-type="Adicionar à wish" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.$url}" data-titulo="{$publication.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</a></li>
 								<br><br>
 								<li>Partilhar este produto: </li>
 								<li>
@@ -298,10 +298,14 @@
 				</div><!-- end container -->
 			</section>
 			<!-- end section -->
-			{include file='common/footer.tpl'}
 
+			{include file='common/footer.tpl'}
 			{if isset($USER_DATA)}
-			<script>userdata = {$USER_DATA}</script>
+			{literal}
+			<script type="text/javascript">
+			var userdata = '{$USER_DATA}';
+			</script>
+			{/literal}
 			{/if}
 
 			<script src="{$BASE_URL}javascript/publications/publication.js"></script>
