@@ -32,17 +32,14 @@ else {
 	}
 }
 
-
 $all_publications = getAllPublications();
-
-$subcategory = getAllSubCategorys();
-
-$category = getAllCategorys();
 
 $smarty->assign('publication', $all_publications[0]);
 
+$subcategory = getAllSubCategorys();
 $smarty->assign('subcategory', $subcategory);
 
+$category = getAllCategorys();
 $smarty->assign('category', $category);
 
 $eightnewpublications = getNewPublications(8);

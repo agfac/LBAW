@@ -6,25 +6,22 @@ $valor = strip_tags($_POST['searchpublication']);
 
 $getPublicationFTS = testeFullTextSearch($valor);
 
-
 foreach ($getPublicationFTS as &$publications) {
 	if(!$publications['nome_autor'])
 		$publications['nome_autor'] = "Sem autor";
 }
 
-$smarty->assign('def_pubs', $getPublicationFTS);
-
-
-
+if ($getPublicationFTS){
+	$smarty->assign('def_pubs', $getPublicationFTS);
+}
 $all_publications = getAllPublications();
-
-$subcategory = getAllSubCategorys();
-
-$category = getAllCategorys();
 
 $smarty->assign('publication', $all_publications[0]);
 
+$subcategory = getAllSubCategorys();
 $smarty->assign('subcategory', $subcategory);
+
+$category = getAllCategorys();
 
 $smarty->assign('category', $category);
 

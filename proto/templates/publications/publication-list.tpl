@@ -6,8 +6,13 @@
       <div class="col-sm-12">
         <ul>
           <li><a href="{$BASE_URL}">Página inicial</a></li>
+          {if isset($def_cat)}
           <li><a>{$def_cat}</a></li>
-          <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$def_subcat}&cat={$def_cat}">{$def_subcat}</a></li>
+          <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$def_subcat}&cat={$def_cat}">{$def_subcat}</a>
+          {else}
+          <li><a class="active">Pesquisa</a></li>
+          {/if}
+          </li>
         </ul><!-- end breadcrumb -->
       </div><!-- end col -->    
     </div><!-- end row -->
@@ -95,6 +100,7 @@
 
     <div class="col-sm-12 text-left" id="products-listing">
       <div class="sub-products-listing" >
+      {if isset($def_pubs)}
        <table class="table" id="products-table">
          <thead>
           <tr>
@@ -134,6 +140,9 @@
           {/if}
         </tbody>
       </table>
+      {else}
+      <p>Não existem publicações que correspondem aos critérios de pesquisa</p>
+      {/if}
     </div>
   </div><!-- end row -->
 </div><!-- end col -->   
