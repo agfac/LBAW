@@ -12,7 +12,7 @@
 		</div><!-- end row -->
 	</div><!-- end container -->
 </div><!-- end breadcrumbs -->
-{assign var=val value=0}
+
 <!-- start section -->
 <section class="section white-backgorund">
 	<div class="container">
@@ -23,7 +23,7 @@
 					<div class='carousel-inner'>
 						<div class='item active'>
 							<figure>
-								<img src='{$BASE_URL}{$publication.$val.url}' alt='' />
+								<img src='{$BASE_URL}{$publication.url}' alt='' />
 							</figure>
 						</div><!-- end item -->
 					</div><!-- end carousel-inner -->
@@ -33,28 +33,34 @@
 			<div class="col-sm-8">
 				<div class="row">
 					<div class="col-sm-12">
-						<h2 class="title">{$publication.$val.titulo}</h2>
-						<p class="text-gray alt-font">ID: {$publication.$val.publicacaoid}</p>
+						<h2 class="title">{$publication.titulo}</h2>
+						<p class="text-gray alt-font">ID: {$publication.publicacaoid}</p>
 						
 						<ul class="list list-inline">
-							<li><h6 class="text-danger text-xs">€{$publication.$val.preco}</h6></li>
-							<li><h5 class="text-primary">€{$publication.$val.precopromocional}</h5></li>
+							<li><h6 class="text-danger text-xs">€{$publication.preco}</h6></li>
+							<li><h5 class="text-primary">€{$publication.precopromocional}</h5></li>
 							<li>
-								{for $value=1 to ($publication.$val.classificacao)|floor}
+								{if isset($numcomments)}
+								{for $value=1 to ($numcomments.classificacao)|floor}
 								<i class="fa fa-star text-warning"></i>
 								{/for}
-								{if $publication.$val.classificacao}
-								{if is_numeric($publication.$val.classificacao) && (float)(int)$publication.$val.classificacao===(float)$publication.$val.classificacao}
+								{if $numcomments.classificacao}
+								{if is_numeric($numcomments.classificacao) && (float)(int)$numcomments.classificacao===(float)$numcomments.classificacao}
 								{else}
 								<i class="fa fa-star-half-o text-warning"></i>
+								{/if}
 								{/if}
 								{/if}
 							</li>
 							<li><a data-type="gotocomments">
 								(
-								{if $publication|@count == 1} {$publication|@count} comentário
+								{if isset($numcomments)}
+								{if $numcomments.comentarios == 1} {$numcomments.comentarios} comentário
 								{else}
-								{$publication|@count} comentários
+								{$numcomments.comentarios} comentários
+								{/if}
+								{else}
+								0 comentários
 								{/if}
 								)</a></li>
 							</ul>
@@ -65,7 +71,7 @@
 
 					<div class="row">
 						<div class="col-sm-12">
-							<p>{$publication.$val.descricao}</p>
+							<p>{$publication.descricao}</p>
 							<hr class="spacer-15">
 							<div class="row">
 
@@ -85,8 +91,8 @@
 							<hr class="spacer-15">
 
 							<ul class="list list-inline">
-								<li><a class="btn btn-default btn-md round" data-type="Adicionar ao cart" data-id="{$publication.$val.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.$val.publicacaoid}" data-img="{$BASE_URL}{$publication.$val.url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.$val.precopromocional}"><i class="glyphicon glyphicon-shopping-cart mr-5"></i>Adicionar ao carrinho</a></li>
-								<li><a class="btn btn-gray btn-md round" data-type="Adicionar à wish" data-id="{$publication.$val.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.$val.publicacaoid}" data-img="{$BASE_URL}{$publication.$val.url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.$val.precopromocional}"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</a></li>
+								<li><a class="btn btn-default btn-md round" data-type="Adicionar ao cart" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-shopping-cart mr-5"></i>Adicionar ao carrinho</a></li>
+								<li><a class="btn btn-gray btn-md round" data-type="Adicionar à wish" data-id="{$publication.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" data-img="{$BASE_URL}{$publication.$url}" data-titulo="{$publication.$val.titulo}" data-price="{$publication.precopromocional}"><i class="glyphicon glyphicon-heart mr-5"></i>Adicionar à lista de desejos</a></li>
 								<br><br>
 								<li>Partilhar este produto: </li>
 								<li>
@@ -109,7 +115,12 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs style2 tabs-left">
 						<li class="active"><a href="#description" data-toggle="tab">Informação adicional</a></li>
-						<li><a href="#reviews" data-toggle="tab">Comentários ({$publication|@count})</a></li>
+						<li><a href="#reviews" data-toggle="tab">Comentários (
+						{if isset($numcomments)}
+						{$numcomments.comentarios}
+						{else}
+						0
+						{/if})</a></li>
 					</ul>
 				</div><!-- end col -->
 				<div class="col-xs-12 col-sm-9">
@@ -124,45 +135,52 @@
 								<div class="col-sm-12 col-md-6">
 									<dl class="dl-horizontal">
 										<dt>Ano de publicação</dt>
-										<dd>{$publication.$val.datapublicacao}</dd>
+										<dd>{$publication.datapublicacao}</dd>
 										<dt>Autor</dt>
-										<dd>{$publication.$val.nome_autor}</dd>
+										<dd>{$publication.nome_autor}</dd>
 									</dl>
 								</div><!-- end col -->
 								<div class="col-sm-12 col-md-6">
 									<dl class="dl-horizontal">
 										<dt>Editora</dt>
-										<dd>{$publication.$val.nome_editora}</dd>
+										<dd>{$publication.nome_editora}</dd>
 										<dt>ISBN</dt>
-										<dd>{$publication.$val.isbn}</dd>
+										<dd>{$publication.isbn}</dd>
 									</dl>
 								</div><!-- end col -->
 							</div><!-- end row -->
 						</div><!-- end tab-pane -->
 						<div class="tab-pane" id="reviews">
-							<h5>{if $publication|@count == 1} {$publication|@count} comentário
+							<h5>
+							{if isset($numcomments)}
+								{if $numcomments.comentarios == 1} 
+									{$numcomments.comentarios} comentário
 								{else}
-								{$publication|@count} comentários
-								{/if} para "{$publication.$val.titulo}"</h5>
+								{$numcomments.comentarios} comentários
+								{/if} 
+							{else}
+							0 comentários
+							{/if}
+								para "{$publication.titulo}"</h5>
 
 								<hr class="spacer-10 no-border">
-								{foreach $publication as $publi}
+								{foreach $comments as $comment}
 								<div class="comments">
 									<div class="comment-image">
 										<figure>
-											<img src='{$BASE_URL}{$publi.url}' alt="" />
+											<img src='{$BASE_URL}{$publication.url}' alt="" />
 										</figure>
 									</div><!-- end comments-image -->
 									<div class="comment-content">
 										<div class="comment-content-head">
-											<h6 class="comment-title">{$publi.titulo}</h6>
+											<h6 class="comment-title">{$publication.titulo}</h6>
 											<ul class="list list-inline comment-meta">
 												<li>
-													{for $valor=1 to ($publi.classificacao)|floor}
+													{for $valor=1 to ($comment.classificacao)|floor}
 													<i class="fa fa-star text-warning"></i>
 													{/for}
-													{if $publi.classificacao}
-													{if is_numeric($publi.classificacao) && (float)(int)$publi.classificacao===(float)$publi.classificacao}
+													{if $comment.classificacao}
+													{if is_numeric($comment.classificacao) && (float)(int)$comment.classificacao===(float)$comment.classificacao}
 													{else}
 													<i class="fa fa-star-half-o text-warning"></i>
 													{/if}
@@ -170,8 +188,8 @@
 												</li>
 											</ul>
 										</div><!-- end comment-content-head -->
-										<p>{$publi.texto}</p>
-										<cite>{$publi.nome_cliente}</cite>
+										<p>{$comment.texto}</p>
+										<cite>{$comment.nome}</cite>
 									</div><!-- end comment-content -->
 								</div><!-- end comments -->
 								{/foreach}

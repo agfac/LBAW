@@ -121,6 +121,35 @@ function getCommentsByPublicationName($nomePublicacao){
 	return $stmt->fetchAll();
 }
 
+function getCommentsByPublicationId($publicacaoid){
+	global $conn;
+	$stmt = $conn->prepare("SELECT count(*) as comentarios, avg(comentario.classificacao) as classificacao
+							FROM comentario
+							JOIN cliente
+							ON cliente.clienteid = comentario.clienteid
+							JOIN publicacao
+							ON publicacao.publicacaoid = comentario.publicacaoid
+							WHERE comentario.publicacaoid = ?
+							GROUP BY comentario.publicacaoid");
+
+	$stmt->execute(array($publicacaoid));
+	return $stmt->fetchAll();
+}
+
+function getCommentsAutorAndTextByPublicationId($publicacaoid){
+	global $conn;
+	$stmt = $conn->prepare("SELECT cliente.nome, comentario.classificacao, comentario.texto
+							FROM comentario
+							JOIN cliente
+							ON cliente.clienteid = comentario.clienteid
+							JOIN publicacao
+							ON publicacao.publicacaoid = comentario.publicacaoid
+							WHERE comentario.publicacaoid = ?");
+
+	$stmt->execute(array($publicacaoid));
+	return $stmt->fetchAll();
+}
+
 function getCommentsByComment($comments){
 	global $conn;
 	$stmt = $conn->prepare("SELECT comentario.*, cliente.nome, publicacao.titulo

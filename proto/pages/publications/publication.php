@@ -10,6 +10,21 @@ if (!$_GET['id']) {
 	exit;
 }
 
+$publicationid = $_GET['id'];
+
+$publicationdata = getPublicationData($publicationid);
+
+$smarty->assign('publication', $publicationdata[0]);
+
+$numcomments = getCommentsByPublicationId($publicationid);
+
+if($numcomments){
+	$smarty->assign('numcomments', $numcomments[0]);
+}
+
+$comments = getCommentsAutorAndTextByPublicationId($publicationid);
+$smarty->assign('comments', $comments);
+
 if (array_key_exists('username', $_SESSION)) {
 	$username = $_SESSION['username'];
 
@@ -27,12 +42,6 @@ if (array_key_exists('username', $_SESSION)) {
 	$havecommented = checkIfUserCommentedPublication($clientid, $publicationdata[0]['publicacaoid']);
 	$smarty->assign('havecommented', $havecommented);
 }
-
-$publicationid = $_GET['id'];
-
-$publicationdata = getPublicationData($publicationid);
-
-$smarty->assign('publication', $publicationdata);
 
 $recomendations = getRandomRecomendationPublications($publicationdata[0]['nome_subcategoria'], $publicationdata[0]['nome_categoria'], 5, $publicationdata[0]['publicacaoid']);
 
