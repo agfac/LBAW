@@ -2,6 +2,15 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/publications.php');
 
+if (!$_POST['searchpublication']) {
+  
+  $_SESSION['error_messages'][] = 'Deve preencher a caixa de pesquisa para encontrar as publicações pretendidas';
+  
+  $_SESSION['form_values'] = $_POST;
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
+  exit;
+}
+
 $valor = strip_tags($_POST['searchpublication']);
 
 $getPublicationFTS = testeFullTextSearch($valor);
