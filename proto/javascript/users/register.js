@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	removeGenderLabel();
 
-	$(':password').on('blur', function(){
+	$(':password').on('change input', function(){
     if(this.value.length < 6){ // checks the password value length
        $(this).closest('div .form-group').addClass('has-error');
        $(this).next().remove();

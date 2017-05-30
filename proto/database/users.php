@@ -51,7 +51,6 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
     $stmt->execute(array($pais, $nome, $genero, $datanasc, $username, sha1($password), $telefone, $email, $nif));
 
     $clienteID = $conn->lastInsertId('cliente_clienteid_seq');
-    
 
     //INSERT INTO MORADA
     $stmt = $conn->prepare("INSERT INTO morada (codigopostalid, rua) VALUES (?, ?)");
@@ -65,6 +64,11 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
       //INSERT INTO MORADA_ENVIO
     $stmt = $conn->prepare("INSERT INTO moradaenvio (moradaid, clienteid) VALUES (?, ?)");
     $stmt->execute(array($moradaID, $clienteID));
+
+    $defaultwishlist = 'wishlist';
+    //INSERT INTO WISHLIST
+    $stmt = $conn->prepare("INSERT INTO wishlist (clienteid, nome) VALUES (?, ?)");
+    $stmt->execute(array($clienteID, $defaultwishlist));
 
     $conn->commit();
   }catch(Exception $e){
@@ -173,6 +177,19 @@ function getWorkerData($username) {
 
   $stmt = $conn->prepare("SELECT * 
                           FROM funcionario
+                          WHERE username = ?");
+
+  $stmt->execute(array($username));
+
+  return $stmt->fetchAll();
+}
+
+function getAdminData($username) {
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * 
+                          FROM administrador
                           WHERE username = ?");
 
   $stmt->execute(array($username));

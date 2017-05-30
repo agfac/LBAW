@@ -158,7 +158,7 @@ function addEventButtons() {
 
 function checkSearchBoxLength() {
 	
-	$('#searchpublication').on('blur', function(){
+	$('#searchpublication').on('change input', function(){
     if(this.value.length < 1){ // checks the value length
     	$(this).closest('div').addClass('has-error');
     	$(this).siblings('span').remove();
