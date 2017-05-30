@@ -141,7 +141,7 @@
         </tbody>
       </table>
       {else}
-      <p>Não existem publicações que correspondem aos critérios de pesquisa</p>
+      <p>Não existem publicações que correspondam aos critérios de pesquisa</p>
       {/if}
     </div>
   </div><!-- end row -->
