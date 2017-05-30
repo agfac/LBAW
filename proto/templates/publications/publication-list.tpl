@@ -100,7 +100,7 @@
 
     <div class="col-sm-12 text-left" id="products-listing">
       <div class="sub-products-listing" >
-      {if isset($def_pubs)}
+      {if isset($def_pubs) && $def_pubs[0].publicacaoid != null}
        <table class="table" id="products-table">
          <thead>
           <tr>
