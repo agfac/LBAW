@@ -58,10 +58,10 @@
                         <hr class="spacer-10 no-border">
                         
                         <ul class="social-icons">
-                            <li class="facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                            <li class="twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                            <li class="linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                            <li class="youtube"><a href="javascript:void(0);"><i class="fa fa-youtube"></i></a></li>
+                            <li class="facebook"><a><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a><i class="fa fa-twitter"></i></a></li>
+                            <li class="linkedin"><a><i class="fa fa-linkedin"></i></a></li>
+                            <li class="youtube"><a><i class="fa fa-youtube"></i></a></li>
                         </ul>
                     </div><!-- end col -->
                     <div class="col-sm-3">
@@ -98,7 +98,7 @@
                 
                 <div class="row text-center">
                     <div class="col-sm-12">
-                        <p class="text-sm">&COPY; 2017 <i class="fa fa-book text-danger"></i><a href="javascript:void(0);"></a></p>
+                        <p class="text-sm">&COPY; 2017 <i class="fa fa-book text-danger"></i><a"></a></p>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end container -->

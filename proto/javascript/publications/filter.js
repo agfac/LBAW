@@ -86,9 +86,6 @@ $('#price-submit').click(function() {
 	$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
 
 	for (var i in products){
-		console.log(i + '\nmin: ' + min_price);
-		console.log('price: ' + products[i].precopromocional);
-		console.log('max: ' + max_price);
 
 		var autor;
 		if(products[i].nome_autor != null)

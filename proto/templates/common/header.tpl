@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-pt">
 <head>
   <title>AwesomeBookShop - A sua livraria móvel</title>
   <meta charset="utf-8">
@@ -107,15 +107,15 @@
           </li>
           <li class="linkdown">
             <a href="javascript:void(0);">
-              <img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="">
+              <img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="bandeira portuguesa">
               <span class="hidden-xs">
                 Português 
                 <i class="fa fa-angle-down ml-5"></i>
               </span>    
             </a>
             <ul class="w-110">
-              <li><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-english.jpg" class="mr-5" alt="">English</a></li>
-              <li class="active"><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="">Português</a></li>
+              <li><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-english.jpg" class="mr-5" alt="bandeira inglesa">English</a></li>
+              <li class="active"><a><img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="bandeira portuguesa">Português</a></li>
             </ul>
           </li>
           {if $USERNAME}
@@ -129,11 +129,12 @@
               <div class="row table">
                 <div class="col-sm-3 vertical-align text-left hidden-xs col-lg-offset-2 col-lg-3">
                   <a href="{$BASE_URL}">
-                    <img width="180" src="{$BASE_URL}images/logos/logo_abs_4.png" alt="" />
+                    <img width="180" src="{$BASE_URL}images/logos/logo_abs_4.png" alt="logotipo" />
                   </a>
                 </div><!-- end col -->
                 <div class="col-sm-6 vertical-align text-center col-lg-offset-3">
                   <form action="{$BASE_URL}actions/publication/getPublicationsFTS.php" method="post" class="form-horizontal form-label-left input_mask">
+                    <label for="searchpublication" alt="caixa de pesquisa" aria-label="pesquisa"> </label>
                     <input type="text" placeholder="Pesquisar" name="searchpublication" id="searchpublication" class="form-control input-md">
                     <button type="submit" class="btn btn-success">Pesquisar</button>
                   </form>
@@ -157,7 +158,7 @@
           <div class="navbar yamm navbar-default">
             <div class="container">
               <div class="navbar-header">
-                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-3" class="navbar-toggle">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-3" class="navbar-toggle" alt="butao navegacao" aria-label="butao navegacao">
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>

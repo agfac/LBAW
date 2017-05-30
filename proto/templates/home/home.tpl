@@ -21,7 +21,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <a class="dropdown-toggle" data-toggle="dropdown">
                 Livros Escolares <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -31,7 +31,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <a class="dropdown-toggle" data-toggle="dropdown">
                 Apoio Escolar <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -41,7 +41,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <a class="dropdown-toggle" data-toggle="dropdown" >
                 Revistas <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -51,7 +51,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <a class="dropdown-toggle" data-toggle="dropdown">
                 Dicionários e Enciclopédias <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -61,7 +61,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <a class="dropdown-toggle" data-toggle="dropdown">
                 Guias Turísticos e Mapas <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -77,22 +77,22 @@
         <div class="owl-carousel slider owl-theme">
           <div class="item">
             <figure>
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/slider/banner_books.jpg" alt=""/>
+              <a>
+                <img src="{$BASE_URL}images/slider/banner_books.jpg" alt="banner"/>
               </a>
             </figure>
           </div><!-- end item -->
           <div class="item">
             <figure>
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/slider/banner_descontos.jpg" alt=""/>
+              <a>
+                <img src="{$BASE_URL}images/slider/banner_descontos.jpg" alt="banner"/>
               </a>
             </figure>
           </div><!-- end item -->
           <div class="item">
             <figure>
-              <a href="javascript:void(0);">
-                <img src="{$BASE_URL}images/slider/books_3.jpg" alt=""/>
+              <a>
+                <img src="{$BASE_URL}images/slider/books_3.jpg" alt="banner"/>
               </a>
             </figure>
           </div><!-- end item -->
@@ -141,9 +141,9 @@
               </span>
             </div>
             <figure class="layer">
-              <a href="javascript:void(0);">
-                <img class="front" src="{$BASE_URL}{$publication.url}" alt="">
-                <img class="back" src="{$BASE_URL}{$publication.url}" alt="">
+              <a>
+                <img class="front" src="{$BASE_URL}{$publication.url}" alt="Publicacao">
+                <img class="back" src="{$BASE_URL}{$publication.url}" alt="Publicacao">
               </a>
             </figure>
             <div class="icons">
@@ -171,8 +171,8 @@
       <div class="col-sm-6">
         <div class="box-banner-img">
           <figure>
-            <a href="javascript:void(0);">
-              <img src="{$BASE_URL}images/banners/banner_plano_nacional_leitura.jpg" alt=""/>
+            <a>
+              <img src="{$BASE_URL}images/banners/banner_plano_nacional_leitura.jpg" alt="banner"/>
             </a>
           </figure>
         </div><!-- end box-banner-img -->
@@ -180,8 +180,8 @@
       <div class="col-sm-6">
         <div class="box-banner-img">
           <figure>
-            <a href="javascript:void(0);">
-              <img src="{$BASE_URL}images/banners/banner_edu_literaria.jpg" alt=""/>
+            <a>
+              <img src="{$BASE_URL}images/banners/banner_edu_literaria.jpg" alt="banner"/>
             </a>
           </figure>
         </div><!-- end box-banner-img -->
@@ -207,7 +207,7 @@
               <div class="header">
                 <figure class="layer">
                   <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
-                    <img src="{$BASE_URL}{$publication.url}" alt="">
+                    <img src="{$BASE_URL}{$publication.url}" alt="Publicacao">
                   </a>
                 </figure>
                 <div class="badges">
@@ -267,7 +267,7 @@
               <div class="col-sm-4 vertical-align">
                 <figure>
                   <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}"> 
-                    <img alt="img" src="{$BASE_URL}{$publication.url}">
+                    <img alt="Publicacao" src="{$BASE_URL}{$publication.url}">
                   </a>
                 </figure>
               </div><!-- end col -->
@@ -328,7 +328,7 @@
             <div class="cat-img">
               <figure>
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$arterandompublication.publicacaoid}">
-                  <img src="{$BASE_URL}{$arterandompublication.url}" />
+                  <img alt="Publicacao" src="{$BASE_URL}{$arterandompublication.url}" />
                 </a>
               </figure>
             </div><!-- end cat-img -->
@@ -340,7 +340,7 @@
             <div class="cat-img">
               <figure>
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$desportorandompublication.publicacaoid}">
-                  <img src="{$BASE_URL}{$desportorandompublication.url}" />
+                  <img alt="Publicacao" src="{$BASE_URL}{$desportorandompublication.url}" />
                 </a>
               </figure>
             </div><!-- end cat-img -->
@@ -352,7 +352,7 @@
             <div class="cat-img">
               <figure>
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$direitorandompublication.publicacaoid}">
-                  <img src="{$BASE_URL}{$direitorandompublication.url}" />
+                  <img alt="Publicacao" src="{$BASE_URL}{$direitorandompublication.url}" />
                 </a>
               </figure>
             </div><!-- end cat-img -->
@@ -364,7 +364,7 @@
             <div class="cat-img">
               <figure>
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$engenhariarandompublication.publicacaoid}">
-                  <img src="{$BASE_URL}{$engenhariarandompublication.url}" />
+                  <img alt="Publicacao" src="{$BASE_URL}{$engenhariarandompublication.url}" />
                 </a>
               </figure>
             </div><!-- end cat-img -->
@@ -376,7 +376,7 @@
             <div class="cat-img">
               <figure>
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$gestaorandompublication.publicacaoid}">
-                  <img src="{$BASE_URL}{$gestaorandompublication.url}" />
+                  <img alt="Publicacao" src="{$BASE_URL}{$gestaorandompublication.url}" />
                 </a>
               </figure>
             </div><!-- end cat-img -->
@@ -388,7 +388,7 @@
             <div class="cat-img">
               <figure>
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$historiarandompublication.publicacaoid}">
-                  <img src="{$BASE_URL}{$historiarandompublication.url}" />
+                  <img alt="Publicacao" src="{$BASE_URL}{$historiarandompublication.url}" />
                 </a>
               </figure>
             </div><!-- end cat-img -->
@@ -424,7 +424,7 @@
             <div class="thumbnail blog">
               <div class="header">
                 <figure>
-                  <img src="{$BASE_URL}{$publication.url}" alt="">
+                  <img src="{$BASE_URL}{$publication.url}" alt="Publicacao">
                 </figure>
                 <div class="meta">
                   <span><i class="fa fa-comment mr-5"></i>({$publication.comentarios})</span>
@@ -491,7 +491,7 @@
               {foreach $fivenewpublications as $publication}
               <li> 
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
-                  <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
+                  <img src="{$BASE_URL}{$publication.url}" alt="Publicacao">
                 </a>
                 <div class="product-details">
                   <h6 class="regular"> 
@@ -528,7 +528,7 @@
               {foreach $fivemostsellpublications as $publication}
               <li> 
                 <a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}" class="product-image">
-                  <img src="{$BASE_URL}{$publication.url}" alt="Sample Product ">
+                  <img src="{$BASE_URL}{$publication.url}" alt="Publicacao">
                 </a>
                 <div class="product-details">
                   <h6 class="regular"> 
@@ -577,7 +577,7 @@
             <p class="mt-20">Oferta de portes em compras de valor igual ou superior a 30€</p>
           </div><!-- end col -->
           <div class="col-sm-4 vertical-align text-right">
-            <a target="_blank" href="javascript:void(0);" class="btn btn-light semi-circle btn-md">Aproveite já!</a>
+            <a target="_blank" class="btn btn-light semi-circle btn-md">Aproveite já!</a>
           </div><!-- end col -->   
         </div><!-- end row -->
       </div><!-- end box-banner-wide -->

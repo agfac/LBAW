@@ -10,7 +10,7 @@ function addEventButton() {
 	$('a[data-type="Adicionar ao cart"]').on('click', function (event){
 		
 		if(typeof userdata !== 'undefined'){
-			console.log(userdata);
+			
 			var idSelected = $(this).attr('data-id');
 			var itemLinkSelected = $(this).attr('data-url');
 			var itemImageSelected = $(this).attr('data-img');

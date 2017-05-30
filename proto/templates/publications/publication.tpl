@@ -25,7 +25,7 @@
 					<div class='carousel-inner'>
 						<div class='item active'>
 							<figure>
-								<img src='{$BASE_URL}{$publication.url}' alt='' />
+								<img src='{$BASE_URL}{$publication.url}' alt='Publicacao' />
 							</figure>
 						</div><!-- end item -->
 					</div><!-- end carousel-inner -->
@@ -101,9 +101,9 @@
 								<li>Partilhar este produto: </li>
 								<li>
 									<ul class="social-icons style1">
-										<li class="facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-										<li class="twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										<li class="pinterest"><a href="javascript:void(0);"><i class="fa fa-pinterest"></i></a></li>
+										<li class="facebook"><a><i class="fa fa-facebook"></i></a></li>
+										<li class="twitter"><a><i class="fa fa-twitter"></i></a></li>
+										<li class="pinterest"><a><i class="fa fa-pinterest"></i></a></li>
 									</ul>
 								</li>
 							</ul>
@@ -176,7 +176,7 @@
 									<div class="comments">
 										<div class="comment-image">
 											<figure>
-												<img src='{$BASE_URL}{$publication.url}' alt="" />
+												<img src='{$BASE_URL}{$publication.url}' alt="Publicacao" />
 											</figure>
 										</div><!-- end comments-image -->
 										<div class="comment-content">
@@ -267,7 +267,7 @@
 										<div class="header">
 											<figure>
 												<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
-													<img src='{$BASE_URL}{$publication.url}' alt="">
+													<img src='{$BASE_URL}{$publication.url}' alt="Publicacao">
 												</a>
 											</figure>
 										</div>
