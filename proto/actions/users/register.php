@@ -51,6 +51,7 @@ $_SESSION['username'] = $username;
 $userdata = getUserData($username);
 $userid = $userdata[0]['clienteid'];
 $_SESSION['userid'] = $userid;
+$_SESSION['usertype'] = 'client';
 $_SESSION['success_messages'][] = 'Utilizador registado com sucesso';  
 header("Location: $BASE_URL");
 ?>
