@@ -564,7 +564,8 @@ function getRandomRecomendationPublications($subcategory_name, $category_name, $
 	
 	global $conn;
     
-    $stmt = $conn->prepare("SELECT publicacao.*, imagem.url, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria, avg(comentario.classificacao) as classificacao
+    $stmt = $conn->prepare("SELECT * 
+                            FROM (SELECT DISTINCT publicacao.*, imagem.url, subcategoria.subcategoriaid as id_subcategoria, subcategoria.nome as nome_subcategoria, categoria.nome as nome_categoria, categoria.categoriaid as id_categoria, avg(comentario.classificacao) as classificacao
                             FROM publicacao 
 							RIGHT JOIN imagem
 							ON imagem.publicacaoid = publicacao.publicacaoid
@@ -575,7 +576,7 @@ function getRandomRecomendationPublications($subcategory_name, $category_name, $
                             LEFT JOIN comentario
                             ON comentario.publicacaoid = publicacao.publicacaoid
                             WHERE subcategoria.nome = ? AND categoria.nome = ? AND publicacao.publicacaoid != ?
-    						GROUP BY publicacao.publicacaoid, imagem.url, comentario.texto, comentario.data, subcategoria.nome, categoria.nome, subcategoria.subcategoriaid, categoria.categoriaid
+    						GROUP BY publicacao.publicacaoid, imagem.url, comentario.texto, comentario.data, subcategoria.nome, categoria.nome, subcategoria.subcategoriaid, categoria.categoriaid) as foo
     						ORDER BY random()
                             LIMIT ?");
 
