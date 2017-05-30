@@ -292,4 +292,8 @@
 		<!-- end section -->
 		{include file='common/footer.tpl'}
 
+		{if isset($USER_DATA)}
+		<script>userdata = {$USER_DATA}</script>
+		{/if}
+
 		<script src="{$BASE_URL}javascript/publications/publication.js"></script>
