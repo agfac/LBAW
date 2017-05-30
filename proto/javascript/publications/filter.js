@@ -40,11 +40,7 @@ $('#subcategoria-form').on('change', function(){
 
 		$.getJSON("../../api/publications/get_by_category.php", {subcat_name: subcategory, cat_name: category}, function(data){
 
-			console.log(data[0].publicacaoid);
-
-			$('.sub-products-listing').remove();
-
-			$('#products-listing').append('<div class="sub-products-listing" >');
+			$('.sub-products-listing').find('table').remove();
 
 			if(data[0].publicacaoid == null){
 				$('.sub-products-listing').append('<p>Sem publicações sobre ' + data[0].nome_subcategoria +'</p>');
@@ -53,7 +49,7 @@ $('#subcategoria-form').on('change', function(){
 			else{
 				products = data;
 
-				$('.sub-products-listing').append('<table class="table" id="products-table"> <tbody>');
+				$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
 
 				for (var i in data){
 					var autor;

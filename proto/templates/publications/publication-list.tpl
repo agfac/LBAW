@@ -99,7 +99,8 @@
          <thead>
           <tr>
           <th>Imagem</th>
-            <th colspan="2">Título</th>
+            <th>Título</th>
+            <th>Autor</th>
             <th>Preço</th>
             <th>Preço Promocional</th>
           </tr>
