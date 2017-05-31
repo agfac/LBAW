@@ -746,6 +746,19 @@ BEGIN
 	RETURN NULL;
 END $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION update_subtotalcarrinho_on_delete()
+RETURNS TRIGGER
+AS $$
+BEGIN
+	UPDATE Carrinho
+	SET Subtotal=(SELECT SUM(Publicacao.preco*Publicacaocarrinho.quantidade)
+						FROM Publicacaocarrinho, Publicacao
+						WHERE Publicacaocarrinho.CarrinhoID = OLD.CarrinhoID AND Publicacao.PublicacaoID=Publicacaocarrinho.PublicacaoID)
+	WHERE CarrinhoID = OLD.CarrinhoID;
+
+	RETURN NULL;
+END $$ LANGUAGE plpgsql;
+
 /* Create Trigger */
 
 CREATE TRIGGER insert_publicacao_trigger
@@ -802,6 +815,11 @@ CREATE TRIGGER update_subtotalcarrinho_trigger
 AFTER INSERT OR UPDATE ON Publicacaocarrinho
 FOR EACH ROW
 	EXECUTE PROCEDURE update_subtotalcarrinho();
+
+CREATE TRIGGER update_subtotalcarrinho_on_delete_trigger
+AFTER DELETE ON Publicacaocarrinho
+FOR EACH ROW
+	EXECUTE PROCEDURE update_subtotalcarrinho_on_delete();
 
 /* Create Foreign Key Constraints */
 

@@ -5,6 +5,7 @@ $(document).ready(function() {
 function updateCartNumberItems() {
 	
 	$('select').on('change', function (){
+		var buttonclicked = $(this);
 		var valueSelected = this.value;
 		var itemSelected = this.closest('tr');
 		var idSelected = itemSelected.getAttribute('data-id');
@@ -18,16 +19,23 @@ function updateCartNumberItems() {
 				$(itemSelected).find('td[data-column="total"]').children().text("€" + price*valueSelected);
 				
 				$('.cart-items').find("li[data-id='"+idSelected+"'] strong[data-type='quantidade']").text(valueSelected);
+
+				$.getJSON("../../api/users/get_cart_subtotal.php", function(data) {
+
+					if(data){
+						buttonclicked.closest('.pills').siblings('.row').find('.col-sm-5 .no-border tbody tr th[data-type="carrinhosubtotal"]').siblings('td').text("€" + data[0].subtotal);
+					}
+				});
 			}
 		});
 	});
 
 	$('.close').on('click', function (){
-
+		var subtotalvalue = $(this).closest('.pills').siblings('.row').find('.col-sm-5 .no-border tbody tr th[data-type="carrinhosubtotal"]').siblings('td');
 		var itemSelected = this.closest('tr');
 		var idSelected = itemSelected.getAttribute('data-id');
 
-		$.getJSON("../../api/users/update_cart_items.php", {id: idSelected, value: 0}, function(data) {
+		$.getJSON("../../api/users/remove_cart_item.php", {id: idSelected}, function(data) {
 			
 			if(data.Success){   	
 
@@ -57,6 +65,14 @@ function updateCartNumberItems() {
 						$('.fa-shopping-cart').parent().find('span').remove();
 						$('.fa-shopping-basket').parent().find('span .text-primary').remove();
 						$('.cart-items').find("li[data-id='"+idSelected+"']").remove();
+					}
+				});
+
+				$.getJSON("../../api/users/get_cart_subtotal.php", function(data) {
+
+					if(data){
+						console.log("OI: " + data[0]);
+						console.log(subtotalvalue.text("€" + data[0].subtotal));
 					}
 				});
 			}

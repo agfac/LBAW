@@ -27,7 +27,7 @@ function updateCartNumberItems() {
 		var itemSelected = this.closest('tr');
 		var idSelected = itemSelected.getAttribute('data-id');
 
-		$.getJSON("../../api/users/update_cart_items.php", {id: idSelected, value: 0}, function(data) {
+		$.getJSON("../../api/users/remove_cart_item.php", {id: idSelected}, function(data) {
 			
 			if(data.Success){   	
 

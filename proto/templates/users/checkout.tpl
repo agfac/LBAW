@@ -369,7 +369,7 @@
                                 <div class="table-responsive"> 
                                     <table class="table no-border">
                                         <tr>
-                                            <th>Total do carrinho</th>
+                                            <th data-type="carrinhosubtotal">Total do carrinho</th>
                                             <td>€ {$cartsubtotal}</td>
                                         </tr>
                                         <tr>
@@ -377,7 +377,7 @@
                                             <td>Envio grátis</td>
                                         </tr>
                                         <tr>
-                                            <th>Total da encomenda</th>
+                                            <th data-type="carrinhosubtotal">Total da encomenda</th>
                                             <td>€ {$cartsubtotal}</td>
                                         </tr>
                                     </table><!-- end table -->
