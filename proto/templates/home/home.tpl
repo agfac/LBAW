@@ -464,7 +464,19 @@
                     {/if} {$dayscommented.$val}, {$yearscommented.$val}</span>
                     <div class="category">
                       <i class="fa fa-book text-danger mr-5"></i>
-                      <span>{$publication.nome_categoria}</span>
+                      {if $publication.nome_categoria == 'Livros'}
+                      <a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=1">{$publication.nome_categoria}</a>
+                      {elseif $publication.nome_categoria == 'Livros Escolares'}
+                      <a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=2">{$publication.nome_categoria}</a>
+                      {elseif $publication.nome_categoria == 'Apoio Escolar'}
+                      <a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=3">{$publication.nome_categoria}</a>
+                      {elseif $publication.nome_categoria == 'Revistas'}
+                      <a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=4">{$publication.nome_categoria}</a>
+                      {elseif $publication.nome_categoria == 'Dicionarios e Enciclopedias'}
+                      <a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=5">{$publication.nome_categoria}</a>
+                      {elseif $publication.nome_categoria == 'Guias Turisticos e Mapas'}
+                      <a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=6">{$publication.nome_categoria}</a>
+                      {/if}
                       <span> | </span>
                       <a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome_subcategoria}&cat={$publication.nome_categoria}">{$publication.nome_subcategoria}</a>
                     </div>

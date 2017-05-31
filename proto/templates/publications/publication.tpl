@@ -299,4 +299,6 @@
 			</section>
 			<!-- end section -->
 
+			{include file='common/footer.tpl'}
+			
 			<script src="{$BASE_URL}javascript/publications/publication.js"></script>
