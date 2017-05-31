@@ -852,7 +852,7 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
   try{
     
     //LOCALIDADE FATURACAO
-    $localidadef = $orderinformationf['localidadef'];
+    $localidadef = $orderinformationf['localidade'];
 
     //CHECK LOCALIDADE ALREADY EXISTS
     $stmt = $conn->prepare("SELECT *
@@ -875,7 +875,7 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
     }
 
     //LOCALIDADE ENVIO
-    $localidadee = $orderinformatione['localidadee'];
+    $localidadee = $orderinformatione['localidade'];
 
     //CHECK LOCALIDADE ALREADY EXISTS
     $stmt = $conn->prepare("SELECT *
@@ -898,8 +898,8 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
     }
 
     //CODIGOPOSTAL FATURACAO
-    $cod1f = $orderinformationf['cod1f'];
-    $cod2f = $orderinformationf['cod2f'];
+    $cod1f = $orderinformationf['cod1'];
+    $cod2f = $orderinformationf['cod2'];
 
     //CHECK CODIGO_POSTAL ALREADY EXISTS
     $stmt = $conn->prepare("SELECT *
@@ -920,8 +920,8 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
     }
 
     //CODIGOPOSTAL ENVIO
-    $cod1e = $orderinformatione['cod1e'];
-    $cod2e = $orderinformatione['cod2e'];
+    $cod1e = $orderinformatione['cod1'];
+    $cod2e = $orderinformatione['cod2'];
 
     //CHECK CODIGO_POSTAL ALREADY EXISTS
     $stmt = $conn->prepare("SELECT *
@@ -942,7 +942,7 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
     }
 
     //MORADA FATURACAO
-    $moradaf = $orderinformationf['moradaf'];
+    $moradaf = $orderinformationf['morada'];
 
     //GET MORADA ID
     $stmt = $conn->prepare("SELECT morada.moradaid
@@ -964,7 +964,7 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
     }
 
     //MORADA FATURACAO
-    $moradae = $orderinformatione['moradae'];
+    $moradae = $orderinformatione['morada'];
 
     //GET MORADA ID
     $stmt = $conn->prepare("SELECT morada.moradaid
@@ -986,11 +986,20 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
     }
 
     //INSERT ENCOMENDA
-    $stmt = $conn->prepare("INSERT INTO encomenda
+    $stmt = $conn->prepare("INSERT INTO encomenda (clienteID,moradaFaturacaoID,moradaEnvioID)
                             VALUES (?, ?, ?)");
     $stmt->execute(array($clienteid, $moradafID, $moradaeID));
 
     $encomendaID = $conn->lastInsertId('encomenda_encomendaid_seq');
+
+    //GET INFORMACAOFATURACAO ID
+    $stmt = $conn->prepare("SELECT encomenda.informacaofaturacaoid
+                            FROM encomenda
+                            WHERE encomenda.encomendaid = ?");
+    $stmt->execute(array($encomendaID));
+    $result = $stmt->fetch();
+
+    $informacaofaturacaoid = $result['informacaofaturacaoid'];
 
     $metodopagamento = $orderinformationf['metodopagamento'];
 
@@ -1001,13 +1010,13 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
     $stmt->execute(array($metodopagamento));
     $result = $stmt->fetch();
 
-    $metodopagamentoid = $result;
+    $metodopagamentoid = $result['metodopagamentoid'];
 
     //UPDATE INFORMACAOPAGAMENTO
     $stmt = $conn->prepare("UPDATE informacaofaturacao
                             SET metodopagamentoid = ?
                             WHERE informacaofaturacaoid = ?");
-    $stmt->execute(array($metodopagamentoid, $encomendaID));
+    $stmt->execute(array($metodopagamentoid, $informacaofaturacaoid));
 
     $numerocartao = $orderinformationf['numerocartao'];
     $array = array($orderinformationf['mm'], $orderinformationf['yy']);
@@ -1018,13 +1027,13 @@ function insertOrder($clienteid, $orderinformationf, $orderinformatione, $public
 
       $stmt = $conn->prepare("INSERT INTO cartaocredito(cartaocreditoid,tipo,numero,validade,cvv)
                               VALUES (?, ?, ?, ?, ?)");
-      $stmt->execute(array($encomendaID, $metodopagamento, $numerocartao, $validade, $cvv));
+      $stmt->execute(array($informacaofaturacaoid, $metodopagamento, $numerocartao, $validade, $cvv));
     }
 
     foreach ($publicationscart as $publication) {
 
-      insertPublicacaoEncomenda($publication['publicacao.publicacaoid'], $encomendaID);
-      removeCartItem($clienteid ,$publication['publicacao.publicacaoid']);
+      insertPublicacaoEncomenda($publication['publicacaoid'], $encomendaID);
+      removeCartItem($clienteid ,$publication['publicacaoid']);
     }
 
      $conn->commit();

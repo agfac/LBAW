@@ -39,8 +39,8 @@ $orderinformationf = array(
 	'nome'         => strip_tags($_POST['nomef']),
 	'morada'       => strip_tags($_POST['moradaf']),
 	'localidade'   => strip_tags($_POST['localidadef']),
-	'cod1f'        => $cod1f,
-	'cod2f'        => $cod2f,
+	'cod1'        => $cod1f,
+	'cod2'        => $cod2f,
 	'telefone'     => strip_tags($_POST['telefone']),
 	'email'        => strip_tags($_POST['email']),
 	'nif'          => strip_tags($_POST['nif']),
@@ -61,8 +61,8 @@ if((strip_tags($_POST['nomef']) == strip_tags($_POST['nomee'])) && (strip_tags($
 		'nome'       => strip_tags($_POST['nomee']),
 		'morada'     => strip_tags($_POST['moradae']),
 		'localidade' => strip_tags($_POST['localidadee']),
-		'cod1e'      => $cod1e,
-		'cod2e'      => $cod2e
+		'cod1'      => $cod1e,
+		'cod2'      => $cod2e
 		);
 }
 

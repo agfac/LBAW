@@ -3,18 +3,20 @@ include_once('../../config/init.php');
 include_once($BASE_DIR .'database/users.php');  
 include_once($BASE_DIR .'database/publications.php');  
 
-if (array_key_exists('userid',$_SESSION)) {
+if(array_key_exists('userid',$_SESSION)) {
 
-	$clientid = $_SESSION['userid'];
+	if($_SESSION['usertype'] == 'client'){
+		$clientid = $_SESSION['userid'];
 
-	$publicationsusercart = getUserPublicationsCart($clientid);
+		$publicationsusercart = getUserPublicationsCart($clientid);
 
-	$smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
+		$smarty->assign('PUBLICATIONSUSERCART', $publicationsusercart);
 
-	$username = $_SESSION['username'];
+		$username = $_SESSION['username'];
 
-	$userdata = getUserAllData($username);
-	$smarty->assign('USER_DATA', $userdata[0]);
+		$userdata = getUserAllData($username);
+		$smarty->assign('USER_DATA', $userdata[0]);
+	}
 }
 
 $eightnewpublications = getNewPublications(8);

@@ -433,5 +433,17 @@ function getWorkerByStatus($estadoFuncionario){
     return $stmt->fetchAll();
 }
 
+function getOwnerData($username) {
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT * 
+                          FROM funcionario
+                          WHERE username = ?");
+
+  $stmt->execute(array($username));
+
+  return $stmt->fetchAll();
+}
 
 ?>
