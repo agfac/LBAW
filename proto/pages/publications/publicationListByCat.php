@@ -34,9 +34,7 @@ if(array_key_exists('username', $_SESSION)){
 
 $all_publications = getAllPublications();
 
-$smarty->assign('publicatio
-
-	n', $all_publications[0]);
+$smarty->assign('publication', $all_publications[0]);
 
 $subcategory = getAllSubCategorys();
 $smarty->assign('subcategory', $subcategory);

@@ -32,7 +32,7 @@ $('#categoria-form').on('change', function(){
 			});
 			
 			//-------------------
-			$.getJSON("../../api/publications/get_by_category.php", {subcat_name: null, cat_name: category}, function(data){
+			$.getJSON("../../api/publications/get_by_category.php", {subcat_name: subcategory, cat_name: category}, function(data){
 				products = data;
 				
 				$('.sub-products-listing').empty();
@@ -112,8 +112,8 @@ $('#subcategoria-form').on('change', function(){
 
 $('#price-submit').click(function() {
 
-	var min_price = $('.ui-range-values').find('#min-val').val();
-	var max_price = $('.ui-range-values').find('#max-val').val();
+	var min_price = parseFloat($('.ui-range-values').find('#min-val').val());
+	var max_price = parseFloat($('.ui-range-values').find('#max-val').val());
 	
 
 	$('.sub-products-listing').find('table').remove();
@@ -130,10 +130,8 @@ $('#price-submit').click(function() {
 		else
 			autor = 'Sem autor';
 
-		if(products[i].precopromocional >= min_price) {
-			if(products[i].precopromocional*2 <= max_price*2) {
-				$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"></a> <img src="../../' + products[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"> ' + products[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <strike>' + products[i].preco+ '€' +'</strike> </td> <td> <h7>' + products[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
-			}
+		if((products[i].precopromocional > min_price) && (products[i].precopromocional < max_price)) {
+			$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"></a> <img src="../../' + products[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"> ' + products[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <strike>' + products[i].preco+ '€' +'</strike> </td> <td> <h7>' + products[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
 		}
 	}
 
