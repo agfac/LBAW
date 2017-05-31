@@ -178,18 +178,15 @@ function uploadFile($urlImagem, $newPathImageFlag, $oldUrlImagem){
 	}else if(($newPathImageFlag === 1) && ($_FILES['fileUpload']['size'] != 0)){
 		//Apagar a imagem e fazer upload no novo diretorio
 		$flagToUpload = true;
-		if(unlink(realpath('../../'.$oldUrlImagem)))
-			print_r("apaguei");
+		unlink(realpath('../../'.$oldUrlImagem));
 	}else if(($newPathImageFlag === 0) && ($_FILES['fileUpload']['size'] != 0)){
 		//Apagar a imagem e fazer upload no diretorio atual
 		$flagToUpload = true;
-		if(unlink(realpath('../../'.$urlImagem)))
-			print_r('../../'.$urlImagem);
+		unlink(realpath('../../'.$urlImagem));
 	}
 	if($flagToUpload){
 		$path = ('../../' . $urlImagem);
-		if(move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path))
-			print_r("Fiz upload");
+		move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path);
 	}
 
 }

@@ -164,8 +164,7 @@ header("Location: $BASE_URL" . 'pages/owner/publications.php');
 function uploadFile($url){
   if(($_FILES['fileUpload'])){
     $path = ('../../' . $url);
-      if(move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path))
-        print_r("Fiz upload");
+    move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path);
    }
 }
 ?>
