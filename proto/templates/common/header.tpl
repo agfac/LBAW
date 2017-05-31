@@ -190,7 +190,7 @@
                           <div class="row">
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6>Livros</h6>
+                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=1">Livros</a></h6>
                               </li>
                               {foreach $subcategoriasLivros as $publication}
                               <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Livros">{$publication.nome}</a></li>
@@ -198,13 +198,13 @@
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6>Livros Escolares</h6>
+                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=2">Livros Escolares</a></h6>
                               </li>
                               {foreach $subcategoriasLivrosEscolares as $publication}
                               <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Livros Escolares">{$publication.nome}</a></li>
                               {/foreach}
                               <li class="title">
-                                <h6>Apoio Escolar</h6>
+                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=3">Apoio Escolar</a></h6>
                               </li>
                               {foreach $subcategoriasApoioEscolar as $publication}
                               <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Apoio Escolar">{$publication.nome}</a></li>
@@ -212,7 +212,7 @@
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6>Revistas</h6>
+                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=4">Revistas</a></h6>
                               </li>
                               {foreach $subcategoriasRevistas as $publication}
                               <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Revistas">{$publication.nome}</a></li>
@@ -220,13 +220,13 @@
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6>Dicionários e Enciclopédias</h6>
+                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=5">Dicionários e Enciclopédias</a></h6>
                                 {foreach $subcategoriasDicionarios as $publication}
                                 <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Dicionarios e Enciclopedias">{$publication.nome}</a></li>
                                 {/foreach}
                               </li>
                               <li class="title">
-                                <h6>Guias Turísticos e Mapas</h6>
+                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=6">Guias Turísticos e Mapas</a></h6>
                                 {foreach $subcategoriasGuiasEMapas as $publication}
                                 <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Guias Turisticos e Mapas">{$publication.nome}</a></li>
                                 {/foreach}

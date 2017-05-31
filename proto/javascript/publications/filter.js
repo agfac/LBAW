@@ -80,8 +80,8 @@ $('#subcategoria-form').on('change', function(){
 			$('.sub-products-listing').empty();
 			// $('.sub-products-listing').find('table').remove();
 
-			if(data[0].publicacaoid == null){
-				$('.sub-products-listing').append('<p>Sem publicações sobre ' + data[0].nome_subcategoria +'</p>');
+			if(data.length === 0 || data == "NULL"){
+				$('.sub-products-listing').append('<p>Sem publicações sobre a subcategoria</p>');
 			}
 			
 			else{

@@ -309,6 +309,17 @@ function getAllSubCategorys(){
     return $stmt->fetchAll();
 }
 
+function getAllSubCategorysById($categoryId){
+    global $conn;
+    $stmt = $conn->prepare("SELECT subcategoria.*, categoria.nome as nome_categoria
+                            FROM subcategoria
+                            LEFT JOIN categoria
+                            ON subcategoria.categoriaid = categoria.categoriaid
+                            WHERE categoria.categoriaid = ? ");
+    $stmt->execute(array($categoryId));
+    return $stmt->fetchAll();
+}
+
 function getAllAutors(){
 	global $conn;
     $stmt = $conn->prepare("SELECT autorid, nome
