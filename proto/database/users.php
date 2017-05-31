@@ -221,6 +221,20 @@ function getUserOrderList($clienteid) {
   return $stmt->fetchAll();
 }
 
+//GET USER ORDER LIST
+function checkUserHasOrder($clienteid, $encomendaid) {
+
+  global $conn;
+
+  $stmt = $conn->prepare("SELECT encomenda.* 
+                          FROM encomenda
+                          WHERE encomenda.clienteid = ? AND encomenda.encomendaid = ?");
+
+  $stmt->execute(array($clienteid, $encomendaid));
+
+  return ($stmt->fetch() !== false);
+}
+
 //GET USER PUBLICATIONS ON CART
 function getUserPublicationsCart($clienteid) {
 

@@ -22,6 +22,12 @@ $publicationsusercart = getUserPublicationsCart($clientid);
 
 $orderid = $_GET['id'];
 
+if(!checkUserHasOrder($clientid, $orderid)){
+	$_SESSION['error_messages'][] = 'Apenas pode consultar o conteúdo das suas encomendas';
+	header("Location: $BASE_URL" . 'pages/users/order-list.php');
+	exit;
+}
+
 $orderpublications = getOrderPublications($orderid);
 
 $eightnewpublications = getNewPublications(8);
