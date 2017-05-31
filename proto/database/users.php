@@ -843,18 +843,200 @@ function checkIfUserCommentedPublication($clienteid, $publicacaoid){
   return ($stmt->fetch() !== false);
 }
 
-function insertOrder($clienteid, $moradaf, $moradae){
+function insertOrder($clienteid, $orderinformationf, $orderinformatione, $publicationscart){
   
   global $conn;
-  
-  $stmt = $conn->prepare("INSERT INTO encomenda
-                          VALUES (?, ?, ?)");
-  
-  $stmt->execute(array($clienteid, $moradaf, $moradae));
 
-  $encomendaID = $conn->lastInsertId('encomenda_encomendaid_seq');
+  $conn->beginTransaction();
+  
+  try{
+    
+    //LOCALIDADE FATURACAO
+    $localidadef = $orderinformationf['localidadef'];
 
-  return $encomendaID;
+    //CHECK LOCALIDADE ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM localidade 
+                            WHERE nome = ?");
+    $stmt->execute(array($localidadef));
+    $result = $stmt->fetch();
+
+    if($result){
+      $localidadefID = $result['localidadeid'];
+    }else{
+      //INSERT INTO LOCALIDADE
+      $paisID = 193;
+
+      $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
+                              VALUES (?, ?)");
+      $stmt->execute(array($paisID, $localidadef));
+
+      $localidadefID = $conn->lastInsertId('localidade_localidadeid_seq');
+    }
+
+    //LOCALIDADE ENVIO
+    $localidadee = $orderinformatione['localidadee'];
+
+    //CHECK LOCALIDADE ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM localidade 
+                            WHERE nome = ?");
+    $stmt->execute(array($localidadee));
+    $result = $stmt->fetch();
+
+    if($result){
+      $localidadeeID = $result['localidadeid'];
+    }else{
+      //INSERT INTO LOCALIDADE
+      $paisID = 193;
+
+      $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
+                              VALUES (?, ?)");
+      $stmt->execute(array($paisID, $localidadee));
+
+      $localidadeeID = $conn->lastInsertId('localidade_localidadeid_seq');
+    }
+
+    //CODIGOPOSTAL FATURACAO
+    $cod1f = $orderinformationf['cod1f'];
+    $cod2f = $orderinformationf['cod2f'];
+
+    //CHECK CODIGO_POSTAL ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM codigopostal 
+                            WHERE cod1 = ? AND cod2 = ?");
+    $stmt->execute(array($cod1f, $cod2f));
+    $result = $stmt->fetch();
+
+    if($result){
+      $codPostalfID = $result['codigopostalid'];
+    }
+    else{
+      //INSERT INTO CODIGO_POSTAL
+      $stmt = $conn->prepare("INSERT INTO codigopostal (localidadeid, cod1, cod2) 
+                              VALUES (?, ?, ?)");
+      $stmt->execute(array($localidadefID, $cod1f, $cod2f));
+      $codPostalfID = $conn->lastInsertId('codigopostal_codigopostalid_seq');
+    }
+
+    //CODIGOPOSTAL ENVIO
+    $cod1e = $orderinformatione['cod1e'];
+    $cod2e = $orderinformatione['cod2e'];
+
+    //CHECK CODIGO_POSTAL ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM codigopostal 
+                            WHERE cod1 = ? AND cod2 = ?");
+    $stmt->execute(array($cod1e, $cod2e));
+    $result = $stmt->fetch();
+
+    if($result){
+      $codPostaleID = $result['codigopostalid'];
+    }
+    else{
+      //INSERT INTO CODIGO_POSTAL
+      $stmt = $conn->prepare("INSERT INTO codigopostal (localidadeid, cod1, cod2) 
+                              VALUES (?, ?, ?)");
+      $stmt->execute(array($localidadeeID, $cod1e, $cod2e));
+      $codPostaleID = $conn->lastInsertId('codigopostal_codigopostalid_seq');
+    }
+
+    //MORADA FATURACAO
+    $moradaf = $orderinformationf['moradaf'];
+
+    //GET MORADA ID
+    $stmt = $conn->prepare("SELECT morada.moradaid
+                            FROM morada
+                            WHERE morada.codigopostalid = ? AND morada.rua = ?");
+    $stmt->execute(array($codPostalfID, $moradaf));
+    $result = $stmt->fetch();
+
+    if($result){
+      $moradafID = $result['moradaid'];
+    }
+    else{
+      //INSERT INTO MORADA
+      $stmt = $conn->prepare("INSERT INTO morada (codigopostalid, rua) 
+                              VALUES (?, ?)");
+      $stmt->execute(array($codPostalfID, $moradaf));
+
+      $moradafID = $conn->lastInsertId('morada_moradaid_seq');
+    }
+
+    //MORADA FATURACAO
+    $moradae = $orderinformatione['moradae'];
+
+    //GET MORADA ID
+    $stmt = $conn->prepare("SELECT morada.moradaid
+                            FROM morada
+                            WHERE morada.codigopostalid = ? AND morada.rua = ?");
+    $stmt->execute(array($codPostaleID, $moradae));
+    $result = $stmt->fetch();
+
+    if($result){
+      $moradaeID = $result['moradaid'];
+    }
+    else{
+      //INSERT INTO MORADA
+      $stmt = $conn->prepare("INSERT INTO morada (codigopostalid, rua) 
+                              VALUES (?, ?)");
+      $stmt->execute(array($codPostaleID, $moradae));
+
+      $moradaeID = $conn->lastInsertId('morada_moradaid_seq');
+    }
+
+    //INSERT ENCOMENDA
+    $stmt = $conn->prepare("INSERT INTO encomenda
+                            VALUES (?, ?, ?)");
+    $stmt->execute(array($clienteid, $moradafID, $moradaeID));
+
+    $encomendaID = $conn->lastInsertId('encomenda_encomendaid_seq');
+
+    $metodopagamento = $orderinformationf['metodopagamento'];
+
+    //GET METODOPAGAMENTO ID
+    $stmt = $conn->prepare("SELECT metodopagamento.metodopagamentoid
+                            FROM metodopagamento
+                            WHERE metodopagamento.tipo = ?");
+    $stmt->execute(array($metodopagamento));
+    $result = $stmt->fetch();
+
+    $metodopagamentoid = $result;
+
+    //UPDATE INFORMACAOPAGAMENTO
+    $stmt = $conn->prepare("UPDATE informacaofaturacao
+                            SET metodopagamentoid = ?
+                            WHERE informacaofaturacaoid = ?");
+    $stmt->execute(array($metodopagamentoid, $encomendaID));
+
+    $numerocartao = $orderinformationf['numerocartao'];
+    $array = array($orderinformationf['mm'], $orderinformationf['yy']);
+    $validade = implode("/", $array);
+    $cvv = $orderinformationf['cvv'];
+
+    if($metodopagamento == 'Visa'){
+
+      $stmt = $conn->prepare("INSERT INTO cartaocredito(cartaocreditoid,tipo,numero,validade,cvv)
+                              VALUES (?, ?, ?, ?, ?)");
+      $stmt->execute(array($encomendaID, $metodopagamento, $numerocartao, $validade, $cvv));
+    }
+
+    foreach ($publicationscart as $publication) {
+
+      insertPublicacaoEncomenda($publication['publicacao.publicacaoid'], $encomendaID);
+      removeCartItem($clienteid ,$publication['publicacao.publicacaoid']);
+    }
+
+     $conn->commit();
+
+  }catch(Exception $e){
+
+    error_log($e->getMessage());
+
+    $conn->rollBack();
+
+    throw $e;
+  }
 }
 
 function insertPublicacaoEncomenda($publicationid, $idencomenda){

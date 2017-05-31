@@ -30,16 +30,15 @@ if(!$publicationscart){
 	exit;
 }
 
-// $carddate = explode('/', $userdata[0]['data']);
+$carddate = explode('/', $userdata[0]['validade']);
 
-// $cardday = $carddate[0];
-// $str = $carddate[1];
-// $cardmonth = ltrim($str, '0');
-// $cardyear = $carddate[2];
+$cardday = $carddate[0];
+$cardmonth = $carddate[1];
+$cardyear = $carddate[2];
 
-// $smarty->assign('cardday', $cardday);
-// $smarty->assign('cardmonth', $cardmonth);
-// $smarty->assign('cardyear', $cardyear);
+$smarty->assign('cardday', $cardday);
+$smarty->assign('cardmonth', $cardmonth);
+$smarty->assign('cardyear', $cardyear);
 
 $cartsubtotal = getUserCartSubtotal($clientid);
 

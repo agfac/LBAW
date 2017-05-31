@@ -2073,9 +2073,9 @@ INSERT INTO Encomenda (clienteID,moradaFaturacaoID,moradaEnvioID,estado) VALUES 
 
 /* ------------------------------------------------------ R27 MetodoPagamento ------------------------------------------------------ */
 INSERT INTO MetodoPagamento (tipo) VALUES ('Multibanco');
-INSERT INTO MetodoPagamento (tipo) VALUES ('CartaoCredito');
-INSERT INTO MetodoPagamento (tipo) VALUES ('Transferência Bancaria');
-INSERT INTO MetodoPagamento (tipo) VALUES ('À Cobrança');
+INSERT INTO MetodoPagamento (tipo) VALUES ('Visa');
+INSERT INTO MetodoPagamento (tipo) VALUES ('Transferencia Bancaria');
+INSERT INTO MetodoPagamento (tipo) VALUES ('A Cobranca');
 INSERT INTO MetodoPagamento (tipo) VALUES ('PayPal');
 INSERT INTO MetodoPagamento (tipo) VALUES ('MBnet');
 INSERT INTO MetodoPagamento (tipo) VALUES ('PaySafeCard');
