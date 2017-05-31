@@ -14,10 +14,6 @@ foreach ($getNPromotionalPublications as &$publications) {
 
 $smarty->assign('def_pubs', $getNPromotionalPublications);
 
-//pedro
-
-
-
 
 $all_publications = getAllPublications();
 

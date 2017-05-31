@@ -40,13 +40,13 @@ $('#subcategoria-form').on('change', function(){
 
 		$.getJSON("../../api/publications/get_by_category_promotion.php", {subcat_name: subcategory, cat_name: category}, function(data){
 
-
+			//console.log(data[0].publicacaoid);
 
 			$('.sub-products-listing').remove();
 
 			$('#products-listing').append('<div class="sub-products-listing" >');
 
-			if(data.length === 0 || data == "NULL") {
+			if(data.length === 0 || data == "NULL") {//data[0].publicacaoid == null){
 				$('.sub-products-listing').append('<p>Sem publicações para os dados introduzidos </p>');
 			}
 			

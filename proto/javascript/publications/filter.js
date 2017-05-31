@@ -5,10 +5,10 @@ $(document).ready(function() {
 	var subcategory = $('#subcategoria-form').find('option:selected').val();
 
 	var products;
+
 	$.getJSON("../../api/publications/get_by_category.php", {subcat_name: subcategory, cat_name: category}, function(data){
 		products = data;
 	});
-
 /////////////////
 
 $('#categoria-form').on('change', function(){
@@ -16,15 +16,52 @@ $('#categoria-form').on('change', function(){
 		flag = false;
 		category = $(this).find('option:selected').val();
 
+		console.log("cat "+category);
+
+
 		$('#subcategoria-form').empty();
 
 		if(category != "Escolha uma opção"){
 			$.getJSON("../../api/owner/updateSubCategories.php", {categoria: category}, function(data){
+
+					console.log(data);
 				$('#subcategoria-form').append('<option value="Escolha uma opção">Escolha uma opção</option>');
 				for (var i in data){
 					$('#subcategoria-form').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
 				}
 			});
+			
+			//-------------------
+			$.getJSON("../../api/publications/get_by_category.php", {subcat_name: null, cat_name: category}, function(data){
+				products = data;
+				
+				$('.sub-products-listing').empty();
+			// $('.sub-products-listing').find('table').remove();
+
+				if(data.length === 0 || data == "NULL"){
+					$('.sub-products-listing').append('<p>Sem publicações sobre a catergoria selecionada </p>');
+				}
+				else{
+					console.log(data);
+					products = data;
+
+					$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
+
+					for (var i in data){
+						var autor;
+						if(data[i].nome_autor != null)
+							autor = data[i].nome_autor;
+						else
+							autor = 'Sem autor';
+
+						$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"></a> <img src="../../' + data[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"> ' + data[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <strike>' + data[i].preco+ '€' +'</strike> </td> <td> <h7>' + data[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
+					}
+
+					$('.sub-products-listing').append('</tbody>');
+					$('.sub-products-listing').append('</table>');
+				}
+			});
+			//-------------------
 		}else
 		$('#subcategoria-form').append('<option value="Escolha uma opção">Escolha uma opção</option>');
 	}
@@ -40,7 +77,8 @@ $('#subcategoria-form').on('change', function(){
 
 		$.getJSON("../../api/publications/get_by_category.php", {subcat_name: subcategory, cat_name: category}, function(data){
 
-			$('.sub-products-listing').find('table').remove();
+			$('.sub-products-listing').empty();
+			// $('.sub-products-listing').find('table').remove();
 
 			if(data[0].publicacaoid == null){
 				$('.sub-products-listing').append('<p>Sem publicações sobre ' + data[0].nome_subcategoria +'</p>');
