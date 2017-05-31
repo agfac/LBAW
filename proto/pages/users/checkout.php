@@ -22,18 +22,25 @@ $username = $_SESSION['username'];
 $userdata = getUserAllData($username);
 $smarty->assign('USER_DATA', $userdata[0]);
 
-$carddate = explode('/', $userdata[0]['numero']);
-
-$cardday = $carddate[0];
-$str = $carddate[1];
-$cardmonth = ltrim($str, '0');
-$cardyear = $carddate[2];
-
-$smarty->assign('cardday', $cardday);
-$smarty->assign('cardmonth', $cardmonth);
-$smarty->assign('cardyear', $cardyear);
-
 $publicationscart = getUserPublicationsCart($clientid);
+
+if(!$publicationscart){
+	$_SESSION['error_messages'][] = 'Não possui produtos no carrinho. Deverá adicionar produtos ao carrinho para aceder à página solicitada';
+	header("Location: $BASE_URL");
+	exit;
+}
+
+// $carddate = explode('/', $userdata[0]['data']);
+
+// $cardday = $carddate[0];
+// $str = $carddate[1];
+// $cardmonth = ltrim($str, '0');
+// $cardyear = $carddate[2];
+
+// $smarty->assign('cardday', $cardday);
+// $smarty->assign('cardmonth', $cardmonth);
+// $smarty->assign('cardyear', $cardyear);
+
 $cartsubtotal = getUserCartSubtotal($clientid);
 
 $eightnewpublications = getNewPublications(8);
