@@ -7,7 +7,19 @@
         <ul>
           <li><a href="{$BASE_URL}">Página inicial</a></li>
           {if isset($def_cat)}
-          <li><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat={$def_cat}">{$def_cat}</a>
+          {if $def_cat == 1}
+          <li><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat={$def_cat}">Livros</a>
+          {else if $def_cat == 2}
+          <li><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat={$def_cat}">Livros Escolares</a>
+          {else if $def_cat == 3}
+          <li><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat={$def_cat}">Apoio Escolar</a>
+          {else if $def_cat == 4}
+          <li><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat={$def_cat}">Revistas</a>
+          {else if $def_cat == 5}
+          <li><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat={$def_cat}">Dicionários e Enciclopédias</a>
+          {else if $def_cat == 6}
+          <li><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat={$def_cat}">Guias Turísticos e Mapas</a>
+          {/if}
           {else}
           <li><a class="active">Pesquisa</a></li>
           {/if}

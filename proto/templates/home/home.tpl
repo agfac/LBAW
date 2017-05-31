@@ -11,7 +11,7 @@
               <h6 class="text-uppercase">Categorias <i class="fa fa-navicon pull-right"></i></h6>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=1">
                 Livros <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -21,7 +21,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=2">
                 Livros Escolares <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -31,7 +31,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=3">
                 Apoio Escolar <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -41,7 +41,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown" >
+              <a class="dropdown-toggle" href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=4">
                 Revistas <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -51,7 +51,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=5">
                 Dicionários e Enciclopédias <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
@@ -61,7 +61,7 @@
               </ul>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown">
+              <a class="dropdown-toggle" href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=6">
                 Guias Turísticos e Mapas <i class="fa fa-angle-right pull-right"></i>
               </a>
               <ul class="dropdown-menu">
