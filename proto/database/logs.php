@@ -195,4 +195,14 @@ function insertClientLog($id){
     
     $stmt->execute(array($id));
 }
+
+function insertExpressionSearched($expression){
+    
+    global $conn;
+    
+    $stmt = $conn->prepare("INSERT INTO pesquisa (expressao)
+                            VALUES (?)");
+    
+    $stmt->execute(array($expression));
+}
 ?>

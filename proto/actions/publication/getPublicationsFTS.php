@@ -1,6 +1,7 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR .'database/publications.php');
+include_once($BASE_DIR .'database/logs.php');
 
 if (!$_POST['searchpublication']) {
   
@@ -14,6 +15,8 @@ if (!$_POST['searchpublication']) {
 $valor = strip_tags($_POST['searchpublication']);
 
 $getPublicationFTS = testeFullTextSearch($valor);
+
+insertExpressionSearched($valor);
 
 foreach ($getPublicationFTS as &$publications) {
 	if(!$publications['nome_autor'])
