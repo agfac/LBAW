@@ -31,7 +31,8 @@
 				
 				<div class="row">
 					<div class="col-sm-13">
-						<div class="table-responsive">    
+						<div class="table-responsive">
+							{if $orders}    
 							<table class="table table-striped">
 								<thead>
 									<tr>
@@ -52,7 +53,7 @@
 									<tr>
 										<td>
 											<a href="{$BASE_URL}pages/users/order-publications.php?id={$order.encomendaid}">
-											#{$order.encomendaid}
+												#{$order.encomendaid}
 											</a>
 										</td>
 										<td>
@@ -109,35 +110,40 @@
 										<td>
 											{if $order.estado eq 'Enviada'} 
 											<span class="label label-success">
-											{elseif $order.estado eq 'Processada'} 
-											<span class="label label-info">
-											{elseif $order.estado eq 'Devolvida'} 
-											<span class="label label-default">
-											{elseif $order.estado eq 'Em processamento'}
-											<span class="label label-warning">
-											{elseif $order.estado eq 'Cancelada'}
-											<span class="label label-danger">
-											{/if}
-											{$order.estado}</span>
-										</td>
-									</tr>
-									{assign var=val value=$val+1}
-									{/foreach}
-								</tbody>
-							</table><!-- end table -->
-						</div><!-- end table-responsive -->
-						
-						<hr class="spacer-10 no-border">
-						
-						<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm">
-							<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
-						</a>
-					</div><!-- end col -->
-				</div><!-- end row -->
-			</div><!-- end col -->
-		</div><!-- end row -->                
-	</div><!-- end container -->
-</section>
-<!-- end section -->
+												{elseif $order.estado eq 'Processada'} 
+												<span class="label label-info">
+													{elseif $order.estado eq 'Devolvida'} 
+													<span class="label label-default">
+														{elseif $order.estado eq 'Em processamento'}
+														<span class="label label-warning">
+															{elseif $order.estado eq 'Cancelada'}
+															<span class="label label-danger">
+																{/if}
+																{$order.estado}</span>
+															</td>
+														</tr>
+														{assign var=val value=$val+1}
+														{/foreach}
+													</tbody>
+												</table><!-- end table -->
+												{else}
+												<div>
+													<p>Ainda não efetuou qualquer encomenda</p>
+												</div>
+												{/if}
+											</div><!-- end table-responsive -->
 
-{include file='common/footer.tpl'}
+											<hr class="spacer-10 no-border">
+
+											<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm">
+												<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
+											</a>
+										</div><!-- end col -->
+									</div><!-- end row -->
+								</div><!-- end col -->
+							</div><!-- end row -->                
+						</div><!-- end container -->
+					</section>
+					<!-- end section -->
+
+					{include file='common/footer.tpl'}

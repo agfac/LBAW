@@ -328,4 +328,11 @@
             </div><!-- end container -->
           </div><!-- end navbar -->
 
+          {if isset($USER_DATA)}
+          {literal}
+          <script type="text/javascript">
+            var userdata = '{$USER_DATA}';
+          </script>
+          {/literal}
+          {/if}
           <script src="{$BASE_URL}javascript/common/header.js"></script>
