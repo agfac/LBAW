@@ -7,6 +7,7 @@
             <div class="col-sm-12">
                 <ul>
                     <li><a href="{$BASE_URL}">Página inicial</a></li>
+                    <li><a href="#">Páginas</a></li>
                     <li class="active">Login</li>
                 </ul><!-- end breadcrumb -->
             </div><!-- end col -->    
@@ -22,9 +23,8 @@
                 <div class="widget">
                     <h6 class="subtitle">Novidades</h6>
                     <figure>
-                        {assign var=val value=0}
-                        <a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$val.publicacaoid}">
-                            <img src="{$BASE_URL}{$eightnewpublications.$val.url}" alt="collection">
+                        <a href="javascript:void(0);">
+                            <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="collection">
                         </a>
                     </figure>
                 </div><!-- end widget -->

@@ -29,45 +29,42 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nome_cliente" placeholder="Nome do Cliente">
+                  <input type="text" class="form-control" placeholder="Nome do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Email Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="email_cliente" placeholder="Email do Cliente">
+                  <input type="text" class="form-control" placeholder="Nome do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">ID:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="id_encomenda" placeholder="ID da encomenda">
+                  <input type="text" class="form-control" placeholder="ID da encomenda">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Estado:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select id="estadoencomenda" class="form-control">
+                  <select class="form-control">
                     <option>Escolha uma opção</option>
-                    <option value="Em processamento">Em processamento</option>
+                    <option value="Em_processamento">Em processamento</option>
                     <option value="Processada">Processada</option>
                     <option value="Enviada">Enviada</option>
-                    <option value="Cancelada">Cancelada</option>
                     <option value="Devolvida">Devolvida</option>
                   </select>
                 </div>
               </div>
 
-              <div class="clearfix"></div>
               <div class="ln_solid"></div>
-
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button type="button" id="clean" class="btn btn-primary" type="reset">Limpar</button>
-                  <button type="button" id="search" class="btn btn-success">Submeter</button>
+                  <button class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -89,19 +86,19 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="order_content x_content">
+          <div class="x_content">
             <p>Encomendas listadas da loja</p>
             <!-- start of orders list -->
             {if $allOrders}
-            <table class="table table-striped projects" id="myTable">
+            <table class="table table-striped projects">
               <thead>
                 <tr>
-                  <th id="orderByID" >ID <span class="glyphicon glyphicon-sort"></span></th>
-                  <th id="orderByName">Nome cliente <span class="glyphicon glyphicon-sort"></span></th>
-                  <th id="orderByTotalPrice">Preço Total <span class="glyphicon glyphicon-sort"></span></th>
-                  <th id="orderByState">Estado <span class="glyphicon glyphicon-sort"></span></th>
-                  <th id="orderByDate">Data <span class="glyphicon glyphicon-sort"></span></th>
-                  <th>Ações</th>
+                  <th style="width: 1%">ID</th>
+                  <th style="width: 30%">Nome cliente</th>
+                  <th>Preço Total</th>
+                  <th>Estado</th>
+                  <th>Data</th>
+                  <th style="width: 15%">#Editar</th>
                 </tr>
               </thead>
               <tbody>
@@ -116,22 +113,44 @@
                   </td>
                   <td>
                     {if $order.estado == "Em processamento"}
-                    <button class="btn btn-info btn-xs">Em processamento</button>
+                    <button type="button" class="btn btn-info btn-xs">Em processamento</button>
                     {else if $order.estado == "Processada"}
-                    <button class="btn btn-primary btn-xs">Processada</button>
+                    <button type="button" class="btn btn-primary btn-xs">Processada</button>
                     {else if $order.estado == "Enviada"}
-                    <button class="btn btn-success btn-xs">Enviada</button>
-                    {else if $order.estado == "Devolvida"}
-                    <button class="btn btn-warning btn-xs">Devolvida</button>
+                    <button type="button" class="btn btn-success btn-xs">Enviada</button>
                     {else}
-                    <button class="btn btn-danger btn-xs">Cancelada</button>
+                    <button type="button" class="btn btn-warning btn-xs">Cancelada</button>
                     {/if}
                   </td>
                   <td>
                     <a>{$order.data|date_format:$parsedata.fulldata}</a>
                   </td>
                   <td>
-                    <a href="{$BASE_URL}pages/owner/order.php?id={$order.encomendaid}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver/Editar </a>
+                    <a href="{$BASE_URL}pages/owner/order.php?id={$order.encomendaid}" class="btn btn-info btn-xs"><i class="fa fa-folder"></i> Ver/Editar </a>
+                    <!--<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Editar </a>-->
+                    <!--<select>
+                      {if $order.estado == "Em processamento"}
+                      <option value="Em processamento" selected>Em processamento</option>
+                      <option value="Processada">Processada</option>
+                      <option value="Enviada">Enviada</option>
+                      <option value="Devolvida">Devolvida</option>
+                      {else if $order.estado == "Processada"}
+                      <option value="Em processamento">Em processamento</option>
+                      <option value="Processada" selected>Processada</option>
+                      <option value="Enviada">Enviada</option>
+                      <option value="Devolvida">Devolvida</option>
+                      {else if $order.estado == "Enviada"}
+                      <option value="Em processamento" selected>Em processamento</option>
+                      <option value="Processada">Processada</option>
+                      <option value="Enviada" selected>Enviada</option>
+                      <option value="Devolvida">Devolvida</option>
+                      {else}
+                      <option value="Em processamento" selected>Em processamento</option>
+                      <option value="Processada">Processada</option>
+                      <option value="Enviada">Enviada</option>
+                      <option value="Devolvida" selected>Devolvida</option>
+                      {/if}
+                    </select>-->
                   </td>
                 </tr>
                 {/foreach}
@@ -150,5 +169,3 @@
 </div>
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
-<script src="{$BASE_URL}javascript/owner/orders_search.js"></script>
-<script src="{$BASE_URL}javascript/utilities.js"></script>

@@ -2,17 +2,9 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR .'database/workers.php');
 
-  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['morada'] || !$_POST['localidade'] || !$_POST['codigopostal'] || ($_POST['pais'] === "Escolha um País") || !$_POST['email'] || !$_POST['username'] || !$_POST['password'] || !$_POST['telefone'] || !$_POST['nif'] || !$_POST['cartaocidadao']) {
+  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['morada'] || !$_POST['localidade'] || !$_POST['codigopostal'] || !$_POST['pais'] || !$_POST['email'] || !$_POST['username'] || !$_POST['password'] || !$_POST['telefone'] || !$_POST['nif'] || !$_POST['cartaocidadao']) {
     error_log('if');
     $_SESSION['error_messages'][] = 'Todos os campos são de preenchimento obrigatório';
-    $_SESSION['form_values'] = $_POST;
-    header("Location: $BASE_URL" . 'pages/admin/worker_add.php');
-    exit;
-  }
-
-  if (!preg_match("/[0-9]{4}-[0-9]{3}/", $_POST['codigopostal'])) {
-    error_log('if');
-    $_SESSION['error_messages'][] = 'Erro no código postal - Tem de introduzir no formato: XXXX-XXX';
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/admin/worker_add.php');
     exit;
@@ -30,7 +22,7 @@
   $nif = strip_tags($_POST['nif']);
   $cartaocidadao = strip_tags($_POST['cartaocidadao']);
   $username = strip_tags($_POST['username']);
-  $password = strip_tags($_POST['password']);
+  $password = $_POST['password'];
 
   $pieces = explode('/', $datanascimento);
   $diaNasc = $pieces[1];
@@ -49,24 +41,15 @@
     
   } catch (PDOException $e) {
   
-    if (strpos($e->getMessage(), 'funcionario_cartaocidadao_key') !== false) {
-      $_SESSION['error_messages'][] = 'Já existe um funcionário com o cartão de cidadao introduzido';
+    if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
+      $_SESSION['error_messages'][] = 'Funcionario duplicado';
+      $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
     }
-    else if (strpos($e->getMessage(), 'funcionario_email_key') !== false) {
-      $_SESSION['error_messages'][] = 'Já existe um funcionário com o email introduzido';
-    }
-    else if (strpos($e->getMessage(), 'funcionario_nif_key') !== false) {
-      $_SESSION['error_messages'][] = 'Já existe um funcionário com o nif introduzido';
-    }
-    else if (strpos($e->getMessage(), 'funcionario_username_key') !== false) {
-      $_SESSION['error_messages'][] = 'Já existe um funcionário com o username introduzido';
-    }
-    else $_SESSION['error_messages'][] = 'Erro ao adicionar o funcionário';
+    else $_SESSION['error_messages'][] = 'Erro ao criar utilizador';
 
     $_SESSION['form_values'] = $_POST;
     header("Location: $BASE_URL" . 'pages/admin/worker_add.php');
     exit;
-
   }
   $_SESSION['success_messages'][] = 'Funcionario registado com sucesso';  
   header("Location: $BASE_URL" . 'pages/admin/workers.php');

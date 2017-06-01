@@ -1,6 +1,5 @@
 <?php
 
-//CREATE USER
 function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $localidade, $cod1, $cod2, $pais, $telefone, $email, $nif, $username, $password) {
 
   global $conn;
@@ -9,10 +8,27 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
 
   try{
     
+  //CHECK PAIS ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM pais 
+                            WHERE nome = ?");
+    $stmt->execute(array($pais));
+    $result = $stmt->fetch();
+
+    if($result){
+      $paisID = $result['paisid'];
+    }
+    else{
+      //INSERT INTO PAIS
+      $stmt = $conn->prepare("INSERT INTO pais (nome) VALUES (?)");
+      $stmt->execute(array($pais));
+      $paisID = $conn->lastInsertId('pais_paisid_seq');
+    }
+    
     //CHECK LOCALIDADE ALREADY EXISTS
     $stmt = $conn->prepare("SELECT *
-                            FROM localidade 
-                            WHERE nome = ?");
+      FROM localidade 
+      WHERE nome = ?");
     $stmt->execute(array($localidade));
     $result = $stmt->fetch();
     
@@ -22,7 +38,7 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
     else{
       //INSERT INTO LOCALIDADE
       $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) VALUES (?, ?)");
-      $stmt->execute(array($pais, $localidade));
+      $stmt->execute(array($paisID, $localidade));
       $localidadeID = $conn->lastInsertId('localidade_localidadeid_seq');
     }
 
@@ -42,15 +58,27 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
       $stmt->execute(array($localidadeID, $cod1, $cod2));
       $codPostalID = $conn->lastInsertId('codigopostal_codigopostalid_seq');
     }
+    
+    //CHECK CLIENTE ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM cliente 
+                            WHERE username = ? OR email = ? OR nif = ?");
+    $stmt->execute(array($username, $email, $nif));
+    $result = $stmt->fetch();
 
+    if($result){
+      die('Cliente já existe!');
+    }
+    else{
       //INSERT INTO CLIENTE
-    $stmt = $conn->prepare("INSERT INTO cliente (paisid, nome, genero, datanascimento, username, password, telefone, email, nif) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+      $stmt = $conn->prepare("INSERT INTO cliente (paisid, nome, genero, datanascimento, username, password, telefone, email, nif) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc,$anoNasc);
-
-    $stmt->execute(array($pais, $nome, $genero, $datanasc, $username, sha1($password), $telefone, $email, $nif));
-
-    $clienteID = $conn->lastInsertId('cliente_clienteid_seq');
+      $datanasc = sprintf("%02d/%02d/%04d",$diaNasc,$mesNasc+1,$anoNasc);
+      
+      $stmt->execute(array($paisID, $nome, $genero, $datanasc, $username, sha1($password), $telefone, $email, $nif));
+      
+      $clienteID = $conn->lastInsertId('cliente_clienteid_seq');
+    }
 
     //INSERT INTO MORADA
     $stmt = $conn->prepare("INSERT INTO morada (codigopostalid, rua) VALUES (?, ?)");
@@ -65,30 +93,22 @@ function createUser($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $loca
     $stmt = $conn->prepare("INSERT INTO moradaenvio (moradaid, clienteid) VALUES (?, ?)");
     $stmt->execute(array($moradaID, $clienteID));
 
-    $defaultwishlist = 'wishlist';
-    //INSERT INTO WISHLIST
-    $stmt = $conn->prepare("INSERT INTO wishlist (clienteid, nome) VALUES (?, ?)");
-    $stmt->execute(array($clienteID, $defaultwishlist));
-
     $conn->commit();
   }catch(Exception $e){
-
+    
     error_log($e->getMessage());
 
     $conn->rollBack();
-
-    throw $e;
   }
 }
 
-//CREATE AUTOR
 function createAutor($paisId, $nomeAutor, $genero, $datanascimento, $biografia){
   global $conn;
 
   $conn->beginTransaction();
 
   try{
-
+ 
     //CHECK AUTOR ALREADY EXISTS
     $stmt = $conn->prepare("SELECT *
                             FROM autor 
@@ -96,30 +116,31 @@ function createAutor($paisId, $nomeAutor, $genero, $datanascimento, $biografia){
     $stmt->execute(array($nomeAutor, $datanascimento));
     $result = $stmt->fetch();
 
+    if($result){
+      die('Autor já existe!');
+    }
+    else{
       //INSERT INTO AUTOR
-    $stmt = $conn->prepare("INSERT INTO autor (paisid, nome, genero, datanascimento, biografia) VALUES (?, ?, ?, ?, ?)");
+      $stmt = $conn->prepare("INSERT INTO autor (paisid, nome, genero, datanascimento, biografia) VALUES (?, ?, ?, ?, ?)");
 
-    $stmt->execute(array($paisId, $nomeAutor, $genero, $datanascimento, $biografia));
+      $stmt->execute(array($paisId, $nomeAutor, $genero, $datanascimento, $biografia));
 
-    $autorID = $conn->lastInsertId('autor_autorid_seq');
-    
+      $autorID = $conn->lastInsertId('autor_autorid_seq');
+    }
 
     $conn->commit();
 
     return $autorID;
   }catch(Exception $e){
-
+    
     error_log($e->getMessage());
 
     $conn->rollBack();
-
-    throw $e;
   }
 }
 
-//LOGIN VERIFICATION
-function isClientLoginCorrect($username, $password) {
-
+function isLoginCorrect($username, $password) {
+  
   global $conn;
   
   $stmt = $conn->prepare("SELECT * 
@@ -131,113 +152,44 @@ function isClientLoginCorrect($username, $password) {
   return $stmt->fetch() == true;
 }
 
-function isOwnerLoginCorrect($username, $password) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT * 
-                          FROM funcionario 
-                          WHERE username = ? AND password = ?");
-  
-  $stmt->execute(array($username, sha1($password)));
-  
-  return $stmt->fetch() == true;
-}
-
-function isAdminLoginCorrect($username, $password) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT * 
-                          FROM administrador 
-                          WHERE username = ? AND password = ?");
-  
-  $stmt->execute(array($username, sha1($password)));
-  
-  return $stmt->fetch() == true;
-}
-
-//GET USER DATA
 function getUserData($username) {
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT * 
-                          FROM cliente
-                          WHERE username = ?");
-
-  $stmt->execute(array($username));
-
-  return $stmt->fetchAll();
+    
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT * 
+                            FROM cliente
+                            WHERE username = ?");
+    
+    $stmt->execute(array($username));
+    
+    return $stmt->fetchAll();
 }
 
-function getWorkerData($username) {
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT * 
-                          FROM funcionario
-                          WHERE username = ?");
-
-  $stmt->execute(array($username));
-
-  return $stmt->fetchAll();
-}
-
-function getAdminData($username) {
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT * 
-                          FROM administrador
-                          WHERE username = ?");
-
-  $stmt->execute(array($username));
-
-  return $stmt->fetchAll();
-}
-
-//GET USER ORDER LIST
 function getUserOrderList($clienteid) {
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT encomenda.*, informacaofaturacao.portes, informacaofaturacao.total, metodopagamento.tipo, morada.*, codigopostal.*, localidade.nome 
-                          FROM informacaofaturacao
-                          RIGHT JOIN encomenda
-                          ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid
-                          LEFT JOIN metodopagamento
-                          ON informacaofaturacao.metodopagamentoid = metodopagamento.metodopagamentoid
-                          LEFT JOIN morada
-                          ON morada.moradaid = encomenda.moradafaturacaoid
-                          LEFT JOIN codigopostal
-                          ON morada.codigopostalid = codigopostal.codigopostalid
-                          LEFT JOIN localidade
-                          ON localidade.localidadeid = codigopostal.localidadeid
-                          WHERE encomenda.clienteid = ?");
-
-  $stmt->execute(array($clienteid));
-
-  return $stmt->fetchAll();
+    
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT encomenda.encomendaid, publicacao.titulo, publicacao.preco, informacaofaturacao.total, encomenda.data, encomenda.estado, imagem.url 
+                            FROM informacaofaturacao
+                            JOIN encomenda
+                            ON informacaofaturacao.informacaofaturacaoid = encomenda.informacaofaturacaoid 
+                            JOIN cliente
+                            ON cliente.clienteid = encomenda.clienteid 
+                            JOIN publicacaoencomenda
+                            ON publicacaoencomenda.encomendaid = encomenda.encomendaid 
+                            JOIN publicacao
+                            ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
+                            JOIN imagem
+                            ON imagem.publicacaoid = publicacao.publicacaoid
+                            WHERE encomenda.clienteid = ?");
+    
+    $stmt->execute(array($clienteid));
+    
+    return $stmt->fetchAll();
 }
 
-//GET USER ORDER LIST
-function checkUserHasOrder($clienteid, $encomendaid) {
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT encomenda.* 
-                          FROM encomenda
-                          WHERE encomenda.clienteid = ? AND encomenda.encomendaid = ?");
-
-  $stmt->execute(array($clienteid, $encomendaid));
-
-  return ($stmt->fetch() !== false);
-}
-
-//GET USER PUBLICATIONS ON CART
 function getUserPublicationsCart($clienteid) {
-
+  
   global $conn;
   
   $stmt = $conn->prepare("SELECT publicacao.publicacaoid, publicacao.titulo, publicacaocarrinho.quantidade, publicacao.preco, imagem.url, subcategoria.nome AS nome_subcategoria, categoria.nome AS nome_categoria
@@ -261,74 +213,11 @@ function getUserPublicationsCart($clienteid) {
   return $stmt->fetchAll();
 }
 
-//GET USER CART SUBTOTAL
-function getUserCartSubtotal($clienteid) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT subtotal
-                          FROM carrinho
-                          WHERE carrinhoid = ?");
-  
-  $stmt->execute(array($clienteid));
-  
-  return $stmt->fetchAll();
-}
-
-//INSERT PUBLICATION ON CART
-function insertCartPublication($carrinhoid, $publicacaoid, $quantidade) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("INSERT INTO publicacaocarrinho
-                          VALUES (?, ?, ?)");
-  
-  $stmt->execute(array($publicacaoid, $carrinhoid, $quantidade));
-}
-
-//UPDATE QUANTITY ON PUBLICATION CART
-function updateCartItems($carrinhoid, $publicacaoid, $quantidade) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("UPDATE publicacaocarrinho
-                          SET quantidade = ?
-                          WHERE carrinhoid = ? AND publicacaoid = ?");
-  
-  $stmt->execute(array($quantidade, $carrinhoid, $publicacaoid));
-}
-
-//REMOVE PUBLICATION FROM CART
-function removeCartItem($carrinhoid, $publicacaoid) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("DELETE FROM publicacaocarrinho
-                          WHERE carrinhoid = ? AND publicacaoid = ?");
-  
-  $stmt->execute(array($carrinhoid, $publicacaoid));
-}
-
-//PUBLICATION ON CART VERIFICATION
-function isPublicationOnCart($carrinhoid, $publicacaoid) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT * 
-                          FROM publicacaocarrinho 
-                          WHERE publicacaoid = ? AND carrinhoid = ?");
-  
-  $stmt->execute(array($publicacaoid, $carrinhoid));
-  
-  return $stmt->fetch() == true;
-}
-
-//GET PUBLICATIONS ON WISHLIST
 function getUserPublicationsWishList($clienteid) {
-
+  
   global $conn;
   
-  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.publicacaoid, publicacao.titulo, publicacao.preco, imagem.url, subcategoria.nome AS nome_subcategoria, categoria.nome AS nome_categoria
+  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.titulo, publicacao.preco, imagem.url
                           FROM wishlist
                           JOIN cliente
                           ON wishlist.clienteid = cliente.clienteid 
@@ -338,10 +227,6 @@ function getUserPublicationsWishList($clienteid) {
                           ON publicacao.publicacaoid = publicacaowishlist.publicacaoid 
                           JOIN imagem
                           ON imagem.publicacaoid = publicacao.publicacaoid
-                          JOIN subcategoria
-                          ON publicacao.subcategoriaid = subcategoria.subcategoriaid 
-                          JOIN categoria
-                          ON categoria.categoriaid = subcategoria.categoriaid
                           WHERE cliente.clienteid = ?");
   
   $stmt->execute(array($clienteid));
@@ -349,65 +234,6 @@ function getUserPublicationsWishList($clienteid) {
   return $stmt->fetchAll();
 }
 
-//INSERT PUBLICATION ON WISHLIST
-function insertPublicationWishList($clienteid, $publicacaoid) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("INSERT INTO publicacaowishlist
-                          VALUES ((SELECT wishlist.wishlistid
-                          FROM wishlist
-                          WHERE wishlist.clienteid = ?), ?)");
-  
-  $stmt->execute(array($clienteid, $publicacaoid));
-}
-
-//REMOVE PUBLICATION FROM WISHLIST
-function removePublicationWishList($clienteid, $publicacaoid) {
-
-  global $conn;
-  
-  $stmt = $conn->prepare("DELETE FROM publicacaowishlist
-                          WHERE publicacaowishlist.publicacaoid = ? AND publicacaowishlist.wishlistid = (SELECT wishlist.wishlistid
-                          FROM wishlist
-                          WHERE wishlist.clienteid = ?)");
-  
-  $stmt->execute(array($publicacaoid, $clienteid));
-}
-
-//MOVE PUBLICATION FROM WISHLIST TO CART
-function movePublicationWishListToCart($clienteid, $publicacaoid, $quantidade) {
-
-  global $conn;
-  
-  $conn->beginTransaction();
-
-  try{
-
-    //INSERT PUBLICATION ON CART
-    $stmt = $conn->prepare("INSERT INTO publicacaocarrinho
-      VALUES (?, ?, ?)");
-    $stmt->execute(array($publicacaoid, $clienteid, $quantidade));
-
-    //REMOVE PUBLICATION FROM WISHLIST
-    $stmt = $conn->prepare("DELETE FROM publicacaowishlist
-                            WHERE publicacaowishlist.publicacaoid = ? AND publicacaowishlist.wishlistid = (SELECT wishlist.wishlistid
-                            FROM wishlist
-                            WHERE wishlist.clienteid = ?)");
-    $stmt->execute(array($publicacaoid, $clienteid));
-
-    $conn->commit();
-  }catch(Exception $e){
-
-    error_log($e->getMessage());
-
-    $conn->rollBack();
-
-    throw $e;
-  }
-}
-
-//GET ALL CLIENTS
 function getAllUsers(){
   global $conn;
   
@@ -420,39 +246,35 @@ function getAllUsers(){
 }
 
 function getUserAllData($username) {
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.paisid, pais.nome AS nomePais, localidade.localidadeid, localidade.nome AS nomeLocalidade, cartaocreditocliente.numero as numerocartao, cartaocreditocliente.*
-    FROM cliente
-    LEFT JOIN moradafaturacao
-    ON moradafaturacao.clienteid = cliente.clienteid
-    LEFT JOIN morada
-    ON moradafaturacao.moradaid = morada.moradaid
-    LEFT JOIN codigopostal
-    ON  codigopostal.codigopostalid = morada.codigopostalid
-    LEFT JOIN localidade
-    ON localidade.localidadeid = codigopostal.localidadeid
-    LEFT JOIN pais
-    ON pais.paisid = localidade.paisid
-    LEFT JOIN cartaocreditocliente
-    ON cartaocreditocliente.clienteid = cliente.clienteid
-    WHERE cliente.username = ?");
-  $stmt->execute(array($username));
-
-  return $stmt->fetchAll();
+    global $conn;
+    
+    $stmt = $conn->prepare("SELECT cliente.*, morada.rua, codigopostal.*, pais.paisid, pais.nome AS nomePais, localidade.localidadeid, localidade.nome AS nomeLocalidade
+                            FROM cliente
+                            LEFT JOIN moradafaturacao
+                            ON moradafaturacao.clienteid = cliente.clienteid
+                            LEFT JOIN morada
+                            ON moradafaturacao.moradaid = morada.moradaid
+                            LEFT JOIN codigopostal
+                            ON  codigopostal.codigopostalid = morada.codigopostalid
+                            LEFT JOIN localidade
+                            ON localidade.localidadeid = codigopostal.localidadeid
+                            LEFT JOIN pais
+                            ON pais.paisid = localidade.paisid
+                            WHERE cliente.username = ?");
+    $stmt->execute(array($username));
+    
+    return $stmt->fetchAll();
 }
 
-//CLIENT STATUS VERIFICATION
 function getClientStatus($username){
   global $conn;
-  $stmt = $conn->prepare("SELECT ativo
-                          FROM cliente
-                          WHERE username = ?");
-  $stmt->execute(array($username));
-  return $stmt->fetch();
+    $stmt = $conn->prepare("SELECT ativo
+              FROM cliente
+              WHERE username = ?");
+    $stmt->execute(array($username));
+    return $stmt->fetch();
 }
 
-//UPDATE CLIENT STATUS
 function updateClientStatus($username, $estado){
   global $conn;
 
@@ -471,12 +293,11 @@ function updateClientStatus($username, $estado){
   }
 
   $stmt = $conn->prepare("UPDATE cliente
-                          SET ativo = ? 
-                          WHERE username = ?");
+                        SET ativo = ? 
+                        WHERE username = ?");
   $stmt->execute(array($estado, $username));
 }
 
-//PAIS EXIST VERIFICATION
 function verifyPaisIfExists($nomePais){
   global $conn;
 
@@ -491,14 +312,13 @@ function verifyPaisIfExists($nomePais){
   }
   else{
     $stmt = $conn->prepare("INSERT INTO pais (nome) 
-      VALUES (?)");
+                            VALUES (?)");
     $stmt->execute(array($nomePais));
     $paisID = $conn->lastInsertId('pais_paisid_seq');
   }
   return $paisID;
 }
 
-//UPDATE CLIENT INFORMATION
 function updateUserInformation($username, $userdata, $newuserinformation) {
 
   global $conn;
@@ -506,7 +326,7 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
   $conn->beginTransaction();
 
   try{
-
+    
     $paisID = $userdata[0]['paisid'];
     $pais = $newuserinformation['pais']; 
 
@@ -524,7 +344,7 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
       else{
       //INSERT INTO PAIS
         $stmt = $conn->prepare("INSERT INTO pais (nome) 
-          VALUES (?)");
+                                VALUES (?)");
         $stmt->execute(array($pais));
         $paisID = $conn->lastInsertId('pais_paisid_seq');
       }
@@ -555,7 +375,7 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
       else{
       //INSERT INTO LOCALIDADE
         $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
-          VALUES (?, ?)");
+                                VALUES (?, ?)");
         $stmt->execute(array($paisID, $localidade));
         $localidadeID = $conn->lastInsertId('localidade_localidadeid_seq');
       }
@@ -600,7 +420,7 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
       else{
       //INSERT INTO CODIGO_POSTAL
         $stmt = $conn->prepare("INSERT INTO codigopostal (localidadeid, cod1, cod2) 
-          VALUES (?, ?, ?)");
+                                VALUES (?, ?, ?)");
         $stmt->execute(array($localidadeID, $cod1, $cod2));
         $codPostalID = $conn->lastInsertId('codigopostal_codigopostalid_seq');
       }
@@ -683,18 +503,15 @@ function updateUserInformation($username, $userdata, $newuserinformation) {
     $conn->commit();
 
   }catch(Exception $e){
-
+    
     error_log($e->getMessage());
 
     $conn->rollBack();
-
-    throw $e;
   }
 }
 
-//UPDATE CLIENT PASSWORD
 function updateUserPassword($username, $newpassword){
-
+  
   global $conn;
 
   $stmt = $conn->prepare("UPDATE cliente 
@@ -703,358 +520,5 @@ function updateUserPassword($username, $newpassword){
   $stmt->execute(array(sha1($newpassword),$username));
   
   return $stmt->fetchAll();
-}
-
-//GET USER BY REGISTER DATE
-function getUsersByDate($firstDate,$todayDate){
-  global $conn;
-  $stmt = $conn->prepare("SELECT *
-                          FROM cliente
-                          WHERE dataregisto::date >= ? AND dataregisto::date <= ?");
-  $stmt->execute(array($firstDate,$todayDate));
-  return $stmt->fetchAll();
-}
-
-//GET USER BY NAME AND STATUS
-function getUserByNameAndStatus($nomeCliente, $estadoCliente){
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT *
-                          FROM cliente
-                          WHERE LOWER(nome) like '%'||?||'%'
-                          AND ativo = ?
-                          ORDER BY clienteid ASC");
-
-  $stmt->execute(array(strtolower($nomeCliente), $estadoCliente));
-  
-  return $stmt->fetchAll();
-}
-
-//GET USER BY NAME
-function getUserByName($nomeCliente){
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT *
-                          FROM cliente
-                          WHERE LOWER(nome) like '%'||?||'%'");
-
-  $stmt->execute(array(strtolower($nomeCliente)));
-  
-  return $stmt->fetchAll();
-}
-
-//GET USER BY EMAIL
-function getUserByEmail($emailCliente){
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT *
-                          FROM cliente
-                          WHERE LOWER(email) = ?");
-
-  $stmt->execute(array(strtolower($emailCliente)));
-  
-  return $stmt->fetchAll();
-}
-
-//GET USER BY STATUS
-function getUserByStatus($estadoCliente){
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT *
-                          FROM cliente
-                          WHERE ativo = ?
-                          ORDER BY clienteid ASC");
-  
-  $stmt->execute(array($estadoCliente));
-  
-  return $stmt->fetchAll();
-}
-
-//CLIENT EXISTS VERIFICATION
-function checkIfUserExists($username){
-  global $conn;
-  $stmt = $conn->prepare("SELECT username
-                          FROM cliente
-                          WHERE username = ?");
-  $stmt->execute(array($username));
-
-  return ($stmt->fetch() !== false);
-}
-
-function getAllCountries(){
-  
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT nome
-                          FROM pais");
-  $stmt->execute();
-
-  return $stmt->fetchAll();
-}
-
-function getAllCountriesAllInfo(){
-  
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT *
-                          FROM pais");
-  $stmt->execute();
-
-  return $stmt->fetchAll();
-}
-
-function checkIfUserBoughtPublication($clienteid, $publicacaoid){
-  
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT DISTINCT publicacaoencomenda.publicacaoid
-                          FROM encomenda
-                          JOIN cliente
-                          ON encomenda.clienteid = cliente.clienteid 
-                          JOIN publicacaoencomenda
-                          ON publicacaoencomenda.encomendaid = encomenda.encomendaid 
-                          JOIN publicacao
-                          ON publicacao.publicacaoid = publicacaoencomenda.publicacaoid
-                          WHERE cliente.clienteid = ? AND publicacao.publicacaoid = ?");
-  
-  $stmt->execute(array($clienteid, $publicacaoid));
-
-  return ($stmt->fetch() !== false);
-}
-
-function checkIfUserCommentedPublication($clienteid, $publicacaoid){
-  
-  global $conn;
-  
-  $stmt = $conn->prepare("SELECT cliente.clienteid, publicacao.publicacaoid
-                          FROM cliente
-                          JOIN comentario
-                          ON cliente.clienteid = comentario.clienteid 
-                          JOIN publicacao
-                          ON publicacao.publicacaoid = comentario.publicacaoid
-                          WHERE cliente.clienteid = ? AND publicacao.publicacaoid = ?");
-  
-  $stmt->execute(array($clienteid, $publicacaoid));
-
-  return ($stmt->fetch() !== false);
-}
-
-function insertOrder($clienteid, $orderinformationf, $orderinformatione, $publicationscart){
-  
-  global $conn;
-
-  $conn->beginTransaction();
-  
-  try{
-    
-    //LOCALIDADE FATURACAO
-    $localidadef = $orderinformationf['localidade'];
-
-    //CHECK LOCALIDADE ALREADY EXISTS
-    $stmt = $conn->prepare("SELECT *
-                            FROM localidade 
-                            WHERE nome = ?");
-    $stmt->execute(array($localidadef));
-    $result = $stmt->fetch();
-
-    if($result){
-      $localidadefID = $result['localidadeid'];
-    }else{
-      //INSERT INTO LOCALIDADE
-      $paisID = 193;
-
-      $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
-                              VALUES (?, ?)");
-      $stmt->execute(array($paisID, $localidadef));
-
-      $localidadefID = $conn->lastInsertId('localidade_localidadeid_seq');
-    }
-
-    //LOCALIDADE ENVIO
-    $localidadee = $orderinformatione['localidade'];
-
-    //CHECK LOCALIDADE ALREADY EXISTS
-    $stmt = $conn->prepare("SELECT *
-                            FROM localidade 
-                            WHERE nome = ?");
-    $stmt->execute(array($localidadee));
-    $result = $stmt->fetch();
-
-    if($result){
-      $localidadeeID = $result['localidadeid'];
-    }else{
-      //INSERT INTO LOCALIDADE
-      $paisID = 193;
-
-      $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
-                              VALUES (?, ?)");
-      $stmt->execute(array($paisID, $localidadee));
-
-      $localidadeeID = $conn->lastInsertId('localidade_localidadeid_seq');
-    }
-
-    //CODIGOPOSTAL FATURACAO
-    $cod1f = $orderinformationf['cod1'];
-    $cod2f = $orderinformationf['cod2'];
-
-    //CHECK CODIGO_POSTAL ALREADY EXISTS
-    $stmt = $conn->prepare("SELECT *
-                            FROM codigopostal 
-                            WHERE cod1 = ? AND cod2 = ?");
-    $stmt->execute(array($cod1f, $cod2f));
-    $result = $stmt->fetch();
-
-    if($result){
-      $codPostalfID = $result['codigopostalid'];
-    }
-    else{
-      //INSERT INTO CODIGO_POSTAL
-      $stmt = $conn->prepare("INSERT INTO codigopostal (localidadeid, cod1, cod2) 
-                              VALUES (?, ?, ?)");
-      $stmt->execute(array($localidadefID, $cod1f, $cod2f));
-      $codPostalfID = $conn->lastInsertId('codigopostal_codigopostalid_seq');
-    }
-
-    //CODIGOPOSTAL ENVIO
-    $cod1e = $orderinformatione['cod1'];
-    $cod2e = $orderinformatione['cod2'];
-
-    //CHECK CODIGO_POSTAL ALREADY EXISTS
-    $stmt = $conn->prepare("SELECT *
-                            FROM codigopostal 
-                            WHERE cod1 = ? AND cod2 = ?");
-    $stmt->execute(array($cod1e, $cod2e));
-    $result = $stmt->fetch();
-
-    if($result){
-      $codPostaleID = $result['codigopostalid'];
-    }
-    else{
-      //INSERT INTO CODIGO_POSTAL
-      $stmt = $conn->prepare("INSERT INTO codigopostal (localidadeid, cod1, cod2) 
-                              VALUES (?, ?, ?)");
-      $stmt->execute(array($localidadeeID, $cod1e, $cod2e));
-      $codPostaleID = $conn->lastInsertId('codigopostal_codigopostalid_seq');
-    }
-
-    //MORADA FATURACAO
-    $moradaf = $orderinformationf['morada'];
-
-    //GET MORADA ID
-    $stmt = $conn->prepare("SELECT morada.moradaid
-                            FROM morada
-                            WHERE morada.codigopostalid = ? AND morada.rua = ?");
-    $stmt->execute(array($codPostalfID, $moradaf));
-    $result = $stmt->fetch();
-
-    if($result){
-      $moradafID = $result['moradaid'];
-    }
-    else{
-      //INSERT INTO MORADA
-      $stmt = $conn->prepare("INSERT INTO morada (codigopostalid, rua) 
-                              VALUES (?, ?)");
-      $stmt->execute(array($codPostalfID, $moradaf));
-
-      $moradafID = $conn->lastInsertId('morada_moradaid_seq');
-    }
-
-    //MORADA FATURACAO
-    $moradae = $orderinformatione['morada'];
-
-    //GET MORADA ID
-    $stmt = $conn->prepare("SELECT morada.moradaid
-                            FROM morada
-                            WHERE morada.codigopostalid = ? AND morada.rua = ?");
-    $stmt->execute(array($codPostaleID, $moradae));
-    $result = $stmt->fetch();
-
-    if($result){
-      $moradaeID = $result['moradaid'];
-    }
-    else{
-      //INSERT INTO MORADA
-      $stmt = $conn->prepare("INSERT INTO morada (codigopostalid, rua) 
-                              VALUES (?, ?)");
-      $stmt->execute(array($codPostaleID, $moradae));
-
-      $moradaeID = $conn->lastInsertId('morada_moradaid_seq');
-    }
-
-    //INSERT ENCOMENDA
-    $stmt = $conn->prepare("INSERT INTO encomenda (clienteID,moradaFaturacaoID,moradaEnvioID)
-                            VALUES (?, ?, ?)");
-    $stmt->execute(array($clienteid, $moradafID, $moradaeID));
-
-    $encomendaID = $conn->lastInsertId('encomenda_encomendaid_seq');
-
-    //GET INFORMACAOFATURACAO ID
-    $stmt = $conn->prepare("SELECT encomenda.informacaofaturacaoid
-                            FROM encomenda
-                            WHERE encomenda.encomendaid = ?");
-    $stmt->execute(array($encomendaID));
-    $result = $stmt->fetch();
-
-    $informacaofaturacaoid = $result['informacaofaturacaoid'];
-
-    $metodopagamento = $orderinformationf['metodopagamento'];
-
-    //GET METODOPAGAMENTO ID
-    $stmt = $conn->prepare("SELECT metodopagamento.metodopagamentoid
-                            FROM metodopagamento
-                            WHERE metodopagamento.tipo = ?");
-    $stmt->execute(array($metodopagamento));
-    $result = $stmt->fetch();
-
-    $metodopagamentoid = $result['metodopagamentoid'];
-
-    //UPDATE INFORMACAOPAGAMENTO
-    $stmt = $conn->prepare("UPDATE informacaofaturacao
-                            SET metodopagamentoid = ?
-                            WHERE informacaofaturacaoid = ?");
-    $stmt->execute(array($metodopagamentoid, $informacaofaturacaoid));
-
-    $numerocartao = $orderinformationf['numerocartao'];
-    $array = array($orderinformationf['mm'], $orderinformationf['yy']);
-    $validade = implode("/", $array);
-    $cvv = $orderinformationf['cvv'];
-
-    if($metodopagamento == 'Visa'){
-
-      $stmt = $conn->prepare("INSERT INTO cartaocredito(cartaocreditoid,tipo,numero,validade,cvv)
-                              VALUES (?, ?, ?, ?, ?)");
-      $stmt->execute(array($informacaofaturacaoid, $metodopagamento, $numerocartao, $validade, $cvv));
-    }
-
-    foreach ($publicationscart as $publication) {
-
-      insertPublicacaoEncomenda($publication['publicacaoid'], $encomendaID);
-      removeCartItem($clienteid ,$publication['publicacaoid']);
-    }
-
-     $conn->commit();
-
-  }catch(Exception $e){
-
-    error_log($e->getMessage());
-
-    $conn->rollBack();
-
-    throw $e;
-  }
-}
-
-function insertPublicacaoEncomenda($publicationid, $idencomenda){
-  
-  global $conn;
-  
-  $stmt = $conn->prepare("INSERT INTO publicacaoencomenda (publicacaoID,encomendaID)
-                          VALUES (?, ?)");
-  
-  $stmt->execute(array($publicationid, $idencomenda));
 }
 ?>

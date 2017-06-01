@@ -38,16 +38,15 @@ $isbn             = strip_tags($_POST['isbn']);
 $edicao           = strip_tags($_POST['edicao']);
 $periodicidade    = strip_tags($_POST['periodicidade']);
 
-
-if(!($descricao))
+if(!isset($descricao))
   $descricao = NULL;
-if(!($paginas))
-  $paginas = 0;
-if(!($precopromocional))
-  $precopromocional = $preco;
-if(!($isbn))
+if(!isset($paginas))
+  $paginas = NULL;
+if(!isset($precopromocional))
+  $precopromocional = NULL;
+if(!isset($isbn))
   $isbn = NULL;
-if(!($edicao))
+if(!isset($edicao))
   $edicao = NULL;
 if($periodicidade === "Escolha uma opção")
   $periodicidade = NULL;
@@ -91,11 +90,11 @@ if($autorId == "novoAutor"){
     exit;
   }
 
-  $nomeAutor      = strip_tags($_POST['nomeAutor']);
-  $biografia      = strip_tags($_POST['biografia']);
-  $genero         = strip_tags($_POST['genero']);
+  $nomeAutor = strip_tags($_POST['nomeAutor']);
+  $biografia = strip_tags($_POST['biografia']);
+  $genero = strip_tags($_POST['genero']);
   $datanascimento = strip_tags($_POST['datanascimento']);
-  $paisId      = strip_tags($_POST['paisAutor']);
+  $paisAutor = strip_tags($_POST['paisAutor']);
 
   if(!isset($biografia))
     $biografia = "N/A";
@@ -113,6 +112,8 @@ if($autorId == "novoAutor"){
   $mesNasc = $pieces[0];
   $anoNasc = $pieces[2];
   $datanascimento = sprintf("%04d-%02d-%02d",$anoNasc,$mesNasc,$diaNasc);
+
+  $paisId = verifyPaisIfExists($paisAutor);
 
   try {
     
@@ -135,21 +136,16 @@ if($autorId == "novoAutor"){
   //Verify Editora and return id, if not exists add it
 $editoraId = verifyEditoraIfExists($editora);
 
+
 try {
 
-  $url = createPublication($titulo, $descricao, $autorId, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $block3, $block4);
-
-  uploadFile($url);
+  createPublication($titulo, $descricao, $autorId, $editoraId, $subCategoriaId, $datapublicacao, $stock, $peso, $paginas, $preco, $precopromocional, $codigobarras, $novidade, $isbn, $edicao, $periodicidade, $block3, $block4);
 
 } catch (PDOException $e) {
 
-  if (strpos($e->getMessage(), 'publicacao_codigobarras_key') !== false) {
+  if (strpos($e->getMessage(), 'publicacao_isbn_key') !== false) {
     $_SESSION['error_messages'][] = 'Publicação duplicada';
-    $_SESSION['field_errors']['publicacao'] = 'Código de barras escolhido já existe';
-  }
-  else if (strpos($e->getMessage(), 'ck_publicacao_precopromocional') !== false) {
-    $_SESSION['error_messages'][] = 'Erro no preço promocional';
-    $_SESSION['field_errors']['publicacao'] = 'Preço promocional não pode ser superior ao preço normal';
+    $_SESSION['field_errors']['publicacao'] = 'ISBN escolhido já existe';
   }
   else $_SESSION['error_messages'][] = 'Erro ao criar a publicação';
 
@@ -159,12 +155,4 @@ try {
 }
 $_SESSION['success_messages'][] = 'Publicação adicionada com sucesso';  
 header("Location: $BASE_URL" . 'pages/owner/publications.php');
-
-
-function uploadFile($url){
-  if(($_FILES['fileUpload'])){
-    $path = ('../../' . $url);
-    move_uploaded_file($_FILES['fileUpload']['tmp_name'], $path);
-   }
-}
 ?>

@@ -2,7 +2,7 @@
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/users.php';
 
-$username = strip_tags($_POST['client_username']);
+$username = $_POST['client_username'];
 
 $datanascimento = strip_tags($_POST['datanascimento']);
 $pieces = explode('-', $datanascimento);
@@ -32,6 +32,7 @@ $newuserinformation = array(
     'username'   => strip_tags($_POST['username']),
 );
 
+
 try {
     $userdata = getUserAllData($username);
     
@@ -39,14 +40,11 @@ try {
 
 } catch (PDOException $e) {
 
-    if (strpos($e->getMessage(), 'cliente_email_key') !== false ) {
-        $_SESSION['error_messages'][] = 'Já existe um utilizador com o Email introduzido';
-    } else if (strpos($e->getMessage(), 'cliente_nif_key') !== false ) {
-        $_SESSION['error_messages'][] = 'Já existe um utilizador com o NIF introduzido';
-    } else if (strpos($e->getMessage(), 'cliente_username_key') !== false) {
-        $_SESSION['error_messages'][] = 'Já existe um utilizador com o Username introduzido';
+    if (strpos($e->getMessage(), 'cliente_email_key') !== false || strpos($e->getMessage(), 'cliente_nif_key') !== false || strpos($e->getMessage(), 'cliente_username_key') !== false) {
+        $_SESSION['error_messages'][]         = 'Cliente já existe';
+        $_SESSION['field_errors']['username'] = 'Username already exists';
     } else {
-        $_SESSION['error_messages'][] = 'Erro ao editar o cliente';
+        $_SESSION['error_messages'][] = 'Error user information edition';
     }
 
     $_SESSION['form_values'] = $_POST;

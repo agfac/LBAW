@@ -6,7 +6,8 @@
 			<div class="col-sm-12">
 				<ul>
 					<li><a href="{$BASE_URL}">Página inicial</a></li>
-					<li class="active">Minhas Encomendas</li>
+					<li><a href="#">Páginas</a></li>
+					<li class="active">Encomenda</li>
 				</ul><!-- end breadcrumb -->
 			</div><!-- end col -->    
 		</div><!-- end row -->
@@ -30,120 +31,152 @@
 				<hr class="spacer-5"><hr class="spacer-20 no-border">
 				
 				<div class="row">
-					<div class="col-sm-13">
-						<div class="table-responsive">
-							{if $orders}    
+					<div class="col-sm-12">
+						<div class="table-responsive">    
 							<table class="table table-striped">
 								<thead>
 									<tr>
 										<th>ID</th>
+										<th colspan="2">Produtos</th>
+										<th>Preço</th>
 										<th>Data</th>
-										<th>Morada de Envio</th>
-										<th>Código-Postal</th>
-										<th>Localidade</th>
-										<th>Portes</th>
-										<th>Total</th>
-										<th>Método de Pagamento</th>
 										<th>Estado</th>
 									</tr>
 								</thead>
 								<tbody>
-									{assign var=val value=0}
 									{foreach $orders as $order}
 									<tr>
 										<td>
-											<a href="{$BASE_URL}pages/users/order-publications.php?id={$order.encomendaid}">
-												#{$order.encomendaid}
+											{$order.encomendaid}
+										</td>
+										<td>
+											<a href="?page=single-product">
+												<img width="60px" src="{$BASE_URL}{$order.url}" alt="product">
 											</a>
 										</td>
 										<td>
-											{$days.$val}
-											{if $months.$val eq '01'}
-											JAN
-											{elseif $months.$val eq '02'}
-											FEV
-											{elseif $months.$val eq '03'}
-											MAR
-											{elseif $months.$val eq '04'}
-											ABR
-											{elseif $months.$val eq '05'}
-											MAI
-											{elseif $months.$val eq '06'}
-											JUN
-											{elseif $months.$val eq '07'}
-											JUL
-											{elseif $months.$val eq '08'}
-											AGO
-											{elseif $months.$val eq '09'}
-											SET
-											{elseif $months.$val eq '10'}
-											OUT
-											{elseif $months.$val eq '11'}
-											NOV
-											{elseif $months.$val eq '12'}
-											DEZ
-											{/if}
-											{$years.$val}
+											<h6 class="regular"><a href="?page=single-product">{$order.titulo}</a></h6>
+											<p>Sed aliquam tincidunt tempus</p>
 										</td>
 										<td>
-											{$order.rua}
+											<span>€{$order.total}</span>
 										</td>
 										<td>
-											{$order.cod1}-{$order.cod2}
+											{$order.data}
 										</td>
 										<td>
-											{$order.nome}
+											<span class="label label-primary">{$order.estado}</span>
 										</td>
-										<td>
-											{if $order.portes eq '0'}
-											Grátis
-											{else}
-											€{$order.portes}
-											{/if}
-										</td>
-										<td>
-											€{$order.total}
-										</td>
-										<td>
-											{$order.tipo}
-										</td>
-										<td>
-											{if $order.estado eq 'Enviada'} 
-											<span class="label label-success">
-												{elseif $order.estado eq 'Processada'} 
-												<span class="label label-info">
-													{elseif $order.estado eq 'Devolvida'} 
-													<span class="label label-default">
-														{elseif $order.estado eq 'Em processamento'}
-														<span class="label label-warning">
-															{elseif $order.estado eq 'Cancelada'}
-															<span class="label label-danger">
-																{/if}
-																{$order.estado}</span>
-															</td>
-														</tr>
-														{assign var=val value=$val+1}
-														{/foreach}
-													</tbody>
-												</table><!-- end table -->
-												{else}
-												<div>
-													<p>Ainda não efetuou qualquer encomenda</p>
-												</div>
-												{/if}
-											</div><!-- end table-responsive -->
+									</tr>
+									{/foreach}
 
-											<hr class="spacer-10 no-border">
-
-											<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm">
-												<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
+									<tr>
+										<td>
+											#2MA269
+										</td>
+										<td>
+											<a href="?page=single-product">
+												<img width="60px" src="{$BASE_URL}images/publications/books/books_5.jpg" alt="product">
 											</a>
-										</div><!-- end col -->
-									</div><!-- end row -->
-								</div><!-- end col -->
-							</div><!-- end row -->                
-						</div><!-- end container -->
-					</section>
-					<!-- end section -->
+										</td>
+										<td>
+											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+											<p>Sed aliquam tincidunt tempus</p>
+										</td>
+										<td>
+											<span>€39.99</span>
+										</td>
+										<td>
+											09 Nov 2016
+										</td>
+										<td>
+											<span class="label label-danger">Cancelado</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											#973C5J
+										</td>
+										<td>
+											<a href="?page=single-product">
+												<img width="60px" src="{$BASE_URL}images/publications/books/books_5.jpg" alt="product">
+											</a>
+										</td>
+										<td>
+											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+											<p>Sed aliquam tincidunt tempus</p>
+										</td>
+										<td>
+											<span>€29.99</span>
+										</td>
+										<td>
+											23 Oct 2016
+										</td>
+										<td>
+											<span class="label label-success">Finalizada</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											#113V5G
+										</td>
+										<td>
+											<a href="?page=single-product">
+												<img width="60px" src="{$BASE_URL}images/publications/books/books_6.jpg" alt="product">
+											</a>
+										</td>
+										<td>
+											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+											<p>Sed aliquam tincidunt tempus</p>
+										</td>
+										<td>
+											<span>€19.99</span>
+										</td>
+										<td>
+											17 Sep 2016
+										</td>
+										<td>
+											<span class="label label-default">Desativada</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											#113V5G
+										</td>
+										<td>
+											<a href="?page=single-product">
+												<img width="60px" src="{$BASE_URL}images/publications/books/books_6.jpg" alt="product">
+											</a>
+										</td>
+										<td>
+											<h6 class="regular"><a href="?page=single-product">Lorem Ipsum dolor sit</a></h6>
+											<p>Sed aliquam tincidunt tempus</p>
+										</td>
+										<td>
+											<span>€19.99</span>
+										</td>
+										<td>
+											13 Sep 2016
+										</td>
+										<td>
+											<span class="label label-warning">Esperando</span>
+										</td>
+									</tr>
+								</tbody>
+							</table><!-- end table -->
+						</div><!-- end table-responsive -->
+						
+						<hr class="spacer-10 no-border">
+						
+						<a href="checkout.html" class="btn btn-light semi-circle btn-sm">
+							<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
+						</a>
+					</div><!-- end col -->
+				</div><!-- end row -->
+			</div><!-- end col -->
+		</div><!-- end row -->                
+	</div><!-- end container -->
+</section>
+<!-- end section -->
 
-					{include file='common/footer.tpl'}
+{include file='common/footer.tpl'}

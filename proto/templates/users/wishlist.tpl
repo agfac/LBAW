@@ -6,6 +6,7 @@
 			<div class="col-sm-12">
 				<ul>
 					<li><a href="?page=home">Página incial</a></li>
+					<li><a href="#">Páginas</a></li>
 					<li class="active">Wishlist</li>
 				</ul><!-- end breadcrumb -->
 			</div><!-- end col -->    
@@ -36,21 +37,21 @@
 							<table class="table">
 								<tbody>
 									{foreach $publicationswishlist as $publication}
-									<tr data-id="{$publication.publicacaoid}" data-price="{$publication.preco}">
+									<tr>
 										<td>
 											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
 												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
 											</a>
 										</td>
 										<td>
-											<h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
-											<small>{$publication.nome_categoria} | {$publication.nome_subcategoria}</small>
+											<h6 class="regular"><a href="?page=single-product">{$publication.titulo}</a></h6>
+											<small>Vestibulum tellus justo, vulputate ac nunc eu, laoreet pellentesque erat.</small>
 										</td>
 										<td>
 											<span class="text-primary">€{$publication.preco}</span>
 										</td>
 										<td>
-											<button type="button" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</button>
+											<a href="javascript:void(0)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Adicionar ao carrinho</a>
 										</td>
 										<td>
 											<button type="button" class="close">×</button>
@@ -80,5 +81,3 @@
 <!-- end section -->
 
 {include file='common/footer.tpl'}
-
-<script src="{$BASE_URL}javascript/users/wishlist.js"></script>

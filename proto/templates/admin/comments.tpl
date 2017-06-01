@@ -30,36 +30,40 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome do Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nome_cliente" placeholder="Nome do Cliente">
+                  <input type="text" class="form-control" placeholder="Nome do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Email do Cliente:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="email_cliente" placeholder="Email do Cliente">
+                  <input type="text" class="form-control" placeholder="Email do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome da Publicação:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nome_publicacao" placeholder="Nome da Publicação">
+                  <input type="text" class="form-control" placeholder="Nome da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Comentário:</label>
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Ordenar:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="comments" placeholder="Comentário">
+                  <select class="form-control">
+                    <option>Escolha uma opção</option>
+                    <option>Melhor classificado</option>
+                    <option>Menor classificado</option>
+                  </select>
                 </div>
               </div>
 
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button class="btn btn-primary" id="clean" type="button">Limpar</button>
-                  <button id="search" type="button" type=submit class="btn btn-success">Submeter</button>
+                  <button class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -81,19 +85,19 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="comment_content x_content">
+          <div class="x_content">
             <p>Comentários das publicações na loja</p>
             <!-- start of list -->
             {if $allcomments}
-            <table class="table table-striped projects" id="myTable">
+            <table class="table table-striped projects">
               <thead>
                 <tr>
-                  <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 14%" id="orderByPublicationName">Nome da Publicação <span class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 14%" id="orderByCLientName">Nome do Cliente <span class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 10%" id="orderByClassification">Classificação <span class="glyphicon glyphicon-sort"></span></th>
-                  <th style="width: 19%">Comentário</th>
-                  <th style="width: 14%">Ações </th>
+                  <th style="width: 2%">ID</th>
+                  <th style="width: 15%">Nome da Publicação</th>
+                  <th style="width: 15%">Nome do Cliente</th>
+                  <th style="width: 10%">Classificação</th>
+                  <th style="width: 20%">Comentário</th>
+                  <th style="width: 15%">#Editar</th>
                 </tr>
               </thead>
               <tbody>
@@ -101,10 +105,10 @@
                 <tr>
                   <td>{$comment.comentarioid}</td>
                   <td>
-                    <a>{$comment.titulo}</a>
+                    <a>{$comment.nome}</a>
                   </td>
                   <td>
-                    <a>{$comment.nome}</a>
+                    <a>{$comment.titulo}</a>
                   </td>
                   <td>
                     <a class="fa fa-star"> {$comment.classificacao}</a>
@@ -114,7 +118,7 @@
                   </td>
                   <td>
                     <a href="{$BASE_URL}pages/publications/publication.php?id={$comment.publicacaoid}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Ver </a>
-                    <a href="{$BASE_URL}actions/admin/comment_remove.php?id={$comment.comentarioid}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Eleminar </a>
                   </td>
                 </tr>
                 {/foreach}
@@ -132,5 +136,3 @@
 <!-- /page content -->
 
 {include file='admin/common/footer.tpl'}
-<script src="{$BASE_URL}javascript/admin/comment_search.js"></script>
-<script src="{$BASE_URL}javascript/utilities.js"></script>

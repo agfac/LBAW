@@ -6,6 +6,7 @@
 			<div class="col-sm-12">
 				<ul>
 					<li><a href="{$BASE_URL}">Página inicial</a></li>
+					<li><a href="#">Páginas</a></li>
 					<li class="active">Carrinho</li>
 				</ul><!-- end breadcrumb -->
 			</div><!-- end col -->    
@@ -45,14 +46,14 @@
 								<tbody>
 									{foreach $publicationscart as $publication}
 
-									<tr data-id="{$publication.publicacaoid}" data-price="{$publication.preco}">
+									<tr>
 										<td>
 											<a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">
 												<img width="60px" src="{$BASE_URL}{$publication.url}" alt="product">
 											</a>
 										</td>
 										<td>
-											<h6 class="regular"><a href="{$BASE_URL}pages/publications/publication.php?id={$publication.publicacaoid}">{$publication.titulo}</a></h6>
+											<h6 class="regular"><a href="?page=single-product">{$publication.titulo}</a></h6>
 											<p>{$publication.nome_categoria} | {$publication.nome_subcategoria}</p>
 										</td>
 										<td>
@@ -63,7 +64,7 @@
 												{html_options options=$qtOptions selected=$publication.quantidade}
 											</select>
 										</td>
-										<td data-column="total">
+										<td>
 											<span class="text-primary">€{$publication.preco * $publication.quantidade}</span>
 										</td>
 										<td>
@@ -85,11 +86,10 @@
 						<a href="{$BASE_URL}" class="btn btn-light semi-circle btn-sm pull-left">
 							<i class="fa fa-arrow-left mr-5"></i> Continuar a comprar
 						</a>
-						{if $publicationscart}
-						<a href="{$BASE_URL}pages/users/checkout.php" class="btn btn-default semi-circle btn-sm pull-right" data-type="checkoutbutton">
+						
+						<a href="{$BASE_URL}pages/users/checkout.php" class="btn btn-default semi-circle btn-sm pull-right">
 							Checkout <i class="fa fa-arrow-right ml-5"></i>
 						</a>
-						{/if}
 					</div><!-- end col -->
 				</div><!-- end row -->
 			</div><!-- end col -->
@@ -99,5 +99,3 @@
 <!-- end section -->
 
 {include file='common/footer.tpl'}
-
-<script src="{$BASE_URL}javascript/users/cart.js"></script>

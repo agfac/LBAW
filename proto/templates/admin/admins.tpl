@@ -31,14 +31,14 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nome_administrador" placeholder="Nome do Administrador">
+                  <input type="text" class="form-control" placeholder="Nome do Administrador">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Username:</label>
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Email:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="username_administrador" placeholder="Username do Administrador">
+                  <input type="text" class="form-control" placeholder="Email do Administrador">
                 </div>
               </div>
 
@@ -55,10 +55,10 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Estado:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control" id="estado_administrador">
+                  <select class="form-control">
                     <option>Escolha uma opção</option>
-                    <option value="TRUE">Ativo</option>
-                    <option value="FALSE">Inativo</option>
+                    <option>Ativo</option>
+                    <option>Inativo</option>
                   </select>
                 </div>
               </div>
@@ -66,8 +66,8 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button class="btn btn-primary" id="clean" type="button">Limpar</button>
-                  <button id="search" type="button" class="btn btn-success">Submeter</button>
+                  <button class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -95,18 +95,18 @@
           <div class="clearfix"></div>
         </div>
         
-        <div class="admins_content x_content">
+        <div class="x_content">
           <p>Administradores da loja</p>
           <!-- start of list -->
           {if $allAdmins}
-          <table class="table table-striped projects" id="myTable">
+          <table class="table table-striped projects">
             <thead>
               <tr>
-                <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th>
-                <th style="width: 36%" id="orderByAdminName">Nome do Administrador <span class="glyphicon glyphicon-sort"></span></th>
-                <th style="width: 18%" id="orderByDate">Data de Cessação <span class="glyphicon glyphicon-sort"></span></th>
-                <th style="width: 10%" id="orderByStatus">Estado <span class="glyphicon glyphicon-sort"></span></button></th>
-                <th style="width: 20%">Ações </th>
+                <th style="width: 2%">ID</th>
+                <th style="width: 40%">Nome do Administrador</th>
+                <th style="width: 18%">Data de Cessação</th>
+                <th style="width: 10%">Estado</th>
+                <th style="width: 20%">#Editar</th>
               </tr>
             </thead>
             <tbody>
@@ -132,11 +132,7 @@
                 </td>
                 <td>
                   <a href="{$BASE_URL}pages/admin/admin_edit.php?username={$admin.username}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                  {if $admin.ativo}
-                    <a href="{$BASE_URL}actions/admin/admin_status.php?username={$admin.username}" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  {else}
-                    <a href="{$BASE_URL}actions/admin/admin_status.php?username={$admin.username}" class="btn btn-success btn-xs"><i class="fa fa-warning"></i> Ativar </a>
-                  {/if}
+                  <a href="{$BASE_URL}actions/admin/admin_status.php?username={$admin.username}" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> {if $admin.ativo}Banir{else}Ativar{/if} </a>
                 </td>
               </tr>
               {/foreach}
@@ -156,5 +152,3 @@
 </div>
 <!-- /page content -->
 {include file='admin/common/footer.tpl'}
-<script src="{$BASE_URL}javascript/admin/admins_search.js"></script>
-<script src="{$BASE_URL}javascript/utilities.js"></script>

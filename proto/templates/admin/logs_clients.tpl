@@ -29,14 +29,14 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome do Utilizador:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nome_utilizador" placeholder="Nome do Utilizador">
+                  <input type="text" class="form-control" placeholder="Nome do Cliente">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-0 col-xs-12">Username:</label>
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Email do Utilizador:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="username_utilizador" placeholder="Username do Utilizador">
+                  <input type="text" class="form-control" placeholder="Email do Cliente">
                 </div>
               </div>
 
@@ -44,17 +44,28 @@
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Data de Login</span>
                 </label>
                 <div class="col-md-9 col-sm-9 col-xs-12 xdisplay_inputx form-group has-feedback">
-                  <input type="text" class="form-control has-feedback-left" id="reservation" placeholder="Data de Login" aria-describedby="inputSuccess2Status4">
+                  <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="Data de Login" aria-describedby="inputSuccess2Status4">
                   <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>
               </div>
-              
+
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-0 col-xs-12">Ordenar:</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <select class="form-control">
+                    <option>Escolha uma opção</option>
+                    <option>Data mais recente</option>
+                    <option>Data menos recente</option>
+                  </select>
+                </div>
+              </div>
+
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button class="btn btn-primary" id="clean" type="button">Limpar</button>
-                  <button id="search" type="button" class="btn btn-success">Submeter</button>
+                  <button class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -76,15 +87,15 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <div class="logs_content x_content">
+          <div class="x_content">
             <!-- start of books list -->
             {if $allLogs}
-            <table class="table table-striped projects" id="myTable">
+            <table class="table table-striped projects">
               <thead>
                 <tr>
-                  <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></th>
-                  <th style="width: 48%" id="orderByName">Nome do Utilizador <span class="glyphicon glyphicon-sort"></th>
-                  <th style="width: 46%" id="orderByDate">Data <span class="glyphicon glyphicon-sort"></th>
+                  <th style="width: 2%">ID</th>
+                  <th style="width: 50%">Nome do Utilizador</th>
+                  <th style="width: 48%">Data</th>
                 </tr>
               </thead>
               <tbody>
@@ -101,8 +112,6 @@
                 {/foreach}
               </tbody>
             </table>
-            {else}
-              <span>Sem Logins</span>
             {/if}
             <!-- end of books list -->
           </div>
@@ -114,5 +123,3 @@
 </div>
 <!-- /page content -->
 {include file='admin/common/footer.tpl'}
-<script src="{$BASE_URL}javascript/admin/logs_search.js"></script>
-<script src="{$BASE_URL}javascript/utilities.js"></script>

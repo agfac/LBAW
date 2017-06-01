@@ -30,14 +30,14 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Nome:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nome_funcionario" placeholder="Nome do funcionário">
+                  <input type="text" class="form-control" placeholder="Nome do funcionário">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Email:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="email_funcionario" placeholder="Email do funcionário">
+                  <input type="text" class="form-control" placeholder="Email do funcionário">
                 </div>
               </div>
 
@@ -54,10 +54,10 @@
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-0 col-xs-12">Estado:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control" id="estado_funcionario">
+                  <select class="form-control">
                     <option>Escolha uma opção</option>
-                    <option value="TRUE">Ativo</option>
-                    <option value="FALSE">Inativo</option>
+                    <option>Ativo</option>
+                    <option>Inativo</option>
                   </select>
                 </div>
               </div>
@@ -65,8 +65,8 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
-                  <button id="clean"class="btn btn-primary" type="button">Limpar</button>
-                  <button id="search" type="button" class="btn btn-success">Submeter</button>
+                  <button class="btn btn-primary" type="reset">Limpar</button>
+                  <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
 
@@ -96,18 +96,18 @@
           <div class="clearfix"></div>
         </div>
 
-        <div class="workers_content x_content">
+        <div class="x_content">
           <p>Funcionários da loja</p>
           <!-- start of list -->
           {if $allWorkers}
-          <table class="table table-striped projects" id="myTable">
+          <table class="table table-striped projects">
             <thead>
               <tr>
-                <th style="width: 6%" id="orderById">ID <span class="glyphicon glyphicon-sort"></span></th>
-                <th style="width: 36%" id="orderByName">Nome do Funcionário <span class="glyphicon glyphicon-sort"></span></th>
-                <th style="width: 18%" id="orderByDate">Data de Admissão <span class="glyphicon glyphicon-sort"></span></th>
-                <th style="width: 10%" id="orderByState">Estado <span class="glyphicon glyphicon-sort"></span></th>
-                <th style="width: 20%">Ações</th>
+                <th style="width: 2%">ID</th>
+                <th style="width: 40%">Nome do Funcionário</th>
+                <th style="width: 18%">Data de Admissão</th>
+                <th style="width: 10%">Estado</th>
+                <th style="width: 20%">#Editar</th>
               </tr>
             </thead>
             <tbody>
@@ -129,11 +129,7 @@
                 </td>
                 <td>
                   <a href="{$BASE_URL}pages/admin/worker_edit.php?username={$worker.username}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Ver / Editar </a>
-                 {if $worker.ativo}
-                    <a href="{$BASE_URL}actions/admin/worker_status.php?username={$worker.username}" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> Banir </a>
-                  {else}
-                    <a href="{$BASE_URL}actions/admin/worker_status.php?username={$worker.username}" class="btn btn-success btn-xs"><i class="fa fa-warning"></i> Ativar </a>
-                  {/if}
+                  <a href="{$BASE_URL}actions/admin/worker_status.php?username={$worker.username}" class="btn btn-danger btn-xs"><i class="fa fa-warning"></i> {if $worker.ativo}Banir{else}Ativar{/if} </a>
                 </td>
               </tr>
               {/foreach}
@@ -153,5 +149,3 @@
 </div>
 <!-- /page content -->
 {include file='admin/common/footer.tpl'}
-<script src="{$BASE_URL}javascript/admin/workers_search.js"></script>
-<script src="{$BASE_URL}javascript/utilities.js"></script>

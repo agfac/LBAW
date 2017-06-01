@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="en">
 <head>
   <title>AwesomeBookShop - A sua livraria móvel</title>
   <meta charset="utf-8">
@@ -22,9 +22,6 @@
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/register.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/login.css" />
   <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/edit-form.css" />
-  <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/jquery-confirm.min.css" />
-  <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/paymentfont.css" />
-  <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/paymentfont.min.css" />
 
   <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
   <link id="pagestyle" rel="stylesheet" type="text/css" href="{$BASE_URL}css/default.css" />
@@ -36,9 +33,6 @@
 
   <!-- JavaScript Files -->
   <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.scrollTo.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.scrollTo.min.js"></script>
-  <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/bootstrap.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/owl.carousel.min.js"></script>
   <script type="text/javascript" src="{$BASE_URL}javascript/common/jquery.downCount.js"></script>
@@ -109,15 +103,15 @@
           </li>
           <li class="linkdown">
             <a href="javascript:void(0);">
-              <img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="bandeira portuguesa">
+              <img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="">
               <span class="hidden-xs">
                 Português 
                 <i class="fa fa-angle-down ml-5"></i>
               </span>    
             </a>
             <ul class="w-110">
-              <li><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-english.jpg" class="mr-5" alt="bandeira inglesa">English</a></li>
-              <li class="active"><a><img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="bandeira portuguesa">Português</a></li>
+              <li><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-english.jpg" class="mr-5" alt="">English</a></li>
+              <li class="active"><a href="javascript:void(0);"><img src="{$BASE_URL}images/flags/flag-pt.jpg" class="mr-5" alt="">Português</a></li>
             </ul>
           </li>
           {if $USERNAME}
@@ -125,33 +119,27 @@
           {else}
           {include file='common/menu_logged_out.tpl'}
           {/if}
-          
+        
           <div class="middleBar">
             <div class="container">
               <div class="row table">
                 <div class="col-sm-3 vertical-align text-left hidden-xs col-lg-offset-2 col-lg-3">
                   <a href="{$BASE_URL}">
-                    <img width="180" src="{$BASE_URL}images/logos/logo_abs_4.png" alt="logotipo" />
+                    <img width="180" src="{$BASE_URL}images/logos/logo_abs_4.png" alt="" />
                   </a>
                 </div><!-- end col -->
                 <div class="col-sm-6 vertical-align text-center col-lg-offset-3">
-                  <form action="{$BASE_URL}actions/publication/getPublicationsFTS.php" method="post" class="form-horizontal form-label-left input_mask">
-                    <label for="searchpublication" alt="caixa de pesquisa" aria-label="pesquisa"> </label>
-                    <input type="text" placeholder="Pesquisar" name="searchpublication" id="searchpublication" class="form-control input-md">
-                    <button type="submit" class="btn btn-success">Pesquisar</button>
-                  </form>
+                  <input type="text" placeholder="Pesquisar" name="email" class="form-control input-md">
                 </div><!-- end col -->
-                {if $USERNAME}
                 <div class="col-sm-3 vertical-align header-items">
                   <div class="header-item mr-5">
-                    <a href="{$BASE_URL}pages/users/wishlist.php" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Wishlist">
                       <i class="fa fa-heart-o"></i>
-                      <sub></sub>
+                      <sub>32</sub>
                     </a>
                   </div>
                   <div class="header-item"> </div>
                 </div><!-- end col -->
-                {/if}
               </div><!-- end  row -->
             </div><!-- end container -->
           </div><!-- end middleBar -->
@@ -160,7 +148,7 @@
           <div class="navbar yamm navbar-default">
             <div class="container">
               <div class="navbar-header">
-                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-3" class="navbar-toggle" alt="butao navegacao" aria-label="butao navegacao">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-3" class="navbar-toggle">
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
@@ -192,46 +180,90 @@
                           <div class="row">
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=1"><span class="text-primary">Livros</span></a></h6>
+                                <h6>Livros</h6>
                               </li>
-                              {foreach $subcategoriasLivros as $publication}
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Livros">{$publication.nome}</a></li>
-                              {/foreach}
+                              <li><a href="?page=product-list">Arte</a></li>
+                              <li><a href="?page=product-list">Banda Desenhada</a></li>
+                              <li><a href="?page=product-list">Ciências Exatas e Naturais</a></li>
+                              <li><a href="?page=product-list">Ciências Sociais e Humanas</a></li>
+                              <li><a href="?page=product-list">Desenvolvimento Pessoal e Espiritual</a></li>
+                              <li><a href="?page=product-list">Desporto e Lazer</a></li>
+                              <li><a href="?page=product-list">Direito</a></li>
+                              <li><a href="?page=product-list">Economia, Finanças e Contabilidade</a></li>
+                              <li><a href="?page=product-list">Engenharia</a></li>
+                              <li><a href="?page=product-list">Ensino e Educação</a></li>
+                              <li><a href="?page=product-list">Gastronomia e Vinhos <span class="label primary-background">New</span></a></li>
+                              <li><a href="?page=product-list">Gestão</a></li>
+                              <li><a href="?page=product-list">História</a></li>
+                              <li><a href="?page=product-list">Informática</a></li>
+                              <li><a href="?page=product-list">Literatura</a></li>
+                              <li><a href="?page=product-list">Medicina</a></li>
+                              <li><a href="?page=product-list">Política</a></li>
+                              <li><a href="?page=product-list">Religião e Moral</a></li>
+                              <li><a href="?page=product-list">Saúde e Bem Estar</a></li>
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=2"><span class="text-primary">Livros Escolares</span></a></h6>
+                                <h6>Livros Escolares</h6>
                               </li>
-                              {foreach $subcategoriasLivrosEscolares as $publication}
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Livros Escolares">{$publication.nome}</a></li>
-                              {/foreach}
+                              <li><a href="?page=product-list">1.º ano</a></li>
+                              <li><a href="?page=product-list">2.º ano</a></li>
+                              <li><a href="?page=product-list">3.º ano</a></li>
+                              <li><a href="?page=product-list">4.º ano</a></li>
+                              <li><a href="?page=product-list">5.º e 6.º ano</a></li>
+                              <li><a href="?page=product-list">7.º, 8.º e 9.º ano</a></li>
+                              <li><a href="?page=product-list">Ensino Secundário</a></li>
                               <li class="title">
-                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=3"><span class="text-primary">Apoio Escolar</span></a></h6>
+                                <h6>Apoio Escolar</h6>
                               </li>
-                              {foreach $subcategoriasApoioEscolar as $publication}
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Apoio Escolar">{$publication.nome}</a></li>
-                              {/foreach}
+                              <li><a href="?page=product-list">1.º ano</a></li>
+                              <li><a href="?page=product-list">2.º ano</a></li>
+                              <li><a href="?page=product-list">3.º ano</a></li>
+                              <li><a href="?page=product-list">4.º ano</a></li>
+                              <li><a href="?page=product-list">5.º e 6.º ano</a></li>
+                              <li><a href="?page=product-list">7.º, 8.º e 9.º ano</a></li>
+                              <li><a href="?page=product-list">Ensino Secundário</a></li>
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=4"><span class="text-primary">Revistas</span></a></h6>
+                                <h6>Revistas</h6>
                               </li>
-                              {foreach $subcategoriasRevistas as $publication}
-                              <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Revistas">{$publication.nome}</a></li>
-                              {/foreach}
+                              <li><a href="?page=product-list">Agricultura</a></li>
+                              <li><a href="?page=product-list">Arquitetura</a></li>
+                              <li><a href="?page=product-list">Arte</a></li>
+                              <li><a href="?page=product-list">Automobilismo</a></li>
+                              <li><a href="?page=product-list">Aviação <span class="label primary-background">New</span></a></li>
+                              <li><a href="?page=product-list">Científicas</a></li>
+                              <li><a href="?page=product-list">Cinema</a></li>
+                              <li><a href="?page=product-list">Decoração</a></li>
+                              <li><a href="?page=product-list">Desporto</a></li>
+                              <li><a href="?page=product-list">Direito</a></li>
+                              <li><a href="?page=product-list">Economia</a></li>
+                              <li><a href="?page=product-list">Fotografia</a></li>
+                              <li><a href="?page=product-list">História</a></li>
+                              <li><a href="?page=product-list">Humor</a></li>
+                              <li><a href="?page=product-list">Infantis</a></li>
+                              <li><a href="?page=product-list">Informática</a></li>
+                              <li><a href="?page=product-list">Moda</a></li>
+                              <li><a href="?page=product-list">Música</a></li>
+                              <li><a href="?page=product-list">Quebra-cabeças</a></li>
+                              <li><a href="?page=product-list">Turismo</a></li>
                             </ul><!-- end ul col -->
                             <ul class="col-sm-3">
                               <li class="title">
-                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=5"><span class="text-primary">Dicionários e Enciclopédias</span></a></h6>
-                                {foreach $subcategoriasDicionarios as $publication}
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Dicionarios e Enciclopedias">{$publication.nome}</a></li>
-                                {/foreach}
+                                <h6>Dicionários e Enciclopédias</h6>
+                                <li><a href="?page=product-list">Português</a></li>
+                                <li><a href="?page=product-list">Inglês</a></li>
+                                <li><a href="?page=product-list">Francês</a></li>
+                                <li><a href="?page=product-list">Alemão</a></li>
+                                <li><a href="?page=product-list">Espanhol</a></li>
                               </li>
                               <li class="title">
-                                <h6><a href="{$BASE_URL}pages/publications/publicationListByCat.php?cat=6"><span class="text-primary">Guias Turísticos e Mapas</span></a></h6>
-                                {foreach $subcategoriasGuiasEMapas as $publication}
-                                <li><a href="{$BASE_URL}pages/publications/publication-list.php?subcat={$publication.nome}&cat=Guias Turisticos e Mapas">{$publication.nome}</a></li>
-                                {/foreach}
+                                <h6>Guias Turísticos e Mapas</h6>
+                                <li><a href="?page=product-list">África</a></li>
+                                <li><a href="?page=product-list">América</a></li>
+                                <li><a href="?page=product-list">Ásia</a></li>
+                                <li><a href="?page=product-list">Europa</a></li>
                               </li>
 
                             </ul><!-- end ul col -->
@@ -251,68 +283,140 @@
                       <li>
                         <div class="yamm-content">
                           <div class="row">
-                            {for $var=0 to 3}
                             <div class="col-xs-12 col-sm-3">
-                              <a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}">
+                              <a href="javascript:void(0);">
                                 <figure class="zoom-out">
-                                  <img alt="" src="{$BASE_URL}{$eightnewpublications.$var.url}">
+                                  <img alt="" src="{$BASE_URL}images/publications/books/books_5.jpg">
                                 </figure>
                               </a>
                             </div><!-- end col -->
-                            {/for}
+                            <div class="col-xs-12 col-sm-3">
+                              <a href="javascript:void(0);">
+                                <figure class="zoom-in">
+                                  <img alt="" src="{$BASE_URL}images/publications/books/books_5.jpg">
+                                </figure>
+                              </a>
+                            </div><!-- end col -->
+                            <div class="col-xs-12 col-sm-3">
+                              <a href="javascript:void(0);">
+                                <figure class="zoom-out">
+                                  <img alt="" src="{$BASE_URL}images/publications/books/books_6.jpg">
+                                </figure>
+                              </a>
+                            </div><!-- end col -->
+                            <div class="col-xs-12 col-sm-3">
+                              <a href="javascript:void(0);">
+                                <figure class="zoom-in">
+                                  <img alt="" src="{$BASE_URL}images/publications/books/books_6.jpg">
+                                </figure>
+                              </a>
+                            </div><!-- end col -->
                           </div><!-- end row -->
 
                           <hr class="spacer-20 no-border">
 
                           <div class="row">
                             <div class="col-xs-12 col-sm-3">
-                              <h6>Novidades</h6>
-                              <p>Confira aqui as mais recentes publicações. Fique a par das últimas novidades. Queremos que esteja sempre atualizado!</p>
+                              <h6>Pellentes que nec diam lectus</h6>
+                              <p>Proin pulvinar libero quis auctor pharet ra. Aenean fermentum met us orci, sedf eugiat augue pulvina r vitae. Nulla dolor nisl, molestie nec aliquam vitae, gravida sodals dolor...</p>
                               <button type="button" class="btn btn-default round btn-sm">Saiba mais</button>
                             </div><!-- end col -->
-                            {for $var=4 to 6}
                             <div class="col-xs-12 col-sm-3">
                               <div class="thumbnail store style1">
                                 <div class="header">
                                   <div class="badges">
-                                    {if $eightnewpublications.$var.preco != $eightnewpublications.$var.precopromocional}
                                     <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
-                                    {/if}
                                     <span class="product-badge top right text-primary">
-                                      {for $val=1 to ($eightnewpublications.$var.classificacao)|floor}
                                       <i class="fa fa-star"></i>
-                                      {/for}
-                                      {if $eightnewpublications.$var.classificacao}
-                                      {if is_numeric($eightnewpublications.$var.classificacao) && (float)(int)$eightnewpublications.$var.classificacao===(float)$eightnewpublications.$var.classificacao}
-                                      {else}
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
                                       <i class="fa fa-star-half-o"></i>
-                                      {/if}
-                                      {/if}
                                     </span>
                                   </div>
                                   <figure class="layer">
-                                    <img src="{$BASE_URL}{$eightnewpublications.$var.url}" alt="">
+                                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
                                   </figure>
                                   <div class="icons">
-                                    <a class="icon semi-circle" data-type="Adicionar à wishlist" data-toggle="tooltip" data-placement="top" title="Adicionar à wishlist" data-id="{$eightnewpublications.$var.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}" data-img="{$BASE_URL}{$eightnewpublications.$var.url}" data-titulo="{$eightnewpublications.$var.titulo}" data-price="{$eightnewpublications.$var.precopromocional}"><i class="fa fa-heart-o"></i></a>
-                                    <a class="icon semi-circle" data-type="Adicionar ao carrinho" data-toggle="tooltip" data-placement="top" title="Adicionar ao carrinho" data-id="{$eightnewpublications.$var.publicacaoid}" data-url="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}" data-img="{$BASE_URL}{$eightnewpublications.$var.url}" data-titulo="{$eightnewpublications.$var.titulo}" data-price="{$eightnewpublications.$var.precopromocional}"><i class="fa fa-cart-plus"></i></a>
-                                    <a class="icon semi-circle" data-toggle="tooltip" data-placement="top" title="Ver página da publicação"href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}"><i class="fa fa-search"></i></a>
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-search"></i></a>
                                   </div>
                                 </div>
                                 <div class="caption">
-                                  <h6 class="thin"><a href="{$BASE_URL}pages/publications/publication.php?id={$eightnewpublications.$var.publicacaoid}">{$eightnewpublications.$var.titulo}</a></h6>
+                                  <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
                                   <div class="price">
-                                    {if $eightnewpublications.$var.preco != $eightnewpublications.$var.precopromocional}
-                                    <small class="amount off">€{$eightnewpublications.$var.preco}</small>
-                                    <span class="amount text-primary">€{$eightnewpublications.$var.precopromocional}</span>
-                                    {else}
-                                    <span class="amount text-primary">€{$eightnewpublications.$var.preco}</span>
-                                    {/if}
+                                    <small class="amount off">€68.99</small>
+                                    <span class="amount text-primary">€59.99</span>
                                   </div>
+                                  <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
                                 </div><!-- end caption -->
                               </div><!-- end thumbnail -->
                             </div><!-- end col -->
-                            {/for}
+                            <div class="col-xs-12 col-sm-3">
+                              <div class="thumbnail store style1">
+                                <div class="header">
+                                  <div class="badges">
+                                    <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
+                                    <span class="product-badge top right text-primary">
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star-half-o"></i>
+                                    </span>
+                                  </div>
+                                  <figure class="layer">
+                                    <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                                  </figure>
+                                  <div class="icons">
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-search"></i></a>
+                                  </div>
+                                </div>
+                                <div class="caption">
+                                  <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
+                                  <div class="price">
+                                    <small class="amount off">€68.99</small>
+                                    <span class="amount text-primary">€59.99</span>
+                                  </div>
+                                  <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
+                                </div><!-- end caption -->
+                              </div><!-- end thumbnail -->
+                            </div><!-- end col -->
+                            <div class="col-xs-12 col-sm-3">
+                              <div class="thumbnail store style1">
+                                <div class="header">
+                                  <div class="badges">
+                                    <span class="product-badge top left white-backgorund text-primary semi-circle">Promoção</span>
+                                    <span class="product-badge top right text-primary">
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star"></i>
+                                      <i class="fa fa-star-half-o"></i>
+                                    </span>
+                                  </div>
+                                  <figure class="layer">
+                                    <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
+                                  </figure>
+                                  <div class="icons">
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-heart-o"></i></a>
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-gift"></i></a>
+                                    <a class="icon semi-circle" href="javascript:void(0);"><i class="fa fa-search"></i></a>
+                                  </div>
+                                </div>
+                                <div class="caption">
+                                  <h6 class="thin"><a href="javascript:void(0);">Lorem Ipsum dolor sit</a></h6>
+                                  <div class="price">
+                                    <small class="amount off">€68.99</small>
+                                    <span class="amount text-primary">€59.99</span>
+                                  </div>
+                                  <a href="javascript:void(0);"><i class="fa fa-cart-plus mr-5"></i>Adicionar ao carrinho</a>
+                                </div><!-- end caption -->
+                              </div><!-- end thumbnail -->
+                            </div><!-- end col -->
                           </div><!-- end row -->
                         </div><!-- end yamm-content -->
                       </li><!-- end li -->
@@ -320,7 +424,7 @@
                   </li><!-- end dropdown -->
                   <!-- promoções -->
                   <li>
-                    <a href="{$BASE_URL}pages/publications/publications-promotion.php">
+                    <a href="javascript:void(0);">
                       <i class="glyphicon glyphicon-piggy-bank mr-5"></i>
                       Promoções
                     </a>
@@ -328,13 +432,4 @@
                 </ul><!-- end navbar-nav -->
               </div><!-- end navbar collapse -->
             </div><!-- end container -->
-          </div><!-- end navbar -->
-
-          {if isset($USER_DATA)}
-          {literal}
-          <script type="text/javascript">
-            var userdata = '{$USER_DATA}';
-          </script>
-          {/literal}
-          {/if}
-          <script src="{$BASE_URL}javascript/common/header.js"></script>
+  </div><!-- end navbar -->

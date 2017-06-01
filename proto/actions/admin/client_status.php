@@ -18,6 +18,7 @@ try {
 } catch (PDOException $e) {
     
     $_SESSION['error_messages'][] = 'Erro na edição do cliente';
+
     header("Location: $BASE_URL" . 'pages/admin/clients.php');
     exit;
 }

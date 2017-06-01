@@ -2,7 +2,7 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR .'database/admins.php');
 
-  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || ($_POST['pais'] === "Escolha um País") || !$_POST['username'] || !$_POST['password'] || !$_POST['atividade']) {
+  if (!$_POST['nome'] || !$_POST['genero'] || !$_POST['datanascimento'] || !$_POST['pais'] || !$_POST['username'] || !$_POST['password'] || !$_POST['atividade']) {
     error_log('if');
     $_SESSION['error_messages'][] = 'Todos os campos são de preenchimento obrigatório';
     $_SESSION['form_values'] = $_POST;
@@ -15,7 +15,7 @@
   $datanascimento = strip_tags($_POST['datanascimento']);
   $pais = strip_tags($_POST['pais']);
   $username = strip_tags($_POST['username']);
-  $password = strip_tags($_POST['password']);
+  $password = $_POST['password'];
   $atividade = strip_tags($_POST['atividade']);
 
   if($atividade == "Ativo")
@@ -33,9 +33,10 @@
     createAdmin($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $pais, $username, $password, $atividade);
 
   } catch (PDOException $e) {
-
-    if (strpos($e->getMessage(), 'administrador_username_key') !== false) {
-      $_SESSION['error_messages'][] = 'Já existe um administrador com o username introduzido';
+  
+    if (strpos($e->getMessage(), 'cliente_username_key') !== false) {
+      $_SESSION['error_messages'][] = 'Username duplicado';
+      $_SESSION['field_errors']['username'] = 'Username escolhido já existe';
     }
     else $_SESSION['error_messages'][] = 'Erro ao criar utilizador';
 

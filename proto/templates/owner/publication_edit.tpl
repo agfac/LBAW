@@ -25,12 +25,12 @@
           </div>
 
           <div class="x_content">
-            <form action="{$BASE_URL}actions/owner/publication_edit.php" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask">
+            <form action="{$BASE_URL}actions/owner/publication_edit.php" method="post" class="form-horizontal form-label-left input_mask">
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Titulo *</label>
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Nome </label>
                 <div class="col-md-10 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" name="titulo" required="required" value="{$publicationData.titulo}" placeholder="Titulo da Publicação">
+                  <input type="text" class="form-control" name="titulo" required="required" value="{$publicationData.titulo}" placeholder="Nome da Publicação">
                 </div>
               </div>
 
@@ -43,79 +43,61 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Editora <span class="required">*</span></label>
-                <div class="col-md-10 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" name="editora" value="{$publicationData.nome_editora}" placeholder="Nome da Editora da Publicação">
-                </div>
-              </div>
-
-              <div class="form-group">
-
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Categoria <span class="required">*</span> </label>
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Editora </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <select class="form-control" required="required" name="categoria" id="categoria" placeholder="Nome da Categoria da Publicação">
-                    {foreach $allCategorys as $category}
-                    <option value="{$category.categoriaid}" {if $publicationData.id_categoria == $category.categoriaid}selected{/if}>{$category.nome}</option>
-                    {/foreach}
-                  </select>
+                  <input type="text" class="form-control" name="editora" required="required" value="{$publicationData.nome_editora}" placeholder="Nome da Editora da Publicação">
                 </div>
 
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Sub-Categoria <span class="required">*</span> </label>
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Sub-Categoria </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <select class="form-control" required="required" name="subcategoria" id="subcategoria" placeholder="Nome da Sub-Categoria da Publicação">
-                    {foreach $allSubCategories as $subcategory}
-                    <option value="{$subcategory.subcategoriaid}" {if $publicationData.id_subcategoria == $subcategory.subcategoriaid}selected{/if}>{$subcategory.nome}</option>
-                    {/foreach}
-                  </select>
+                  <input type="text" class="form-control" name="subcategoria" required="required" value="{$publicationData.nome_subcategoria}" placeholder="Nome da Sub-Categoria da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <!-- DATA -->
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Data da Publicação *
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Data da Publicação
                 </label>
                 <div class="col-md-4 col-sm-6 col-xs-12 has-feedback">
-                  <input type="text" class="form-control has-feedback-left" name="datapublicacao" value="{$publicationData.datapublicacao}" aria-describedby="inputSuccess2Status4" placeholder="YYYY-MM-DD">
+                  <input type="text" class="form-control has-feedback-left" name="datapublicacao" value="{$publicationData.datapublicacao}" aria-describedby="inputSuccess2Status4">
                   <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                   <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                 </div>
 
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Stock *</label>
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Stock </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="number" min="1" class="form-control" name="stock" required="required" value="{$publicationData.stock}" placeholder="Stock da Publicação">
+                  <input type="number" class="form-control" name="stock" required="required" value="{$publicationData.stock}" placeholder="Stock da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Peso (gr) *</label>
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Peso (gr)</label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="number" step="0.001" min="0.001" class="form-control" name="peso" required="required" value="{$publicationData.peso}" placeholder="Peso da Publicação (gr)">
+                  <input type="number" class="form-control" name="peso" required="required" value="{$publicationData.peso}" placeholder="Peso da Publicação (gr)">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Páginas </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="number" min="0" class="form-control" name="nrpaginas" value="{$publicationData.paginas}" placeholder="Número de páginas da Publicação">
+                  <input type="number" class="form-control" name="nrpaginas" value="{$publicationData.paginas}" placeholder="Número de páginas da Publicação">
                 </div>
               </div>
 
-              <div id="div_preco" class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço *</label>
+              <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input  id="preco" type="number" step="0.01" min="0.01" class="form-control" name="preco" required="required" value="{$publicationData.preco}" placeholder="Preço da Publicação">
-                  <span class="help-block with-errors" data-valmsg-for="preco" data-valmsg-replace="true"></span>
+                  <input type="number" step="0.01" class="form-control" name="preco" required="required" value="{$publicationData.preco}" placeholder="Preço da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Promocional </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input id="preco_promocional" type="number" step="0.01" min="0.0" class="form-control" name="precopromocional" value="{$publicationData.precopromocional}" placeholder="Preço Promocional da Publicação">
-                   <span class="help-block with-errors" data-valmsg-for="preco_promocional" data-valmsg-replace="true"></span>
+                  <input type="number" step="0.01" class="form-control" name="precopromocional" value="{$publicationData.precopromocional}" placeholder="Preço Promocional da Publicação">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Código de Barras </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <input type="number" min="0" class="form-control" name="codigobarras" required="required" value="{$publicationData.codigobarras}" placeholder="Código de Barras da Publicação">
+                  <input type="number" class="form-control" name="codigobarras" required="required" value="{$publicationData.codigobarras}" placeholder="Código de Barras da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">ISBN </label>
@@ -132,88 +114,61 @@
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Periodicidade </label>
                 <div class="col-md-4 col-sm-3 col-xs-12">
-                  <select class="form-control" name="periodicidade">
+                  <select class="form-control">
                     <option>Escolha uma opção</option>
-                    {if $publicationData.periodicidade == "Diario"}
-                    <option value="Diario" selected>Diário</option>
+                    {if $publicationData.periodicidade == "Diário"}
+                    <option value="diario" selected>Diário</option>
                     {else}
-                    <option value="Diario">Diário</option>
+                    <option value="diario">Diário</option>
                     {/if}
                     {if $publicationData.periodicidade == "Semanal"}
-                    <option value="Semanal" selected>Semanal</option>
+                    <option value="semanal" selected>Semanal</option>
                     {else}
-                    <option value="Semanal">Semanal</option>
+                    <option value="semanal">Semanal</option>
                     {/if}
                     {if $publicationData.periodicidade == "Mensal"}
-                    <option value="Mensal" selected>Mensal</option>
+                    <option value="mensal" selected>Mensal</option>
                     {else}
-                    <option value="Mensal">Mensal</option>
+                    <option value="mensal">Mensal</option>
                     {/if}
                     {if $publicationData.periodicidade == "Anual"}
-                    <option value="Mensal" selected>Anual</option>
+                    <option value="mensal" selected>Anual</option>
                     {else}
-                    <option value="Mensal">Anual</option>
+                    <option value="mensal">Anual</option>
                     {/if}
                   </select>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-md-6 col-sm-9 col-xs-12 control-label">Novidade</span>
-                </label>
-                <div class="col-md-4 col-sm-9 col-xs-12">
-                  <div class="radio">
-                    <label>
-                      <input type="radio" {if $publicationData.novidade == TRUE}checked=""{/if} value="TRUE" name="novidade"> Sim
-                    </label>
-                    <label>
-                      <input type="radio" {if $publicationData.novidade == FALSE}checked=""{/if}value="FALSE" name="novidade"> Não
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="clearfix"></div>
-              <div class="ln_solid"></div>
-
-
-              <div class="form-group">
-                <label class="control-label col-md-2 col-sm-3 col-xs-12">Autor </label>
-                <div class="col-md-10 col-sm-3 col-xs-12">
-                  <select class="form-control" name="autor" id="autor" placeholder="Nome do Autor">
-                    <option value="6">Sem Autor</option>
-                    <option value="novoAutor">Novo Autor</option>
-                    {foreach $allAutors as $autor}
-                    <option value="{$autor.autorid}" {if $publicationData.id_autor ==$autor.autorid}selected{/if}>{$autor.nome}</option>
-                    {/foreach}
-                  </select>
-                </div>
-              </div>
-
-              <div class="clearfix"></div>
-              <div class="ln_solid"></div>
-
-              <div class="form-group">
-                <p>Imagem do Produto</p>
+                <p>Imagens do Produto</p>
                 <div class="col-md-55">
-                  <a class="thumbnail fancybox" rel="ligthbox" href="{$BASE_URL}{$publicationData.url}">
-                    <img class="img-responsive" alt="{$publicationData.titulo}" src="{$BASE_URL}{$publicationData.url}" />
-                  </a>
-                  <div class="col-md-55">
-                    <input type="file" name="fileUpload">
+                  <div class="thumbnail">
+                    <div class="image view view-first">
+                      <img style="width: 100%; display: block;" src="{$BASE_URL}{$publicationData.url}" alt="image" />
+                      <div class="mask">
+                        <p>{$publicationData.titulo}</p>
+                        <div class="tools tools-bottom">
+                          <a href="#"><i class="fa fa-link"></i></a>
+                          <a href="#"><i class="fa fa-pencil"></i></a>
+                          <a href="#"><i class="fa fa-times"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="caption">
+                      <p>Imagem 1</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div class="clearfix"></div>
               <div class="ln_solid"></div>
-
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
                   <input type="hidden" name="publication_id" value="{$publicationData.publicacaoid}">
                   <a href="{$BASE_URL}pages/owner/publications.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button id="submit" type="submit" class="btn btn-success">Submeter</button>
+                  <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
@@ -226,4 +181,3 @@
 </div>
 <!-- /page content -->
 {include file='owner/common/footer.tpl'}
-<script src="{$BASE_URL}javascript/owner/publication.js"></script>

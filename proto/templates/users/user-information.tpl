@@ -6,6 +6,7 @@
 			<div class="col-sm-12">
 				<ul>
 					<li><a href="?page=home">Página inicial</a></li>
+					<li><a href="#">Páginas</a></li>
 					<li class="active">Informação pessoal</li>
 				</ul><!-- end breadcrumb -->
 			</div><!-- end col -->    

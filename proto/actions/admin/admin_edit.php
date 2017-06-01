@@ -1,9 +1,8 @@
 <?php
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/admins.php';
-include_once $BASE_DIR . 'database/users.php';
 
-$username = strip_tags($_POST['admin_username']);
+$username = $_POST['admin_username'];
 
 $datanascimento = strip_tags($_POST['datanascimento']);
 $pieces = explode('-', $datanascimento);
@@ -29,19 +28,17 @@ $newuserinformation = array(
     'atividade'     => $atividade,
 );
 
-
-
 try {
     
     $userdata = getAdminAllData($username);
-
+    
     updateAdminInformation($username, $userdata, $newuserinformation);
-
 
 } catch (PDOException $e) {
 
     if (strpos($e->getMessage(), 'administrador_username_key') !== false) {
-        $_SESSION['error_messages'][] = 'Já existe um administrador com o username introduzido';
+        $_SESSION['error_messages'][]         = 'Administrador duplicado';
+        $_SESSION['field_errors']['username'] = 'Username already exists';
     } else {
         $_SESSION['error_messages'][] = 'Erro na edição do administrador';
     }

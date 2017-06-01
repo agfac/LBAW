@@ -6,6 +6,7 @@
             <div class="col-sm-12">
                 <ul>
                     <li><a href="{$BASE_URL}">Página inicial</a></li>
+                    <li><a href="#">Páginas</a></li>
                     <li class="active">Minha conta</li>
                 </ul><!-- end breadcrumb -->
             </div><!-- end col -->    
@@ -35,6 +36,69 @@
 
                         <hr class="spacer-30 no-border">
 
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h5 class="mb-20 thin"><a href="javascript:void(0);">Vistos recentemente</a></h5>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+
+                        <div id="owl-demo" class="owl-carousel column-5 owl-theme">
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_5.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
+                            <div class="item">
+                                <figure>
+                                    <a href="?page=single-product">
+                                        <img src="{$BASE_URL}images/publications/books/books_6.jpg" alt="">
+                                    </a>
+                                </figure>
+                            </div><!-- end item -->
                         </div><!-- end owl carousel -->
 
                     </div><!-- end col -->

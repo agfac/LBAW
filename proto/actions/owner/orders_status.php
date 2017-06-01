@@ -2,7 +2,7 @@
 include_once '../../config/init.php';
 include_once $BASE_DIR . 'database/orders.php';
 
-$order_id = strip_tags($_POST['order_id']);
+$order_id = $_POST['order_id'];
 
 if(!(isset($_POST['estadoencomenda']))){
 	$_SESSION['success_messages'][] = 'Estado da encomenda sem alteração';
@@ -26,7 +26,12 @@ try {
 
 } catch (PDOException $e) {
 
-    $_SESSION['error_messages'][] = 'Erro ao editar o estado da encomenda';
+    if (strpos($e->getMessage(), 'encomenda_encomendaid_key') !== false) {
+        $_SESSION['error_messages'][]         = 'Encomenda não existe';
+        $_SESSION['field_errors']['encomenda'] = 'Encomenda não existe';
+    } else {
+        $_SESSION['error_messages'][] = 'Error user information edition';
+    }
     header("Location: $BASE_URL" . 'pages/owner/order.php?id=' . urlencode($order_id));
     exit;
 }

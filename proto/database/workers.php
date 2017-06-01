@@ -1,23 +1,29 @@
 <?php 
 
-
-function checkIfWorkerExists($username){
-  global $conn;
-  $stmt = $conn->prepare("SELECT username
-                          FROM funcionario
-                          WHERE username = ?");
-  $stmt->execute(array($username));
-
-  return ($stmt->fetch() !== false);
-}
-
-function createWorker($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $localidade, $cod1, $cod2, $paisID, $currentDate, $telefone, $email, $nif, $cartaocidadao, $username, $password) {
+function createWorker($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $localidade, $cod1, $cod2, $pais, $currentDate, $telefone, $email, $nif, $cartaocidadao, $username, $password) {
 
   global $conn;
 
   $conn->beginTransaction();
 
   try{
+
+  //CHECK PAIS ALREADY EXISTS
+    $stmt = $conn->prepare("SELECT *
+                            FROM pais 
+                            WHERE nome = ?");
+    $stmt->execute(array($pais));
+    $result = $stmt->fetch();
+
+    if($result){
+      $paisID = $result['paisid'];
+    }
+    else{
+      //INSERT INTO PAIS
+      $stmt = $conn->prepare("INSERT INTO pais (nome) VALUES (?)");
+      $stmt->execute(array($pais));
+      $paisID = $conn->lastInsertId('pais_paisid_seq');
+    }
 
     //CHECK LOCALIDADE ALREADY EXISTS
     $stmt = $conn->prepare("SELECT *
@@ -77,7 +83,10 @@ function createWorker($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $lo
     $stmt->execute(array($username, $email, $nif));
     $result = $stmt->fetch();
 
-
+    if($result){
+      die('Funcionário já existe!');
+    }
+    else{
       //INSERT INTO FUNCIONARIO
       $stmt = $conn->prepare("INSERT INTO funcionario (paisid, moradaid, nome, genero, datanascimento, username, password, dataadmissao, telefone, email, nif, cartaocidadao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -85,6 +94,7 @@ function createWorker($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $lo
 
       $stmt->execute(array($paisID, $moradaID, $nome, $genero, $datanasc, $username, sha1($password), $currentDate, $telefone, $email, $nif, $cartaocidadao));
       
+    }
 
     $conn->commit();
   }catch(Exception $e){
@@ -92,8 +102,6 @@ function createWorker($nome, $genero, $diaNasc, $mesNasc, $anoNasc, $morada, $lo
     error_log($e->getMessage());
 
     $conn->rollBack();
-
-    throw $e;
   }
 }
 
@@ -108,20 +116,37 @@ function updateWorkerInformation($username, $userdata, $newuserinformation) {
     $paisID = $userdata[0]['paisid'];
     $pais = $newuserinformation['pais']; 
 
-    if (!($paisID === $pais)) {
+    if (!($userdata[0]['nomepais'] === $pais)) {
+      //CHECK PAIS ALREADY EXISTS
+      $stmt = $conn->prepare("SELECT *
+                              FROM pais 
+                              WHERE nome = ?");
+      $stmt->execute(array($pais));
+      $result = $stmt->fetch();
+
+      if($result){
+        $paisID = $result['paisid'];
+      }
+      else{
+      //INSERT INTO PAIS
+        $stmt = $conn->prepare("INSERT INTO pais (nome) 
+                                VALUES (?)");
+        $stmt->execute(array($pais));
+        $paisID = $conn->lastInsertId('pais_paisid_seq');
+      }
 
       //UPDATE INTO PAIS
       $stmt = $conn->prepare("UPDATE funcionario
                               SET paisid = ? 
                               WHERE username = ?");
-      $stmt->execute(array($pais, $username));
+      $stmt->execute(array($paisID, $username));
 
     }
     
     $localidade = $newuserinformation['localidade'];
     $localidadeID = $userdata[0]['localidadeid'];
 
-    if (!($userdata[0]['nomelocalidade'] === $localidade) || !($paisID === $pais)) {
+    if (!($userdata[0]['nomelocalidade'] === $localidade)) {
 
       //CHECK LOCALIDADE ALREADY EXISTS
       $stmt = $conn->prepare("SELECT *
@@ -133,18 +158,11 @@ function updateWorkerInformation($username, $userdata, $newuserinformation) {
       if($result){
         $localidadeID = $result['localidadeid'];
       }
-      else {
-        //INSERT INTO LOCALIDADE
+      else{
+      //INSERT INTO LOCALIDADE
         $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
                                 VALUES (?, ?)");
-        $stmt->execute(array($pais, $localidade));
-        $localidadeID = $conn->lastInsertId('localidade_localidadeid_seq');
-      }
-
-      if(!($paisID === $pais)){
-        $stmt = $conn->prepare("INSERT INTO localidade (paisid, nome) 
-                                VALUES (?, ?)");
-        $stmt->execute(array($pais, $localidade));
+        $stmt->execute(array($paisID, $localidade));
         $localidadeID = $conn->lastInsertId('localidade_localidadeid_seq');
       }
 
@@ -281,8 +299,6 @@ function updateWorkerInformation($username, $userdata, $newuserinformation) {
     error_log($e->getMessage());
 
     $conn->rollBack();
-
-    throw $e;
   }
 }
 
@@ -344,106 +360,6 @@ function updateWorkerStatus($username, $estado){
                         SET ativo = ? 
                         WHERE username = ?");
   $stmt->execute(array($estado, $username));
-}
-
-function getWorkerByNameAdmissionDateAndStatus($nomeFuncionario, $dataAdmissao, $estadoFuncionario){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT *
-                            FROM funcionario
-                            WHERE LOWER(nome) like '%'||?||'%'
-                            AND dataadmissao::date = ?
-                            AND ativo = ?
-                            ORDER BY funcionarioid");
-
-    $stmt->execute(array(strtolower($nomeFuncionario), $dataAdmissao, $estadoFuncionario));
-    return $stmt->fetchAll();
-}
-
-function getWorkerByNameAndStatus($nomeFuncionario, $estadoFuncionario){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT *
-                            FROM funcionario
-                            WHERE LOWER(nome) like '%'||?||'%'
-                            AND ativo = ?
-                            ORDER BY funcionarioid");
-
-    $stmt->execute(array(strtolower($nomeFuncionario), $estadoFuncionario));
-    return $stmt->fetchAll();
-}
-function getWorkerByAdmissionDateAndStatus($dataAdmissao, $estadoFuncionario){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT *
-                            FROM funcionario
-                            WHERE dataadmissao::date = ?
-                            AND ativo = ?
-                            ORDER BY funcionarioid");
-
-    $stmt->execute(array($dataAdmissao, $estadoFuncionario));
-    return $stmt->fetchAll();
-}
-
-function getWorkerByName($nomeFuncionario){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT *
-                            FROM funcionario
-                            WHERE LOWER(nome) like '%'||?||'%'
-                            ORDER BY funcionarioid");
-
-    $stmt->execute(array(strtolower($nomeFuncionario)));
-    return $stmt->fetchAll();
-}
-
-function getWorkerByEmail($emailFuncionario){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT *
-                            FROM funcionario
-                            WHERE LOWER(email) = ?
-                            ORDER BY funcionarioid");
-
-    $stmt->execute(array(strtolower($emailFuncionario)));
-    return $stmt->fetchAll();
-}
-
-function getWorkerByAdmissionDate($dataAdmissao){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT *
-                            FROM funcionario
-                            WHERE dataadmissao::date = ?
-                            ORDER BY funcionarioid");
-
-    $stmt->execute(array($dataAdmissao));
-    return $stmt->fetchAll();
-}
-
-function getWorkerByStatus($estadoFuncionario){
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT *
-                            FROM funcionario
-                            WHERE ativo = ?
-                            ORDER BY funcionarioid");
-
-    $stmt->execute(array($estadoFuncionario));
-    return $stmt->fetchAll();
-}
-
-function getOwnerData($username) {
-
-  global $conn;
-
-  $stmt = $conn->prepare("SELECT * 
-                          FROM funcionario
-                          WHERE username = ?");
-
-  $stmt->execute(array($username));
-
-  return $stmt->fetchAll();
 }
 
 ?>

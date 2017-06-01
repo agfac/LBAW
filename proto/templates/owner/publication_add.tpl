@@ -25,12 +25,12 @@
           </div>
 
           <div class="x_content">
-            <form action="{$BASE_URL}actions/owner/publication_add.php" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask">
+            <form action="{$BASE_URL}actions/owner/publication_add.php" method="post"class="form-horizontal form-label-left input_mask">
 
               <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Titulo <span class="required">*</span></label>
                 <div class="col-md-10 col-sm-3 col-xs-12">
-                  <input type="text" class="form-control" required="required" name="titulo" value="{$FORM_VALUES.titulo}" placeholder="Titulo da Publicação">
+                  <input type="text" class="form-control" required="required" name="titulo" value="{$FORM_VALUES.titulo}" placeholder="Nome da Publicação">
                 </div>
               </div>
 
@@ -97,17 +97,15 @@
                 </div>
               </div>
 
-              <div id="div_preco" class="form-group">
+              <div class="form-group">
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço <span class="required">*</span></label>
-                <div class="col-md-4 col-sm-3 col-xs-12  has-feedback">
-                  <input id="preco" type="number" step="0.01" class="form-control" required="required" name="preco" value="{$FORM_VALUES.preco}" placeholder="Preço da Publicação">
-                <span class="help-block with-errors" data-valmsg-for="preco" data-valmsg-replace="true"></span>
+                <div class="col-md-4 col-sm-3 col-xs-12">
+                  <input type="number" step="0.01" class="form-control" required="required" name="preco" value="{$FORM_VALUES.preco}" placeholder="Preço da Publicação">
                 </div>
 
                 <label class="control-label col-md-2 col-sm-3 col-xs-12">Preço Promocional </label>
-                <div class="col-md-4 col-sm-3 col-xs-12  form-group has-feedback ">
-                  <input id="preco_promocional" type="number" step="0.01" class="form-control" name="precopromocional" value="{$FORM_VALUES.precopromocional}" placeholder="Preço Promocional da Publicação">
-                <span class="help-block with-errors" data-valmsg-for="preco_promocional" data-valmsg-replace="true"></span>
+                <div class="col-md-4 col-sm-3 col-xs-12">
+                  <input type="number" step="0.01" class="form-control" name="precopromocional" value="{$FORM_VALUES.precopromocional}" placeholder="Preço Promocional da Publicação">
                 </div>
               </div>
 
@@ -179,7 +177,22 @@
               <div class="form-group">
                 <p>Imagens do Produto</p>
                 <div class="col-md-55">
-                  <input type="file" name="fileUpload">
+                  <div class="thumbnail">
+                    <div class="image view view-first">
+                      <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                      <div class="mask">
+                        <p>Your Text</p>
+                        <div class="tools tools-bottom">
+                          <a href="#"><i class="fa fa-link"></i></a>
+                          <a href="#"><i class="fa fa-pencil"></i></a>
+                          <a href="#"><i class="fa fa-times"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="caption">
+                      <p>Imagem 1</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -190,7 +203,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset">
                   <a href="{$BASE_URL}pages/owner/publications.php" type="button" class="btn btn-primary">Cancelar</a>
                   <button class="btn btn-primary" type="reset">Limpar</button>
-                  <button id="submit" type="submit" class="btn btn-success" disabled>Submeter</button>
+                  <button type="submit" class="btn btn-success">Submeter</button>
                 </div>
               </div>
             </form>
