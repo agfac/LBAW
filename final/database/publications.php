@@ -92,9 +92,9 @@ function testeFullTextSearch($nome_livro)
                             ON subcategoria.subcategoriaid = publicacao.subcategoriaid
                             RIGHT JOIN categoria
                             ON subcategoria.categoriaid = categoria.categoriaid
-                            WHERE to_tsvector(publicacao.titulo) @@ to_tsquery(?||':*')
+                            WHERE to_tsvector(publicacao.titulo) @@ to_tsquery(?||':*') OR to_tsvector(publicacao.descricao) @@ to_tsquery(?||':*')
                             ORDER BY publicacao.publicacaoid");
-    $stmt->execute(array($nome_livro));
+    $stmt->execute(array($nome_livro,$nome_livro));
     return $stmt->fetchAll();
 }
 
