@@ -24,7 +24,7 @@ $('#categoria-form').on('change', function(){
 		if(category != "Escolha uma opção"){
 			$.getJSON("../../api/owner/updateSubCategories.php", {categoria: category}, function(data){
 
-				console.log(data);
+				//console.log(data);
 				$('#subcategoria-form').append('<option value="Escolha uma opção">Escolha uma opção</option>');
 				for (var i in data){
 					$('#subcategoria-form').append('<option value="'+ data[i].subcategoriaid +'">'+data[i].nome+'</option>');
@@ -32,8 +32,9 @@ $('#categoria-form').on('change', function(){
 			});
 			
 			//-------------------
-			$.getJSON("../../api/publications/get_by_category.php", {subcat_name: subcategory, cat_name: category}, function(data){
+			$.getJSON("../../api/publications/get_by_category.php", {subcat_name: "Escolha uma opção", cat_name: category}, function(data){
 				products = data;
+				console.log(products);
 				
 				$('.sub-products-listing').empty();
 			// $('.sub-products-listing').find('table').remove();
