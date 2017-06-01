@@ -39,7 +39,7 @@ $('#categoria-form').on('change', function(){
 				$('.sub-products-listing').empty();
 			// $('.sub-products-listing').find('table').remove();
 
-			if(data.length === 0 || data == "NULL"){
+			if(data.length === 0 || data == "NULL" || data[0].publicacaoid === null){
 				$('.sub-products-listing').append('<p>Sem publicações sobre a catergoria selecionada </p>');
 			}
 			else{
@@ -80,8 +80,8 @@ $('#subcategoria-form').on('change', function(){
 
 			$('.sub-products-listing').empty();
 			// $('.sub-products-listing').find('table').remove();
-
-			if(data.length === 0 || data == "NULL"){
+			console.log(data);
+			if(data.length === 0 || data == "NULL" || data[0].publicacaoid === null){
 				$('.sub-products-listing').append('<p>Sem publicações sobre a subcategoria</p>');
 			}
 			
@@ -120,26 +120,29 @@ $('#price-submit').click(function() {
 	$('.sub-products-listing').find('table').remove();
 
 	//$('#products-listing').append('<div class="sub-products-listing" >');
-
-	$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
-
-	for (var i in products){
-
-		var autor;
-		if(products[i].nome_autor != null)
-			autor = products[i].nome_autor;
-		else
-			autor = 'Sem autor';
-
-		if((products[i].precopromocional > min_price) && (products[i].precopromocional < max_price)) {
-			$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"></a> <img src="../../' + products[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"> ' + products[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <strike>' + products[i].preco+ '€' +'</strike> </td> <td> <h7>' + products[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
-		}
+	if(!products){
+		$('.sub-products-listing').append('<p>Sem publicações sobre a subcategoria</p>');
 	}
+	else{
+		$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
 
-	$('#products-listing').append('</tbody>');
-	$('#products-listing').append('</table>');
-	$('#products-listing').append('</div>');
+		for (var i in products){
 
+			var autor;
+			if(products[i].nome_autor != null)
+				autor = products[i].nome_autor;
+			else
+				autor = 'Sem autor';
+
+			if((products[i].precopromocional > min_price) && (products[i].precopromocional < max_price)) {
+				$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"></a> <img src="../../' + products[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + products[i].publicacaoid + '"> ' + products[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <strike>' + products[i].preco+ '€' +'</strike> </td> <td> <h7>' + products[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
+			}
+		}
+
+		$('#products-listing').append('</tbody>');
+		$('#products-listing').append('</table>');
+		$('#products-listing').append('</div>');
+	}
 });
 
 });

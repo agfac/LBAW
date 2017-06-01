@@ -36,29 +36,29 @@ $('#categoria-form').on('change', function(){
 				$('.sub-products-listing').empty();
 			// $('.sub-products-listing').find('table').remove();
 
-				if(data.length === 0 || data == "NULL"){
-					$('.sub-products-listing').append('<p>Sem publicações sobre a catergoria selecionada </p>');
+			if(data.length === 0 || data == "NULL" || data[0].publicacaoid === null){
+				$('.sub-products-listing').append('<p>Sem publicações sobre a catergoria selecionada </p>');
+			}
+			else{
+				console.log(data);
+				products = data;
+
+				$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
+
+				for (var i in data){
+					var autor;
+					if(data[i].nome_autor != null)
+						autor = data[i].nome_autor;
+					else
+						autor = 'Sem autor';
+
+					$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"></a> <img src="../../' + data[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"> ' + data[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <strike>' + data[i].preco+ '€' +'</strike> </td> <td> <h7>' + data[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
 				}
-				else{
-					console.log(data);
-					products = data;
 
-					$('.sub-products-listing').append('<table class="table" id="products-table"><thead><tr><th>Imagem</th><th>Título</th><th>Autor</th><th>Preço</th><th>Preço Promocional</th></tr></thead><tbody>');
-
-					for (var i in data){
-						var autor;
-						if(data[i].nome_autor != null)
-							autor = data[i].nome_autor;
-						else
-							autor = 'Sem autor';
-
-						$('.sub-products-listing').find('tbody').append('<tr> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"></a> <img src="../../' + data[i].url +'" width="60px" /> </td> ' + '<td> <a href="../../pages/publications/publication.php?id=' + data[i].publicacaoid + '"> ' + data[i].titulo + '</a> </td>'+'<td> <h7> '+ autor +' </h7></td>'+' <td> <strike>' + data[i].preco+ '€' +'</strike> </td> <td> <h7>' + data[i].precopromocional + '€' +'</h7> </td>' + ' </tr>');
-					}
-
-					$('.sub-products-listing').append('</tbody>');
-					$('.sub-products-listing').append('</table>');
-				}
-			});
+				$('.sub-products-listing').append('</tbody>');
+				$('.sub-products-listing').append('</table>');
+			}
+		});
 			
 		}else
 		$('#subcategoria-form').append('<option value="Escolha uma opção">Escolha uma opção</option>');
@@ -81,7 +81,7 @@ $('#subcategoria-form').on('change', function(){
 
 			$('#products-listing').append('<div class="sub-products-listing" >');
 
-			if(data.length === 0 || data == "NULL") {//data[0].publicacaoid == null){
+			if(data.length === 0 || data == "NULL" || data[0].publicacaoid === null){
 				$('.sub-products-listing').append('<p>Sem publicações para os dados introduzidos </p>');
 			}
 			
